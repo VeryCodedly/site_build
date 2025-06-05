@@ -19,22 +19,25 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
 
+RECAPTCHA_SECRET_KEY = os.getenv('VITE_RECAPTCHA_SECRET_KEY')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = ['www.verycodedly.com', 'verycodedly.com', '.onrender.com', 'localhost', '127.0.0.1']
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "https://verycodedly.com",
-]
+if not DEBUG:
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:3000",
+        "https://verycodedly.com",
+        "https://www.verycodedly.com",
+    ]
 
 # Application definition
 
@@ -134,7 +137,78 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Force HTTPS in Django
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+
+# CSRF settings
+CSRF_TRUSTED_ORIGINS = [
+    'https://www.verycodedly.com',
+    'https://verycodedly.com',
+    'https://*.onrender.com',
+]
+# CORS settings
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+    'x-csrftoken',
+    'x-requested-with',
+    'accept',
+    'accept-encoding',
+    'accept-language',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+    ]
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+]
+# CORS settings for development
+CORS_ALLOW_ALL_ORIGINS = DEBUG
+if DEBUG:
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:3000",
+        "http://", os.getenv('FRONTEND_URL', 'localhost:3000'),
+    ]
+
+# CORS settings for production
+if not DEBUG:
+    CORS_ALLOWED_ORIGINS = [
+        "https://verycodedly.com",
+        "https://www.verycodedly.com",
+    ]
+    
+# Security settings
+SECURE_HSTS_SECONDS = 3600  # Enable HTTP Strict Transport Security
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True  # Preload HSTS for browsers
+SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent MIME type sniffing
+SECURE_BROWSER_XSS_FILTER = True  # Enable browser XSS filtering
+SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'  # Referrer policy
+
+# Session settings
+SESSION_COOKIE_HTTPONLY = True  # Prevent JavaScript access to session cookies
+SESSION_COOKIE_SAMESITE = 'Lax'  # CSRF protection
+
+# CSRF settings
+CSRF_COOKIE_HTTPONLY = True  # Prevent JavaScript access to CSRF cookies
+CSRF_COOKIE_SAMESITE = 'Lax'  # CSRF protection
+
+# Security settings for production
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True  # Redirect all HTTP requests to HTTPS
+    SESSION_COOKIE_SECURE = True  # Use secure cookies for sessions
+    CSRF_COOKIE_SECURE = True  # Use secure cookies for CSRF protection
+
