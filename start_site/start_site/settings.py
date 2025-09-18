@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -19,28 +19,23 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY", "dev-insecure-key")  # Fallback for dev only
 
 RECAPTCHA_SECRET_KEY = os.getenv('VITE_RECAPTCHA_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG") == "True"
+DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = ['www.verycodedly.com', 'verycodedly.com', '.onrender.com', 'localhost', '127.0.0.1']
-
-if not DEBUG:
-    CORS_ALLOWED_ORIGINS = [
-        "http://localhost:3000",
-        "https://verycodedly.com",
-        "https://www.verycodedly.com",
-    ]
+ALLOWED_HOSTS = [
+    "verycodedly.com",
+    "www.verycodedly.com",
+    "localhost",
+    "127.0.0.1",
+    "verycodedly.onrender.com",  # Replace with your actual Render domain
+]
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,6 +46,7 @@ INSTALLED_APPS = [
     'codedly',
     'rest_framework',
     'corsheaders',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -86,7 +82,6 @@ WSGI_APPLICATION = 'start_site.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -97,7 +92,6 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -116,32 +110,31 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
+TIME_ZONE = 'UTC'  # Or 'Africa/Lagos' if you prefer local time
 USE_I18N = True
-
 USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
-
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+# Media files (User-uploaded content)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email settings
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
 EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True') == 'True'
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True').lower() == 'true'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
@@ -149,66 +142,60 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 CSRF_TRUSTED_ORIGINS = [
     'https://www.verycodedly.com',
     'https://verycodedly.com',
-    'https://*.onrender.com',
+    'https://verycodedly.onrender.com',  # Replace with your Render domain
 ]
-# CORS settings
+
+# --- CORS SETTINGS ---
+if DEBUG:
+    CORS_ALLOW_ALL_ORIGINS = True
+else:
+    CORS_ALLOW_ALL_ORIGINS = False
+    CORS_ALLOWED_ORIGINS = [
+        "https://verycodedly.com",
+        "https://www.verycodedly.com",
+    ]
+
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = [
-    'content-type',
-    'authorization',
-    'x-csrftoken',
-    'x-requested-with',
     'accept',
     'accept-encoding',
-    'accept-language',
+    'authorization',
+    'content-type',
     'dnt',
     'origin',
     'user-agent',
     'x-csrftoken',
     'x-requested-with',
-    ]
-
+]
 CORS_ALLOW_METHODS = [
     'GET',
     'POST',
     'PUT',
     'PATCH',
     'DELETE',
+    'OPTIONS',
 ]
-# CORS settings for development
-CORS_ALLOW_ALL_ORIGINS = DEBUG
-if DEBUG:
-    CORS_ALLOWED_ORIGINS = [
-        "http://localhost:3000",
-        "http://", os.getenv('FRONTEND_URL', 'localhost:3000'),
-    ]
 
-# CORS settings for production
+# --- SECURITY SETTINGS ---
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = "DENY"
+
 if not DEBUG:
-    CORS_ALLOWED_ORIGINS = [
-        "https://verycodedly.com",
-        "https://www.verycodedly.com",
-    ]
-    
-# Security settings
-SECURE_HSTS_SECONDS = 3600  # Enable HTTP Strict Transport Security
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True  # Preload HSTS for browsers
-SECURE_CONTENT_TYPE_NOSNIFF = True  # Prevent MIME type sniffing
-SECURE_BROWSER_XSS_FILTER = True  # Enable browser XSS filtering
-SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'  # Referrer policy
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 
-# Session settings
-SESSION_COOKIE_HTTPONLY = True  # Prevent JavaScript access to session cookies
-SESSION_COOKIE_SAMESITE = 'Lax'  # CSRF protection
+# Session and CSRF
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_SAMESITE = 'Lax'
 
-# CSRF settings
-CSRF_COOKIE_HTTPONLY = True  # Prevent JavaScript access to CSRF cookies
-CSRF_COOKIE_SAMESITE = 'Lax'  # CSRF protection
-
-# Security settings for production
-if not DEBUG:
-    SECURE_SSL_REDIRECT = True  # Redirect all HTTP requests to HTTPS
-    SESSION_COOKIE_SECURE = True  # Use secure cookies for sessions
-    CSRF_COOKIE_SECURE = True  # Use secure cookies for CSRF protection
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 

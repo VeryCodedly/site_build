@@ -1,0 +1,71 @@
+@import 'tailwindcss';
+
+@theme {
+    --color-asphalt: #030301;
+    --color-graphite: #222222;
+    --color-gray-chateau: #99a1af;
+    --color-off-white:  #F2F2F2;
+    --color-chartreuse: #9AE600;
+    --color-dark-neon: #00ff00;
+    --color-lilac: #b496c6;
+    --color-brilac: #f48ec5;
+    --color-ctncndy: #feb2e3;
+    --color-coral: #fd8444; 
+    --color-brorange: #ff712c; 
+
+    --font-geist: Geist Mono, monospace;
+    --font-noto: Noto Sans Mono, monospace;
+    --font-pops: Poppins, sans-serif;
+    --font-robo: Roboto Mono, monospace;
+    
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+@layer base {
+  body {
+    @apply bg-black;
+    font-family: var(--font-robo);
+  }
+  h1 {
+    font-family: var(--font-pops);
+    font-weight: 900;
+  }
+  
+  h2, h3, h4, h5, h6 {
+    font-family: var(--font-geist);
+    font-weight: 900;
+  }
+  
+  /* code {
+    font-family: var(--font-robo);
+    background-color: var(--color-graphite);
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+  } */
+}
