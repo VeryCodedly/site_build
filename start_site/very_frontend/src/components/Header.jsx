@@ -14,10 +14,10 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className={`sticky top-0 z-50 px-3 py-3.5 rounded-b-2xl bg-black/20 backdrop-blur-lg flex justify-between items-center ${isScrolled ? 'shadow-md shadow-gray-50/10 transition-shadow duration 300' : ''}`}>
+    <header className={`sticky top-0 z-50 px-4 py-3.5 rounded-b-2xl bg-black/20 backdrop-blur-lg flex justify-between items-center ${isScrolled ? 'shadow-md shadow-gray-50/10 transition-shadow duration 300' : ''}`}>
             {/* <div className="m-0 b-0 p-0"> */}
               <a href="/" className="">
-                <div className="text-white font-extrabold text-sm md:text-lg flex items-center space-x-2">
+                <div className="text-white font-extrabold text-sm md:text-lg flex items-center space-x-1">
                   <Image
                     src="/images/favicon-main.svg"
                     alt="Logo"
