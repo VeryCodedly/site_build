@@ -35,6 +35,10 @@ const geist = localFont({
 export const metadata: Metadata = {
   title: "Very Codedly",
   description: "Your friendly neighborhood tech hub.",
+  metadataBase: new URL("https://verycodedly.com"),
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({

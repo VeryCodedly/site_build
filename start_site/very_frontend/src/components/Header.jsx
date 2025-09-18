@@ -17,7 +17,7 @@ export default function Header() {
     <header className={`sticky top-0 z-50 px-3 py-3.5 rounded-b-2xl bg-black/20 backdrop-blur-lg flex justify-between items-center ${isScrolled ? 'shadow-md shadow-gray-50/10 transition-shadow duration 300' : ''}`}>
             {/* <div className="m-0 b-0 p-0"> */}
               <a href="/" className="">
-                <div className="">
+                <div className="text-white font-extrabold text-sm md:text-lg flex items-center space-x-2">
                   <Image
                     src="/images/favicon-main.svg"
                     alt="Logo"
@@ -34,6 +34,7 @@ export default function Header() {
                 <a href="/learn" className="px-2 text-white hover:text-lime-400 transition">LEARN</a>
                 <a href="/know" className="px-2 text-white hover:text-lime-400 transition">KNOW</a>
                 <a href="https://discord.gg/UVWNezaj" className="px-2 text-white hover:text-lime-400 transition" target="_blank" rel="noopener">CONNECT</a>
+                <p href="/" className="px-2 text-white hover:text-lime-400 transition">Beta 🚧</p>
               </nav>
               {/* <div className="border border-white"> */}
               <Link href="/contact" className="hidden md:inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 hover:bg-white text-black px-3 py-0.5 rounded-full shadow-[0_3px_0_0_#0f0] hover:translate-y-0.5 hover:shadow-[0_2px_0_0_#0f0] active:translate-y-1.5 transition-all duration-200">
@@ -91,6 +92,7 @@ export default function Header() {
           >
             <FontAwesomeIcon icon={faEnvelope} size="sm" />
           </Link>
+          <p className="px-2 text-white hover:text-lime-400 transition">Beta 🚧</p>
         </div>
       </header>
   );

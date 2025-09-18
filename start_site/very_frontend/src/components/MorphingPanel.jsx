@@ -83,7 +83,7 @@ export default function MorphingPanel({ className = "" }) {
 
   return (
     <div className="relative flex items-center justify-center w-[150px] h-[150px] md:w-[210px] md:h-[210px]  
-        sm:w-[250px] sm:h-[250px] lg:w-[250px] lg:h-[250px] perspective-[900px] mx-auto">
+        sm:w-[220px] sm:h-[220px] lg:w-[220px] lg:h-[220px] perspective-[900px] mx-auto">
 
       <div className="absolute border-10 top-1/2 left-1/2 w-28 h-28 rounded-full bg-cyan-400/50 blur-3xl -translate-x-1/2 -translate-y-1/2 z-[-1] animate-pulse shadow-[0_0_10px_#00ffe0]" />
 
