@@ -58,7 +58,7 @@ export default function Footer() {
             <a href="https://reddit.com/r/VeryCodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" alt="Reddit" target="_blank">
               <FontAwesomeIcon icon={['fab', 'reddit']} size="lg" />
             </a>
-            <a href="https://discord.com/UVWNezaj" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" target="_blank">
+            <a href="https://discord.com/invite/UVWNezaj" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" target="_blank">
               <FontAwesomeIcon icon={['fab', 'discord']} size="lg" />
             </a>
             <a href="https://medium.com/@verycodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" alt="medium" target="_blank">

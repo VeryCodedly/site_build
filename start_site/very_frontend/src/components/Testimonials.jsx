@@ -369,7 +369,7 @@ export default function Testimonials() {
         <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">
           What Creatives Are Saying
         </h3>
-        <p className="text-gray-400 text-base md:text-lg">
+        <p className="text-gray-300 text-base md:text-lg">
           Real voices from our global community.
         </p>
       </div>

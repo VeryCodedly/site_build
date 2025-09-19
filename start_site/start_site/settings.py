@@ -32,7 +32,7 @@ ALLOWED_HOSTS = [
     "www.verycodedly.com",
     "localhost",
     "127.0.0.1",
-    "verycodedly.onrender.com",  # Replace with your actual Render domain
+    "api.verycodedly.com", 
 ]
 
 # Application definition
@@ -142,7 +142,7 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 CSRF_TRUSTED_ORIGINS = [
     'https://www.verycodedly.com',
     'https://verycodedly.com',
-    'https://verycodedly.onrender.com',  # Replace with your Render domain
+    'https://api.verycodedly.com',  # Replace with your Render domain
 ]
 
 # --- CORS SETTINGS ---

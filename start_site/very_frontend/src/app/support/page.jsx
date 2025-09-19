@@ -15,8 +15,7 @@ export default function SupportPage() {
             Help keep Very Codedly alive
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Very Codedly is built by a tiny, obsessed team (usually one
-            person and a lot of coffee). Your support keeps our content free,
+            Very Codedly is built by a tiny, obsessed team. Your support keeps our content free,
             the community warm, and the servers humming. Every bit helps — and
             none of it changes who we are.
           </p>
@@ -154,11 +153,11 @@ export default function SupportPage() {
         </div>
 
         {/* Closing note */}
-        <footer className="text-center text-sm text-gray-400">
+        <footer className="text-center text-sm text-gray-400 backdrop-blur-2xl border border-gray-800 rounded-2xl p-6 bg-black/3">
           <p>
-            Thank you for reading, learning, and being part of this little corner of the web.
+            Thank you ❤️ for reading, learning, and being part of this little corner of the web.
           </p>
-          <p className="mt-2">Every share, star, and coffee keeps the lights on — thank you ❤️</p>
+          <p className="mt-2">Every share, star, and coffee waters this tree 🌳</p>
         </footer>
       </div>
     </section>
