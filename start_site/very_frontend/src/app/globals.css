@@ -24,6 +24,7 @@
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
+  
   @keyframes float {
     0%, 100% {
       transform: translateY(0);
@@ -34,17 +35,13 @@
   }
 }
 
-@keyframes spin-slow {
-  from {
-    transform: rotateX(0deg) rotateY(0deg);
-  }
-  to {
-    transform: rotateX(360deg) rotateY(360deg);
-  }
+@keyframes spin-twice {
+  0%   { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) } /* start */
+  100% { transform: rotateX(-95deg) rotateY(-270deg) rotateZ(58deg) } /* 2 full spins */
 }
 
-.animate-spin-slow {
-  animation: spin-slow 10s linear infinite;
+.animate-spin-twice {
+  animation: spin-twice 5s linear forwards; /* run once */
 }
 
 @layer base {

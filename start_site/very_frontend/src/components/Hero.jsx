@@ -7,15 +7,17 @@ import MorphingPanel from "./MorphingPanel.jsx";
 
 export default function Hero() {
     return (
-        <section className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 items-center py-10 sm:py-12 md:py-14 lg:py-18 px-10 sm:px-12 md:px-12 lg:px-16">
+        <section className="w-full max-w-7xl mx-auto flex flex-wrap gap-8 items-center py-12 px-14 lg:py-16 lg:px-16">
         {/* <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center py-16 px-14 md:px-14"> */}
-          <div className="space-y-6 z-20">
+          <div className="flex-1 space-y-6 z-20">
           {/* <div className="min-h-[230px] w-[400px] flex relative"> */}
-          <div className="w-full max-w-[400px] min-w-[300px] min-h-[200px] sm:min-h-[220px] md:min-h-[230px] flex relative">
+          {/* <div className="w-full max-w-[400px] min-w-[180px] min-h-[180px] sm:min-h-[180px] md:min-h-[230px] flex relative"> */}
+          <div className="w-full max-w-[400px] min-h-[200px] sm:min-h-[230px] min-w-[400px] flex relative">
           <h1 className="text-5xl sm:text-6xl md:text-6xl lg:text-6xl text-white font-extrabold leading-tight">
+            <span className="opacity-0 absolute">Ready to see what's next in Tech?</span>
             <Typewriter
               words={["Ready to see what's next in Tech?"]}
-              cursor
+              // cursor
               cursorStyle="|"
               typeSpeed={40}
               // deleteSpeed={50}
@@ -23,8 +25,7 @@ export default function Hero() {
             />
           </h1>
           </div>
-          {/* <p className="text-gray-400 relative max-w-fit"> */}
-          <p className="w-full min-w-[280px] max-w-[400px] text-gray-300 text-base sm:text-md">
+          <p className="w-full min-w-[400px] max-w-[400px] text-gray-400 text-base sm:text-md">
             Deep insights on what you need to know. No noise, just clarity.
           </p>
           <div className="flex space-x-4">
@@ -39,7 +40,7 @@ export default function Hero() {
           </div>
         </div>
 
-          <div className="flex items-center justify-center w-full mt-20 py-24 sm:py-0 sm:mt-14 md:mt-0 lg:mt-0">
+          <div className="flex-1 items-center justify-center w-full px-10 mt-20 py-24 sm:py-14 md:py-14 lg:py-0 lg:mt-0">
             <MorphingPanel />
           </div>
 

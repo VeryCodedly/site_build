@@ -15,7 +15,7 @@ export default function SupportPage() {
             Help keep Very Codedly alive
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Very Codedly is built by a tiny, obsessed team. Your support keeps our content free,
+            Very Codedly is built by a small, obsessed team. Your support keeps our content free,
             the community warm, and the servers humming. Every bit helps — and
             none of it changes who we are.
           </p>
@@ -35,7 +35,7 @@ export default function SupportPage() {
 
             <div className="space-y-3">
               <a
-                href="https://www.buymeacoffee.com/YOUR_HANDLE"
+                href="https://ko-fi.com/verycodedly"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center bg-lime-400 text-black text-sm font-semibold cursor-pointer border-3 border-gray-500/100 px-9 py-1 rounded-full hover:bg-white hover:text-black hover:font-bold hover:translate-y-1 shadow-[0_4px_0_0_#0f0] hover:shadow-[0_2px_0_0_#0f0] active:translate-y-0 transition-all duration-200"
@@ -81,7 +81,7 @@ export default function SupportPage() {
 
             <div className="flex gap-3">
               <a
-                href="https://twitter.com/intent/tweet?text=Check%20out%20Very%20Codedly%20-%20https://verycodedly.example"
+                href="https://twitter.com/intent/tweet?text=Into%20coding%20+%20tech%20trends?%20Check%20out%20Very%20Codedly%20-%20https://verycodedly.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 text-center px-3 py-2 rounded-3xl border border-gray-500 text-white hover:bg-white/5 transition"

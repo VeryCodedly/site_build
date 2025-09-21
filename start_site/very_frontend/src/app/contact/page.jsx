@@ -38,9 +38,9 @@ export default function ContactPage() {
           </div>
           <button
             type="submit"
-            className="w-2/6 font-bold cursor-pointer border-2 border-gray-500/100 bg-lime-400 hover:bg-white text-black px-3 py-0.5 rounded-full shadow-[0_3px_0_0_#0f0] hover:translate-y-0.5 hover:shadow-[0_2px_0_0_#0f0] active:translate-y-1.5 transition-all duration-200">
-            <span className="sm:hidden">Send</span>
-            <span className="hidden sm:inline">Send Message</span>
+            className="w-1/4 font-bold cursor-pointer border-2 border-gray-500/100 bg-lime-400 hover:bg-white text-black px-3 py-0.5 rounded-full shadow-[0_3px_0_0_#0f0] hover:translate-y-0.5 hover:shadow-[0_2px_0_0_#0f0] active:translate-y-1.5 transition-all duration-200">
+            <span className="md:hidden">Send</span>
+            <span className="hidden md:inline">Send Message</span>
           </button>
         </form>
       </div>

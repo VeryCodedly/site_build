@@ -61,7 +61,6 @@ export default function TeaserCards() {
       {/* <CircuitLines cardIds={cards.map((c) => c.id)} /> */}
       <div className="relative w-full h-full gap-5 m-3 lg:gap-0 max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
         {cards.map((card, index) => (
-          <Link href={card.href} key={index}>
           <Motion.div
             id={`card-${card.id}`}
             key={index}
@@ -75,7 +74,7 @@ export default function TeaserCards() {
             onMouseEnter={(e) => (e.currentTarget.style.zIndex = 10)}
             onMouseLeave={(e) => (e.currentTarget.style.zIndex = 0)}
           >
-
+            <Link href={card.href} key={index}>
             <div className={`${card.color} text-3xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
               <FontAwesomeIcon icon={card.icon} />
             </div>
@@ -83,14 +82,13 @@ export default function TeaserCards() {
             <h2 className="text-white text-xl md:text-2xl font-semibold mb-2">
               {card.title}
             </h2>
-
+            </Link>
             <p className="text-gray-300 text-sm leading-relaxed">
               {card.description}
             </p>
 
             <div className={`absolute bottom-4 left-8 h-0.5 w-20 ${card.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
           </Motion.div>
-          </Link>
         ))}
       </div>
     </section>

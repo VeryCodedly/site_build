@@ -30,7 +30,7 @@ export default function Header() {
               </a>
             {/* </div> */}
               <nav className="space-x-18 text-xs hidden md:flex">
-                <a href="/read" className="px-2 text-white hover:text-lime-400 transition">READ</a>
+                <a href="/blog" className="px-2 text-white hover:text-lime-400 transition">READ</a>
                 <a href="/learn" className="px-2 text-white hover:text-lime-400 transition">LEARN</a>
                 <a href="/know" className="px-2 text-white hover:text-lime-400 transition">KNOW</a>
                 <a href="https://discord.gg/UVWNezaj" className="px-2 text-white hover:text-lime-400 transition" target="_blank" rel="noopener">CONNECT</a>
