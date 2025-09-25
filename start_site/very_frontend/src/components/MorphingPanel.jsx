@@ -44,10 +44,10 @@ export default function MorphingPanel({ className = "" }) {
           // start auto-spin
           setAutoSpin(true);
 
-          // stop after 10s (1 cycle)
+          // stop after 10s
           setTimeout(() => {
             setAutoSpin(false);
-          }, 8000);
+          }, 7000);
         }
       },
       { threshold: 0.1 }
@@ -103,6 +103,7 @@ export default function MorphingPanel({ className = "" }) {
         className="object-cover hover:scale-110 transition duration-500 rounded-full"
         width={60}
         height={60}
+        priority
       />
       </button>
       </div>

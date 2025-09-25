@@ -21,6 +21,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('codedly.urls')),
+    path('', include('codedly.urls')),
+    path('api/', include('codedly.api_urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

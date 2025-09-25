@@ -330,7 +330,7 @@ const testimonials = [
     role: "Digital Artist • Lagos 🇳🇬",
   },
   {
-    quote: "It’s more than a platform — it’s a vibe. I'm building, sharing, and learning with some awesome people!",
+    quote: "It’s more than a platform. I'm building, sharing, and learning with some awesome people!",
     name: "Jordan K.",
     role: "AI Storyteller • Berlin 🇩🇪",
   },

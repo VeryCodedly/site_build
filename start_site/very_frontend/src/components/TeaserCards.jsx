@@ -20,7 +20,7 @@ const cards = [
     icon: faNewspaper,
     accent: "bg-lime-400",
     color: "text-lime-400",
-    href: "/read"
+    href: "/blog"
   },
   {
     id: "learn",
@@ -59,14 +59,14 @@ export default function TeaserCards() {
       <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-stretch opacity-30"></div>
 
       {/* <CircuitLines cardIds={cards.map((c) => c.id)} /> */}
-      <div className="relative w-full h-full gap-5 m-3 lg:gap-0 max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+      <div className="relative w-full h-full gap-4 m-3 lg:gap-0 max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
         {cards.map((card, index) => (
           <Motion.div
             id={`card-${card.id}`}
             key={index}
             className={`relative rounded-3xl px-10 py-8 border border-gray-800 bg-white/5 backdrop-blur-md 
               shadow-[0_15px_20px_rgba(0,0,0,0.6),0_15px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
-              hover:ring-1 transition-all duration-400 group`}
+              hover:ring-1 transition-all duration-300 group`}
             whileHover={{ scale: 1.13 }}
             whileDrag={{ scale: 1.10 }}
             whileTap={{ scale: 1.10 }}
@@ -79,7 +79,7 @@ export default function TeaserCards() {
               <FontAwesomeIcon icon={card.icon} />
             </div>
 
-            <h2 className="text-white text-xl md:text-2xl font-semibold mb-2">
+            <h2 className="text-white text-xl md:text-2xl font-semibold mb-2 hover:underline active:underline">
               {card.title}
             </h2>
             </Link>

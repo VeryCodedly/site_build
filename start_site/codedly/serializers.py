@@ -1,11 +1,13 @@
 from rest_framework import serializers
 from rest_framework.filters import SearchFilter
-from .models import Post, Category, Comment
+from .models import Post, Category, Comment, Subcategory
+
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = '__all__'
+
 
 class PostSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(many=True, read_only=True)
@@ -21,7 +23,16 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = '__all__'
 
+
+class SubcategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subcategory
+        fields = ['id', 'name', 'slug', 'created_at']
+        
+        
 class CategorySerializer(serializers.ModelSerializer):
+    subcategories = SubcategorySerializer(many=True, read_only=True)
+    
     posts = PostSerializer(many=True, read_only=True)
 
     class Meta:

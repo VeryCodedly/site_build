@@ -12,7 +12,8 @@ import TopButton from "@/components/TopButton";
 export default function Home() {
   return (
     <>
-    {/* <Image src="images/favicon-main.svg" alt="Favicon" width={20} height={20} /> */}
+    <main>
+      
       <Hero />
 
       <TeaserCards />
@@ -25,6 +26,7 @@ export default function Home() {
 
       <TopButton />
 
+    </main>
     </>
   );  
 }

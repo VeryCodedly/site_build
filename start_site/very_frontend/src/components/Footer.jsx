@@ -49,33 +49,33 @@ export default function Footer() {
         <div className="flex flex-col items-start">
           <h3 className="text-white text-lg font-semibold mb-3 tracking-tighter">Find us on</h3>
           <div className="grid grid-cols-3 gap-4">
-            <a href="https://x.com/verycodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" alt="X" target="_blank">
+            <Link href="https://x.com/verycodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" alt="X" target="_blank">
               <FontAwesomeIcon icon={['fab', 'x-twitter']} size="lg" />
-            </a>
-            <a href="https://www.youtube.com/channel/UCNDy9Q0qPHcY-TT2BD7B1kw" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" alt="YouTube" target="_blank">
+            </Link>
+            <Link href="https://www.youtube.com/channel/UCNDy9Q0qPHcY-TT2BD7B1kw" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" alt="YouTube" target="_blank">
               <FontAwesomeIcon icon={['fab', 'youtube']} size="lg" />
-            </a>
-            <a href="https://reddit.com/r/VeryCodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" alt="Reddit" target="_blank">
+            </Link>
+            <Link href="https://reddit.com/r/VeryCodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" alt="Reddit" target="_blank">
               <FontAwesomeIcon icon={['fab', 'reddit']} size="lg" />
-            </a>
-            <a href="https://discord.com/invite/UVWNezaj" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" target="_blank">
+            </Link>
+            <Link href="https://discord.com/invite/UVWNezaj" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" target="_blank">
               <FontAwesomeIcon icon={['fab', 'discord']} size="lg" />
-            </a>
-            <a href="https://medium.com/@verycodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" alt="medium" target="_blank">
+            </Link>
+            <Link href="https://medium.com/@verycodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" alt="medium" target="_blank">
               <FontAwesomeIcon icon={['fab', 'medium']} size="sm" />
-            </a>
-            <a href="https://linkedin.com/verycodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" target="_blank">
+            </Link>
+            <Link href="https://linkedin.com/verycodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" target="_blank">
               <FontAwesomeIcon icon={['fab', 'linkedin']} size="lg" />
-            </a>
-            <a href="https://facebook.com/verycodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" target="_blank">
+            </Link>
+            <Link href="https://facebook.com/verycodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" target="_blank">
               <FontAwesomeIcon icon={['fab', 'facebook']} size="lg" />
-            </a>
-            <a href="https://instagram.com/verycodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" alt="Instagram" target="_blank">
+            </Link>
+            <Link href="https://instagram.com/verycodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" alt="Instagram" target="_blank">
               <FontAwesomeIcon icon={['fab', 'instagram']} size="lg" />
-            </a>
-            <a href="https://tiktok.com/@verycodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" alt="TikTok" target="_blank">
+            </Link>
+            <Link href="https://tiktok.com/@verycodedly" className="h-6 w-6 hover:text-white hover:scale-110 transition-transform duration-300" alt="TikTok" target="_blank">
               <FontAwesomeIcon icon={['fab', 'tiktok']} size="lg" />
-            </a>
+            </Link>
             {/* Add more platform icons as needed */}
           </div>
         </div>

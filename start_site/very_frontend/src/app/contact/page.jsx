@@ -12,6 +12,31 @@ export default function ContactPage() {
         </p>
 
         <form className="space-y-6">
+          onSubmit={async (e) => {
+            e.preventDefault();
+            const formData = {
+              name: e.target[0].value,
+              email: e.target[1].value,
+              message: e.target[2].value,
+            };
+
+            try {
+              const res = await fetch("http://127.0.0.1:8000/api/contact/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+              });
+
+              const data = await res.json();
+              if (res.ok) {
+                alert("✅ Message sent successfully!");
+              } else {
+                alert("❌ Error: " + data.error);
+              }
+            } catch (err) {
+              alert("⚠️ Something went wrong: " + err.message);
+            }
+          }}
           <div>
             <input
               type="text"
