@@ -38,7 +38,7 @@ const cards = [
     icon: faChartLine,
     accent: "bg-lime-600",
     color: "text-lime-600",
-    href: "/know"
+    href: "https://www.youtube.com/channel/UCNDy9Q0qPHcY-TT2BD7B1kw"
   },
   {
     id: "connect",
@@ -47,14 +47,14 @@ const cards = [
     icon: faRss,
     accent: "bg-lime-700",
     color: "text-lime-700",
-    href: "/connect"
+    href: "https://discord.gg/invite/UVWNezaj"
   },
 ];
 
 
 export default function TeaserCards() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-20 px-6 md:px-8 lg:px-22 overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center py-20 px-6 md:px-8 lg:px-22 overflow-hidden border-b border-t border-zinc-900">
       {/* faded bg */}
       <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-stretch opacity-30"></div>
 
@@ -68,13 +68,12 @@ export default function TeaserCards() {
               shadow-[0_15px_20px_rgba(0,0,0,0.6),0_15px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               hover:ring-1 transition-all duration-300 group`}
             whileHover={{ scale: 1.13 }}
-            whileDrag={{ scale: 1.10 }}
             whileTap={{ scale: 1.10 }}
             style={{ zIndex: 0 }} 
             onMouseEnter={(e) => (e.currentTarget.style.zIndex = 10)}
             onMouseLeave={(e) => (e.currentTarget.style.zIndex = 0)}
-          >
-            <Link href={card.href} key={index}>
+          >        
+          <Link href={card.href} key={index} target="_blank">
             <div className={`${card.color} text-3xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
               <FontAwesomeIcon icon={card.icon} />
             </div>
@@ -82,7 +81,8 @@ export default function TeaserCards() {
             <h2 className="text-white text-xl md:text-2xl font-semibold mb-2 hover:underline active:underline">
               {card.title}
             </h2>
-            </Link>
+          </Link>
+
             <p className="text-gray-300 text-sm leading-relaxed">
               {card.description}
             </p>

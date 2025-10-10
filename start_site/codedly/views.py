@@ -8,9 +8,10 @@ from rest_framework import status
 from django.conf import settings
 
 from rest_framework import viewsets
+from rest_framework import generics
 from django.http import HttpResponse
-from .models import Post, Category, Comment, Subcategory
-from .serializers import PostSerializer, CategorySerializer, CommentSerializer, SubcategorySerializer
+from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson
+from .serializers import PostSerializer, CategorySerializer, CommentSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer
 
 def api_home(request):
     return HttpResponse("""
@@ -162,34 +163,34 @@ def api_home(request):
         </html>
     """)
 
-@api_view(['POST'])
+# views.py
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.core.mail import send_mail
+from django.conf import settings
+
+@api_view(["POST"])
 def contact_view(request):
     name = request.data.get("name")
     email = request.data.get("email")
     message = request.data.get("message")
 
-    if not name or not email or not message:
-        return Response({"error": "All fields are required."}, status=status.HTTP_400_BAD_REQUEST)
+    if not all([name, email, message]):
+        return Response({"error": "All fields are required"}, status=400)
 
-    try:
-        subject = f"New Contact Form Submission from {name}"
-        body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
-
-        send_mail(
-            subject,
-            body,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[settings.EMAIL_HOST_USER],  # receive messages
-        )
-        return Response({"success": "Message sent successfully!"}, status=status.HTTP_200_OK)
-
-    except Exception as e:
-        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    send_mail(
+        subject=f"New contact from {name}",
+        message=f"From: {name} <{email}>\n\n{message}",
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        recipient_list=["youremail@domain.com"],
+    )
+    return Response({"success": "Message sent successfully!"})
 
 
 class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.all().order_by('-created_at')
+    queryset = Post.objects.filter(status="published")
     serializer_class = PostSerializer
+    lookup_field = "slug"
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
@@ -202,3 +203,51 @@ class SubcategoryViewSet(viewsets.ModelViewSet):
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+
+class PostImageViewSet(viewsets.ModelViewSet):
+    queryset = PostImage.objects.all()
+    serializer_class = PostImageSerializer
+    
+class PostLinkViewSet(viewsets.ModelViewSet):
+    queryset = PostLink.objects.all()
+    serializer_class = PostLinkSerializer
+    
+    
+class CourseViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+    lookup_field = "slug"
+    
+    
+class LessonViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Lesson.objects.all()
+    serializer_class = LessonSerializer
+    lookup_field = "slug"
+    
+    
+class CourseListView(generics.ListAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+
+
+class CourseDetailView(generics.RetrieveAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
+    lookup_field = "slug"
+
+
+class LessonListView(generics.ListAPIView):
+    serializer_class = LessonSerializer
+
+    def get_queryset(self):
+        course_slug = self.kwargs["slug"]
+        return Lesson.objects.filter(course__slug=course_slug).order_by("order")
+
+
+class LessonDetailView(generics.RetrieveAPIView):
+    serializer_class = LessonSerializer
+    lookup_field = "slug"
+
+    def get_queryset(self):
+        course_slug = self.kwargs["course_slug"]
+        return Lesson.objects.filter(course__slug=course_slug)

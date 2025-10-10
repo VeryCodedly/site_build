@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function CTA() {
   return (
-    <section className="relative bg-gradient-to-br from-black via-zinc-900 to-black text-white py-28 px-8 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-black via-zinc-900 to-black text-white py-28 px-10 overflow-hidden">
       
       {/* Accent Glow */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-lime-400/20 rounded-full blur-[120px]"></div>
@@ -14,15 +14,13 @@ export default function CTA() {
             Ready to Create <br /> Something Brilliant?
           </h2>
           <p className="text-gray-300 text-md md:text-lg mb-10 max-w-lg ml-auto">
-            Sign up to join a community of bold thinkers, dreamers, and doers. Your next big thing starts here.
+            Start learning with a community of bold thinkers, dreamers, and doers. Your next big thing starts here.
           </p>
 
           <div className="flex space-x-4 justify-end">
             <Link
-              href="https://discord.gg/invite/UVWNezaj"
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="font-semibold cursor-pointer border-3 border-gray-500/100 px-9 py-1 rounded-full hover:bg-white hover:font-bold hover:text-black hover:translate-y-0.5 shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 transition-all duration-200"
+              href="/learn"
+              className="font-semibold cursor-pointer border-3 border-gray-500/100 px-8 py-1 rounded-full hover:bg-white hover:font-bold hover:text-black hover:translate-y-0.5 shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 transition-all duration-200"
             >Get Started
               {/* <span className="absolute inset-0 bg-gradient-to-t from-lime-400 to-lime-300 
                                translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-out"></span> */}

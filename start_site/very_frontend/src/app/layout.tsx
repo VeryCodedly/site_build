@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import localFont from 'next/font/local';
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import "./globals.css";
+import Header from "@/components/Header";
+import TopButton from "@/components/TopButton";
+import Footer from "@/components/Footer";
+
 
 config.autoAddCss = false;
 
@@ -50,7 +52,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${pops.variable} ${robo.variable} ${geist.variable} antialiased`}>
         <Header />
-        {children}
+          {children}
+          <TopButton />
         <Footer />
       </body>
     </html>

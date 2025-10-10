@@ -356,7 +356,7 @@ export default function Testimonials() {
   const prevTestimonial = () => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
-    <section className="relative w-full py-24 bg-black px-6 md:px-12 text-center overflow-hidden">
+    <section className="relative w-full mt-10 py-24 bg-black px-6 md:px-12 text-center overflow-hidden border-b border-t border-zinc-900">
       {/* Floating accents */}
       <div className="absolute inset-0 -z-10 pointer-events-none">
         <div className="w-2 h-2 bg-lime-400 rounded-full absolute top-10 left-20 animate-ping"></div>

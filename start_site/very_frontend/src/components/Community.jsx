@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Community() {
   return (
-    <section className="w-full bg-black py-20 px-4 sm:px-6 lg:px-8">
+    <section className="w-full bg-black py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-12">
         
         {/* Left Content */}
@@ -36,7 +36,7 @@ export default function Community() {
               href="https://discord.gg/d659pybS" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-block font-semibold border-3 border-gray-500 px-9 py-1 rounded-full text-white text-md hover:bg-white hover:text-black hover:font-bold hover:translate-y-0.5 shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#0f0] active:translate-y-1 transition-all duration-200"
+              className="inline-block font-semibold border-3 border-gray-500 px-9.5 py-1 rounded-full text-white text-md hover:bg-white hover:text-black hover:font-bold hover:translate-y-0.5 shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#0f0] active:translate-y-1 transition-all duration-200"
             >
               Join Now
             </Link>
@@ -55,8 +55,7 @@ export default function Community() {
             alt="Community illustration" 
             width={600} 
             height={400} 
-            
-          />
+            />
         </div>
       </div>
     </section>

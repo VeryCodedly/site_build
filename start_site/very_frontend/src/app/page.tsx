@@ -5,28 +5,32 @@ import TeaserCards from "@/components/TeaserCards";
 import Community from "@/components/Community";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
-// import Footer from "@/components/Footer";
-import TopButton from "@/components/TopButton";
+import BlogSection from "../components/BlogSection";
+import LearnSection from "../components/LearnSection";
 
 
 export default function Home() {
   return (
     <>
-    <main>
+
+      <main>
       
-      <Hero />
+        <Hero />
 
-      <TeaserCards />
+        <TeaserCards />
 
-      <Community />
+        <LearnSection />
 
-      <Testimonials />
+        <BlogSection />
 
-      <CTA />
+        <Community />
 
-      <TopButton />
+        <Testimonials />
 
-    </main>
+        <CTA />
+
+      </main>
+
     </>
   );  
 }
