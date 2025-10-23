@@ -153,6 +153,7 @@ export default function BlogPost() {
             className="w-full h-[50vh] sm:h-[60vh] object-cover rounded-2xl brightness-75 hover:brightness-100 active:brightness-100 transition-all duration-500"
             priority
             sizes="100vw"
+            tabIndex={0}
           />
           <p className="absolute bottom-4 left-4 right-4 w-fit text-gray-600/90 group-hover:text-gray-400/90 group-active:text-gray-400/90 group-active:brightness-100 bg-black/15 backdrop-blur-sm rounded-lg p-2 text-xs">
             {post.caption || 'Featured image for this post'}
@@ -168,11 +169,11 @@ export default function BlogPost() {
         >
           <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4 text-xs sm:text-sm text-gray-400">
             {/* <span className="inline-flex items-center gap-1"> */}
-            <span className="bg-gray-400/10 text-gray-400 px-2 py-1 rounded-full font-medium gap-1 flex items-center">
+            <span className="bg-gray-400/10 text-gray-400 px-2 py-1 rounded-full font-medium gap-1 flex items-center" tabIndex={0}>
               <FontAwesomeIcon icon={faUser} className="text-pink-400" />
               {post.author || 'Anonymous'}
             </span>
-            <span className="inline-flex items-center gap-1">
+            <span className="inline-flex text-xs items-center gap-1" tabIndex={0}>
               <FontAwesomeIcon icon={faCalendar} />
               {new Date(post.created_at).toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -181,10 +182,10 @@ export default function BlogPost() {
                 hour: '2-digit',
               })}
             </span>
-            <span className="bg-lime-400/10 text-lime-400 px-2 py-1 rounded-full text-xs font-medium">
+            <span className="bg-lime-400/10 text-lime-400 px-2 py-1 rounded-full text-xs font-medium" tabIndex={0}>
               {post.category?.name || 'Uncategorized'}
             </span>
-            <span className="bg-pink-400/10 text-pink-400 px-2 py-1 rounded-full text-xs font-medium">
+            <span className="bg-pink-400/10 text-pink-400 px-2 py-1 rounded-full text-xs font-medium" tabIndex={0}>
               {post.subcategory?.name || 'General'}
             </span>
           </div>
@@ -261,6 +262,7 @@ export default function BlogPost() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-block mt-2 text-lime-400 hover:text-white underline underline-offset-2 transition-colors text-sm sm:text-base"
+                          tabIndex={0}
                         >
                           {block.text || 'Learn more'}
                         </Link>
@@ -333,6 +335,7 @@ export default function BlogPost() {
                     priority={false}
                     className="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    tabIndex={0}
                   />
                   {(img.alt || img.caption) && (
                     <div className="absolute bottom-2 left-2 right-2 w-fit bg-black/15 backdrop-blur-sm rounded px-2 py-1">
@@ -365,6 +368,7 @@ export default function BlogPost() {
                 <span
                   key={index}
                   className="bg-zinc-800/50 hover:bg-lime-400/10 text-lime-400 hover:text-lime-300 lowercase px-3 py-1 rounded-full text-sm border border-zinc-600/30 transition-all"
+                  tabIndex={0}
                 >
                   #{tag}
                 </span>

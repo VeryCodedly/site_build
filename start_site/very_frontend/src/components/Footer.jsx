@@ -19,7 +19,7 @@ export default function Footer() {
         {/* Brand Column */}
         <div>
           <h3 className="text-lime-400 text-xl font-bold mb-3">
-            VeryCodedly<span className="text-xs">™</span>
+            VeryCodedly{/* <span className="text-xs">™</span> */}
           </h3>
           <p className="text-sm text-gray-500 leading-tight w-[140px]">
             For the curious minds shaping the future, you're in good company here.

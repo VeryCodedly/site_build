@@ -7,7 +7,7 @@ import { useState, useRef, useEffect } from 'react';
 // import ScrollLink from './ScrollLink';
 import useScrollShadow from '../hooks/useScrollShadow';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faTimes, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
   const isScrolled = useScrollShadow();
@@ -46,6 +46,8 @@ export default function Header() {
                     width={0}
                     height={0}
                     priority
+                    tabindex="0"
+                    aria-label="Site Logo"
                   />
                 </div>
               </Link>
@@ -67,9 +69,13 @@ export default function Header() {
               {/* Mobile menu toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-white focus:outline-none"
+            className="md:hidden text-white"
+            aria-haspopup="true"
+            tabindex="0"
+            aria-label="More options"
+            title="More options"
           >
-            <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} className="mr-3.5 hover:text-lime-400 active:text-lime-400" size="lg" />
+            <FontAwesomeIcon icon={menuOpen ? faTimes : faEllipsisV} className="mr-2 hover:text-lime-400 active:text-lime-400" size="lg" />
           </button>
 
       {/* Mobile dropdown */}

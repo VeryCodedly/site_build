@@ -20,7 +20,7 @@ export default function BlogHome() {
       <div className="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden">
         {/* layered typography */}
         <Motion.h1
-          className="absolute text-[12rem] sm:text-[16rem] font-extrabold uppercase text-lime-400/5 blur-3xl select-none z-0"
+          className="absolute text-[12rem] sm:text-[16rem] font-extrabold uppercase text-lime-400/5 blur-2xl select-none z-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 4 }}
           transition={{ duration: 0.8 }}
@@ -29,7 +29,7 @@ export default function BlogHome() {
         </Motion.h1>
 
         <Motion.h1
-          className="absolute text-[14rem] sm:text-[18rem] font-extrabold uppercase text-white/3 z-10"
+          className="absolute text-[14rem] sm:text-[18rem] font-extrabold uppercase text-white/5 z-10"
           style={{ WebkitTextStroke: "1px rgba(255,255,255,0.2)" }}
         >
           VeryCodedly
@@ -37,7 +37,7 @@ export default function BlogHome() {
 
         <div className="z-20 backdrop-blur-xs w-full py-2 sm:py-5">
         <Motion.h1
-          className="hero relative text-6xl sm:text-7xl font-bold z-20 backdrop-blur-2xl"
+          className="hero px-14 sm:px-0 relative text-6xl sm:text-7xl font-bold z-20 backdrop-blur-2xl"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
@@ -46,7 +46,7 @@ export default function BlogHome() {
         </Motion.h1>
 
         <Motion.p
-          className="relative text-gray-400 mt-6 z-20 max-w-md mx-auto text-md sm:text-lg"
+          className="relative text-gray-400 mt-6 z-20 max-w-sm sm:max-w-md mx-auto text-md sm:text-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
@@ -61,17 +61,18 @@ export default function BlogHome() {
           className="absolute bottom-1.5 sm:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30 text-gray-400"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
+          tabIndex={0}
         >
-          <span className="text-sm tracking-widest uppercase">read</span>
-          <span className="text-xl">↓</span>
+          <span className="text-md sm:text-sm tracking-widest uppercase">read</span>
+          <span className="text-2xl sm:text-xl">↓</span>
         </Motion.div>
         </Link>
       </div>
 
       {/* 📰 POSTS SECTION */}
-      <div id="posts" className="relative max-w-6xl mx-auto py-24 px-6 sm:px-8">
+      <div id="posts" className="relative max-w-6xl mx-auto py-20 px-6 sm:px-8">
         <Motion.h2
-          className="text-3xl sm:text-4xl font-bold mb-12 text-center text-white/90"
+          className="text-3xl sm:text-4xl font-bold mb-18 sm:mb-12 text-center text-white/90"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}

@@ -12,7 +12,7 @@ export default function LearnPage() {
   
   return (
     <div>
-    <section className="relative w-full min-h-screen bg-black text-white overflow-hidden py-16 sm:py-20 md:py-18 px-8 sm:px-6 lg:px-8">
+    <section className="relative w-full min-h-screen bg-black text-white overflow-hidden py-24 px-8 sm:px-6 lg:px-8">
       {/* subtle grid / pattern background */}
       <div className="absolute inset-0 bg-linear-gradient(135deg, #0f111a, #1a1c2c) bg-center bg-cover opacity-20 pointer-events-none"></div>
 
@@ -27,7 +27,7 @@ export default function LearnPage() {
 
           {/* Animated color fade-in */}
           <Motion.span
-            className="inline-block"
+            className="px-30 sm:px-0 inline-block"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
@@ -133,6 +133,7 @@ export default function LearnPage() {
         className="bg-zinc-900 border border-zinc-800 m-3 sm:m-0 p-4 sm:p-6 rounded-xl 
         hover:shadow-[0_0_10px_#222222] backdrop-blur-md transition-all"
         whileHover={{ y: -5 }}
+        tabIndex={0}
       >
         <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3">{track.name}</h3>
         <p className="text-gray-400 text-sm leading-relaxed">{track.desc}</p>
@@ -232,6 +233,7 @@ export default function LearnPage() {
               key={idx}
               whileHover={{ scale: 1.15 }}
               className="bg-zinc-900/70 p-3 rounded-2xl transition-all"
+              tabIndex={0}
             >
               <Image src={icon ?? "Resource Image"} alt="tool con" className="w-12 h-12 mx-auto" width={200} height={200} />
             </Motion.div>
