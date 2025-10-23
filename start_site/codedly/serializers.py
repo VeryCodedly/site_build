@@ -56,12 +56,22 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = '__all__'
 
-
+        
 class LessonSerializer(serializers.ModelSerializer):
+    previous_lesson = serializers.SerializerMethodField()
+    next_lesson = serializers.SerializerMethodField()
+
     class Meta:
         model = Lesson
-        fields = '__all__'
+        fields = "__all__"
 
+    def get_previous_lesson(self, obj):
+        prev = Lesson.objects.filter(course=obj.course, order__lt=obj.order).order_by('-order').first()
+        return {"slug": prev.slug} if prev else None
+
+    def get_next_lesson(self, obj):
+        next = Lesson.objects.filter(course=obj.course, order__gt=obj.order).order_by('order').first()
+        return {"slug": next.slug} if next else None
 
 class CourseSerializer(serializers.ModelSerializer):
     lessons = LessonSerializer(many=True, read_only=True)

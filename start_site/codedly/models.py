@@ -79,6 +79,19 @@ def flatten_blocks(content_json: dict) -> str:
             text = f"{block.get('text', '')} ({block.get('url', '')})"
             parts.append(text.strip())
             
+                # --- Tables
+        elif block_type == "table":
+            headers = block.get("headers", [])
+            rows = block.get("rows", [])
+
+            # Convert header row
+            if headers:
+                parts.append(" | ".join(headers))
+
+            # Convert each table row
+            for row in rows:
+                parts.append(" | ".join(str(cell) for cell in row))
+
         # --- Code blocks
         elif block_type == "code":
             code = block.get("content", "")
@@ -273,7 +286,7 @@ class Course(models.Model):
     slug = models.SlugField(max_length=40, unique=True, blank=True)
     description = models.TextField(blank=True)
     meta = models.CharField(max_length=170, blank=True)
-    language = models.CharField(max_length=50, choices=[('Python','Python'),('JavaScript','JavaScript')])
+    language = models.CharField(max_length=50, choices=[('Python','Python'),('JavaScript','JavaScript'), ('React', 'React')])
     prerequisites = models.CharField(max_length=255, default="Basic computer literacy")
     
     level = models.CharField(max_length=50, default="Beginner")
@@ -305,17 +318,17 @@ class Lesson(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=40, blank=True)
     order = models.PositiveIntegerField(default=1)
+    duration = models.CharField(null=True, blank=True) 
     level = models.CharField(max_length=50, default="Beginner", choices=[('Beginner','Beginner'),
                             ('Intermediate','Intermediate'),('Advanced','Advanced')])
     
     content_JSON = models.JSONField(blank=True, default=dict)
     content_plain_text = models.TextField(null=True, blank=True)
-    duration = models.CharField(null=True, blank=True) 
     video_url = models.URLField(blank=True, null=True)      # embedding videos
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
-        default="draft"
+        default="published"
     )
     
     is_preview = models.BooleanField(default=False)         # free preview lessons
@@ -324,13 +337,13 @@ class Lesson(models.Model):
     
     class Meta():
         unique_together = ('course', 'slug')
-        ordering = ['order',]
+        ordering = ['course', 'order',]
 
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
            
-        self.content_plain_text = flatten_blocks(self.content_json)
+        self.content_plain_text = flatten_blocks(self.content_JSON)
         super().save(*args, **kwargs)
         
     def __str__(self):

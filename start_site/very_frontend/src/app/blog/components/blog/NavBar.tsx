@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Search } from "lucide-react";
-import ThemeToggle from "./ThemeToggle.jsx";
+// import ThemeToggle from "./ThemeToggle.jsx";
 
 export default function Navbar() {
   const [lang, setLang] = useState("EN");
@@ -36,7 +36,7 @@ export default function Navbar() {
         </select>
 
         {/* Theme Toggle */}
-        <ThemeToggle />
+        {/* <ThemeToggle /> */}
       </div>
     </header>
   );

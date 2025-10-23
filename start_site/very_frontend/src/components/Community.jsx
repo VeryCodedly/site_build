@@ -12,7 +12,7 @@ export default function Community() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Join a Thriving <span className="text-lime-400">Creative Community</span>
           </h2>
-          <p className="text-gray-300 text-base md:text-lg mb-8 max-w-xl mx-auto md:mx-0">
+          <p className="text-gray-400 text-base md:text-lg mb-8 max-w-xl mx-auto md:mx-0">
             Collaborate, get inspired, and build magic with people who think like you do. 
             Your next idea might just come from your next conversation.
           </p>
@@ -36,9 +36,11 @@ export default function Community() {
               href="https://discord.gg/d659pybS" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-block font-semibold border-3 border-gray-500 px-9.5 py-1 rounded-full text-white text-md hover:bg-white hover:text-black hover:font-bold hover:translate-y-0.5 shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#0f0] active:translate-y-1 transition-all duration-200"
-            >
-              Join Now
+              className="inline-block font-semibold border-3 border-gray-500 px-9.5 py-1 rounded-full text-white text-md hover:bg-white active:bg-white hover:text-black
+        active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#0f0] active:shadow-[0_2px_0_0_#0f0] active:translate-y-1.5 hover:translate-y-0.5  transition-all duration-200"
+            >Join Now
+              {/* <span className="lg:hidden">Join</span> */}
+              {/* <span className="hidden lg:inline"></span> */}
             </Link>
           </div>
 

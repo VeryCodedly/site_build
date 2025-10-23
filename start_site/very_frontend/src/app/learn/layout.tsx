@@ -2,13 +2,13 @@ import { Providers } from "@/lib/providers";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Learn | Very Codedly",
+  title: "Learn | VeryCodedly",
   description:
-    "Hands-on coding lessons for curious minds. Explore Python, web dev, and beyond — explained simply, taught smartly.",
+    "Hands-on coding lessons for curious minds. Explore Python, web dev, and beyond — explained simply.",
   openGraph: {
-    title: "Learn | Very Codedly",
+    title: "Learn | VeryCodedly",
     description:
-      "Hands-on coding lessons for curious minds. Explore Python, web dev, and beyond — explained simply, taught smartly.",
+      "Hands-on coding lessons for curious minds. Explore Python, web dev, and beyond — explained simply.",
     url: "https://verycodedly.com/learn",
     siteName: "Very Codedly",
     images: [
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
         url: "https://verycodedly.com/images/og-learn.png",
         width: 1200,
         height: 630,
-        alt: "Learn | Very Codedly",
+        alt: "Learn | VeryCodedly",
       },
     ],
     locale: "en_US",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Learn | Very Codedly",
+    title: "Learn | VeryCodedly",
     description:
-      "Learn coding and software development through clear, friendly lessons — by Very Codedly.",
+      "Learn coding and software development through clear, friendly lessons — by VeryCodedly.",
     images: ["https://verycodedly.com/images/og-learn.png"],
   },
 };

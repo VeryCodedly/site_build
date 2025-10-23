@@ -325,21 +325,22 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const testimonials = [
   {
-    quote: "Joining this space unlocked my creative spark. I’ve never felt more seen and supported.",
+    quote: "I was honestly just looking for a place to learn, but somehow ended up finding people who actually get what I do. It’s been refreshing.",
     name: "Ada U.",
     role: "Digital Artist • Lagos 🇳🇬",
   },
   {
-    quote: "It’s more than a platform. I'm building, sharing, and learning with some awesome people!",
+    quote: "It’s not all shiny tech talk, people here actually share ideas, give feedback, and help you grow without ego. That’s rare online.",
     name: "Jordan K.",
     role: "AI Storyteller • Berlin 🇩🇪",
   },
   {
-    quote: "The community uplifted me when I doubted myself. Now I’m launching my own project!",
+    quote: "There were moments I almost gave up on my project, but a few honest chats in the community kept me going. Now it’s finally live.",
     name: "Nia R.",
     role: "Creative Coder • Nairobi 🇰🇪",
   },
 ];
+
 
 export default function Testimonials() {
   const [current, setCurrent] = useState(0);
@@ -386,9 +387,9 @@ export default function Testimonials() {
             className="rounded-2xl p-6 shadow-xl border border-gray-800 bg-gradient-to-b from-white/10 to-white/0 backdrop-blur-md hover:ring-2 hover:ring-lime-400/30 transition-all duration-300"
           >
             <div className="text-lime-400 text-3xl font-bold mb-4">“</div>
-            <p className="text-gray-300 italic mb-6">“{testimonials[current].quote}”</p>
+            <p className="text-gray-400 italic mb-6">“{testimonials[current].quote}”</p>
             <div className="text-lime-400 font-semibold">{testimonials[current].name}</div>
-            <div className="text-gray-400 text-sm">{testimonials[current].role}</div>
+            <div className="text-gray-500 text-sm">{testimonials[current].role}</div>
           </Motion.div>
         </AnimatePresence>
 
@@ -414,13 +415,13 @@ export default function Testimonials() {
         </div>
 
         {/* Controls */}
-        <div className="flex justify-between mt-6 gap-4">
+        <div className="flex justify-between mt-4 gap-4">
           {/* Left Arrow */}
           <button
             onClick={prevTestimonial}
             className="bg-gradient-to-b from-white/10 to-white/0 relative px-4 py-2 rounded-full border border-gray-700 text-lime-300 font-medium overflow-hidden group"
           >
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-black active:text-white">
               <FontAwesomeIcon icon={faArrowLeft} size="xs" />
             </span>
             <span
@@ -438,7 +439,7 @@ export default function Testimonials() {
             onClick={nextTestimonial}
             className="bg-gradient-to-b from-white/10 to-white/0 relative px-4 py-2 rounded-full border border-gray-700 text-lime-300 font-medium overflow-hidden group"
           >
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-black active:text-white">
               <FontAwesomeIcon icon={faArrowRight} size="xs" />
             </span>
             <span

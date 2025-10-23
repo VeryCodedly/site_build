@@ -110,6 +110,13 @@ export interface Lessons {
   created_at: string;
   updated_at: string;
   count: number;
+  previous_lesson: LessonLink | null;
+  next_lesson: LessonLink | null;
+}
+
+export interface LessonLink {
+  slug: string;
+  // title: string;
 }
 
 export interface LessonsResponse {

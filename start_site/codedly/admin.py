@@ -1,11 +1,20 @@
 from django.contrib import admin
 from .models import Post, Category, Comment, PostImage, Subcategory, PostLink, Course, Lesson, LessonResource
-from adminsortable2.admin import SortableAdminMixin
+from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin, SortableAdminBase
 
 
+class LessonInline(SortableInlineAdminMixin, admin.TabularInline):
+    model = Lesson
+    extra = 1
+    fields = ('title', 'order', 'level', 'is_preview', 'status')
+    ordering = ('order',)
+    show_change_link = True
+    
+    
 class LessonResourceInline(admin.TabularInline):
     model = LessonResource
     extra = 1
+
 
 class SubcategoryInline(admin.TabularInline):  
     model = Subcategory
@@ -34,7 +43,7 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Subcategory)
 class SubcategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'category', 'slug', 'created_at')
-    list_filter = ('category',)
+    list_filter = ('category', 'name')
     prepopulated_fields = {"slug": ("name",)}
     
     
@@ -73,16 +82,19 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 @admin.register(Course)
-class CourseAdmin(admin.ModelAdmin):
+class CourseAdmin(SortableAdminBase, admin.ModelAdmin):
     list_display = ('title', 'slug', 'created_at')
     prepopulated_fields = {"slug": ("title",)}
+    
+    inlines = [LessonInline]
 
 
 @admin.register(Lesson)
-class LessonAdmin(SortableAdminMixin, admin.ModelAdmin):
-    list_display = ('title', 'order', 'created_at') # 'display_order', 
+class LessonAdmin(SortableAdminBase, admin.ModelAdmin):
+    list_display = ('title', 'order', 'slug', 'level') # 'display_order', 
+    list_filter = ('course',) 
     prepopulated_fields = {"slug": ("title",)}
-    ordering = ('order',)
+    ordering = ('course', 'order',)
     
     inlines = [LessonResourceInline]
     

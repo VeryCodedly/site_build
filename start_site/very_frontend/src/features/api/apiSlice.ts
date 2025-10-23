@@ -1,87 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Post, PostResponse, Category, Comment, PostImage, PostLink, Subcategory, Course, CourseResponse, Lessons, LessonsResponse } from '@/types/post';
 
+
 export const apiSlice = createApi({
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000/api/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_URL }),
 
   tagTypes: ['Post', 'Category', 'Subcategory', 'Comment', 
             'PostImage', 'PostLink', 'Course', 'CourseResponse', 'Lessons', 'LessonsResponse'],
-
-//   endpoints: (builder) => ({
-//     // 🔹 POSTS
-//     getPostById: builder.query<Post, string>({
-//       query: (id) => `posts/${id}/`,
-//     }),
-
-//     getPosts: builder.query<PostResponse, void>({
-//       query: () => '/posts/',
-//     }),
-//     getPostBySlug: builder.query<Post, string>({
-//       query: (slug) => `posts/${slug}/`,
-//     }),
-  
-//     // 🔹 CATEGORIES
-//     getCategories: builder.query<Category[], void>({
-//       query: () => 'categories/',
-//       providesTags: ['Category'],
-//     }),
-
-//     // 🔹 SUBCATEGORIES
-//     getSubcategories: builder.query<Subcategory[], void>({
-//       query: () => 'subcategories/',
-//       providesTags: ['Subcategory'],
-//     }),
-
-//     // 🔹 COMMENTS
-//     getComments: builder.query<Comment[], number>({
-//       query: (postId) => `posts/${postId}/comments/`,
-//       providesTags: ['Comment'],
-//     }),
-//     addComment: builder.mutation<Comment, Partial<Comment>>({
-//       query: (comment) => ({
-//         url: 'comments/',
-//         method: 'POST',
-//         body: comment,
-//       }),
-//       invalidatesTags: ['Comment'],
-//     }),
-
-//     // 🔹 POST IMAGES
-//     getPostImages: builder.query<PostImage[], number>({
-//       query: (postId) => `posts/${postId}/images/`,
-//       providesTags: ['PostImage'],
-//     }),
-
-//     // 🔹 POST LINKS
-//     getPostLinks: builder.query<PostLink[], number>({
-//       query: (postId) => `posts/${postId}/links/`,
-//       providesTags: ['PostLink'],
-//     }),
-
-//     // --- New Course endpoints ---
-//     getCourses: builder.query<Course[], void>({
-//       query: () => "/courses/",
-//       providesTags: ["Course"],
-//     }),
-
-//     getCourse: builder.query<Course, string>({
-//       query: (slug) => `/courses/${slug}/`,
-//       providesTags: ["Course"],
-//     }),
-
-//     getLessons: builder.query<Lessons[], string>({
-//       query: (courseSlug) => `/courses/${courseSlug}/lessons/`,
-//       providesTags: ["Lessons"],
-//     }),
-
-//     getLesson: builder.query<Lessons, { courseSlug: string; lessonSlug: string }>({
-//       query: ({ courseSlug, lessonSlug }) =>
-//         `/courses/${courseSlug}/lessons/${lessonSlug}/`,
-//       providesTags: ["Lessons"],
-//     })
-//   }),
-// })
 
 endpoints: (builder) => ({
 

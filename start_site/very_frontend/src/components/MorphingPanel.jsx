@@ -164,8 +164,8 @@ export default function MorphingPanel({ className = "" }) {
         onClick={() => setShowModal(false)}
       >
         <div
-          className="bg-white/3 backdrop-blur-md text-white p-4.5 rounded-2xl shadow-lg max-w-md w-[100%] text-center relative"
-          onClick={(e) => e.stopPropagation()} // prevent close when clicking modal
+          className="bg-black/20 backdrop-blur-md text-white p-4.5 rounded-2xl shadow-lg max-w-md w-[100%] text-center relative"
+          // onClick={(e) => e.stopPropagation()} // prevent close when clicking modal
         >
           <h2 className="text-lg font-bold mb-2">Core Stack</h2>
           <p className="mb-4 text-gray-300 text-xs">

@@ -21,9 +21,11 @@ export default function ComingSoon({ feature = "This page" }) {
       </div>
         <Link
           href="/"
-          className="font-bold cursor-pointer bg-lime-400 border-3 border-gray-500/100 px-8 py-1 rounded-full text-black hover:bg-white hover:text-black hover:translate-y-0.5 shadow-[0_4px_0_0_#0f0] hover:shadow-[0_2px_0_0_#0f0] active:translate-y-2 transition-all duration-200"
+          className="font-bold cursor-pointer bg-lime-400 border-3 border-gray-500/100 px-8 py-1 rounded-full text-black hover:bg-white active:bg-white hover:text-black
+        active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#0f0] active:shadow-[0_2px_0_0_#0f0] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
         >
-          Go Home
+          <span className="lg:hidden">Home</span>
+          <span className="hidden lg:inline">Go Home</span>
         </Link>
       </div>
   );

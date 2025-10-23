@@ -4,11 +4,11 @@ export default function LearnSection() {
   return (
     <section className="py-24 bg-transparent border-t border-b border-zinc-900">
       <div className="max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold text-white mb-4">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
           Learn with <span className="text-lime-400">VeryCodedly</span>
         </h2>
-        <p className="text-base text-gray-400 mb-12 max-w-2xl mx-auto">
-            Beginner-friendly coding lessons that help complex ideas click, <br />
+        <p className="text-sm sm:text-base text-gray-400 mb-12 max-w-2xl mx-auto">
+            Beginner-friendly coding lessons that help complex ideas click,
             one concept at a time.
         </p>
 
@@ -55,10 +55,11 @@ export default function LearnSection() {
             <Link
             href="/learn"
             //   className="inline-block mt-14 px-8 py-3 rounded-full bg-lime-400/10 hover:bg-lime-400/20 text-lime-300 transition-all duration-300"
-            className="font-semibold cursor-pointer border-3 border-gray-500/100 bg-transparent px-8 py-1 rounded-full text-white hover:bg-white hover:font-bold hover:text-black shadow-[0_4px_0_0_#39ff14] hover:translate-y-0.5 hover:shadow-[0_2px_0_0_#0f0] active:translate-y-1.5 transition-all duration-200"
-            
+            className="font-semibold cursor-pointer border-3 border-gray-500/100 bg-transparent px-7.5 py-1 rounded-full text-white hover:bg-white active:bg-white hover:text-black
+        active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
             >
-            Go to /Learn
+            <span className="lg:hidden">Learn</span>
+            <span className="hidden lg:inline">Go to Learn</span>
             </Link>
         </div>
       </div>

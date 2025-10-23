@@ -16,7 +16,7 @@ const cards = [
   {
     id: "read",
     title: "Read",
-    description: "Daily articles with technical depth, clarity, and purpose.",
+    description: "Articles with technical depth, clarity, and purpose.",
     icon: faNewspaper,
     accent: "bg-lime-400",
     color: "text-lime-400",
@@ -54,9 +54,9 @@ const cards = [
 
 export default function TeaserCards() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-20 px-6 md:px-8 lg:px-22 overflow-hidden border-b border-t border-zinc-900">
+    <section className="relative min-h-screen flex items-center justify-center py-20 px-6 md:px-8 lg:px-22 overflow-hidden border-b border-zinc-900">
       {/* faded bg */}
-      <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-stretch opacity-30"></div>
+      <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-stretch opacity-50"></div>
 
       {/* <CircuitLines cardIds={cards.map((c) => c.id)} /> */}
       <div className="relative w-full h-full gap-4 m-3 lg:gap-0 max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
@@ -67,7 +67,7 @@ export default function TeaserCards() {
             className={`relative rounded-3xl px-10 py-8 border border-gray-800 bg-white/5 backdrop-blur-md 
               shadow-[0_15px_20px_rgba(0,0,0,0.6),0_15px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               hover:ring-1 transition-all duration-300 group`}
-            whileHover={{ scale: 1.13 }}
+            whileHover={{ scale: 1.10 }}
             whileTap={{ scale: 1.10 }}
             style={{ zIndex: 0 }} 
             onMouseEnter={(e) => (e.currentTarget.style.zIndex = 10)}
