@@ -120,7 +120,7 @@ export default function BlogPost() {
   }
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-black via-zinc-950 to-black text-white min-h-screen py-8 sm:py-12 px-5 sm:px-8">
+    <section className="relative w-full bg-gradient-to-b from-black via-zinc-950 to-black text-white min-h-screen py-8 sm:py-10 px-5 sm:px-8">
       {/* Back button */}
       <Motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -150,7 +150,7 @@ export default function BlogPost() {
             alt={post.alt || 'Featured image'}
             width={1200}
             height={600}
-            className="w-full h-[50vh] sm:h-[60vh] object-cover rounded-2xl brightness-75 hover:brightness-100 active:brightness-100 transition-all duration-500"
+            className="w-full h-[50vh] sm:h-[70vh] object-cover rounded-2xl brightness-75 hover:brightness-100 active:brightness-100 transition-all duration-500"
             priority
             sizes="100vw"
             tabIndex={0}
@@ -338,8 +338,8 @@ export default function BlogPost() {
                     tabIndex={0}
                   />
                   {(img.alt || img.caption) && (
-                    <div className="absolute bottom-2 left-2 right-2 w-fit bg-black/15 backdrop-blur-sm rounded px-2 py-1">
-                      {img.caption && <p className="text-gray-700 group-hover:text-gray-600 text-xs mb-1">{img.caption}</p>}
+                    <div className="absolute bottom-2 left-2 right-2 w-fit bg-black/15 group-hover:bg-transparent backdrop-blur-sm group-hover:!backdrop-blur-none rounded px-2 py-1">
+                      {img.caption && <p className="text-gray-700 group-hover:opacity-0 text-xs mb-1">{img.caption}</p>}
                       {/* {img.alt && <p className="text-white/70 text-xs">{img.alt}</p>} */}
                     </div>
                   )}

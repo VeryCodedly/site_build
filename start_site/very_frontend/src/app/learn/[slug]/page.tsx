@@ -182,7 +182,7 @@ export default function CoursePage() {
   const lessons: Lessons[] = Array.isArray(course.lessons) ? course.lessons : [];
 
   return (
-    <section className="w-full bg-gradient-to-b from-black to-zinc-950 text-white min-h-screen py-8 sm:py-12 px-4">
+    <section className="w-full bg-gradient-to-b from-black to-zinc-950 text-white min-h-screen py-8 px-5">
       {/* Back button */}
         <Motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -199,7 +199,7 @@ export default function CoursePage() {
           </Link>
         </Motion.div>
 
-      <div className="max-w-4xl mx-auto px-3 sm:px-8">
+      <div className="max-w-5xl mx-auto px-3 sm:px-8">
         {/* Course header */}
         <Motion.div
           initial={{ opacity: 0, y: 20 }}

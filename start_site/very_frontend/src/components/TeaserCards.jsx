@@ -56,15 +56,15 @@ export default function TeaserCards() {
   return (
     <section className="relative min-h-screen flex items-center justify-center py-20 px-6 md:px-8 lg:px-22 overflow-hidden border-b border-zinc-900">
       {/* faded bg */}
-      <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-stretch opacity-50"></div>
+      <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-stretch opacity-60"></div>
 
       {/* <CircuitLines cardIds={cards.map((c) => c.id)} /> */}
-      <div className="relative w-full h-full gap-4 m-3 lg:gap-0 max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+      <div className="relative w-full h-full gap-4 m-3 lg:gap-0.5 max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
         {cards.map((card, index) => (
           <Motion.div
             id={`card-${card.id}`}
             key={index}
-            className={`relative rounded-3xl px-10 py-8 border border-gray-800 bg-white/5 backdrop-blur-md 
+            className={`relative rounded-3xl px-10 py-9 border border-gray-00 bg-white/5 backdrop-blur-md active:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               shadow-[0_15px_20px_rgba(0,0,0,0.6),0_15px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               hover:ring-1 transition-all duration-300 group`}
             whileHover={{ scale: 1.10 }}
@@ -78,7 +78,7 @@ export default function TeaserCards() {
               <FontAwesomeIcon icon={card.icon} />
             </div>
 
-            <h2 className="text-white text-xl md:text-2xl font-semibold mb-2 hover:underline active:underline">
+            <h2 className="text-white text-xl md:text-2xl font-semibold mb-2 group-hover:underline active:underline">
               {card.title}
             </h2>
           </Link>

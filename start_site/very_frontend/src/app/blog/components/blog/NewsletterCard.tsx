@@ -12,7 +12,7 @@ export default function NewsletterCard() {
 
   // Show card after 3 seconds
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 15000);
+    const timer = setTimeout(() => setIsVisible(true), 25000);
     return () => clearTimeout(timer);
   }, []);
 

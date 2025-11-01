@@ -295,7 +295,7 @@ export default function LessonPage() {
   // };
 
   return (
-    <section className="relative w-full min-h-screen bg-black text-white py-10 px-4 sm:px-6 lg:px-8">
+    <section className="relative w-full min-h-screen bg-black text-white py-8 px-4 sm:px-6">
       <Link href={`/learn/${slug}`} className="text-lime-400 hover:text-white active:text-white">
         <FontAwesomeIcon className="mb-5 sm:mb-2" icon={faLongArrowLeft} size="lg" />
       </Link>
@@ -319,7 +319,7 @@ export default function LessonPage() {
           ref={menuRef}
           className={`fixed pl-4 sm:pl-5 top-1/2 left-0 transform -translate-y-1/2 bg-transparent hover:backdrop-blur-lg 
             shadow-lg rounded-r-2xl overflow-hidden border-3 border-zinc-700 transition-all duration-300 ${
-            isMenuOpen ? "w-55 sm:w-70 opacity-100 backdrop-blur-lg" : "opacity-0 w-10 h-20"
+            isMenuOpen ? "w-55 sm:w-70 opacity-100 backdrop-blur-lg" : "opacity-0 w-8 h-10"
           } z-50`}
         >
           <ul className="flex flex-col gap-1 p-2 text-gray-200">       
@@ -330,11 +330,11 @@ export default function LessonPage() {
               .map((block, index) => (
                 <li key={index} className="relative group">
                   <span
-                    className="flex items-center gap-2 p-1 sm:p-1.5 rounded-lg cursor-pointer hover:bg-zinc-700/50 transition-all duration-200"
+                    className="flex items-center gap-2 p-1 sm:p-1.5 rounded-lg hover:bg-[rgba(255,192,203,0.1)] transition-all duration-200"
                   >
-                    <Link href={`#heading-${index}`} className="text-xs sm:text-sm active:text-lime-400">
+                    <span className="text-xs sm:text-sm active:text-lime-400"> {/* href={`#heading-${index}`} onClick={() => handleHeadingClick(index)} */}
                         - {block.content}
-                    </Link>
+                    </span>
                   </span>
                 </li>
               ))

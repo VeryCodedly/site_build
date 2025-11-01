@@ -143,6 +143,7 @@ class Subcategory(models.Model):
     )
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=40, unique=True, blank=True)
+    about = models.TextField(blank=True, null=True, help_text="Short 'About this' section for context.")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def save(self, *args, **kwargs):
@@ -160,7 +161,7 @@ class Subcategory(models.Model):
     
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=40, unique=True, blank=True)
+    slug = models.SlugField(max_length=60, unique=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=False, null=True, related_name="posts")
     subcategory = models.ForeignKey(Subcategory, on_delete=models.SET_NULL, blank=False, null=True, related_name="posts")  
 

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { Post, PostResponse, Category, Comment, PostImage, PostLink, Subcategory, Course, CourseResponse, Lessons, LessonsResponse } from '@/types/post';
-
+import { PaginatedResponse } from '@/types/post';
 
 export const apiSlice = createApi({
   reducerPath: 'api',
@@ -28,15 +28,41 @@ endpoints: (builder) => ({
       providesTags: ['Post'],
     }),
 
+    getFeaturedPost: builder.query<Post | null, void>({
+      query: () => '/posts/featured/',
+      transformResponse: (res: { featured: Post | null }) => res.featured,
+      providesTags: ['Post'],
+    }),
+
+    getTrendingPosts: builder.query<Post[], void>({
+      query: () => '/posts/trending/',
+      transformResponse: (res: { trending: Post[] }) => res.trending,
+      providesTags: ['Post'],
+    }),
+
+    getSpotlightPosts: builder.query<Post[], void>({
+      query: () => '/posts/spotlight/',
+      transformResponse: (res: { spotlight: Post[] }) => res.spotlight,
+      providesTags: ['Post'],
+    }),
+
     // 🏷️ CATEGORIES
     getCategories: builder.query<Category[], void>({
       query: () => 'categories/',
+      transformResponse: (res: PaginatedResponse<Category>) => res.results,
       providesTags: ['Category'],
     }),
 
     // 🏷️ SUBCATEGORIES
     getSubcategories: builder.query<Subcategory[], void>({
       query: () => 'subcategories/',
+      transformResponse: (res: { results: Subcategory[] }) => res.results,
+      providesTags: ['Subcategory'],
+    }),
+
+    getPostsBySubcategory: builder.query<Post[], string>({
+      query: (slug) => `/subcategories/${slug}/posts/`,
+      transformResponse: (res: { results: Post[] }) => res.results,      
       providesTags: ['Subcategory'],
     }),
 
@@ -98,6 +124,7 @@ export const {
   useGetPostBySlugQuery, 
   useGetCategoriesQuery,
   useGetSubcategoriesQuery,
+  useGetPostsBySubcategoryQuery,
   useGetCommentsQuery,
   useAddCommentMutation,
   useGetPostImagesQuery,
@@ -105,4 +132,7 @@ export const {
   useGetCoursesQuery,
   useGetCourseQuery,
   useGetLessonsQuery,
-  useGetLessonQuery, } = apiSlice;
+  useGetLessonQuery,
+  useGetFeaturedPostQuery,
+  useGetTrendingPostsQuery,
+  useGetSpotlightPostsQuery, } = apiSlice;

@@ -51,7 +51,7 @@ class SubcategoryAdmin(admin.ModelAdmin):
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'slug', 'category', 'get_tags', 'created_at']
     search_fields = ['title', 'tags__name']
-    list_filter = ['category', 'created_at']
+    list_filter = ['category', 'subcategory','created_at']
     
     inlines = [PostImageInline, PostLinkInline]
 

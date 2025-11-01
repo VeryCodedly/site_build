@@ -36,10 +36,18 @@ export interface Category {
   posts?: Post[]
 }
 
+export interface PaginatedResponse<T> {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: T[];
+}
+
 export interface Subcategory {
   id: number
   name: string
   slug: string
+  about?: string
   created_at: string
   category: number
 }

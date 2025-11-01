@@ -10,12 +10,12 @@ library.add(faXTwitter, faYoutube, faFacebook, faDiscord, faLinkedin, faTiktok, 
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-b from-zinc-950 via-black to-zinc-950 text-gray-400 py-24 px-7 overflow-hidden border-t border-zinc-800">
+    <footer className="relative bg-gradient-to-b from-zinc-950 via-black to-zinc-950 text-gray-400 py-24 px-8 overflow-hidden border-t border-zinc-800">
       {/* faint glow background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
 
       {/* content grid */}
-      <div className="relative max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-16">
+      <div className="relative max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-14 lg:pl-16">
         {/* Brand Column */}
         <div>
           <h3 className="text-lime-400 text-xl font-bold mb-3">

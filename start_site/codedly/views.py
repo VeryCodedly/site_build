@@ -5,11 +5,13 @@ from django.core.mail import send_mail
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from django.conf import settings
+# from django.conf import settings
+from rest_framework.decorators import action
 
 from rest_framework import viewsets
 from rest_framework import generics
 from django.http import HttpResponse
+from django.db.models.functions import Length
 from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson
 from .serializers import PostSerializer, CategorySerializer, CommentSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer
 
@@ -163,43 +165,59 @@ def api_home(request):
         </html>
     """)
 
-# views.py
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from django.core.mail import send_mail
-from django.conf import settings
-
-@api_view(["POST"])
-def contact_view(request):
-    name = request.data.get("name")
-    email = request.data.get("email")
-    message = request.data.get("message")
-
-    if not all([name, email, message]):
-        return Response({"error": "All fields are required"}, status=400)
-
-    send_mail(
-        subject=f"New contact from {name}",
-        message=f"From: {name} <{email}>\n\n{message}",
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=["youremail@domain.com"],
-    )
-    return Response({"success": "Message sent successfully!"})
-
-
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.filter(status="published")
     serializer_class = PostSerializer
     lookup_field = "slug"
+    
+    # 1. Featured post (most recent with image)
+    @action(detail=False, methods=['get'])
+    def featured(self, request):
+        post = Post.objects.filter(status="published", image__isnull=False).order_by('-created_at').first()
+        serializer = PostSerializer(post, context={'request': request}) if post else None
+        return Response({"featured": serializer.data if serializer else None})
+
+    # 2. Trending (most viewed – add view_count later, or use recent)
+    @action(detail=False, methods=['get'])
+    def trending(self, request):
+        posts = Post.objects.filter(status="published").order_by('-created_at')[1:5]
+        serializer = PostSerializer(posts, many=True, context={'request': request})
+        return Response({"trending": serializer.data})
+
+    # 3. Spotlight (manual tag or field later)
+    @action(detail=False, methods=['get'])
+    def spotlight(self, request):
+        posts = Post.objects.filter(status="published", tags__name__in=["spotlight"]).distinct()[0:2]
+        serializer = PostSerializer(posts, many=True, context={'request': request})
+        return Response({"spotlight": serializer.data})
+
 
 class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
+    queryset = Category.objects.all().order_by("name")
     serializer_class = CategorySerializer
 
 class SubcategoryViewSet(viewsets.ModelViewSet):
-    queryset = Subcategory.objects.all().order_by("name")
+    queryset = Subcategory.objects.annotate(name_length=Length('name')).order_by('name_length')  # shortest → longest
     serializer_class = SubcategorySerializer
-    
+    lookup_field = 'slug'
+    print("SubcategoryViewSet queryset:", queryset)
+    @action(detail=True, methods=['get'], url_path='posts')
+    def posts(self, request, *args, **kwargs):
+        subcategory = self.get_object()  # DRF handles slug lookup safely
+        posts = Post.objects.filter(
+            subcategory=subcategory,
+            status='published'
+        ).order_by('-created_at')
+
+        serializer = PostSerializer(posts, many=True, context={'request': request})
+        subcategory_serializer = SubcategorySerializer(subcategory, context={'request': request})
+
+        return Response({
+            "subcategory": subcategory_serializer.data, 
+            "count": posts.count(),
+            "results": serializer.data
+        })
+            
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
@@ -251,3 +269,19 @@ class LessonDetailView(generics.RetrieveAPIView):
     def get_queryset(self):
         course_slug = self.kwargs["course_slug"]
         return Lesson.objects.filter(course__slug=course_slug)
+    
+    
+# ✅ Safe context override
+    # def get_serializer_context(self):
+    #     """
+    #     Ensures that all serializers receive the request context.
+    #     This allows things like full URL generation in serializers.
+    #     """
+    #     context = super().get_serializer_context()
+    #     context.update({
+    #         "request": self.request,
+    #     })
+    #     return context
+    
+    # Use
+    # serializer = self.get_serializer(post) if post else None

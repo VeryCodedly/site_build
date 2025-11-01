@@ -46,7 +46,7 @@ export default function Header() {
                     width={0}
                     height={0}
                     priority
-                    tabindex="0"
+                    // tabIndex="0"
                     aria-label="Site Logo"
                   />
                 </div>
@@ -57,7 +57,7 @@ export default function Header() {
                 <Link href="/learn" className="px-2 text-white hover:text-lime-400 transition">LEARN</Link>
                 <Link href="https://www.youtube.com/channel/UCNDy9Q0qPHcY-TT2BD7B1kw" target="_blank" className="px-2 text-white hover:text-lime-400 transition">KNOW</Link>
                 <Link href="https://discord.gg/invite/UVWNezaj" className="px-2 text-white hover:text-lime-400 transition" target="_blank" rel="noopener">CONNECT</Link>
-                {/* <p href="/" className="px-2 text-white hover:text-lime-400 transition">Beta 🚧</p> */}
+                <p href="/" className="px-2 text-white hover:text-lime-400 transition">🚧</p>
               </nav>
               <div className="mr-4">
                 <Link href="/contact" className="hidden md:inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 text-black px-3 py-0.5 rounded-full hover:bg-white active:bg-white hover:text-black
@@ -71,18 +71,18 @@ export default function Header() {
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden text-white"
             aria-haspopup="true"
-            tabindex="0"
+            tabIndex="0"
             aria-label="More options"
             title="More options"
           >
-            <FontAwesomeIcon icon={menuOpen ? faTimes : faEllipsisV} className="mr-2 hover:text-lime-400 active:text-lime-400" size="lg" />
+            <FontAwesomeIcon icon={menuOpen ? faTimes : faEllipsisV} className="pr-2 hover:text-lime-400 active:text-lime-400" size="lg" />
           </button>
 
       {/* Mobile dropdown */}
       <div
-        className={`fixed top-full w-full flex flex-col items-center transform transition-all duration-500 ease-in-out
-                bg-black backdrop-blur-lg border-3 border-zinc-700 rounded-4xl py-6.5 space-y-4 md:hidden 
-                ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5 pointer-events-none"}`}
+        className={`fixed top-full left-1/2 w-[90%] -translate-x-1/2 flex flex-col items-center transform transition-all duration-500 ease-in-out
+                bg-black backdrop-blur-lg border-3 border-zinc-700 rounded-4xl py-6.5 space-y-4 md:hidden  
+                ${menuOpen ? "opacity-100 translate-y-0 z-[60]" : "opacity-0 -translate-y-5 pointer-events-none"}`}
         onClick={() => setMenuOpen(false)}
         >
           <Link

@@ -41,7 +41,7 @@
 }
 
 .animate-spin-twice {
-  animation: spin-twice 5s linear forwards; /* run once */
+  animation: spin-twice 4s linear forwards; /* run once */
 }
 
 @keyframes fade-in {

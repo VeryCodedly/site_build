@@ -7,7 +7,7 @@ import MorphingPanel from "./MorphingPanel.jsx";
 
 export default function Hero() {
     return (
-        <section className="bg-transparent w-full max-w-7xl mx-auto flex flex-wrap gap-8 items-center pb-1 py-22 px-8 sm:px-12 lg:py-16 lg:px-16">
+        <section className="bg-transparent w-full max-w-7xl mx-auto flex flex-wrap gap-8 items-center pb-1 py-22 px-8 sm:px-12 md:py-14 lg:py-16 lg:px-16">
         {/* <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center py-16 px-14 md:px-14"> */}
           <div className="flex-1 space-y-7 z-20">
           {/* <div className="min-h-[230px] w-[400px] flex relative"> */}

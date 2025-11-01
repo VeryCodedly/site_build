@@ -8,7 +8,7 @@ export default function BlogSection() {
           From the <span className="text-pink-400">Blog</span>
         </h2>
         <p className="text-sm sm:text-base text-gray-400 mb-12 max-w-2xl mx-auto">
-            Unfiltered takes on Tech, Code, and Culture.<br /> 
+            Unfiltered takes on Tech, Code, Culture and everything in between.<br /> 
             {/* Thoughtful, clear, and actually useful. */}
         </p>
 
@@ -32,7 +32,9 @@ export default function BlogSection() {
           ].map((post, i) => (
             <div
               key={i}
-              className="bg-[linear-gradient(to_bottom_right,rgba(255,192,203,0.08),rgba(255,20,147,0.06))] rounded-2xl p-6 text-left transition-all duration-300 hover:translate-y-[-5px] hover:shadow-[0_0_30px_-10px_rgba(255,105,180,0.4)]"
+              className="bg-[linear-gradient(to_bottom_right,rgba(255,192,203,0.08),rgba(255,20,147,0.06))] rounded-2xl
+                         p-6 text-left transition-all duration-300 hover:translate-y-[-5px] hover:shadow-[0_0_30px_-10px_rgba(255,105,180,0.4)]
+                         active:translate-y-[-5px] active:shadow-[0_0_30px_-10px_rgba(255,105,180,0.4)]"
             >
             <span className="inline-block mb-3 text-xs text-pink-400 bg-pink-400/10 px-2 py-1 rounded">
                 {post.tag}
@@ -43,7 +45,7 @@ export default function BlogSection() {
               <p className="text-gray-400 mb-4">{post.desc}</p>
               <Link
                 href="/blog"
-                className="text-pink-400 hover:text-pink-300 hover:underline transition-all"
+                className="text-pink-400 font-semibold hover:text-pink-300 hover:underline transition-all"
               >
                 Read more →
               </Link>
@@ -65,8 +67,8 @@ export default function BlogSection() {
         active:text-black shadow-[0_4px_0_0_#ff69b4] hover:shadow-[0_2px_0_0_#fb64b6] active:shadow-[0_2px_0_0_#ff69b4] active:translate-y-1.5 hover:translate-y-0.5  transition-all duration-200"
             // className="font-semibold cursor-pointer border-2 border-pink-400/70 bg-pink-500/90 text-white px-6 py-2 rounded-full hover:bg-pink-400 hover:shadow-[0_0_15px_#ff69b4] hover:text-white transition-all duration-300"
             >
-            <span className="lg:hidden">Blog</span>
-            <span className="hidden lg:inline">Go to Blog</span>
+            <span className="lg:hidden">/Blog</span>
+            <span className="hidden lg:inline">Go to /Blog</span>
         </Link>
         </div>
       </div>
