@@ -1,6 +1,6 @@
 from rest_framework.routers import DefaultRouter
 from django.urls import path, include
-from .views import SubcategoryViewSet, api_home, PostViewSet, CategoryViewSet, CommentViewSet, PostImageViewSet, PostLinkViewSet, CourseViewSet, LessonViewSet, CourseListView, CourseDetailView, LessonListView, LessonDetailView
+from .views import SubcategoryViewSet, PostViewSet, CategoryViewSet, CommentViewSet, PostImageViewSet, PostLinkViewSet, CourseViewSet, LessonViewSet, CourseListView, CourseDetailView, LessonListView, LessonDetailView
 
 
 router = DefaultRouter()

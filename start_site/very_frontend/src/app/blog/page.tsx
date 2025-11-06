@@ -169,10 +169,10 @@ export default function BlogHome() {
   return (
     <section className="relative w-full min-h-screen bg-black text-white overflow-hidden">
       {/* 🪶 HERO SECTION */}
-      <div className="relative h-screen flex flex-col justify-center items-center text-center overflow-hidden">
+      <div className="relative h-screen -mt-12 flex flex-col justify-center items-center text-center overflow-hidden">
         {/* layered typography */}
         <Motion.h1
-          className="absolute text-[12rem] sm:text-[16rem] font-extrabold uppercase text-lime-400/5 blur-2xl select-none z-0"
+          className="absolute text-[16rem] sm:text-[16rem] font-extrabold uppercase text-lime-400/5 blur-2xl select-none z-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 4 }}
           transition={{ duration: 0.8 }}
