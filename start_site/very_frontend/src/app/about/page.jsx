@@ -2,6 +2,7 @@
 
 import { motion as Motion } from 'framer-motion';
 
+
 export default function AboutPage() {
   return (
     <section className="relaive min-h-screen py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-900/50">
@@ -25,23 +26,24 @@ export default function AboutPage() {
         >
           About Us
         </Motion.h2>
-        <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-          VeryCodedly is a community-driven platform dedicated to making tech knowledge more accessible, 
-          more fun, and way less intimidating. Whether you’re a total beginner or a seasoned developer, 
-          this space is built to help you read, learn, know, and connect.
+        <p className="text-gray-300 text-sm sm:text-base leading-relaxed pb-6">
+          VeryCodedly is a community-driven platform that isn’t just about learning how to code. 
+          It’s about understanding the world that builds around it. We bridge the gap between tech 
+          education and tech culture, helping people not only learn how technology works but also why it matters.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-left">
           <div>
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Our Mission</h3>
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-              To simplify tech education by breaking down complex topics into approachable lessons 
-              while creating a space for every person.
+              To connect tech education with the culture around it, helping people see both how 
+              technology works and why it shapes the world we live in.
             </p>
           </div>
           <div>
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Our Values</h3>
             <ul className="text-gray-400 text-sm sm:text-base list-disc list-inside space-y-1">
-              <li>Accessibility & clarity over jargon</li>
+              <li>No gatekeeping</li>
+              <li>Accessibility & clarity</li>
               <li>Community over competition</li>
               <li>Curiosity & lifelong learning</li>
             </ul>

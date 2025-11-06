@@ -9,11 +9,11 @@ export const apiSlice = createApi({
   tagTypes: ['Post', 'Category', 'Subcategory', 'Comment', 
             'PostImage', 'PostLink', 'Course', 'CourseResponse', 'Lessons', 'LessonsResponse'],
 
-endpoints: (builder) => ({
+  endpoints: (builder) => ({
 
     // 📰 POSTS
     getPosts: builder.query<PostResponse, { page?: number }>({
-      // you can pass ?page=X
+      // pass ?page=X
       query: ({page = 1}) => `posts/?page=${page}`,
       providesTags: ['Post'],
     }),
@@ -43,6 +43,54 @@ endpoints: (builder) => ({
     getSpotlightPosts: builder.query<Post[], void>({
       query: () => '/posts/spotlight/',
       transformResponse: (res: { spotlight: Post[] }) => res.spotlight,
+      providesTags: ['Post'],
+    }),
+
+    getBigDealPosts: builder.query<Post[], void>({
+      query: () => '/posts/bigDeal/',
+      transformResponse: (res: { bigDeal: Post[] }) => res.bigDeal,
+      providesTags: ['Post'],
+    }),
+
+    getGlobalLensPosts: builder.query<Post[], void>({
+      query: () => '/posts/globalLens/',
+      transformResponse: (res: { globalLens: Post[] }) => res.globalLens,
+      providesTags: ['Post'],
+    }),
+
+    getAfricaRisingPosts: builder.query<Post[], void>({
+      query: () => '/posts/africaRising/',
+      transformResponse: (res: { africaRising: Post[] }) => res.africaRising,
+      providesTags: ['Post'],
+    }),
+
+    getHardwarePosts: builder.query<Post | null, void>({
+      query: () => '/posts/hardware/',
+      transformResponse: (res: { hardware: Post | null }) => res.hardware,
+      providesTags: ['Post'],
+    }),
+
+    getEmergingTechPosts: builder.query<Post[], void>({
+      query: () => '/posts/emergingTech/',
+      transformResponse: (res: { emergingTech: Post[] }) => res.emergingTech,
+      providesTags: ['Post'],
+    }),
+
+    getDigitalMoneyPosts: builder.query<Post | null, void>({
+      query: () => '/posts/digitalMoney/',
+      transformResponse: (res: { digitalMoney: Post | null }) => res.digitalMoney,
+      providesTags: ['Post'],
+    }),
+
+    getTechCulturePosts: builder.query<Post[], void>({
+      query: () => '/posts/techCulture/',
+      transformResponse: (res: { techCulture: Post[] }) => res.techCulture,
+      providesTags: ['Post'],
+    }),
+
+    getSecureHabitsPosts: builder.query<Post[], void>({
+      query: () => '/posts/secureHabits/',
+      transformResponse: (res: { secureHabits: Post[] }) => res.secureHabits,
       providesTags: ['Post'],
     }),
 
@@ -135,4 +183,12 @@ export const {
   useGetLessonQuery,
   useGetFeaturedPostQuery,
   useGetTrendingPostsQuery,
-  useGetSpotlightPostsQuery, } = apiSlice;
+  useGetSpotlightPostsQuery,
+  useGetBigDealPostsQuery,
+  useGetGlobalLensPostsQuery,
+  useGetAfricaRisingPostsQuery,
+  useGetDigitalMoneyPostsQuery,
+  useGetEmergingTechPostsQuery,
+  useGetHardwarePostsQuery,
+  useGetSecureHabitsPostsQuery,
+  useGetTechCulturePostsQuery, } = apiSlice;

@@ -94,7 +94,7 @@ export default function LearnPage() {
       >
         <span className="text-white">Courses from <span className="text-lime-400">VeryCodedly</span></span> 
       </Motion.h2>
-      <div className="flex flex-cols justify-center w-[85%] mx-auto">
+      <div className="space-y-2.5 w-[90%] sm:w-[90%] lg:w-[80%] mx-auto">
       {/* <div className="absolute inset-0 bg-[url('/images/bg-plain.jpg')] bg-center bg-stretch opacity-50"></div> */}
         {/* <div className=""> */}
           <CourseList />
@@ -102,7 +102,7 @@ export default function LearnPage() {
       </div>
     </section>
 
-    {/* === LEARNING PATHS === */}
+    {/* LEARNING PATHS */}
     <section className="bg-gradient-to-b to-black from-zinc-950 min-h-screen w-full mx-auto px-6 sm:px-28 py-16 sm:py-32 flex flex-col items-left justify-center border-b border-zinc-900">
   <Motion.h2
     className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-12 px-2 text-left text-white/90"
@@ -130,7 +130,7 @@ export default function LearnPage() {
     ].map((track) => (
       <Motion.div
         key={track.name}
-        className="bg-zinc-900 border border-zinc-800 m-3 sm:m-0 p-4 sm:p-6 rounded-xl 
+        className="bg-zinc-900/80 border border-zinc-800 m-3 sm:m-0 p-4 sm:p-6 rounded-2xl 
         hover:shadow-[0_0_10px_#222222] backdrop-blur-md transition-all"
         whileHover={{ y: -5 }}
         tabIndex={0}
@@ -142,9 +142,9 @@ export default function LearnPage() {
   </div>
 </section>
 
-    {/* === FEATURED LESSONS === */}
+    {/* FEATURED LESSONS */}
 
-<section className="bg-gradient-to-b from-black to-zinc-900/80 relative min-h-screen w-full mx-auto px-4 sm:px-16 py-16 sm:py-32 flex flex-col items-center justify-center">
+<section className="bg-gradient-to-b from-black to-zinc-900/80 relative min-h-screen w-full mx-auto px-4 sm:px-12 py-16 sm:py-32 flex flex-col items-center justify-center">
   <div className="absolute inset-0 bg-center bg-stretch opacity-40"></div>
   <Motion.h2
     className="relative text-3xl sm:text-4xl font-bold mb-6 sm:mb-12 text-right text-white/90"
@@ -155,7 +155,7 @@ export default function LearnPage() {
     <span className="text-lime-400">Featured</span> Lessons
   </Motion.h2>
 
-  <div className="relative grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-8">
+  <div className="relative grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6">
     {[
       {
         name: "Introduction to Python",
@@ -174,13 +174,13 @@ export default function LearnPage() {
     ].map((topic) => (
       <Motion.div
         key={topic.name}
-        className="flex flex-col sm:flex-row p-5 m-3 sm:m-0 rounded-xl shadow bg-zinc-900 border border-zinc-800 group hover:-translate-y-[5px] 
+        className="flex flex-col sm:flex-row p-5 m-3 sm:m-0 rounded-2xl shadow bg-zinc-900/80 border border-zinc-800 group hover:-translate-y-[5px] 
         hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition transform duration-300 gap-1 sm:gap-4"
       >
         <Link href={`/learn/${topic.course}/${topic.slug}`} className="inline-flex items-center gap-1 w-full">
           {/* Left Text Section */}
           <div className="flex-1 flex flex-col justify-between space-x-2">
-            <p className="text-xs font-semibold tracking-widest text-pink-400 uppercase mb-2">
+            <p className="text-xs font-semibold tracking-tighter text-pink-400 uppercase mb-2">
               Starter Guide
             </p>
             <h3 className="text-base sm:text-xl font-semibold mb-2 text-gray-100 group-hover:text-lime-400 transition leading-tight">
@@ -203,8 +203,8 @@ export default function LearnPage() {
               <Image
                 fill
                 src={topic.image}
-                alt="Course Image"
-                className="rounded-lg object-cover group-hover:brightness-110 transition duration-300"
+                alt="Course Language Image"
+                className="text-xs rounded-xl object-cover group-hover:brightness-110 transition duration-300"
                 sizes="(max-width: 640px) 100px, 120px"
               />
             </div>
@@ -215,7 +215,7 @@ export default function LearnPage() {
   </div>
 </section>
 
-    {/* === TOOLS & RESOURCES === */}
+    {/* TOOLS & RESOURCES */}
     <section className="bg-gradient-to-b from-zinc-900/70 to-zinc-950/60 py-20 w-full mx-auto px-16 border-t border-zinc-900">
       <Motion.h2
         className="text-3xl sm:text-4xl font-bold mb-10 text-white/90"
@@ -235,14 +235,14 @@ export default function LearnPage() {
               className="bg-zinc-900/70 p-3 rounded-2xl transition-all"
               tabIndex={0}
             >
-              <Image src={icon ?? "Resource Image"} alt="tool con" className="w-12 h-12 mx-auto" width={200} height={200} />
+              <Image src={icon ?? "Resource Image"} alt="Tool Icon" className="text-xs w-12 h-12 mx-auto" width={200} height={200} />
             </Motion.div>
           )
         )}
       </div>
     </section>
 
-    {/* === COMMUNITY SECTION === */}
+    {/* COMMUNITY SECTION */}
     <section className="bg-gradient-to-b from-zinc-950/70 to-zinc-900/60 py-12 w-full mx-auto text-right px-16 justify-end">
       <Motion.h2
         className="text-3xl sm:text-4xl font-bold mb-6 text-white/90"
@@ -252,14 +252,14 @@ export default function LearnPage() {
       >
         Join the <span className="text-lime-400">Community</span>
       </Motion.h2>
-      <p className="text-gray-400 text-md sm:text-lg w-[94.5%] sm:w-lg ml-auto mb-10 ">
+      <p className="text-gray-400 text-md sm:text-lg w-fit sm:w-lg ml-auto mb-10 ">
         Connect with learners, share progress, and get feedback on your projects.  
         We’re building a friendly hub for curious minds, come hang out.
       </p>
     
     <div className="flex justify-end">
       <Link
-        href="https://discord.gg/invite/UVWNezaj"
+        href="https://discord.gg/invite/GYddWTYE"
         target="_blank"
         // className="inline-block bg-lime-400 text-black font-semibold px-8 py-3 rounded-full hover:bg-lime-300 transition"
         className="bg-transparent text-md text-white font-bold cursor-pointer border-3 border-gray-500/100 px-8 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
@@ -271,7 +271,7 @@ export default function LearnPage() {
     </div>
     </section>
 
-    {/* === HOW TO USE THIS PAGE === */}
+    {/* HOW TO USE THIS PAGE */}
     {/* <section className="relative mt-20 max-w-lg mx-auto text-center">
       <div className="bg-white/5 backdrop-blur-md border border-white/10 text-gray-300 text-sm italic rounded-2xl px-6 py-4 shadow-lg shadow-black/20 animate-fade-in">
         💡 Pick a course to start learning, or follow a learning path.  

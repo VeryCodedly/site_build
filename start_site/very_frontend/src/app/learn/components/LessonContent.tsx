@@ -254,8 +254,8 @@ export default function LessonContent({
   return (
     <article className="max-w-3xl mx-auto space-y-6 sm:space-y-6 px-4 sm:px-6 text-gray-300 leading-relaxed">
       {json.title && (
-        <header className="mb-10 sm:mb-10 text-center">
-          <h1 className="text-2xl sm:text-4xl font-bold text-white mb-2 leading-tight">
+        <header className="mb-10 sm:mb-10 text-center mx-auto">
+          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 leading-tight">
             {json.title}
           </h1>
           {json.duration && (

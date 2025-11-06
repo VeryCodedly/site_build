@@ -203,7 +203,10 @@ export default function FloatingMenu() {
       <button
         ref={buttonRef}
         onClick={() => setExpanded(p => !p)}
-        className="fixed left-0 top-1/2 -translate-y-1/2 z-[60] w-6 h-7 flex items-center justify-center rounded-r-lg bg-transparent text-white shadow-md hover:bg-zinc-700/80 active:bg-zinc-700/80 backdrop-blur-md border-3 border-zinc-600 border-l-0 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-400"
+        className="fixed left-0 top-1/2 -translate-y-1/2 z-[60] w-5 h-8 flex items-center justify-center 
+                  rounded-r-lg bg-transparent text-white shadow-md hover:bg-zinc-700/80 active:bg-zinc-700/80 
+                  backdrop-blur-md border-3 border-zinc-600 border-l-0 transition-all duration-300 focus:outline-none 
+                  focus:ring-2 focus:ring-offset-2 focus:ring-pink-400"
         aria-label="Toggle menu"
       >
         <FontAwesomeIcon icon={faChevronRight} />
@@ -212,7 +215,9 @@ export default function FloatingMenu() {
       <div
         ref={menuRef}
         onMouseEnter={() => setExpanded(true)}
-        className={`fixed pl-6 sm:pl-5 top-1/2 left-0 transform -translate-y-1/2 bg-white/3 hover:backdrop-blur-lg shadow-lg rounded-r-2xl overflow-hidden border-3 border-zinc-700 transition-all duration-300 ${expanded ? "w-60 sm:w-70 opacity-100 backdrop-blur-lg" : "opacity-0 w-8 h-10"} z-50`}
+        className={`fixed pl-6 sm:pl-5 top-1/2 left-0 transform -translate-y-1/2 bg-white/3 hover:backdrop-blur-lg
+                   shadow-lg rounded-r-2xl overflow-hidden border-3 border-zinc-700 transition-all duration-300 
+                   ${expanded ? "w-60 sm:w-70 opacity-100 backdrop-blur-lg" : "opacity-0 w-8 h-10"} z-50`}
       >
         <ul className="flex flex-col gap-1 p-2 text-gray-200">
           {categories.map(cat => {

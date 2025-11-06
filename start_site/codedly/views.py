@@ -166,30 +166,93 @@ def api_home(request):
     """)
 
 class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.filter(status="published")
+    queryset = Post.objects.filter(status="published").order_by("-created_at")
     serializer_class = PostSerializer
     lookup_field = "slug"
     
     # 1. Featured post (most recent with image)
     @action(detail=False, methods=['get'])
     def featured(self, request):
-        post = Post.objects.filter(status="published", image__isnull=False).order_by('-created_at').first()
+        post = Post.objects.filter(status="published", image__isnull=False, subcategory__slug="featured").order_by('-created_at').first()
         serializer = PostSerializer(post, context={'request': request}) if post else None
         return Response({"featured": serializer.data if serializer else None})
 
     # 2. Trending (most viewed – add view_count later, or use recent)
     @action(detail=False, methods=['get'])
     def trending(self, request):
-        posts = Post.objects.filter(status="published").order_by('-created_at')[1:5]
+        posts = Post.objects.filter(status="published", subcategory__slug="trending-now").order_by('-created_at')[0:4]
         serializer = PostSerializer(posts, many=True, context={'request': request})
         return Response({"trending": serializer.data})
 
     # 3. Spotlight (manual tag or field later)
     @action(detail=False, methods=['get'])
     def spotlight(self, request):
-        posts = Post.objects.filter(status="published", tags__name__in=["spotlight"]).distinct()[0:2]
+        posts = Post.objects.filter(status="published", subcategory__slug="entertainment").distinct()[0:3]
         serializer = PostSerializer(posts, many=True, context={'request': request})
+        # print("Spotlight posts fetched:", posts)
         return Response({"spotlight": serializer.data})
+    
+    # 4
+    @action(detail=False, methods=['get'])
+    def bigDeal(self, request):
+        posts = Post.objects.filter(status="published", subcategory__slug="big-deal").distinct()[0:3]
+        serializer = PostSerializer(posts, many=True, context={'request': request})
+        # print("big_deal posts fetched:", posts)
+        return Response({"bigDeal": serializer.data})
+    
+    # 5
+    @action(detail=False, methods=['get'])
+    def globalLens(self, request):
+        posts = Post.objects.filter(status="published", subcategory__slug="wired-world").distinct()[0:3]
+        serializer = PostSerializer(posts, many=True, context={'request': request})
+        # print("big_deal posts fetched:", posts)
+        return Response({"globalLens": serializer.data})
+    
+    # 6
+    @action(detail=False, methods=['get'])
+    def africaRising(self, request):
+        posts = Post.objects.filter(status="published", subcategory__slug="africa-rising").distinct()[0:3]
+        serializer = PostSerializer(posts, many=True, context={'request': request})
+        # print("big_deal posts fetched:", posts)
+        return Response({"africaRising": serializer.data})
+    
+    # 7
+    @action(detail=False, methods=['get'])
+    def hardware(self, request):
+        post = Post.objects.filter(status="published", image__isnull=False, subcategory__slug="hardware").order_by('-created_at').first()
+        serializer = PostSerializer(post, context={'request': request}) if post else None
+        return Response({"hardware": serializer.data if serializer else None})
+    
+    # 8
+    @action(detail=False, methods=['get'])
+    def emergingTech(self, request):
+        posts = Post.objects.filter(status="published", subcategory__slug="emerging-tech").distinct()[0:3]
+        serializer = PostSerializer(posts, many=True, context={'request': request})
+        # print("big_deal posts fetched:", posts)
+        return Response({"emergingTech": serializer.data})
+    
+    # 9
+    @action(detail=False, methods=['get'])
+    def digitalMoney(self, request):
+        post = Post.objects.filter(status="published", image__isnull=False, subcategory__slug="digital-money").order_by('-created_at').first()
+        serializer = PostSerializer(post, context={'request': request}) if post else None
+        return Response({"digitalMoney": serializer.data if serializer else None})
+    
+    #10
+    @action(detail=False, methods=['get'])
+    def techCulture(self, request):
+        posts = Post.objects.filter(status="published", subcategory__slug="tech-culture").distinct()[0:3]
+        serializer = PostSerializer(posts, many=True, context={'request': request})
+        # print("big_deal posts fetched:", posts)
+        return Response({"techCulture": serializer.data})
+    
+    # 11
+    @action(detail=False, methods=['get'])
+    def secureHabits(self, request):
+        posts = Post.objects.filter(status="published", subcategory__slug="secure-habits").distinct()[0:3]
+        serializer = PostSerializer(posts, many=True, context={'request': request})
+        # print("big_deal posts fetched:", posts)
+        return Response({"secureHabits": serializer.data})
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -200,7 +263,8 @@ class SubcategoryViewSet(viewsets.ModelViewSet):
     queryset = Subcategory.objects.annotate(name_length=Length('name')).order_by('name_length')  # shortest → longest
     serializer_class = SubcategorySerializer
     lookup_field = 'slug'
-    print("SubcategoryViewSet queryset:", queryset)
+    
+    # print("SubcategoryViewSet queryset:", queryset)
     @action(detail=True, methods=['get'], url_path='posts')
     def posts(self, request, *args, **kwargs):
         subcategory = self.get_object()  # DRF handles slug lookup safely

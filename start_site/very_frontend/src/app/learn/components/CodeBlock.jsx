@@ -106,7 +106,7 @@ function CodeBlock({ block }) {
     <div className="relative group my-10 text-xs sm:text-sm md:text-base rounded-xl overflow-auto border-y-4 border-gray-800/50 bg-[#181d1d]/90 backdrop-blur-md shadow-lg transition-all">
 
       {/* <div className="relative"> */}
-        <span className="absolute top-2 left-3 text-xs font-semibold text-gray-300 tracking-wide bg-zinc-800/70 px-2 py-0.5 rounded-md">
+        <span className="absolute top-2 left-3 text-xs font-semibold text-gray-300 tracking-tight bg-zinc-800/70 px-2 py-0.5 rounded-md">
           {block.language || "code"}
         </span>
 

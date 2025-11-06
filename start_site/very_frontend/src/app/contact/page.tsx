@@ -492,7 +492,7 @@ export default function ContactPage() {
         </Motion.h2>
 
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
-          Got a question, feedback, or just want to say hi? Drop us a message and we’ll get back to you.
+          Got a question, feedback, or just want to say hi? Drop us a message. We’ll get back to you.
         </p>
 
         {/* Global error */}

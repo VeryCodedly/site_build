@@ -1,34 +1,72 @@
 'use client';
 
 import { motion as Motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
+type Errors = { email?: string };
+
 export default function NewsletterCard() {
   const [email, setEmail] = useState('');
+  const [errors, setErrors] = useState<Errors>({});
+  const [showErrors, setShowErrors] = useState(false);
   const [status, setStatus] = useState<{ type: 'error' | null; message?: string }>({ type: null });
   const [isVisible, setIsVisible] = useState(false);
 
-  // Show card after 3 seconds
+  // Show card after 25 seconds
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 25000);
     return () => clearTimeout(timer);
   }, []);
 
+  // Validation 
+  const validate = useCallback(() => {
+    const newErrors: Errors = {};
+
+    const trimmed = email.trim();
+    if (!trimmed) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+      newErrors.email = 'Enter a valid email address';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  }, [email]);
+
+  // Input Change
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+    if (showErrors) {
+      setErrors((prev) => ({ ...prev, email: undefined }));
+    }
+  };
+
+  // Submit 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!email.trim()) {
-      setStatus({ type: 'error', message: 'Please enter a valid email.' });
+    setShowErrors(true);
+
+    if (!validate()) {
+      setStatus({ type: 'error', message: 'Please fix the error below.' });
       return;
     }
 
-    const subject = encodeURIComponent('Newsletter Subscription from VeryCodedly');
-    const body = encodeURIComponent(`Hi,\n\nPlease subscribe me to the VeryCodedly newsletter.\n\nEmail: ${email}`);
+    // Success: mailto
+    const subject = encodeURIComponent('Newsletter Subscription for VeryCodedly');
+    const body = encodeURIComponent(
+      `Hi,\n\nPlease subscribe me to the VeryCodedly newsletter.\n\nEmail: ${email.trim()}`
+    );
     window.location.href = `mailto:verycodedly@gmail.com?subject=${subject}&body=${body}`;
+
+    // Reset
     setEmail('');
+    setErrors({});
+    setShowErrors(false);
     setStatus({ type: null });
-    setIsVisible(false); // Close after submit
+    setIsVisible(false);
   };
 
   const handleClose = () => setIsVisible(false);
@@ -69,22 +107,33 @@ export default function NewsletterCard() {
         Stay updated with the latest tech insights. No spam, just the good stuff.
       </p>
 
+      {/* Global error */}
       {status.type && (
         <Motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.3 }}
-          className="text-sm px-4 py-2 rounded-md bg-rose-500/10 text-rose-400 border border-rose-500/30 mb-4"
+          transition={{ duration: 0.3, delay: 0.2 }}
+          className="p-3 rounded-lg text-sm bg-rose-500/10 text-rose-400 border border-rose-500/30 mb-4"
         >
           {status.message}
         </Motion.div>
       )}
 
-      <form onSubmit={handleSubmit} noValidate={false} className="space-y-4">
+      <form onSubmit={handleSubmit} noValidate className="space-y-4">
+        {/* EMAIL FIELD */}
         <Motion.div
           initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          animate={{
+            opacity: 1,
+            x: 0,
+            ...(showErrors && errors.email && { x: [-5, 5, -5, 5, 0] })
+          }}
+          transition={{
+            duration: 0.5,
+            delay: 0.4,
+            ...(showErrors && errors.email && { x: { duration: 0.4, repeat: 1 } })
+          }}
+          className="relative"
         >
           <label htmlFor="newsletter-email" className="sr-only">
             Email Address
@@ -95,14 +144,28 @@ export default function NewsletterCard() {
             type="email"
             placeholder="Your Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-4 py-2 rounded-md bg-white/5 text-white placeholder-gray-400 border border-zinc-500/50 focus:outline-none 
-            focus:ring-2 focus:ring-lime-400 focus:ring-offset-2 focus:ring-offset-[#181d1d] transition-all duration-200 text-sm sm:text-base"
+            onChange={handleInputChange}
+            className={`w-full px-4 py-2 rounded-md bg-white/5 text-white placeholder-gray-400 border-2 
+                       focus:outline-none focus:ring-2 focus:ring-lime-400 focus:ring-offset-2 focus:ring-offset-[#181d1d] 
+                       transition-all duration-200 text-sm sm:text-base ${
+                         showErrors && errors.email ? 'border-rose-500/70' : 'border-zinc-500/50'
+                       }`}
             autoComplete="email"
             required
           />
+          {showErrors && errors.email && (
+            <Motion.span
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute -bottom-5 left-0 text-xs text-rose-400"
+              aria-live="polite"
+            >
+              {errors.email}
+            </Motion.span>
+          )}
         </Motion.div>
 
+        {/* SUBMIT */}
         <Motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -110,7 +173,7 @@ export default function NewsletterCard() {
         >
           <button
             type="submit"
-            className="w-[30%] sm:w-[40%] px-2 sm:px-4 py-1 font-semibold text-black bg-lime-400 border-3 border-gray-500/100 rounded-full hover:bg-white active:bg-white hover:text-black 
+            className="w-[30%] sm:w-[40%] px-2 sm:px-4 py-1 mt-4 font-semibold text-black bg-lime-400 border-3 border-gray-500/100 rounded-full hover:bg-white active:bg-white hover:text-black 
                     active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 
                       transition-all duration-200 focus:outline-none focus:ring-1 focus:ring-zinc-400 text-sm sm:text-base"
           >

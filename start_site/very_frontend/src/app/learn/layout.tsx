@@ -2,18 +2,35 @@ import { Providers } from "@/lib/providers";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Learn | VeryCodedly",
-  description:
-    "Hands-on coding lessons for curious minds. Explore Python, web dev, and beyond — explained simply.",
+  title: { default: 'Learn | VeryCodedly', template: '%s | VeryCodedly' },
+  description: "Beginner-friendly coding lessons that help complex ideas click, one concept at a time.",
+  metadataBase: new URL("https://verycodedly.com/learn"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      'en-US': 'https://verycodedly.com/en-US',
+    }
+  },
+  keywords: [
+    "learn coding",
+    "coding basics",
+    "beginner programming",
+    "easy coding lessons",
+    "programming concepts",
+    "code tutorials",
+    "start coding",
+    "learn to code",
+    "simple programming",
+    "coding guide"
+  ],
   openGraph: {
     title: "Learn | VeryCodedly",
-    description:
-      "Hands-on coding lessons for curious minds. Explore Python, web dev, and beyond — explained simply.",
+    description: "Beginner-friendly coding lessons that help complex ideas click, one concept at a time.",
     url: "https://verycodedly.com/learn",
-    siteName: "Very Codedly",
+    siteName: "Learn | VeryCodedly",
     images: [
       {
-        url: "https://verycodedly.com/images/og-learn.png",
+        url: "https://verycodedly.com/learn/opengraph-image.png",
         width: 1200,
         height: 630,
         alt: "Learn | VeryCodedly",
@@ -25,9 +42,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Learn | VeryCodedly",
-    description:
-      "Learn coding and software development through clear, friendly lessons — by VeryCodedly.",
-    images: ["https://verycodedly.com/images/og-learn.png"],
+    description: "Beginner-friendly coding lessons that help complex ideas click, one concept at a time.",
+    images: ["https://verycodedly.com/learn/twitter-image.png"],
   },
 };
 
@@ -38,7 +54,7 @@ export default function LearnLayout({
 }) {
   return (
     <div>
-        <Providers>{children}</Providers>
+      <Providers>{children}</Providers>
     </div>
   );
 }

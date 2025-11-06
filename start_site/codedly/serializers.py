@@ -24,6 +24,8 @@ class PostLinkSerializer(serializers.ModelSerializer):
 
 
 class SubcategorySerializer(serializers.ModelSerializer):
+    category = serializers.CharField(read_only=True, source='category.name')
+
     class Meta:
         model = Subcategory
         fields = '__all__'

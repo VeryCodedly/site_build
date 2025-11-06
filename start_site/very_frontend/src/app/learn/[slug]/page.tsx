@@ -125,18 +125,18 @@ const LessonCard = memo(({ lesson, slug, index }: {
     whileTap={{ scale: 0.98 }}
     className="bg-zinc-900/80 backdrop-blur-sm rounded-2xl p-4 sm:p-5 border border-zinc-700/50 
                hover:border-lime-400/30 hover:shadow-[0_0_10px_rgba(164,255,130,0.1)] 
-               transition-all duration-300 group"
+               active:border-lime-400/30 active:shadow-[0_0_10px_rgba(164,255,130,0.1)] transition-all duration-300 group"
   >
-    <h3 className="text-base sm:text-md mb-2 text-gray-200 group-hover:text-lime-300 transition-colors">
+    <h3 className="text-base sm:text-md mb-2 text-gray-200 group-hover:text-lime-300 group-active:text-lime-300 transition-colors">
       <span className="pr-1 text-sm font-semibold">{lesson.order}.</span>{lesson.title}
     </h3>
     <Link
       href={`/learn/${slug}/${lesson.slug}`}
       className="inline-flex items-center gap-1 text-lime-400 text-sm font-medium 
-                 hover:text-white active:text-white hover:underline transition-all duration-200"
+                 hover:text-white active:text-white hover:underline active:underline transition-all duration-200"
     >
       View Lesson 
-      <FontAwesomeIcon icon={faArrowRight} size="sm" className="group-hover:translate-x-1 transition-transform" />
+      <FontAwesomeIcon icon={faArrowRight} size="sm" className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform" />
     </Link>
   </Motion.div>
 ));

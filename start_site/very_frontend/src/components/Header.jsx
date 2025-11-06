@@ -56,7 +56,7 @@ export default function Header() {
                 <Link href="/blog" className="px-2 text-white hover:text-lime-400 transition">READ</Link>
                 <Link href="/learn" className="px-2 text-white hover:text-lime-400 transition">LEARN</Link>
                 <Link href="https://www.youtube.com/channel/UCNDy9Q0qPHcY-TT2BD7B1kw" target="_blank" className="px-2 text-white hover:text-lime-400 transition">KNOW</Link>
-                <Link href="https://discord.gg/invite/UVWNezaj" className="px-2 text-white hover:text-lime-400 transition" target="_blank" rel="noopener">CONNECT</Link>
+                <Link href="https://discord.gg/invite/GYddWTYE" className="px-2 text-white hover:text-lime-400 transition" target="_blank" rel="noopener">CONNECT</Link>
                 <p href="/" className="px-2 text-white hover:text-lime-400 transition">🚧</p>
               </nav>
               <div className="mr-4">
@@ -107,7 +107,7 @@ export default function Header() {
             KNOW
           </Link>
           <Link
-            href="https://discord.gg/invite/UVWNezaj"
+            href="https://discord.gg/invite/GYddWTYE"
             className="text-white hover:text-lime-400 active:text-lime-400 transition"
             target="_blank"
             rel="noopener"

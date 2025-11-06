@@ -1,81 +1,3 @@
-// 'use client';
-
-// import Link from 'next/link';
-// import Image from 'next/image';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-// import { useGetCoursesQuery } from '@/features/api/apiSlice'; // adjust if needed
-// import { Course } from '@/types/post';
-
-// export default function CourseList() {
-//   // const { data: courses } = useGetCoursesQuery();
-//   const { data: courses, isLoading, isError } = useGetCoursesQuery();
-
-//   if (isLoading)
-//     return (
-//       <div className="flex justify-center items-center min-h-[60vh] text-gray-300">
-//         Loading lessons...
-//       </div>
-//     );
-
-//   if (isError)
-//     return (
-//       <div className="flex justify-center items-center min-h-[60vh] text-red-400">
-//         Something went wrong while loading lessons.
-//       </div>
-//     );
-
-//   return (
-//     <div className="flex flex-col gap-6 w-full max-w-4xl mx-auto">
-//       {courses?.results?.map((course: Course) => (
-//         <div
-//           key={course.id}
-//           className="flex flex-row p-4 rounded-xl shadow bg-zinc-900 group hover:-translate-y-[5px] hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)]
-//                      active:-translate-y-[5px] active:shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition transform duration-300 gap-4"
-//         >
-//           {/* Left Section: Text */}
-//           <div className="flex-1 flex flex-col justify-between">
-//             {/* Language */}
-//             <p className="text-xs font-semibold tracking-widest text-pink-400 uppercase mb-2">
-//               {course.language ?? 'Programming Language'}
-//             </p>
-
-//             <Link href={`/learn/${course.slug}`}>
-//               {/* Title */}
-//               <h2 className="text-lg sm:text-xl font-semibold mb-2 text-gray-100 group-hover:text-lime-400 group-active:text-lime-400 transition">
-//                 {course.title}
-//               </h2>
-
-//               {/* Description */}
-//               <p className="text-sm sm:text-md text-gray-300/80 line-clamp-4 mb-3">
-//                 {course.description || 'No description available yet.'}
-//               </p>
-
-//               {/* CTA */}
-//               <div className="flex items-center justify-between text-md text-gray-500">
-//                 {/* <span></span> */}
-//                 <span className="text-sm sm:text-md font-bold text-lime-400 group-hover:text-white flex items-center gap-2">
-//                   Start Now <FontAwesomeIcon className="py-2" icon={faArrowRight} size="sm" />
-//                 </span>
-//               </div>
-//             </Link>
-//           </div>
-
-//           {/* Right Section: Image */}
-//           <div className="flex-shrink-0">
-//             <Image
-//               className="rounded-lg object-cover aspect-square w-[80px] h-[80px] sm:w-[140px] sm:h-[160px] group-hover:brightness-110 transition duration-300"
-//               src={course?.image ?? '/Course-Image.png'}
-//               alt={course?.alt ?? 'Language Image'}
-//               width={300}
-//               height={300}
-//             />
-//           </div>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
 'use client';
 
 import Link from 'next/link';
@@ -104,7 +26,7 @@ export default function CourseList() {
         <p className="text-rose-400 text-lg mb-4">Failed to load posts</p>
         <button
           onClick={() => window.location.reload()}
-          className="px-6 py-3 bg-rose-500/20 hover:bg-rose-500/30 border border-rose-500/30 rounded-full text-rose-300 transition-all"
+          className="px-6 py-1 bg-rose-500/20 hover:bg-rose-500/30 border border-rose-500/30 rounded-full text-rose-300 transition-all"
         >
           Try Again
         </button>
@@ -112,54 +34,56 @@ export default function CourseList() {
     );
 
   return (
-    <div className="flex flex-col gap-4 sm:gap-4 w-full max-w-3xl mx-auto">
+    // <div className="fle flex-col gap-2 w-full max-w-3xl mx-auto">
+    <>
       {courses?.results?.map((course: Course) => (
-        <div
-          key={course.id}
-          className="flex flex-col sm:flex-row px-4 py-3 sm:px-5 sm:py-4 rounded-xl shadow bg-zinc-900 border-2 border-zinc-800 group hover:-translate-y-[5px] hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)]
-                     active:-translate-y-[5px] active:shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition transform duration-300 gap-3 sm:gap-4"
+        <div key={course.id}
+          className="flex flex-row px-4 py-3 sm:px-5 sm:py-2 rounded-2xl shadow bg-zinc-900/80 border-2 border-zinc-800 group hover:-translate-y-[5px] hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)]
+                     active:-translate-y-[5px] active:shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition transform duration-300 gap-1 sm:gap-3"
         >
-          {/* Image - Top on mobile */}
-          <div className="flex-shrink-0 w-full sm:w-auto order-1 sm:order-2 mb-3 sm:mb-0">
-            <div className="relative w-fll h-[80px] w-[80px] sm:h-[120px] sm:w-[120px] mx-auto sm:mx-0 aspect-[5/6] sm:aspect-square">
-              <Image
-                fill
-                className="rounded-lg object-cover group-hover:brightness-110 transition duration-300"
-                src={course?.image ?? '/Course-Image.png'}
-                alt={course?.alt ?? 'Language Image'}
-                sizes="(max-width: 640px) 120px, 140px"
-              />
-            </div>
-          </div>
-
           {/* Text Section */}
-          <div className="flex-1 flex flex-col justify-between order-2 sm:order-1">
+        < div className="flex-1 flex flex-col justify-between" >
             {/* Language - Always on top */}
-            <p className="text-xs font-semibold tracking-widest text-pink-400 uppercase mb-2">
+            < p className="text-xs font-semibold tracking-tighter text-pink-400 uppercase my-1" >
               {course.language ?? 'Programming Language'}
             </p>
 
             <Link href={`/learn/${course.slug}`}>
               {/* Title */}
-              <h2 className="text-base sm:text-xl font-semibold mb-2 text-gray-100 group-hover:text-lime-400 group-active:text-lime-400 transition leading-tight">
+              <h2 className="text-base sm:text-xl font-semibold text-gray-100 group-hover:text-lime-400 group-active:text-lime-400 transition leading-tighter">
                 {course.title}
               </h2>
 
               {/* Description */}
-              <p className="text-sm text-gray-300/80 line-clamp-3 sm:line-clamp-4 mb-3 leading-relaxed">
+              <p className="text-sm text-gray-300/80 line-clamp-3 sm:line-clamp-4 my-1.5 leading-relaxed">
                 {course.description || 'No description available yet.'}
               </p>
 
               {/* CTA */}
-              <div className="flex items-center justify-between text-sm sm:text-md text-gray-500">
+              <div className="flex items-center justify-between text-sm sm:text-base text-gray-500">
                 <span className="text-lime-400 font-bold group-hover:text-white flex items-center gap-2">
                   Start Now <FontAwesomeIcon className="py-2" icon={faArrowRight} size="sm" />
                 </span>
               </div>
             </Link>
-          </div>
-        </div>
-      ))}
-    </div>
+          </div >
+
+            <div className="flex-shrink-0 items-center justify-center my-auto">
+              <div className="relative w-full h-[120px] sm:h-[160px] sm:w-[120px] md:h-[160px] mx-auto sm:mx-0 aspect-[5/6] sm:aspect-square overflow-hidden">
+                <Image
+                  fill
+                  className="text-xs rounded-lg object-cover object-center group-hover:brightness-110 transition duration-300"
+                  src={course?.image ?? '/Course-Image.png'}
+                  alt={course?.alt ?? 'Language Image'}
+                  sizes="(max-width: 640px) 100vw, 120px"
+                  priority
+                />
+              </div>
+            </div>
+        </div >
+      ))
+      }
+      {/* </div> */}
+    </>
   );
 }

@@ -13,7 +13,7 @@ export default function SupportPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="group max-w-4xl mx-auto rounded-2xl p-6 sm:p-8 text-cente space-y-6 sm:space-y-8 border-2 border-gray-700/60 bg-white/3 backdrop-blur-lg 
+        className="group max-w-5xl mx-auto rounded-2xl p-6 sm:p-8 text-cente space-y-6 sm:space-y-8 border-2 border-gray-700/60 bg-white/3 backdrop-blur-lg 
                    shadow-[0_5px_10px_rgba(0,0,0,0.6)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)] 
                    focus:outline-none focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white/20
                    transition-all duration-300"
@@ -33,9 +33,9 @@ export default function SupportPage() {
           >
             Help keep VeryCodedly alive
           </Motion.h2>
-          <p className="text-gray-300 text-sm sm:text-base text-center leading-relaxed max-w-2xl mx-auto">
+          <p className="text-gray-300 pb-6 text-sm sm:text-base text-center leading-relaxed max-w-2xl mx-auto">
             VeryCodedly is built by a small, obsessed team. Your support keeps our content free,
-            the community warm, and the servers humming. Every bit helps — and
+            the community warm, and the servers humming. Every bit helps, and
             none of it changes who we are.
           </p>
         </Motion.header>
@@ -195,7 +195,7 @@ export default function SupportPage() {
               transition={{ duration: 0.3, delay: 0.7 }}
             >
               <dt className="font-medium text-gray-300">Will support change the content?</dt>
-              <dd className="text-gray-400">No — the core content remains free and available to everyone.</dd>
+              <dd className="text-gray-400">No. The core content remains free and available to everyone.</dd>
             </Motion.div>
             <Motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -203,7 +203,7 @@ export default function SupportPage() {
               transition={{ duration: 0.3, delay: 0.8 }}
             >
               <dt className="font-medium text-gray-300">Is support tax-deductible?</dt>
-              <dd className="text-gray-400">We aren’t a non-profit; check individual platforms for their policies.</dd>
+              <dd className="text-gray-400">We are a non-profit; check individual platforms for their policies.</dd>
             </Motion.div>
             <Motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -211,7 +211,7 @@ export default function SupportPage() {
               transition={{ duration: 0.3, delay: 0.9 }}
             >
               <dt className="font-medium text-gray-300">Can I contribute content?</dt>
-              <dd className="text-gray-400">Yes — email us or open a PR on our GitHub repo to get started.</dd>
+              <dd className="text-gray-400">Yes. Mail us or open a PR on our GitHub repo to get started.</dd>
             </Motion.div>
           </div>
         </Motion.div>

@@ -33,7 +33,7 @@ export default function Footer() {
           </h3>
           <ul className="space-y-2 text-sm">
             {[
-              ["Blog", "/blog"],
+              ["Read", "/blog"],
               ["Learn", "/learn"],
               ["Shop", "/shop"],
               ["Support", "/support"],
@@ -60,9 +60,9 @@ export default function Footer() {
             {[
               ["About", "/about"],
               ["FAQs", "/faqs"],
-              ["Contact Us", "/contact"],
+              ["Contact", "/contact"],
+              ["Privacy", "/privacy"],
               ["Terms of Use", "/terms"],
-              ["Privacy Policy", "/privacy"],
             ].map(([label, href]) => (
               <li key={href}>
                 <Link
@@ -86,9 +86,9 @@ export default function Footer() {
               ["x-twitter", "https://x.com/verycodedly"],
               ["youtube", "https://www.youtube.com/@verycodedly"],
               ["reddit", "https://reddit.com/r/VeryCodedly"],
-              ["discord", "https://discord.gg/invite/UVWNezaj"],
+              ["discord", "https://discord.gg/invite/GYddWTYE"],
               ["medium", "https://medium.com/@verycodedly"],
-              ["linkedin", "https://linkedin.com/company/verycodedly"],
+              ["linkedin", "https://linkedin.com/in/verycodedly"],
               ["facebook", "https://facebook.com/verycodedly"],
               ["instagram", "https://instagram.com/verycodedly"],
               ["tiktok", "https://tiktok.com/@verycodedly"],
@@ -97,7 +97,7 @@ export default function Footer() {
                 key={icon}
                 href={link}
                 target="_blank"
-                className="text-gray-500 hover:text-lime-400 hover:scale-110 transition-transform duration-300"
+                className="text-gray-500 hover:text-lime-500 hover:scale-110 transition-transform duration-300"
               >
                 <FontAwesomeIcon icon={["fab", icon]} size="lg" />
               </Link>

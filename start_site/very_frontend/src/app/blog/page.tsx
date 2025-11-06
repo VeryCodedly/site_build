@@ -126,9 +126,15 @@
 'use client';
 
 import { motion as Motion } from "framer-motion";
-import { useGetPostsQuery, useGetFeaturedPostQuery, useGetTrendingPostsQuery, useGetSpotlightPostsQuery } from "@/features/api/apiSlice";
+import {
+  useGetPostsQuery, useGetFeaturedPostQuery, useGetTrendingPostsQuery,
+  useGetSpotlightPostsQuery, useGetBigDealPostsQuery, useGetGlobalLensPostsQuery,
+  useGetAfricaRisingPostsQuery, useGetDigitalMoneyPostsQuery, useGetEmergingTechPostsQuery,
+  useGetHardwarePostsQuery, useGetSecureHabitsPostsQuery, useGetTechCulturePostsQuery
+} from "@/features/api/apiSlice";
 import PostCard from "../blog/components/blog/PostCard";
-import FloatingMenu from "./components/blog/FloatingMenu";
+import MiniPostCard from "../blog/components/blog/MiniPostCard";
+// import FloatingMenu from "./components/blog/FloatingMenu";
 // import NewsletterCard from "./components/blog/NewsletterCard";
 import { Post } from "@/types/post";
 import { useState } from "react";
@@ -139,11 +145,23 @@ import { useParams } from "next/navigation";
 export default function BlogHome() {
   const page = useParams();
   const { data: posts, error, isLoading } = useGetPostsQuery(page);
+
   const { data: featured } = useGetFeaturedPostQuery();
   const { data: trending = [] } = useGetTrendingPostsQuery();
   const { data: spotlight = [] } = useGetSpotlightPostsQuery();
-  const [visiblePosts, setVisiblePosts] = useState(3);
 
+  const { data: bigDeal = [] } = useGetBigDealPostsQuery();
+  const { data: globalLens = [] } = useGetGlobalLensPostsQuery();
+  const { data: africaRising = [] } = useGetAfricaRisingPostsQuery();
+  const { data: digitalMoney } = useGetDigitalMoneyPostsQuery();
+
+  const { data: emergingTech = [] } = useGetEmergingTechPostsQuery();
+  const { data: hardware } = useGetHardwarePostsQuery();
+  const { data: techCulture = [] } = useGetTechCulturePostsQuery();
+  const { data: secureHabits = [] } = useGetSecureHabitsPostsQuery();
+
+
+  const [visiblePosts, setVisiblePosts] = useState(3);
   const loadMore = () => {
     setVisiblePosts((prev) => Math.min(prev + 3, 10));
   };
@@ -190,7 +208,7 @@ export default function BlogHome() {
         </div>
 
         {/* Floating Menu */}
-        <FloatingMenu />
+        {/* <FloatingMenu /> */}
 
         {/* scroll cue */}
         <Link href="#posts">
@@ -209,7 +227,7 @@ export default function BlogHome() {
       {/* 📰 POSTS SECTION */}
       <div id="posts" className="relative max-w-6xl mx-auto py-20 px-6 sm:px-8">
         <Motion.h2
-          className="text-3xl sm:text-4xl font-bold mb-18 sm:mb-12 text-center text-white/90"
+          className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-12 text-center text-white/90"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -237,12 +255,12 @@ export default function BlogHome() {
         )}
 
         {posts && (
-          <div className="space-y-3 w-[70%] sm:w-[70%] mx-auto">
+          <div className="space-y-2.5 w-[90%] lg:w-[75%] mx-auto">
             {posts.results.slice(0, visiblePosts).map((post: Post) => (
               <Motion.div
                 key={post.id}
                 // className="bg-white/5 border border-zinc-700 rounded-xl backdrop-blur-md p-6 hover:border-lime-200/30 transition-all duration-300"
-                className="bg-zinc-800/80 rounded-xl p-4 border border-zinc-800 transition-transform duration-500 transform hover:-translate-y-2 
+                className="bg-zinc-900/80 rounded-2xl p-3.5 border border-zinc-800 transition-transform duration-500 transform hover:-translate-y-2 
                 hover:rotateX-3 hover:rotateY-3 active:-translate-y-2 active:rotateX-3 active:rotateY-3" style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -266,10 +284,13 @@ export default function BlogHome() {
           </div>
         )}
 
-        {/* HERO: Featured Post */}
+        {/* 1 HERO: Featured Post */}
         {featured && (
-          <section className="py-16 px-8 mt-16">
+          <section className="py-10 px-6 mt-8">
             <Link href={`/blog/${featured.slug}`}>
+              <p className="text-xs pl-3 font-semibold tracking-tight text-pink-400 uppercase mb-2">
+                {featured.category?.name ?? 'Featured'}
+              </p>
               <Motion.div
                 className="relative group cursor-pointer overflow-hidden rounded-xl"
                 initial={{ opacity: 0, y: 20 }}
@@ -291,6 +312,7 @@ export default function BlogHome() {
                       className="w-full h-96 object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
                       width={800}
                       height={400}
+                      priority
                     />
                   )}
                 </Motion.div>
@@ -325,47 +347,276 @@ export default function BlogHome() {
             </Link>
           </section>
         )}
-        {/* TRENDING NOW */}
+
+        {/* 2 TRENDING NOW */}
         {trending.length > 0 && (
-          <section className="py-16 px-7">
+          <section className="py-10">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-3xl sm:text-4xl text-white mb-10">Trending <span className="text-lime-400">Now</span>
+              className="text-3xl text-white mb-4">Trending<span className="text-lime-400">Now</span>
             </Motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-2">
-              {trending.map((post, index) => (
-                <Motion.div
-                  key={index}
-                  // className="bg-white/5 border border-zinc-700 rounded-xl backdrop-blur-md p-6 hover:border-lime-200/30 transition-all duration-300"
-                  className="bg-zinc-800/80 rounded-xl p-4 border border-zinc-800 transition-transform duration-500 transform hover:-translate-y-2 
-                            hover:rotateX-3 hover:rotateY-3 active:-translate-y-2 active:rotateX-3 active:rotateY-3" style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <PostCard key={post.id} post={post} />
-                </Motion.div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+              {trending.map((post) => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+
+            </div>
+          </section>
+        )}
+
+        {/* 3 SPOTLIGHT */}
+        {spotlight.length > 0 && (
+          <section className="py-10">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl text-white mb-4 flex justify-end">
+              Entertainment
+            </Motion.h2>
+            {/* <h2 className="text-3xl sm:text-4xl font-bold text-pink-400 mb-10">Editor’s<span className="text-white"> Picks</span></h2> */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {spotlight.map(post => (
+                <MiniPostCard key={post.id} post={post} />
               ))}
             </div>
           </section>
         )}
 
-        {/* SPOTLIGHT */}
-        {spotlight.length > 0 && (
-          <section className="py-16">
-            <h2 className="text-2xl font-bold text-pink-400 mb-6">Editor’s Picks</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {spotlight.map(post => (
-                <PostCard key={post.id} post={post} />
+        {/* 4 BIG DEAL */}
+        {bigDeal.length > 0 && (
+          <section className="py-10">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl text-lime-400 mb-4 flex justify-start">Big<span className="text-white">Deal</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {bigDeal.map(post => (
+                <MiniPostCard key={post.id} post={post} />
               ))}
             </div>
+          </section>
+        )}
+
+        {/* 5 HARDWARE */}
+        {hardware && (
+          <section className="py-8 px-6 mt-10">
+            <Link href={`/blog/${hardware.slug}`}>
+              <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
+                {hardware.category?.name ?? 'Hardware'}
+              </p>
+              <Motion.div
+                className="relative group cursor-pointer overflow-hidden rounded-xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {/* Image with parallax hover */}
+                <Motion.div
+                  className="relative"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                  {hardware.image && (
+                    <Image
+                      src={hardware.image}
+                      alt={hardware.alt || hardware.title}
+                      className="w-full h-96 object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                      width={800}
+                      height={400}
+                      priority={false}
+                    />
+                  )}
+                </Motion.div>
+
+                {/* Gradient overlay with fade-in */}
+                <Motion.div
+                  className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent rounded-xl"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                />
+
+                {/* Text content with slide-up */}
+                <Motion.div
+                  className="absolute bottom-6 left-6 right-6"
+                  initial={{ y: 30, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                >
+                  <Motion.h1
+                    className="text-2xl md:text-3xl font-bold text-white mb-2"
+                  >
+                    {hardware.title}
+                  </Motion.h1>
+                  <Motion.p
+                    className="text-gray-300 text-sm"
+                  >
+                    {hardware.excerpt}
+                  </Motion.p>
+                </Motion.div>
+              </Motion.div>
+            </Link>
           </section>
         )}
 
         {/* <NewsletterCard /> */}
+
+        {/* 6 AFRICA RISING */}
+        {africaRising.length > 0 && (
+          <section className="py-10">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl text-lime-400 mb-4 flex justify-start">Africa<span className="text-white">Rising</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {africaRising.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 7 GLOBAL LENS */}
+        {globalLens.length > 0 && (
+          <section className="py-10">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl text-white mb-4 flex justify-end">
+                Wired<span className="text-lime-400">World</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {globalLens.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 8 DIGITAL MONEY */}
+        {digitalMoney && (
+          <section className="py-8 px-6 mt-10">
+            <Link href={`/blog/${digitalMoney.slug}`}>
+              <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
+                {digitalMoney.category?.name ?? 'Digital Money'}
+              </p>
+              <Motion.div
+                className="relative group cursor-pointer overflow-hidden rounded-xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {/* Image with parallax hover */}
+                <Motion.div
+                  className="relative"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                  {digitalMoney.image && (
+                    <Image
+                      src={digitalMoney.image}
+                      alt={digitalMoney.alt || digitalMoney.title}
+                      className="w-full h-96 object-cover rounded-xl shadow-lg opacity-70 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500"
+                      width={800}
+                      height={400}
+                      priority={false}
+                    />
+                  )}
+                </Motion.div>
+
+                {/* Gradient overlay with fade-in */}
+                <Motion.div
+                  className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent rounded-xl"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                />
+
+                {/* Text content with slide-up */}
+                <Motion.div
+                  className="absolute bottom-6 left-6 right-6"
+                  initial={{ y: 30, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                >
+                  <Motion.h1
+                    className="text-2xl md:text-3xl font-bold text-white mb-2"
+                  >
+                    {digitalMoney.title}
+                  </Motion.h1>
+                  <Motion.p
+                    className="text-gray-300 text-sm"
+                  >
+                    {digitalMoney.excerpt}
+                  </Motion.p>
+                </Motion.div>
+              </Motion.div>
+            </Link>
+          </section>
+        )}
+
+        {/* 9 EMERGING TECH */}
+        {emergingTech.length > 0 && (
+          <section className="py-10">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl text-white mb-4 flex justify-end">Emerging<span className="text-lime-400">Tech</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {emergingTech.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 10 TECH CULTURE */}
+        {techCulture.length > 0 && (
+          <section className="py-10">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl text-lime-400 mb-4 flex justify-start">Tech<span className="text-white">Culture</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {techCulture.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 11 SECURE HABITS */}
+        {secureHabits.length > 0 && (
+          <section className="py-10">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl text-white mb-4 flex justify-end">Secure<span className="text-lime-400">Habits</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {secureHabits.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </section>
   );
