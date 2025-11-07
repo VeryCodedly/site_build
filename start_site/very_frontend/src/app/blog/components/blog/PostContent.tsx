@@ -98,7 +98,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           sizes="100vw"
           tabIndex={0}
         />
-        <p className="absolute bottom-4 left-3 right-4 w-fit text-white/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-md rounded-lg p-2 text-xs">
+        <p className="absolute bottom-4 left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-md rounded-lg p-2 text-xs">
           {post.caption || 'Featured Image'}
         </p>
       </Motion.div>
@@ -236,8 +236,8 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
               <div key={img.id || index} className="group relative overflow-hidden rounded-2xl bg-black/50">
                 <Image src={img.image || '/blog-post-image.png'} alt={img.alt || 'Gallery image'} width={400} height={300} className="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" tabIndex={0} />
                 {(img.alt || img.caption) && (
-                  <div className="absolute bottom-2 left-2 right-2 w-fit bg-black/15 group-hover:bg-transparent backdrop-blur-sm group-hover:!backdrop-blur-none rounded px-2 py-1">
-                    {img.caption && <p className="text-gray-700 group-hover:opacity-0 text-xs mb-1">{img.caption}</p>}
+                  <div className="absolute bottom-2 left-2 right-2 w-fit bg-black/15 group-hover:bg-transparent backdrop-blur-md group-hover:!backdrop-blur-none rounded px-2 py-1">
+                    {img.caption && <p className="text-gray-50/80 group-hover:opacity-0 text-xs mb-1">{img.caption}</p>}
                   </div>
                 )}
               </div>

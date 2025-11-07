@@ -117,7 +117,7 @@ export default function SupportPage() {
                 </Motion.li>
               ))}
             </ul>
-            <div className="flex gap-3">
+            <div className="flex gap-3 justify-between">
               <Link
                 href="https://twitter.com/intent/tweet?text=Into%20coding%20+%20tech%20trends?%20Check%20out%20Very%20Codedly%20-%20https://verycodedly.com"
                 target="_blank"

@@ -130,12 +130,16 @@ import {
   useGetPostsQuery, useGetFeaturedPostQuery, useGetTrendingPostsQuery,
   useGetSpotlightPostsQuery, useGetBigDealPostsQuery, useGetGlobalLensPostsQuery,
   useGetAfricaRisingPostsQuery, useGetDigitalMoneyPostsQuery, useGetEmergingTechPostsQuery,
-  useGetHardwarePostsQuery, useGetSecureHabitsPostsQuery, useGetTechCulturePostsQuery
+  useGetHardwarePostsQuery, useGetSecureHabitsPostsQuery, useGetTechCulturePostsQuery,
+  useGetKeyPlayersPostsQuery, useGetAIPostsQuery, useGetbchCryptoPostsQuery,
+  useGetStartupsPostsQuery, useGetprvCompliancePostsQuery, useGetSocialPostQuery,
 } from "@/features/api/apiSlice";
 import PostCard from "../blog/components/blog/PostCard";
 import MiniPostCard from "../blog/components/blog/MiniPostCard";
 // import FloatingMenu from "./components/blog/FloatingMenu";
 // import NewsletterCard from "./components/blog/NewsletterCard";
+import { faLongArrowDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Post } from "@/types/post";
 import { useState } from "react";
 import Link from "next/link";
@@ -149,17 +153,25 @@ export default function BlogHome() {
   const { data: featured } = useGetFeaturedPostQuery();
   const { data: trending = [] } = useGetTrendingPostsQuery();
   const { data: spotlight = [] } = useGetSpotlightPostsQuery();
-
   const { data: bigDeal = [] } = useGetBigDealPostsQuery();
-  const { data: globalLens = [] } = useGetGlobalLensPostsQuery();
-  const { data: africaRising = [] } = useGetAfricaRisingPostsQuery();
-  const { data: digitalMoney } = useGetDigitalMoneyPostsQuery();
 
+  const { data: digitalMoney } = useGetDigitalMoneyPostsQuery();
+  const { data: bchCrypto = [] } = useGetbchCryptoPostsQuery();
+  const { data: startups = [] } = useGetStartupsPostsQuery();
+  const { data: prvCompliance = [] } = useGetprvCompliancePostsQuery();
+
+  const { data: AI = [] } = useGetAIPostsQuery();
   const { data: emergingTech = [] } = useGetEmergingTechPostsQuery();
   const { data: hardware } = useGetHardwarePostsQuery();
   const { data: techCulture = [] } = useGetTechCulturePostsQuery();
-  const { data: secureHabits = [] } = useGetSecureHabitsPostsQuery();
 
+  
+  const { data: social } = useGetSocialPostQuery();
+  const { data: globalLens = [] } = useGetGlobalLensPostsQuery();
+  const { data: africaRising = [] } = useGetAfricaRisingPostsQuery();
+  const { data: keyPlayers = [] } = useGetKeyPlayersPostsQuery();
+
+  const { data: secureHabits = [] } = useGetSecureHabitsPostsQuery();
 
   const [visiblePosts, setVisiblePosts] = useState(3);
   const loadMore = () => {
@@ -169,7 +181,7 @@ export default function BlogHome() {
   return (
     <section className="relative w-full min-h-screen bg-black text-white overflow-hidden">
       {/* 🪶 HERO SECTION */}
-      <div className="relative h-screen -mt-12 flex flex-col justify-center items-center text-center overflow-hidden">
+      <div className="relative h-screen -mt-16 sm:mt-0 flex flex-col justify-center items-center text-center overflow-hidden">
         {/* layered typography */}
         <Motion.h1
           className="absolute text-[16rem] sm:text-[16rem] font-extrabold uppercase text-lime-400/5 blur-2xl select-none z-0"
@@ -213,13 +225,13 @@ export default function BlogHome() {
         {/* scroll cue */}
         <Link href="#posts">
           <Motion.div
-            className="absolute bottom-1.5 sm:bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30 text-gray-400"
+            className="absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30 text-gray-400"
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
             tabIndex={0}
           >
             <span className="text-md sm:text-sm tracking-widest uppercase">read</span>
-            <span className="text-2xl sm:text-xl">↓</span>
+            <span className="text-md sm:text-lg"><FontAwesomeIcon icon={faLongArrowDown} size="sm" /></span>
           </Motion.div>
         </Link>
       </div>
@@ -468,42 +480,58 @@ export default function BlogHome() {
 
         {/* <NewsletterCard /> */}
 
-        {/* 6 AFRICA RISING */}
-        {africaRising.length > 0 && (
+        {/* 10 AI */}
+        {AI.length > 0 && (
           <section className="py-10">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-3xl text-lime-400 mb-4 flex justify-start">Africa<span className="text-white">Rising</span>
+              className="text-3xl text-lime-400 mb-4 flex justify-start">A<span className="text-white">I</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {africaRising.map(post => (
+              {AI.map(post => (
                 <MiniPostCard key={post.id} post={post} />
               ))}
             </div>
           </section>
         )}
 
-        {/* 7 GLOBAL LENS */}
-        {globalLens.length > 0 && (
+        {/* 11 EMERGING TECH */}
+        {emergingTech.length > 0 && (
           <section className="py-10">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-3xl text-white mb-4 flex justify-end">
-                Wired<span className="text-lime-400">World</span>
+              className="text-3xl text-white mb-4 flex justify-end">Emerging<span className="text-lime-400">Tech</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {globalLens.map(post => (
+              {emergingTech.map(post => (
                 <MiniPostCard key={post.id} post={post} />
               ))}
             </div>
           </section>
         )}
 
-        {/* 8 DIGITAL MONEY */}
+        {/* 12 TECH CULTURE */}
+        {techCulture.length > 0 && (
+          <section className="py-10">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl text-lime-400 mb-4 flex justify-start">Tech<span className="text-white">Culture</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {techCulture.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 9 DIGITAL MONEY */}
         {digitalMoney && (
           <section className="py-8 px-6 mt-10">
             <Link href={`/blog/${digitalMoney.slug}`}>
@@ -567,41 +595,178 @@ export default function BlogHome() {
           </section>
         )}
 
-        {/* 9 EMERGING TECH */}
-        {emergingTech.length > 0 && (
+        {/* 10 BLOCKCHAIN & CRYPTO */}
+        {bchCrypto.length > 0 && (
           <section className="py-10">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-3xl text-white mb-4 flex justify-end">Emerging<span className="text-lime-400">Tech</span>
+              className="text-3xl text-lime-400 mb-4 flex justify-start">
+              Blockchain<span className="text-white">&</span>Crypto
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {emergingTech.map(post => (
+              {bchCrypto.map(post => (
                 <MiniPostCard key={post.id} post={post} />
               ))}
             </div>
           </section>
         )}
 
-        {/* 10 TECH CULTURE */}
-        {techCulture.length > 0 && (
+        {/* 11 STARTUPS */}
+        {startups.length > 0 && (
           <section className="py-10">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-3xl text-lime-400 mb-4 flex justify-start">Tech<span className="text-white">Culture</span>
+              className="text-3xl text-white mb-4 flex justify-end">
+              Startups
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {techCulture.map(post => (
+              {startups.map(post => (
                 <MiniPostCard key={post.id} post={post} />
               ))}
             </div>
           </section>
         )}
 
-        {/* 11 SECURE HABITS */}
+        {/* 12 PRIVACY & COMPLIANCE */}
+        {prvCompliance.length > 0 && (
+          <section className="py-10">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl text-lime-400 mb-4 flex justify-start">
+              Privacy<span className="text-white">&</span>Compliance
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {prvCompliance.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 5 HARDWARE */}
+        {social && (
+          <section className="py-8 px-6 mt-10">
+            <Link href={`/blog/${social.slug}`}>
+              <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
+                {social.category?.name ?? 'Hardware'}
+              </p>
+              <Motion.div
+                className="relative group cursor-pointer overflow-hidden rounded-xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {/* Image with parallax hover */}
+                <Motion.div
+                  className="relative"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                  {social.image && (
+                    <Image
+                      src={social.image}
+                      alt={social.alt || social.title}
+                      className="w-full h-96 object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                      width={800}
+                      height={400}
+                      priority={false}
+                    />
+                  )}
+                </Motion.div>
+
+                {/* Gradient overlay with fade-in */}
+                <Motion.div
+                  className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent rounded-xl"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                />
+
+                {/* Text content with slide-up */}
+                <Motion.div
+                  className="absolute bottom-6 left-6 right-6"
+                  initial={{ y: 30, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                >
+                  <Motion.h1
+                    className="text-2xl md:text-3xl font-bold text-white mb-2"
+                  >
+                    {social.title}
+                  </Motion.h1>
+                  <Motion.p
+                    className="text-gray-300 text-sm"
+                  >
+                    {social.excerpt}
+                  </Motion.p>
+                </Motion.div>
+              </Motion.div>
+            </Link>
+          </section>
+        )}
+
+        {/* 6 GLOBAL LENS */}
+        {globalLens.length > 0 && (
+          <section className="py-10">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl text-white mb-4 flex justify-start">
+              Wired<span className="text-lime-400">World</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {globalLens.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 7 AFRICA RISING */}
+        {africaRising.length > 0 && (
+          <section className="py-10">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl text-lime-400 mb-4 flex justify-end">Africa<span className="text-white">Rising</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {africaRising.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 8 KEY PLAYERS */}
+        {keyPlayers.length > 0 && (
+          <section className="py-10">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl text-white mb-4 flex justify-start">
+              Key<span className="text-lime-400">Players</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {keyPlayers.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 13 SECURE HABITS */}
         {secureHabits.length > 0 && (
           <section className="py-10">
             <Motion.h2

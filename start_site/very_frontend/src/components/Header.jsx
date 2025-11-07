@@ -46,8 +46,7 @@ export default function Header() {
                     width={0}
                     height={0}
                     priority
-                    // tabIndex="0"
-                    aria-label="Site Logo"
+                    aria-label="Brand Logo and Home Link"
                   />
                 </div>
               </Link>

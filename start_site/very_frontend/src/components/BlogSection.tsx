@@ -1,3 +1,5 @@
+import { faLongArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
 export default function BlogSection() {
@@ -8,7 +10,7 @@ export default function BlogSection() {
           From the <span className="text-pink-400">Blog</span>
         </h2>
         <p className="text-sm sm:text-base text-gray-400 mb-12 max-w-2xl mx-auto">
-            Unfiltered takes on Tech, Code, Culture and everything in between.<br /> 
+            Unfiltered takes on Tech, Code, Culture and everything in between.
             {/* Thoughtful, clear, and actually useful. */}
         </p>
 
@@ -47,7 +49,7 @@ export default function BlogSection() {
                 href="/blog"
                 className="text-pink-400 font-semibold hover:text-pink-300 hover:underline transition-all"
               >
-                Read more →
+                Read more <FontAwesomeIcon className="my-auto" icon={faLongArrowRight} size="sm" />
               </Link>
             </div>
           ))}
@@ -64,7 +66,7 @@ export default function BlogSection() {
             href="/blog"
             //   className="inline-block mt-14 px-8 py-3 rounded-full bg-lime-400/10 hover:bg-lime-400/20 text-lime-300 transition-all duration-300"
             className="font-semibold cursor-pointer border-3 border-gray-500/100 bg-transparent text-white px-9 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
-        active:text-black shadow-[0_4px_0_0_#ff69b4] hover:shadow-[0_2px_0_0_#fb64b6] active:shadow-[0_2px_0_0_#ff69b4] active:translate-y-1.5 hover:translate-y-0.5  transition-all duration-200"
+                    active:text-black shadow-[0_4px_0_0_#ff69b4] hover:shadow-[0_2px_0_0_#fb64b6] active:shadow-[0_2px_0_0_#ff69b4] active:translate-y-1.5 hover:translate-y-0.5  transition-all duration-200"
             // className="font-semibold cursor-pointer border-2 border-pink-400/70 bg-pink-500/90 text-white px-6 py-2 rounded-full hover:bg-pink-400 hover:shadow-[0_0_15px_#ff69b4] hover:text-white transition-all duration-300"
             >
             <span className="lg:hidden">/Blog</span>

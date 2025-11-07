@@ -83,8 +83,10 @@ export default function BlogPost() {
   if (error || !postData) {
     return (
       <section className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-b from-black to-zinc-900 text-gray-400 px-4">
-        <div className="text-center max-w-md">
-          <p>Failed to load this post.</p>
+        <div className="text-center py-20">
+          <p className="text-rose-400 text-lg mb-4">
+            Failed to load posts
+          </p>
           <button
             onClick={() => window.location.reload()}
             className="px-6 py-1 bg-rose-500/20 hover:bg-rose-500/30 border border-rose-500/30 rounded-full text-rose-300 transition-all"
@@ -92,7 +94,7 @@ export default function BlogPost() {
             Try Again
           </button>
         </div>
-      </section>
+      </section >
     );
   }
 

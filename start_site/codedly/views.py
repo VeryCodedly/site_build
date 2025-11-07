@@ -253,6 +253,53 @@ class PostViewSet(viewsets.ModelViewSet):
         # print("big_deal posts fetched:", posts)
         return Response({"secureHabits": serializer.data})
 
+    # 12
+    @action(detail=False, methods=['get'])
+    def keyPlayers(self, request):
+        posts = Post.objects.filter(status="published", subcategory__slug="key-players").distinct()[0:3]
+        serializer = PostSerializer(posts, many=True, context={'request': request})
+        # print("big_deal posts fetched:", posts)
+        return Response({"keyPlayers": serializer.data})
+
+    # 13
+    @action(detail=False, methods=['get'])
+    def AI(self, request):
+        posts = Post.objects.filter(status="published", subcategory__slug="ai").distinct()[0:3]
+        serializer = PostSerializer(posts, many=True, context={'request': request})
+        # print("big_deal posts fetched:", posts)
+        return Response({"AI": serializer.data})
+    
+    # 14
+    @action(detail=False, methods=['get'])
+    def bchCrypto(self, request):
+        posts = Post.objects.filter(status="published", subcategory__slug="blockchain-crypto").distinct()[0:3]
+        serializer = PostSerializer(posts, many=True, context={'request': request})
+        # print("big_deal posts fetched:", posts)
+        return Response({"bchCrypto": serializer.data})
+    
+    # 15
+    @action(detail=False, methods=['get'])
+    def startups(self, request):
+        posts = Post.objects.filter(status="published", subcategory__slug="startups").distinct()[0:3]
+        serializer = PostSerializer(posts, many=True, context={'request': request})
+        # print("big_deal posts fetched:", posts)
+        return Response({"startups": serializer.data})
+    
+    # 16
+    @action(detail=False, methods=['get'])
+    def prvCompliance(self, request):
+        posts = Post.objects.filter(status="published", subcategory__slug="privacy-compliance").distinct()[0:3]
+        serializer = PostSerializer(posts, many=True, context={'request': request})
+        # print("big_deal posts fetched:", posts)
+        return Response({"prvCompliance": serializer.data})
+    
+    # 17
+    @action(detail=False, methods=['get'])
+    def social(self, request):
+        post = Post.objects.filter(status="published", image__isnull=False, subcategory__slug="social").order_by('-created_at').first()
+        serializer = PostSerializer(post, context={'request': request}) if post else None
+        return Response({"social": serializer.data if serializer else None})
+
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all().order_by("name")

@@ -10,13 +10,12 @@ import {
   faRss,
 } from "@fortawesome/free-solid-svg-icons";
 import { motion as Motion } from "framer-motion";
-import { col } from "framer-motion/client";
 
 const cards = [
   {
     id: "read",
     title: "Read",
-    description: "Articles with technical depth, clarity, and purpose.",
+    description: "Unfiltered articles with technical depth and clarity.",
     icon: faNewspaper,
     accent: "bg-lime-400",
     color: "text-lime-400",
@@ -47,7 +46,7 @@ const cards = [
     icon: faRss,
     accent: "bg-lime-700",
     color: "text-lime-700",
-    href: "https://discord.gg/invite/UVWNezaj"
+    href: "https://discord.gg/invite/GYddWTYE"
   },
 ];
 
@@ -56,7 +55,7 @@ export default function TeaserCards() {
   return (
     <section className="relative min-h-screen flex items-center justify-center py-20 px-6 md:px-8 lg:px-22 overflow-hidden border-b border-zinc-900">
       {/* faded bg */}
-      <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-stretch opacity-60"></div>
+      <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-cover opacity-60"></div>
 
       {/* <CircuitLines cardIds={cards.map((c) => c.id)} /> */}
       <div className="relative w-full h-full gap-4 m-3 lg:gap-0.5 max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
@@ -64,7 +63,7 @@ export default function TeaserCards() {
           <Motion.div
             id={`card-${card.id}`}
             key={index}
-            className={`relative rounded-3xl px-10 py-9 border border-gray-00 bg-white/5 backdrop-blur-md active:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
+            className={`relative rounded-3xl px-10 py-9 border border-gray-700/60 bg-white/5 backdrop-blur-md active:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               shadow-[0_15px_20px_rgba(0,0,0,0.6),0_15px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               hover:ring-1 transition-all duration-300 group`}
             whileHover={{ scale: 1.10 }}
@@ -87,7 +86,7 @@ export default function TeaserCards() {
               {card.description}
             </p>
 
-            <div className={`absolute bottom-4 left-8 h-0.5 w-20 ${card.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+            <div className={`absolute bottom-4 left-8 h-0.5 w-20 ${card.accent} opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500`}></div>
           </Motion.div>
         ))}
       </div>
