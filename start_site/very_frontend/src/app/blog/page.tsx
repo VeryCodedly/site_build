@@ -165,7 +165,7 @@ export default function BlogHome() {
   const { data: hardware } = useGetHardwarePostsQuery();
   const { data: techCulture = [] } = useGetTechCulturePostsQuery();
 
-  
+
   const { data: social } = useGetSocialPostQuery();
   const { data: globalLens = [] } = useGetGlobalLensPostsQuery();
   const { data: africaRising = [] } = useGetAfricaRisingPostsQuery();
@@ -480,23 +480,6 @@ export default function BlogHome() {
 
         {/* <NewsletterCard /> */}
 
-        {/* 10 AI */}
-        {AI.length > 0 && (
-          <section className="py-10">
-            <Motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-3xl text-lime-400 mb-4 flex justify-start">A<span className="text-white">I</span>
-            </Motion.h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {AI.map(post => (
-                <MiniPostCard key={post.id} post={post} />
-              ))}
-            </div>
-          </section>
-        )}
-
         {/* 11 EMERGING TECH */}
         {emergingTech.length > 0 && (
           <section className="py-10">
@@ -504,10 +487,27 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-3xl text-white mb-4 flex justify-end">Emerging<span className="text-lime-400">Tech</span>
+              className="text-3xl text-white mb-4 flex justify-start">Emerging<span className="text-lime-400">Tech</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {emergingTech.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 10 AI */}
+        {AI.length > 0 && (
+          <section className="py-10">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl text-lime-400 mb-4 flex justify-end">AI
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {AI.map(post => (
                 <MiniPostCard key={post.id} post={post} />
               ))}
             </div>
@@ -602,8 +602,9 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-3xl text-lime-400 mb-4 flex justify-start">
-              Blockchain<span className="text-white">&</span>Crypto
+              className="text-3xl text-white mb-4 flex justify-start">
+              Blockchain&<span className="text-lime-400">Crypto</span>
+
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {bchCrypto.map(post => (
@@ -639,7 +640,7 @@ export default function BlogHome() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="text-3xl text-lime-400 mb-4 flex justify-start">
-              Privacy<span className="text-white">&</span>Compliance
+              Privacy<span className="text-white">&Compliance</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {prvCompliance.map(post => (

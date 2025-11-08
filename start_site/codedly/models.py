@@ -287,8 +287,10 @@ class Course(models.Model):
     slug = models.SlugField(max_length=40, unique=True, blank=True)
     description = models.TextField(blank=True)
     meta = models.CharField(max_length=170, blank=True)
-    language = models.CharField(max_length=50, choices=[('Python','Python'),('JavaScript','JavaScript'), ('React', 'React')])
+    language = models.CharField(max_length=50, choices=[('HTML','HTML'), ('CSS','CSS'), ('Python','Python'),('JavaScript','JavaScript'), ('Git', 'Git'), ('React', 'React')])
     prerequisites = models.CharField(max_length=255, default="Basic computer literacy")
+    
+    sort = models.PositiveIntegerField(default=1, blank=True, null=True)
     
     level = models.CharField(max_length=50, default="Beginner")
     image = models.ImageField(upload_to='courses/', null=True, blank=True)

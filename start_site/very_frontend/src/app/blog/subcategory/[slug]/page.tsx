@@ -140,7 +140,7 @@ export default function SubcategoryPage() {
               </div>
 
               {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6"> */}
-              <div className="space-y-2.5 w-[96%] mx-auto px-4 lg:px-8 py-10 border-y border-zinc-800 rounded-xl">
+              <div className="space-y-2.5 w-[90%] mx-auto px-4 lg:px-8 py-10 border-y border-zinc-800 rounded-xl">
                 {posts.map((p, index) =>
                   <Motion.div
                     key={index}

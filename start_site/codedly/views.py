@@ -342,7 +342,7 @@ class PostLinkViewSet(viewsets.ModelViewSet):
     
     
 class CourseViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Course.objects.all()
+    queryset = Course.objects.all().order_by("sort")
     serializer_class = CourseSerializer
     lookup_field = "slug"
     

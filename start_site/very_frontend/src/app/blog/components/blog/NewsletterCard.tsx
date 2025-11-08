@@ -80,7 +80,7 @@ export default function NewsletterCard() {
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.4 }}
       className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 max-w-[80vw] sm:max-w-md rounded-xl border-3 
-      border-slate-700/50 bg-gradient-to-br from-transparent to-transparent/90 backdrop-blur-lg shadow-[0_0_2px_#cccccc] 
+      border-slate-700/50 bg-gradient-to-br from-black/15 to-transparent/90 backdrop-blur-lg shadow-[0_0_2px_#cccccc] 
       hover:shadow-[0_0_10px_#222222] active:shadow-[0_0_10px_#222222] p-6 sm:p-8 text-center transition-all duration-300 z-50"
       role="dialog"
       aria-modal="true"

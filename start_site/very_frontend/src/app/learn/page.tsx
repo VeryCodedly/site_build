@@ -199,12 +199,12 @@ export default function LearnPage() {
 
           {/* Right Image */}
           <div className="flex-shrink-0 mb-3 sm:mb-0">
-            <div className="relative w-ful max-w-[100px] w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] aspect-square mx-auto sm:mx-0">
+            <div className="relative max-w-[100px] w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] aspect-square mx-auto sm:mx-0">
               <Image
                 fill
                 src={topic.image}
                 alt="Course Language Image"
-                className="text-xs rounded-xl object-cover group-hover:brightness-110 transition duration-300"
+                className="text-xs rounded-md object-cover group-hover:brightness-110 transition duration-300"
                 sizes="(max-width: 640px) 100px, 120px"
               />
             </div>
@@ -223,7 +223,7 @@ export default function LearnPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        Tools & <span className="text-lime-400">Resources</span>
+        Tools&<span className="text-lime-400">Resources</span>
       </Motion.h2>
 
       <div className="grid grid-cols-3 sm:grid-cols-6 gap-6 justify-start items-left">

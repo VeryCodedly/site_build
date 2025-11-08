@@ -209,6 +209,7 @@ interface LessonContentJSON {
   title?: string;
   duration?: string;
   level?: string;
+  id?: number;
   blocks: LessonBlock[];
 }
 
@@ -256,7 +257,7 @@ export default function LessonContent({
       {json.title && (
         <header className="mb-10 sm:mb-10 text-center mx-auto">
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 leading-tight">
-            {json.title}
+            {json.id}.{json.title}
           </h1>
           {json.duration && (
             <div className="flex flex-col items-center text-xs sm:text-sm text-pink-400 italic">
