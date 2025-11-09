@@ -18,17 +18,17 @@ export default function BlogSection() {
           {[
             {
               title: "Why Python Keeps Winning",
-              desc: "It’s not just syntax — it’s clarity, community, and flow.",
-              tag: "Apps & Software",
+              desc: "It’s not just syntax. It’s clarity, community, and flow.",
+              tag: "Rundown",
             },
             {
-              title: "React Still Feels Very Fresh",
-              desc: "Even a decade later, it’s the gold standard for frontends.",
-              tag: "Apps & Software",
+              title: "Burnout Is Not A Badge Of Honor",
+              desc: "Tech culture picked up a dangerous myth.",
+              tag: "Tech Culture",
             },
             {
-              title: "AI Tools That Actually Help",
-              desc: "Skip the hype — these are the real productivity boosters.",
+              title: "The First AI Household Robot Became a Meme",
+              desc: "A glimpse at the clumsy start of our humanoid future.",
               tag: "Innovation & AI",
             },
           ].map((post, i) => (
@@ -38,7 +38,7 @@ export default function BlogSection() {
                          p-6 text-left transition-all duration-300 hover:translate-y-[-5px] hover:shadow-[0_0_30px_-10px_rgba(255,105,180,0.4)]
                          active:translate-y-[-5px] active:shadow-[0_0_30px_-10px_rgba(255,105,180,0.4)]"
             >
-            <span className="inline-block mb-3 text-xs text-pink-400 bg-pink-400/10 px-2 py-1 rounded">
+            <span className="inline-block font-semibold tracking-tight mb-3 text-xs text-pink-400 bg-pink-400/10 px-2 py-1 rounded">
                 {post.tag}
               </span>
               <h3 className="text-xl font-semibold text-white mb-2">
@@ -65,7 +65,7 @@ export default function BlogSection() {
         <Link
             href="/blog"
             //   className="inline-block mt-14 px-8 py-3 rounded-full bg-lime-400/10 hover:bg-lime-400/20 text-lime-300 transition-all duration-300"
-            className="font-semibold cursor-pointer border-3 border-gray-500/100 bg-transparent text-white px-9 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
+            className="font-bold cursor-pointer border-3 border-gray-500/100 bg-transparent text-white px-9 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
                     active:text-black shadow-[0_4px_0_0_#ff69b4] hover:shadow-[0_2px_0_0_#fb64b6] active:shadow-[0_2px_0_0_#ff69b4] active:translate-y-1.5 hover:translate-y-0.5  transition-all duration-200"
             // className="font-semibold cursor-pointer border-2 border-pink-400/70 bg-pink-500/90 text-white px-6 py-2 rounded-full hover:bg-pink-400 hover:shadow-[0_0_15px_#ff69b4] hover:text-white transition-all duration-300"
             >

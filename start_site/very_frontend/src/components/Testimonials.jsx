@@ -370,7 +370,7 @@ export default function Testimonials() {
         <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">
           What Creatives Are Saying
         </h3>
-        <p className="text-gray-300 text-base md:text-lg">
+        <p className="text-gray-400 text-base md:text-lg">
           Real voices from our global community.
         </p>
       </div>
@@ -421,15 +421,15 @@ export default function Testimonials() {
             onClick={prevTestimonial}
             className="bg-gradient-to-b from-white/10 to-white/0 relative px-4 py-2 rounded-full border border-gray-700 text-lime-300 font-medium overflow-hidden group"
           >
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-black active:text-white">
-              <FontAwesomeIcon icon={faArrowLeft} size="xs" />
+            <span className="relative z-10 transition-colors duration-500 group-hover:text-black group-active:text-black">
+              <FontAwesomeIcon icon={faArrowLeft} size="sm" />
             </span>
             <span
               className="pointer-events-none absolute inset-0
                         before:content-[''] before:absolute before:inset-0
                         before:bg-gradient-to-b before:from-lime-400 before:to-lime-700
                         before:opacity-90 before:rounded-full
-                        translate-y-full group-hover:translate-y-0
+                        translate-y-full group-hover:translate-y-0 group-active:translate-y-0
                         transition-transform duration-500 ease-out"
             />
           </button>
@@ -439,15 +439,15 @@ export default function Testimonials() {
             onClick={nextTestimonial}
             className="bg-gradient-to-b from-white/10 to-white/0 relative px-4 py-2 rounded-full border border-gray-700 text-lime-300 font-medium overflow-hidden group"
           >
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-black active:text-white">
-              <FontAwesomeIcon icon={faArrowRight} size="xs" />
+            <span className="relative z-10 transition-colors duration-500 group-hover:text-black group-active:text-black">
+              <FontAwesomeIcon icon={faArrowRight} size="sm" />
             </span>
             <span
               className="pointer-events-none absolute inset-0
                         before:content-[''] before:absolute before:inset-0
                         before:bg-gradient-to-b before:from-lime-400 before:to-lime-700
                         before:opacity-90 before:rounded-full
-                        translate-y-full group-hover:translate-y-0
+                        translate-y-full group-hover:translate-y-0 group-active:translate-y-0
                         transition-transform duration-500 ease-out"
             />
           </button>

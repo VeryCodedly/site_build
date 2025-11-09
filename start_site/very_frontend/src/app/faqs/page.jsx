@@ -34,7 +34,7 @@ export default function FAQsPage() {
           >
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Is this platform free?</h3>
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-              Yes! Most of our content is free to access. Premium resources may come later, 
+              Yes! Most of our content is free to access. Premium resources may come later,
               but our goal is to keep learning open.
             </p>
           </Motion.div>
@@ -51,12 +51,45 @@ export default function FAQsPage() {
           <Motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Can I learn at my own pace?</h3>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+              Absolutely. All content is self-paced — no deadlines, no pressure. Learn whenever and however you want.
+            </p>
+          </Motion.div>
+
+          <Motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+          >
+            <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Will there be certificates?</h3>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+              Yes! Complete a course path and earn a shareable certificate to showcase on LinkedIn or your portfolio.
+            </p>
+          </Motion.div>
+
+          <Motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+          >
+            <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">What if I get stuck on a lesson?</h3>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+              Jump into our <Link href="https://discord.gg/invite/GYddWTYE" className="text-lime-400 underline hover:text-lime-300 transition-colors duration-200"> community</Link>.
+              Ask questions, see solutions, or pair up with a study buddy. You're never alone.
+            </p>
+          </Motion.div>
+
+          <Motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">How do I join the community?</h3>
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-              Check out our <Link href="/community" className="text-lime-400 underline hover:text-lime-300 transition-colors duration-200">community page</Link> 
-              to join Discord or Facebook groups.
+              Check out our <Link href="https://discord.gg/invite/GYddWTYE" className="text-lime-400 underline hover:text-lime-300 transition-colors duration-200">community page</Link> to join Discord or Facebook groups.
             </p>
           </Motion.div>
         </div>

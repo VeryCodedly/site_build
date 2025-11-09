@@ -1,6 +1,7 @@
 'use client';
 
 import { motion as Motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function CommunityPage() {
   return (
@@ -33,15 +34,15 @@ export default function CommunityPage() {
           <div>
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Ways to Join</h3>
             <ul className="text-gray-400 text-sm sm:text-base list-disc list-inside space-y-1">
-              <li>Chat with peers on Discord</li>
-              <li>Join discussions in our Facebook group</li>
+              <li>Chat with peers on <Link href="https://discord.gg/invite/GYddWTYE" className="text-lime-400 underline hover:text-lime-300 transition-colors duration-200">Discord</Link></li>
+              <li>Join discussions in our <Link href="https://facebook.com/verycodedly" className="text-lime-400 underline hover:text-lime-300 transition-colors duration-200">Facebook</Link> group</li>
               <li>Collaborate on community projects</li>
             </ul>
           </div>
           <div>
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Why It Matters</h3>
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-              You’re not just learning alone — you’re joining a network of people excited 
+              You’re not just learning alone, you’re joining a network of people excited 
               to share tips, solve problems, and celebrate progress.
             </p>
           </div>

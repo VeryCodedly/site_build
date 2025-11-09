@@ -13,14 +13,14 @@ export default function CTA() {
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight bg-gradient-to-r from-white to-lime-300 bg-clip-text text-transparent">
             Ready to Create <br /> Something Brilliant?
           </h2>
-          <p className="text-gray-300 text-md md:text-lg mb-10 max-w-lg ml-auto">
+          <p className="text-gray-300/90 text-md md:text-lg mb-10 max-w-lg ml-auto">
             Start learning with a community of bold thinkers, dreamers, and doers. Your next big thing starts here.
           </p>
 
           <div className="flex space-x-4 justify-end">
             <Link
               href="/learn"
-              className="font-semibold cursor-pointer border-3 border-gray-500/100 px-8 py-1 rounded-full hover:bg-white active:bg-white hover:text-black active:text-black shadow-[0_4px_0_0_#39ff14]
+              className="font-bold cursor-pointer border-3 border-gray-500/100 px-8 py-1 rounded-full hover:bg-white active:bg-white hover:text-black active:text-black shadow-[0_4px_0_0_#39ff14]
                          hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
             >
               <span className="lg:hidden">Start</span>

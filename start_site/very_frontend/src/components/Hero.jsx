@@ -31,12 +31,12 @@ export default function Hero() {
             Deep insights on what you need to know. No noise, just clarity.
           </p>
           <div className="flex space-x-5">
-            <Link href="/learn" className="font-semibold cursor-pointer border-3 border-gray-500/100 bg-lime-400 text-black px-6 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
+            <Link href="/learn" className="font-bold cursor-pointer border-3 border-gray-500/100 bg-lime-400 text-black px-6 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
         active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
               <span className="lg:hidden">Learn</span>
               <span className="hidden lg:inline">Start Learning</span>
             </Link>
-            <Link href="/blog" className="font-semibold cursor-pointer border-3 border-gray-500/100 px-7.5 lg:px-8 py-1 rounded-full text-white hover:bg-white active:bg-white hover:text-black
+            <Link href="/blog" className="font-bold cursor-pointer border-3 border-gray-500/100 px-7.5 lg:px-8 py-1 rounded-full text-white hover:bg-white active:bg-white hover:text-black
         active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
               <span className="lg:hidden">Blog</span>
               <span className="hidden lg:inline">Explore Blog</span>
