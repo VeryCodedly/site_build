@@ -210,7 +210,7 @@ export default function BlogHome() {
           </Motion.h1>
 
           <Motion.p
-            className="relative text-gray-400 mt-6 z-20 max-w-sm sm:max-w-md mx-auto text-md sm:text-lg"
+            className="relative text-gray-400 px-1 sm:px-0 mt-6 z-20 max-w-sm sm:max-w-md mx-auto text-md sm:text-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
