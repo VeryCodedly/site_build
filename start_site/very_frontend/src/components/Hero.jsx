@@ -44,7 +44,7 @@ export default function Hero() {
           </div>
         </div>
 
-          <div className="flex-1 items-center justify-center w-full px-8 sm:px-10 mt-20 py-22 sm:py-16 md:py-12 lg:py-0 lg:mt-0">
+          <div className="flex-1 items-center justify-center w-full px-8 sm:px-10 mt-14 py-22 sm:py-16 md:py-12 lg:py-0 lg:mt-0">
             <MorphingPanel />
           </div>
 

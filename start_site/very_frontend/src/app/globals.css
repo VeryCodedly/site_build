@@ -38,7 +38,7 @@
 @keyframes spin-twice {
   0%   { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) } /* start */
   /* 100% { transform: rotateX(-95deg) rotateY(-270deg) rotateZ(58deg) } 2 full spins */
-  100% { transform: rotateX(190deg) rotateY(360deg) rotateZ(-360deg) }
+  100% { transform:rotateX(-270deg)_rotateY(-390deg)_rotateZ(120deg) }
 }
 
 .animate-spin-twice {

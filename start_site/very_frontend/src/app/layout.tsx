@@ -97,7 +97,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="VeryCodedly" />
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
 
-        <meta name="theme-color" content="#9AE600" />
+        <meta name="theme-color" content="#000000" />
       </head>
       <body className={`${pops.variable} ${robo.variable} ${geist.variable} antialiased`}>
         <Header />

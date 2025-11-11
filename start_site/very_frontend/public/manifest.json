@@ -7,7 +7,7 @@
     "id": "/",
     "display": "standalone",
     "background_color": "#000000",
-    "theme_color": "#9AE600",
+    "theme_color": "#000000",
     "orientation": "any",
     "protocol_handlers": [
         {
