@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "code tutorials",
     "start coding",
     "learn to code",
-    "simple programming",
+    "programming",
     "coding guide"
   ],
   openGraph: {
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://verycodedly.com/learn/opengraph-image.png",
-        width: 1200,
-        height: 630,
+        width: 1340,
+        height: 659,
         alt: "Learn | VeryCodedly",
       },
     ],

@@ -12,7 +12,7 @@ export default function LearnPage() {
   
   return (
     <div>
-    <section className="relative w-full min-h-screen bg-black text-white overflow-hidden py-24 px-8 sm:px-6 lg:px-8">
+    <section className="relative w-full min-h-screen bg-black text-white overflow-hidden pt-24 pb-12 px-8 sm:px-6 lg:px-8">
       {/* subtle grid / pattern background */}
       <div className="absolute inset-0 bg-linear-gradient(135deg, #0f111a, #1a1c2c) bg-center bg-cover opacity-20 pointer-events-none"></div>
 
@@ -259,7 +259,7 @@ export default function LearnPage() {
     
     <div className="flex justify-end">
       <Link
-        href="https://discord.gg/invite/GYddWTYE"
+        href="https://discord.gg/53wVsqEcbE"
         target="_blank"
         // className="inline-block bg-lime-400 text-black font-semibold px-8 py-3 rounded-full hover:bg-lime-300 transition"
         className="bg-transparent text-md text-white font-bold cursor-pointer border-3 border-gray-500/100 px-8 py-1 rounded-full hover:bg-white active:bg-white hover:text-black

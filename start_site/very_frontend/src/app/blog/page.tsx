@@ -199,7 +199,7 @@ export default function BlogHome() {
           VeryCodedly
         </Motion.h1>
 
-        <div className="z-20 backdrop-blur-xs w-full py-2 sm:py-5">
+        <div className="z-20 backdrop-blur-xs w-full py-5 sm:py-5">
           <Motion.h1
             className="hero px-14 sm:px-0 relative text-6xl sm:text-7xl font-bold z-20 backdrop-blur-2xl"
             initial={{ opacity: 0, y: 30 }}

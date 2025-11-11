@@ -255,9 +255,9 @@ export default function LessonContent({
   return (
     <article className="max-w-3xl mx-auto space-y-6 sm:space-y-6 px-4 sm:px-6 text-gray-300 leading-relaxed">
       {json.title && (
-        <header className="mb-10 sm:mb-10 text-center mx-auto">
+        <header className="mb-10 text-center mx-auto">
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 leading-tight">
-            {json.id}.{json.title}
+            {json.id}. {json.title}
           </h1>
           {json.duration && (
             <div className="flex flex-col items-center text-xs sm:text-sm text-pink-400 italic">
@@ -316,7 +316,7 @@ export default function LessonContent({
 
               case "table":
                 return (
-                  <div key={index} className="overflow-x-auto my-6 transition-transform duration-300 hover:scale-[1.01]">
+                  <div key={index} className="overflow-x-auto my-10 transition-transform duration-300 hover:scale-[1.01]">
                     <table className="w-full border-collapse backdrop-blur-md bg-white/10 dark:bg-[#181d1d]/90 border border-white/20 dark:border-zinc-700/50 rounded-xl shadow-lg overflow-hidden">
                       <thead className="bg-white/20 dark:bg-zinc-700/30">
                         <tr>

@@ -31,12 +31,11 @@ export default function SupportPage() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Help keep VeryCodedly alive
+            Help keep VeryCodedly going
           </Motion.h2>
           <p className="text-gray-300 pb-6 text-sm sm:text-base text-center leading-relaxed max-w-2xl mx-auto">
-            VeryCodedly is built by a small, obsessed team. Your support keeps our content free,
-            the community warm, and the servers humming. Every bit helps, and
-            none of it changes who we are.
+            VeryCodedly is run by a small, dedicated team. Your support helps us keep our content free, our community active,
+             and our servers running. Every bit makes a difference.
           </p>
         </Motion.header>
 
@@ -154,7 +153,7 @@ export default function SupportPage() {
             </p>
             <div className="space-y-3">
               <Link
-                href="/community"
+                href="https://discord.gg/53wVsqEcbE"
                 className="block w-full text-center text-sm sm:text-base px-4 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
                            active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
               >
@@ -203,7 +202,8 @@ export default function SupportPage() {
               transition={{ duration: 0.3, delay: 0.8 }}
             >
               <dt className="font-medium text-gray-300">Is support tax-deductible?</dt>
-              <dd className="text-gray-400">We are a non-profit; check individual platforms for their policies.</dd>
+              <dd className="text-gray-400">We’re a community-driven project, not a registered charity yet — so contributions aren’t tax-deductible.
+                But every bit goes directly into keeping our resources free for everyone.</dd>
             </Motion.div>
             <Motion.div
               initial={{ opacity: 0, y: 20 }}

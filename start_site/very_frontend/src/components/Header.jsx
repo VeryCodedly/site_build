@@ -55,8 +55,8 @@ export default function Header() {
                 <Link href="/blog" className="px-2 text-white hover:text-lime-400 transition">READ</Link>
                 <Link href="/learn" className="px-2 text-white hover:text-lime-400 transition">LEARN</Link>
                 <Link href="https://www.youtube.com/channel/UCNDy9Q0qPHcY-TT2BD7B1kw" target="_blank" className="px-2 text-white hover:text-lime-400 transition">KNOW</Link>
-                <Link href="https://discord.gg/invite/GYddWTYE" className="px-2 text-white hover:text-lime-400 transition" target="_blank" rel="noopener">CONNECT</Link>
-                <p href="/" className="px-2 text-white hover:text-lime-400 transition">🚧</p>
+                <Link href="https://discord.gg/53wVsqEcbE" className="px-2 text-white hover:text-lime-400 transition" target="_blank" rel="noopener">CONNECT</Link>
+                <p className="px-2 text-white hover:text-lime-400 transition">🚧</p>
               </nav>
               <div className="mr-4">
                 <Link href="/contact" className="hidden md:inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 text-black px-3 py-0.5 rounded-full hover:bg-white active:bg-white hover:text-black
@@ -91,6 +91,7 @@ export default function Header() {
           >
             READ
           </Link>
+
           <Link
             href="/learn"
             className="text-white hover:text-lime-400 active:text-lime-400 transition"
@@ -98,15 +99,17 @@ export default function Header() {
           >
             LEARN
           </Link>
+
           <Link
-            href="/know"
+            href="https://www.youtube.com/channel/UCNDy9Q0qPHcY-TT2BD7B1kw"
             className="text-white hover:text-lime-400 active:text-lime-400 transition"
             onClick={() => setMenuOpen(false)}
           >
             KNOW
           </Link>
+
           <Link
-            href="https://discord.gg/invite/GYddWTYE"
+            href="https://discord.gg/53wVsqEcbE"
             className="text-white hover:text-lime-400 active:text-lime-400 transition"
             target="_blank"
             rel="noopener"
@@ -114,6 +117,7 @@ export default function Header() {
           >
             CONNECT
           </Link>
+
           <Link
             href="/contact"
             className="inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 text-black px-3.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
@@ -122,6 +126,7 @@ export default function Header() {
           >
             <FontAwesomeIcon icon={faEnvelope} size="sm" />
           </Link>
+          
           <p className="px-2 text-white hover:text-lime-400 transition">Beta 🚧</p>
         </div>
       </header>

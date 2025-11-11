@@ -86,7 +86,7 @@ export default function Footer() {
               ["x-twitter", "https://x.com/verycodedly"],
               ["youtube", "https://www.youtube.com/@verycodedly"],
               ["reddit", "https://reddit.com/r/VeryCodedly"],
-              ["discord", "https://discord.gg/invite/GYddWTYE"],
+              ["discord", "https://discord.gg/53wVsqEcbE"],
               ["medium", "https://medium.com/@verycodedly"],
               ["linkedin", "https://linkedin.com/in/verycodedly"],
               ["facebook", "https://facebook.com/verycodedly"],

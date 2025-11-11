@@ -94,7 +94,7 @@ export default function PrivacyPage() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto"
         >
-          Your trust is everything. We built this platform to help you learn and keep up with the Tech ecosystem — not to track or exploit you. Here’s exactly how we handle your data.
+          Your trust is everything. We built this platform to help you learn and keep up with the tech space, not to track or exploit you. Here’s exactly how we handle your data.
         </Motion.p>
 
         {/* Key Promises */}
@@ -123,7 +123,7 @@ export default function PrivacyPage() {
             {
               icon: faShield,
               title: "Secure by design. Your data never leaves your browser.",
-              desc: "Encrypted connections (HTTPS), no server tracking, no third-party scripts. What you learn stays with you."
+              desc: "Encrypted connections (HTTPS), no server tracking, and no third-party scripts."
             },
             {
               icon: faTrash,
@@ -159,17 +159,17 @@ export default function PrivacyPage() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.9 }}
-          className="text-left max-w-2xl mx-auto space-y-4 text-sm sm:text-base"
+          className="text-left max-w-2xl mx-auto space-y-5 text-sm sm:text-base"
         >
           <div>
             <h3 className="text-white font-semibold mb-1">What we collect:</h3>
-            <p className="text-gray-400 mb-2">
+            <p className="text-gray-400 mb-3">
               <strong>Nothing from you.</strong> No personal info, no emails, no IP logging.
             </p>
           </div>
           <div>
             <h3 className="text-white font-semibold mb-1">What we store (on your device):</h3>
-            <ul className="text-gray-400 space-y-1 list-disc list-inside mb-2">
+            <ul className="text-gray-400 space-y-1 list-disc list-inside mb-3">
               <li><strong>Course progress</strong> (e.g., “HTML Module 3 completed”)</li>
               {/* <li><strong>Preferences</strong> (dark mode, text size)</li> */}
               <li><strong>That’s it</strong> — all in your browser’s local storage</li>
@@ -178,12 +178,11 @@ export default function PrivacyPage() {
 
           <div>
             <h3 className="text-white font-semibold mb-1">What we don’t do:</h3>
-            <ul className="text-gray-400 space-y-1 list-disc list-inside mb-2">
+            <ul className="text-gray-400 space-y-1 list-disc list-inside mb-3">
               <li>No user accounts</li>
               <li>No behavioral tracking</li>
               <li>No ad profiling</li>
               <li>No data sharing with third parties</li>
-              <li>Most importantly, no ads</li>
             </ul>
           </div>
         </Motion.div>
@@ -196,7 +195,7 @@ export default function PrivacyPage() {
           className="pt-6 border-t border-gray-700/50"
         >
           <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-            Got questions? Want to delete your data? Reach out anytime via our{' '}
+            Got questions? Reach out anytime via our{' '}
             <Link
               href="/contact"
               className="text-lime-400 underline hover:text-lime-300 transition-colors duration-200 font-medium"

@@ -43,8 +43,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "https://verycodedly.com/blog/opengraph-image.png",
-        width: 1200,
-        height: 630,
+        width: 1336,
+        height: 634,
         alt: "Blog | VeryCodedly",
       },
     ],
@@ -65,13 +65,11 @@ export default function BlogLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // <html lang='en'>
     <div className="flex flex-col">
       <Providers>
         <FloatingMenu />
         {children}
       </Providers>
     </div>
-    // </html>
   );
 }

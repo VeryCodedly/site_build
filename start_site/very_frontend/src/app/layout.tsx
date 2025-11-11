@@ -38,6 +38,7 @@ export const metadata: Metadata = {
   title: { default: 'VeryCodedly', template: '%s | VeryCodedly' },
   description: "Your friendly neighborhood tech hub.",
   metadataBase: new URL("https://verycodedly.com"),
+  manifest: '/manifest.json',
   alternates: {
     canonical: "/",
     languages: {
@@ -54,7 +55,7 @@ export const metadata: Metadata = {
     "developer insights",
     "smart gadgets",
     "tech explained",
-    "modern technology"
+    "modern tech"
   ],
   openGraph: {
     title: 'VeryCodedly',
@@ -64,9 +65,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: 'https://verycodedly.com/opengraph-image.png',
-        width: 1200,
-        height: 630,
-        alt: "Learn | VeryCodedly",
+        width: 1274,
+        height: 629,
+        alt: "VeryCodedly",
       }
     ],
     locale: 'en_US',
@@ -87,6 +88,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* PWA Manifest */}
+        <link rel="manifest" href="/manifest.json" />
+        
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-title" content="VeryCodedly" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+
+        <meta name="theme-color" content="#9AE600" />
+      </head>
       <body className={`${pops.variable} ${robo.variable} ${geist.variable} antialiased`}>
         <Header />
         {children}

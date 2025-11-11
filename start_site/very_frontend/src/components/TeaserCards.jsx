@@ -46,7 +46,7 @@ const cards = [
     icon: faRss,
     accent: "bg-lime-700",
     color: "text-lime-700",
-    href: "https://discord.gg/invite/GYddWTYE"
+    href: "https://discord.gg/53wVsqEcbE"
   },
 ];
 

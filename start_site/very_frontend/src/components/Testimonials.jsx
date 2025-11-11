@@ -421,7 +421,7 @@ export default function Testimonials() {
             onClick={prevTestimonial}
             className="bg-gradient-to-b from-white/10 to-white/0 relative px-4 py-2 rounded-full border border-gray-700 text-lime-300 font-medium overflow-hidden group"
           >
-            <span className="relative z-10 transition-colors duration-500 group-hover:text-black group-active:text-black">
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-black group-active:text-black">
               <FontAwesomeIcon icon={faArrowLeft} size="sm" />
             </span>
             <span
@@ -430,7 +430,7 @@ export default function Testimonials() {
                         before:bg-gradient-to-b before:from-lime-400 before:to-lime-700
                         before:opacity-90 before:rounded-full
                         translate-y-full group-hover:translate-y-0 group-active:translate-y-0
-                        transition-transform duration-500 ease-out"
+                        transition-transform duration-300 ease-out"
             />
           </button>
 
@@ -439,7 +439,7 @@ export default function Testimonials() {
             onClick={nextTestimonial}
             className="bg-gradient-to-b from-white/10 to-white/0 relative px-4 py-2 rounded-full border border-gray-700 text-lime-300 font-medium overflow-hidden group"
           >
-            <span className="relative z-10 transition-colors duration-500 group-hover:text-black group-active:text-black">
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-black group-active:text-black">
               <FontAwesomeIcon icon={faArrowRight} size="sm" />
             </span>
             <span
@@ -448,7 +448,7 @@ export default function Testimonials() {
                         before:bg-gradient-to-b before:from-lime-400 before:to-lime-700
                         before:opacity-90 before:rounded-full
                         translate-y-full group-hover:translate-y-0 group-active:translate-y-0
-                        transition-transform duration-500 ease-out"
+                        transition-transform duration-300 ease-out"
             />
           </button>
         </div>
