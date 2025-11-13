@@ -42,6 +42,7 @@ export default function Footer() {
               <li key={href}>
                 <Link
                   href={href}
+                  aria-label={`${label} page link`}
                   className="hover:text-lime-400 transition-colors duration-200"
                 >
                   {label}
@@ -67,6 +68,7 @@ export default function Footer() {
               <li key={href}>
                 <Link
                   href={href}
+                  aria-label={`${label} page link`}
                   className="hover:text-lime-400 transition-colors duration-200"
                 >
                   {label}
@@ -96,6 +98,7 @@ export default function Footer() {
               <Link
                 key={icon}
                 href={link}
+                aria-label={`${icon} link`}
                 target="_blank"
                 className="text-gray-500 hover:text-lime-500 hover:scale-110 transition-transform duration-300"
               >
@@ -111,14 +114,14 @@ export default function Footer() {
 
       {/* Logo + Bottom line */}
       <div className="relative flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto gap-6">
-        <Link href="/">
+        <Link aria-label="Home button" href="/">
           <Image
             src="/images/favicon-main.svg"
             alt="VeryCodedly Logo"
             className="h-[100px] w-[100px] object-contain hover:scale-105 active:scale-75 transition-transform duration-300"
             width={100}
             height={100}
-            priority
+            priority={false}
           />
         </Link>
 

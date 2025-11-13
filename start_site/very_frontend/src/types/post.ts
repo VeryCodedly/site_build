@@ -49,7 +49,7 @@ export interface Subcategory {
   slug: string
   about?: string
   created_at: string
-  category: number
+  category: string
 }
 
 export interface PostImage {
@@ -87,6 +87,7 @@ export interface Course {
   meta: string;
   language: string;
   prerequisites: string;
+  sort: number;
   level: string;
   image: string;
   alt?: string;
@@ -114,7 +115,7 @@ export interface Lessons {
   order: number; // order of the lesson in the course
   content_plain_text: string;
   content_JSON: Record<string, unknown>; // flexible JSON blocks
-  course: number; // reference to Course ID
+  course: string; 
   created_at: string;
   updated_at: string;
   count: number;

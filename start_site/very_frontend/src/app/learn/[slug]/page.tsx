@@ -195,6 +195,7 @@ const LessonCard = memo(({ lesson, slug, index }: {
       </h3>
       <Link
         href={`/learn/${slug}/${lesson.slug}`}
+        aria-label={`${lesson.title}`}
         className="inline-flex items-center gap-1 text-lime-400 text-sm font-medium
                    hover:text-white active:text-white hover:underline active:underline transition-all duration-200"
       >
@@ -260,10 +261,12 @@ export default function CoursePage() {
       >
         <Link
           href="/learn"
+          aria-label="Back to Learn home page"
           className="inline-flex items-center gap-2 text-lime-400 mb-7 hover:text-white active:text-white
                      underline underline-offset-2 transition-all duration-200"
         >
           <FontAwesomeIcon icon={faArrowLeft} size="lg" />
+          <span className="sr-only">Go Home</span>
         </Link>
       </Motion.div>
 
@@ -279,6 +282,9 @@ export default function CoursePage() {
           </h1>
           <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-4xl">
             {course.description || "No description available for this course."}
+          </p>
+          <p className="mt-4 flex items-center gap-2 font-extrabold text-sm text-gray-300">
+            Prerequisites: {course.prerequisites}
           </p>
           {/* Progress Summary */}
           <div className="mt-4 flex items-center gap-2 text-sm text-lime-300">

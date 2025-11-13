@@ -72,8 +72,8 @@ export default function MorphingPanel({ className = "" }) {
       case 1: return "rotateX(-20deg) rotateY(225deg) translateZ(100px)";    // Back
       case 2: return "rotateX(-20deg) rotateY(135deg) translateZ(100px)";    // Right
       case 3: return "rotateX(-20deg) rotateY(-45deg) translateZ(100px)";    // Left
-      case 4: return "rotateX(70deg) translateZ(100px) rotateZ(-45deg)";     // Top (adjusted from 90 to 80)
-      case 5: return "rotateX(-110deg) translateZ(100px) rotateZ(45deg)";    // Bottom (adjusted from -90 to -100)
+      case 4: return "rotateX(70deg) translateZ(100px) rotateZ(-45deg)";     // Top 
+      case 5: return "rotateX(-110deg) translateZ(100px) rotateZ(45deg)";    // Bottom 
       default: return "";
     }
   };
@@ -84,7 +84,7 @@ export default function MorphingPanel({ className = "" }) {
   );
 
   return (
-    <div className="relative flex items-center justify-center w-[205px] h-[205px] perspective-[900px] mx-auto">
+    <div className="relative flex items-center justify-center w-[205px] h-[205px] perspective-[900px] mx-auto" aria-label="Logo cube">
 
       <div className="absolute border-10 top-1/2 left-1/2 w-28 h-28 rounded-full bg-cyan-400/60 blur-3xl -translate-x-1/2 -translate-y-1/2 z-[-1] animate-pulse shadow-[0_0_10px_#00ffe0]" />
 
@@ -93,6 +93,7 @@ export default function MorphingPanel({ className = "" }) {
       animate-float hover:opacity-100 drop-shadow-[0_0_10px_#9AE600] rounded-full active:scale-90 active:opacity-100 active:drop-shadow-[0_0_5px_#9AE600]">
         <button className="cursor-pointer"
           onClick={() => setShowModal(true)}
+          aria-label="Logo cube button"
           style={{
             transform: "translateZ(0px)",
             // top: "50%",
@@ -174,6 +175,7 @@ export default function MorphingPanel({ className = "" }) {
         <div
           className="fixed inset-0 z-50 flex items-center justify-center"
           onClick={() => setShowModal(false)}
+          aria-label="Logo cube modal"
         >
           <div
             className="relative bg-black/20 backdrop-blur-md text-white p-4.5 rounded-2xl shadow-lg max-w-md w-[100%] text-center duration-900 transform transition-opacity ease-in-out"
@@ -187,6 +189,7 @@ export default function MorphingPanel({ className = "" }) {
 
             <button
               onClick={() => setShowModal(false)}
+              aria-label="Logo cube modal close button"
               className="cursor-pointer px-1 py-0.5 bg-lime-600 hover:bg-lime-400 text-black font-extrabold rounded-md transition"
             >
               <FontAwesomeIcon icon={faClose} size="sm" />

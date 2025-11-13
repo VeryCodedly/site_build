@@ -5,16 +5,17 @@ import { Post } from '@/types/post';
 
 export default function MiniPostCard({ post }: { post: Post }) {
   return (
-    <Link href={`/blog/${post.slug}`} className="flex gap-3 group">
+    <Link href={`/blog/${post.slug}`} className="flex gap-3 group" aria-label={`Link for ${post.caption}`}>
       {post.image && (
         <div className="relative w-[80px] h-[80px] sm:w-[80px] sm:h-[80px] flex-shrink-0">
           <Image
             src={post.image}
-            alt={post.alt || 'post-image'}
+            alt={post.alt || "post-image"}
             fill
             sizes="80px"
             className="text-xs rounded-lg object-cover object-center"
             priority
+            aria-label={`${post.caption} link`}
           />
         </div>
 

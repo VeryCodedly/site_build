@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Offline | VeryCodedly</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/icons/icon-192x192.png" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #000;
+      color: #A3FF52;
+      text-align: center;
+      padding: 2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1.5rem;
+      animation: pulse 2s infinite;
+    }
+    h1 { font-size: 1.8rem; margin: 1rem 0; font-weight: 700; }
+    p { max-width: 400px; margin: 0.5rem auto; font-size: 1rem; opacity: 0.9; }
+    .retry-btn {
+      margin-top: 2rem;
+      padding: 0.75rem 2rem;
+      background: #A3FF52;
+      color: #000;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(163, 255, 82, 0.3);
+    }
+    .retry-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(163, 255, 82, 0.4); }
+    .retry-btn:active { transform: translateY(0); }
+    small { margin-top: 2rem; opacity: 0.7; font-size: 0.8rem; }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body>
+  <img src="/icons/icon-192x192.png" alt="VeryCodedly" class="logo" />
+  <h1>You're Offline</h1>
+  <p>Check your internet connection and try again.</p>
+  
+  <button class="retry-btn" onclick="retryConnection()">Retry</button>
+
+  <script>
+    function retryConnection() {
+      // Show loading
+      const btn = document.querySelector('.retry-btn');
+      btn.textContent = 'Checking...';
+      btn.disabled = true;
+
+      // Try to fetch small file
+      fetch('/manifest.json', { cache: 'no-store' })
+        .then(() => location.reload())
+        .catch(() => {
+          btn.textContent = 'Still Offline';
+          setTimeout(() => {
+            btn.textContent = 'Retry';
+            btn.disabled = false;
+          }, 1500);
+        });
+    }
+
+    // Auto-retry every 10 seconds
+    setInterval(retryConnection, 10000);
+  </script>
+</body>
+</html>

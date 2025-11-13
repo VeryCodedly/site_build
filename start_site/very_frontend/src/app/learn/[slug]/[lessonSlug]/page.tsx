@@ -322,6 +322,7 @@ export default function LessonPage() {
       >
         <Link href={`/learn/${slug}`} className="text-lime-400 hover:text-white active:text-white">
           <FontAwesomeIcon className="mb-5 sm:mb-4" icon={faLongArrowLeft} size="lg" />
+          <span className="sr-only">Back to Lessons</span>
         </Link>
       </Motion.div>
 
@@ -369,13 +370,7 @@ export default function LessonPage() {
         {/* Main Content with Heading IDs */}
         <div className="ml-0"> {/* lg:ml-64 */}
           {lesson.content_JSON ? (
-            <Motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-            >
-              <LessonContent content={lesson.content_JSON} />
-            </Motion.div>
+            <LessonContent content={lesson.content_JSON} />
           ) : (
             <p className="text-red-400">
               ⚠️ No content_JSON found in lesson object.
@@ -385,6 +380,7 @@ export default function LessonPage() {
           {/* Mark Complete Button */}
           <div className="flex justify-center mt-16">
             <button
+              aria-label="Mark complete button"
               onClick={markComplete}
               disabled={isCompleted}
               className={`flex items-center gap-2 px-6 py-2 rounded-full text-sm sm:text-base transition-all duration-200
@@ -406,7 +402,7 @@ export default function LessonPage() {
               <Link
                 href={`/learn/${slug}/${lesson.previous_lesson.slug}`}
                 className="gap-2 bg-lime-400 text-black px-2.5 py-0.5 rounded-full cursor-pointer border-3 border-gray-500/100 hover:bg-white active:bg-white hover:text-black active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
-                aria-label="Toggle pages"
+                aria-label="Toggle pages previous"
               >
                 <FontAwesomeIcon icon={faLongArrowLeft} size="lg" />
               </Link>
@@ -418,7 +414,7 @@ export default function LessonPage() {
               <Link
                 href={`/learn/${slug}/${lesson.next_lesson.slug}`}
                 className="gap-2 bg-lime-400 text-black px-2.5 py-0.5 rounded-full cursor-pointer border-3 border-zinc-500/100 hover:bg-white active:bg-white hover:text-black active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
-                aria-label="Toggle pages"
+                aria-label="Toggle pages next"
               >
                 <FontAwesomeIcon icon={faLongArrowRight} size="lg" />
               </Link>

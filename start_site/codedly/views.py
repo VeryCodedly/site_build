@@ -210,7 +210,7 @@ class PostViewSet(viewsets.ModelViewSet):
     # 6
     @action(detail=False, methods=['get'])
     def africaRising(self, request):
-        posts = Post.objects.filter(status="published", subcategory__slug="africa-rising").distinct()[0:3]
+        posts = Post.objects.filter(status="published", subcategory__slug="africa-now").distinct()[0:3]
         serializer = PostSerializer(posts, many=True, context={'request': request})
         # print("big_deal posts fetched:", posts)
         return Response({"africaRising": serializer.data})

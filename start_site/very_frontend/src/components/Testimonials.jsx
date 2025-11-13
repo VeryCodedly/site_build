@@ -419,6 +419,7 @@ export default function Testimonials() {
           {/* Left Arrow */}
           <button
             onClick={prevTestimonial}
+            aria-label="Toggle button"
             className="bg-gradient-to-b from-white/10 to-white/0 relative px-4 py-2 rounded-full border border-gray-700 text-lime-300 font-medium overflow-hidden group"
           >
             <span className="relative z-10 transition-colors duration-300 group-hover:text-black group-active:text-black">
@@ -437,6 +438,7 @@ export default function Testimonials() {
           {/* Right Arrow */}
           <button
             onClick={nextTestimonial}
+            aria-label="Toggle button"
             className="bg-gradient-to-b from-white/10 to-white/0 relative px-4 py-2 rounded-full border border-gray-700 text-lime-300 font-medium overflow-hidden group"
           >
             <span className="relative z-10 transition-colors duration-300 group-hover:text-black group-active:text-black">

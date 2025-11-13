@@ -356,6 +356,7 @@ export default function LessonContent({
                 <p key={index} className="text-center">
                   <Link
                     href={block.url || "#"}
+                    aria-label={block.text}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block mt-2 text-lime-400 hover:text-white active:text-white underline underline-offset-2 transition-colors text-sm"

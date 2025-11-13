@@ -24,7 +24,8 @@ export default function TopButton() {
             aria-label="Scroll to top"
             tabIndex={0}
             >
-            <FontAwesomeIcon className="text-sm sm:text-base md:text-lg" icon={faArrowUp} size='lg' />
+                <span className="sr-only">Scroll to top</span>
+                <FontAwesomeIcon className="text-sm sm:text-base md:text-lg" icon={faArrowUp} size='lg' />
             </button>
         )}
         </>

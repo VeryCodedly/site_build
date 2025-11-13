@@ -201,7 +201,7 @@ export default function BlogHome() {
 
         <div className="z-20 backdrop-blur-xs w-full py-5 sm:py-5">
           <Motion.h1
-            className="hero px-14 sm:px-0 relative text-6xl sm:text-7xl font-bold z-20 backdrop-blur-2xl"
+            className="hero px-14 sm:px-0 md:px-8 lg:px-0 relative text-6xl sm:text-7xl font-bold z-20 backdrop-blur-2xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
@@ -739,7 +739,7 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-3xl text-lime-400 mb-4 flex justify-end">Africa<span className="text-white">Rising</span>
+              className="text-3xl text-lime-400 mb-4 flex justify-end">Africa<span className="text-white">Now</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {africaRising.map(post => (

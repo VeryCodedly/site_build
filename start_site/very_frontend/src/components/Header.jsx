@@ -52,13 +52,13 @@ export default function Header() {
               </Link>
             {/* </div> */}
               <nav className="space-x-18 text-xs hidden md:flex">
-                <Link href="/blog" className="px-2 text-white hover:text-lime-400 transition">READ</Link>
-                <Link href="/learn" className="px-2 text-white hover:text-lime-400 transition">LEARN</Link>
-                <Link href="https://www.youtube.com/channel/UCNDy9Q0qPHcY-TT2BD7B1kw" target="_blank" className="px-2 text-white hover:text-lime-400 transition">KNOW</Link>
-                <Link href="https://discord.gg/53wVsqEcbE" className="px-2 text-white hover:text-lime-400 transition" target="_blank" rel="noopener">CONNECT</Link>
-                <p className="px-2 text-white hover:text-lime-400 transition">🚧</p>
+                <Link aria-label="Blog Page link" href="/blog" className="px-2 text-white hover:text-lime-400 transition">READ</Link>
+                <Link aria-label="Learn Page link" href="/learn" className="px-2 text-white hover:text-lime-400 transition">LEARN</Link>
+                <Link aria-label="Youtube Channel link" href="https://www.youtube.com/channel/UCNDy9Q0qPHcY-TT2BD7B1kw" target="_blank" className="px-2 text-white hover:text-lime-400 transition">KNOW</Link>
+                <Link aria-label="Discord link" href="https://discord.gg/53wVsqEcbE" className="px-2 text-white hover:text-lime-400 transition" target="_blank" rel="noopener">CONNECT</Link>
+                {/* <p className="px-2 text-white hover:text-lime-400 transition">🚧</p> */}
               </nav>
-              <div className="mr-4">
+              <div className="mr-5">
                 <Link href="/contact" className="hidden md:inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 text-black px-3 py-0.5 rounded-full hover:bg-white active:bg-white hover:text-black
                 active:text-black shadow-[0_3.5px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
                   <FontAwesomeIcon className="" icon={faEnvelope} size="sm" />
@@ -86,6 +86,7 @@ export default function Header() {
         >
           <Link
             href="/blog"
+            // aria-label="Blog Page link" 
             className="text-white hover:text-lime-400 active:text-lime-400 transition"
             onClick={() => setMenuOpen(false)}
           >
@@ -94,6 +95,7 @@ export default function Header() {
 
           <Link
             href="/learn"
+            // aria-label="Learn Page link"
             className="text-white hover:text-lime-400 active:text-lime-400 transition"
             onClick={() => setMenuOpen(false)}
           >
@@ -101,6 +103,7 @@ export default function Header() {
           </Link>
 
           <Link
+            // aria-label="Youtube Channel link"
             href="https://www.youtube.com/channel/UCNDy9Q0qPHcY-TT2BD7B1kw"
             className="text-white hover:text-lime-400 active:text-lime-400 transition"
             onClick={() => setMenuOpen(false)}
@@ -109,6 +112,7 @@ export default function Header() {
           </Link>
 
           <Link
+            // aria-label="Discord link"
             href="https://discord.gg/53wVsqEcbE"
             className="text-white hover:text-lime-400 active:text-lime-400 transition"
             target="_blank"
@@ -123,11 +127,12 @@ export default function Header() {
             className="inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 text-black px-3.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
                 active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
             onClick={() => setMenuOpen(false)}
+            aria-label="Contact Page button" 
           >
             <FontAwesomeIcon icon={faEnvelope} size="sm" />
           </Link>
           
-          <p className="px-2 text-white hover:text-lime-400 transition">Beta 🚧</p>
+          {/* <p className="px-2 text-white hover:text-lime-400 transition">Beta 🚧</p> */}
         </div>
       </header>
   );

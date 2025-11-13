@@ -34,6 +34,8 @@ export default function Community() {
           <div className="flex justify-center md:justify-start">
             <Link 
               href="https://discord.gg/53wVsqEcbE" 
+              type="button"
+              aria-label="Join Discord button"
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-block font-bold border-3 border-gray-500 px-8.5 md:px-9 lg:px-9.5 py-1 rounded-full text-white text-md hover:bg-white active:bg-white hover:text-black
@@ -57,6 +59,7 @@ export default function Community() {
             alt="Community illustration" 
             width={600} 
             height={400} 
+            priority={false}
             />
         </div>
       </div>

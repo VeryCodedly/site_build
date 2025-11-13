@@ -72,7 +72,7 @@ export default function TeaserCards() {
             onMouseEnter={(e) => (e.currentTarget.style.zIndex = 10)}
             onMouseLeave={(e) => (e.currentTarget.style.zIndex = 0)}
           >        
-          <Link href={card.href} key={index} target="_blank">
+          <Link aria-label={card.title} href={card.href} key={index} target="_blank">
             <div className={`${card.color} text-3xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
               <FontAwesomeIcon icon={card.icon} />
             </div>

@@ -111,6 +111,7 @@ function CodeBlock({ block }) {
         </span>
 
         <button
+          aria-label="Copy code block"
           onClick={handleCopy}
           className="absolute top-2 right-3 text-xs px-2 py-1 rounded-md bg-zinc-800/70 text-gray-300 hover:text-lime-400 
           hover:bg-zinc-700/70 transition-all duration-200 flex items-center gap-1 focus:outline-none focus:ring-2 

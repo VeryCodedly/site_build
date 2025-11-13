@@ -68,7 +68,7 @@ export default function PostCard({ post }: { post: Post }) {
           {post.category?.name ?? "Post"}
         </p>
 
-        <Link href={`/blog/${post.slug}`}>
+        <Link href={`/blog/${post.slug}`} aria-label={`Link for ${post.caption}`}>
           {/* Title */}
           <h2 className="text-base sm:text-md font-semibold text-gray-100 group-hover:text-lime-400 group-active:text-lime-400 transition leading-tight">
             {post.title}

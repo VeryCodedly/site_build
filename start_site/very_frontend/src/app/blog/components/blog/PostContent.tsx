@@ -274,7 +274,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
         {post.links && post.links.length > 0 ? (
           <div className="space-y-3">
             {post.links.map((link) => (
-              <Link key={link.id} href={link.external_url || `/blog/${link.target_post?.slug || '#'}`} target={link.external_url ? '_blank' : '_self'} rel={link.external_url ? 'noopener noreferrer' : ''} className="group inline-flex items-center gap-2 p-3 bg-zinc-800/50 hover:bg-lime-400/10 border border-zinc-700/50 hover:border-lime-400/30 rounded-xl transition-all text-lime-300 hover:text-white text-sm sm:text-base">
+              <Link key={link.id} aria-label={`Link for ${link.target_post}`} href={link.external_url || `/blog/${link.target_post?.slug || '#'}`} target={link.external_url ? '_blank' : '_self'} rel={link.external_url ? 'noopener noreferrer' : ''} className="group inline-flex items-center gap-2 p-3 bg-zinc-800/50 hover:bg-lime-400/10 border border-zinc-700/50 hover:border-lime-400/30 rounded-xl transition-all text-lime-300 hover:text-white text-sm sm:text-base">
                 <span className="font-medium">{link.label || 'Related Link'}</span>
                 {link.type === 'affiliate' && <span className="text-xs bg-pink-500/20 text-pink-400 px-2 py-1 rounded-full">Affiliate</span>}
                 {link.external_url && <FontAwesomeIcon icon={faArrowRight} className="group-hover:translate-x-1 transition-transform" />}

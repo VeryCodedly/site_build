@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function CTA() {
   return (
     <section className="relative bg-gradient-to-br from-black via-zinc-900 to-black text-white py-28 px-10 overflow-hidden">
-      
+
       {/* Accent Glow */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-lime-400/20 rounded-full blur-[120px]"></div>
 
@@ -20,9 +20,11 @@ export default function CTA() {
           <div className="flex space-x-4 justify-end">
             <Link
               href="/learn"
+              aria-label="Go to Learn"
               className="font-bold cursor-pointer border-3 border-gray-500/100 px-8 py-1 rounded-full hover:bg-white active:bg-white hover:text-black active:text-black shadow-[0_4px_0_0_#39ff14]
                          hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
             >
+              <span className="sr-only">Start</span>
               <span className="lg:hidden">Start</span>
               <span className="hidden lg:inline">Get Started</span>
               {/* <span className="absolute inset-0 bg-gradient-to-t from-lime-400 to-lime-300 

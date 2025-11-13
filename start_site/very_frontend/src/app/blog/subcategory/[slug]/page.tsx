@@ -108,8 +108,9 @@ export default function SubcategoryPage() {
       {posts.length > 0 && (
         <>
           <Motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-            <Link href="/blog" className="inline-flex items-center pt-6 pl-6 gap-2 text-lime-400 hover:text-white underline underline-offset-2 transition-all duration-200 text-sm sm:text-base">
-              <FontAwesomeIcon icon={faArrowLeft} size="xl" />
+            <Link href="/blog" className="inline-flex items-center pt-8 pl-6 gap-2 text-lime-400 hover:text-white underline underline-offset-2 transition-all duration-200 text-sm sm:text-base">
+              <FontAwesomeIcon icon={faArrowLeft} size="lg" />
+              <span className="sr-only">Go Home</span>
             </Link>
           </Motion.div>
           <section className="min-h-screen max-w-[85%] mx-auto bg-black text-white pt-6 pb-14">
@@ -131,7 +132,7 @@ export default function SubcategoryPage() {
                   initial={{ x: -80, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.8, ease: 'easeOut' }}
-                  className="relative text-left ax-w-3xl mx-auto my-auto tracking-wide font-light border-l-4 border-lime-400/80 pl-4 sm:pl-6">
+                  className="relative text-left ax-w-3xl mx-auto my-auto tracking-wide font-light border-l-4 border-lime-400/80 rounded-lg pl-4 sm:pl-6">
                   <span className="whitespace-pre-wrap block italic before:content-['“'] before:text-lime-400 after:content-['”'] after:text-lime-400 text-zinc-400/90">
                     {about}
                   </span>
