@@ -182,7 +182,7 @@ export default function CourseList() {
         return (
           <div
             key={course.id}
-            className="flex flex-row px-4 py-2 sm:px-5 sm:py-3 rounded-2xl shadow bg-zinc-900/80 border-2 border-zinc-800 group hover:-translate-y-[5px] hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)]
+            className="flex flex-row px-4 py-2 sm:px-5 sm:py-3 rounded-2xl shadow bg-zinc-900/80 border-2 border-zinc-800/50 group hover:-translate-y-[5px] hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)]
                        active:-translate-y-[5px] active:shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition transform duration-300 gap-3 sm:gap-5 mb-4"
           >
             {/* Text */}

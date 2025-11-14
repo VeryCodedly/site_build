@@ -504,7 +504,7 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-3xl text-lime-400 mb-4 flex justify-end">AI
+              className="text-3xl text-white mb-4 flex justify-end">AI
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {AI.map(post => (
