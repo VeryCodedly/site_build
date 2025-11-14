@@ -203,10 +203,10 @@ export default function FloatingMenu() {
       <button
         ref={buttonRef}
         onClick={() => setExpanded(p => !p)}
-        className="fixed left-0 top-1/2 -translate-y-1/2 z-[60] w-5 h-8 flex items-center justify-center 
+        className="fixed left-0 top-1/2 -translate-y-1/2 z-[60] w-6 h-9 md:w-5 md:h-8 flex items-center justify-center 
                   rounded-r-lg bg-transparent text-white shadow-md hover:bg-zinc-700/80 active:bg-zinc-700/80 
                   backdrop-blur-md border-3 border-zinc-600 border-l-0 transition-all duration-300 focus:outline-none 
-                  focus:ring-2 focus:ring-offset-2 focus:ring-pink-400"
+                  focus:ring-2 focus:ring-offset-2 focus:ring-pink-400 overflow-y-auto"
         aria-label="Toggle menu"
       >
         <FontAwesomeIcon icon={faChevronRight} />

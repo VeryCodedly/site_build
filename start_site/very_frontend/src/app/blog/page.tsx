@@ -210,7 +210,7 @@ export default function BlogHome() {
           </Motion.h1>
 
           <Motion.p
-            className="relative text-gray-400 px-1 sm:px-0 mt-6 z-20 max-w-sm sm:max-w-md mx-auto text-md sm:text-lg"
+            className="relative text-gray-400 px-2 sm:px-0 mt-6 z-20 max-w-sm sm:max-w-md mx-auto text-md sm:text-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
@@ -298,7 +298,7 @@ export default function BlogHome() {
 
         {/* 1 HERO: Featured Post */}
         {featured && (
-          <section className="py-10 px-6 mt-8">
+          <section className="py-10 px-7 mt-8">
             <Link href={`/blog/${featured.slug}`}>
               <p className="text-xs pl-3 font-semibold tracking-tight text-pink-400 uppercase mb-2">
                 {featured.category?.name ?? 'Featured'}
@@ -362,7 +362,7 @@ export default function BlogHome() {
 
         {/* 2 TRENDING NOW */}
         {trending.length > 0 && (
-          <section className="py-10">
+          <section className="py-10 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -380,7 +380,7 @@ export default function BlogHome() {
 
         {/* 3 SPOTLIGHT */}
         {spotlight.length > 0 && (
-          <section className="py-10">
+          <section className="py-10 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -399,7 +399,7 @@ export default function BlogHome() {
 
         {/* 4 BIG DEAL */}
         {bigDeal.length > 0 && (
-          <section className="py-10">
+          <section className="py-10 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -416,7 +416,7 @@ export default function BlogHome() {
 
         {/* 5 HARDWARE */}
         {hardware && (
-          <section className="py-8 px-6 mt-10">
+          <section className="py-8 px-7 mt-10">
             <Link href={`/blog/${hardware.slug}`}>
               <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
                 {hardware.category?.name ?? 'Hardware'}
@@ -482,7 +482,7 @@ export default function BlogHome() {
 
         {/* 11 EMERGING TECH */}
         {emergingTech.length > 0 && (
-          <section className="py-10">
+          <section className="py-10 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -499,7 +499,7 @@ export default function BlogHome() {
 
         {/* 10 AI */}
         {AI.length > 0 && (
-          <section className="py-10">
+          <section className="py-10 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -516,7 +516,7 @@ export default function BlogHome() {
 
         {/* 12 TECH CULTURE */}
         {techCulture.length > 0 && (
-          <section className="py-10">
+          <section className="py-10 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -533,7 +533,7 @@ export default function BlogHome() {
 
         {/* 9 DIGITAL MONEY */}
         {digitalMoney && (
-          <section className="py-8 px-6 mt-10">
+          <section className="py-8 px-7 mt-10">
             <Link href={`/blog/${digitalMoney.slug}`}>
               <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
                 {digitalMoney.category?.name ?? 'Digital Money'}
@@ -597,7 +597,7 @@ export default function BlogHome() {
 
         {/* 10 BLOCKCHAIN & CRYPTO */}
         {bchCrypto.length > 0 && (
-          <section className="py-10">
+          <section className="py-10 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -616,7 +616,7 @@ export default function BlogHome() {
 
         {/* 11 STARTUPS */}
         {startups.length > 0 && (
-          <section className="py-10">
+          <section className="py-10 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -634,7 +634,7 @@ export default function BlogHome() {
 
         {/* 12 PRIVACY & COMPLIANCE */}
         {prvCompliance.length > 0 && (
-          <section className="py-10">
+          <section className="py-10 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -652,7 +652,7 @@ export default function BlogHome() {
 
         {/* 5 HARDWARE */}
         {social && (
-          <section className="py-8 px-6 mt-10">
+          <section className="py-8 px-7 mt-10">
             <Link href={`/blog/${social.slug}`}>
               <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
                 {social.category?.name ?? 'Hardware'}
@@ -716,7 +716,7 @@ export default function BlogHome() {
 
         {/* 6 GLOBAL LENS */}
         {globalLens.length > 0 && (
-          <section className="py-10">
+          <section className="py-10 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -734,7 +734,7 @@ export default function BlogHome() {
 
         {/* 7 AFRICA RISING */}
         {africaRising.length > 0 && (
-          <section className="py-10">
+          <section className="py-10 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -751,13 +751,13 @@ export default function BlogHome() {
 
         {/* 8 KEY PLAYERS */}
         {keyPlayers.length > 0 && (
-          <section className="py-10">
+          <section className="py-10 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-3xl text-white mb-4 flex justify-start">
-              Key<span className="text-lime-400">Players</span>
+              className="text-3xl text-lime-400 mb-4 flex justify-start">
+              Key<span className="text-white">Players</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {keyPlayers.map(post => (
@@ -769,7 +769,7 @@ export default function BlogHome() {
 
         {/* 13 SECURE HABITS */}
         {secureHabits.length > 0 && (
-          <section className="py-10">
+          <section className="py-10 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

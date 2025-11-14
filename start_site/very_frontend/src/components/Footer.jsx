@@ -31,7 +31,7 @@ export default function Footer() {
           <h3 className="text-white text-lg font-semibold mb-3 tracking-tight">
             Explore
           </h3>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-3 text-sm">
             {[
               ["Read", "/blog"],
               ["Learn", "/learn"],
@@ -57,7 +57,7 @@ export default function Footer() {
           <h3 className="text-white text-lg font-semibold mb-3 tracking-tight">
             Help
           </h3>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-3 text-sm">
             {[
               ["About", "/about"],
               ["FAQs", "/faqs"],
@@ -83,7 +83,7 @@ export default function Footer() {
           <h3 className="text-white text-lg font-semibold mb- tracking-tight">
             Connect
           </h3>
-          <div className="grid grid-cols-3 gap-y-5 gap-x-3 mt-4 items-start">
+          <div className="grid grid-cols-3 gap-y-5 gap-x-4 mt-4 items-start">
             {[
               ["x-twitter", "https://x.com/verycodedly"],
               ["youtube", "https://www.youtube.com/@verycodedly"],
