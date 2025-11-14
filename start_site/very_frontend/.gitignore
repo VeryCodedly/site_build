@@ -23,6 +23,10 @@
 
 # production
 /build
+vc_db
+vc_db.dump
+db_backup.sqlite3
+
 
 # misc
 .DS_Store

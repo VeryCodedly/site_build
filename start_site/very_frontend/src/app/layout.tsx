@@ -46,6 +46,10 @@ export const metadata: Metadata = {
       'en-US': 'https://verycodedly.com/en-US',
     }
   },
+  icons: {
+    icon: '/icon.svg',
+    apple: '/apple-icon.svg',
+  },
   keywords: [
     "tech news",
     "software trends",
@@ -84,15 +88,19 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <Head>
-        {/* PWA Manifest */}
-        {/* <link rel="manifest" href="/manifest.json" /> */}
         
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content="VeryCodedly" />
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
-
         <meta name="theme-color" content="#000000" />
+
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "9a2f443e5bad423184ad04e9c0146df"}'>
+        </script>
+
       </Head>
       <body className={`${pops.variable} ${robo.variable} ${geist.variable} antialiased`}>
         <Header />
