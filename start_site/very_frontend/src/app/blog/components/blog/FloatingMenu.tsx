@@ -252,6 +252,10 @@ export default function FloatingMenu() {
                         <Link
                           key={sub.id}
                           href={`/blog/subcategory/${sub.slug}`}
+                          onClick={() => {
+                            setExpanded(false);
+                            setActiveCatId(null);
+                          }}
                           className="active:text-pink-400 hover:bg-[rgba(255,192,203,0.05)] active:bg-[rgba(255,192,203,0.05)] text-sm fle items-start justify-cente px-3 py-1 rounded-md transition"
                         >
                           {sub.name}
