@@ -48,7 +48,7 @@ export default function LearnSection() {
               <Link
                 href="/learn"
                 aria-label={`${lesson.tag} button`}
-                className="text-lime-400 font-semibold hover:text-lime-300 active:text-lime-300 hover:underline transition-all"
+                className="text-lime-400 font-semibold hover:text-lime-200 active:text-lime-200 active:translate-y-1.5 hover:underline transition-all"
               >
                 Start learning
                 <FontAwesomeIcon className="ml-2" icon={faLongArrowRight} size="sm" />

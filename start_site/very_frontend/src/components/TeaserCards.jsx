@@ -33,7 +33,7 @@ const cards = [
   {
     id: "know",
     title: "Know",
-    description: "Stay informed on trends, updates, and insights.",
+    description: "Subscribe for the latest trends and updates in tech.",
     icon: faChartLine,
     accent: "bg-lime-600",
     color: "text-lime-600",
@@ -42,7 +42,7 @@ const cards = [
   {
     id: "connect",
     title: "Connect",
-    description: "Subscribe and keep up with the tech space.",
+    description: "Join the community and keep up with the tech space.",
     icon: faRss,
     accent: "bg-lime-700",
     color: "text-lime-700",
