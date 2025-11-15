@@ -62,7 +62,6 @@ class PostSerializer(serializers.ModelSerializer):
 class LessonSerializer(serializers.ModelSerializer):
     previous_lesson = serializers.SerializerMethodField()
     next_lesson = serializers.SerializerMethodField()
-    course = serializers.CharField(source='course')
 
     class Meta:
         model = Lesson

@@ -43,7 +43,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
   if (!course) notFound();
 
-  const title = `${course.title}`;
+  const title = `${course.title} | Learn`;
   const description = course.description || `"Learn ${course.title}" with hands-on lessons on VeryCodedly.`;
 
   return {
