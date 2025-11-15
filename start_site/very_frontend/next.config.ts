@@ -84,8 +84,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "res.cloudinary.com", pathname: "/**" },
       { protocol: "https", hostname: "verycodedly.com", pathname: "/**" },
       // { protocol: "https", hostname: "api.verycodedly.com", pathname: "/**" },
-      { protocol: "http", hostname: "localhost", port: "3000", pathname: "/media/**" },
-      { protocol: "http", hostname: "127.0.0.1", port: "8000", pathname: "/media/**" },
+      { protocol: "http", hostname: "localhost", port: "8000", pathname: "/**" },
+      { protocol: "http", hostname: "127.0.0.1", port: "8000", pathname: "/**" },
     ],
   },
 
