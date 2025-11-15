@@ -43,8 +43,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
   if (!course) notFound();
 
-  const title = `${course.title} | VeryCodedly`;
-  const description = course.description || `"${course.title}" with hands-on lessons on VeryCodedly.`;
+  const title = `${course.title}`;
+  const description = course.description || `"Learn ${course.title}" with hands-on lessons on VeryCodedly.`;
 
   return {
     title,
@@ -68,7 +68,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   };
 }
 
-export default function LearnCourseLayout({
+export default function CourseLayout({
   children,
 }: {
   children: React.ReactNode;

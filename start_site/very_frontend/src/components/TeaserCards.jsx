@@ -33,7 +33,7 @@ const cards = [
   {
     id: "know",
     title: "Know",
-    description: "Stay informed on tech trends, updates, and insights.",
+    description: "Stay informed on trends, updates, and insights.",
     icon: faChartLine,
     accent: "bg-lime-600",
     color: "text-lime-600",
@@ -42,7 +42,7 @@ const cards = [
   {
     id: "connect",
     title: "Connect",
-    description: "Subscribe, keep up, and keep evolving in the tech space.",
+    description: "Subscribe and keep up with the tech space.",
     icon: faRss,
     accent: "bg-lime-700",
     color: "text-lime-700",
@@ -82,7 +82,7 @@ export default function TeaserCards() {
             </h2>
           </Link>
 
-            <p className="text-gray-300 text-base leading-relaxed">
+            <p className="text-gray-300 text-sm leading-relaxed">
               {card.description}
             </p>
 

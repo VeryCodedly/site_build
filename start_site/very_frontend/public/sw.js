@@ -12,6 +12,9 @@ self.addEventListener('install', (e) => {
       return cache.addAll([
         '/',
         '/manifest.json',
+        '/icons/icon-48x48.png',
+        '/icons/icon-72x72.png',
+        '/icons/icon-128x128.png',
         '/icons/icon-192x192.png',
         '/icons/icon-512x512.png',
         ...FONTS

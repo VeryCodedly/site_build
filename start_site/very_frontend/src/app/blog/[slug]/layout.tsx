@@ -50,7 +50,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     notFound(); 
   }
 
-  const title = `${post.title} | VeryCodedly`;
+  const title = `${post.title}`;
   const description = post.excerpt || `Read "${post.title}" on VeryCodedly.`;
 
   return {

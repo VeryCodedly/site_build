@@ -45,8 +45,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
   if (!lesson) notFound();
 
-  const title = `${lesson.title} | ${lesson.course.split(' ')[1]} | VeryCodedly`;
-  const description = `Learn "${lesson.title}" in the '${lesson.course.split(' ')[1]}' course on VeryCodedly.`;
+  const title = `${lesson.title} | ${lesson.course.split(' ')[1]}`;
+  const description = `Learn "${lesson.title}" in the '${lesson.course.split(' ')[1]}' course from VeryCodedly.`;
 
   return {
     title,
@@ -70,7 +70,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   };
 }
 
-export default function LearnLessonLayout({
+export default function LessonLayout({
   children,
 }: {
   children: React.ReactNode;
