@@ -35,50 +35,6 @@ interface PostContentProps {
 
 export default function PostContent({ post, contentJson }: PostContentProps) {
 
-  // useEffect(() => {
-  //   if (!post) return;
-
-  //   const title = `${post.title} | VeryCodedly`;
-  //   const description = post.excerpt || 'Read the latest insights on coding, AI, and tech.';
-  //   const image = post.image ? `https://verycodedly.com/blog/${post.image}` : 'https://verycodedly.com/preview-img.png';
-  //   const url = `https://verycodedly.com/blog/${post.slug}`;
-
-  //   // Update <title>
-  //   document.title = title;
-
-  //   // Update meta tags
-  //   const setMeta = (name: string, content: string) => {
-  //     let el = document.querySelector(`meta[name="${name}"]`) || document.querySelector(`meta[property="${name}"]`);
-  //     if (!el) {
-  //       el = document.createElement('meta');
-  //       if (name.startsWith('og:')) el.setAttribute('property', name);
-  //       else el.setAttribute('name', name);
-  //       document.head.appendChild(el);
-  //     }
-  //     el.setAttribute('content', content);
-  //   };
-
-  //   setMeta('description', description);
-  //   setMeta('og:title', title);
-  //   setMeta('og:description', description);
-  //   setMeta('og:image', image);
-  //   setMeta('og:url', url);
-  //   setMeta('og:type', 'article');
-  //   setMeta('twitter:card', 'summary_large_image');
-  //   setMeta('twitter:title', title);
-  //   setMeta('twitter:description', description);
-  //   setMeta('twitter:image', image);
-
-  //   // Canonical
-  //   let canonical = document.querySelector('link[rel="canonical"]');
-  //   if (!canonical) {
-  //     canonical = document.createElement('link');
-  //     canonical.setAttribute('rel', 'canonical');
-  //     document.head.appendChild(canonical);
-  //   }
-  //   canonical.setAttribute('href', url);
-  // }, [post]);
-
   return (
     <>
       {/* Featured Image */}
@@ -98,7 +54,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           sizes="100vw"
           tabIndex={0}
         />
-        <p className="absolute bottom-4 left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-md rounded-lg p-2 text-xs">
+        <p className="absolute bottom-4 left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-md rounded-lg p-2 text-sm">
           {post.caption || 'Featured Image'}
         </p>
       </Motion.div>
@@ -110,12 +66,12 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
         transition={{ duration: 0.6, delay: 0.1 }}
         className="mb-6 sm:mb-8"
       >
-        <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4 text-xs sm:text-sm text-gray-400">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4 text-sm text-gray-400">
           <span className="bg-gray-400/10 text-gray-400 px-2 py-1 rounded-full font-medium gap-1 flex items-center" tabIndex={0}>
             <FontAwesomeIcon icon={faUser} className="text-pink-400" />
             {post.author || 'Anonymous'}
           </span>
-          <span className="inline-flex text-xs items-center gap-1" tabIndex={0}>
+          <span className="inline-flex text-sm items-center gap-1" tabIndex={0}>
             <FontAwesomeIcon icon={faCalendar} />
             {new Date(post.created_at).toLocaleDateString('en-US', {
               year: 'numeric',
@@ -124,10 +80,10 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
               hour: '2-digit',
             })}
           </span>
-          <span className="bg-lime-400/10 text-lime-400 px-2 py-1 rounded-full text-xs font-medium" tabIndex={0}>
+          <span className="bg-lime-400/10 text-lime-400 px-2 py-1 rounded-full text-sm font-medium" tabIndex={0}>
             {post.category?.name || 'Uncategorized'}
           </span>
-          <span className="bg-pink-400/10 text-pink-400 px-2 py-1 rounded-full text-xs font-medium" tabIndex={0}>
+          <span className="bg-pink-400/10 text-pink-400 px-2 py-1 rounded-full text-sm font-medium" tabIndex={0}>
             {post.subcategory?.name || 'General'}
           </span>
           <span className="px-2">

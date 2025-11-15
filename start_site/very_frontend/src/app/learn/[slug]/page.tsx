@@ -184,23 +184,25 @@ const LessonCard = memo(({ lesson, slug, index }: {
                  hover:border-lime-400/30 hover:shadow-[0_0_10px_rgba(164,255,130,0.1)]
                  active:border-lime-400/30 active:shadow-[0_0_10px_rgba(164,255,130,0.1)] transition-all duration-300 group relative"
     >
-      {isCompleted && (
-        <FontAwesomeIcon
-          icon={faCheckCircle}
-          className="absolute top-3 right-3 text-lime-400 text-lg"
-        />
-      )}
-      <h3 className="text-base sm:text-md mb-2 text-gray-200 group-hover:text-lime-300 group-active:text-lime-300 transition-colors">
-        <span className="pr-1 text-sm font-semibold">{lesson.order}.</span>{lesson.title}
-      </h3>
       <Link
         href={`/learn/${slug}/${lesson.slug}`}
-        aria-label={`${lesson.title}`}
-        className="inline-flex items-center gap-1 text-lime-400 text-sm font-medium
-                   hover:text-white active:text-white hover:underline active:underline transition-all duration-200"
-      >
-        {isCompleted ? "Review" : "Start"} Lesson
-        <FontAwesomeIcon icon={faArrowRight} size="sm" className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform" />
+        aria-label={`${lesson.title}`}>
+        {isCompleted && (
+          <FontAwesomeIcon
+            icon={faCheckCircle}
+            className="absolute top-3 right-3 text-lime-400 text-lg"
+          />
+        )}
+        <h3 className="text-base sm:text-md mb-2 text-gray-200 group-hover:text-lime-400 group-active:text-lime-400 transition-colors">
+          <span className="pr-1 text-sm font-semibold">{lesson.order}.</span>{lesson.title}
+        </h3>
+        <p
+          className="inline-flex items-center gap-1 text-lime-400 text-sm font-medium
+                   hover:text-white group-active:text-white hover:underline active:underline transition-all duration-200"
+        >
+          {isCompleted ? "Review" : "Start"} Lesson
+          <FontAwesomeIcon icon={faArrowRight} size="sm" className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform" />
+        </p>
       </Link>
     </Motion.div>
   );
@@ -280,10 +282,10 @@ export default function CoursePage() {
           <h1 className="text-2xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-lime-300 to-lime-400 bg-clip-text text-transparent">
             {course.title}
           </h1>
-          <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-4xl">
+          <p className="text-gray-300 text-base leading-relaxed max-w-4xl">
             {course.description || "No description available for this course."}
           </p>
-          <p className="mt-4 flex items-center gap-2 font-extrabold text-sm text-gray-300">
+          <p className="mt-4 flex items-center gap-2 font-extrabold text-base text-gray-300">
             Prerequisites: {course.prerequisites}
           </p>
           {/* Progress Summary */}

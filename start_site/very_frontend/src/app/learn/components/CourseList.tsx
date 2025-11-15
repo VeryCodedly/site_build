@@ -220,7 +220,7 @@ export default function CourseList() {
                 )}
 
                 {/* CTA */}
-                <div className="flex items-center justify-between text-sm sm:text-base mt-3">
+                <div className="flex items-center justify-between text-base mt-3">
                   <span className="text-lime-400 font-bold group-hover:text-white flex items-center gap-2">
                     {progress > 0 ? 'Continue' : 'Start Now'}
                     <FontAwesomeIcon className="py-2" icon={faArrowRight} size="sm" />

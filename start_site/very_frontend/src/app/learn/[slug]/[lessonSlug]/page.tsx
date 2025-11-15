@@ -314,7 +314,7 @@ export default function LessonPage() {
   // };
 
   return (
-    <section className="relative w-full min-h-screen bg-black text-white pt-8 sm:pt-12 pb-24 px-4 sm:px-6">
+    <section className="relative w-full min-h-screen bg-black text-white pt-8 sm:pt-12 pb-24 px-6">
       <Motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -332,8 +332,8 @@ export default function LessonPage() {
           ref={buttonRef}
           onMouseEnter={() => setIsMenuOpen(!isMenuOpen)}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="fixed left-0 top-1/2 -translate-y-1/2 z-[60] w-5 h-7 flex items-center justify-center rounded-r-lg 
-          bg-transparent text-white shadow-md hover:bg-zinc-700/80 active:bg-zinc-700/80 backdrop-blur-md border-3 
+          className="fixed left-0 top-1/2 -translate-y-1/2 z-[60] w-5 h-8 flex items-center justify-center rounded-r-lg 
+          bg-transparent text-white shadow-md hover:bg-zinc-700/80 active:bg-zinc-700/80 border-3 
           border-zinc-600 border-l-0 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-400"
           aria-label="Toggle menu"
         >
@@ -355,9 +355,9 @@ export default function LessonPage() {
                 .map((block, index) => (
                   <li key={index} className="relative group">
                     <span
-                      className="flex items-center gap-2 p-1 sm:p-1.5 rounded-lg hover:bg-[rgba(255,192,203,0.1)] transition-all duration-200"
+                      className="flex items-center gap-2 p-2 rounded-lg hover:bg-[rgba(255,192,203,0.1)] transition-all duration-200"
                     >
-                      <span className="text-xs sm:text-sm active:text-lime-400"> {/* href={`#heading-${index}`} onClick={() => handleHeadingClick(index)} */}
+                      <span className="text-sm active:text-lime-400"> {/* href={`#heading-${index}`} onClick={() => handleHeadingClick(index)} */}
                         - {block.content}
                       </span>
                     </span>
@@ -383,7 +383,7 @@ export default function LessonPage() {
               aria-label="Mark complete button"
               onClick={markComplete}
               disabled={isCompleted}
-              className={`flex items-center gap-2 px-6 py-2 rounded-full text-sm sm:text-base transition-all duration-200
+              className={`flex items-center gap-2 px-6 py-2 rounded-full text-base transition-all duration-200
                 ${isCompleted
                   ? 'bg-lime-900/50 text-lime-300 cursor-default'
                   : 'bg-lime-400 text-black hover:bg-white active:bg-white shadow-lg active:scale-90'

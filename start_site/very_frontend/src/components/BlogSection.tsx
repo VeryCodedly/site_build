@@ -48,10 +48,10 @@ export default function BlogSection() {
               <Link
                 href="/blog"
                 aria-label={`${post.tag} button`}
-                className="text-pink-400 font-semibold hover:text-pink-300 hover:underline transition-all"
+                className="text-pink-400 font-semibold hover:text-pink-300 active:text-pink-300 hover:underline transition-all"
               >
                 Read more
-                <FontAwesomeIcon className="my-auto" icon={faLongArrowRight} size="sm" />
+                <FontAwesomeIcon className="ml-2" icon={faLongArrowRight} size="sm" />
                 <span className="sr-only"> about {post.tag}</span>
               </Link>
             </div>

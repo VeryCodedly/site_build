@@ -94,7 +94,7 @@ export default function LearnPage() {
         >
           <span className="text-white">Courses from <span className="text-lime-400">VeryCodedly</span></span>
         </Motion.h2>
-        <div className="space-y-2.5 w-[90%] sm:w-[90%] lg:w-[80%] mx-auto">
+        <div className="space-y-2.5 w-full sm:w-[90%] lg:w-[80%] mx-auto">
           {/* <div className="absolute inset-0 bg-[url('/images/bg-plain.jpg')] bg-center bg-stretch opacity-50"></div> */}
           {/* <div className=""> */}
           <CourseList />
@@ -131,7 +131,7 @@ export default function LearnPage() {
             <Motion.div
               key={track.name}
               className="bg-zinc-900/80 border border-zinc-800 m-3 sm:m-0 p-4 sm:p-6 rounded-2xl 
-        hover:shadow-[0_0_10px_#222222] backdrop-blur-md transition-all"
+                          hover:shadow-[0_0_10px_#222222] backdrop-blur-md transition-all"
               whileHover={{ y: -5 }}
               tabIndex={0}
             >
@@ -189,7 +189,7 @@ export default function LearnPage() {
                   <p className="text-sm text-gray-300/80 line-clamp-3 sm:line-clamp-6 mb-3 leading-relaxed">
                     {topic.desc}
                   </p>
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-x-3 text-sm text-lime-400 group-hover:text-white">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-x-3 text-base text-lime-400 group-hover:text-white">
                     <span className="text-gray-500">Beginner</span>
                     <div className="font-bold mt-2 sm:mt-0">
                       Start Now <FontAwesomeIcon className="" icon={faArrowRight} size="sm" />

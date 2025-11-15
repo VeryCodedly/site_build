@@ -110,7 +110,7 @@ export default function BlogPost() {
   }
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-black via-zinc-950 to-black text-white min-h-screen py-12 sm:py-12 px-6 sm:px-8">
+    <section className="relative w-full bg-gradient-to-b from-black via-zinc-950 to-black text-white min-h-screen py-12 sm:py-12 px-8">
       {/* Back Button */}
       <Motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }} className="max-w-6xl mx-auto mb-6 sm:mb-8">
         <Link href="/blog" className="inline-flex items-center gap-2 text-lime-400 hover:text-white underline underline-offset-2 transition-all duration-200 text-sm sm:text-base">
