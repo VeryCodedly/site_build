@@ -139,7 +139,9 @@ if not DEBUG:
         api_secret=os.getenv("CLOUDINARY_API_SECRET"),
     )
     DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
-    CLOUDINARY_STORAGE = { "PREFIX": "media" }
+    CLOUDINARY_STORAGE = {
+        "FOLDER": "media",
+        }
 else:
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
