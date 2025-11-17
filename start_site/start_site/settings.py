@@ -16,19 +16,9 @@ import dj_database_url
 import cloudinary
 from dotenv import load_dotenv
 
-# load_dotenv()
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-ENV_PATH = BASE_DIR.parent
-
-ENV = os.getenv("DJANGO_ENV", "development")
-
-# Load the correct env file
-if ENV == "production":
-    load_dotenv(dotenv_path=ENV_PATH / ".env.production")
-else:
-    load_dotenv(dotenv_path=ENV_PATH / ".env") 
 
 # --- SECURITY ---
 SECRET_KEY = os.getenv("SECRET_KEY")
@@ -131,27 +121,21 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # --- CLOUDINARY ---
-# cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
-# api_key=os.getenv("CLOUDINARY_API_KEY"),
-# api_secret=os.getenv("CLOUDINARY_API_SECRET"),
-if DEBUG:
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+cloudinary.config(
+    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.getenv("CLOUDINARY_API_KEY"),
+    api_secret=os.getenv("CLOUDINARY_API_SECRET"),
+    secure=True,
+)
 
-else:
-    cloudinary.config(
-        cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
-        api_key=os.getenv("CLOUDINARY_API_KEY"),
-        api_secret=os.getenv("CLOUDINARY_API_SECRET"),
-        secure=True,
-    )
-
-    DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
-    CLOUDINARY_STORAGE = {
-        "PREFIX": "media"
-    }
-
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+CLOUDINARY_STORAGE = {
+    "PREFIX": "media"
+}
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
