@@ -216,7 +216,7 @@ export default function FloatingMenu() {
         ref={menuRef}
         onMouseEnter={() => setExpanded(true)}
         className={`fixed pl-5 top-1/2 left-0 transform -translate-y-1/2 bg-black/5
-                   shadow-lg rounded-r-2xl overflow-y-auto border-3 border-zinc-600 transition-all duration-300 
+                   shadow-lg rounded-r-2xl border-3 border-zinc-600 transition-all duration-300 
                    ${expanded ? "w-70 opacity-100 backdrop-blur-lg" : "opacity-0 w-8 h-10"} z-50`}
       >
         <ul className="flex flex-col gap-1 p-2 text-gray-200">

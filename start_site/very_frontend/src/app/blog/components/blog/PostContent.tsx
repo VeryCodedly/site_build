@@ -267,15 +267,36 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
       </Motion.div>
 
       {/* Meta Footer */}
-      <Motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.7 }} 
-        className="text-center text-gray-500 text-sm border-t border-b border-zinc-700 rounded-2xl py-6 sm:py-8">
-        <p>
-          Published {new Date(post.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })} •
+      <Motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.7 }}
+        className="text-center text-gray-500 text-sm border-t border-b border-zinc-700 rounded-xl py-6 sm:py-8">
+        <p className="flex flex-col justify-center sm:flex-row sm:gap-2">
+          <span>
+            Published{' '}
+            {new Date(post.created_at).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </span>
+
           {post.updated_at && post.updated_at !== post.created_at && (
-            <> Updated {new Date(post.updated_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</>
+            <>
+              {/* This bullet only shows on sm+ */}
+              <span className="hidden sm:inline"> • </span>
+
+              {/* Updated date — drops to new line on mobile, stays inline on sm+ */}
+              <span>
+                Updated{' '}
+                {new Date(post.updated_at).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </span>
+            </>
           )}
         </p>
-        <p className="mt-2 text-pink-400 capitalize">{post.status || 'Draft'}</p>
+        <p className="mt-4 text-pink-400 capitalize">{post.status || 'Draft'}</p>
       </Motion.div>
     </>
   );

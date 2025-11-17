@@ -6,7 +6,7 @@ import { motion as Motion } from "framer-motion"
 import CourseList from "./components/CourseList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faLongArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function LearnPage() {
 
@@ -191,8 +191,8 @@ export default function LearnPage() {
                   </p>
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-x-3 text-base text-lime-400 group-hover:text-white">
                     <span className="text-gray-500">Beginner</span>
-                    <div className="font-bold mt-2 sm:mt-0">
-                      Start Now <FontAwesomeIcon className="" icon={faArrowRight} size="sm" />
+                    <div className="font-bold mt-2 sm:mt-0 inline-flex items-center gap-2 ">
+                      Start Now <FontAwesomeIcon className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform" icon={faLongArrowRight} size="sm" />
                     </div>
                   </div>
                 </div>

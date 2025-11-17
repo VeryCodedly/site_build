@@ -54,7 +54,7 @@ import Link from 'next/link';
 import { Post } from '@/types/post';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function PostCard({ post }: { post: Post }) {
   return (
@@ -83,8 +83,8 @@ export default function PostCard({ post }: { post: Post }) {
           <div className="flex items-center justify-between text-xs text-gray-500">
             <span className="sm:hidden">{new Date(post.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
             <span className="hidden sm:inline">{new Date(post.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-            <span className="text-lime-400 text-sm font-bold group-hover:text-white group-active:text-white inline-flex items-center gap-1" tabIndex={0}>
-              Read More <FontAwesomeIcon icon={faArrowRight} size='sm' />
+            <span className="text-lime-400 text-sm font-bold group-hover:text-white group-active:text-white inline-flex items-center gap-2" tabIndex={0}>
+              Read More <FontAwesomeIcon icon={faLongArrowRight} size='sm' />
             </span>
           </div>
         </Link>

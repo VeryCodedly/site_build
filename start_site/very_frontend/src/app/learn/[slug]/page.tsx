@@ -153,7 +153,7 @@ import Link from "next/link";
 import { motion as Motion } from "framer-motion";
 import { Lessons } from "@/types/post";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faLongArrowRight, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 // Progress key
 const PROGRESS_KEY = (slug: string) => `course_progress_${slug}`;
@@ -198,10 +198,10 @@ const LessonCard = memo(({ lesson, slug, index }: {
         </h3>
         <p
           className="inline-flex items-center gap-1 text-lime-400 text-sm font-medium
-                   hover:text-white group-active:text-white hover:underline active:underline transition-all duration-200"
+                   group-hover:text-white group-active:text-white hover:underline active:underline transition-all duration-200"
         >
           {isCompleted ? "Review" : "Start"} Lesson
-          <FontAwesomeIcon icon={faArrowRight} size="sm" className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform" />
+          <FontAwesomeIcon icon={faLongArrowRight} size="sm" className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform" />
         </p>
       </Link>
     </Motion.div>

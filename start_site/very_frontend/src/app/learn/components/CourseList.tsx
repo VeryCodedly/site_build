@@ -93,7 +93,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faLongArrowRight, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { useGetCoursesQuery } from '@/features/api/apiSlice';
 import { Course } from '@/types/post';
 import { useEffect, useState, useRef } from 'react';
@@ -220,10 +220,10 @@ export default function CourseList() {
                 )}
 
                 {/* CTA */}
-                <div className="flex items-center justify-between text-base mt-3">
+                <div className="flex items-center justify-between text-base mt-1.5">
                   <span className="text-lime-400 font-bold group-hover:text-white flex items-center gap-2">
                     {progress > 0 ? 'Continue' : 'Start Now'}
-                    <FontAwesomeIcon className="py-2" icon={faArrowRight} size="sm" />
+                    <FontAwesomeIcon className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform" icon={faLongArrowRight} size="sm" />
                   </span>
                   {isComplete && (
                     <span className="text-xs text-lime-300 font-medium">Completed!</span>

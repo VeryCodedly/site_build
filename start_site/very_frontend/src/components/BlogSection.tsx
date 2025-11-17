@@ -23,7 +23,7 @@ export default function BlogSection() {
             },
             {
               title: "Burnout Is Not A Badge Of Honor",
-              desc: "Tech culture picked up a dangerous myth.",
+              desc: "Along the way, tech culture picked up a dangerous myth.",
               tag: "Tech Culture",
             },
             {
@@ -48,10 +48,11 @@ export default function BlogSection() {
               <Link
                 href="/blog"
                 aria-label={`${post.tag} button`}
-                className="text-pink-400 font-semibold hover:text-pink-200 active:text-pink-200 active:translate-y-1.5 hover:underline transition-all"
+                className="text-pink-400 font-semibold hover:text-pink-300 active:text-pink-300
+                 inline-flex items-center gap-2 hover:underline transition-all"
               >
                 Read more
-                <FontAwesomeIcon className="ml-2" icon={faLongArrowRight} size="sm" />
+                <FontAwesomeIcon className="" icon={faLongArrowRight} size="sm" />
                 <span className="sr-only"> about {post.tag}</span>
               </Link>
             </div>
