@@ -125,23 +125,15 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # --- CLOUDINARY ---
-cloudinary.config(
-    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
-    api_key=os.getenv("CLOUDINARY_API_KEY"),
-    api_secret=os.getenv("CLOUDINARY_API_SECRET"),
-    secure=True,
-)
+cloudinary.config()
 
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 CLOUDINARY_STORAGE = {
-    # "PREFIX": "media",
-    "FOLDER": "media",
-    "UNIQUE_FILENAME": False,
-    "OVERWRITE": True,
-}
-import logging
-logger = logging.getLogger('cloudinary_storage')
-logger.setLevel(logging.DEBUG)
+        "FOLDER": "media",
+        "UNIQUE_FILENAME": False,
+        "OVERWRITE": True,
+        "FORCE_URL": True,
+    }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

@@ -209,7 +209,7 @@ class Post(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.title} (Main Image: {self.image.name if self.image else 'No Image'})"
+        return f"{self.title}"
 
 
 class PostImage(models.Model):
@@ -240,7 +240,7 @@ class PostImage(models.Model):
         super().save(*args, **kwargs)
         
     def __str__(self):
-        return f"{self.caption or self.image.name} for {self.post.title}"
+        return f"{self.caption} for {self.post.title}"
     
 
 class PostLink(models.Model):
