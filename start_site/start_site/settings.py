@@ -135,18 +135,22 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
 # api_key=os.getenv("CLOUDINARY_API_KEY"),
 # api_secret=os.getenv("CLOUDINARY_API_SECRET"),
-if not DEBUG:
-    cloudinary.config()
-    
-    DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
-    CLOUDINARY_STORAGE = {
-        "FOLDER": "media",
-        "FORCE_URL": True,
-        "OVERWRITE": True,
-        }
-else:
+if DEBUG:
     MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+else:
+    cloudinary.config(
+        cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+        api_key=os.getenv("CLOUDINARY_API_KEY"),
+        api_secret=os.getenv("CLOUDINARY_API_SECRET"),
+        secure=True,
+    )
+
+    DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+    CLOUDINARY_STORAGE = {
+        "PREFIX": "media"
+    }
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
