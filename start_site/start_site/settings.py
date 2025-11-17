@@ -134,8 +134,14 @@ cloudinary.config(
 
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 CLOUDINARY_STORAGE = {
-    "PREFIX": "media"
+    # "PREFIX": "media",
+    "FOLDER": "media",
+    "UNIQUE_FILENAME": False,
+    "OVERWRITE": True,
 }
+import logging
+logger = logging.getLogger('cloudinary_storage')
+logger.setLevel(logging.DEBUG)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
