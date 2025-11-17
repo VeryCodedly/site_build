@@ -128,6 +128,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 if not DEBUG:
     cloudinary.config()
 
+    MEDIA_URL = "/api/media/"
     DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
     CLOUDINARY_STORAGE = {
         "FOLDER": "media",
