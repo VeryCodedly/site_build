@@ -9,9 +9,7 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class PostImageSerializer(serializers.ModelSerializer):
-    image = serializers.CharField()
-    
+class PostImageSerializer(serializers.ModelSerializer):    
     class Meta:
         model = PostImage
         fields = '__all__'
@@ -45,7 +43,7 @@ class PostSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(many=True, read_only=True)
     category = CategorySerializer()
     subcategory = SubcategorySerializer()
-    images = serializers.CharField()
+    images = PostImageSerializer(many=True, read_only=True)
     content_JSON = serializers.JSONField()
 
     # content_plain_text = serializers.CharField()
