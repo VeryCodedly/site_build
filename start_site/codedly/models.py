@@ -170,7 +170,7 @@ class Post(models.Model):
     excerpt = models.CharField(max_length=300, blank=True)
     author = models.CharField(max_length=50, default="Admin")
     
-    image = models.ImageField(upload_to='posts/', null=True)
+    image = models.URLField(max_length=500, blank=True, null=True, default='https://res.cloudinary.com/verycodedly/image/upload/v1763448383/very-codedly-banner.png')
     caption = models.CharField(max_length=200, blank=True)
     alt = models.CharField(max_length=100, blank=True)
     
@@ -214,7 +214,7 @@ class Post(models.Model):
 
 class PostImage(models.Model):
     post = models.ForeignKey(Post, related_name="images", on_delete=models.CASCADE)
-    image = models.ImageField(upload_to="posts/images/")
+    image = models.URLField(max_length=500, blank=True, null=True)
     alt = models.CharField(max_length=150, blank=True) 
     caption = models.CharField(max_length=200, blank=True) 
     
@@ -293,7 +293,7 @@ class Course(models.Model):
     sort = models.PositiveIntegerField(default=1, blank=True, null=True)
     
     level = models.CharField(max_length=50, default="Beginner")
-    image = models.ImageField(upload_to='courses/', null=True, blank=True)
+    image = models.URLField(max_length=500, null=True, blank=True)
     alt = models.CharField(max_length=100, blank=True)
     keywords = TaggableManager()
     created_at = models.DateTimeField(auto_now_add=True)

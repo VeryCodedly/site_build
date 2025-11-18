@@ -10,6 +10,8 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class PostImageSerializer(serializers.ModelSerializer):
+    image = serializers.CharField()
+    
     class Meta:
         model = PostImage
         fields = '__all__'
@@ -43,7 +45,7 @@ class PostSerializer(serializers.ModelSerializer):
     comments = CommentSerializer(many=True, read_only=True)
     category = CategorySerializer()
     subcategory = SubcategorySerializer()
-    images = PostImageSerializer(many=True)
+    images = serializers.CharField()
     content_JSON = serializers.JSONField()
 
     # content_plain_text = serializers.CharField()
@@ -76,6 +78,7 @@ class LessonSerializer(serializers.ModelSerializer):
         return {"slug": next.slug} if next else None
 
 class CourseSerializer(serializers.ModelSerializer):
+    image = serializers.CharField()
     lessons = LessonSerializer(many=True, read_only=True)
     
     class Meta:
