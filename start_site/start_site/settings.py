@@ -133,7 +133,7 @@ if not DEBUG:
         secure=True,
     )
 
-    MEDIA_URL = "/api/media/"
+    # MEDIA_URL = "/api/media/"
     DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
     CLOUDINARY_STORAGE = {
         "UNIQUE_FILENAME": False,
