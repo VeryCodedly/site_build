@@ -11,18 +11,18 @@
 
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
+const isDev = process.env.NODE_ENV !== "production";
 
 /*  CSP (Fixed & Safe)  */
-const cspBase = [
+const cspProd = [
   "default-src 'self'",
   "base-uri 'self'",
   "block-all-mixed-content",
   "font-src 'self' data:",
-  "img-src 'self' data: blob: https://res.cloudinary.com https://verycodedly.com https://api.verycodedly.com/api",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://res.cloudinary.com https://*.vercel.app https://verycodedly.com https://api.verycodedly.com/api https://vitals.vercel-insights.com",
+  "img-src 'self' data: blob: https://res.cloudinary.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules'",
   "style-src 'self' 'unsafe-inline'",
-  "connect-src 'self' https://api.verycodedly.com/api https://res.cloudinary.com https://vitals.vercel-insights.com wss:",
+  "connect-src 'self' https://api.verycodedly.com https://res.cloudinary.com wss:",
   "frame-src 'self' https://www.youtube.com",
   "frame-ancestors 'none'",
   "form-action 'self'",
@@ -31,18 +31,14 @@ const cspBase = [
 ].join("; ");
 
 // Optional: Dev mode allows localhost
-const cspDev = cspBase
-  .replace(
-    /img-src[^;]*/,
-    "img-src 'self' data: blob: http://localhost:8000 http://127.0.0.1:8000 https://res.cloudinary.com https://verycodedly.com https://api.verycodedly.com"
-  )
-  .replace(
-    /script-src[^;]*/,
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' http://localhost:8000 https://res.cloudinary.com https://*.vercel.app https://verycodedly.com https://api.verycodedly.com https://vitals.vercel-insights.com"
-  )
+const cspDev = cspProd
   .replace(
     /connect-src[^;]*/,
-    "connect-src 'self' http://localhost:8000 http://127.0.0.1:8000 https://api.verycodedly.com https://res.cloudinary.com https://vitals.vercel-insights.com ws://localhost:8000 wss:"
+    "connect-src 'self' http://localhost:8000 http://127.0.0.1:8000 https://api.verycodedly.com https://res.cloudinary.com wss:"
+  )
+  .replace(
+    /img-src[^;]*/,
+    "img-src 'self' data: blob: http://localhost:8000 http://127.0.0.1:8000 https://res.cloudinary.com"
   );
 
 const securityHeaders = [
@@ -82,15 +78,13 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "res.cloudinary.com", pathname: "/**" },
-      { protocol: "https", hostname: "verycodedly.com", pathname: "/**" },
-      { protocol: "https", hostname: "api.verycodedly.com/api", pathname: "/**" },
       { protocol: "http", hostname: "localhost", port: "8000", pathname: "/**" },
       { protocol: "http", hostname: "127.0.0.1", port: "8000", pathname: "/**" },
-    ],
-  },
+      ],
+    },
 
   async headers() {
-    const csp = isProd ? cspBase : cspDev;
+    const csp = isDev ? cspDev : cspProd;
     return [
       {
         source: "/(.*)",
