@@ -198,13 +198,17 @@ class Post(models.Model):
             
         # handle image caption + alt
         if self.image:
-            filename = self.image.name.split("/")[-1].rsplit(".", 1)[0]
+            # Extract filename from URL
+            filename = self.image.split("/")[-1].rsplit(".", 1)[0]
 
+            # Auto-generate caption if empty
             if not self.caption:
                 self.caption = filename.replace("_", " ").replace("-", " ").title()
 
+            # Auto-generate alt if empty
             if not self.alt:
                 self.alt = self.caption.lower().replace(" ", "-")
+
 
         super().save(*args, **kwargs)
 
