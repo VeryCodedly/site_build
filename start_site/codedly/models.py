@@ -227,14 +227,13 @@ class PostImage(models.Model):
     
     def save(self, *args, **kwargs):
         # Auto-fill alt if empty, using caption
-        # If caption  empty, use filename (without extension)
+        # If caption  empty, use URL (without paths)
         if not self.caption and self.image:
-            filename = self.image.name.split("/")[-1].rsplit(".", 1)[0]
+            filename = self.image.split("/")[-1].rsplit(".", 1)[0]
             self.caption = filename.replace("_", " ").replace("-", " ").title()
 
-        # If alt is empty, copy caption
+        # Auto-fill alt if empty
         if not self.alt and self.caption:
-            # hyphenate for alt text
             self.alt = self.caption.lower().replace(" ", "-")
         
         super().save(*args, **kwargs)
@@ -300,14 +299,15 @@ class Course(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
+        # Auto-generate slug from title if empty
         if not self.slug:
             self.slug = slugify(self.title)
-            
-        if self.image:
-            filename = self.image.name.split("/")[-1].rsplit(".", 1)[0]
 
-            if not self.alt:
-                self.alt = filename.title()
+        # Auto-generate alt from image URL if alt is empty
+        if self.image and not self.alt:
+            # Extract filename from URL
+            filename = self.image.split("/")[-1].rsplit(".", 1)[0]
+            self.alt = filename.replace("_", " ").replace("-", " ").title()
 
            
         super().save(*args, **kwargs)
