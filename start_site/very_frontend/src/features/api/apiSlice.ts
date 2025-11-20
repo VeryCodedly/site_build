@@ -6,15 +6,15 @@ export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_URL }),
 
-  tagTypes: ['Post', 'Category', 'Subcategory', 'Comment', 
-            'PostImage', 'PostLink', 'Course', 'CourseResponse', 'Lessons', 'LessonsResponse'],
+  tagTypes: ['Post', 'Category', 'Subcategory', 'Comment',
+    'PostImage', 'PostLink', 'Course', 'CourseResponse', 'Lessons', 'LessonsResponse'],
 
   endpoints: (builder) => ({
 
     // 📰 POSTS
     getPosts: builder.query<PostResponse, { page?: number }>({
       // pass ?page=X
-      query: ({page = 1}) => `/posts/?page=${page}`,
+      query: ({ page = 1 }) => `/posts/?page=${page}`,
       providesTags: ['Post'],
     }),
 
@@ -137,6 +137,12 @@ export const apiSlice = createApi({
       providesTags: ['Category'],
     }),
 
+    getCategoryPosts: builder.query<Category, string>({
+      query: (slug) => `/categories/${slug}/`,
+      transformResponse: (res: Category) => res,
+      providesTags: ['Category'],
+    }), 
+
     // 🏷️ SUBCATEGORIES
     getSubcategories: builder.query<Subcategory[], void>({
       query: () => '/subcategories/',
@@ -146,7 +152,7 @@ export const apiSlice = createApi({
 
     getPostsBySubcategory: builder.query<Post[], string>({
       query: (slug) => `/subcategories/${slug}/posts/`,
-      transformResponse: (res: { results: Post[] }) => res.results,      
+      transformResponse: (res: { results: Post[] }) => res.results,
       providesTags: ['Subcategory'],
     }),
 
@@ -202,11 +208,12 @@ export const apiSlice = createApi({
   }),
 });
 
-export const { 
+export const {
   useGetPostByIdQuery,
-  useGetPostsQuery, 
-  useGetPostBySlugQuery, 
+  useGetPostsQuery,
+  useGetPostBySlugQuery,
   useGetCategoriesQuery,
+  useGetCategoryPostsQuery,
   useGetSubcategoriesQuery,
   useGetPostsBySubcategoryQuery,
   useGetCommentsQuery,
@@ -228,9 +235,9 @@ export const {
   useGetHardwarePostsQuery,
   useGetSecureHabitsPostsQuery,
   useGetTechCulturePostsQuery,
-  useGetKeyPlayersPostsQuery, 
-  useGetAIPostsQuery, 
-  useGetbchCryptoPostsQuery, 
-  useGetStartupsPostsQuery, 
+  useGetKeyPlayersPostsQuery,
+  useGetAIPostsQuery,
+  useGetbchCryptoPostsQuery,
+  useGetStartupsPostsQuery,
   useGetprvCompliancePostsQuery,
   useGetSocialPostQuery, } = apiSlice;

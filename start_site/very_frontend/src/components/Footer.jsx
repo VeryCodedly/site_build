@@ -33,11 +33,12 @@ export default function Footer() {
           </h3>
           <ul className="space-y-3 text-sm">
             {[
+              ["About", "/about"],
               ["Read", "/blog"],
               ["Learn", "/learn"],
+              ["Know", "/know"],
+              ["Connect", "/connect"],
               ["Shop", "/shop"],
-              ["Support", "/support"],
-              ["Community", "/community"],
             ].map(([label, href]) => (
               <li key={href}>
                 <Link
@@ -59,10 +60,11 @@ export default function Footer() {
           </h3>
           <ul className="space-y-3 text-sm">
             {[
-              ["About", "/about"],
               ["FAQs", "/faqs"],
               ["Contact", "/contact"],
-              ["Privacy", "/privacy"],
+              ["Support", "/support"],
+              ["Community", "/community"],
+              ["Privacy Policy", "/privacy"],
               ["Terms of Use", "/terms"],
             ].map(([label, href]) => (
               <li key={href}>

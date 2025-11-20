@@ -3,6 +3,12 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About",
   description: "Discover how VeryCodedly bridges tech education and culture.",
+  alternates: {
+    canonical: "https://verycodedly.com/about",
+    languages: {
+      'en-US': 'https://verycodedly.com/en-US',
+    }
+  },
   openGraph: {
     title: "About",
     description: "Discover how VeryCodedly bridges tech education and culture.",

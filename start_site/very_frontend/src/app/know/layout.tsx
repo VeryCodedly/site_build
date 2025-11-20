@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Know",
   description: "Stay informed on tech trends, updates, and insights from the VeryCodedly Youtube channel.",
+  alternates: {
+    canonical: "https://verycodedly.com/know",
+  },
   openGraph: {
     title: "Know",
     description: "Stay informed on tech trends, updates, and insights from the VeryCodedly Youtube channel.",

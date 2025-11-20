@@ -203,23 +203,25 @@ export default function FloatingMenu() {
       <button
         ref={buttonRef}
         onClick={() => setExpanded(p => !p)}
-        className="fixed left-0 top-1/2 -translate-y-1/2 z-[60] w-6 h-9 sm:w-5 sm:h-7 flex items-center justify-center 
-                  rounded-r-lg bg-transparent text-white shadow-md hover:bg-zinc-700/80 active:bg-zinc-700/80 
-                  backdrop-blur-md border-3 border-zinc-600 border-l-0 transition-all duration-300 focus:outline-none 
-                  focus:ring-2 focus:ring-offset-2 focus:ring-pink-400"
+        className={`fixed p-2 left-0 top-1/2 -translate-y-1/2 z-[60] w-6 h-7 sm:w-6 sm:h-7 flex items-center justify-center 
+                  rounded-r-xl bg-transparent text-white hover:bg-zinc-700/80 active:bg-zinc-700/80 
+                  backdrop-blur-md border-l-0 transition-all duration-300 focus:outline-none 
+                  focus:ring-2 focus:ring-offset-1 focus:ring-pink-300/70 shadow-[0_0_5px_3px_rgba(55,55,55,0.8)] 
+                  hover:shadow-[0_0_7px_3px_rgba(255,255,255,0.10)] active:shadow-[0_0_7px_3px_rgba(255,255,255,0.10)]
+                  `}
         aria-label="Toggle menu"
       >
-        <FontAwesomeIcon icon={faChevronRight} size="lg" />
+        <FontAwesomeIcon icon={faChevronRight} size="lg" className={`transition-transform duration-300 ${expanded ? "rotate-90" : ""}`} />
       </button>
 
       <div
         ref={menuRef}
         onMouseEnter={() => setExpanded(true)}
-        className={`fixed pl-5 top-1/2 left-0 transform -translate-y-1/2 bg-black/5
-                   shadow-lg rounded-r-2xl border-3 border-zinc-600 transition-all duration-300 
-                   ${expanded ? "w-70 opacity-100 backdrop-blur-lg" : "opacity-0 w-8 h-10"} z-50`}
+        className={`fixed overflow-hidden pl-6 top-1/2 left-0 transform -translate-y-1/2 bg-white/5 hover:backdrop-blur-lg
+                   shadow-lg rounded-r-2xl border-3 border-zinc-600 transition-all duration-200 
+                   ${expanded ? "w-68 sm:w-66 opacity-100 backdrop-blur-lg" : "opacity-0 w-8 h-10"} z-50`}
       >
-        <ul className="flex flex-col gap-1 p-2 text-gray-200">
+        <ul className="flex flex-col gap-1 pt-1 pb-2 text-gray-200">
           {categories.map(cat => {
             const icon = iconMap[cat.name] || null;
             return (
@@ -233,19 +235,19 @@ export default function FloatingMenu() {
                   setActiveCatId(activeCatId === cat.id ? null : cat.id);
                 }}
               >
-                <div className="flex items-center gap-2.5 p-1.5 rounded-lg hover:bg-[rgba(255,192,203,0.08)] active:bg-[rgba(255,192,203,0.08)] transition-all duration-200">
-                  <span className="text-xl">
+                <div className="flex items-center gap-3 p-1.5 px-4 rounded-lg hover:bg-[rgba(255,192,203,0.2)] active:bg-[rgba(255,192,203,0.2)] transition-all duration-200">
+                  <span className="text-xl text-white">
                     {icon ? <FontAwesomeIcon icon={icon} size="sm" /> : <span className="w-6 h-6 md:w-5 md:h-5" />}
                   </span>
                   {expanded && (
-                    <span className="text-md font-medium active:text-lime-400 select-none">
+                    <span className="text-md md:text-sm text-white font-medium active:text-lime-200 select-none">
                       {cat.name}
                     </span>
                   )}
                 </div>
 
                 {expanded && activeCatId === cat.id && (
-                  <div className="ml-10 mx-2 mt-1 g-black/3 bg-[rgba(255,192,203,0.01)] hover:backdrop-blur-md rounded-lg shadow-lg px-2 py-1 text-xs sm:text-sm flex flex-col gap-1 animate-fade-in">
+                  <div className="ml-12 bg-black/3 hover:backdrop-blur-md rounded-lg shadow-lg text-xs sm:text-sm flex flex-col gap-1 animate-fade-in">
                     {cat?.subcategories?.slice()
                       .sort((a, b) => a.name.length - b.name.length)
                       .map(sub => (
@@ -253,12 +255,15 @@ export default function FloatingMenu() {
                           key={sub.id}
                           href={`/blog/subcategory/${sub.slug}`}
                           onClick={() => {
+                            // e.stopPropagation();
                             setExpanded(false);
                             setActiveCatId(null);
                           }}
-                          className="active:text-pink-400 hover:bg-[rgba(255,192,203,0.05)] active:bg-[rgba(255,192,203,0.05)] text-sm fle items-start justify-cente px-3 py-1 rounded-md transition"
-                        >
-                          {sub.name}
+                          onMouseDown={(e) => e.stopPropagation()}
+                          className="rounded-md py- hover:bg-[rgba(255,192,203,0.2)] active:bg-[rgba(255,192,203,0.2)]">
+                          <span className="text-white font-medium active:text-pink-200 text-sm md:text-xs fle items-start justify-cente px-4 py-2.5 transition">
+                            {sub.name}
+                          </span>                       
                         </Link>
                       ))}
                   </div>

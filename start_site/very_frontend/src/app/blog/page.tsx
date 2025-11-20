@@ -200,20 +200,30 @@ export default function BlogHome() {
         </Motion.h1>
 
         <div className="z-20 backdrop-blur-xs w-full py-5 sm:py-5">
-          <Motion.h1
-            className="hero px-14 sm:px-0 md:px-8 lg:px-0 relative text-6xl sm:text-7xl font-bold z-20 backdrop-blur-2xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-          >
-            Tech. <span className="text-lime-400">Code. </span> <span className="text-pink-400">Culture.</span>
-          </Motion.h1>
-
+          <h1 className="hero px-14 sm:px-0 md:px-8 lg:px-0 relative text-6xl sm:text-7xl font-bold z-20 backdrop-blur-2xl">
+            Tech.{" "}
+            <Motion.span
+              className="mx-1"
+              initial={{ color: "#ffffff" }}
+              animate={{ color: "#9AE600" }}
+              transition={{ delay: 0.3, duration: 1 }}
+            >
+            Code.{" "}
+            </Motion.span>
+            <Motion.span
+              className="mx-0"
+              initial={{ color: "#ffffff" }}
+              animate={{ color: "#fb64b6" }}
+              transition={{ delay: 0.6, duration: 1 }}
+            >
+            Culture.
+            </Motion.span>
+          </h1>
           <Motion.p
             className="relative text-gray-400 px-2 sm:px-0 mt-6 z-20 max-w-sm sm:max-w-md mx-auto text-md sm:text-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
+            transition={{ delay: 0.7 }}
           >
             Unfiltered takes on Tech, Code, Culture and everything in between.
           </Motion.p>
@@ -321,7 +331,7 @@ export default function BlogHome() {
                     <Image
                       src={featured.image}
                       alt={featured.alt || featured.title}
-                      className="w-full h-96 object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                      className="w-full h-96 object-cover text-xs rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
                       width={800}
                       height={400}
                       priority
@@ -439,7 +449,7 @@ export default function BlogHome() {
                     <Image
                       src={hardware.image}
                       alt={hardware.alt || hardware.title}
-                      className="w-full h-96 object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                      className="w-full h-96 object-cover text-xs rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
                       width={800}
                       height={400}
                       priority={false}
@@ -556,7 +566,7 @@ export default function BlogHome() {
                     <Image
                       src={digitalMoney.image}
                       alt={digitalMoney.alt || digitalMoney.title}
-                      className="w-full h-96 object-cover rounded-xl shadow-lg opacity-70 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500"
+                      className="w-full h-96 text-xs object-cover rounded-xl shadow-lg opacity-70 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500"
                       width={800}
                       height={400}
                       priority={false}
@@ -675,7 +685,7 @@ export default function BlogHome() {
                     <Image
                       src={social.image}
                       alt={social.alt || social.title}
-                      className="w-full h-96 object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                      className="w-full h-96 text-xs object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
                       width={800}
                       height={400}
                       priority={false}

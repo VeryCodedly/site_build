@@ -49,6 +49,8 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           alt={post.alt || 'Featured image'}
           width={1200}
           height={600}
+          rel="preload"
+          fetchPriority="high"
           className="w-full h-[50vh] sm:h-[70vh] object-cover rounded-2xl brightness-65 hover:brightness-90 active:brightness-90 transition-all duration-500"
           priority
           sizes="100vw"

@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Community",
   description: "Our community brings together tech learners, builders, and tinkerers to support each other, share knowledge, and grow together.",
+  alternates: {
+    canonical: "https://verycodedly.com/community",
+  },
   openGraph: {
     title: "Community",
     description: "Our community brings together tech learners, builders, and tinkerers to support each other, share knowledge, and grow together.",

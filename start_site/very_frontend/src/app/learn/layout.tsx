@@ -1,9 +1,13 @@
 import { Providers } from "@/lib/providers";
 import type { Metadata } from "next";
+import SearchBar from "@/components/SearchBar";
 
 export const metadata: Metadata = {
   title: "Learn",
   description: "Beginner-friendly coding lessons that help complex ideas click, one concept at a time.",
+  alternates: {
+    canonical: "https://verycodedly.com/learn",
+  },
   openGraph: {
     title: "Learn",
     description: "Beginner-friendly coding lessons that help complex ideas click, one concept at a time.",
@@ -28,7 +32,10 @@ export default function LearnLayout({
 }) {
   return (
     <>
-      <Providers>{children}</Providers>
+      <Providers>
+        <SearchBar />
+        {children}
+      </Providers>
     </>
   );
 }

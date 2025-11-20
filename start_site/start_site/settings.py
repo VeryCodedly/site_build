@@ -24,6 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
+IP_ADDY = os.getenv("IP_ADDY", "127.0.0.1")  # fallback
+
 # Parse comma-separated domains into a Python list
 DOMAINS = [d.strip() for d in os.getenv("DOMAINS", "").split(",") if d.strip()]
 
@@ -50,20 +52,58 @@ INSTALLED_APPS = [
     'adminsortable2',
     'cloudinary',
     'cloudinary_storage',
+    'axes',
 ]
 
 # --- MIDDLEWARE ---
 MIDDLEWARE = [
+    # --- BUILT-IN DJANGO SECURITY ---
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    
+    # --- SECURITY LAYER (custom middleware) ---
+    'codedly.middleware.adm_odeshi.AdminIPRestrictMiddleware',
+    'codedly.middleware.api_odeshi.APIAccessControlMiddleware',
+    
+        # --- DJANGO CORE ---
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    "axes.middleware.AxesMiddleware",
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+        # --- STATIC FILES ---
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+# Axes settings 
+AXES_FAILURE_LIMIT = 5                  # lock after 5 wrong passwords
+AXES_COOLOFF_TIME = 60 * 60             # 1-hour lockout
+AXES_LOCK_OUT_BY_IP = True              # lock IP
+AXES_RESET_ON_SUCCESS = True            # reset counter on correct
+AXES_LOCK_OUT_BY_USER_AGENT = True
+AXES_LOCK_OUT_BY_COMBINATION_IP_USERNAME = True
+
+AXES_WHITELISTED_IP_ADDRESSES = [
+    "127.0.0.1",
+    "::1",
+    # Add real home/office IP(s) from Render env var
+    *([ip.strip() for ip in os.getenv("IP_ADDY", "").split(",") if ip.strip()])
+]
+
+AUTHENTICATION_BACKENDS = [
+    "axes.backends.AxesStandaloneBackend",  # ← REQUIRED 
+    "django.contrib.auth.backends.ModelBackend",
+]
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        "LOCATION": "unique-snowflake",
+    }
+}
 
 ROOT_URLCONF = 'start_site.urls'
 

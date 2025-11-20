@@ -45,12 +45,17 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
   if (!lesson) notFound();
 
-  const title = `${lesson.title} | Learn`;
-  const description = `Learn "${lesson.title}" from VeryCodedly.`;
+  const language = lesson?.course?.split(" ")[1] || "Course";
+
+  const title = `${lesson.title} | ${language} | VeryCodedly`;
+  const description = `Learn "${lesson.title}" in the "${language}" from VeryCodedly.`;
 
   return {
     title,
     description,
+    alternates: {
+    canonical: `https://verycodedly.com/learn/${slug}/${lessonSlug}`,
+  },
     openGraph: {
       title,
       description,

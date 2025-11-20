@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Support",
   description: "Your support helps us keep our content free, our community active, and our servers running. Every bit makes a difference.",
+  alternates: {
+    canonical: "https://verycodedly.com/support",
+  },
   openGraph: {
     title: "Support",
     description: "Your support helps us keep our content free, our community active, and our servers running. Every bit makes a difference.",

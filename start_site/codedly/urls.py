@@ -1,7 +1,10 @@
 from django.urls import path
-from .views import api_home 
+from django.http import HttpResponse
+from .views import api_home, global_search
 
 urlpatterns = [
     path('', api_home, name='api_home'),
-    
+    path("ping/", lambda request: HttpResponse("OK")),
+    path("api/search/", global_search, name="global_search"),
+
 ]

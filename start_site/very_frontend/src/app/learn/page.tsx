@@ -39,9 +39,8 @@ export default function LearnPage() {
                 animate={{ color: "#9AE600" }}
                 transition={{ delay: 0.3, duration: 1 }}
               >
-                Code.
+              Code.{" "}
               </Motion.span>
-              {" "}
               {/* <Motion.span
               className="mx-1"
               initial={{ color: "#ffffff" }}
@@ -58,7 +57,7 @@ export default function LearnPage() {
                   animate={{ color: "#fb64b6" }}
                   transition={{ delay: 0.6, duration: 1 }}
                 >
-                  Create.
+                Create.
                 </Motion.span>
                 {/* <span>&nbsp;Creatively.</span> */}
               </span>
@@ -79,7 +78,7 @@ export default function LearnPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <FontAwesomeIcon className="text-6xl sm:text-7xl" icon={faGraduationCap} />
+            <FontAwesomeIcon className="text-7xl sm:text-7xl" icon={faGraduationCap} />
           </Motion.h2>
 
         </div>
@@ -94,7 +93,7 @@ export default function LearnPage() {
         >
           <span className="text-white">Courses from <span className="text-lime-400">VeryCodedly</span></span>
         </Motion.h2>
-        <div className="space-y-2.5 w-full sm:w-[90%] lg:w-[80%] mx-auto">
+        <div className="space-y-2.5 w-[97%] sm:w-[90%] lg:w-[80%] mx-auto">
           {/* <div className="absolute inset-0 bg-[url('/images/bg-plain.jpg')] bg-center bg-stretch opacity-50"></div> */}
           {/* <div className=""> */}
           <CourseList />
@@ -144,7 +143,7 @@ export default function LearnPage() {
 
       {/* FEATURED LESSONS */}
 
-      <section className="bg-gradient-to-b from-black to-zinc-900/80 relative min-h-screen w-full mx-auto px-4 sm:px-12 py-16 sm:py-32 flex flex-col items-center justify-center">
+      <section className="bg-gradient-to-b from-black to-zinc-900/80 relative min-h-screen w-full mx-auto px-6 sm:px-12 py-16 sm:py-32 flex flex-col items-center justify-center">
         <div className="absolute inset-0 bg-center bg-stretch opacity-40"></div>
         <Motion.h2
           className="relative text-3xl sm:text-4xl font-bold mb-6 sm:mb-12 text-right text-white/90"

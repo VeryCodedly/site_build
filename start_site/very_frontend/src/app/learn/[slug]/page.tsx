@@ -255,7 +255,7 @@ export default function CoursePage() {
   const lessons: Lessons[] = Array.isArray(course.lessons) ? course.lessons : [];
 
   return (
-    <section className="w-full bg-gradient-to-b from-black to-zinc-950 text-white min-h-screen pt-8 pb-24 px-5">
+    <section className="w-full bg-gradient-to-b from-black to-zinc-950 text-white min-h-screen pt-8 pb-24 px-6">
       <Motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}

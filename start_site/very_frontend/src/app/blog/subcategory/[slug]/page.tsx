@@ -5,11 +5,10 @@ import PostCard from '../../components/blog/PostCard';
 import Link from 'next/link';
 import { motion as Motion } from 'framer-motion';
 import { useParams } from 'next/navigation';
-import MorphingPanel from '@/components/MorphingPanel';
 import { Post } from '@/types/post';
 import MiniPostCard from '../../components/blog/MiniPostCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faFileAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function SubcategoryPage() {
@@ -21,6 +20,7 @@ export default function SubcategoryPage() {
   const sub = subs.find((s) => s.slug === slugString);
   // const cat = sub?.category || 'Blog';
   const about = sub?.about || '';
+  const name = sub?.name || 'Subcategory';
 
   if (isLoading)
     return
@@ -82,7 +82,7 @@ export default function SubcategoryPage() {
         <div className="empty-state py-18 px-6 text-center bg-transparent backdrop-blur-sm rounded-xl shadow-2xl">
           <div className="max-w-md mx-auto">
 
-            <MorphingPanel />
+            <FontAwesomeIcon className="text-white/50" icon={faFileAlt} size="10x" />
             {/* Headline */}
             <h3 className="text-xl font-semibold text-white my-6">
               No posts yet
@@ -124,7 +124,7 @@ export default function SubcategoryPage() {
               {/* </nav> */}
 
               <h1 className="text-3xl sm:text-4xl font-semibold text-center uppercase">
-                {slugString.replace(/-/g, ' ')}
+                {name}
               </h1>
 
               <div className="text-sm sm:text-md lg:text-base w-[96%] my-8 mx-auto">
@@ -171,7 +171,7 @@ export default function SubcategoryPage() {
                   className="space-y-6">
                   <h2 className="text-xl lg:text-2xl font-bold text-white flex items-center gap-3">
                     <span className="w-2 h-8 bg-lime-400 rounded-full" />
-                    Latest in {slugString.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())}
+                    Latest in {name}
                   </h2>
                   <LatestStories slug={slugString} />
                 </Motion.div>

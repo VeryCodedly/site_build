@@ -1,18 +1,26 @@
 from django.shortcuts import render
 
 # Create your views here.
-# from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 # from django.conf import settings
 from rest_framework.decorators import action
+from django.core.cache import cache
+from django.views.decorators.cache import cache_page
+from django.db.models import Q
+
+from django.views.generic import ListView
+from django.shortcuts import get_object_or_404
 
 from rest_framework import viewsets
 from rest_framework import generics
 from django.http import HttpResponse
 from django.db.models.functions import Length
 from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson
-from .serializers import PostSerializer, CategorySerializer, CommentSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer
+from .serializers import CategoryPostsSerializer, PostSerializer, CategorySerializer, CommentSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer
+
+CACHE_TTL = 60 * 10  # 10 minutes
 
 def api_home(request):
     return HttpResponse("""
@@ -57,148 +65,260 @@ def api_home(request):
         </body>
         </html>
     """)
+    
+
+@api_view(["GET"])
+def global_search(request):
+    q = request.GET.get("q", "").strip()
+    if len(q) < 2:
+        return Response({"results": []})
+
+    results = []
+
+    # 1. Posts
+    posts = Post.objects.filter(
+        Q(title__icontains=q) |
+        Q(excerpt__icontains=q) |
+        Q(content_plain_text__icontains=q)
+    ).select_related("category", "subcategory")[:8]
+
+    for p in posts:
+        cat = p.category.name if p.category else ""
+        sub = p.subcategory.name if p.subcategory else ""
+        subtitle = f"{cat} → {sub}".strip(" →") if sub or cat else "Uncategorized"
+        results.append({
+            "type": "Post",
+            "title": p.title,
+            "subtitle": subtitle,
+            "url": f"/blog/{p.slug}",
+            "icon": "faNewspaper",
+        })
+
+    # 2. Categories
+    categories = Category.objects.filter(name__icontains=q)[:5]
+    for c in categories:
+        results.append({
+            "type": "Category",
+            "title": c.name,
+            "url": f"/blog/category/{c.slug}",
+            "icon": "faFolderBlank",
+        })
+
+    # 3. Subcategories
+    subcats = Subcategory.objects.filter(
+        Q(name__icontains=q) | Q(about__icontains=q)
+    )[:5]
+    for s in subcats:
+        results.append({
+            "type": "Subcategory",
+            "title": s.name,
+            "subtitle": s.category.name,
+            "url": f"/blog/subcategory/{s.slug}",
+            "icon": "faFolderOpen",
+        })
+
+    # 4. Courses
+    courses = Course.objects.filter(
+        Q(title__icontains=q) | Q(description__icontains=q)
+    )[:5]
+    for c in courses:
+        results.append({
+            "type": "Course",
+            "title": c.title,
+            "subtitle": c.description,
+            "url": f"/learn/{c.slug}",
+            "icon": "faGraduationCap",
+        })
+
+    # 5. Lessons
+    lessons = Lesson.objects.filter(
+        Q(title__icontains=q) | Q(content_plain_text__icontains=q)
+    ).select_related("course")[:6]
+    for l in lessons:
+        results.append({
+            "type": "Lesson",
+            "title": l.title,
+            "subtitle": l.course.title,
+            "url": f"/learn/{l.course.slug}/{l.slug}",
+            "icon": "faBookOpen",
+        })
+
+    return Response({"results": results})
 
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.filter(status="published").order_by("-created_at")
     serializer_class = PostSerializer
     lookup_field = "slug"
-    
-    # 1. Featured post (most recent with image)
+
+    def _get_cached_response(self, cache_key, queryset=None, single=False):
+        """
+        Helper to get cached serialized data or compute & cache it.
+        Accepts QuerySet or list-like. If single=True returns serialized single object or None.
+        If single=False returns a list of serialized objects.
+        """
+        cached_data = cache.get(cache_key)
+        if cached_data is not None:
+            return cached_data
+
+        data = None
+
+        # If no queryset provided, just cache None
+        if queryset is None:
+            data = None
+        else:
+            # If a QuerySet-like object (has .first()), handle appropriately
+            if single:
+                # Single object expected
+                obj = None
+                try:
+                    # QuerySet
+                    if hasattr(queryset, "first"):
+                        obj = queryset.first()
+                    else:
+                        # list/tuple
+                        obj = queryset[0] if len(queryset) > 0 else None
+                except Exception:
+                    obj = None
+
+                serializer = PostSerializer(obj, context={"request": self.request}) if obj else None
+                data = serializer.data if serializer else None
+            else:
+                # Multiple objects expected — serializer accepts both QuerySet and list
+                try:
+                    serializer = PostSerializer(queryset, many=True, context={"request": self.request})
+                    data = serializer.data
+                except Exception:
+                    # fallback: convert to list and try again
+                    items = list(queryset)
+                    serializer = PostSerializer(items, many=True, context={"request": self.request})
+                    data = serializer.data
+
+        cache.set(cache_key, data, CACHE_TTL)
+        return data
+
+    # SINGLE POST ENDPOINTS (featured, hardware, digitalMoney, social)
     @action(detail=False, methods=['get'])
     def featured(self, request):
-        post = Post.objects.filter(status="published", image__isnull=False, subcategory__slug="featured").order_by('-created_at').first()
-        serializer = PostSerializer(post, context={'request': request}) if post else None
-        return Response({"featured": serializer.data if serializer else None})
+        cache_key = "homepage_featured_post"
+        qs = Post.objects.filter(
+            image__isnull=False,
+            subcategory__slug="featured"
+        ).order_by('-created_at')
+        data = self._get_cached_response(cache_key, qs, single=True)
+        return Response({"featured": data})
 
-    # 2. Trending (most viewed – add view_count later, or use recent)
-    @action(detail=False, methods=['get'])
-    def trending(self, request):
-        posts = Post.objects.filter(status="published", subcategory__slug="trending-now").order_by('-created_at')[0:4]
-        serializer = PostSerializer(posts, many=True, context={'request': request})
-        return Response({"trending": serializer.data})
-
-    # 3. Spotlight (manual tag or field later)
-    @action(detail=False, methods=['get'])
-    def spotlight(self, request):
-        posts = Post.objects.filter(status="published", subcategory__slug="entertainment").distinct()[0:3]
-        serializer = PostSerializer(posts, many=True, context={'request': request})
-        # print("Spotlight posts fetched:", posts)
-        return Response({"spotlight": serializer.data})
-    
-    # 4
-    @action(detail=False, methods=['get'])
-    def bigDeal(self, request):
-        posts = Post.objects.filter(status="published", subcategory__slug="big-deal").distinct()[0:3]
-        serializer = PostSerializer(posts, many=True, context={'request': request})
-        # print("big_deal posts fetched:", posts)
-        return Response({"bigDeal": serializer.data})
-    
-    # 5
-    @action(detail=False, methods=['get'])
-    def globalLens(self, request):
-        posts = Post.objects.filter(status="published", subcategory__slug="wired-world").distinct()[0:3]
-        serializer = PostSerializer(posts, many=True, context={'request': request})
-        # print("big_deal posts fetched:", posts)
-        return Response({"globalLens": serializer.data})
-    
-    # 6
-    @action(detail=False, methods=['get'])
-    def africaRising(self, request):
-        posts = Post.objects.filter(status="published", subcategory__slug="africa-now").distinct()[0:3]
-        serializer = PostSerializer(posts, many=True, context={'request': request})
-        # print("big_deal posts fetched:", posts)
-        return Response({"africaRising": serializer.data})
-    
-    # 7
     @action(detail=False, methods=['get'])
     def hardware(self, request):
-        post = Post.objects.filter(status="published", image__isnull=False, subcategory__slug="hardware").order_by('-created_at').first()
-        serializer = PostSerializer(post, context={'request': request}) if post else None
-        return Response({"hardware": serializer.data if serializer else None})
-    
-    # 8
-    @action(detail=False, methods=['get'])
-    def emergingTech(self, request):
-        posts = Post.objects.filter(status="published", subcategory__slug="emerging-tech").distinct()[0:3]
-        serializer = PostSerializer(posts, many=True, context={'request': request})
-        # print("big_deal posts fetched:", posts)
-        return Response({"emergingTech": serializer.data})
-    
-    # 9
+        cache_key = "homepage_hardware_post"
+        qs = Post.objects.filter(
+            image__isnull=False,
+            subcategory__slug="hardware"
+        ).order_by('-created_at')
+        data = self._get_cached_response(cache_key, qs, single=True)
+        return Response({"hardware": data})
+
     @action(detail=False, methods=['get'])
     def digitalMoney(self, request):
-        post = Post.objects.filter(status="published", image__isnull=False, subcategory__slug="digital-money").order_by('-created_at').first()
-        serializer = PostSerializer(post, context={'request': request}) if post else None
-        return Response({"digitalMoney": serializer.data if serializer else None})
-    
-    #10
-    @action(detail=False, methods=['get'])
-    def techCulture(self, request):
-        posts = Post.objects.filter(status="published", subcategory__slug="tech-culture").distinct()[0:3]
-        serializer = PostSerializer(posts, many=True, context={'request': request})
-        # print("big_deal posts fetched:", posts)
-        return Response({"techCulture": serializer.data})
-    
-    # 11
-    @action(detail=False, methods=['get'])
-    def secureHabits(self, request):
-        posts = Post.objects.filter(status="published", subcategory__slug="secure-habits").distinct()[0:3]
-        serializer = PostSerializer(posts, many=True, context={'request': request})
-        # print("big_deal posts fetched:", posts)
-        return Response({"secureHabits": serializer.data})
+        cache_key = "homepage_digital_money_post"
+        qs = Post.objects.filter(
+            image__isnull=False,
+            subcategory__slug="digital-money"
+        ).order_by('-created_at')
+        data = self._get_cached_response(cache_key, qs, single=True)
+        return Response({"digitalMoney": data})
 
-    # 12
-    @action(detail=False, methods=['get'])
-    def keyPlayers(self, request):
-        posts = Post.objects.filter(status="published", subcategory__slug="key-players").distinct()[0:3]
-        serializer = PostSerializer(posts, many=True, context={'request': request})
-        # print("big_deal posts fetched:", posts)
-        return Response({"keyPlayers": serializer.data})
-
-    # 13
-    @action(detail=False, methods=['get'])
-    def AI(self, request):
-        posts = Post.objects.filter(status="published", subcategory__slug="ai").distinct()[0:3]
-        serializer = PostSerializer(posts, many=True, context={'request': request})
-        # print("big_deal posts fetched:", posts)
-        return Response({"AI": serializer.data})
-    
-    # 14
-    @action(detail=False, methods=['get'])
-    def bchCrypto(self, request):
-        posts = Post.objects.filter(status="published", subcategory__slug="blockchain-crypto").distinct()[0:3]
-        serializer = PostSerializer(posts, many=True, context={'request': request})
-        # print("big_deal posts fetched:", posts)
-        return Response({"bchCrypto": serializer.data})
-    
-    # 15
-    @action(detail=False, methods=['get'])
-    def startups(self, request):
-        posts = Post.objects.filter(status="published", subcategory__slug="startups").distinct()[0:3]
-        serializer = PostSerializer(posts, many=True, context={'request': request})
-        # print("big_deal posts fetched:", posts)
-        return Response({"startups": serializer.data})
-    
-    # 16
-    @action(detail=False, methods=['get'])
-    def prvCompliance(self, request):
-        posts = Post.objects.filter(status="published", subcategory__slug="privacy-compliance").distinct()[0:3]
-        serializer = PostSerializer(posts, many=True, context={'request': request})
-        # print("big_deal posts fetched:", posts)
-        return Response({"prvCompliance": serializer.data})
-    
-    # 17
     @action(detail=False, methods=['get'])
     def social(self, request):
-        post = Post.objects.filter(status="published", image__isnull=False, subcategory__slug="social").order_by('-created_at').first()
-        serializer = PostSerializer(post, context={'request': request}) if post else None
-        return Response({"social": serializer.data if serializer else None})
+        cache_key = "homepage_social_post"
+        qs = Post.objects.filter(
+            image__isnull=False,
+            subcategory__slug="social"
+        ).order_by('-created_at')
+        data = self._get_cached_response(cache_key, qs, single=True)
+        return Response({"social": data})
+
+    # MULTIPLE POSTS ENDPOINTS (all the [0:3] or [0:4] ones)
+    @action(detail=False, methods=['get'])
+    def trending(self, request):
+        cache_key = "homepage_trending_posts"
+        qs = Post.objects.filter(subcategory__slug="trending-now").order_by('-created_at')[:4]
+        data = self._get_cached_response(cache_key, qs, single=False)
+        return Response({"trending": data})
+
+    @action(detail=False, methods=['get'])
+    def spotlight(self, request):
+        return self._multi_post_response("spotlight", "entertainment")
+
+    @action(detail=False, methods=['get'])
+    def bigDeal(self, request):
+        return self._multi_post_response("bigDeal", "big-deal")
+
+    @action(detail=False, methods=['get'])
+    def globalLens(self, request):
+        return self._multi_post_response("globalLens", "wired-world")
+
+    @action(detail=False, methods=['get'])
+    def africaRising(self, request):
+        return self._multi_post_response("africaRising", "africa-now")
+
+    @action(detail=False, methods=['get'])
+    def emergingTech(self, request):
+        return self._multi_post_response("emergingTech", "emerging-tech")
+
+    @action(detail=False, methods=['get'])
+    def techCulture(self, request):
+        return self._multi_post_response("techCulture", "tech-culture")
+
+    @action(detail=False, methods=['get'])
+    def secureHabits(self, request):
+        return self._multi_post_response("secureHabits", "secure-habits")
+
+    @action(detail=False, methods=['get'])
+    def keyPlayers(self, request):
+        return self._multi_post_response("keyPlayers", "key-players")
+
+    @action(detail=False, methods=['get'])
+    def AI(self, request):
+        return self._multi_post_response("AI", "ai")
+
+    @action(detail=False, methods=['get'])
+    def bchCrypto(self, request):
+        return self._multi_post_response("bchCrypto", "blockchain-crypto")
+
+    @action(detail=False, methods=['get'])
+    def startups(self, request):
+        return self._multi_post_response("startups", "startups")
+
+    @action(detail=False, methods=['get'])
+    def prvCompliance(self, request):
+        return self._multi_post_response("prvCompliance", "privacy-compliance")
+
+    # DRY HELPER FOR THE 12 IDENTICAL MULTI-POST ENDPOINTS
+    def _multi_post_response(self, response_key: str, subcategory_slug: str):
+        cache_key = f"homepage_{response_key.lower()}_posts"
+        qs = Post.objects.filter(subcategory__slug=subcategory_slug).distinct()[:3]
+        data = self._get_cached_response(cache_key, qs, single=False)
+        return Response({response_key: data})
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all().order_by("name")
     serializer_class = CategorySerializer
-
+    lookup_field = "slug"
+    
+    def get_serializer_class(self):
+        # List view → simple serializer
+        if self.action == "list":
+            return CategorySerializer
+        
+        # Detail view → nested posts serializer
+        if self.action == "retrieve":
+            return CategoryPostsSerializer
+        
+        # Create/update/delete → basic serializer
+        return CategorySerializer
+    
+        
 class SubcategoryViewSet(viewsets.ModelViewSet):
     queryset = Subcategory.objects.annotate(name_length=Length('name')).order_by('name_length')  # shortest → longest
     serializer_class = SubcategorySerializer

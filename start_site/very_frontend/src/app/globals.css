@@ -13,11 +13,10 @@
     --color-coral: #fd8444; 
     --color-brOrange: #ff712c; 
 
-    --font-geist: Geist Mono, monospace;
     /* --font-noto: Noto Sans Mono, monospace; */
+    --font-geist: Geist Mono, monospace;
     --font-pops: Poppins, sans-serif;
     --font-robo: Roboto Mono, monospace;
-    
 }
 
 @layer utilities {
@@ -51,7 +50,42 @@
 }
 .animate-fade-in { animation: fade-in 0.2s ease-out; }
 
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float, .animate-spin-twice, .animate-fade-in { animation: none; }
+}
+
 @layer base {
+  html {
+  font-size: 100%;             /* rem-based scaling */
+  -webkit-text-size-adjust: 100%; /* prevent forced browser zoom on mobile */
+  }
   body, pre {
     background-color: #000;
     font-family: var(--font-robo);

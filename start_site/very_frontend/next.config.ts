@@ -34,11 +34,11 @@ const cspProd = [
 const cspDev = cspProd
   .replace(
     /connect-src[^;]*/,
-    "connect-src 'self' http://localhost:8000 http://127.0.0.1:8000 https://api.verycodedly.com https://res.cloudinary.com wss:"
+    "connect-src 'self' http://localhost:8000 https://api.verycodedly.com https://res.cloudinary.com wss:"
   )
   .replace(
-    /img-src[^;]*/,
-    "img-src 'self' data: blob: http://localhost:8000 http://127.0.0.1:8000 https://res.cloudinary.com"
+    /script-src[^;]*/,
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
   );
 
 const securityHeaders = [
@@ -75,11 +75,13 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
 
+  experimental: {
+    optimizeCss: true,
+  },
+
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "res.cloudinary.com", pathname: "/**" },
-      { protocol: "http", hostname: "localhost", port: "8000", pathname: "/**" },
-      { protocol: "http", hostname: "127.0.0.1", port: "8000", pathname: "/**" },
       ],
     },
 
@@ -91,6 +93,8 @@ const nextConfig: NextConfig = {
         headers: [
           { key: "Content-Security-Policy", value: csp }, 
           ...securityHeaders,
+          // Add caching for CDN / ISR
+        { key: "Cache-Control", value: "s-maxage=600, stale-while-revalidate=60" },
         ],
       },
       {

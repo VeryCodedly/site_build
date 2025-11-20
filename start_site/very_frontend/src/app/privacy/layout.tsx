@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy",
   description: "Your trust is everything. Here’s exactly how we handle your data.",
+  alternates: {
+    canonical: "https://verycodedly.com/privacy",
+  },
   openGraph: {
     title: "Privacy",
     description: "Your trust is everything. Here’s exactly how we handle your data.",

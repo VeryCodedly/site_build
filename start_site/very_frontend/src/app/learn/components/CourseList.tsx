@@ -220,7 +220,7 @@ export default function CourseList() {
                 )}
 
                 {/* CTA */}
-                <div className="flex items-center justify-between text-base mt-1.5">
+                <div className="flex items-center justify-between text-base mt-2.5">
                   <span className="text-lime-400 font-bold group-hover:text-white flex items-center gap-2">
                     {progress > 0 ? 'Continue' : 'Start Now'}
                     <FontAwesomeIcon className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform" icon={faLongArrowRight} size="sm" />

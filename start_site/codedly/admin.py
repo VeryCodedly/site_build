@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Post, Category, Comment, PostImage, Subcategory, PostLink, Course, Lesson, LessonResource
 from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin, SortableAdminBase
+from .cache_helpers import clear_all_homepage_caches
 
 
 class LessonInline(SortableInlineAdminMixin, admin.TabularInline):
@@ -34,7 +35,7 @@ class PostLinkInline(admin.TabularInline):
        
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'created_at']
+    list_display = ['name', 'slug', 'created_at']
     search_fields = ['name']
     prepopulated_fields = {"slug": ("name",)}
     inlines = [SubcategoryInline]  # show subs in category edit page
@@ -45,7 +46,13 @@ class SubcategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'category', 'slug', 'created_at')
     list_filter = ('category', 'name')
     prepopulated_fields = {"slug": ("name",)}
+
     
+@admin.action(description="Clear all homepage caches")
+def clear_homepage_cache(modeladmin, request, queryset):
+    clear_all_homepage_caches()
+    modeladmin.message_user(request, "Homepage caches cleared successfully!")
+
     
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
@@ -54,6 +61,8 @@ class PostAdmin(admin.ModelAdmin):
     list_filter = ['category', 'subcategory','created_at']
     
     inlines = [PostImageInline, PostLinkInline]
+
+    actions = [clear_homepage_cache]  # Add action to admin
 
     def get_tags(self, obj):
         return ", ".join(tag.name for tag in obj.tags.all())

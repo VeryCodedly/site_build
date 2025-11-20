@@ -36,6 +36,11 @@ export interface Category {
   posts?: Post[]
 }
 
+export interface CategoryWithPostsResponse {
+  category: Category;
+  posts: Post[];  // not paginated for category page (all posts)
+}
+
 export interface PaginatedResponse<T> {
   count: number;
   next: string | null;
@@ -112,7 +117,7 @@ export interface Lessons {
   level: string; // e.g. "beginner", "intermediate", "advanced"
   duration: string;
   video_url?: string;
-  order: number; // order of the lesson in the course
+  order: number; // order of lesson in course
   content_plain_text: string;
   content_JSON: Record<string, unknown>; // flexible JSON blocks
   course: string; 

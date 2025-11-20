@@ -58,10 +58,19 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = '__all__'
 
+
+class CategoryPostsSerializer(serializers.ModelSerializer):
+    posts = PostSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Category
+        fields = '__all__'
         
+                
 class LessonSerializer(serializers.ModelSerializer):
     previous_lesson = serializers.SerializerMethodField()
     next_lesson = serializers.SerializerMethodField()
+    course = serializers.CharField(source="course.title", read_only=True)
 
     class Meta:
         model = Lesson

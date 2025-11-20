@@ -173,7 +173,7 @@ export default function NewsletterCard() {
         >
           <button
             type="submit"
-            className="w-[30%] sm:w-[40%] px-2 sm:px-4 py-1 mt-4 font-semibold text-black bg-lime-400 border-3 border-gray-500/100 rounded-full hover:bg-white active:bg-white hover:text-black 
+            className="w-[30%] sm:w-[40%] px-2 sm:px-4 py-1 mt-4 font-bold text-black bg-lime-400 border-3 border-gray-500/100 rounded-full hover:bg-white active:bg-white hover:text-black 
                     active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 
                       transition-all duration-200 focus:outline-none focus:ring-1 focus:ring-zinc-400 text-sm sm:text-base"
           >

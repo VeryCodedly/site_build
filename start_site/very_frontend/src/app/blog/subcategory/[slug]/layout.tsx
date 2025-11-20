@@ -52,12 +52,15 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     notFound();
   }
 
-  const title = `${subcategory.name}`;
+  const title = `${subcategory.name} | VeryCodedly`;
   const description = subcategory.about || `Read "${subcategory.name}" posts on VeryCodedly.`;
 
   return {
     title,
     description,
+    alternates: {
+    canonical: `https://verycodedly.com/blog/subcategory/${slug}`,
+  },
     openGraph: {
       title,
       description,

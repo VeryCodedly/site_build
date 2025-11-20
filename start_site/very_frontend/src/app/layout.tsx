@@ -6,8 +6,6 @@ import "./globals.css";
 import Header from "@/components/Header";
 import TopButton from "@/components/TopButton";
 import Footer from "@/components/Footer";
-import Head from "next/head";
-
 
 config.autoAddCss = false;
 
@@ -41,7 +39,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://verycodedly.com"),
   manifest: '/manifest.json',
   alternates: {
-    canonical: "/",
+    canonical: "https://verycodedly.com",
     languages: {
       'en-US': 'https://verycodedly.com/en-US',
     }
@@ -51,16 +49,17 @@ export const metadata: Metadata = {
     apple: '/apple-icon.svg',
   },
   keywords: [
+    "tech",
+    "coding",
+    "software development",
+    "programming",
+    "ai",
     "tech news",
-    "software trends",
-    "ai updates",
-    "tech culture",
-    "programming tips",
     "tech stories",
-    "developer insights",
-    "smart gadgets",
-    "tech explained",
-    "modern tech"
+    "developer tools",
+    "web development",
+    "trending tech",
+    "tech blog",
   ],
   openGraph: {
     title: 'VeryCodedly',
@@ -86,22 +85,31 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head />
-      <Head>
-        
-        <meta name="mobile-web-app-capable" content="yes" />
+      {/* <head /> */}
+      <head>
+        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://api.verycodedly.com" />
+
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icon-16x16.png" />
+
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content="VeryCodedly" />
-        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
         <meta name="theme-color" content="#000000" />
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
 
-        <script
+        {/* <script
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token": "9a2f443e5bad423184ad04e9c0146df"}'>
-        </script>
+        </script> */}
 
-      </Head>
+      </head>
       <body className={`${pops.variable} ${robo.variable} ${geist.variable} antialiased`}>
         <Header />
         {children}

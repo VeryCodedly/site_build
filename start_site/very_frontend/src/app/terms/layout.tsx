@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Terms & Conditions",
   description: "Terms of use.",
+  alternates: {
+    canonical: "https://verycodedly.com/terms",
+  },
   openGraph: {
     title: "Terms & Conditions",
     description: "Terms of use.",

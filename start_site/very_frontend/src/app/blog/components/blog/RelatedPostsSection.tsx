@@ -1,7 +1,7 @@
 // components/blog/RelatedPostsSection.tsx
 'use client';
 
-import { useGetPostsBySubcategoryQuery } from '@/features/api/apiSlice';
+import { useGetPostsBySubcategoryQuery, useGetSubcategoriesQuery } from '@/features/api/apiSlice';
 import { motion as Motion } from 'framer-motion';
 import MiniPostCard from './MiniPostCard';
 import { Post } from '@/types/post';
@@ -14,6 +14,10 @@ export default function RelatedPostsSection({ subSlug }: RelatedPostsSectionProp
     // Latest 
     const { data: latestPosts = [] } = useGetPostsBySubcategoryQuery(subSlug);
     const latest = latestPosts.slice(0, 5);
+  
+    const { data: subs = [] } = useGetSubcategoriesQuery();
+    const sub = subs.find((s) => s.slug === subSlug);
+    const name = sub?.name || 'Subcategory';
 
     // Trending (global)
     const { data: trendingPosts = [] } = useGetPostsBySubcategoryQuery('trending-now');
@@ -33,7 +37,7 @@ export default function RelatedPostsSection({ subSlug }: RelatedPostsSectionProp
                 >
                     <h2 className="text-xl lg:text-2xl font-bold text-white flex items-center gap-3">
                         <span className="w-2 h-8 bg-lime-400 rounded-full" />
-                        Latest in {subSlug.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase())}
+                        Latest in {name}
                     </h2>
                     {latest.length > 0 ? (
                         <div className="grid gap-4">

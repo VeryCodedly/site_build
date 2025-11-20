@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact",
   description: "Got a question, feedback, or just want to say hi? Drop us a message. We’ll get back to you.",
+  alternates: {
+    canonical: "https://verycodedly.com/contact",
+  },
   openGraph: {
     title: "Contact",
     description: "Got a question, feedback, or just want to say hi? Drop us a message. We’ll get back to you.",

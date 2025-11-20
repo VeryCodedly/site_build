@@ -42,7 +42,7 @@ const cards = [
   {
     id: "connect",
     title: "Connect",
-    description: "Join the community and keep up with the tech space.",
+    description: "Join our community for fast, real-time insights.",
     icon: faRss,
     accent: "bg-lime-700",
     color: "text-lime-700",

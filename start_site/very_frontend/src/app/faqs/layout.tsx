@@ -3,11 +3,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "FAQs",
   description: "Get answers to your questions.",
+  alternates: {
+    canonical: "https://verycodedly.com/faqs",
+  },
   openGraph: {
     title: "FAQs",
     description: "Get answers to your questions.",
     siteName: 'VeryCodedly',
-    url: "https://verycodedly.com/about",
+    url: "https://verycodedly.com/faqs",
     images: [{ url: "https://verycodedly.com/opengraph-image.png" }],
     type: "website",
   },

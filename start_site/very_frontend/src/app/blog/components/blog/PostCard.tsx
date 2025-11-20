@@ -59,7 +59,7 @@ import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
 export default function PostCard({ post }: { post: Post }) {
   return (
     <div className="flex flex-row px-4 py-2 rounded-2xl shadow bg-zinc-900 group hover:-translate-y-[5px] hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)] 
-                    active:-translate-y-[5px] active:shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition transform duration-300 gap-2 sm:gap-3">
+                    active:-translate-y-[5px] active:shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition transform duration-300 gap-3">
 
       {/* Left Section: Text */}
       <div className="flex-1 flex flex-col justify-between">
@@ -103,7 +103,7 @@ export default function PostCard({ post }: { post: Post }) {
         />
       </div> */}
       <div className="flex-shrink-0 items-center justify-center my-auto">
-        <div className="relative w-[90px] h-[110px] sm:w-[100px] sm:h-[120px] md:w-[120px] md:h-[120px] mx-auto">
+        <div className="relative w-[80px] h-[100px] sm:w-[100px] sm:h-[120px] md:w-[120px] md:h-[120px] mx-auto">
           <Image
             src={post.image ?? '/Post-Image.png'}
             alt={post.alt ?? 'Post Image'}
@@ -111,6 +111,7 @@ export default function PostCard({ post }: { post: Post }) {
             sizes="(max-width: 640px) 65vw, 120px"
             className="text-xs rounded-lg object-cover group-hover:brightness-110 transition duration-300 overflow-hidden"
             priority
+            fetchPriority="high"
           />
         </div>
       </div>

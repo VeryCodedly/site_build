@@ -2,11 +2,14 @@ import type { Metadata } from "next";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Providers } from '../../lib/providers';
 import FloatingMenu from "./components/blog/FloatingMenu";
-
+import SearchBar from "@/components/SearchBar";
 
 export const metadata: Metadata = {
   title: "Blog",
   description: "Unfiltered takes on Tech, Code, Culture and everything in between.",
+  alternates: {
+    canonical: "https://verycodedly.com/blog",
+  },
   openGraph: {
     title: "Blog",
     description: "Unfiltered takes on Tech, Code, Culture and everything in between.",
@@ -33,6 +36,7 @@ export default function BlogLayout({
     <>
       <Providers>
         <FloatingMenu />
+        <SearchBar />
         {children}
       </Providers>
     </>

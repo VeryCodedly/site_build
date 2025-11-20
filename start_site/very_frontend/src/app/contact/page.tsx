@@ -643,7 +643,7 @@ export default function ContactPage() {
             <Motion.button
               type="submit"
               // disabled={showErrors && hasErrors}
-              className="font-semibold cursor-pointer mt-3 border-3 border-gray-500/100 bg-lime-400 px-7 py-1 rounded-full text-black hover:bg-white 
+              className="font-bold cursor-pointer mt-3 border-3 border-gray-500/100 bg-lime-400 px-7 py-1 rounded-full text-black hover:bg-white 
                       active:bg-white active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] 
                         active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
             >
