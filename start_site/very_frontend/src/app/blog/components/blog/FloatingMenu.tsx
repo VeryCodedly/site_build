@@ -203,12 +203,11 @@ export default function FloatingMenu() {
       <button
         ref={buttonRef}
         onClick={() => setExpanded(p => !p)}
-        className={`fixed p-2 left-0 top-1/2 -translate-y-1/2 z-[60] w-6 h-7 sm:w-6 sm:h-7 flex items-center justify-center 
+        className="fixed p-2 left-0 top-1/2 -translate-y-1/2 z-[60] w-6 h-7 sm:w-6 sm:h-7 flex items-center justify-center 
                   rounded-r-xl bg-transparent text-white hover:bg-zinc-700/80 active:bg-zinc-700/80 
                   backdrop-blur-md border-l-0 transition-all duration-300 focus:outline-none 
                   focus:ring-2 focus:ring-offset-1 focus:ring-pink-300/70 shadow-[0_0_5px_3px_rgba(55,55,55,0.8)] 
-                  hover:shadow-[0_0_7px_3px_rgba(255,255,255,0.10)] active:shadow-[0_0_7px_3px_rgba(255,255,255,0.10)]
-                  `}
+                  hover:shadow-[0_0_7px_3px_rgba(255,255,255,0.10)] active:shadow-[0_0_7px_3px_rgba(255,255,255,0.10)]"
         aria-label="Toggle menu"
       >
         <FontAwesomeIcon icon={faChevronRight} size="lg" className={`transition-transform duration-300 ${expanded ? "rotate-90" : ""}`} />
@@ -219,7 +218,7 @@ export default function FloatingMenu() {
         onMouseEnter={() => setExpanded(true)}
         className={`fixed overflow-hidden pl-6 top-1/2 left-0 transform -translate-y-1/2 bg-white/5 hover:backdrop-blur-lg
                    shadow-lg rounded-r-2xl border-3 border-zinc-600 transition-all duration-200 
-                   ${expanded ? "w-68 sm:w-66 opacity-100 backdrop-blur-lg" : "opacity-0 w-8 h-10"} z-50`}
+                   ${expanded ? "w-70 sm:w-70 opacity-100 backdrop-blur-lg" : "opacity-0 w-8 h-10"} z-50`}
       >
         <ul className="flex flex-col gap-1 pt-1 pb-2 text-gray-200">
           {categories.map(cat => {
@@ -235,7 +234,7 @@ export default function FloatingMenu() {
                   setActiveCatId(activeCatId === cat.id ? null : cat.id);
                 }}
               >
-                <div className="flex items-center gap-3 p-1.5 px-4 rounded-lg hover:bg-[rgba(255,192,203,0.2)] active:bg-[rgba(255,192,203,0.2)] transition-all duration-200">
+                <div className="flex items-center gap-5 md:gap-3 p-1.5 px-4 rounded-lg hover:bg-[rgba(255,192,203,0.1)] active:bg-[rgba(255,192,203,0.1)] transition-all duration-200">
                   <span className="text-xl text-white">
                     {icon ? <FontAwesomeIcon icon={icon} size="sm" /> : <span className="w-6 h-6 md:w-5 md:h-5" />}
                   </span>
@@ -247,7 +246,7 @@ export default function FloatingMenu() {
                 </div>
 
                 {expanded && activeCatId === cat.id && (
-                  <div className="ml-12 bg-black/3 hover:backdrop-blur-md rounded-lg shadow-lg text-xs sm:text-sm flex flex-col gap-1 animate-fade-in">
+                  <div className="ml-12 bg-black/3 hover:backdrop-blur-md rounded-lg shadow-lg text-xs sm:text-sm flex flex-col gap-3 md:gap-1 animate-fade-in">
                     {cat?.subcategories?.slice()
                       .sort((a, b) => a.name.length - b.name.length)
                       .map(sub => (
@@ -259,8 +258,8 @@ export default function FloatingMenu() {
                             setExpanded(false);
                             setActiveCatId(null);
                           }}
-                          onMouseDown={(e) => e.stopPropagation()}
-                          className="rounded-md py- hover:bg-[rgba(255,192,203,0.2)] active:bg-[rgba(255,192,203,0.2)]">
+                          // onMouseDown={(e) => e.stopPropagation()}
+                          className="rounded-md py- hover:bg-[rgba(255,192,203,0.1)] active:bg-[rgba(255,192,203,0.1)]">
                           <span className="text-white font-medium active:text-pink-200 text-sm md:text-xs fle items-start justify-cente px-4 py-2.5 transition">
                             {sub.name}
                           </span>                       

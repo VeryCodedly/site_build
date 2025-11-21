@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { unstable_cache } from 'next/cache';
-import { Subcategory } from '@/types/post';
+import { Category } from '@/types/post';
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
 const getCachedPost = unstable_cache(
-  async (slug: string): Promise<Subcategory | null> => {
+  async (slug: string): Promise<Category | null> => {
 
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -18,7 +18,7 @@ const getCachedPost = unstable_cache(
         return null;
       }
 
-      const url = `${apiUrl}/subcategories/${slug}`;
+      const url = `${apiUrl}/categories/${slug}`;
 
       const res = await fetch(url, {
         next: { revalidate: 60 },
@@ -32,51 +32,55 @@ const getCachedPost = unstable_cache(
       }
 
       const data = await res.json();
-      return data as Subcategory;
+      return data as Category;
     } catch (error) {
       console.error('STEP 7: Fetch failed with error:', error);
       return null;
     }
   },
-  ['post-subcategory-slug'],
+  ['post-category-slug'],
   { revalidate: 60 }
 );
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const { slug } = await props.params;
-  const subcategory = await getCachedPost(slug);
+  const category = await getCachedPost(slug);
 
-  if (!subcategory) {
+  if (!category) {
     console.log('STEP 11: Triggering notFound()'); // DEBUG
     notFound();
   }
 
-  const title = `${subcategory.name} | VeryCodedly`;
-  const description = subcategory.about || `Read the latest in "${subcategory.name}" posts on VeryCodedly.`;
+    const title = `${category.name} | VeryCodedly`;
+    const description = `Read the latest in ${category.name} posts on VeryCodedly.`;
 
   return {
     title,
     description,
     alternates: {
-    canonical: `https://verycodedly.com/blog/subcategory/${slug}`,
+    canonical: `https://verycodedly.com/blog/category/${slug}`,
   },
     openGraph: {
-      title,
-      description,
-      url: `https://verycodedly.com/blog/subcategory/${slug}`,
-      type: 'article',
+      title: `${category.name} | VeryCodedly`,
+      description: `All posts in ${category.name}`,
+      url: `https://verycodedly.com/blog/category/${slug}`,
+      type: "website",
       images: [{ url: 'https://verycodedly.com/blog/opengraph-image.png' }],
     },
     twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
+      card: "summary_large_image",
+      title: `${category.name} | VeryCodedly`,
+      description: `Latest in ${category.name}`,
       images: ['https://verycodedly.com/blog/twitter-image.png'],
       creator: '@verycodedly',
     },
   };
 }
-
-export default function SubcategoryPageLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+    
+export default function CategoryPageLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      {children}
+    </>
+  );
 }

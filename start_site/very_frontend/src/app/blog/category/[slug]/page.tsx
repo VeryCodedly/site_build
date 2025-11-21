@@ -8,8 +8,14 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { motion as Motion } from "framer-motion";
 import Link from "next/link";
 import { Post } from "@/types/post";
+import { useEffect } from "react";
+
 
 export default function CategoryPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []); 
+  
   const { slug } = useParams() as { slug: string };
   const { data, isLoading, isError } = useGetCategoryPostsQuery(slug);
 

@@ -1,116 +1,94 @@
-from django.http import HttpResponseNotFound
-from django.conf import settings
+# middleware/odeshi.py
+import os
 import ipaddress
+from django.http import HttpResponseNotFound, HttpResponseForbidden
+from django.utils.deprecation import MiddlewareMixin
 
-# Only for /api/ when not in DEBUG
-# TRUSTED_PROXIES = ["127.0.0.1", "::1"]
 
-GOOD_BOT_PARTIAL_STRINGS = [
-    # Search engines
+GOOD_BOTS = [
     "Googlebot", "Mediapartners-Google", "Google-InspectionTool", "GoogleOther",
     "bingbot", "msnbot", "BingPreview",
     "DuckDuckBot", "DuckDuckGo",
     "YandexBot", "YandexMobileBot", "YandexImages",
-    "Baiduspider",
-    "Sogou", "Sogou-Test-Spider",
-    "Naverbot", "Yeti",               # Naver (Korea)
-    "Daumoa",                         # Daum (Korea)
-    "SeznamBot", "SeznamScreenshot",  # Czech Republic
-    "AhrefsBot",                      # SEO tool (very respectful)
-    "SemrushBot",                     # SEO tool
-    "MJ12bot",                        # Majestic SEO
-    "PetalBot",                       # Huawei
-    "Dotbot",                         # Moz
-
-    # Social & link preview 
-    "facebookexternalhit", "Facebot",
-    "LinkedInBot",
-    "Twitterbot",
-    "WhatsApp", "TelegramBot", "Discordbot", "Slackbot-LinkExpanding", "Slack-ImgProxy",
-    "SkypeUriPreview", "Pinterestbot", "Pinterest",
-    "Tumblr", "RedditBot", "Quora Bot", "Embedly", "OEmbed",
-
-    # Apple / Microsoft / others
-    "Applebot",
-    "ia_archiver",                    # Internet Archive / Wayback Machine
-    "archive.org_bot",
-    "CCBot",                          # CommonCrawl (open dataset)
-    "Curl", "Wget",                   # researchers 
-
-    # Monitoring & uptime bots
+    "Baiduspider", "Sogou", "Naverbot", "Yeti", "Daumoa", "SeznamBot",
+    "AhrefsBot", "SemrushBot", "MJ12bot", "PetalBot", "Dotbot",
+    "facebookexternalhit", "Facebot", "LinkedInBot", "Twitterbot",
+    "WhatsApp", "TelegramBot", "Discordbot", "Slackbot", "Slack-ImgProxy",
+    "SkypeUriPreview", "Pinterestbot", "Tumblr", "RedditBot", "Embedly",
+    "Applebot", "ia_archiver", "archive.org_bot", "CCBot", "Curl", "Wget",
     "UptimeRobot", "Pingdom", "NewRelicPinger", "StatusCake", "HetrixTools",
-    "GoogleStackdriverMonitoring", "CloudMonitor",
 ]
 
-# allowed IPs from .env
-ALLOWED_IPS = []
-if hasattr(settings, "IP_ADDY"):
-    for ip in settings.IP_ADDY.split(","):
-        ip = ip.strip()
-        if ip:
-            ALLOWED_IPS.append(ip)
-
-# Convert CIDR ranges into networks for fast lookup
-ALLOWED_NETWORKS = []
-for ip in ALLOWED_IPS:
-    try:
-        net = ipaddress.ip_network(ip, strict=False)
-        ALLOWED_NETWORKS.append(net)
-    except ValueError:
-        # Not CIDR, treat as single IP
+# Build allowed networks 
+def _get_allowed_networks():
+    networks = []
+    raw_ips = os.getenv("IP_ADDY", "")
+    for entry in [x.strip() for x in raw_ips.split(",") if x.strip()]:
         try:
-            ipaddress.ip_address(ip)
-            ALLOWED_NETWORKS.append(ipaddress.ip_network(ip))
-        except:
+            networks.append(ipaddress.ip_network(entry, strict=False))
+        except ValueError:
             pass
+    networks.extend([
+        ipaddress.ip_network("127.0.0.1"),
+        ipaddress.ip_network("::1"),
+    ])
+    return networks
 
-class APIAccessControlMiddleware:
+ALLOWED_NETWORKS = _get_allowed_networks()
+
+class OdeshiMiddleware(MiddlewareMixin):
     def __init__(self, get_response):
         self.get_response = get_response
+        self._cache = {}  # will store: request → bool
 
     def __call__(self, request):
-        # 1. Local dev
-        origin = request.headers.get("origin", "")
-        referer = request.headers.get("referer", "")
-        if "http://localhost:3000" in origin or "http://localhost:3000" in referer:
-            return self.get_response(request)
+        response = self.get_response(request)
+        return response
 
-        if not request.path.startswith("/api/"):
-            return self.get_response(request)
+    def process_view(self, request, view_func, view_args, view_kwargs):
+        path = request.path_info
 
-        if settings.DEBUG:
-            return self.get_response(request)
+        # Skip if decided
+        cache_key = id(request)
+        if cache_key in self._cache:
+            if not self._cache[cache_key]:
+                if path.startswith("/admin/"):
+                    return HttpResponseNotFound("NO")
+                if path.startswith("/api/"):
+                    return HttpResponseNotFound()
+            return None
 
-        # 2. Get real client IP (works behind Cloudflare, Render, etc.)
-        client_ip = (
+        # Check if allowed
+        allowed = self._is_allowed(request)
+        self._cache[cache_key] = allowed
+
+        if not allowed:
+            if path.startswith("/admin/"):
+                return HttpResponseForbidden("go away")
+            if path.startswith("/api/"):
+                return HttpResponseNotFound()
+
+        return None
+
+    def _get_client_ip(self, request):
+        ip = (
             request.META.get("HTTP_CF_CONNECTING_IP") or
-            request.META.get("HTTP_X_FORWARDED_FOR", "").split(",")[0].strip() or
+            request.META.get("HTTP_X_FORWARDED_FOR", "").split(",", 1)[0].strip() or
             request.META.get("REMOTE_ADDR", "")
         )
+        return ip or ""
 
-        # 3. Allow YOUR IPs from IP_ADDY
-        if client_ip:
-            try:
-                ip_obj = ipaddress.ip_address(client_ip)
-                if any(ip_obj in net for net in ALLOWED_NETWORKS):
-                    return self.get_response(request)
-            except ValueError:
-                pass  # invalid IP → block
+    def _is_allowed(self, request):
+        ua = request.META.get("HTTP_USER_AGENT", "")
+        if any(bot in ua for bot in GOOD_BOTS):
+            return True
 
-        # 4. Server-to-server calls (Render, Vercel, etc.)
-        if (
-            request.headers.get("x-forwarded-for") or
-            request.headers.get("x-vercel-forwarded-for") or
-            request.headers.get("x-render-origin-server") or
-            "render.com" in request.headers.get("via", "").lower() or
-            "vercel" in request.headers.get("via", "").lower() or
-            request.headers.get("user-agent", "").startswith("node-fetch")
-        ):
-            return self.get_response(request)
-
-        # 5. Good bots
-        ua = request.headers.get("User-Agent", "")
-        if any(bot in ua for bot in GOOD_BOT_PARTIAL_STRINGS):
-            return self.get_response(request)
-
-        return HttpResponseNotFound()
+        # IP?
+        ip = self._get_client_ip(request)
+        if not ip:
+            return False
+        try:
+            client_ip = ipaddress.ip_address(ip)
+            return any(client_ip in net for net in ALLOWED_NETWORKS)
+        except ValueError:
+            return False

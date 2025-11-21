@@ -63,8 +63,7 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     
     # --- SECURITY LAYER (custom middleware) ---
-    'codedly.middleware.adm_odeshi.AdminIPRestrictMiddleware',
-    'codedly.middleware.api_odeshi.APIAccessControlMiddleware',
+    'codedly.middleware.api_odeshi.OdeshiMiddleware',
     
         # --- DJANGO CORE ---
     'django.middleware.common.CommonMiddleware',
