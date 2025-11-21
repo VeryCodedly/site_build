@@ -119,7 +119,7 @@ export default function SearchBar() {
                             {query && (
                                 <div className="mt-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl overflow-hidden
                                 w-[94%] sm:w-full max-w-2xl mx-auto">
-                                    <div className="overflow-y-auto max-h-120 sm:max-h-90 custom-scrollbar">
+                                    <div className="overflow-y-auto max-h-160 sm:max-h-90 custom-scrollbar">
                                         {loading && (
                                             <div className="p-3 text-center text-white/70">Searching...</div>
                                         )}
