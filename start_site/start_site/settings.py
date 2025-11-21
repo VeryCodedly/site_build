@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'honeypot',
     'codedly',
     'rest_framework',
     'corsheaders',
@@ -62,8 +61,6 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'honeypot.middleware.HoneypotResponseMiddleware', 
-    'honeypot.middleware.HoneypotViewMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     "axes.middleware.AxesMiddleware",
@@ -71,10 +68,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
-
-HONEYPOT_FIELD_NAME = 'honeypot'
-HONEYPOT_IDENTIFIER = 'honeypot-id' 
-HONEYPOT_VALUE = 'bots-r-not-us'
 
 # Axes settings 
 AXES_FAILURE_LIMIT = 5                  # lock after 5 wrong passwords
