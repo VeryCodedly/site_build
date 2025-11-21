@@ -113,7 +113,7 @@ export default function SubcategoryPage() {
               <span className="sr-only">Go Home</span>
             </Link>
           </Motion.div>
-          <section className="min-h-screen max-w-[85%] mx-auto bg-black text-white pt-6 pb-14">
+          <section className="min-h-screen max-w-[85%] mx-auto bg-black text-white pt-4 pb-14">
             <div className="max-w-6xl mx-auto">
               {/* <nav className="w-fit text-xs mb-10 md:text-xs"> */}
 
@@ -123,11 +123,11 @@ export default function SubcategoryPage() {
               <span className="text-lime-400 capitalize">{slugString}</span> */}
               {/* </nav> */}
 
-              <h1 className="text-3xl sm:text-4xl font-semibold text-center uppercase">
+              <h1 className="text-3xl sm:text-4xl font-semibold text-center capitalize">
                 {name}
               </h1>
 
-              <div className="text-sm sm:text-md lg:text-base w-[96%] my-8 mx-auto">
+              <div className="text-sm sm:text-md lg:text-base w-[94%] my-8 mx-auto">
                 <Motion.p
                   initial={{ x: -80, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}

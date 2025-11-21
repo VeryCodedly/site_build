@@ -8,13 +8,33 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { motion as Motion } from "framer-motion";
 import Link from "next/link";
 import { Post } from "@/types/post";
-import { useEffect } from "react";
+// import { useEffect } from "react";
+
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as [number, number, number, number], },
+  },
+};
 
 
 export default function CategoryPage() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []); 
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []); 
   
   const { slug } = useParams() as { slug: string };
   const { data, isLoading, isError } = useGetCategoryPostsQuery(slug);
@@ -53,27 +73,56 @@ export default function CategoryPage() {
   return (
     <>
     <Motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-            <Link href="/blog" className="inline-flex items-center pt-8 pl-6 gap-2 text-lime-400 hover:text-white underline underline-offset-2 transition-all duration-200 text-sm sm:text-base">
-              <FontAwesomeIcon icon={faArrowLeft} size="lg" />
-              <span className="sr-only">Go Home</span>
-            </Link>
-          </Motion.div>
-    <div className="min-h-screen bg-black text-white pt-4 pb-20 px-10">
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-3xl sm:text-4xl font-semibold text-center capitalize">
-          {name}
-        </h1>
-        <p className="text-md text-center text-gray-400 mt-4 mb-12">
-          {posts?.length} {posts?.length === 1 ? "post" : "posts"}
-        </p>
+        <Link href="/blog" className="inline-flex items-center pt-8 pl-6 gap-2 text-lime-400 hover:text-white underline underline-offset-2 transition-all duration-200 text-sm sm:text-base">
+          <FontAwesomeIcon icon={faArrowLeft} size="lg" />
+          <span className="sr-only">Go Home</span>
+        </Link>
+    </Motion.div>
+    <Motion.div 
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.4 }}
+  className="min-h-screen bg-black text-white pt-4 pb-20 px-10"
+>
+  <div className="max-w-5xl mx-auto">
 
-        <div className="py-10 px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 border-y border-zinc-700 rounded-xl">
-          {posts?.map((post: Post) => (
-            <MiniPostCard key={post.id} post={post} />
-          ))}
-        </div>
-      </div>
-    </div>
+    {/* Title */}
+    <Motion.h1
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="text-3xl sm:text-4xl font-semibold text-center capitalize"
+    >
+      {name}
+    </Motion.h1>
+
+    {/* Count */}
+    <Motion.p
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.15, duration: 0.5 }}
+      className="text-md text-center text-gray-400 mt-4 mb-12"
+    >
+      {posts?.length} {posts?.length === 1 ? "post" : "posts"}
+    </Motion.p>
+
+    <Motion.div
+  variants={containerVariants}
+  initial="hidden"
+  animate="visible"
+  className="py-10 px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 border-y border-zinc-700 rounded-xl"
+>
+  {posts?.map((post: Post) => (
+    <Motion.div key={post.id} variants={cardVariants}>
+      <MiniPostCard post={post} />
+    </Motion.div>
+  ))}
+</Motion.div>
+
+
+  </div>
+</Motion.div>
+
     </>
   );
 }

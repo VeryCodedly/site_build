@@ -197,6 +197,10 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 30,
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    "DEFAULT_THROTTLE_RATES": {
+        "anon": "50/minute",
+        "user": "200/minute",
+    }
 }
 
 # --- SECURITY HEADERS ---

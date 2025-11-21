@@ -83,7 +83,7 @@ export default function SearchBar() {
                 className="cursor-pointer fixed top-1/2 -translate-y-1/2 right-0 z-50 px-1 py-1 bg-transparent backdrop-blur-md rounded-l-2xl transition-all hover:scale-110 
                             shadow-[0_0_5px_3px_rgba(55,55,55,0.8)] hover:shadow-[0_0_8px_5px_rgba(255,255,255,0.20)] active:shadow-[0_0_7px_3px_rgba(255,255,255,0.10)]"
             >
-                <FontAwesomeIcon icon={faSearch} className="w-6 h-8 text-white" />
+                <FontAwesomeIcon icon={faSearch} className="w-6 h-8 text-white/80" />
             </button>
 
             {/* Overlay + Search Panel */}
@@ -119,7 +119,7 @@ export default function SearchBar() {
                             {query && (
                                 <div className="mt-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl overflow-hidden
                                 w-[94%] sm:w-full max-w-2xl mx-auto">
-                                    <div className="overflow-y-auto max-h-[60%] md:max-h-90 custom-scrollbar">
+                                    <div className="overflow-y-auto max-h-120 sm:max-h-90 custom-scrollbar">
                                         {loading && (
                                             <div className="p-3 text-center text-white/70">Searching...</div>
                                         )}
