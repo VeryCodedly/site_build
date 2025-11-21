@@ -203,7 +203,7 @@ export default function FloatingMenu() {
       <button
         ref={buttonRef}
         onClick={() => setExpanded(p => !p)}
-        className="fixed p-2 left-0 top-1/2 -translate-y-1/2 z-[60] w-6 h-7 sm:w-6 sm:h-7 flex items-center justify-center 
+        className="fixed p-2.5 left-0 top-1/2 -translate-y-1/2 z-[60] w-6 h-7 sm:w-6 sm:h-7 flex items-center justify-center 
                   rounded-r-xl bg-transparent text-white/80 hover:bg-zinc-700/80 active:bg-zinc-700/80 
                   backdrop-blur-md border-l-0 transition-all duration-300 focus:outline-none 
                   focus:ring-2 focus:ring-offset-1 focus:ring-pink-300/70 shadow-[0_0_5px_3px_rgba(55,55,55,0.8)] 

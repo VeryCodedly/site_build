@@ -57,23 +57,15 @@ INSTALLED_APPS = [
 
 # --- MIDDLEWARE ---
 MIDDLEWARE = [
-    # --- BUILT-IN DJANGO SECURITY ---
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    
-    # --- SECURITY LAYER (custom middleware) ---
-    'codedly.middleware.api_odeshi.OdeshiMiddleware',
-    
-        # --- DJANGO CORE ---
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     "axes.middleware.AxesMiddleware",
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
-        # --- STATIC FILES ---
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
