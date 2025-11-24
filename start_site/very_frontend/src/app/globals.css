@@ -74,6 +74,8 @@
 /* Firefox */
 .custom-scrollbar {
   scrollbar-width: thin;
+  scrollbar-gutter: stable;
+  overscroll-behavior: contain;
   scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
 }
 

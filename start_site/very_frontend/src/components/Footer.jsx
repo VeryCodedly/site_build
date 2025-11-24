@@ -10,7 +10,7 @@ library.add(faXTwitter, faYoutube, faFacebook, faDiscord, faLinkedin, faTiktok, 
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-b from-zinc-950 via-black to-zinc-950 text-gray-400 py-24 px-8 overflow-hidden border-t border-zinc-800">
+    <footer className="relative bg-gradient-to-b from-zinc-950 via-black to-zinc-950 text-gray-300/80 py-24 px-8 overflow-hidden border-t border-zinc-800">
       {/* faint glow background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
 
@@ -21,7 +21,7 @@ export default function Footer() {
           <h3 className="text-lime-400 text-xl font-bold mb-3">
             VeryCodedly{/* <span className="text-xs">™</span> */}
           </h3>
-          <p className="text-sm text-gray-500 leading-tight w-[140px]">
+          <p className="text-sm text-gray-400/80 leading-tight w-[140px]">
             For the curious minds shaping the future, you're in good company here.
           </p>
         </div>
@@ -34,7 +34,7 @@ export default function Footer() {
           <ul className="space-y-3 text-sm">
             {[
               ["About", "/about"],
-              ["Read", "/blog"],
+              ["Read", "/read"],
               ["Learn", "/learn"],
               ["Know", "/know"],
               ["Connect", "/connect"],
@@ -102,7 +102,7 @@ export default function Footer() {
                 href={link}
                 aria-label={`${icon} link`}
                 target="_blank"
-                className="text-gray-500 hover:text-lime-500 hover:scale-110 transition-transform duration-300"
+                className="text-gray-400/80 hover:text-lime-500 hover:scale-110 transition-transform duration-300"
               >
                 <FontAwesomeIcon icon={["fab", icon]} size="lg" />
               </Link>

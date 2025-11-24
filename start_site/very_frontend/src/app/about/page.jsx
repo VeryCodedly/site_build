@@ -36,14 +36,14 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-left">
             <div>
               <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Our Mission</h3>
-              <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+              <p className="text-gray-300/80 text-sm sm:text-base leading-relaxed">
                 To connect tech education with the culture around it, helping people see both how
                 technology works and why it shapes the world we live in.
               </p>
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Our Values</h3>
-              <ul className="text-gray-400 text-sm sm:text-base list-disc list-inside space-y-1">
+              <ul className="text-gray-300/80 text-sm sm:text-base list-disc list-inside space-y-1">
                 <li>No gatekeeping</li>
                 <li>Accessibility & clarity</li>
                 <li>Community over competition</li>

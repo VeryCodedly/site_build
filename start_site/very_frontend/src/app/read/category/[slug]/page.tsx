@@ -35,7 +35,7 @@ export default function CategoryPage() {
   // useEffect(() => {
   //   window.scrollTo(0, 0);
   // }, []); 
-  
+
   const { slug } = useParams() as { slug: string };
   const { data, isLoading, isError } = useGetCategoryPostsQuery(slug);
 
@@ -62,7 +62,6 @@ export default function CategoryPage() {
       <section className="flex justify-center items-center min-h-screen bg-gradient-to-b from-black to-zinc-900 text-gray-400">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-lime-400 mx-auto mb-4"></div>
-          Loading post...
         </div>
       </section>
     );
@@ -72,56 +71,56 @@ export default function CategoryPage() {
 
   return (
     <>
-    <Motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-        <Link href="/blog" className="inline-flex items-center pt-8 pl-6 gap-2 text-lime-400 hover:text-white underline underline-offset-2 transition-all duration-200 text-sm sm:text-base">
+      <Motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
+        <Link href="/read" className="inline-flex items-center pt-8 pl-6 gap-2 text-lime-400 hover:text-white underline underline-offset-2 transition-all duration-200 text-sm sm:text-base">
           <FontAwesomeIcon icon={faArrowLeft} size="lg" />
           <span className="sr-only">Go Home</span>
         </Link>
-    </Motion.div>
-    <Motion.div 
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ duration: 0.4 }}
-  className="min-h-screen bg-black text-white pt-4 pb-20 px-10"
->
-  <div className="max-w-5xl mx-auto">
+      </Motion.div>
+      <Motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4 }}
+        className="min-h-screen bg-black text-white pt-4 pb-20 px-10"
+      >
+        <div className="max-w-5xl mx-auto">
 
-    {/* Title */}
-    <Motion.h1
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="text-3xl sm:text-4xl font-semibold text-center capitalize"
-    >
-      {name}
-    </Motion.h1>
+          {/* Title */}
+          <Motion.h1
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-3xl sm:text-4xl font-semibold text-center uppercase"
+          >
+            {name}
+          </Motion.h1>
 
-    {/* Count */}
-    <Motion.p
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.15, duration: 0.5 }}
-      className="text-md text-center text-gray-400 mt-4 mb-12"
-    >
-      {posts?.length} {posts?.length === 1 ? "post" : "posts"}
-    </Motion.p>
+          {/* Count */}
+          <Motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.5 }}
+            className="text-md text-center mx-auto text-gray-400 mt-4 mb-12 w-fit border-l-4 border-lime-400/80 rounded-sm pl-4 sm:pl-4"
+          >
+            {posts?.length} {posts?.length === 1 ? "post" : "posts"} in this category
+          </Motion.p>
 
-    <Motion.div
-  variants={containerVariants}
-  initial="hidden"
-  animate="visible"
-  className="py-10 px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 border-y border-zinc-700 rounded-xl"
->
-  {posts?.map((post: Post) => (
-    <Motion.div key={post.id} variants={cardVariants}>
-      <MiniPostCard post={post} />
-    </Motion.div>
-  ))}
-</Motion.div>
+          <Motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="py-10 px-6 w-[96%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-5 border-y border-zinc-700 rounded-xl"
+          >
+            {posts?.map((post: Post) => (
+              <Motion.div key={post.id} variants={cardVariants} className="px-2">
+                <MiniPostCard post={post} />
+              </Motion.div>
+            ))}
+          </Motion.div>
 
 
-  </div>
-</Motion.div>
+        </div>
+      </Motion.div>
 
     </>
   );

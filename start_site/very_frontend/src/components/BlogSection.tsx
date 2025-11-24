@@ -7,7 +7,7 @@ export default function BlogSection() {
     <section className="py-24 bg-transparent border-b border-zinc-900">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-          From the <span className="text-pink-400">Blog</span>
+          Featured in  <span className="text-pink-400">Read</span>
         </h2>
         <p className="text-sm sm:text-base text-gray-400 mb-12 max-w-2xl mx-auto">
           Unfiltered takes on Tech, Code, Culture and everything in between.
@@ -44,7 +44,7 @@ export default function BlogSection() {
               <h3 className="text-xl font-semibold text-white mb-2">
                 {post.title}
               </h3>
-              <p className="text-gray-400 mb-4">{post.desc}</p>
+              <p className="text-gray-300/90 mb-4">{post.desc}</p>
               <Link
                 href="/blog"
                 aria-label={`${post.tag} button`}
@@ -67,16 +67,16 @@ export default function BlogSection() {
         </Link> */}
         <div className="flex justify-center mt-18">
           <Link
-            href="/blog"
-            aria-label="Blog page button"
+            href="/read"
+            aria-label="Read page button"
             //   className="inline-block mt-14 px-8 py-3 rounded-full bg-lime-400/10 hover:bg-lime-400/20 text-lime-300 transition-all duration-300"
             className="font-bold cursor-pointer border-3 border-gray-500/100 bg-transparent text-white px-9 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
                     active:text-black shadow-[0_4px_0_0_#ff69b4] hover:shadow-[0_2px_0_0_#fb64b6] active:shadow-[0_2px_0_0_#ff69b4] active:translate-y-1.5 hover:translate-y-0.5  transition-all duration-200"
           // className="font-semibold cursor-pointer border-2 border-pink-400/70 bg-pink-500/90 text-white px-6 py-2 rounded-full hover:bg-pink-400 hover:shadow-[0_0_15px_#ff69b4] hover:text-white transition-all duration-300"
           >
-            <span className="sr-only">Go to Blog</span>
-            <span className="lg:hidden">Blog</span>
-            <span className="hidden lg:inline">Go to Blog</span>
+            <span className="sr-only">Read Here</span>
+            <span className="lg:hidden">Read</span>
+            <span className="hidden lg:inline">Read Here</span>
           </Link>
         </div>
       </div>

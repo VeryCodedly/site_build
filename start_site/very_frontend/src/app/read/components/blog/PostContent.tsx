@@ -113,7 +113,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           {post.title || 'Untitled Post'}
         </h1>
 
-        <p className="text-gray-300/70 text-sm sm:text-base tracking-wide italic border-l-4 border-lime-400/50 pl-4 mb-6">
+        <p className="text-gray-300/80 text-sm sm:text-base tracking-wide italic border-l-4 border-lime-400/50 rounded-sm pl-4 mb-6">
           {post.excerpt || 'No excerpt available for this post.'}
         </p>
       </Motion.div>
@@ -133,17 +133,17 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   const HeadingTag = `h${block.level ?? 2}` as any;
                   return (
-                    <HeadingTag key={index} className="text-lg sm:text-2xl text-white font-semibold border-l-4 border-lime-400 pl-3 leading-tight">
+                    <HeadingTag key={index} className="text-lg sm:text-2xl text-white font-semibold border-l-4 border-lime-400 rounded-sm pl-3 leading-tight">
                       {block.content || 'Untitled Section'}
                     </HeadingTag>
                   );
                 }
                 case 'paragraph':
-                  return <p key={index} className="text-sm sm:text-base text-gray-300/80 leading-relaxed">{block.content || 'No content available.'}</p>;
+                  return <p key={index} className="text-sm sm:text-base text-gray-300 leading-relaxed">{block.content || 'No content available.'}</p>;
                 case 'list':
                   return (
-                    <ul key={index} className={`${block.style === 'number' ? 'list-decimal' : 'list-disc'} list-inside ml-4 sm:ml-6 space-y-2 text-sm sm:text-base text-gray-300/80`}>
-                      {block.items?.length ? block.items.map((item, i) => <li key={i} className="hover:text-lime-400 transition-colors">{item}</li>) : <li>No items.</li>}
+                    <ul key={index} className={`${block.style === 'number' ? 'list-decimal' : 'list-disc'} list-inside ml-4 sm:ml-6 space-y-2 text-sm sm:text-base text-gray-300/90`}>
+                      {block.items?.length ? block.items.map((item, i) => <li key={i} className="hover:text-lime-400 active:text-lime-400 transition-colors">{item}</li>) : <li>No items.</li>}
                     </ul>
                   );
                 case 'link':

@@ -134,8 +134,8 @@ import {
   useGetKeyPlayersPostsQuery, useGetAIPostsQuery, useGetbchCryptoPostsQuery,
   useGetStartupsPostsQuery, useGetprvCompliancePostsQuery, useGetSocialPostQuery,
 } from "@/features/api/apiSlice";
-import PostCard from "../blog/components/blog/PostCard";
-import MiniPostCard from "../blog/components/blog/MiniPostCard";
+import PostCard from "../read/components/blog/PostCard";
+import MiniPostCard from "../read/components/blog/MiniPostCard";
 // import FloatingMenu from "./components/blog/FloatingMenu";
 // import NewsletterCard from "./components/blog/NewsletterCard";
 import { faLongArrowDown } from "@fortawesome/free-solid-svg-icons";
@@ -146,7 +146,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 
-export default function BlogHome() {
+export default function ReadHome() {
   const page = useParams();
   const { data: posts, error, isLoading } = useGetPostsQuery(page);
 
@@ -184,7 +184,7 @@ export default function BlogHome() {
       <div className="relative h-screen -mt-16 sm:mt-0 flex flex-col justify-center items-center text-center overflow-hidden">
         {/* layered typography */}
         <Motion.h1
-          className="absolute text-[16rem] sm:text-[16rem] font-extrabold uppercase text-lime-400/5 blur-2xl select-none z-0"
+          className="absolute text-[16rem] sm:text-[16rem] font-extrabold uppercase text-gray-400/5 blur-2xl select-none z-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 4 }}
           transition={{ duration: 0.8 }}
@@ -253,6 +253,7 @@ export default function BlogHome() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
         >
           Latest from <span className="text-lime-400">VeryCodedly</span>
         </Motion.h2>
@@ -260,7 +261,6 @@ export default function BlogHome() {
         {isLoading && (
           <div className="text-center py-20">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-lime-400" />
-            <p className="mt-4 text-gray-400">Loading new content...</p>
           </div>
         )}
 
@@ -310,7 +310,7 @@ export default function BlogHome() {
         {featured && (
           <section className="py-10 px-7 mt-8">
             <Link href={`/blog/${featured.slug}`}>
-              <p className="text-xs pl-3 font-semibold tracking-tight text-pink-400 uppercase mb-2">
+              <p className="text-xs pl-3 font-semibold text-right tracking-tight text-pink-400 uppercase mb-2">
                 {featured.category?.name ?? 'Featured'}
               </p>
               <Motion.div
@@ -353,6 +353,7 @@ export default function BlogHome() {
                   initial={{ y: 30, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                  viewport={{ once: true }}
                 >
                   <Motion.h1
                     className="text-2xl md:text-3xl font-bold text-white mb-2"
@@ -377,6 +378,7 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-3xl text-white mb-4">Trending<span className="text-lime-400">Now</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
@@ -395,6 +397,7 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-3xl text-white mb-4 flex justify-end">
               Entertainment
             </Motion.h2>
@@ -414,6 +417,7 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-3xl text-lime-400 mb-4 flex justify-start">Big<span className="text-white">Deal</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -471,6 +475,7 @@ export default function BlogHome() {
                   initial={{ y: 30, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                  viewport={{ once: true }}
                 >
                   <Motion.h1
                     className="text-2xl md:text-3xl font-bold text-white mb-2"
@@ -497,6 +502,7 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-3xl text-white mb-4 flex justify-start">Emerging<span className="text-lime-400">Tech</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -514,6 +520,7 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-3xl text-white mb-4 flex justify-end">AI
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -531,6 +538,7 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-3xl text-lime-400 mb-4 flex justify-start">Tech<span className="text-white">Culture</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -588,6 +596,7 @@ export default function BlogHome() {
                   initial={{ y: 30, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                  viewport={{ once: true }}
                 >
                   <Motion.h1
                     className="text-2xl md:text-3xl font-bold text-white mb-2"
@@ -612,6 +621,7 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-3xl text-white mb-4 flex justify-start">
               Blockchain&<span className="text-lime-400">Crypto</span>
 
@@ -631,6 +641,7 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-3xl text-white mb-4 flex justify-end">
               Startups
             </Motion.h2>
@@ -649,6 +660,7 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-3xl text-lime-400 mb-4 flex justify-start">
               Privacy<span className="text-white">&Compliance</span>
             </Motion.h2>
@@ -707,6 +719,7 @@ export default function BlogHome() {
                   initial={{ y: 30, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                  viewport={{ once: true }}
                 >
                   <Motion.h1
                     className="text-2xl md:text-3xl font-bold text-white mb-2"
@@ -731,6 +744,7 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-3xl text-white mb-4 flex justify-start">
               Wired<span className="text-lime-400">World</span>
             </Motion.h2>
@@ -749,6 +763,7 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-3xl text-lime-400 mb-4 flex justify-end">Africa<span className="text-white">Now</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -766,6 +781,7 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-3xl text-lime-400 mb-4 flex justify-start">
               Key<span className="text-white">Players</span>
             </Motion.h2>
@@ -784,6 +800,7 @@ export default function BlogHome() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-3xl text-white mb-4 flex justify-end">Secure<span className="text-lime-400">Habits</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

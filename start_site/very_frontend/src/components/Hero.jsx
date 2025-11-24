@@ -36,10 +36,10 @@ export default function Hero() {
             <span className="lg:hidden">Learn</span>
             <span className="hidden lg:inline">Start Learning</span>
           </Link>
-          <Link href="/blog" aria-label="Blog Page hero button" className="font-bold cursor-pointer border-3 border-gray-500/100 px-7.5 lg:px-8 py-1 rounded-full text-white hover:bg-white active:bg-white hover:text-black
+          <Link href="/read" aria-label="Blog Page hero button" className="font-bold cursor-pointer border-3 border-gray-500/100 px-7.5 lg:px-8 py-1 rounded-full text-white hover:bg-white active:bg-white hover:text-black
         active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
-            <span className="lg:hidden">Blog</span>
-            <span className="hidden lg:inline">Explore Blog</span>
+            <span className="lg:hidden">Read</span>
+            <span className="hidden lg:inline">Explore Read</span>
           </Link>
         </div>
       </div>

@@ -27,7 +27,6 @@ export default function SubcategoryPage() {
   <section className="flex justify-center items-center min-h-screen bg-gradient-to-b from-black to-zinc-900 text-gray-400">
     <div className="text-center">
       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-lime-400 mx-auto mb-4"></div>
-      Loading post...
     </div>
   </section>;
 
@@ -82,7 +81,7 @@ export default function SubcategoryPage() {
         <div className="empty-state py-18 px-6 text-center bg-transparent backdrop-blur-sm rounded-xl shadow-2xl">
           <div className="max-w-md mx-auto">
 
-            <FontAwesomeIcon className="text-white/50" icon={faFileAlt} size="10x" />
+            <FontAwesomeIcon className="text-white/50" icon={faFileAlt} size="8x" />
             {/* Headline */}
             <h3 className="text-xl font-semibold text-white my-6">
               No posts yet
@@ -108,12 +107,12 @@ export default function SubcategoryPage() {
       {posts.length > 0 && (
         <>
           <Motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-            <Link href="/blog" className="inline-flex items-center pt-8 pl-6 gap-2 text-lime-400 hover:text-white underline underline-offset-2 transition-all duration-200 text-sm sm:text-base">
+            <Link href="/read" className="inline-flex items-center pt-8 pl-6 gap-2 text-lime-400 hover:text-white underline underline-offset-2 transition-all duration-200 text-sm sm:text-base">
               <FontAwesomeIcon icon={faArrowLeft} size="lg" />
               <span className="sr-only">Go Home</span>
             </Link>
           </Motion.div>
-          <section className="min-h-screen max-w-[85%] mx-auto bg-black text-white pt-4 pb-14">
+          <section className="min-h-screen max-w-[85%] mx-auto bg-black text-white pt-6 pb-14">
             <div className="max-w-6xl mx-auto">
               {/* <nav className="w-fit text-xs mb-10 md:text-xs"> */}
 
@@ -123,16 +122,16 @@ export default function SubcategoryPage() {
               <span className="text-lime-400 capitalize">{slugString}</span> */}
               {/* </nav> */}
 
-              <h1 className="text-3xl sm:text-4xl font-semibold text-center capitalize">
+              <h1 className="text-3xl sm:text-4xl font-semibold text-center uppercase">
                 {name}
               </h1>
 
-              <div className="text-sm sm:text-md lg:text-base w-[94%] my-8 mx-auto">
+              <div className="text-sm sm:text-md lg:text-base w-full my-8 mx-auto">
                 <Motion.p
                   initial={{ x: -80, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.8, ease: 'easeOut' }}
-                  className="relative text-left ax-w-3xl mx-auto my-auto tracking-wide font-light border-l-4 border-lime-400/80 rounded-lg pl-4 sm:pl-6">
+                  className="relative text-left ax-w-3xl mx-auto my-auto tracking-wide font-light border-l-4 border-lime-400/80 rounded-sm pl-5 sm:pl-6">
                   <span className="whitespace-pre-wrap block italic before:content-['“'] before:text-lime-400 after:content-['”'] after:text-lime-400 text-zinc-400/90">
                     {about}
                   </span>
@@ -145,7 +144,7 @@ export default function SubcategoryPage() {
                 {posts.map((p, index) =>
                   <Motion.div
                     key={index}
-                    className="bg-zinc-900/80 rounded-xl p-3.5 border border-zinc-800 transition-transform duration-500 transform hover:-translate-y-2 
+                    className="bg-zinc-900/80 rounded-2xl p-3.5 border border-zinc-800 transition-transform duration-500 transform hover:-translate-y-2 
                                 hover:rotateX-3 hover:rotateY-3 active:-translate-y-2 active:rotateX-3 active:rotateY-3" style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -170,7 +169,7 @@ export default function SubcategoryPage() {
                   transition={{ duration: 0.6 }}
                   className="space-y-6">
                   <h2 className="text-xl lg:text-2xl font-bold text-white flex items-center gap-3">
-                    <span className="w-2 h-8 bg-lime-400 rounded-full" />
+                    <span className="w-1.5 h-8 bg-lime-400 rounded-xs" />
                     Latest in {name}
                   </h2>
                   <LatestStories slug={slugString} />
@@ -184,7 +183,7 @@ export default function SubcategoryPage() {
                   transition={{ duration: 0.6 }}
                   className="space-y-6">
                   <h2 className="text-xl lg:text-2xl font-bold text-white flex items-center gap-3">
-                    <span className="w-2 h-8 bg-pink-400 rounded-full" />
+                    <span className="w-1.5 h-8 bg-pink-400 rounded-xs" />
                     Trending Now
                   </h2>
                   <TrendingStories />

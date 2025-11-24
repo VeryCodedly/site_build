@@ -74,7 +74,6 @@ export default function BlogPost() {
       <section className="flex justify-center items-center min-h-screen bg-gradient-to-b from-black to-zinc-900 text-gray-400">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-lime-400 mx-auto mb-4"></div>
-          Loading post...
         </div>
       </section>
     );
@@ -113,7 +112,7 @@ export default function BlogPost() {
     <section className="relative w-full bg-gradient-to-b from-black via-zinc-950 to-black text-white min-h-screen py-12 sm:py-12 px-9">
       {/* Back Button */}
       <Motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }} className="max-w-6xl mx-auto mb-6 sm:mb-8">
-        <Link href="/blog" className="inline-flex items-center gap-2 text-lime-400 hover:text-white underline underline-offset-2 transition-all duration-200 text-sm sm:text-base">
+        <Link href="/read" className="inline-flex items-center gap-2 text-lime-400 hover:text-white underline underline-offset-2 transition-all duration-200 text-sm sm:text-base">
           <FontAwesomeIcon icon={faArrowLeft} size="lg" />
           <span className="sr-only">Go Home</span>
         </Link>

@@ -13,7 +13,7 @@ export default function CTA() {
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight bg-gradient-to-r from-white to-lime-300 bg-clip-text text-transparent">
             Ready to Create <br /> Something Brilliant?
           </h2>
-          <p className="text-gray-300/80 text-md md:text-lg mb-10 max-w-lg ml-auto">
+          <p className="text-gray-300/90 text-md md:text-lg mb-10 max-w-lg ml-auto">
             Start learning with a community of bold thinkers, dreamers, and doers. Your next big thing starts here.
           </p>
 

@@ -44,7 +44,7 @@ export default function LearnSection() {
               <h3 className="text-xl font-semibold text-white mb-2">
                 {lesson.title}
               </h3>
-              <p className="text-gray-400 mb-4">{lesson.desc}</p>
+              <p className="text-gray-300/90 mb-4">{lesson.desc}</p>
               <Link
                 href="/learn"
                 aria-label={`${lesson.tag} button`}
@@ -67,9 +67,9 @@ export default function LearnSection() {
             className="font-bold cursor-pointer border-3 border-gray-500/100 bg-transparent px-7.5 py-1 rounded-full text-white hover:bg-white active:bg-white hover:text-black
                     active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
           >
-            <span className="sr-only">Go to Learn</span>
+            <span className="sr-only">Learn Here</span>
             <span className="lg:hidden">Learn</span>
-            <span className="hidden lg:inline">Go to Learn</span>
+            <span className="hidden lg:inline">Learn Here</span>
           </Link>
         </div>
       </div>

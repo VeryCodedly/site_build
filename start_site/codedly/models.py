@@ -170,7 +170,7 @@ class Post(models.Model):
     excerpt = models.CharField(max_length=300, blank=True)
     author = models.CharField(max_length=50, default="Admin")
     
-    image = models.URLField(max_length=500, blank=True, null=True, default='https://res.cloudinary.com/verycodedly/image/upload/v1763448383/very-codedly-banner.png')
+    image = models.URLField(max_length=500, blank=True, null=True, default='https://res.cloudinary.com/verycodedly/image/upload/v1763878238/very-codedly-banner.png')
     caption = models.CharField(max_length=200, blank=True)
     alt = models.CharField(max_length=100, blank=True)
     

@@ -61,7 +61,7 @@ def api_home(request):
             </style>
         </head>
         <body>
-            <a href="/api/">VeryCodedly</a>
+            <a href="/">VeryCodedly</a>
         </body>
         </html>
     """)

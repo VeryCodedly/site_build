@@ -135,7 +135,7 @@ export default function LearnPage() {
               tabIndex={0}
             >
               <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3">{track.name}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{track.desc}</p>
+              <p className="text-gray-300/90 text-sm leading-relaxed">{track.desc}</p>
             </Motion.div>
           ))}
         </div>
@@ -185,11 +185,11 @@ export default function LearnPage() {
                   <h3 className="text-base sm:text-xl font-semibold mb-2 text-gray-100 group-hover:text-lime-400 transition leading-tight">
                     {topic.name}
                   </h3>
-                  <p className="text-sm text-gray-300/80 line-clamp-3 sm:line-clamp-6 mb-3 leading-relaxed">
+                  <p className="text-sm text-gray-300 line-clamp-3 sm:line-clamp-6 mb-3 leading-relaxed">
                     {topic.desc}
                   </p>
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-x-3 text-base text-lime-400 group-hover:text-white">
-                    <span className="text-gray-500">Beginner</span>
+                    <span className="text-gray-400/80">Beginner</span>
                     <div className="font-bold mt-2 sm:mt-0 inline-flex items-center gap-2 ">
                       Start Now <FontAwesomeIcon className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform" icon={faLongArrowRight} size="sm" />
                     </div>
@@ -251,7 +251,7 @@ export default function LearnPage() {
         >
           Join the <span className="text-lime-400">Community</span>
         </Motion.h2>
-        <p className="text-gray-400 text-md sm:text-lg w-fit sm:w-lg ml-auto mb-10 ">
+        <p className="text-gray-300/90 text-md sm:text-lg w-fit sm:w-lg ml-auto mb-10 ">
           Connect with learners, share progress, and get feedback on your projects.
           We’re building a friendly hub for curious minds, come hang out.
         </p>

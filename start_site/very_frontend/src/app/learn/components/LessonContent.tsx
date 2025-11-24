@@ -260,7 +260,7 @@ export default function LessonContent({
             {json.id}. {json.title}
           </h1>
           {json.duration && (
-            <div className="flex flex-col items-center text-xs sm:text-sm text-pink-400 italic">
+            <div className="flex flex-col items-center text-xs sm:text-sm text-pink-300 italic">
               <span>Level: {json.level}</span>
               <span>Duration: {json.duration}</span>
             </div>
@@ -278,7 +278,7 @@ export default function LessonContent({
                 <HeadingTag
                   key={index}
                   id={`heading-${index}`} // for sidebar scroll
-                  className="scroll-mt-24 text-lg sm:text-2xl text-white border-l-4 border-lime-400 pl-3 leading-tight"
+                  className="scroll-mt-24 text-lg sm:text-2xl text-white border-l-4 border-lime-400 pl-3 rounded-sm leading-tight"
                 >
                   {block.content}
                 </HeadingTag>
@@ -287,7 +287,7 @@ export default function LessonContent({
 
             case "paragraph":
               return (
-                <p key={index} className="text-base text-gray-300/80 leading-relaxed">
+                <p key={index} className="text-base text-gray-300 leading-relaxed">
                   {block.content}
                 </p>
               );
@@ -298,12 +298,12 @@ export default function LessonContent({
                   key={index}
                   className={`${
                     block.style === "number" ? "list-decimal" : "list-disc"
-                  } list-inside ml-4 sm:ml-6 space-y-2 text-gray-300/80 text-sm sm:text-base`}
+                  } list-inside ml-4 sm:ml-6 space-y-2 text-gray-300/90 text-sm sm:text-base`}
                 >
                   {block.items?.map((item, i) => (
                     <li
                       key={i}
-                      className="hover:text-lime-400 transition-colors duration-200 leading-relaxed"
+                      className="hover:text-lime-400 active:text-lime-400 transition-colors duration-200 leading-relaxed"
                     >
                       {item}
                     </li>

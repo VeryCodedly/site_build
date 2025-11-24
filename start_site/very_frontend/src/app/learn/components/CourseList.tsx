@@ -151,7 +151,6 @@ export default function CourseList() {
       <section className="flex justify-center items-center min-h-screen bg-black text-gray-400">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-lime-400 mx-auto mb-4" />
-          Loading courses...
         </div>
       </section>
     );
@@ -197,7 +196,7 @@ export default function CourseList() {
                   {isComplete && <FontAwesomeIcon icon={faCheckCircle} className="text-lime-400" />}
                 </h2>
 
-                <p className="text-sm text-gray-300/80 line-clamp-3 sm:line-clamp-4 my-1.5 leading-relaxed">
+                <p className="text-sm text-gray-300 line-clamp-3 sm:line-clamp-4 my-1.5 leading-relaxed">
                   {course.description || 'No description available yet.'}
                 </p>
 

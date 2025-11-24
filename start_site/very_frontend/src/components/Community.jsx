@@ -12,7 +12,7 @@ export default function Community() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Join a Thriving <span className="text-lime-400">Creative Community</span>
           </h2>
-          <p className="text-gray-400 text-base md:text-lg mb-8 max-w-xl mx-auto md:mx-0">
+          <p className="text-gray-300/90 text-base md:text-lg mb-8 max-w-xl mx-auto md:mx-0">
             Collaborate, get inspired, and build magic with people who think like you do. 
             Your next idea might just come from your next conversation.
           </p>

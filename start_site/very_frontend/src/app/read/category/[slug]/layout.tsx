@@ -58,20 +58,20 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     title,
     description,
     alternates: {
-    canonical: `https://verycodedly.com/blog/category/${slug}`,
+    canonical: `https://verycodedly.com/read/category/${slug}`,
   },
     openGraph: {
       title: `${category.name} | VeryCodedly`,
       description: `All posts in ${category.name}`,
-      url: `https://verycodedly.com/blog/category/${slug}`,
+      url: `https://verycodedly.com/read/category/${slug}`,
       type: "website",
-      images: [{ url: 'https://verycodedly.com/blog/opengraph-image.png' }],
+      images: [{ url: 'https://verycodedly.com/read/opengraph-image.png' }],
     },
     twitter: {
       card: "summary_large_image",
       title: `${category.name} | VeryCodedly`,
       description: `Latest in ${category.name}`,
-      images: ['https://verycodedly.com/blog/twitter-image.png'],
+      images: ['https://verycodedly.com/read/twitter-image.png'],
       creator: '@verycodedly',
     },
   };

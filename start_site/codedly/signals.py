@@ -1,49 +1,41 @@
+# signals.py
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from django.core.cache import cache
 from .models import Post
 
 
-SUBCACHE_KEYS = {
-    "featured": "featured_post",
-    "trending-now": "trending_posts",
-    "entertainment": "spotlight_posts",
-    "big-deal": "bigdeal_posts",
-    "wired-world": "global_lens_posts",
-    "africa-now": "africa_rising_posts",
-    "hardware": "hardware_post",
-    "emerging-tech": "emerging_tech_posts",
-    "digital-money": "digital_money_post",
-    "tech-culture": "tech_culture_posts",
-    "secure-habits": "secure_habits_posts",
-    "key-players": "key_players_posts",
-    "ai": "ai_posts",
-    "blockchain-crypto": "bch_crypto_posts",
-    "startups": "startups_posts",
-    "privacy-compliance": "prv_compliance_posts",
-    "social": "social_post",
-}
-
 @receiver([post_save, post_delete], sender=Post)
-def clear_post_cache(sender, instance, **kwargs):
-    """
-    Invalidate cached subcategory lists when a Post is saved/deleted.
-    clears homepage cache due to pulls from multiple sources.
-    """
-    # Get subcategory slug safely
-    sub_slug = None
-    if instance.subcategory and instance.subcategory.slug:
-        sub_slug = instance.subcategory.slug
+def invalidate_post_cache(sender, instance, **kwargs):
+    """Clear every cache that could possibly show this post."""
+    
+    # Global / homepage caches
+    cache.delete_many([
+        "homepage_posts",
+        "latest_posts",
+        "trending_posts",
+        "trending_posts_global",
+        "featured_post",
+    ])
 
-    # Clear specific subcategory cache
-    if sub_slug and sub_slug in SUBCACHE_KEYS:
-        cache.delete(SUBCACHE_KEYS[sub_slug])
+    # Subcategory page (if post has one)
+    if getattr(instance, 'subcategory', None):
+        cache.delete(f"posts_subcategory_{instance.subcategory.slug}")
 
-    # Always clear, they depend on posts
-    cache.delete("homepage_posts")
-    cache.delete("latest_posts")        # if 
-    cache.delete("trending_posts_global")  # if global version
-    cache.delete_many(cache.keys("post_list_*"))  # optional: nuke all
+    # Parent CATEGORY page — this is the important one you asked for
+    if (getattr(instance, 'subcategory', None) and 
+        getattr(instance.subcategory, 'category', None)):
+        cache.delete(f"posts_category_{instance.subcategory.category.slug}")
 
-    # Optional: log for debugging
-    print(f"Cache cleared for post {instance.id} | sub: {sub_slug}")
+    # Post detail page
+    cache.delete(f"post_detail_{instance.id}")
+    cache.delete(f"post_detail_{instance.slug}")
+
+    # Optional: main blog list pages (if you use @cache_page on PostListView)
+    cache.delete("post_list:1")
+    cache.delete("post_list:2")
+
+    # Debug (remove in production if you want)
+    print(f"Cache cleared → Post {instance.id} | "
+          f"Subcategory: {getattr(instance.subcategory, 'slug', '-')}, "
+          f"Category: {getattr(getattr(instance.subcategory, 'category', None), 'slug', '-')}")
