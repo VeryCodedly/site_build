@@ -19,8 +19,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(f"{settings.ADDY}/", admin.site.urls),
     path('', include('codedly.urls')),
     path('api/', include('codedly.api_urls')),
 

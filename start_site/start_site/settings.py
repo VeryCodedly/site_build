@@ -25,6 +25,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 IP_ADDY = os.getenv("IP_ADDY", "127.0.0.1")  # fallback
+ADDY = os.getenv("ADDY", "lady")
 
 # Parse comma-separated domains into a Python list
 DOMAINS = [d.strip() for d in os.getenv("DOMAINS", "").split(",") if d.strip()]
