@@ -36,7 +36,7 @@ export default function RelatedPostsSection({ subSlug }: RelatedPostsSectionProp
                     className="space-y-6"
                 >
                     <h2 className="text-xl lg:text-2xl font-bold text-white flex items-center gap-3">
-                        <span className="w-1.5 h-8 bg-lime-400 rounded-full" />
+                        <span className="w-1.5 h-8 bg-lime-400 rounded-xs" />
                         Latest in {name}
                     </h2>
                     {latest.length > 0 ? (
@@ -59,7 +59,7 @@ export default function RelatedPostsSection({ subSlug }: RelatedPostsSectionProp
                     className="space-y-6"
                 >
                     <h2 className="text-xl lg:text-2xl font-bold text-white flex items-center gap-3">
-                        <span className="w-1.5 h-8 bg-pink-400 rounded-full" />
+                        <span className="w-1.5 h-8 bg-pink-400 rounded-xs" />
                         Trending Now
                     </h2>
                     {trending.length > 0 ? (

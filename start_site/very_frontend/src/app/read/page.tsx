@@ -308,8 +308,8 @@ export default function ReadHome() {
 
         {/* 1 HERO: Featured Post */}
         {featured && (
-          <section className="py-10 px-7 mt-8">
-            <Link href={`/blog/${featured.slug}`}>
+          <section className="py-6 px-7 mt-6">
+            <Link href={`/read/${featured.slug}`}>
               <p className="text-xs pl-3 font-semibold text-right tracking-tight text-pink-400 uppercase mb-2">
                 {featured.category?.name ?? 'Featured'}
               </p>
@@ -373,7 +373,7 @@ export default function ReadHome() {
 
         {/* 2 TRENDING NOW */}
         {trending.length > 0 && (
-          <section className="py-10 px-3">
+          <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -392,7 +392,7 @@ export default function ReadHome() {
 
         {/* 3 SPOTLIGHT */}
         {spotlight.length > 0 && (
-          <section className="py-10 px-3">
+          <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -412,7 +412,7 @@ export default function ReadHome() {
 
         {/* 4 BIG DEAL */}
         {bigDeal.length > 0 && (
-          <section className="py-10 px-3">
+          <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -430,8 +430,8 @@ export default function ReadHome() {
 
         {/* 5 HARDWARE */}
         {hardware && (
-          <section className="py-8 px-7 mt-10">
-            <Link href={`/blog/${hardware.slug}`}>
+          <section className="py-6 px-7 mt-6">
+            <Link href={`/read/${hardware.slug}`}>
               <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
                 {hardware.category?.name ?? 'Hardware'}
               </p>
@@ -497,7 +497,7 @@ export default function ReadHome() {
 
         {/* 11 EMERGING TECH */}
         {emergingTech.length > 0 && (
-          <section className="py-10 px-3">
+          <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -515,7 +515,7 @@ export default function ReadHome() {
 
         {/* 10 AI */}
         {AI.length > 0 && (
-          <section className="py-10 px-3">
+          <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -533,7 +533,7 @@ export default function ReadHome() {
 
         {/* 12 TECH CULTURE */}
         {techCulture.length > 0 && (
-          <section className="py-10 px-3">
+          <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -551,8 +551,8 @@ export default function ReadHome() {
 
         {/* 9 DIGITAL MONEY */}
         {digitalMoney && (
-          <section className="py-8 px-7 mt-10">
-            <Link href={`/blog/${digitalMoney.slug}`}>
+          <section className="py-6 px-7 mt-6">
+            <Link href={`/read/${digitalMoney.slug}`}>
               <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
                 {digitalMoney.category?.name ?? 'Digital Money'}
               </p>
@@ -616,7 +616,7 @@ export default function ReadHome() {
 
         {/* 10 BLOCKCHAIN & CRYPTO */}
         {bchCrypto.length > 0 && (
-          <section className="py-10 px-3">
+          <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -636,7 +636,7 @@ export default function ReadHome() {
 
         {/* 11 STARTUPS */}
         {startups.length > 0 && (
-          <section className="py-10 px-3">
+          <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -655,7 +655,7 @@ export default function ReadHome() {
 
         {/* 12 PRIVACY & COMPLIANCE */}
         {prvCompliance.length > 0 && (
-          <section className="py-10 px-3">
+          <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -674,8 +674,8 @@ export default function ReadHome() {
 
         {/* 5 HARDWARE */}
         {social && (
-          <section className="py-8 px-7 mt-10">
-            <Link href={`/blog/${social.slug}`}>
+          <section className="py-6 px-7 mt-6">
+            <Link href={`/read/${social.slug}`}>
               <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
                 {social.category?.name ?? 'Hardware'}
               </p>
@@ -739,7 +739,7 @@ export default function ReadHome() {
 
         {/* 6 GLOBAL LENS */}
         {globalLens.length > 0 && (
-          <section className="py-10 px-3">
+          <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -758,7 +758,7 @@ export default function ReadHome() {
 
         {/* 7 AFRICA RISING */}
         {africaRising.length > 0 && (
-          <section className="py-10 px-3">
+          <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -776,7 +776,7 @@ export default function ReadHome() {
 
         {/* 8 KEY PLAYERS */}
         {keyPlayers.length > 0 && (
-          <section className="py-10 px-3">
+          <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -795,7 +795,7 @@ export default function ReadHome() {
 
         {/* 13 SECURE HABITS */}
         {secureHabits.length > 0 && (
-          <section className="py-10 px-3">
+          <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

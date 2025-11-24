@@ -100,7 +100,7 @@ export default function CategoryPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.15, duration: 0.5 }}
-            className="text-md text-center mx-auto text-gray-400 mt-4 mb-12 w-fit border-l-4 border-lime-400/80 rounded-sm pl-4 sm:pl-4"
+            className="text-md text-center mx-auto text-gray-400 mt-4 mb-12 w-fit border-l-4 border-lime-400 rounded-sm pl-4 sm:pl-4"
           >
             {posts?.length} {posts?.length === 1 ? "post" : "posts"} in this category
           </Motion.p>

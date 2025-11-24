@@ -9,6 +9,7 @@ from rest_framework.decorators import action
 from django.core.cache import cache
 from django.views.decorators.cache import cache_page
 from django.db.models import Q
+from functools import wraps
 
 from django.views.generic import ListView
 from django.shortcuts import get_object_or_404
@@ -21,6 +22,39 @@ from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, C
 from .serializers import CategoryPostsSerializer, PostSerializer, CategorySerializer, CommentSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer
 
 CACHE_TTL = 60 * 10  # 10 minutes
+
+def smart_cache(timeout=60*15):
+    """
+    Caches the view response BUT preserves absolute URLs by:
+    - Caching the serialized data WITHOUT request context
+    - Re-adding request context only on cache miss
+    """
+    def decorator(view_func):
+        @wraps(view_func)
+        def _wrapped_view(self, request, *args, **kwargs):
+            # Generate a cache key unique to the view + args/kwargs
+            key_parts = [view_func.__name__, request.method]
+            if kwargs:
+                key_parts.extend([f"{k}:{v}" for k, v in sorted(kwargs.items())])
+            if request.GET:
+                key_parts.extend([f"{k}:{v}" for k, v in sorted(request.GET.items())])
+            cache_key = "_".join(str(p) for p in key_parts)
+
+            # Try cache first (no request context)
+            result = cache.get(cache_key)
+            if result is not None:
+                return result
+
+            # Cache miss → run the original view
+            response = view_func(self, request, *args, **kwargs)
+
+            # Only cache successful responses
+            if hasattr(response, 'status_code') and response.status_code == 200:
+                cache.set(cache_key, response, timeout)
+
+            return response
+        return _wrapped_view
+    return decorator
 
 def api_home(request):
     return HttpResponse("""
@@ -150,50 +184,68 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     lookup_field = "slug"
 
+    # def _get_cached_response(self, cache_key, queryset=None, single=False):
+    #     """
+    #     Helper to get cached serialized data or compute & cache it.
+    #     Accepts QuerySet or list-like. If single=True returns serialized single object or None.
+    #     If single=False returns a list of serialized objects.
+    #     """
+    #     cached_data = cache.get(cache_key)
+    #     if cached_data is not None:
+    #         return cached_data
+
+    #     data = None
+
+    #     # If no queryset provided, just cache None
+    #     if queryset is None:
+    #         data = None
+    #     else:
+    #         # If a QuerySet-like object (has .first()), handle appropriately
+    #         if single:
+    #             # Single object expected
+    #             obj = None
+    #             try:
+    #                 # QuerySet
+    #                 if hasattr(queryset, "first"):
+    #                     obj = queryset.first()
+    #                 else:
+    #                     # list/tuple
+    #                     obj = queryset[0] if len(queryset) > 0 else None
+    #             except Exception:
+    #                 obj = None
+
+    #             serializer = PostSerializer(obj) if obj else None
+    #             data = serializer.data if serializer else None
+    #         else:
+    #             # Multiple objects expected — serializer accepts both QuerySet and list
+    #             try:
+    #                 serializer = PostSerializer(queryset, many=True)
+    #                 data = serializer.data
+    #             except Exception:
+    #                 # fallback: convert to list and try again
+    #                 items = list(queryset)
+    #                 serializer = PostSerializer(items, many=True)
+    #                 data = serializer.data
+
+    #     cache.set(cache_key, data, CACHE_TTL)
+    #     return data
     def _get_cached_response(self, cache_key, queryset=None, single=False):
-        """
-        Helper to get cached serialized data or compute & cache it.
-        Accepts QuerySet or list-like. If single=True returns serialized single object or None.
-        If single=False returns a list of serialized objects.
-        """
         cached_data = cache.get(cache_key)
         if cached_data is not None:
             return cached_data
 
         data = None
-
-        # If no queryset provided, just cache None
-        if queryset is None:
-            data = None
-        else:
-            # If a QuerySet-like object (has .first()), handle appropriately
+        if queryset is not None:
             if single:
-                # Single object expected
-                obj = None
-                try:
-                    # QuerySet
-                    if hasattr(queryset, "first"):
-                        obj = queryset.first()
-                    else:
-                        # list/tuple
-                        obj = queryset[0] if len(queryset) > 0 else None
-                except Exception:
-                    obj = None
-
-                serializer = PostSerializer(obj, context={"request": self.request}) if obj else None
-                data = serializer.data if serializer else None
+                obj = queryset.first() if hasattr(queryset, 'first') else (queryset[0] if queryset else None)
+                if obj:
+                    serializer = PostSerializer(obj)  # ← NO context → cache works
+                    data = serializer.data
             else:
-                # Multiple objects expected — serializer accepts both QuerySet and list
-                try:
-                    serializer = PostSerializer(queryset, many=True, context={"request": self.request})
-                    data = serializer.data
-                except Exception:
-                    # fallback: convert to list and try again
-                    items = list(queryset)
-                    serializer = PostSerializer(items, many=True, context={"request": self.request})
-                    data = serializer.data
+                serializer = PostSerializer(queryset, many=True)  # ← NO context → cache works
+                data = serializer.data
 
-        cache.set(cache_key, data, CACHE_TTL)
+        cache.set(cache_key, data, 60 * 15)
         return data
 
     # SINGLE POST ENDPOINTS (featured, hardware, digitalMoney, social)

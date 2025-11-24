@@ -88,7 +88,7 @@ export default function NewsletterCard() {
     >
       <button
         onClick={handleClose}
-        className="absolute top-2 right-2 text-gray-400 hover:text-lime-400 active:text-lime-400 focus:outline-none 
+        className="absolute top-2 right-2 text-gray-300 hover:text-lime-400 active:text-lime-400 focus:outline-none 
         focus:ring-2 focus:ring-lime-400 focus:ring-offset-2 focus:ring-offset-[#181d1d] p-1 rounded-md"
         aria-label="Close newsletter modal"
       >
@@ -103,7 +103,7 @@ export default function NewsletterCard() {
       >
         Join Our Newsletter
       </Motion.h2>
-      <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed mt-2 mb-4">
+      <p className="text-gray-300 text-sm sm:text-base leading-relaxed mt-2 mb-4">
         Stay updated with the latest tech insights. No spam, just the good stuff.
       </p>
 
@@ -148,7 +148,7 @@ export default function NewsletterCard() {
             className={`w-full px-4 py-2 rounded-md bg-white/5 text-white placeholder-gray-400 border-2 
                        focus:outline-none focus:ring-2 focus:ring-lime-400 focus:ring-offset-2 focus:ring-offset-[#181d1d] 
                        transition-all duration-200 text-sm sm:text-base ${
-                         showErrors && errors.email ? 'border-rose-500/70' : 'border-zinc-500/50'
+                         showErrors && errors.email ? 'border-rose-500/70' : 'border-zinc-500/80'
                        }`}
             autoComplete="email"
             required
