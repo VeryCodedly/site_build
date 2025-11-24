@@ -1,3 +1,4 @@
+import json
 from django.core.management.base import BaseCommand
 from django.core import serializers
 from django.utils import timezone
@@ -35,11 +36,12 @@ class Command(BaseCommand):
 
         # Serialize to JSON
         data = serializers.serialize("json", recent_posts)
+        parsed = json.loads(data)
 
         # Save to file
         filename = f"recent_posts_{timezone.now().strftime('%Y%m%d_%H%M')}.json"
-        with open(filename, "w") as f:
-            f.write(data)
+        with open(filename, "w", encoding="utf-8") as f:
+            json.dump(parsed, f, ensure_ascii=False, indent=2)
 
         # Append slugs to log
         with open(self.LOG_FILE, "a") as f:

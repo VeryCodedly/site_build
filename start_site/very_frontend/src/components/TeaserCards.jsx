@@ -19,7 +19,7 @@ const cards = [
     icon: faNewspaper,
     accent: "bg-lime-400",
     color: "text-lime-400",
-    href: "/blog"
+    href: "/read"
   },
   {
     id: "learn",
@@ -37,7 +37,7 @@ const cards = [
     icon: faChartLine,
     accent: "bg-lime-600",
     color: "text-lime-600",
-    href: "https://www.youtube.com/channel/UCNDy9Q0qPHcY-TT2BD7B1kw"
+    href: "/know"
   },
   {
     id: "connect",
@@ -46,7 +46,7 @@ const cards = [
     icon: faRss,
     accent: "bg-lime-700",
     color: "text-lime-700",
-    href: "https://discord.gg/53wVsqEcbE"
+    href: "/connect"
   },
 ];
 
