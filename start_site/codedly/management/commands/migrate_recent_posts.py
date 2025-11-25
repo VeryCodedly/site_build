@@ -36,9 +36,7 @@ class Command(BaseCommand):
             return
 
         # Serialize to JSON
-        # data = serializers.serialize("json", recent_posts)
-        all_objects = list(recent_posts) + list(Tag.objects.all()) + list(TaggedItem.objects.filter(object_id__in=recent_posts.values_list('id', flat=True)))
-        data = serializers.serialize("json", all_objects)
+        data = serializers.serialize("json", recent_posts)
         parsed = json.loads(data)
 
         # Save to file
