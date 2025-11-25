@@ -1,6 +1,7 @@
 import json
 from django.core.management.base import BaseCommand
 from django.core import serializers
+from taggit.models import Tag, TaggedItem
 from django.utils import timezone
 from datetime import timedelta
 from codedly.models import Post
@@ -10,7 +11,7 @@ class Command(BaseCommand):
     help = "Export published posts from the last X hours without duplicates"
 
     # Change this to 24 or 48 as needed
-    HOURS_WINDOW = 48  
+    HOURS_WINDOW = 24
 
     LOG_FILE = "migrated_slugs.txt"
 
@@ -35,7 +36,9 @@ class Command(BaseCommand):
             return
 
         # Serialize to JSON
-        data = serializers.serialize("json", recent_posts)
+        # data = serializers.serialize("json", recent_posts)
+        all_objects = list(recent_posts) + list(Tag.objects.all()) + list(TaggedItem.objects.filter(object_id__in=recent_posts.values_list('id', flat=True)))
+        data = serializers.serialize("json", all_objects)
         parsed = json.loads(data)
 
         # Save to file

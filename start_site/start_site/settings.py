@@ -24,6 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
+if DEBUG:
+    # Prevent leaking settings in HTML error pages to frontend
+    def safe_error_view(request, exception=None):
+        from django.http import HttpResponseServerError
+        return HttpResponseServerError("Internal Server Error", content_type="text/plain")
+
+    handler500 = safe_error_view
+    
 IP_ADDY = os.getenv("IP_ADDY", "127.0.0.1")  # fallback
 ADDY = os.getenv("ADDY", "lady")
 
@@ -36,7 +44,6 @@ CSRF_TRUSTED_ORIGINS = DOMAINS
 
 CORS_ALLOWED_ORIGINS = DOMAINS
 
-# print(ENV, BASE_DIR, ALLOWED_HOSTS, CSRF_TRUSTED_ORIGINS, CORS_ALLOWED_ORIGINS, os.getenv("DOMAINS"))
 
 # --- APPS ---
 INSTALLED_APPS = [
@@ -81,7 +88,6 @@ AXES_LOCK_OUT_BY_COMBINATION_IP_USERNAME = True
 AXES_WHITELISTED_IP_ADDRESSES = [
     "127.0.0.1",
     "::1",
-    # Add real home/office IP(s) from Render env var
     *([ip.strip() for ip in os.getenv("IP_ADDY", "").split(",") if ip.strip()])
 ]
 

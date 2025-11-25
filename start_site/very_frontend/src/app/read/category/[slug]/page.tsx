@@ -109,10 +109,10 @@ export default function CategoryPage() {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="py-10 px-6 w-[96%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-5 border-y border-zinc-700 rounded-xl"
+            className="py-10 px-6 w-[97%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-5 border-y border-zinc-700 rounded-xl"
           >
             {posts?.map((post: Post) => (
-              <Motion.div key={post.id} variants={cardVariants} className="px-2">
+              <Motion.div key={post.id} variants={cardVariants} className="">
                 <MiniPostCard post={post} />
               </Motion.div>
             ))}

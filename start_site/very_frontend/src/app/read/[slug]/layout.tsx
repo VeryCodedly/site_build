@@ -4,14 +4,14 @@ import { notFound } from 'next/navigation';
 import { unstable_cache } from 'next/cache';
 import { Post } from '@/types/post';
 
-type Props = { params: Promise<{ slug: string }> }; // Important: params is Promise!
+type Props = { params: Promise<{ slug: string }> }; // params is Promise!
 
 const getCachedPost = unstable_cache(
   async (slug: string): Promise<Post | null> => {
     try {
       const apiUrl = process.env.NEXT_PUBLIC_API_URL;
       if (!apiUrl) {
-        console.error('NEXT_PUBLIC_API_URL is not set');
+        // console.error('NEXT_PUBLIC_API_URL is not set');
         return null;
       }
 

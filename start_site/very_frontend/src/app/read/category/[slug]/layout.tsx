@@ -47,7 +47,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const category = await getCachedPost(slug);
 
   if (!category) {
-    console.log('STEP 11: Triggering notFound()'); // DEBUG
+    // console.log('STEP 11: Triggering notFound()'); // DEBUG
     notFound();
   }
 

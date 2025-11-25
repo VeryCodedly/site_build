@@ -56,7 +56,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       title,
       description,
       url: `https://verycodedly.com/learn/${slug}`,
-      type: 'website', // or 'course' if you use schema
+      type: 'website', 
       images: [
         { url: course.image || 'https://verycodedly.com/learn/opengraph-image.png' },
       ],
