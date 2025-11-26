@@ -348,7 +348,7 @@ class PostViewSet(viewsets.ModelViewSet):
     # DRY HELPER FOR THE 12 IDENTICAL MULTI-POST ENDPOINTS
     def _multi_post_response(self, response_key: str, subcategory_slug: str):
         cache_key = f"homepage_{response_key.lower()}_posts"
-        qs = Post.objects.filter(subcategory__slug=subcategory_slug).distinct()[:3]
+        qs = Post.objects.filter(subcategory__slug=subcategory_slug).order_by('-created_at')[:3]
         data = self._get_cached_response(cache_key, qs, single=False)
         return Response({response_key: data})
 

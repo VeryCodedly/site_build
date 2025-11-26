@@ -91,16 +91,12 @@ export default function RootLayout({
         <link rel="preconnect" href="https://api.verycodedly.com" />
 
         <link rel="icon" href="/icon.svg" type="image/svg+xml" sizes="any" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/icon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/icon-16x16.png" />
 
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content="VeryCodedly" />
         <meta name="theme-color" content="#000000" />
         
-        <link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="any" href="/apple-touch-icon.svg" type="image/svg+xml" />
 
         {/* <script
           defer
