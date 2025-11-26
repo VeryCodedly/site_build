@@ -24,3 +24,10 @@ rise-of-self-custody-tools
 ai-managed-cbdcs-launching
 gaming-agentic-npcs-new-selling-point
 synapse-baas-for-startups
+the-rise-of-ai-first-ides
+superapps-to-micro-workflows
+cloudflare-workers-alternative-backend
+popular-apps-switching-to-passkeys
+gpu-shortage-impact-on-dev-teams
+rise-of-low-compute-models
+top-apps-adding-automated-ai-features

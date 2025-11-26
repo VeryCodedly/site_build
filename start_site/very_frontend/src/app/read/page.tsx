@@ -276,6 +276,7 @@ export default function ReadHome() {
           </div>
         )}
 
+        <div className="min-h-[1500px] md:min-h-[2000px]">
         {posts && (
           <div className="space-y-2.5 w-[90%] lg:w-[75%] mx-auto">
             {posts.results.slice(0, visiblePosts).map((post: Post) => (
@@ -810,6 +811,7 @@ export default function ReadHome() {
             </div>
           </section>
         )}
+      </div>
       </div>
     </section>
   );

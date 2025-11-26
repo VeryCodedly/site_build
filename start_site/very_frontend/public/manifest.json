@@ -21,6 +21,11 @@
             "src": "/icons/icon.svg",
             "sizes": "any",
             "type": "image/svg+xml"
+        },
+        {
+            "src": "/icons/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
         }
     ],
     "screenshots": [

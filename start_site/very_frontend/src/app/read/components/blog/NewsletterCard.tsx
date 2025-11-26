@@ -103,7 +103,7 @@ export default function NewsletterCard() {
       >
         Join Our Newsletter
       </Motion.h2>
-      <p className="text-gray-300 text-sm sm:text-base leading-relaxed mt-2 mb-4">
+      <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed mt-2 mb-4">
         Stay updated with the latest tech insights. No spam, just the good stuff.
       </p>
 
