@@ -91,7 +91,7 @@ export default function MorphingPanel({ className = "" }) {
       {/* Center logo */}
       <div className="absolute group top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 flex items-center justify-center transition duration-500 z-10 opacity-10 
       animate-float hover:opacity-100 drop-shadow-[0_0_10px_#9AE600] rounded-full active:scale-90 active:opacity-100 active:drop-shadow-[0_0_5px_#9AE600]">
-        <button className="cursor-pointer"
+        <button className="cursor-pointer select-none -webkit-tap-highlight-color-transparent touch-none"
           onClick={() => setShowModal(true)}
           aria-label="Logo cube button"
           style={{
@@ -120,6 +120,7 @@ export default function MorphingPanel({ className = "" }) {
         ref={cubeRef}
         className={`relative w-full h-full transition-transform duration-[7000ms] group active:[transform:rotateX(-270deg)_rotateY(-390deg)_rotateZ(120deg)] 
             hover:[transform:rotateX(-270deg)_rotateY(-390deg)_rotateZ(120deg)] [transform-style:preserve-3d] will-change-transform
+            select-none -webkit-tap-highlight-color-transparent touch-none
           ${autoSpin ? "animate-spin-twice" : ""}`}
       >
         {/* hover:[transform:rotateX(-95deg)_rotateY(-270deg)_rotateZ(58deg)] */}
@@ -127,7 +128,8 @@ export default function MorphingPanel({ className = "" }) {
           <div
             key={faceIndex}
             className="absolute w-full h-full bg-white/5 border-1 border-black/40 rounded-2xl flex flex-col items-center justify-center gap-2 backdrop-blur-sm ring-3 ring-lime-400/30 hover:ring-lime-400/60 active::ring-lime-400/60 inset-0 z-[-1]
-                        shadow-[0_15px_20px_rgba(0,0,0,0.6),0_15px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]"
+                        shadow-[0_15px_20px_rgba(0,0,0,0.6),0_15px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
+                        select-none -webkit-tap-highlight-color-transparent touch-none"
             style={{ transform: getFaceTransform(faceIndex) }}
           >
 

@@ -144,7 +144,7 @@ export default function SubcategoryPage() {
                 {posts.map((p, index) =>
                   <Motion.div
                     key={index}
-                    className="bg-zinc-900/80 rounded-2xl p-3.5 border border-zinc-800 transition-transform duration-500 transform hover:-translate-y-2 
+                    className="bg-zinc-900/80 rounded-2xl p-3 border border-zinc-800 transition-transform duration-500 transform hover:-translate-y-2 
                                 hover:rotateX-3 hover:rotateY-3 active:-translate-y-2 active:rotateX-3 active:rotateY-3" style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}

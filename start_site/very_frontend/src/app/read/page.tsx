@@ -133,7 +133,7 @@ import {
   useGetHardwarePostsQuery, useGetSecureHabitsPostsQuery, useGetTechCulturePostsQuery,
   useGetKeyPlayersPostsQuery, useGetAIPostsQuery, useGetbchCryptoPostsQuery,
   useGetStartupsPostsQuery, useGetprvCompliancePostsQuery, useGetSocialPostQuery,
-} from "@/features/api/apiSlice";
+  useGetDataDefensePostQuery, useGetStackPostsQuery, useGetBuyGuidesPostsQuery} from "@/features/api/apiSlice";
 import PostCard from "../read/components/blog/PostCard";
 import MiniPostCard from "../read/components/blog/MiniPostCard";
 // import FloatingMenu from "./components/blog/FloatingMenu";
@@ -171,7 +171,11 @@ export default function ReadHome() {
   const { data: africaRising = [] } = useGetAfricaRisingPostsQuery();
   const { data: keyPlayers = [] } = useGetKeyPlayersPostsQuery();
 
+  const { data: dataDefense } = useGetDataDefensePostQuery();
   const { data: secureHabits = [] } = useGetSecureHabitsPostsQuery();
+  const { data: stack = [] } = useGetStackPostsQuery();
+  const { data: buyGuides = [] } = useGetBuyGuidesPostsQuery();
+
 
   const [visiblePosts, setVisiblePosts] = useState(3);
   const loadMore = () => {
@@ -283,7 +287,7 @@ export default function ReadHome() {
               <Motion.div
                 key={post.id}
                 // className="bg-white/5 border border-zinc-700 rounded-xl backdrop-blur-md p-6 hover:border-lime-200/30 transition-all duration-300"
-                className="bg-zinc-900/80 rounded-2xl p-3.5 border border-zinc-800 transition-transform duration-500 transform hover:-translate-y-2 
+                className="bg-zinc-900/80 rounded-2xl p-3 border border-zinc-800 transition-transform duration-500 transform hover:-translate-y-2 
                 hover:rotateX-3 hover:rotateY-3 active:-translate-y-2 active:rotateX-3 active:rotateY-3" style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -794,6 +798,70 @@ export default function ReadHome() {
           </section>
         )}
 
+        {dataDefense && (
+          <section className="py-6 px-7 mt-6">
+            <Link href={`/read/${dataDefense.slug}`}>
+              <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
+                {dataDefense.category?.name ?? 'Data Defense'}
+              </p>
+              <Motion.div
+                className="relative group cursor-pointer overflow-hidden rounded-xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {/* Image with parallax hover */}
+                <Motion.div
+                  className="relative"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                  {dataDefense.image && (
+                    <Image
+                      src={dataDefense.image}
+                      alt={dataDefense.alt || dataDefense.title}
+                      className="w-full h-96 text-xs object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                      width={800}
+                      height={400}
+                      priority={false}
+                    />
+                  )}
+                </Motion.div>
+
+                {/* Gradient overlay with fade-in */}
+                <Motion.div
+                  className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent rounded-xl"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                />
+
+                {/* Text content with slide-up */}
+                <Motion.div
+                  className="absolute bottom-6 left-6 right-6"
+                  initial={{ y: 30, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                  viewport={{ once: true }}
+                >
+                  <Motion.h1
+                    className="text-2xl md:text-3xl font-bold text-white mb-2"
+                  >
+                    {dataDefense.title}
+                  </Motion.h1>
+                  <Motion.p
+                    className="text-gray-300 text-sm"
+                  >
+                    {dataDefense.excerpt}
+                  </Motion.p>
+                </Motion.div>
+              </Motion.div>
+            </Link>
+          </section>
+        )}
+
         {/* 13 SECURE HABITS */}
         {secureHabits.length > 0 && (
           <section className="py-6 px-3">
@@ -802,10 +870,44 @@ export default function ReadHome() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-3xl text-white mb-4 flex justify-end">Secure<span className="text-lime-400">Habits</span>
+              className="text-3xl text-white mb-4 flex justify-start">Secure<span className="text-lime-400">Habits</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {secureHabits.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {stack.length > 0 && (
+          <section className="py-6 px-3">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-3xl text-white mb-4 flex justify-end">Stack
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {stack.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {buyGuides.length > 0 && (
+          <section className="py-6 px-3">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-3xl text-white mb-4 flex justify-start">Buy<span className="text-lime-400">Guides</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {buyGuides.map(post => (
                 <MiniPostCard key={post.id} post={post} />
               ))}
             </div>

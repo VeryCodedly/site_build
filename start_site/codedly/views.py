@@ -288,6 +288,16 @@ class PostViewSet(viewsets.ModelViewSet):
         ).order_by('-created_at')
         data = self._get_cached_response(cache_key, qs, single=True)
         return Response({"social": data})
+    
+    @action(detail=False, methods=['get'])
+    def dataDefense(self, request):
+        cache_key = "homepage_data_defense_post"
+        qs = Post.objects.filter(
+            image__isnull=False,
+            subcategory__slug="data-defense"
+        ).order_by('-created_at')
+        data = self._get_cached_response(cache_key, qs, single=True)
+        return Response({"dataDefense": data})
 
     # MULTIPLE POSTS ENDPOINTS (all the [0:3] or [0:4] ones)
     @action(detail=False, methods=['get'])
@@ -344,6 +354,14 @@ class PostViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['get'])
     def prvCompliance(self, request):
         return self._multi_post_response("prvCompliance", "privacy-compliance")
+    
+    @action(detail=False, methods=['get'])
+    def stack(self, request):
+        return self._multi_post_response("stack", "stack")
+    
+    @action(detail=False, methods=['get'])
+    def buyGuides(self, request):
+        return self._multi_post_response("buyGuides", "buy-guides")
 
     # DRY HELPER FOR THE 12 IDENTICAL MULTI-POST ENDPOINTS
     def _multi_post_response(self, response_key: str, subcategory_slug: str):

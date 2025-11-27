@@ -95,9 +95,10 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content="VeryCodedly" />
         <meta name="theme-color" content="#000000" />
-        
-        <link rel="apple-touch-icon" sizes="any" href="/apple-touch-icon.svg" type="image/svg+xml" />
 
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        
         {/* <script
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"

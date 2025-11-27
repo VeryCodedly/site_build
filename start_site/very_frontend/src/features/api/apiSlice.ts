@@ -124,9 +124,27 @@ export const apiSlice = createApi({
       providesTags: ['Post'],
     }),
 
+    getDataDefensePost: builder.query<Post | null, void>({
+      query: () => '/posts/dataDefense/',
+      transformResponse: (res: { dataDefense: Post | null }) => res.dataDefense,
+      providesTags: ['Post'],
+    }),
+
     getSecureHabitsPosts: builder.query<Post[], void>({
       query: () => '/posts/secureHabits/',
       transformResponse: (res: { secureHabits: Post[] }) => res.secureHabits,
+      providesTags: ['Post'],
+    }),
+
+    getStackPosts: builder.query<Post[], void>({
+      query: () => '/posts/stack/',
+      transformResponse: (res: { stack: Post[] }) => res.stack,
+      providesTags: ['Post'],
+    }),
+
+    getBuyGuidesPosts: builder.query<Post[], void>({
+      query: () => '/posts/buyGuides/',
+      transformResponse: (res: { buyGuides: Post[] }) => res.buyGuides,
       providesTags: ['Post'],
     }),
 
@@ -240,4 +258,7 @@ export const {
   useGetbchCryptoPostsQuery,
   useGetStartupsPostsQuery,
   useGetprvCompliancePostsQuery,
-  useGetSocialPostQuery, } = apiSlice;
+  useGetSocialPostQuery,
+  useGetDataDefensePostQuery,
+  useGetStackPostsQuery,
+  useGetBuyGuidesPostsQuery, } = apiSlice;
