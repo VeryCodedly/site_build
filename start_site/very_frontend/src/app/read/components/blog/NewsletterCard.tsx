@@ -79,8 +79,8 @@ export default function NewsletterCard() {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.4 }}
-      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 max-w-[80vw] sm:max-w-md rounded-xl border-3 
-      border-slate-700/50 bg-gradient-to-br from-black/15 to-transparent/90 backdrop-blur-lg shadow-[0_0_2px_#cccccc] 
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 max-w-[80vw] sm:max-w-md rounded-xl border-2 
+      border-white/20 bg-gradient-to-br from-black/30 to-transparent/90 backdrop-blur-lg shadow-[0_0_2px_#cccccc] 
       hover:shadow-[0_0_10px_#222222] active:shadow-[0_0_10px_#222222] p-6 sm:p-8 text-center transition-all duration-300 z-50"
       role="dialog"
       aria-modal="true"
@@ -148,7 +148,7 @@ export default function NewsletterCard() {
             className={`w-full px-4 py-2 rounded-md bg-white/5 text-white placeholder-gray-400 border-2 
                        focus:outline-none focus:ring-2 focus:ring-lime-400 focus:ring-offset-2 focus:ring-offset-[#181d1d] 
                        transition-all duration-200 text-sm sm:text-base ${
-                         showErrors && errors.email ? 'border-rose-500/70' : 'border-zinc-500/80'
+                         showErrors && errors.email ? 'border-rose-500/70' : 'border-white/20'
                        }`}
             autoComplete="email"
             required

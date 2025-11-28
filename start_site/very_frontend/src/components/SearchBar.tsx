@@ -94,7 +94,7 @@ export default function SearchBar() {
                 onClick={() => setIsOpen(true)}
                 aria-label="Toggle Search"
                 className="cursor-pointer fixed top-1/2 -translate-y-1/2 right-0 z-50 px-1 py-1 bg-transparent backdrop-blur-md rounded-l-2xl transition-all hover:scale-110
-                            shadow-[0_0_5px_3px_rgba(55,55,55,0.4)] hover:shadow-[0_0_8px_5px_rgba(255,255,255,0.20)] active:shadow-[0_0_7px_3px_rgba(255,255,255,0.10)]"
+                            shadow-[0_0_5px_3px_rgba(55,55,55,0.4)] hover:shadow-[0_0_8px_5px_rgba(255,255,255,0.20)]"
             >
                 <FontAwesomeIcon icon={faSearch} className="w-6 h-8 text-gray-300/90 hover:text-white" />
             </button>
@@ -117,7 +117,7 @@ export default function SearchBar() {
                                     value={query}
                                     onChange={(e) => setQuery(e.target.value)}
                                     placeholder="Search..."
-                                    className="w-full pl-8 pr-16 py-4 bg-white/10 backdrop-blur-xl border border-white/30 rounded-2xl text-white placeholder-white/50 text-lg focus:outline-none focus:ring-offset focus:ring-2 focus:ring-offset-1 focus:ring-pink-300/50 transition-all shadow-2xl"
+                                    className="w-full pl-8 pr-16 py-4 bg-black/5 backdrop-blur-xl border border-white/20 rounded-2xl text-white placeholder-white/50 text-lg focus:outline-none focus:ring-offset focus:ring-2 focus:ring-offset-1 focus:ring-pink-300/50 transition-all shadow-2xl"
                                 />
                                 <button
                                     aria-label="Search icon"
@@ -131,10 +131,10 @@ export default function SearchBar() {
                             {/* Live Results */}
                             {query && (
                                 <div 
-                                className="mt-4 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl overflow-hidden
+                                className="mt-4 bg-black/5 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl overflow-hidden
                                 w-[94%] sm:w-full max-w-2xl mx-auto">
                                     <div 
-                                        className="overflow-y-auto max-h-[75vh] sm:max-h-[60vh] ax-h-150 m:max-h-80 custom-scrollbar">
+                                        className="overflow-y-auto max-h-[70vh] sm:max-h-[60vh] ax-h-150 m:max-h-80 custom-scrollbar">
                                         {loading && (
                                             <div className="p-3 text-center text-white/70">Searching...</div>
                                         )}
@@ -148,7 +148,7 @@ export default function SearchBar() {
                                                 key={i}
                                                 href={item.url}
                                                 onClick={() => { setIsOpen(false); setQuery(""); }}
-                                                className="px-5 py-2 hover:bg-white/10 transition-all border-b border-white/10 last:border-0 flex items-center gap-4"
+                                                className="px-5 py-2 hover:bg-white/8 transition-all border-b border-white/10 last:border-0 flex items-center gap-4"
                                             >
                                                 <span className="text-xl sm:text-2xl text-pink-200"><FontAwesomeIcon icon={getIcon(item.icon)} /></span>
                                                 <div>

@@ -331,8 +331,8 @@ export default function LessonPage() {
           ref={buttonRef}
           onMouseEnter={() => setIsMenuOpen(!isMenuOpen)}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="fixed p-2 left-0 top-1/2 -translate-y-1/2 z-[60] w-6 h-8 sm:w-6 sm:h-8 flex items-center justify-center 
-                  rounded-r-xl bg-transparent text-white hover:bg-zinc-700/80 active:bg-zinc-700/80 
+          className="fixed p-2 left-0 top-1/2 -translate-y-1/2 z-[60] w-6 h-7 sm:w-6 sm:h-7 flex items-center justify-center 
+                  rounded-r-xl bg-transparent text-white hover:bg-white/8 active:bg-white/8 
                   backdrop-blur-md border-l-0 transition-all duration-300 focus:outline-none 
                   focus:ring-2 focus:ring-offset-1 focus:ring-pink-300/70 shadow-[0_0_5px_3px_rgba(55,55,55,0.8)] 
                   hover:shadow-[0_0_7px_3px_rgba(255,255,255,0.10)] active:shadow-[0_0_7px_3px_rgba(255,255,255,0.10)]"
@@ -344,8 +344,8 @@ export default function LessonPage() {
         {/* Floating Menu */}
         <div
           ref={menuRef}
-          className={`fixed pl-4 sm:pl-5 top-1/2 left-0 transform -translate-y-1/2 bg-white/5 hover:backdrop-blur-lg 
-            shadow-lg rounded-r-3xl overflow-hidden border-3 border-zinc-600 transition-all duration-300 
+          className={`fixed pl-4 sm:pl-5 top-1/2 left-0 transform -translate-y-1/2 bg-black/20 hover:backdrop-blur-lg 
+            shadow-lg rounded-r-3xl overflow-hidden border border-white/20 transition-all duration-300 
             ${isMenuOpen ? "w-60 sm:w-70 opacity-100 backdrop-blur-lg" : "opacity-0 w-8 h-10"} z-50`}
         >
           <ul className="flex flex-col gap-1 p-2 text-gray-200">
@@ -356,7 +356,7 @@ export default function LessonPage() {
                 .map((block, index) => (
                   <li key={index} className="relative group">
                     <span
-                      className="flex items-center gap-2 p-2 rounded-lg hover:bg-[rgba(255,192,203,0.1)] transition-all duration-200"
+                      className="flex items-center gap-2 p-2 rounded-lg hover:bg-white/8 transition-all duration-200"
                     >
                       <span className="text-sm"> {/* href={`#heading-${index}`} onClick={() => handleHeadingClick(index)} */}
                         - {block.content}
