@@ -1,0 +1,180 @@
+[
+  {
+    "model": "codedly.post",
+    "pk": 88,
+    "fields": {
+      "title": "October 2025 Layoff Surge: What’s Happening in Tech Jobs and Why It Matters",
+      "slug": "us-tech-layoffs-october-2025-wave",
+      "category": 7,
+      "subcategory": 13,
+      "content_JSON": {
+        "slug": "us-tech-layoffs-october-2025-wave",
+        "tags": [
+          "tech‑jobs",
+          "layoffs",
+          "industry‑insights",
+          "economy",
+          "workforce"
+        ],
+        "topic": "October 2025 Layoff Surge: What’s Happening in Tech Jobs and Why It Matters",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "October 2025 just hit hard for tech (and many other sectors). U.S.-based employers announced **153,074 job cuts**, the highest monthly total for any October since 2003."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "By the Numbers: The Layoff Tsunami"
+          },
+          {
+            "type": "list",
+            "items": [
+              "At least **33,281 jobs** were cut in the tech sector in October alone, a sharp spike from the roughly 5,600 cuts reported in September.",
+              "Through October, employers across sectors have announced around **1.1 million job cuts** in 2025, up ~65% compared to the same period last year.",
+              "The main reasons cited: general cost‑cutting (50,437 layoffs in October) and automation/AI‑driven restructuring (31,039 layoffs), according to the report."
+            ],
+            "style": "bullet"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "What This Means for Tech Workers (and Everyone Else)"
+          },
+          {
+            "type": "paragraph",
+            "content": "The surge isn’t just a “tech‑bubble correction.” It reflects a broader shift: companies across industries are rethinking headcounts as AI, automation, inflation, and economic slowdown pressure budgets. For many workers, devs, support staff, operations, job stability now depends on adaptability, skill relevance, and timing."
+          },
+          {
+            "type": "paragraph",
+            "content": "If you’re a developer, freelancer, or someone in a tech‑adjacent role: this wave doesn’t always mean doom. But it’s a signal to stay alert, sharpen your skills, build optionality, and watch how companies restructure before committing long‑term."
+          },
+          {
+            "type": "paragraph",
+            "content": "For the industry, this is a hard reset. Teams are shrinking, automation is replacing more tasks, and growth strategies are increasingly shaped by efficiency and cost-cutting rather than ambition or innovation."
+          }
+        ],
+        "excerpt": "October 2025 saw over 150,000 U.S. job cuts, the worst October in two decades. Tech led the wave. Here’s how the numbers break down and what it means if you work in tech now.",
+        "image_prompt": "An abstract editorial illustration showing descending rows of grayscale silhouettes dissolving into shards of fractured polygons under a dark sky, faint glows of red and amber hinting at disruption and uncertainty. No literal logos or company names. Mood is heavy, somber, symbolic — a visual echo of sweeping layoffs and shifting tech‑industry tides.",
+        "image_caption": "A symbolic illustration of the 2025 tech layoffs — disruption, uncertainty, and industry reshuffling."
+      },
+      "content_plain_text": "October 2025 just hit hard for tech (and many other sectors). U.S.-based employers announced **153,074 job cuts**, the highest monthly total for any October since 2003.\n\nBy the Numbers: The Layoff Tsunami\n\n• At least **33,281 jobs** were cut in the tech sector in October alone, a sharp spike from the roughly 5,600 cuts reported in September.\n• Through October, employers across sectors have announced around **1.1 million job cuts** in 2025, up ~65% compared to the same period last year.\n• The main reasons cited: general cost‑cutting (50,437 layoffs in October) and automation/AI‑driven restructuring (31,039 layoffs), according to the report.\n\nWhat This Means for Tech Workers (and Everyone Else)\n\nThe surge isn’t just a “tech‑bubble correction.” It reflects a broader shift: companies across industries are rethinking headcounts as AI, automation, inflation, and economic slowdown pressure budgets. For many workers, devs, support staff, operations, job stability now depends on adaptability, skill relevance, and timing.\n\nIf you’re a developer, freelancer, or someone in a tech‑adjacent role: this wave doesn’t always mean doom. But it’s a signal to stay alert, sharpen your skills, build optionality, and watch how companies restructure before committing long‑term.\n\nFor the industry, this is a hard reset. Teams are shrinking, automation is replacing more tasks, and growth strategies are increasingly shaped by efficiency and cost-cutting rather than ambition or innovation.",
+      "excerpt": "October 2025 saw over 150,000 U.S. job cuts, the worst October in two decades. Tech led the wave. Here’s how the numbers break down and what it means if you work in tech now.",
+      "author": "Admin",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1764538336/october-2025-layoff-surge.png",
+      "caption": "October 2025 Layoff Surge",
+      "alt": "october-2025-layoff-surge",
+      "created_at": "2025-11-30T21:28:11.406Z",
+      "updated_at": "2025-11-30T21:32:53.538Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 87,
+    "fields": {
+      "title": "A Tiny Internet Fact That Made My Brain Hum",
+      "slug": "a-tiny-internet-fact-that-made-my-brain-hum",
+      "category": 11,
+      "subcategory": 6,
+      "content_JSON": {
+        "slug": "a-tiny-internet-fact-that-made-my-brain-hum",
+        "topic": "A Tiny Internet Fact That Made My Brain Hum",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "I learned this today and genuinely thought it was cool… that’s it."
+          },
+          {
+            "type": "paragraph",
+            "content": "You know how we talk about the internet like it’s this wild, messy place with no real structure? Turns out it actually has a heartbeat - tiny timing signals that sync machines across the world so they can talk without tripping over each other."
+          },
+          {
+            "type": "paragraph",
+            "content": "They’re called NTP time servers. And the wild part is: some devices trust these signals so deeply that if the time slips even a little, entire systems can drift, break, or behave strangely. All because a clock somewhere ticked ‘off’ for a moment."
+          },
+          {
+            "type": "paragraph",
+            "content": "I don’t know why, but something about the whole internet depending on a few ultra-precise clocks glowing quietly in data centers… it’s just a cool mental image."
+          },
+          {
+            "type": "paragraph",
+            "content": "No lesson. No moral. I just thought it was neat."
+          }
+        ]
+      },
+      "content_plain_text": "I learned this today and genuinely thought it was cool… that’s it.\n\nYou know how we talk about the internet like it’s this wild, messy place with no real structure? Turns out it actually has a heartbeat - tiny timing signals that sync machines across the world so they can talk without tripping over each other.\n\nThey’re called NTP time servers. And the wild part is: some devices trust these signals so deeply that if the time slips even a little, entire systems can drift, break, or behave strangely. All because a clock somewhere ticked ‘off’ for a moment.\n\nI don’t know why, but something about the whole internet depending on a few ultra-precise clocks glowing quietly in data centers… it’s just a cool mental image.\n\nNo lesson. No moral. I just thought it was neat.",
+      "excerpt": "Just a small tech thing I found interesting today. No deep dive, no big lessons, just a little nugget that made me pause and think.",
+      "author": "Suki fireHouse",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1764538343/a-small-tech-thing.png",
+      "caption": "A Small Tech Thing",
+      "alt": "a-small-tech-thing",
+      "created_at": "2025-11-30T21:00:05.799Z",
+      "updated_at": "2025-11-30T21:33:18.448Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 86,
+    "fields": {
+      "title": "The Week Everything Felt Less Heavy",
+      "slug": "the-week-everything-felt-less-heavy",
+      "category": 11,
+      "subcategory": 4,
+      "content_JSON": {
+        "slug": "the-week-everything-felt-less-heavy",
+        "tags": [
+          "growth",
+          "career",
+          "momentum"
+        ],
+        "topic": "The Week Everything Felt Less Heavy",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "The Climb this week: the work carried a different kind of weight. It was still challenging, but it did'nt feel as dense or demanding as it usually does. There was a bit more room to think, a bit more space to move at your own pace, and enough clarity to see where the effort was actually going."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "A Shift You Can Notice"
+          },
+          {
+            "type": "paragraph",
+            "content": "Nothing dramatic changed. The tasks were familiar and the routine stayed the same. But there was a sense of steadiness that had not been there before. Problems that once felt tangled opened up more easily, and decisions that usually came with hesitation landed a little cleaner."
+          },
+          {
+            "type": "paragraph",
+            "content": "It was not a breakthrough or a milestone. More like a quiet recalibration. The kind of shift that happens in the background while you are simply trying to get things done."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Why These Weeks Matter"
+          },
+          {
+            "type": "paragraph",
+            "content": "Progress often shows up in these subtle weeks. They don't make headlines and they don't look impressive from the outside, but they change the feel of the path ahead. When the weight softens, even slightly, the climb becomes clearer. Not easier overall, just less resistant."
+          },
+          {
+            "type": "paragraph",
+            "content": "There is something grounding about weeks like this. They remind you that growth is not always loud or visible. Sometimes it is simply the moment when the work starts to move with you instead of against you."
+          }
+        ],
+        "excerpt": "A week where the work felt less heavy and progress showed up in small, steady ways.",
+        "image_prompt": "A calm conceptual illustration with layered geometric shapes rising through a soft fog. Gentle upward lines, muted gradients, and a quiet sense of lift. No figures or literal symbols. Just an abstract visual capturing the feeling of weight easing as momentum builds.",
+        "image_caption": "A small shift that makes the climb feel more steady."
+      },
+      "content_plain_text": "The Climb this week: the work carried a different kind of weight. It was still challenging, but it did'nt feel as dense or demanding as it usually does. There was a bit more room to think, a bit more space to move at your own pace, and enough clarity to see where the effort was actually going.\n\nA Shift You Can Notice\n\nNothing dramatic changed. The tasks were familiar and the routine stayed the same. But there was a sense of steadiness that had not been there before. Problems that once felt tangled opened up more easily, and decisions that usually came with hesitation landed a little cleaner.\n\nIt was not a breakthrough or a milestone. More like a quiet recalibration. The kind of shift that happens in the background while you are simply trying to get things done.\n\nWhy These Weeks Matter\n\nProgress often shows up in these subtle weeks. They don't make headlines and they don't look impressive from the outside, but they change the feel of the path ahead. When the weight softens, even slightly, the climb becomes clearer. Not easier overall, just less resistant.\n\nThere is something grounding about weeks like this. They remind you that growth is not always loud or visible. Sometimes it is simply the moment when the work starts to move with you instead of against you.",
+      "excerpt": "A week where the work felt less heavy and progress showed up in small, steady ways.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1764538337/the-climb-this-week-01.png",
+      "caption": "The Climb this Week",
+      "alt": "the-climb-this-week",
+      "created_at": "2025-11-30T20:16:58.181Z",
+      "updated_at": "2025-11-30T21:33:43.969Z",
+      "status": "published"
+    }
+  }
+]
