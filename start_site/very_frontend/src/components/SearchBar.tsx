@@ -148,7 +148,7 @@ export default function SearchBar() {
                                                 key={i}
                                                 href={item.url}
                                                 onClick={() => { setIsOpen(false); setQuery(""); }}
-                                                className="px-5 py-2 hover:bg-white/8 transition-all border-b border-white/10 last:border-0 flex items-center gap-4"
+                                                className="px-5 py-2 hover:bg-white/8 active:bg-white/8 transition-all border-b border-white/10 last:border-0 flex items-center gap-4"
                                             >
                                                 <span className="text-xl sm:text-2xl text-pink-200"><FontAwesomeIcon icon={getIcon(item.icon)} /></span>
                                                 <div>

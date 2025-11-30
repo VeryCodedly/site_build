@@ -298,12 +298,22 @@ class PostViewSet(viewsets.ModelViewSet):
         ).order_by('-created_at')
         data = self._get_cached_response(cache_key, qs, single=True)
         return Response({"dataDefense": data})
+    
+    @action(detail=False, methods=['get'])
+    def devDigest(self, request):
+        cache_key = "homepage_dev_digest_post"
+        qs = Post.objects.filter(
+            image__isnull=False,
+            subcategory__slug="dev-digest"
+        ).order_by('-created_at')
+        data = self._get_cached_response(cache_key, qs, single=True)
+        return Response({"devDigest": data})
 
     # MULTIPLE POSTS ENDPOINTS (all the [0:3] or [0:4] ones)
     @action(detail=False, methods=['get'])
     def trending(self, request):
         cache_key = "homepage_trending_posts"
-        qs = Post.objects.filter(subcategory__slug="trending-now").order_by('-created_at')[:4]
+        qs = Post.objects.filter(subcategory__slug="trending-now").order_by('-created_at')[:6]
         data = self._get_cached_response(cache_key, qs, single=False)
         return Response({"trending": data})
 
@@ -362,8 +372,20 @@ class PostViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['get'])
     def buyGuides(self, request):
         return self._multi_post_response("buyGuides", "buy-guides")
+    
+    @action(detail=False, methods=['get'])
+    def theClimb(self, request):
+        return self._multi_post_response("theClimb", "the-climb")
+    
+    @action(detail=False, methods=['get'])
+    def rundown(self, request):
+        return self._multi_post_response("rundown", "rundown")
+    
+    @action(detail=False, methods=['get'])
+    def industryInsights(self, request):
+        return self._multi_post_response("industryInsights", "industry-insights")
 
-    # DRY HELPER FOR THE 12 IDENTICAL MULTI-POST ENDPOINTS
+    # DRY HELPER FOR THE IDENTICAL MULTI-POST ENDPOINTS
     def _multi_post_response(self, response_key: str, subcategory_slug: str):
         cache_key = f"homepage_{response_key.lower()}_posts"
         qs = Post.objects.filter(subcategory__slug=subcategory_slug).order_by('-created_at')[:3]

@@ -133,7 +133,9 @@ import {
   useGetHardwarePostsQuery, useGetSecureHabitsPostsQuery, useGetTechCulturePostsQuery,
   useGetKeyPlayersPostsQuery, useGetAIPostsQuery, useGetbchCryptoPostsQuery,
   useGetStartupsPostsQuery, useGetprvCompliancePostsQuery, useGetSocialPostQuery,
-  useGetDataDefensePostQuery, useGetStackPostsQuery, useGetBuyGuidesPostsQuery} from "@/features/api/apiSlice";
+  useGetDataDefensePostQuery, useGetStackPostsQuery, useGetBuyGuidesPostsQuery,
+  useGetDevDigestPostQuery, useGetTheClimbPostsQuery, useGetRundownPostsQuery,
+  useGetIndustryInsightsPostsQuery} from "@/features/api/apiSlice";
 import PostCard from "../read/components/blog/PostCard";
 import MiniPostCard from "../read/components/blog/MiniPostCard";
 // import FloatingMenu from "./components/blog/FloatingMenu";
@@ -176,6 +178,10 @@ export default function ReadHome() {
   const { data: stack = [] } = useGetStackPostsQuery();
   const { data: buyGuides = [] } = useGetBuyGuidesPostsQuery();
 
+  const { data: devDigest } = useGetDevDigestPostQuery();
+  const { data: theClimb = [] } = useGetTheClimbPostsQuery();
+  const { data: rundown = [] } = useGetRundownPostsQuery();
+  const { data: industry = [] } = useGetIndustryInsightsPostsQuery();
 
   const [visiblePosts, setVisiblePosts] = useState(3);
   const loadMore = () => {
@@ -377,7 +383,7 @@ export default function ReadHome() {
         )}
 
         {/* 2 TRENDING NOW */}
-        {trending.length > 0 && (
+        {trending.length && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -396,7 +402,7 @@ export default function ReadHome() {
         )}
 
         {/* 3 SPOTLIGHT */}
-        {spotlight.length > 0 && (
+        {spotlight.length && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -416,7 +422,7 @@ export default function ReadHome() {
         )}
 
         {/* 4 BIG DEAL */}
-        {bigDeal.length > 0 && (
+        {bigDeal.length && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -501,7 +507,7 @@ export default function ReadHome() {
         {/* <NewsletterCard /> */}
 
         {/* 11 EMERGING TECH */}
-        {emergingTech.length > 0 && (
+        {emergingTech.length && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -519,7 +525,7 @@ export default function ReadHome() {
         )}
 
         {/* 10 AI */}
-        {AI.length > 0 && (
+        {AI.length && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -537,7 +543,7 @@ export default function ReadHome() {
         )}
 
         {/* 12 TECH CULTURE */}
-        {techCulture.length > 0 && (
+        {techCulture.length && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -548,6 +554,125 @@ export default function ReadHome() {
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {techCulture.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {devDigest && (
+          <section className="py-6 px-7 mt-6">
+            <Link href={`/read/${devDigest.slug}`}>
+              <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
+                {devDigest.category?.name ?? 'Dev Digest'}
+              </p>
+              <Motion.div
+                className="relative group cursor-pointer overflow-hidden rounded-xl"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {/* Image with parallax hover */}
+                <Motion.div
+                  className="relative"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
+                >
+                  {devDigest.image && (
+                    <Image
+                      src={devDigest.image}
+                      alt={devDigest.alt || devDigest.title}
+                      className="w-full h-96 text-xs object-cover rounded-xl shadow-lg opacity-70 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500"
+                      width={800}
+                      height={400}
+                      priority={false}
+                    />
+                  )}
+                </Motion.div>
+
+                {/* Gradient overlay with fade-in */}
+                <Motion.div
+                  className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent rounded-xl"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                />
+
+                {/* Text content with slide-up */}
+                <Motion.div
+                  className="absolute bottom-6 left-6 right-6"
+                  initial={{ y: 30, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+                  viewport={{ once: true }}
+                >
+                  <Motion.h1
+                    className="text-2xl md:text-3xl font-bold text-white mb-2"
+                  >
+                    {devDigest.title}
+                  </Motion.h1>
+                  <Motion.p
+                    className="text-gray-300 text-sm"
+                  >
+                    {devDigest.excerpt}
+                  </Motion.p>
+                </Motion.div>
+              </Motion.div>
+            </Link>
+          </section>
+        )}
+
+        {theClimb.length && (
+          <section className="py-6 px-3">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-3xl text-white mb-4 flex justify-start">
+              The<span className="text-lime-400">Climb</span>
+
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {theClimb.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {rundown.length && (
+          <section className="py-6 px-3">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-3xl text-white mb-4 flex justify-end">
+              Rundown
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {rundown.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {industry.length && (
+          <section className="py-6 px-3">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-3xl text-lime-400 mb-4 flex justify-start">
+              Industry<span className="text-white">Insights</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {industry.map(post => (
                 <MiniPostCard key={post.id} post={post} />
               ))}
             </div>
@@ -620,7 +745,7 @@ export default function ReadHome() {
         )}
 
         {/* 10 BLOCKCHAIN & CRYPTO */}
-        {bchCrypto.length > 0 && (
+        {bchCrypto.length && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -640,7 +765,7 @@ export default function ReadHome() {
         )}
 
         {/* 11 STARTUPS */}
-        {startups.length > 0 && (
+        {startups.length && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -659,7 +784,7 @@ export default function ReadHome() {
         )}
 
         {/* 12 PRIVACY & COMPLIANCE */}
-        {prvCompliance.length > 0 && (
+        {prvCompliance.length && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -743,7 +868,7 @@ export default function ReadHome() {
         )}
 
         {/* 6 GLOBAL LENS */}
-        {globalLens.length > 0 && (
+        {globalLens.length && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -762,7 +887,7 @@ export default function ReadHome() {
         )}
 
         {/* 7 AFRICA RISING */}
-        {africaRising.length > 0 && (
+        {africaRising.length && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -780,7 +905,7 @@ export default function ReadHome() {
         )}
 
         {/* 8 KEY PLAYERS */}
-        {keyPlayers.length > 0 && (
+        {keyPlayers.length && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -863,7 +988,7 @@ export default function ReadHome() {
         )}
 
         {/* 13 SECURE HABITS */}
-        {secureHabits.length > 0 && (
+        {secureHabits.length && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -880,7 +1005,7 @@ export default function ReadHome() {
           </section>
         )}
 
-        {stack.length > 0 && (
+        {stack.length && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -897,7 +1022,7 @@ export default function ReadHome() {
           </section>
         )}
 
-        {buyGuides.length > 0 && (
+        {buyGuides.length && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}

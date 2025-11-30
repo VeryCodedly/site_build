@@ -148,6 +148,30 @@ export const apiSlice = createApi({
       providesTags: ['Post'],
     }),
 
+    getDevDigestPost: builder.query<Post | null, void>({
+      query: () => '/posts/devDigest/',
+      transformResponse: (res: { devDigest: Post | null }) => res.devDigest,
+      providesTags: ['Post'],
+    }),
+
+    getTheClimbPosts: builder.query<Post[], void>({
+      query: () => '/posts/theClimb/',
+      transformResponse: (res: { theClimb: Post[] }) => res.theClimb,
+      providesTags: ['Post'],
+    }),
+
+    getRundownPosts: builder.query<Post[], void>({
+      query: () => '/posts/rundown/',
+      transformResponse: (res: { rundown: Post[] }) => res.rundown,
+      providesTags: ['Post'],
+    }),
+
+    getIndustryInsightsPosts: builder.query<Post[], void>({
+      query: () => '/posts/industryInsights/',
+      transformResponse: (res: { industryInsights: Post[] }) => res.industryInsights,
+      providesTags: ['Post'],
+    }),
+
     // 🏷️ CATEGORIES
     getCategories: builder.query<Category[], void>({
       query: () => '/categories/',
@@ -261,4 +285,8 @@ export const {
   useGetSocialPostQuery,
   useGetDataDefensePostQuery,
   useGetStackPostsQuery,
-  useGetBuyGuidesPostsQuery, } = apiSlice;
+  useGetBuyGuidesPostsQuery,
+  useGetDevDigestPostQuery,
+  useGetTheClimbPostsQuery,
+  useGetRundownPostsQuery,
+  useGetIndustryInsightsPostsQuery, } = apiSlice;
