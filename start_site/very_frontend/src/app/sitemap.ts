@@ -1,6 +1,6 @@
 // app/sitemap.ts
 import type { MetadataRoute } from "next";
-import { Post, Course, Lessons, Subcategory } from "@/types/post"
+import { Post, Course, Lessons, Category, Subcategory } from "@/types/post"
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
@@ -13,8 +13,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // STATIC PAGES
   const staticPages = [
-    "", "about", "blog", "community", "contact", "faqs",
-    "know", "learn", "privacy", "shop", "support", "terms"
+    "", "about", "read", "learn","know", "connect", "community", "contact",
+     "faqs", "privacy", "shop", "support", "terms"
   ].map((path) => ({
     url: `${baseUrl}/${path}`,
     lastModified: new Date(),
@@ -22,15 +22,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: path === "" ? 1.0 : 0.8,
   }));
 
-  // BLOG POSTS
-  const blogUrls: MetadataRoute.Sitemap = [];
+  // READ POSTS
+  const readUrls: MetadataRoute.Sitemap = [];
   try {
     const res = await fetch(`${API_BASE}/posts/`, { next: { revalidate: 3600 } });
     if (res.ok) {
       const data = await res.json();
       (data.results || []).forEach((post: Post) => {
-        blogUrls.push({
-          url: `${baseUrl}/blog/${post.slug}`,
+        readUrls.push({
+          url: `${baseUrl}/read/${post.slug}`,
           lastModified: new Date(post.updated_at || post.created_at || new Date()),
           changeFrequency: "weekly" as const,
           priority: 0.9,
@@ -41,7 +41,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Failed to fetch posts:", err);
   }
 
-  // BLOG SUBCATEGORIES
+  // READ CATEGORIES
+  const categoryUrls: MetadataRoute.Sitemap = [];
+  try {
+    const res = await fetch(`${API_BASE}/categories/`, { next: { revalidate: 3600 } });
+    if (res.ok) {
+      const data = await res.json();
+      (data.results || []).forEach((cat: Category) => {
+        categoryUrls.push({
+          url: `${baseUrl}/read/category/${cat.slug}`,
+          // lastModified: new Date(subcat.updated_at || new Date()),
+          changeFrequency: "weekly" as const,
+          priority: 0.85,
+        });
+      });
+    }
+  } catch (err) {
+    console.error("Failed to fetch categories:", err);
+  }
+
+  // READ SUBCATEGORIES
   const subcategoryUrls: MetadataRoute.Sitemap = [];
   try {
     const res = await fetch(`${API_BASE}/subcategories/`, { next: { revalidate: 3600 } });
@@ -49,7 +68,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const data = await res.json();
       (data.results || []).forEach((subcat: Subcategory) => {
         subcategoryUrls.push({
-          url: `${baseUrl}/blog/subcategory/${subcat.slug}`,
+          url: `${baseUrl}/read/subcategory/${subcat.slug}`,
           // lastModified: new Date(subcat.updated_at || new Date()),
           changeFrequency: "weekly" as const,
           priority: 0.85,
@@ -108,7 +127,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...staticPages,
-    ...blogUrls,
+    ...readUrls,
+    ...categoryUrls,
     ...subcategoryUrls,
     ...courseUrls,
     ...lessonUrls,

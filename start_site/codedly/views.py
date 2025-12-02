@@ -95,6 +95,7 @@ def api_home(request):
             </style>
         </head>
         <body>
+            <p>As you don reach here, well don, you try, but as I dey look you, waka commot before I close eye, open am. Nice meeting you.</p>
             <a href="/">VeryCodedly</a>
         </body>
         </html>

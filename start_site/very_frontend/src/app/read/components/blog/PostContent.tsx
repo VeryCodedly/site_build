@@ -1,11 +1,10 @@
-// components/blog/PostContent.tsx
 'use client';
 
 import { motion as Motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faCalendar, faUser, faComment, faHashtag, faImage, faLink, faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faLongArrowRight, faCalendar, faUser, faComment, faHashtag, faImage, faLink, faCopy } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faLinkedinIn, faTwitter, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import CodeBlock from '@/app/learn/components/CodeBlock';
 import { Post } from '@/types/post';
@@ -13,7 +12,7 @@ import { Post } from '@/types/post';
 // import Head from 'next/head';
 
 export interface BlogBlock {
-  type: 'heading' | 'paragraph' | 'list' | 'link' | 'callout' | 'code';
+  type: 'heading' | 'paragraph' | 'list' | 'link' | 'callout' | 'code' | 'reviewImg';
   level?: number;
   content?: string;
   style?: 'bullet' | 'number';
@@ -21,6 +20,9 @@ export interface BlogBlock {
   text?: string;
   url?: string;
   language?: string;
+  imageUrl?: string;
+  imageAlt?: string;
+  imageCaption?: string;
 }
 
 interface BlogContentJSON {
@@ -42,7 +44,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative group mb-6 sm:mb-8 overflow-hidden rounded-2xl"
+        className="relative w-full group mb-6 sm:mb-8 overflow-hidden rounded-2xl"
       >
         <Image
           src={post.image || '/blog-post-image.png'}
@@ -51,12 +53,12 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           height={600}
           rel="preload"
           fetchPriority="high"
-          className="w-full h-[50vh] sm:h-[70vh] object-cover rounded-2xl brightness-65 hover:brightness-90 active:brightness-90 transition-all duration-500"
+          className="w-full h-[250px] sm:h-[70vh] object-cover rounded-2xl brightness-65 hover:brightness-90 active:brightness-90 transition-all duration-500"
           priority
           sizes="100vw"
           tabIndex={0}
         />
-        <p className="absolute bottom-4 left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-md rounded-lg p-2 text-sm">
+        <p className="absolute bottom-0 sm:bottom-3 left-0 sm:left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-md rounded-lg p-2 text-sm">
           {post.caption || 'Featured Image'}
         </p>
       </Motion.div>
@@ -90,19 +92,19 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           </span>
           <span className="px-2">
             <span className="flex gap-4">
-              <Link href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://verycodedly.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-lime-400 transition active:text-lime-400 active:scale-50" title="Share on Twitter">
+              <Link href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-lime-400 transition active:text-lime-400 active:scale-50" title="Share on Twitter">
                 <FontAwesomeIcon icon={faTwitter} size="1x" />
               </Link>
-              <Link href={`https://www.linkedin.com/sharing/share-offsite/?url=https://verycodedly.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-lime-400 transition active:text-lime-400 active:scale-50" title="Share on LinkedIn">
+              <Link href={`https://www.linkedin.com/sharing/share-offsite/?url=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-lime-400 transition active:text-lime-400 active:scale-50" title="Share on LinkedIn">
                 <FontAwesomeIcon icon={faLinkedinIn} size="1x" />
               </Link>
-              <Link href={`https://www.facebook.com/sharer/sharer.php?u=https://verycodedly.com/blog/${post.slug}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-lime-400 transition active:text-lime-400 active:scale-50" title="Share on Facebook">
+              <Link href={`https://www.facebook.com/sharer/sharer.php?u=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-lime-400 transition active:text-lime-400 active:scale-50" title="Share on Facebook">
                 <FontAwesomeIcon icon={faFacebook} size="1x" />
               </Link>
-              <Link href={`https://wa.me/?text=${encodeURIComponent(post.title + " — https://verycodedly.com/blog/" + post.slug)}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-lime-400 transition active:text-lime-400 active:scale-50" title="Share on WhatsApp">
+              <Link href={`https://wa.me/?text=${encodeURIComponent(post.title + " — https://verycodedly.com/read/" + post.slug)}`} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-lime-400 transition active:text-lime-400 active:scale-50" title="Share on WhatsApp">
                 <FontAwesomeIcon icon={faWhatsapp} size="1x" />
               </Link>
-              <button onClick={() => navigator.clipboard.writeText(`https://verycodedly.com/blog/${post.slug}`)} className="text-gray-400 hover:text-lime-400 transition active:text-lime-400 active:scale-50" title="Copy link">
+              <button onClick={() => navigator.clipboard.writeText(`https://verycodedly.com/read/${post.slug}`)} className="text-gray-400 hover:text-lime-400 transition duration-400 active:text-lime-400 active:scale-60 ease-in-out" title="Copy link">
                 <FontAwesomeIcon icon={faCopy} size="1x" />
               </button>
             </span>
@@ -165,6 +167,33 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                 default:
                   console.warn('PostContent: Unrecognized block →', block);
                   return null;
+
+                case 'reviewImg':
+                  if (!block.imageUrl) return null;
+                  return (
+                    <Motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8 }}
+                      className="my-12 -mx-4 sm:mx-0 relative w-full group overflow-hidden rounded-2xl"
+                    >
+                      <Image
+                        src={block.imageUrl}
+                        alt={block.imageAlt || 'First Look'}
+                        width={800}
+                        height={500}
+                        className="w-full object-cover brightness-90 group-hover:brightness-100 transition-all duration-500"
+                        sizes="100vw"
+                        priority={index < 3}   // prioritize first few images
+                      />
+
+                      <p className="absolute bottom-0 sm:bottom-3 left-0 sm:left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-md rounded-lg p-2 text-sm">
+                        {block.imageCaption || 'Photo'}
+                      </p>
+                    </Motion.div>
+                  );
+
               }
             } catch (err) {
               console.error('PostContent: Error rendering block →', block, err);
@@ -194,7 +223,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
               <div key={img.id || index} className="group relative overflow-hidden rounded-2xl bg-black/50">
                 <Image src={img.image || '/blog-post-image.png'} alt={img.alt || 'Gallery image'} width={400} height={300} className="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" tabIndex={0} />
                 {(img.alt || img.caption) && (
-                  <div className="absolute bottom-2 left-2 right-2 w-fit bg-black/15 group-hover:bg-transparent backdrop-blur-md group-hover:!backdrop-blur-none rounded px-2 py-1">
+                  <div className="absolute bottom-2 left-2 right-2 w-fit bg-black/15 group-hover:bg-transparent backdrop-blur-md group-hover:!backdrop-blur-none rounded-lg px-2 py-1">
                     {img.caption && <p className="text-gray-50/80 group-hover:opacity-0 text-xs mb-1">{img.caption}</p>}
                   </div>
                 )}
@@ -232,10 +261,10 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
         {post.links && post.links.length > 0 ? (
           <div className="space-y-3">
             {post.links.map((link) => (
-              <Link key={link.id} aria-label={`Link for ${link.target_post}`} href={link.external_url || `/blog/${link.target_post?.slug || '#'}`} target={link.external_url ? '_blank' : '_self'} rel={link.external_url ? 'noopener noreferrer' : ''} className="group inline-flex items-center gap-2 p-3 bg-zinc-800/50 hover:bg-lime-400/10 border border-zinc-700/50 hover:border-lime-400/30 rounded-xl transition-all text-lime-300 hover:text-white text-sm sm:text-base">
-                <span className="font-medium">{link.label || 'Related Link'}</span>
+              <Link key={link.id} aria-label={`Link for ${link.target_post}`} href={link.external_url || `/read/${link.target_post?.slug || '#'}`} target={link.external_url ? '_blank' : '_self'} rel={link.external_url ? 'noopener noreferrer' : ''} className="group inline-flex items-center gap-2 px-3 py-2 bg-zinc-900/50 hover:bg-lime-400/10 border border-zinc-800/30 hover:border-lime-400/30 rounded-2xl transition-all text-lime-300 hover:text-white text-sm sm:text-sm">
+                <span className="font-normal">{link.label || 'Related Link'}</span>
                 {link.type === 'affiliate' && <span className="text-xs bg-pink-500/20 text-pink-400 px-2 py-1 rounded-full">Affiliate</span>}
-                {link.external_url && <FontAwesomeIcon icon={faArrowRight} className="group-hover:translate-x-1 transition-transform" />}
+                {link.external_url && <FontAwesomeIcon icon={faLongArrowRight} className="group-hover:translate-x-1 transition-transform" />}
               </Link>
             ))}
           </div>

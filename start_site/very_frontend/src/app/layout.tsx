@@ -85,10 +85,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <head /> */}
       <head>
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://api.verycodedly.com" />
+        <link rel="preconnect" href="https://api.verycodedly.com/api" />
 
         <link rel="icon" href="/icon.svg" type="image/svg+xml" sizes="any" />
 
