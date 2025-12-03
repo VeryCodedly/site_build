@@ -42,17 +42,6 @@ class Command(BaseCommand):
             post = recent_posts.get(pk=post_id)
             # Add tags
             obj["fields"]["tags"] = list(post.tags.names())
-            # Add post links
-            obj["fields"]["post_links"] = [
-                {
-                    "label": link.label,
-                    "external_url": link.external_url,
-                    "target_post": link.target_post.pk if link.target_post else None,
-                    "type": link.type,
-                    "position": link.position
-                }
-                for link in post.links.all()
-            ]
 
         # Save to file
         filename = f"recent_posts_{timezone.now().strftime('%Y%m%d_%H%M')}.json"
