@@ -47,7 +47,7 @@ class Command(BaseCommand):
                 {
                     "label": link.label,
                     "external_url": link.external_url,
-                    "target_post_slug": link.target_post.slug if link.target_post else None,
+                    "target_post": link.target_post.pk if link.target_post else None,
                     "type": link.type,
                     "position": link.position
                 }
