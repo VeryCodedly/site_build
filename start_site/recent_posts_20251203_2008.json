@@ -80,13 +80,7 @@
       "created_at": "2025-12-03T10:44:00.280Z",
       "updated_at": "2025-12-03T17:04:09.765Z",
       "status": "published",
-      "tags": [
-        "apple-ai-retirement",
-        "consumer-ai-race",
-        "john-giannandrea-exit",
-        "on-device-intelligence",
-        "siri-ai-delay"
-      ]
+      "post_links": []
     }
   },
   {
@@ -170,13 +164,7 @@
       "created_at": "2025-12-03T12:02:33.238Z",
       "updated_at": "2025-12-03T17:05:14.672Z",
       "status": "published",
-      "tags": [
-        "ai-image-gen-valuation",
-        "black-forest-labs-funding",
-        "creative-ai-tools",
-        "europe-ai-boom",
-        "open-weight-models"
-      ]
+      "post_links": []
     }
   },
   {
@@ -261,13 +249,7 @@
       "created_at": "2025-12-03T14:37:55.873Z",
       "updated_at": "2025-12-03T17:06:04.356Z",
       "status": "published",
-      "tags": [
-        "bitcoin-92k-surge",
-        "crypto-rebound-2025",
-        "institutional-inflows",
-        "nft-market-rally",
-        "vanguard-crypto-etf"
-      ]
+      "post_links": []
     }
   },
   {
@@ -339,13 +321,7 @@
       "created_at": "2025-12-03T14:43:52.829Z",
       "updated_at": "2025-12-03T17:06:33.714Z",
       "status": "published",
-      "tags": [
-        "adaptive-deformation",
-        "human-robot-interaction",
-        "manufacturing-safety",
-        "mit-soft-robots",
-        "safe-ai-design"
-      ]
+      "post_links": []
     }
   },
   {
@@ -426,13 +402,7 @@
       "created_at": "2025-12-03T15:14:24.214Z",
       "updated_at": "2025-12-03T17:14:22.059Z",
       "status": "published",
-      "tags": [
-        "global-surveillance-debate",
-        "imei-fraud-app",
-        "india-phone-privacy",
-        "sanchar-saathi-mandate",
-        "telecom-security"
-      ]
+      "post_links": []
     }
   },
   {
@@ -517,13 +487,7 @@
       "created_at": "2025-12-03T08:59:10.568Z",
       "updated_at": "2025-12-03T17:03:30.083Z",
       "status": "published",
-      "tags": [
-        "aws-reinvent-2025",
-        "cloud-ai-infrastructure",
-        "enterprise-automation",
-        "frontier-ai-agents",
-        "trainium3-launch"
-      ]
+      "post_links": []
     }
   },
   {
@@ -609,14 +573,7 @@
       "created_at": "2025-12-03T16:01:16.839Z",
       "updated_at": "2025-12-03T17:15:39.769Z",
       "status": "published",
-      "tags": [
-        "ai",
-        "future-of-work",
-        "hiring",
-        "jobs",
-        "junior-developers",
-        "tech"
-      ]
+      "post_links": []
     }
   },
   {
@@ -709,14 +666,7 @@
       "created_at": "2025-12-03T16:47:06.166Z",
       "updated_at": "2025-12-03T17:16:17.769Z",
       "status": "published",
-      "tags": [
-        "cloud",
-        "devops",
-        "infrastructure",
-        "ingress-nginx",
-        "kubernetes",
-        "opensource"
-      ]
+      "post_links": []
     }
   },
   {
@@ -802,13 +752,7 @@
       "created_at": "2025-12-03T15:02:27.598Z",
       "updated_at": "2025-12-03T17:07:05.968Z",
       "status": "published",
-      "tags": [
-        "2026-enterprise-ai",
-        "claude-vs-gpt",
-        "developer-ai-tools",
-        "openai-o3-benchmarks",
-        "reasoning-ai-model"
-      ]
+      "post_links": []
     }
   },
   {
@@ -889,14 +833,7 @@
       "created_at": "2025-12-03T15:39:21.996Z",
       "updated_at": "2025-12-03T17:14:59.726Z",
       "status": "published",
-      "tags": [
-        "ai",
-        "anthropic",
-        "bun",
-        "coding-tools",
-        "javascript",
-        "software"
-      ]
+      "post_links": []
     }
   },
   {
@@ -981,13 +918,7 @@
       "created_at": "2025-12-03T16:58:06.838Z",
       "updated_at": "2025-12-03T17:16:46.392Z",
       "status": "published",
-      "tags": [
-        "african-diaspora",
-        "cross-border-payments",
-        "mukuru-competition",
-        "remittance-fintech",
-        "wise-south-africa-launch"
-      ]
+      "post_links": []
     }
   }
 ]
