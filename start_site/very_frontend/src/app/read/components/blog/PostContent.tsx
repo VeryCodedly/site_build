@@ -176,7 +176,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.8 }}
-                      className="my-12 -mx-4 sm:mx-0 relative w-full group overflow-hidden rounded-2xl"
+                      className="my-12 mx-auto sm:mx-0 relative w-full group overflow-hidden rounded-2xl"
                     >
                       <Image
                         src={block.imageUrl}
