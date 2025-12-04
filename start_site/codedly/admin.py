@@ -59,6 +59,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'slug', 'subcategory', 'get_tags', 'created_at']
     search_fields = ['title', 'tags__name']
     list_filter = ['category', 'subcategory','created_at']
+    list_per_page = 200
     
     inlines = [PostImageInline, PostLinkInline]
 

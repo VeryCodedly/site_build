@@ -144,7 +144,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                   return <p key={index} className="text-sm sm:text-base text-gray-300 leading-relaxed">{block.content || 'No content available.'}</p>;
                 case 'list':
                   return (
-                    <ul key={index} className={`${block.style === 'number' ? 'list-decimal' : 'list-disc'} list-inside ml-4 sm:ml-6 space-y-2 text-sm sm:text-base text-gray-300/90`}>
+                    <ul key={index} className={`${block.style === 'number' ? 'list-decimal' : 'list-disc'} list-outside ml-4 sm:ml-6 space-y-3 text-sm sm:text-base text-gray-300/90`}>
                       {block.items?.length ? block.items.map((item, i) => <li key={i} className="hover:text-lime-400 active:text-lime-400 transition-colors">{item}</li>) : <li>No items.</li>}
                     </ul>
                   );

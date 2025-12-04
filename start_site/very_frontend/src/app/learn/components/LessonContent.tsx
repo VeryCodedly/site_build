@@ -298,7 +298,7 @@ export default function LessonContent({
                   key={index}
                   className={`${
                     block.style === "number" ? "list-decimal" : "list-disc"
-                  } list-inside ml-4 sm:ml-6 space-y-2 text-gray-300/90 text-sm sm:text-base`}
+                  } list-outside ml-4 sm:ml-6 space-y-2 text-gray-300/90 text-sm sm:text-base`}
                 >
                   {block.items?.map((item, i) => (
                     <li
