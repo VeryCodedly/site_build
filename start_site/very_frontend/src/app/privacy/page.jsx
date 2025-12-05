@@ -38,7 +38,8 @@ export default function PrivacyPage() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto"
         >
-          Your trust is everything. We built this platform to help you learn and keep up with the tech space, not to track or exploit you. Here’s exactly how we handle your data.
+          No cookies · No login · No tracking · No bullshit.<br />
+          We built this platform to help you learn and keep up with the tech space, not to track or exploit you. Here’s exactly how we handle your data.
         </Motion.p>
 
         {/* Key Promises */}

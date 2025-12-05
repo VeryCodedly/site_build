@@ -4,13 +4,13 @@ import SearchBar from "@/components/SearchBar";
 
 export const metadata: Metadata = {
   title: "Learn",
-  description: "Beginner-friendly coding lessons that help complex ideas click, one concept at a time.",
+  description: "Beginner-friendly coding lessons that help complex ideas click, one concept at a time. No cookies, no login, no tracking. Straight to the point.",
   alternates: {
     canonical: "https://verycodedly.com/learn",
   },
   openGraph: {
     title: "Learn",
-    description: "Beginner-friendly coding lessons that help complex ideas click, one concept at a time.",
+    description: "Beginner-friendly coding lessons that help complex ideas click, one concept at a time. No cookies, no login, no tracking. Straight to the point.",
     siteName: 'VeryCodedly',
     url: "https://verycodedly.com/learn",
     images: [{ url: "https://verycodedly.com/learn/opengraph-image.png" }],
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Learn",
-    description: "Beginner-friendly coding lessons that help complex ideas click, one concept at a time.",
+    description: "Beginner-friendly coding lessons that help complex ideas click, one concept at a time. No cookies, no login, no tracking. Straight to the point.",
     images: ["https://verycodedly.com/learn/twitter-image.png"],
     creator: '@verycodedly'
   },

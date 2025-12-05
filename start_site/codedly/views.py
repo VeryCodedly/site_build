@@ -101,7 +101,6 @@ def api_home(request):
         </html>
     """)
     
-
 @api_view(["GET"])
 def global_search(request):
     q = request.GET.get("q", "").strip()

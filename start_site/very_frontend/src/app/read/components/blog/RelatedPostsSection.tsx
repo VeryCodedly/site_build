@@ -25,7 +25,7 @@ export default function RelatedPostsSection({ subSlug }: RelatedPostsSectionProp
 
     return (
         <section className="mt-14">
-            <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 py-10 lg:px-14">
+            <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 py-12 pb-18 lg:px-14">
 
                 {/* LEFT: LATEST IN SUB */}
                 <Motion.div

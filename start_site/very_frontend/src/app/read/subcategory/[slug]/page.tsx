@@ -159,7 +159,7 @@ export default function SubcategoryPage() {
 
             {/* SPLIT SECTION */}
             <section className="mt-14">
-              <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 py-10">
+              <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 py-12 pb-18">
 
                 {/* LEFT: LATEST IN SUB */}
                 <Motion.div

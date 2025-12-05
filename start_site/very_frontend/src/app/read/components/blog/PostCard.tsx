@@ -102,7 +102,7 @@ export default function PostCard({ post }: { post: Post }) {
           // tabIndex={0}
         />
       </div> */}
-      <div className="flex-shrink-0 items-center justify-center my-auto">
+      <div className="flex-shrink-0 items-center justify-center my-auto select-none">
         <div className="relative w-[80px] h-[100px] sm:w-[100px] sm:h-[110px] md:w-[120px] md:h-[110px] mx-auto">
           <Image
             src={post.image ?? '/Post-Image.png'}
