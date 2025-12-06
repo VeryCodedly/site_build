@@ -90,3 +90,10 @@ django-6-0-goes-live-big-changes
 russia-bans-snapchat-and-roblox-facetime-restricted
 microsoft-surpasses-ai-connectivity-goal
 cloudflare-faces-fresh-outage-downdetector-crash-amid-spike
+typescript-7-go-rewrite-10x-speed
+prediction-markets-hit-2b-weekly-trades
+netflix-warner-bros-72b-deal
+binance-appoints-yi-he-co-ceo
+eu-probes-meta-pay-or-consent
+youtube-ai-edits-creator-backlash
+this-week-in-tech-roundup-2025-12-06

@@ -21,7 +21,7 @@ export default function RelatedPostsSection({ subSlug }: RelatedPostsSectionProp
 
     // Trending (global)
     const { data: trendingPosts = [] } = useGetPostsBySubcategoryQuery('trending-now');
-    const trending = trendingPosts.slice(1, 5); // Skip first to avoid duplication with main post
+    const trending = trendingPosts.slice(1, 6); // Skip first to avoid duplication with main post
 
     return (
         <section className="mt-14">

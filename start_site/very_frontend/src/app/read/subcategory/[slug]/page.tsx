@@ -62,7 +62,7 @@ export default function SubcategoryPage() {
   // Trending 5 from "trending-now"
   function TrendingStories() {
     const { data: posts = [] } = useGetPostsBySubcategoryQuery('trending-now');
-    const trending = posts.slice(1, 5); // Skip first to avoid duplication with main post
+    const trending = posts.slice(1, 6); // Skip first to avoid duplication with main post
 
     if (trending.length === 0) return <p className="text-gray-500">Quiet for now.</p>;
 

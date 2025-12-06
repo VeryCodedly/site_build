@@ -1,0 +1,497 @@
+[
+  {
+    "model": "codedly.post",
+    "pk": 127,
+    "fields": {
+      "title": "TypeScript 7’s Go Rewrite Targets 10x Speed",
+      "slug": "typescript-7-go-rewrite-10x-speed",
+      "category": 3,
+      "subcategory": 22,
+      "content_JSON": {
+        "slug": "typescript-7-go-rewrite-10x-speed",
+        "tags": [
+          "typescript",
+          "microsoft",
+          "project-corsa",
+          "go",
+          "compiler",
+          "developer-tools",
+          "performance"
+        ],
+        "topic": "TypeScript 7 Native Port Nears: Go-Based Rewrite Targets 10x Speed in Early 2026",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Microsoft’s Project Corsa hit a new milestone today as the team confirmed that TypeScript 7.0 previews are now reaching feature parity with the current JS-based compiler on core editing tools like auto-imports, quick fixes, and IntelliSense behavior. This is a big deal because once parity is locked in, nothing stops them from fully switching over to the Go-native compiler path."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Why This Matters"
+          },
+          {
+            "type": "paragraph",
+            "content": "The Go rewrite isn’t just a rewrite for fun. It’s designed to bring serious gains: up to 10x faster builds, smoother incremental compiles, lower memory usage, and better performance on massive monorepos where today’s TypeScript setup can feel sluggish. Microsoft aims to ship the Go-native TypeScript compiler (internally called Corsa) in early 2026, with Q1 as the current target if previews stay stable."
+          },
+          {
+            "type": "paragraph",
+            "content": "TypeScript 6.0 will bridge the gap in the meantime, keeping the existing JavaScript/Node compiler while the Go version matures. By the time TypeScript 7 lands, developers may see one of the biggest workflow speed upgrades the ecosystem has ever had."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "TypeScript isn’t getting a glow-up. It’s getting a new engine. If Project Corsa lands on schedule, 2026 could be the year massive codebases finally stop feeling heavy. Faster builds, lighter tooling, and a compiler built for scale are officially on the horizon."
+          }
+        ],
+        "excerpt": "TypeScript 7.0 preview hits feature parity as Microsoft pushes toward a Go-native compiler promising 10x speed gains by early 2026.",
+        "image_prompt": "A mysterious, surreal editorial-style illustration representing a major shift inside TypeScript. Abstract waves of data ripple and twist upward like luminous currents around a softly glowing orb bearing the TypeScript “TS” logo. Deep, moody gradients blend with subtle teal and electric-blue highlights to evoke acceleration and transformation. Floating geometric shards drift around the orb, as if pulled by the force of an impending breakthrough. A faceless silhouette stands at a distance, observing the quiet storm of change. Conceptual, atmospheric, bold — no machines, no code fragments, no technical diagrams.",
+        "image_caption": "TypeScript’s Go-based compiler rewrite promises a major leap in speed and efficiency."
+      },
+      "content_plain_text": "Microsoft’s Project Corsa hit a new milestone today as the team confirmed that TypeScript 7.0 previews are now reaching feature parity with the current JS-based compiler on core editing tools like auto-imports, quick fixes, and IntelliSense behavior. This is a big deal because once parity is locked in, nothing stops them from fully switching over to the Go-native compiler path.\n\nWhy This Matters\n\nThe Go rewrite isn’t just a rewrite for fun. It’s designed to bring serious gains: up to 10x faster builds, smoother incremental compiles, lower memory usage, and better performance on massive monorepos where today’s TypeScript setup can feel sluggish. Microsoft aims to ship the Go-native TypeScript compiler (internally called Corsa) in early 2026, with Q1 as the current target if previews stay stable.\n\nTypeScript 6.0 will bridge the gap in the meantime, keeping the existing JavaScript/Node compiler while the Go version matures. By the time TypeScript 7 lands, developers may see one of the biggest workflow speed upgrades the ecosystem has ever had.\n\nThe Takeaway\n\nTypeScript isn’t getting a glow-up. It’s getting a new engine. If Project Corsa lands on schedule, 2026 could be the year massive codebases finally stop feeling heavy. Faster builds, lighter tooling, and a compiler built for scale are officially on the horizon.",
+      "excerpt": "TypeScript 7.0 preview hits feature parity as Microsoft pushes toward a Go-native compiler promising 10x speed gains by early 2026.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765027025/typescript-go.png",
+      "caption": "TypeScript 7’s Go Rewrite",
+      "alt": "typescript-7-go-rewrite",
+      "created_at": "2025-12-06T08:48:06.151Z",
+      "updated_at": "2025-12-06T13:18:22.403Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 128,
+    "fields": {
+      "title": "Prediction Markets Hit $2B Weekly, Blurring Trading Lines",
+      "slug": "prediction-markets-hit-2b-weekly-trades",
+      "category": 10,
+      "subcategory": 9,
+      "content_JSON": {
+        "slug": "prediction-markets-hit-2b-weekly-trades",
+        "tags": [
+          "prediction-markets",
+          "kalshi",
+          "polymarket",
+          "trading",
+          "cftc",
+          "fanatics",
+          "finance",
+          "gambling"
+        ],
+        "topic": "Prediction Markets Explode: $2B Weekly Volume Blurs Trading and Gambling Lines",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Prediction markets had a banner week as platforms like Kalshi and Polymarket hit around $2 billion in trades in a single week. Users placed bets on everything from elections to major sporting events, showing how fast these hybrid trading-gambling platforms are growing. Investors and casual participants alike are leaning in, and the pace is raising some eyebrows."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Why the Spike Matters"
+          },
+          {
+            "type": "paragraph",
+            "content": "Fanatics recently launched its own app, framing contracts more like trading than traditional betting. While it’s drawing attention from Wall Street, regulators are also keeping a close eye. The Commodity Futures Trading Commission has expressed concerns about gambling-like behavior and consumer protections, especially as volumes surge into the billions weekly."
+          },
+          {
+            "type": "paragraph",
+            "content": "These markets aren’t just about fun bets. They’re a lens into real-time sentiment on elections, sports, and other events. The speed and scale of activity means both professional and casual participants are navigating a financial space that’s still finding its rules."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "Prediction markets are growing fast, blurring the line between trading and gambling. With billions changing hands weekly, regulators, investors, and users will all be watching closely. For now, the space is fascinating, high-volume, and still a little unpredictable."
+          }
+        ],
+        "excerpt": "Prediction markets like Kalshi and Polymarket reached $2B in weekly trades, highlighting a booming hybrid trading-gambling space under regulatory scrutiny.",
+        "image_prompt": "A conceptual, editorial-style illustration of frenzied prediction markets. Abstract streams, jagged shards, and floating fragments twist and spiral wildly, suggesting rapid digital activity. A large faceless silhouette of a hand hovers above, twirling and controlling the chaotic flow, as if orchestrating the frenzy. Subtle digital betting cues — glowing contract fragments, small transaction-like shapes, or floating data nodes — float through the scene, clearly abstract and not casino-style. Gradients of muted green, soft teal, and warm orange highlight the movement and hint at money, speed, and unpredictability. A distant faceless observer watches in awe. Fully conceptual, dynamic, and slightly chaotic, capturing the digital frenzy of $2B weekly trades.",
+        "image_caption": "Prediction markets surge as trading and gambling lines blur."
+      },
+      "content_plain_text": "Prediction markets had a banner week as platforms like Kalshi and Polymarket hit around $2 billion in trades in a single week. Users placed bets on everything from elections to major sporting events, showing how fast these hybrid trading-gambling platforms are growing. Investors and casual participants alike are leaning in, and the pace is raising some eyebrows.\n\nWhy the Spike Matters\n\nFanatics recently launched its own app, framing contracts more like trading than traditional betting. While it’s drawing attention from Wall Street, regulators are also keeping a close eye. The Commodity Futures Trading Commission has expressed concerns about gambling-like behavior and consumer protections, especially as volumes surge into the billions weekly.\n\nThese markets aren’t just about fun bets. They’re a lens into real-time sentiment on elections, sports, and other events. The speed and scale of activity means both professional and casual participants are navigating a financial space that’s still finding its rules.\n\nThe Takeaway\n\nPrediction markets are growing fast, blurring the line between trading and gambling. With billions changing hands weekly, regulators, investors, and users will all be watching closely. For now, the space is fascinating, high-volume, and still a little unpredictable.",
+      "excerpt": "Prediction markets like Kalshi and Polymarket reached $2B in weekly trades, highlighting a booming hybrid trading-gambling space under regulatory scrutiny.",
+      "author": "Admin",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765027026/prediction-markets.png",
+      "caption": "Prediction Markets Explode",
+      "alt": "prediction-markets-explode",
+      "created_at": "2025-12-06T09:19:22.725Z",
+      "updated_at": "2025-12-06T13:18:54.629Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 129,
+    "fields": {
+      "title": "Netflix Seals $72B Warner Bros. Deal",
+      "slug": "netflix-warner-bros-72b-deal",
+      "category": 9,
+      "subcategory": 12,
+      "content_JSON": {
+        "slug": "netflix-warner-bros-72b-deal",
+        "tags": [
+          "netflix",
+          "warner-bros",
+          "streaming",
+          "merger",
+          "hbo-max",
+          "hollywood",
+          "ai-content"
+        ],
+        "topic": "Netflix Seals $72B Warner Bros. Deal",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Netflix has officially closed its $72 billion acquisition of Warner Bros. Discovery's studios and HBO Max. The deal gives Netflix control over a massive library of iconic IPs, including Harry Potter, DC characters, and countless other franchises. After weeks of speculation and bidding against rivals like Paramount and Comcast, both companies confirmed the merger today, turning Netflix into a true content powerhouse."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "A Content Empire in the Making"
+          },
+          {
+            "type": "paragraph",
+            "content": "This isn’t just about size; it’s about opportunity. With Warner Bros.’ rich archives and HBO Max’s production pipelines, Netflix can explore new AI-driven content experiments - from spin-off series to global adaptations - potentially changing how stories are created and delivered. It also cements Netflix’s lead in the streaming wars, giving it leverage to innovate with interactive or automated content tools in the future."
+          },
+          {
+            "type": "paragraph",
+            "content": "The merger signals a turning point for Hollywood and streaming alike. Fans can expect more cross-franchise projects, while AI-enabled production workflows may start showing up in mainstream releases. The combination of Netflix’s global reach and Warner Bros.’ IP arsenal hints at endless creative possibilities, from experimental storytelling to meme-ready moments circulating worldwide."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "The deal isn’t just a financial headline, it’s a cultural one. Netflix now holds keys to some of the world’s most beloved stories, and with AI tools in play, the next wave of content could be faster, more interactive, and full of surprises. Hollywood’s streaming game has changed, and this merger just opened a new, exciting chapter."
+          }
+        ],
+        "excerpt": "Netflix finalized its $72B acquisition of Warner Bros. and HBO Max, gaining massive IP and opening doors for AI-driven content innovations.",
+        "image_prompt": "A mysterious, editorial-style illustration representing AI-driven video editing with hints of new movie and content creation. Abstract waveforms and glowing nodes morph into vibrant geometric shapes resembling layered video timelines and cut scenes, subtly suggesting familiar IP and cinematic storytelling. In the distance, faceless silhouettes sit together, one pointing toward the abstract creation, implying excitement and curiosity. Motion trails echo AI automation. Bold, saturated colors with dynamic movement. Conceptual, surreal, playful, slightly eerie — no literal UIs, phones, or logos, just AI shaping content.",
+        "image_caption": "AI creativity shaping Warner Bros. content under Netflix’s new ownership."
+      },
+      "content_plain_text": "Netflix has officially closed its $72 billion acquisition of Warner Bros. Discovery's studios and HBO Max. The deal gives Netflix control over a massive library of iconic IPs, including Harry Potter, DC characters, and countless other franchises. After weeks of speculation and bidding against rivals like Paramount and Comcast, both companies confirmed the merger today, turning Netflix into a true content powerhouse.\n\nA Content Empire in the Making\n\nThis isn’t just about size; it’s about opportunity. With Warner Bros.’ rich archives and HBO Max’s production pipelines, Netflix can explore new AI-driven content experiments - from spin-off series to global adaptations - potentially changing how stories are created and delivered. It also cements Netflix’s lead in the streaming wars, giving it leverage to innovate with interactive or automated content tools in the future.\n\nThe merger signals a turning point for Hollywood and streaming alike. Fans can expect more cross-franchise projects, while AI-enabled production workflows may start showing up in mainstream releases. The combination of Netflix’s global reach and Warner Bros.’ IP arsenal hints at endless creative possibilities, from experimental storytelling to meme-ready moments circulating worldwide.\n\nThe Takeaway\n\nThe deal isn’t just a financial headline, it’s a cultural one. Netflix now holds keys to some of the world’s most beloved stories, and with AI tools in play, the next wave of content could be faster, more interactive, and full of surprises. Hollywood’s streaming game has changed, and this merger just opened a new, exciting chapter.",
+      "excerpt": "Netflix finalized its $72B acquisition of Warner Bros. and HBO Max, gaining massive IP and opening doors for AI-driven content innovations.",
+      "author": "Suki fireHouse",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765027025/netflix-warner-acquisition.png",
+      "caption": "Netflix Seals Warner Bros. Deal",
+      "alt": "netflix-warner-bros-deal",
+      "created_at": "2025-12-06T10:55:47.379Z",
+      "updated_at": "2025-12-06T13:19:29.866Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 131,
+    "fields": {
+      "title": "Binance Names Yi He Co-CEO",
+      "slug": "binance-appoints-yi-he-co-ceo",
+      "category": 10,
+      "subcategory": 7,
+      "content_JSON": {
+        "slug": "binance-appoints-yi-he-co-ceo",
+        "tags": [
+          "binance",
+          "yi-he",
+          "cz",
+          "crypto",
+          "cryptocurrency",
+          "ceo",
+          "web3",
+          "leadership"
+        ],
+        "topic": "Binance Names Yi He Co-CEO",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Binance announced today that Yi He has been appointed co-CEO, joining founder CZ in guiding the world’s largest cryptocurrency exchange. A longtime collaborator and trusted partner, her promotion comes as the company navigates ongoing regulatory scrutiny and a volatile crypto market."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Why Yi He?"
+          },
+          {
+            "type": "paragraph",
+            "content": "Yi He has been integral to Binance’s growth since its early days, contributing to strategic decisions and operational scaling. Her experience with the exchange’s infrastructure, product launches, and global user base positions her to maintain stability as Binance expands into Web3 and decentralized finance."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Impact on the Market"
+          },
+          {
+            "type": "paragraph",
+            "content": "The leadership shift could reassure Binance’s 200 million+ users and partners amid ongoing regulatory pressures in multiple jurisdictions. Analysts suggest the co-CEO structure may allow CZ to focus on vision and innovation while Yi He ensures smooth day-to-day operations and compliance oversight."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "Yi He’s rise to co-CEO reflects continuity and stability for Binance. With both leaders at the helm, the exchange aims to navigate regulatory hurdles, continue global expansion, and explore the next wave of Web3 innovation, keeping millions of users engaged and supported."
+          }
+        ],
+        "excerpt": "Yi He becomes co-CEO of Binance, partnering with CZ to stabilize the exchange amid regulatory scrutiny and guide its global and Web3 expansion.",
+        "image_prompt": "A conceptual, editorial-style illustration of leadership transition at a major crypto exchange. Abstract geometric shapes and flowing lines suggest networks, growth, and oversight. Silhouettes representing Yi He and CZ appear subtly among layered shapes, symbolizing partnership and continuity. Hints of digital currency motifs float subtly in the background, muted colors with teal and gold highlights convey stability and influence. Conceptual, atmospheric, and slightly abstract rather than literal.",
+        "image_caption": "Yi He rises to co-CEO alongside CZ, symbolizing continuity and stability at Binance."
+      },
+      "content_plain_text": "Binance announced today that Yi He has been appointed co-CEO, joining founder CZ in guiding the world’s largest cryptocurrency exchange. A longtime collaborator and trusted partner, her promotion comes as the company navigates ongoing regulatory scrutiny and a volatile crypto market.\n\nWhy Yi He?\n\nYi He has been integral to Binance’s growth since its early days, contributing to strategic decisions and operational scaling. Her experience with the exchange’s infrastructure, product launches, and global user base positions her to maintain stability as Binance expands into Web3 and decentralized finance.\n\nImpact on the Market\n\nThe leadership shift could reassure Binance’s 200 million+ users and partners amid ongoing regulatory pressures in multiple jurisdictions. Analysts suggest the co-CEO structure may allow CZ to focus on vision and innovation while Yi He ensures smooth day-to-day operations and compliance oversight.\n\nThe Takeaway\n\nYi He’s rise to co-CEO reflects continuity and stability for Binance. With both leaders at the helm, the exchange aims to navigate regulatory hurdles, continue global expansion, and explore the next wave of Web3 innovation, keeping millions of users engaged and supported.",
+      "excerpt": "Yi He becomes co-CEO of Binance, partnering with CZ to stabilize the exchange amid regulatory scrutiny and guide its global and Web3 expansion.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765027028/binance-appointment.png",
+      "caption": "Binance Appoints Yi He",
+      "alt": "binance-appoints-yi-he",
+      "created_at": "2025-12-06T11:35:55.402Z",
+      "updated_at": "2025-12-06T13:20:30.801Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 130,
+    "fields": {
+      "title": "EU Probes Meta's Pay-or-Consent",
+      "slug": "eu-probes-meta-pay-or-consent",
+      "category": 4,
+      "subcategory": 21,
+      "content_JSON": {
+        "slug": "eu-probes-meta-pay-or-consent",
+        "tags": [
+          "meta",
+          "eu",
+          "antitrust",
+          "privacy",
+          "regulation",
+          "digital-policy",
+          "big-tech"
+        ],
+        "topic": "EU Probes Meta's Pay-or-Consent",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "The European Commission has officially launched an antitrust investigation into Meta’s 'pay or consent' approach. The model requires users to either pay or agree to data collection to access the platform. Regulators argue this could be exploitative, especially for users who feel compelled to hand over personal information to avoid losing service access. Immediate interim measures are reportedly under consideration to prevent ongoing privacy breaches while the probe continues."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Why This Matters"
+          },
+          {
+            "type": "paragraph",
+            "content": "Brussels is emphasizing that digital platforms can’t treat user data as a bargaining chip. This investigation comes amid broader EU efforts to assert authority over Big Tech, with rules like the Digital Services Act and Digital Markets Act already setting high compliance bars. Meta faces the possibility of having to redesign consent flows or payment models to meet EU standards."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Global Implications"
+          },
+          {
+            "type": "paragraph",
+            "content": "The outcome could ripple well beyond Europe. Changes to Meta’s model could influence other social media platforms and digital services worldwide, shifting ad-driven revenue strategies and setting new expectations for privacy compliance. Companies with EU user bases may need to adapt quickly to avoid penalties or reputational damage."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Industry Watch"
+          },
+          {
+            "type": "paragraph",
+            "content": "Tech analysts are closely following how Meta responds, particularly whether the company will implement immediate fixes or challenge the Commission’s interim measures. The investigation may set a precedent for how aggressively regulators monitor data monetization and user consent practices in digital markets globally."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "The EU is sending a clear message: user data is not a bargaining chip. Meta’s interim adjustments and long-term compliance strategies will be closely watched, potentially shaping privacy and regulatory standards worldwide. The investigation underscores Europe’s growing influence over global digital policy."
+          }
+        ],
+        "excerpt": "The EU investigates Meta's 'pay or consent' model, considering interim measures to enforce privacy rules and potentially reshaping global digital ad practices.",
+        "image_prompt": "A mysterious, editorial-style illustration reflecting the EU's investigation into Meta's 'pay or consent' model. Layered geometric forms and soft architectural contours represent regulatory frameworks, while abstract figures emerge from document-like shapes symbolizing digital platforms and user data. Faint EU motifs, like subtle stars and deep blue fragments, are woven into the composition. Flowing lines and layered textures convey oversight, tension, and intervention, conceptualizing the pressure and scrutiny on Meta's practices. Muted contemporary palette, atmospheric, slightly tense, and abstract rather than literal.",
+        "image_caption": "Conceptual representation of EU digital regulation impacting Meta's 'pay or consent' model."
+      },
+      "content_plain_text": "The European Commission has officially launched an antitrust investigation into Meta’s 'pay or consent' approach. The model requires users to either pay or agree to data collection to access the platform. Regulators argue this could be exploitative, especially for users who feel compelled to hand over personal information to avoid losing service access. Immediate interim measures are reportedly under consideration to prevent ongoing privacy breaches while the probe continues.\n\nWhy This Matters\n\nBrussels is emphasizing that digital platforms can’t treat user data as a bargaining chip. This investigation comes amid broader EU efforts to assert authority over Big Tech, with rules like the Digital Services Act and Digital Markets Act already setting high compliance bars. Meta faces the possibility of having to redesign consent flows or payment models to meet EU standards.\n\nGlobal Implications\n\nThe outcome could ripple well beyond Europe. Changes to Meta’s model could influence other social media platforms and digital services worldwide, shifting ad-driven revenue strategies and setting new expectations for privacy compliance. Companies with EU user bases may need to adapt quickly to avoid penalties or reputational damage.\n\nIndustry Watch\n\nTech analysts are closely following how Meta responds, particularly whether the company will implement immediate fixes or challenge the Commission’s interim measures. The investigation may set a precedent for how aggressively regulators monitor data monetization and user consent practices in digital markets globally.\n\nThe Takeaway\n\nThe EU is sending a clear message: user data is not a bargaining chip. Meta’s interim adjustments and long-term compliance strategies will be closely watched, potentially shaping privacy and regulatory standards worldwide. The investigation underscores Europe’s growing influence over global digital policy.",
+      "excerpt": "The EU investigates Meta's 'pay or consent' model, considering interim measures to enforce privacy rules and potentially reshaping global digital ad practices.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765027028/eu-probes-meta.png",
+      "caption": "EU Probes Meta",
+      "alt": "eu-probes-meta",
+      "created_at": "2025-12-06T11:23:12.106Z",
+      "updated_at": "2025-12-06T13:20:04.754Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 132,
+    "fields": {
+      "title": "YouTube's Secret AI Edits Spark Creator Fury",
+      "slug": "youtube-ai-edits-creator-backlash",
+      "category": 9,
+      "subcategory": 11,
+      "content_JSON": {
+        "slug": "youtube-ai-edits-shorts",
+        "tags": [
+          "youtube",
+          "ai",
+          "shorts",
+          "creator-rights",
+          "transparency",
+          "content",
+          "enhancement"
+        ],
+        "topic": "YouTube’s AI Edits Raise Eyebrows",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "YouTube quietly applied AI tweaks to some Shorts, fixing things like blur and noise without letting creators know. The changes were meant to improve videos, but the surprise factor has some creators raising their eyebrows."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Creators Notice"
+          },
+          {
+            "type": "paragraph",
+            "content": "Even minor adjustments can make a difference in how a video looks. Creators are realizing their carefully crafted content is getting an unsolicited polish, prompting questions about who really owns the final cut."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Why It’s Interesting"
+          },
+          {
+            "type": "paragraph",
+            "content": "The incident highlights a classic tension: AI can make things look better, but doing it without telling the person who made them is… slightly weird. Transparency could help avoid a mix of surprise and eye-rolls."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "Automated improvements are fine in theory, but sneaky edits are a gentle reminder that even algorithms have etiquette lessons to learn. Clear communication goes a long way, even in AI-land."
+          }
+        ],
+        "excerpt": "YouTube applied AI tweaks to Shorts without notifying creators, sparking questions about transparency and control.",
+        "image_prompt": "A mysterious, editorial-style illustration depicting AI quietly meddling with video content. Abstract waveforms and drifting geometric fragments subtly reshape floating visual layers, hinting at hidden enhancements happening behind the scenes. Fragmented human silhouettes watch from a distance — one slightly leaning in, as if squinting at a change they can’t quite prove, adding a touch of dry humor. Textures overlap like shifting timelines, suggesting unnoticed edits and algorithmic intervention. Bold but muted colors, soft glows, and atmospheric gradients convey transformation without drama. No literal phones, cameras, or UI elements — just a conceptual, slightly cheeky take on unseen AI-driven tweaks in creator content.",
+        "image_caption": "AI subtly edits Shorts, highlighting the tension between improvement and creator control."
+      },
+      "content_plain_text": "YouTube quietly applied AI tweaks to some Shorts, fixing things like blur and noise without letting creators know. The changes were meant to improve videos, but the surprise factor has some creators raising their eyebrows.\n\nCreators Notice\n\nEven minor adjustments can make a difference in how a video looks. Creators are realizing their carefully crafted content is getting an unsolicited polish, prompting questions about who really owns the final cut.\n\nWhy It’s Interesting\n\nThe incident highlights a classic tension: AI can make things look better, but doing it without telling the person who made them is… slightly weird. Transparency could help avoid a mix of surprise and eye-rolls.\n\nThe Takeaway\n\nAutomated improvements are fine in theory, but sneaky edits are a gentle reminder that even algorithms have etiquette lessons to learn. Clear communication goes a long way, even in AI-land.",
+      "excerpt": "YouTube applied AI tweaks to Shorts without notifying creators, sparking questions about transparency and control.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765027025/secret-edits.png",
+      "caption": "YouTube's AI Edits Spark Fury",
+      "alt": "youtube-ai-edits-spark-backlash",
+      "created_at": "2025-12-06T12:39:51.932Z",
+      "updated_at": "2025-12-06T13:21:38.582Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 133,
+    "fields": {
+      "title": "This Week in Tech: AI, Streaming, and Global Innovation",
+      "slug": "this-week-in-tech-roundup-2025-12-06",
+      "category": 7,
+      "subcategory": 14,
+      "content_JSON": {
+        "slug": "this-week-in-tech-roundup-2025-12-06",
+        "tags": [
+          "weekly-roundup",
+          "tech-news",
+          "ai",
+          "streaming",
+          "software",
+          "connectivity",
+          "cloud"
+        ],
+        "topic": "This Week in Tech: AI, Streaming, and Global Innovation",
+        "blocks": [
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Netflix Seals $72B Warner Bros. Deal"
+          },
+          {
+            "type": "paragraph",
+            "content": "Netflix finalized its blockbuster $72 billion acquisition of Warner Bros. Discovery’s studios and HBO Max, gaining access to iconic IP like Harry Potter and DC Comics. This merger, following a fierce bidding war, positions Netflix as a global content powerhouse and opens the door for AI-driven content creation and spin-offs."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "YouTube's Secret AI Edits Spark Creator Fury"
+          },
+          {
+            "type": "paragraph",
+            "content": "YouTube admitted to experimenting with AI-driven enhancements on select Shorts, unblurring and denoising footage without creator consent. The move sparked backlash over transparency and authenticity, raising broader questions about how platforms can use AI to modify user-generated content."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "OpenAI Hits ‘Code Red’ as Google’s Gemini 3 Gains Ground"
+          },
+          {
+            "type": "paragraph",
+            "content": "Google’s Gemini 3 continues to gain traction, prompting OpenAI to accelerate updates to maintain competitiveness. Gemini 3’s improvements in accuracy and usability have made it a go-to tool for coding, creative work, and research, signaling a shifting landscape in generative AI adoption."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "AWS re:Invent 2025: Frontier Agents and Trainium3 Shift the AI Conversation"
+          },
+          {
+            "type": "paragraph",
+            "content": "At AWS re:Invent 2025, the company showcased Frontier Agents and the new Trainium3 chips, emphasizing faster, more efficient AI workflows. The announcements highlight AWS’s ongoing push to optimize AI infrastructure and offer scalable solutions for enterprises globally."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Google Year in Search 2025: AI Tools Dominate Global Queries"
+          },
+          {
+            "type": "paragraph",
+            "content": "Google’s 2025 Year in Search report revealed that AI tools, led by Gemini AI, topped global queries. Users increasingly rely on generative AI for everything from coding help to research, indicating that AI is becoming a core utility rather than a novelty in daily digital life."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "This week demonstrates the rapid evolution of tech, from blockbuster content deals to AI shaping how people search, create, and work. Streaming, generative AI, and cloud innovation are converging, with global impact visible across media, software, and digital workflows."
+          }
+        ],
+        "excerpt": "A roundup of the top tech stories this week, covering AI, streaming, cloud, and global digital innovation.",
+        "image_prompt": "A conceptual editorial illustration capturing the week’s tech highlights. Abstract forms represent streaming content, AI tools, cloud infrastructure, and user interaction, layered and twisting in dynamic motion. Silhouettes observe from the distance, some pointing or interacting, hinting at curiosity and engagement. Bold, saturated colors with flowing textures convey energy, interconnection, and chaos without literal devices or logos. Conceptual, slightly playful, and atmospheric to match the diverse top stories. no literal text.",
+        "image_caption": "This week in tech: AI, media, and cloud innovation in motion."
+      },
+      "content_plain_text": "Netflix Seals $72B Warner Bros. Deal\n\nNetflix finalized its blockbuster $72 billion acquisition of Warner Bros. Discovery’s studios and HBO Max, gaining access to iconic IP like Harry Potter and DC Comics. This merger, following a fierce bidding war, positions Netflix as a global content powerhouse and opens the door for AI-driven content creation and spin-offs.\n\nYouTube's Secret AI Edits Spark Creator Fury\n\nYouTube admitted to experimenting with AI-driven enhancements on select Shorts, unblurring and denoising footage without creator consent. The move sparked backlash over transparency and authenticity, raising broader questions about how platforms can use AI to modify user-generated content.\n\nOpenAI Hits ‘Code Red’ as Google’s Gemini 3 Gains Ground\n\nGoogle’s Gemini 3 continues to gain traction, prompting OpenAI to accelerate updates to maintain competitiveness. Gemini 3’s improvements in accuracy and usability have made it a go-to tool for coding, creative work, and research, signaling a shifting landscape in generative AI adoption.\n\nAWS re:Invent 2025: Frontier Agents and Trainium3 Shift the AI Conversation\n\nAt AWS re:Invent 2025, the company showcased Frontier Agents and the new Trainium3 chips, emphasizing faster, more efficient AI workflows. The announcements highlight AWS’s ongoing push to optimize AI infrastructure and offer scalable solutions for enterprises globally.\n\nGoogle Year in Search 2025: AI Tools Dominate Global Queries\n\nGoogle’s 2025 Year in Search report revealed that AI tools, led by Gemini AI, topped global queries. Users increasingly rely on generative AI for everything from coding help to research, indicating that AI is becoming a core utility rather than a novelty in daily digital life.\n\nThe Takeaway\n\nThis week demonstrates the rapid evolution of tech, from blockbuster content deals to AI shaping how people search, create, and work. Streaming, generative AI, and cloud innovation are converging, with global impact visible across media, software, and digital workflows.",
+      "excerpt": "A roundup of the top tech stories this week, covering AI, streaming, cloud, and global digital innovation.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765027026/this-week-in-tech.png",
+      "caption": "This Week in Tech",
+      "alt": "this-week-in-tech",
+      "created_at": "2025-12-06T13:04:45.454Z",
+      "updated_at": "2025-12-06T13:22:05.071Z",
+      "status": "published"
+    }
+  }
+]
