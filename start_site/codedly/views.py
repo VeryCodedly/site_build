@@ -124,7 +124,7 @@ def global_search(request):
             "type": "Post",
             "title": p.title,
             "subtitle": subtitle,
-            "url": f"/blog/{p.slug}",
+            "url": f"/read/{p.slug}",
             "icon": "faNewspaper",
         })
 
@@ -134,7 +134,7 @@ def global_search(request):
         results.append({
             "type": "Category",
             "title": c.name,
-            "url": f"/blog/category/{c.slug}",
+            "url": f"/read/category/{c.slug}",
             "icon": "faFolderBlank",
         })
 
@@ -147,7 +147,7 @@ def global_search(request):
             "type": "Subcategory",
             "title": s.name,
             "subtitle": s.category.name,
-            "url": f"/blog/subcategory/{s.slug}",
+            "url": f"/read/subcategory/{s.slug}",
             "icon": "faFolderOpen",
         })
 
@@ -388,7 +388,7 @@ class PostViewSet(viewsets.ModelViewSet):
     # DRY HELPER FOR THE IDENTICAL MULTI-POST ENDPOINTS
     def _multi_post_response(self, response_key: str, subcategory_slug: str):
         cache_key = f"homepage_{response_key.lower()}_posts"
-        qs = Post.objects.filter(subcategory__slug=subcategory_slug).order_by('-created_at')[:3]
+        qs = Post.objects.filter(subcategory__slug=subcategory_slug).order_by('-created_at')[:6]
         data = self._get_cached_response(cache_key, qs, single=False)
         return Response({response_key: data})
 
