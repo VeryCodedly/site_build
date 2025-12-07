@@ -3,7 +3,6 @@ import { Post, PostResponse, Category, Comment, PostImage, PostLink, Subcategory
 import { PaginatedResponse } from '@/types/post';
 
 export const apiSlice = createApi({
-  reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_URL }),
 
   tagTypes: ['Post', 'Category', 'Subcategory', 'Comment',

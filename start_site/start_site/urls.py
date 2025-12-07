@@ -23,6 +23,6 @@ from django.urls import path, include
 urlpatterns = [
     path(f"{settings.ADDY}/", admin.site.urls),
     path('', include('codedly.urls')),
-    path('api/', include('codedly.api_urls')),
+    path('nkemjika/', include('codedly.api_urls')),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

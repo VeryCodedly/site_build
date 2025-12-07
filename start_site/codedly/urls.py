@@ -5,6 +5,6 @@ from .views import api_home, global_search
 urlpatterns = [
     path('', api_home, name='api_home'),
     path("ping/", lambda request: HttpResponse("OK")),
-    path("api/search/", global_search, name="global_search"),
+    path("nkemjika/search/", global_search, name="global_search"),
 
 ]

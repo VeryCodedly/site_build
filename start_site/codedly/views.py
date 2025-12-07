@@ -6,11 +6,12 @@ from rest_framework.response import Response
 from rest_framework import status
 # from django.conf import settings
 from rest_framework.decorators import action
-from django.core.cache import cache
-from django.views.decorators.cache import cache_page
 from django.db.models import Q
 from functools import wraps
+import time
+from django.core.cache import cache
 
+from django.http import JsonResponse
 from django.views.generic import ListView
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
@@ -23,47 +24,35 @@ from django.db.models.functions import Length
 from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson
 from .serializers import CategoryPostsSerializer, PostSerializer, CategorySerializer, CommentSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer
 
-CACHE_TTL = 60 * 10  # 10 minutes
-
 
 class BaseAPIView(APIView):
     def finalize_response(self, request, response, *args, **kwargs):
         response = super().finalize_response(request, response, *args, **kwargs)
         response.headers['X-Robots-Tag'] = 'noindex, nofollow'
         return response
-    
-def smart_cache(timeout=60*15):
-    """
-    Caches the view response BUT preserves absolute URLs by:
-    - Caching the serialized data WITHOUT request context
-    - Re-adding request context only on cache miss
-    """
-    def decorator(view_func):
-        @wraps(view_func)
-        def _wrapped_view(self, request, *args, **kwargs):
-            # Generate a cache key unique to the view + args/kwargs
-            key_parts = [view_func.__name__, request.method]
-            if kwargs:
-                key_parts.extend([f"{k}:{v}" for k, v in sorted(kwargs.items())])
-            if request.GET:
-                key_parts.extend([f"{k}:{v}" for k, v in sorted(request.GET.items())])
-            cache_key = "_".join(str(p) for p in key_parts)
+    def dispatch(self, request, *args, **kwargs):
+        if request.path.startswith('/nkemjika/'):
+            ip = request.META.get('REMOTE_ADDR', 'unknown')
+            user_agent = request.META.get('HTTP_USER_AGENT', '').lower()
+            key = f"rate_limit_{ip}"
+            now = time.time()
+            requests = cache.get(key, [])
 
-            # Try cache first (no request context)
-            result = cache.get(cache_key)
-            if result is not None:
-                return result
+            # Clean old timestamps (40-sec window)
+            requests = [t for t in requests if now - t < 40]
 
-            # Cache miss → run the original view
-            response = view_func(self, request, *args, **kwargs)
+            if any(bot in user_agent for bot in ['bot', 'scraper', 'curl', 'wget', 'python-requests', 'scrapy', 'headless']):
+                if len(requests) >= 5:
+                    return JsonResponse({"error": "Bot detected. Access denied."}, status=403)
 
-            # Only cache successful responses
-            if hasattr(response, 'status_code') and response.status_code == 200:
-                cache.set(cache_key, response, timeout)
+            # Normal limit — 40/min
+            if len(requests) >= 40:
+                return JsonResponse({"error": "Too many requests"}, status=429)
 
-            return response
-        return _wrapped_view
-    return decorator
+            requests.append(now)
+            cache.set(key, requests, timeout=60)  # keep for 60s total
+
+        return super().dispatch(request, *args, **kwargs)
 
 def api_home(request):
     return HttpResponse("""
@@ -104,8 +93,8 @@ def api_home(request):
             </style>
         </head>
         <body>
-            <p>As you don reach here, well don, you try, but as I dey look you, waka commot before I close eye, open am. Nice meeting you.</p>
             <a href="/">VeryCodedly</a>
+            <span>As you don reach here, well don, you try, but as I dey look you, waka commot before I close eye, open am. Nice meeting you.</span>
         </body>
         </html>
     """)
@@ -193,213 +182,109 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     lookup_field = "slug"
 
-    # def _get_cached_response(self, cache_key, queryset=None, single=False):
-    #     """
-    #     Helper to get cached serialized data or compute & cache it.
-    #     Accepts QuerySet or list-like. If single=True returns serialized single object or None.
-    #     If single=False returns a list of serialized objects.
-    #     """
-    #     cached_data = cache.get(cache_key)
-    #     if cached_data is not None:
-    #         return cached_data
-
-    #     data = None
-
-    #     # If no queryset provided, just cache None
-    #     if queryset is None:
-    #         data = None
-    #     else:
-    #         # If a QuerySet-like object (has .first()), handle appropriately
-    #         if single:
-    #             # Single object expected
-    #             obj = None
-    #             try:
-    #                 # QuerySet
-    #                 if hasattr(queryset, "first"):
-    #                     obj = queryset.first()
-    #                 else:
-    #                     # list/tuple
-    #                     obj = queryset[0] if len(queryset) > 0 else None
-    #             except Exception:
-    #                 obj = None
-
-    #             serializer = PostSerializer(obj) if obj else None
-    #             data = serializer.data if serializer else None
-    #         else:
-    #             # Multiple objects expected — serializer accepts both QuerySet and list
-    #             try:
-    #                 serializer = PostSerializer(queryset, many=True)
-    #                 data = serializer.data
-    #             except Exception:
-    #                 # fallback: convert to list and try again
-    #                 items = list(queryset)
-    #                 serializer = PostSerializer(items, many=True)
-    #                 data = serializer.data
-
-    #     cache.set(cache_key, data, CACHE_TTL)
-    #     return data
-    def _get_cached_response(self, cache_key, queryset=None, single=False):
-        cached_data = cache.get(cache_key)
-        if cached_data is not None:
-            return cached_data
-
-        data = None
-        if queryset is not None:
-            if single:
-                obj = queryset.first() if hasattr(queryset, 'first') else (queryset[0] if queryset else None)
-                if obj:
-                    serializer = PostSerializer(obj)  # ← NO context → cache works
-                    data = serializer.data
-            else:
-                serializer = PostSerializer(queryset, many=True)  # ← NO context → cache works
-                data = serializer.data
-
-        cache.set(cache_key, data, 60 * 15)
-        return data
-
-    # SINGLE POST ENDPOINTS (featured, hardware, digitalMoney, social)
+    # SINGLE POST ENDPOINTS
     @action(detail=False, methods=['get'])
     def featured(self, request):
-        cache_key = "homepage_featured_post"
-        qs = Post.objects.filter(
+        post = Post.objects.filter(
             image__isnull=False,
             subcategory__slug="featured"
-        ).order_by('-created_at')
-        data = self._get_cached_response(cache_key, qs, single=True)
+        ).order_by('-created_at').first()
+        data = PostSerializer(post).data if post else None
         return Response({"featured": data})
 
     @action(detail=False, methods=['get'])
     def hardware(self, request):
-        cache_key = "homepage_hardware_post"
-        qs = Post.objects.filter(
-            image__isnull=False,
-            subcategory__slug="hardware"
-        ).order_by('-created_at')
-        data = self._get_cached_response(cache_key, qs, single=True)
+        post = Post.objects.filter(subcategory__slug="hardware", image__isnull=False).order_by('-created_at').first()
+        data = PostSerializer(post).data if post else None
         return Response({"hardware": data})
 
     @action(detail=False, methods=['get'])
     def digitalMoney(self, request):
-        cache_key = "homepage_digital_money_post"
-        qs = Post.objects.filter(
-            image__isnull=False,
-            subcategory__slug="digital-money"
-        ).order_by('-created_at')
-        data = self._get_cached_response(cache_key, qs, single=True)
+        post = Post.objects.filter(subcategory__slug="digital-money", image__isnull=False).order_by('-created_at').first()
+        data = PostSerializer(post).data if post else None
         return Response({"digitalMoney": data})
 
     @action(detail=False, methods=['get'])
     def social(self, request):
-        cache_key = "homepage_social_post"
-        qs = Post.objects.filter(
-            image__isnull=False,
-            subcategory__slug="social"
-        ).order_by('-created_at')
-        data = self._get_cached_response(cache_key, qs, single=True)
+        post = Post.objects.filter(subcategory__slug="social", image__isnull=False).order_by('-created_at').first()
+        data = PostSerializer(post).data if post else None
         return Response({"social": data})
-    
+
     @action(detail=False, methods=['get'])
     def dataDefense(self, request):
-        cache_key = "homepage_data_defense_post"
-        qs = Post.objects.filter(
-            image__isnull=False,
-            subcategory__slug="data-defense"
-        ).order_by('-created_at')
-        data = self._get_cached_response(cache_key, qs, single=True)
+        post = Post.objects.filter(subcategory__slug="data-defense", image__isnull=False).order_by('-created_at').first()
+        data = PostSerializer(post).data if post else None
         return Response({"dataDefense": data})
-    
+
     @action(detail=False, methods=['get'])
     def devDigest(self, request):
-        cache_key = "homepage_dev_digest_post"
-        qs = Post.objects.filter(
-            image__isnull=False,
-            subcategory__slug="dev-digest"
-        ).order_by('-created_at')
-        data = self._get_cached_response(cache_key, qs, single=True)
+        post = Post.objects.filter(subcategory__slug="dev-digest", image__isnull=False).order_by('-created_at').first()
+        data = PostSerializer(post).data if post else None
         return Response({"devDigest": data})
 
-    # MULTIPLE POSTS ENDPOINTS (all the [0:3] or [0:4] ones)
+    # MULTIPLE POSTS ENDPOINTS
     @action(detail=False, methods=['get'])
     def trending(self, request):
-        cache_key = "homepage_trending_posts"
-        qs = Post.objects.filter(subcategory__slug="trending-now").order_by('-created_at')[:6]
-        data = self._get_cached_response(cache_key, qs, single=False)
+        posts = Post.objects.filter(subcategory__slug="trending-now").order_by('-created_at')[:6]
+        data = PostSerializer(posts, many=True).data
         return Response({"trending": data})
 
-    @action(detail=False, methods=['get'])
-    def spotlight(self, request):
-        return self._multi_post_response("spotlight", "entertainment")
+    # DRY helper for the [:6]
+    def _multi_posts(self, subcategory_slug):
+        posts = Post.objects.filter(subcategory__slug=subcategory_slug).order_by('-created_at')[:6]
+        return PostSerializer(posts, many=True).data
 
     @action(detail=False, methods=['get'])
-    def bigDeal(self, request):
-        return self._multi_post_response("bigDeal", "big-deal")
-
+    def spotlight(self, request): 
+        return Response({"spotlight": self._multi_posts("entertainment")})
     @action(detail=False, methods=['get'])
-    def globalLens(self, request):
-        return self._multi_post_response("globalLens", "wired-world")
-
+    def bigDeal(self, request): 
+        return Response({"bigDeal": self._multi_posts("big-deal")})
     @action(detail=False, methods=['get'])
-    def africaRising(self, request):
-        return self._multi_post_response("africaRising", "africa-now")
-
+    def globalLens(self, request): 
+        return Response({"globalLens": self._multi_posts("wired-world")})
     @action(detail=False, methods=['get'])
-    def emergingTech(self, request):
-        return self._multi_post_response("emergingTech", "emerging-tech")
-
+    def africaRising(self, request): 
+        return Response({"africaRising": self._multi_posts("africa-now")})
     @action(detail=False, methods=['get'])
-    def techCulture(self, request):
-        return self._multi_post_response("techCulture", "tech-culture")
-
+    def emergingTech(self, request): 
+        return Response({"emergingTech": self._multi_posts("emerging-tech")})
     @action(detail=False, methods=['get'])
-    def secureHabits(self, request):
-        return self._multi_post_response("secureHabits", "secure-habits")
-
+    def techCulture(self, request): 
+        return Response({"techCulture": self._multi_posts("tech-culture")})
     @action(detail=False, methods=['get'])
-    def keyPlayers(self, request):
-        return self._multi_post_response("keyPlayers", "key-players")
-
+    def secureHabits(self, request): 
+        return Response({"secureHabits": self._multi_posts("secure-habits")})
     @action(detail=False, methods=['get'])
-    def AI(self, request):
-        return self._multi_post_response("AI", "ai")
-
+    def keyPlayers(self, request): 
+        return Response({"keyPlayers": self._multi_posts("key-players")})
     @action(detail=False, methods=['get'])
-    def bchCrypto(self, request):
-        return self._multi_post_response("bchCrypto", "blockchain-crypto")
-
+    def AI(self, request): 
+        return Response({"AI": self._multi_posts("ai")})
     @action(detail=False, methods=['get'])
-    def startups(self, request):
-        return self._multi_post_response("startups", "startups")
-
+    def bchCrypto(self, request): 
+        return Response({"bchCrypto": self._multi_posts("blockchain-crypto")})
     @action(detail=False, methods=['get'])
-    def prvCompliance(self, request):
-        return self._multi_post_response("prvCompliance", "privacy-compliance")
-    
+    def startups(self, request): 
+        return Response({"startups": self._multi_posts("startups")})
     @action(detail=False, methods=['get'])
-    def stack(self, request):
-        return self._multi_post_response("stack", "stack")
-    
+    def prvCompliance(self, request): 
+        return Response({"prvCompliance": self._multi_posts("privacy-compliance")})
     @action(detail=False, methods=['get'])
-    def buyGuides(self, request):
-        return self._multi_post_response("buyGuides", "buy-guides")
-    
+    def stack(self, request): 
+        return Response({"stack": self._multi_posts("stack")})
     @action(detail=False, methods=['get'])
-    def theClimb(self, request):
-        return self._multi_post_response("theClimb", "the-climb")
-    
+    def buyGuides(self, request): 
+        return Response({"buyGuides": self._multi_posts("buy-guides")})
     @action(detail=False, methods=['get'])
-    def rundown(self, request):
-        return self._multi_post_response("rundown", "rundown")
-    
+    def theClimb(self, request): 
+        return Response({"theClimb": self._multi_posts("the-climb")})
     @action(detail=False, methods=['get'])
-    def industryInsights(self, request):
-        return self._multi_post_response("industryInsights", "industry-insights")
-
-    # DRY HELPER FOR THE IDENTICAL MULTI-POST ENDPOINTS
-    def _multi_post_response(self, response_key: str, subcategory_slug: str):
-        cache_key = f"homepage_{response_key.lower()}_posts"
-        qs = Post.objects.filter(subcategory__slug=subcategory_slug).order_by('-created_at')[:6]
-        data = self._get_cached_response(cache_key, qs, single=False)
-        return Response({response_key: data})
+    def rundown(self, request): 
+        return Response({"rundown": self._multi_posts("rundown")})
+    @action(detail=False, methods=['get'])
+    def industryInsights(self, request): 
+        return Response({"industryInsights": self._multi_posts("industry-insights")})
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
