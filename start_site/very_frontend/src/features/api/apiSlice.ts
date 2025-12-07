@@ -27,9 +27,9 @@ export const apiSlice = createApi({
       providesTags: ['Post'],
     }),
 
-    getFeaturedPost: builder.query<Post | null, void>({
+    getFeaturedPost: builder.query<Post[], void>({
       query: () => '/posts/featured/',
-      transformResponse: (res: { featured: Post | null }) => res.featured,
+      transformResponse: (res: { featured: Post[] }) => res.featured,
       providesTags: ['Post'],
     }),
 
@@ -51,9 +51,9 @@ export const apiSlice = createApi({
       providesTags: ['Post'],
     }),
 
-    getSocialPost: builder.query<Post | null, void>({
+    getSocialPost: builder.query<Post[], void>({
       query: () => '/posts/social/',
-      transformResponse: (res: { social: Post | null }) => res.social,
+      transformResponse: (res: { social: Post[] }) => res.social,
       providesTags: ['Post'],
     }),
 
@@ -75,15 +75,15 @@ export const apiSlice = createApi({
       providesTags: ['Post'],
     }),
 
-    getHardwarePosts: builder.query<Post | null, void>({
+    getHardwarePosts: builder.query<Post[], void>({
       query: () => '/posts/hardware/',
-      transformResponse: (res: { hardware: Post | null }) => res.hardware,
+      transformResponse: (res: { hardware: Post[] }) => res.hardware,
       providesTags: ['Post'],
     }),
 
-    getDigitalMoneyPosts: builder.query<Post | null, void>({
+    getDigitalMoneyPosts: builder.query<Post[], void>({
       query: () => '/posts/digitalMoney/',
-      transformResponse: (res: { digitalMoney: Post | null }) => res.digitalMoney,
+      transformResponse: (res: { digitalMoney: Post[] }) => res.digitalMoney,
       providesTags: ['Post'],
     }),
 
@@ -123,9 +123,9 @@ export const apiSlice = createApi({
       providesTags: ['Post'],
     }),
 
-    getDataDefensePost: builder.query<Post | null, void>({
+    getDataDefensePost: builder.query<Post[], void>({
       query: () => '/posts/dataDefense/',
-      transformResponse: (res: { dataDefense: Post | null }) => res.dataDefense,
+      transformResponse: (res: { dataDefense: Post[] }) => res.dataDefense,
       providesTags: ['Post'],
     }),
 
@@ -147,9 +147,9 @@ export const apiSlice = createApi({
       providesTags: ['Post'],
     }),
 
-    getDevDigestPost: builder.query<Post | null, void>({
+    getDevDigestPost: builder.query<Post[], void>({
       query: () => '/posts/devDigest/',
-      transformResponse: (res: { devDigest: Post | null }) => res.devDigest,
+      transformResponse: (res: { devDigest: Post[] }) => res.devDigest,
       providesTags: ['Post'],
     }),
 

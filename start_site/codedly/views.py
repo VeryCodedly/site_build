@@ -183,52 +183,98 @@ class PostViewSet(viewsets.ModelViewSet):
     lookup_field = "slug"
 
     # SINGLE POST ENDPOINTS
+    # @action(detail=False, methods=['get'])
+    # def featured(self, request):
+    #     post = Post.objects.filter(
+    #         image__isnull=False,
+    #         subcategory__slug="featured"
+    #     ).order_by('-created_at').first()
+    #     data = PostSerializer(post).data if post else None
+    #     return Response({"featured": data})
+
+    # @action(detail=False, methods=['get'])
+    # def hardware(self, request):
+    #     post = Post.objects.filter(subcategory__slug="hardware", image__isnull=False).order_by('-created_at').first()
+    #     data = PostSerializer(post).data if post else None
+    #     return Response({"hardware": data})
+
+    # @action(detail=False, methods=['get'])
+    # def digitalMoney(self, request):
+    #     post = Post.objects.filter(subcategory__slug="digital-money", image__isnull=False).order_by('-created_at').first()
+    #     data = PostSerializer(post).data if post else None
+    #     return Response({"digitalMoney": data})
+
+    # @action(detail=False, methods=['get'])
+    # def social(self, request):
+    #     post = Post.objects.filter(subcategory__slug="social", image__isnull=False).order_by('-created_at').first()
+    #     data = PostSerializer(post).data if post else None
+    #     return Response({"social": data})
+
+    # @action(detail=False, methods=['get'])
+    # def dataDefense(self, request):
+    #     post = Post.objects.filter(subcategory__slug="data-defense", image__isnull=False).order_by('-created_at').first()
+    #     data = PostSerializer(post).data if post else None
+    #     return Response({"dataDefense": data})
+
+    # @action(detail=False, methods=['get'])
+    # def devDigest(self, request):
+    #     post = Post.objects.filter(subcategory__slug="dev-digest", image__isnull=False).order_by('-created_at').first()
+    #     data = PostSerializer(post).data if post else None
+    #     return Response({"devDigest": data})
+
+    # @action(detail=False, methods=['get'])
+    # def featured(self, request):
+    #     post = Post.objects.filter(
+    #         image__isnull=False,
+    #         subcategory__slug="featured"
+    #     ).order_by('-created_at').first()
+    #     data = PostSerializer(post).data if post else None
+    #     return Response({"featured": data})
+    
+    # MULTIPLE POSTS ENDPOINTS
+    
     @action(detail=False, methods=['get'])
     def featured(self, request):
-        post = Post.objects.filter(
-            image__isnull=False,
-            subcategory__slug="featured"
-        ).order_by('-created_at').first()
-        data = PostSerializer(post).data if post else None
+        posts = Post.objects.filter(subcategory__slug="featured").order_by('-created_at')[:3]
+        data = PostSerializer(posts, many=True).data
         return Response({"featured": data})
-
+    
     @action(detail=False, methods=['get'])
     def hardware(self, request):
-        post = Post.objects.filter(subcategory__slug="hardware", image__isnull=False).order_by('-created_at').first()
-        data = PostSerializer(post).data if post else None
+        posts = Post.objects.filter(subcategory__slug="hardware").order_by('-created_at')[:3]
+        data = PostSerializer(posts, many=True).data
         return Response({"hardware": data})
-
+    
     @action(detail=False, methods=['get'])
     def digitalMoney(self, request):
-        post = Post.objects.filter(subcategory__slug="digital-money", image__isnull=False).order_by('-created_at').first()
-        data = PostSerializer(post).data if post else None
+        posts = Post.objects.filter(subcategory__slug="digital-money").order_by('-created_at')[:3]
+        data = PostSerializer(posts, many=True).data
         return Response({"digitalMoney": data})
-
+    
     @action(detail=False, methods=['get'])
     def social(self, request):
-        post = Post.objects.filter(subcategory__slug="social", image__isnull=False).order_by('-created_at').first()
-        data = PostSerializer(post).data if post else None
+        posts = Post.objects.filter(subcategory__slug="social").order_by('-created_at')[:3]
+        data = PostSerializer(posts, many=True).data
         return Response({"social": data})
-
+    
     @action(detail=False, methods=['get'])
     def dataDefense(self, request):
-        post = Post.objects.filter(subcategory__slug="data-defense", image__isnull=False).order_by('-created_at').first()
-        data = PostSerializer(post).data if post else None
+        posts = Post.objects.filter(subcategory__slug="data-defense").order_by('-created_at')[:3]
+        data = PostSerializer(posts, many=True).data
         return Response({"dataDefense": data})
-
+    
     @action(detail=False, methods=['get'])
     def devDigest(self, request):
-        post = Post.objects.filter(subcategory__slug="dev-digest", image__isnull=False).order_by('-created_at').first()
-        data = PostSerializer(post).data if post else None
+        posts = Post.objects.filter(subcategory__slug="dev-digest").order_by('-created_at')[:3]
+        data = PostSerializer(posts, many=True).data
         return Response({"devDigest": data})
 
-    # MULTIPLE POSTS ENDPOINTS
     @action(detail=False, methods=['get'])
     def trending(self, request):
         posts = Post.objects.filter(subcategory__slug="trending-now").order_by('-created_at')[:6]
         data = PostSerializer(posts, many=True).data
         return Response({"trending": data})
-
+    
     # DRY helper for the [:6]
     def _multi_posts(self, subcategory_slug):
         posts = Post.objects.filter(subcategory__slug=subcategory_slug).order_by('-created_at')[:6]

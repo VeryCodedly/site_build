@@ -145,40 +145,42 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Post } from "@/types/post";
 import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 import { useParams } from "next/navigation";
+import Carousel from "./components/blog/Carousel";
+
 
 export default function ReadHome() {
   const page = useParams();
   const { data: posts, error, isLoading } = useGetPostsQuery(page);
 
-  const { data: featured } = useGetFeaturedPostQuery();
+  const { data: featured = [] } = useGetFeaturedPostQuery();
   const { data: trending = [] } = useGetTrendingPostsQuery();
   const { data: spotlight = [] } = useGetSpotlightPostsQuery();
   const { data: bigDeal = [] } = useGetBigDealPostsQuery();
 
-  const { data: digitalMoney } = useGetDigitalMoneyPostsQuery();
+  const { data: digitalMoney = [] } = useGetDigitalMoneyPostsQuery();
   const { data: bchCrypto = [] } = useGetbchCryptoPostsQuery();
   const { data: startups = [] } = useGetStartupsPostsQuery();
   const { data: prvCompliance = [] } = useGetprvCompliancePostsQuery();
 
   const { data: AI = [] } = useGetAIPostsQuery();
   const { data: emergingTech = [] } = useGetEmergingTechPostsQuery();
-  const { data: hardware } = useGetHardwarePostsQuery();
+  const { data: hardware = [] } = useGetHardwarePostsQuery();
   const { data: techCulture = [] } = useGetTechCulturePostsQuery();
 
 
-  const { data: social } = useGetSocialPostQuery();
+  const { data: social = [] } = useGetSocialPostQuery();
   const { data: globalLens = [] } = useGetGlobalLensPostsQuery();
   const { data: africaRising = [] } = useGetAfricaRisingPostsQuery();
   const { data: keyPlayers = [] } = useGetKeyPlayersPostsQuery();
 
-  const { data: dataDefense } = useGetDataDefensePostQuery();
+  const { data: dataDefense = [] } = useGetDataDefensePostQuery();
   const { data: secureHabits = [] } = useGetSecureHabitsPostsQuery();
   const { data: stack = [] } = useGetStackPostsQuery();
   const { data: buyGuides = [] } = useGetBuyGuidesPostsQuery();
 
-  const { data: devDigest } = useGetDevDigestPostQuery();
+  const { data: devDigest = [] } = useGetDevDigestPostQuery();
   const { data: theClimb = [] } = useGetTheClimbPostsQuery();
   const { data: rundown = [] } = useGetRundownPostsQuery();
   const { data: industry = [] } = useGetIndustryInsightsPostsQuery();
@@ -318,7 +320,7 @@ export default function ReadHome() {
         )}
 
         {/* 1 HERO: Featured Post */}
-        {featured && (
+        {/* {featured && (
           <section className="py-6 px-5 mt-6">
             <Link href={`/read/${featured.slug}`}>
               <p className="text-xs pl-3 font-semibold text-right tracking-tight text-pink-400 uppercase mb-2">
@@ -332,7 +334,7 @@ export default function ReadHome() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                {/* Image with parallax hover */}
+                { Image with parallax hover }
                 <Motion.div
                   className="relative"
                   whileHover={{ scale: 1.05 }}
@@ -350,7 +352,7 @@ export default function ReadHome() {
                   )}
                 </Motion.div>
 
-                {/* Gradient overlay with fade-in */}
+                { Gradient overlay with fade-in }
                 <Motion.div
                   className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent rounded-xl"
                   initial={{ opacity: 0 }}
@@ -358,7 +360,7 @@ export default function ReadHome() {
                   transition={{ duration: 0.8, delay: 0.2 }}
                 />
 
-                {/* Text content with slide-up */}
+                { Text content with slide-up }
                 <Motion.div
                   className="absolute bottom-6 left-6 right-6"
                   initial={{ y: 30, opacity: 0 }}
@@ -380,7 +382,7 @@ export default function ReadHome() {
               </Motion.div>
             </Link>
           </section>
-        )}
+        )} */}<Carousel posts={featured} />
 
         {/* 2 TRENDING NOW */}
         {trending.length > 0 && (
@@ -440,7 +442,7 @@ export default function ReadHome() {
         )}
 
         {/* 5 HARDWARE */}
-        {hardware && (
+        {/* {hardware && (
           <section className="py-6 px-5 mt-6">
             <Link href={`/read/${hardware.slug}`}>
               <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
@@ -454,7 +456,7 @@ export default function ReadHome() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                {/* Image with parallax hover */}
+                {/ Image with parallax hover /}
                 <Motion.div
                   className="relative"
                   whileHover={{ scale: 1.05 }}
@@ -472,7 +474,7 @@ export default function ReadHome() {
                   )}
                 </Motion.div>
 
-                {/* Gradient overlay with fade-in */}
+                { Gradient overlay with fade-in }
                 <Motion.div
                   className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent rounded-xl"
                   initial={{ opacity: 0 }}
@@ -480,7 +482,7 @@ export default function ReadHome() {
                   transition={{ duration: 0.8, delay: 0.2 }}
                 />
 
-                {/* Text content with slide-up */}
+                { Text content with slide-up }
                 <Motion.div
                   className="absolute bottom-6 left-6 right-6"
                   initial={{ y: 30, opacity: 0 }}
@@ -502,7 +504,7 @@ export default function ReadHome() {
               </Motion.div>
             </Link>
           </section>
-        )}
+        )} */}<Carousel posts={hardware} />
 
         {/* <NewsletterCard /> */}
 
@@ -560,7 +562,7 @@ export default function ReadHome() {
           </section>
         )}
 
-        {devDigest && (
+        {/* {devDigest && (
           <section className="py-6 px-5 mt-6">
             <Link href={`/read/${devDigest.slug}`}>
               <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
@@ -574,7 +576,7 @@ export default function ReadHome() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                {/* Image with parallax hover */}
+                {/ Image with parallax hover /}
                 <Motion.div
                   className="relative"
                   whileHover={{ scale: 1.05 }}
@@ -592,7 +594,7 @@ export default function ReadHome() {
                   )}
                 </Motion.div>
 
-                {/* Gradient overlay with fade-in */}
+                {/ Gradient overlay with fade-in /}
                 <Motion.div
                   className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent rounded-xl"
                   initial={{ opacity: 0 }}
@@ -600,7 +602,7 @@ export default function ReadHome() {
                   transition={{ duration: 0.8, delay: 0.2 }}
                 />
 
-                {/* Text content with slide-up */}
+                {/ Text content with slide-up /}
                 <Motion.div
                   className="absolute bottom-6 left-6 right-6"
                   initial={{ y: 30, opacity: 0 }}
@@ -622,7 +624,7 @@ export default function ReadHome() {
               </Motion.div>
             </Link>
           </section>
-        )}
+        )} */}<Carousel posts={devDigest} />
 
         {theClimb.length > 0 && (
           <section className="py-6 px-3">
@@ -680,7 +682,7 @@ export default function ReadHome() {
         )}
 
         {/* 9 DIGITAL MONEY */}
-        {digitalMoney && (
+        {/* {digitalMoney && (
           <section className="py-6 px-5 mt-6">
             <Link href={`/read/${digitalMoney.slug}`}>
               <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
@@ -694,7 +696,7 @@ export default function ReadHome() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                {/* Image with parallax hover */}
+                {/ Image with parallax hover /}
                 <Motion.div
                   className="relative"
                   whileHover={{ scale: 1.05 }}
@@ -712,7 +714,7 @@ export default function ReadHome() {
                   )}
                 </Motion.div>
 
-                {/* Gradient overlay with fade-in */}
+                {/ Gradient overlay with fade-in /}
                 <Motion.div
                   className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent rounded-xl"
                   initial={{ opacity: 0 }}
@@ -720,7 +722,7 @@ export default function ReadHome() {
                   transition={{ duration: 0.8, delay: 0.2 }}
                 />
 
-                {/* Text content with slide-up */}
+                {/ Text content with slide-up /}
                 <Motion.div
                   className="absolute bottom-6 left-6 right-6"
                   initial={{ y: 30, opacity: 0 }}
@@ -742,7 +744,7 @@ export default function ReadHome() {
               </Motion.div>
             </Link>
           </section>
-        )}
+        )} */}<Carousel posts={digitalMoney} />
 
         {/* 10 BLOCKCHAIN & CRYPTO */}
         {bchCrypto.length > 0 && (
@@ -803,7 +805,7 @@ export default function ReadHome() {
         )}
 
         {/* 5 HARDWARE */}
-        {social && (
+        {/* {social && (
           <section className="py-6 px-5 mt-6">
             <Link href={`/read/${social.slug}`}>
               <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
@@ -817,7 +819,7 @@ export default function ReadHome() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                {/* Image with parallax hover */}
+                {/ Image with parallax hover /}
                 <Motion.div
                   className="relative"
                   whileHover={{ scale: 1.05 }}
@@ -835,7 +837,7 @@ export default function ReadHome() {
                   )}
                 </Motion.div>
 
-                {/* Gradient overlay with fade-in */}
+                {/ Gradient overlay with fade-in /}
                 <Motion.div
                   className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent rounded-xl"
                   initial={{ opacity: 0 }}
@@ -843,7 +845,7 @@ export default function ReadHome() {
                   transition={{ duration: 0.8, delay: 0.2 }}
                 />
 
-                {/* Text content with slide-up */}
+                {/ Text content with slide-up /}
                 <Motion.div
                   className="absolute bottom-6 left-6 right-6"
                   initial={{ y: 30, opacity: 0 }}
@@ -865,7 +867,7 @@ export default function ReadHome() {
               </Motion.div>
             </Link>
           </section>
-        )}
+        )} */}<Carousel posts={social} />
 
         {/* 6 GLOBAL LENS */}
         {globalLens.length > 0 && (
@@ -923,69 +925,70 @@ export default function ReadHome() {
           </section>
         )}
 
-        {dataDefense && (
-          <section className="py-6 px-5 mt-6">
-            <Link href={`/read/${dataDefense.slug}`}>
-              <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
-                {dataDefense.category?.name ?? 'Data Defense'}
-              </p>
-              <Motion.div
-                className="relative group cursor-pointer overflow-hidden rounded-xl"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {/* Image with parallax hover */}
-                <Motion.div
-                  className="relative"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                >
-                  {dataDefense.image && (
-                    <Image
-                      src={dataDefense.image}
-                      alt={dataDefense.alt || dataDefense.title}
-                      className="w-full h-96 text-xs object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
-                      width={800}
-                      height={400}
-                      priority={false}
-                    />
-                  )}
-                </Motion.div>
+        {/* // {dataDefense && (
+        //   <section className="py-6 px-5 mt-6">
+        //     <Link href={`/read/${dataDefense.slug}`}>
+        //       <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
+        //         {dataDefense.category?.name ?? 'Data Defense'}
+        //       </p>
+        //       <Motion.div
+        //         className="relative group cursor-pointer overflow-hidden rounded-xl"
+        //         initial={{ opacity: 0, y: 20 }}
+        //         animate={{ opacity: 1, y: 0 }}
+        //         transition={{ duration: 0.6, ease: "easeOut" }}
+        //         whileHover={{ scale: 1.02 }}
+        //         whileTap={{ scale: 0.98 }}
+        //       >
+        //         {/ Image with parallax hover /}
+        //         <Motion.div
+        //           className="relative"
+        //           whileHover={{ scale: 1.05 }}
+        //           transition={{ duration: 0.8, ease: "easeOut" }}
+        //         >
+        //           {dataDefense.image && (
+        //             <Image
+        //               src={dataDefense.image}
+        //               alt={dataDefense.alt || dataDefense.title}
+        //               className="w-full h-96 text-xs object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+        //               width={800}
+        //               height={400}
+        //               priority={false}
+        //             />
+        //           )}
+        //         </Motion.div>
 
-                {/* Gradient overlay with fade-in */}
-                <Motion.div
-                  className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent rounded-xl"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                />
+        //         {/ Gradient overlay with fade-in /}
+        //         <Motion.div
+        //           className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent rounded-xl"
+        //           initial={{ opacity: 0 }}
+        //           animate={{ opacity: 1 }}
+        //           transition={{ duration: 0.8, delay: 0.2 }}
+        //         />
 
-                {/* Text content with slide-up */}
-                <Motion.div
-                  className="absolute bottom-6 left-6 right-6"
-                  initial={{ y: 30, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-                  viewport={{ once: true }}
-                >
-                  <Motion.h1
-                    className="text-2xl md:text-3xl font-bold text-white mb-2"
-                  >
-                    {dataDefense.title}
-                  </Motion.h1>
-                  <Motion.p
-                    className="text-gray-300 text-sm"
-                  >
-                    {dataDefense.excerpt}
-                  </Motion.p>
-                </Motion.div>
-              </Motion.div>
-            </Link>
-          </section>
-        )}
+        //         {/ Text content with slide-up /}
+        //         <Motion.div
+        //           className="absolute bottom-6 left-6 right-6"
+        //           initial={{ y: 30, opacity: 0 }}
+        //           whileInView={{ y: 0, opacity: 1 }}
+        //           transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+        //           viewport={{ once: true }}
+        //         >
+        //           <Motion.h1
+        //             className="text-2xl md:text-3xl font-bold text-white mb-2"
+        //           >
+        //             {dataDefense.title}
+        //           </Motion.h1>
+        //           <Motion.p
+        //             className="text-gray-300 text-sm"
+        //           >
+        //             {dataDefense.excerpt}
+        //           </Motion.p>
+        //         </Motion.div>
+        //       </Motion.div>
+        //     </Link>
+        //   </section>
+        )} */}
+        <Carousel posts={dataDefense} />
 
         {/* 13 SECURE HABITS */}
         {secureHabits.length > 0 && (
