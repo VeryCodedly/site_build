@@ -190,7 +190,7 @@ const LessonCard = memo(({ lesson, slug, index }: {
         {isCompleted && (
           <FontAwesomeIcon
             icon={faCheckCircle}
-            className="absolute top-3 right-3 text-lime-400 text-lg"
+            className="absolute top-3 right-2 sm:right-3 text-lime-400 text-lg"
           />
         )}
         <h3 className="text-base sm:text-md mb-2 text-gray-200 group-hover:text-lime-400 group-active:text-lime-400 transition-colors">
@@ -262,12 +262,11 @@ export default function CoursePage() {
       >
         <Link
           href="/learn"
-          aria-label="Back to Learn home page"
+          aria-label="Back to Course List"
           className="inline-flex items-center gap-2 text-lime-400 mb-7 hover:text-white active:text-white
-                     underline underline-offset-2 transition-all duration-200"
-        >
-          <FontAwesomeIcon icon={faArrowLeft} size="lg" />
-          <span className="sr-only">Go Home</span>
+                     transition-all duration-200">
+          <FontAwesomeIcon className="ml-3" icon={faArrowLeft} size="lg" />
+          <span className="sr-only">Back to Course List</span>
         </Link>
       </Motion.div>
 

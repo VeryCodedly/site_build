@@ -16,6 +16,9 @@ export default function Header() {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
+  const menuRef = useRef();
+  const buttonRef = useRef();
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > lastScrollY) {
@@ -29,6 +32,27 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
+
+  // Handle click outside to close menu
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const menu = menuRef.current;
+      const button = buttonRef.current;
+      if (menu && button && !menu.contains(event.target) && !button.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOpen]);
 
 
   return (
@@ -67,6 +91,7 @@ export default function Header() {
               
               {/* Mobile menu toggle */}
           <button
+            ref={buttonRef}
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden text-white"
             aria-haspopup="true"
@@ -79,6 +104,7 @@ export default function Header() {
 
       {/* Mobile dropdown */}
       <div
+        ref={menuRef}
         className={`fixed top-full left-1/2 w-[84%] -translate-x-1/2 flex flex-col items-center transform transition-all duration-500 ease-in-out
                 bg-black backdrop-blur-lg border-3 border-zinc-700 rounded-4xl py-6.5 space-y-4 md:hidden  
                 ${menuOpen ? "opacity-100 translate-y-0 z-[60]" : "opacity-0 -translate-y-5 pointer-events-none"}`}

@@ -13,6 +13,8 @@ from functools import wraps
 
 from django.views.generic import ListView
 from django.shortcuts import get_object_or_404
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 from rest_framework import viewsets
 from rest_framework import generics
@@ -23,6 +25,13 @@ from .serializers import CategoryPostsSerializer, PostSerializer, CategorySerial
 
 CACHE_TTL = 60 * 10  # 10 minutes
 
+
+class BaseAPIView(APIView):
+    def finalize_response(self, request, response, *args, **kwargs):
+        response = super().finalize_response(request, response, *args, **kwargs)
+        response.headers['X-Robots-Tag'] = 'noindex, nofollow'
+        return response
+    
 def smart_cache(timeout=60*15):
     """
     Caches the view response BUT preserves absolute URLs by:

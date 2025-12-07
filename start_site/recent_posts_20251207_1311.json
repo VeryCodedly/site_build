@@ -1,0 +1,606 @@
+[
+  {
+    "model": "codedly.post",
+    "pk": 135,
+    "fields": {
+      "title": "Microsoft Halves AI Sales Quotas Amid Enterprise Slowdown",
+      "slug": "microsoft-halves-ai-sales-quotas",
+      "category": 12,
+      "subcategory": 1,
+      "content_JSON": {
+        "slug": "microsoft-halves-ai-sales-quotas-enterprise-adoption-lags",
+        "tags": [
+          "microsoft",
+          "ai",
+          "enterprise",
+          "copilot",
+          "azure",
+          "tech",
+          "sales"
+        ],
+        "topic": "Microsoft Halves AI Sales Quotas: Enterprise Adoption Lags Behind Hype",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "A new report says Microsoft has cut growth targets for several of its AI-related products after many sales teams failed to meet ambitious quotas for the fiscal year ending June 2025. This includes tools tied to its AI agent offerings that had been central to the company’s push toward enterprise automation."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "What changed"
+          },
+          {
+            "type": "paragraph",
+            "content": "According to sources, in one US sales unit fewer than 20% of representatives hit their quota to increase customer spending on the company’s AI-agent platform by 50%. After that, Microsoft reportedly cut its growth targets, in some units slashing the quota from 50% growth to about 25%, or revising doubling-sales goals down to 50%. The shift marks a rare public recalibration by Microsoft."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "What it says about enterprise AI"
+          },
+          {
+            "type": "paragraph",
+            "content": "Analysts interpret the cuts as evidence that enterprise customers remain cautious. Many are reportedly rejecting premium-priced AI offerings unless there is clear, proven ROI. Common complaints: complex integration challenges, difficulty demonstrating actual productivity improvements, and uncertainty whether AI agents deliver reliable value over legacy tools."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Broader Market Context"
+          },
+          {
+            "type": "paragraph",
+            "content": "This comes as part of a wider cooling in enterprise-level enthusiasm for generative-AI powered agents and automation tools. Even though demand for cloud infrastructure remains firm, the layer of AI-powered business applications seems to be facing pushback. Some observers warn this could indicate a wider re-assessment of AI spending across large organizations."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "The quota cuts by Microsoft serve as a sobering reminder: enterprise adoption of cutting-edge AI is not guaranteed, and hype doesn’t always translate into widespread real-world usage. As companies demand proven ROI before scaling AI deployments, vendors may need to pivot to more conservative, use-case driven marketing, and temper expectations around the speed of generative-AI transformation."
+          }
+        ],
+        "excerpt": "Microsoft reportedly slashed growth quotas for its AI-agent products after teams missed targets. The move illustrates growing resistance to pricey AI tools and signals broader caution toward scaling generative AI in business settings.",
+        "image_prompt": "A conceptual, editorial illustration showing the silhouette of the observer standing at a distance within a subtle, abstract office-like environment. Around them, AI structures emerge as geometric growth bars, fragmented workflow shapes, and faint data-flow lines that dissolve into shadow, suggesting digital systems in flux. Layered textures and muted, cool gradients convey tension, uncertainty, and quiet recalibration. The composition evokes slowed enterprise adoption, missed sales quotas, and the unseen organizational and market forces shaping generative AI’s cautious rollout. No logos— only abstract, atmospheric references to corporate decision-making, digital influence, and evolving AI adoption."
+      },
+      "content_plain_text": "A new report says Microsoft has cut growth targets for several of its AI-related products after many sales teams failed to meet ambitious quotas for the fiscal year ending June 2025. This includes tools tied to its AI agent offerings that had been central to the company’s push toward enterprise automation.\n\nWhat changed\n\nAccording to sources, in one US sales unit fewer than 20% of representatives hit their quota to increase customer spending on the company’s AI-agent platform by 50%. After that, Microsoft reportedly cut its growth targets, in some units slashing the quota from 50% growth to about 25%, or revising doubling-sales goals down to 50%. The shift marks a rare public recalibration by Microsoft.\n\nWhat it says about enterprise AI\n\nAnalysts interpret the cuts as evidence that enterprise customers remain cautious. Many are reportedly rejecting premium-priced AI offerings unless there is clear, proven ROI. Common complaints: complex integration challenges, difficulty demonstrating actual productivity improvements, and uncertainty whether AI agents deliver reliable value over legacy tools.\n\nThe Broader Market Context\n\nThis comes as part of a wider cooling in enterprise-level enthusiasm for generative-AI powered agents and automation tools. Even though demand for cloud infrastructure remains firm, the layer of AI-powered business applications seems to be facing pushback. Some observers warn this could indicate a wider re-assessment of AI spending across large organizations.\n\nThe Takeaway\n\nThe quota cuts by Microsoft serve as a sobering reminder: enterprise adoption of cutting-edge AI is not guaranteed, and hype doesn’t always translate into widespread real-world usage. As companies demand proven ROI before scaling AI deployments, vendors may need to pivot to more conservative, use-case driven marketing, and temper expectations around the speed of generative-AI transformation.",
+      "excerpt": "Microsoft reportedly slashed growth quotas for its AI-agent products after teams missed targets. The move illustrates growing resistance to pricey AI tools and signals broader caution toward scaling generative AI in business settings.",
+      "author": "Admin",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765112655/missed-quotas.png",
+      "caption": "Microsoft Halves AI Sales Quotas",
+      "alt": "microsoft-halves-ai-sales-quotas",
+      "created_at": "2025-12-07T09:39:13.947Z",
+      "updated_at": "2025-12-07T13:07:26.097Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 134,
+    "fields": {
+      "title": "Gmail Lockout Hack: Google Probes Recovery-Block Attacks",
+      "slug": "gmail-lockout-hack-google-investigates",
+      "category": 4,
+      "subcategory": 19,
+      "content_JSON": {
+        "slug": "gmail-lockout-hack-google-investigates-exploit",
+        "tags": [
+          "google",
+          "gmail",
+          "security",
+          "phishing",
+          "account-recovery",
+          "cyberattack"
+        ],
+        "topic": "Gmail Lockout Hack: Google Probes Attacks Blocking Recovery Options",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Google has confirmed it is investigating an ongoing phishing campaign that is locking users out of their Gmail accounts by exploiting the platform’s family management system. Attackers who gain access through stolen credentials are adding compromised accounts to a family plan as a child profile, which restricts key account controls and blocks standard recovery options."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "How the Attack Works"
+          },
+          {
+            "type": "paragraph",
+            "content": "The method begins with credential theft, typically through phishing pages designed to mimic Google’s login flow. Once attackers obtain access, they immediately enroll the victim’s Gmail account into a family group that they control. Because child accounts are subject to parental restrictions, victims lose the ability to adjust security settings, remove themselves from the group, or initiate normal recovery procedures."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Limited Recovery Window"
+          },
+          {
+            "type": "paragraph",
+            "content": "Google states that affected users have a seven-day window to regain access by responding to automated recovery prompts sent to their original recovery email or phone number. If the victim does not complete the process within that period, regaining access becomes significantly more difficult, often requiring additional verification steps."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Who Is at Risk?"
+          },
+          {
+            "type": "paragraph",
+            "content": "Security researchers note that the exploit does not rely on a flaw in Google’s systems but on successful phishing. This makes the attack scalable, putting a large portion of Gmail’s global user base at potential risk. Any user who can be tricked into entering credentials on a fraudulent page is vulnerable to this takeover method."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Recommended Protections"
+          },
+          {
+            "type": "paragraph",
+            "content": "Experts advise enabling passkeys or hardware-based authentication to reduce the chances of credential theft, as these methods are resistant to phishing. Users should also ensure their recovery email and phone number are up to date, since these details are essential for reclaiming access during the seven-day recovery window."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "The attack highlights how social engineering and misuse of account features can have major security consequences. Google’s investigation remains ongoing, but the company emphasizes that prevention hinges on avoiding phishing attempts and adopting stronger authentication methods."
+          }
+        ],
+        "excerpt": "Google is investigating a phishing-driven attack that locks Gmail users out by adding compromised accounts to family plans as child profiles. Victims have a seven-day window for recovery, and experts recommend passkeys and updated recovery details to reduce risk.",
+        "image_prompt": "A mysterious, conceptual editorial illustration showing fragmented human silhouettes dissolving into abstract account-permission hierarchies, manipulated identity markers, and phishing-like authorization patterns. Layered textures echo forced account dependency and silent lockout, with subtle distortions suggesting deceptive access control. Bold, muted colors with rich gradients convey scale, tension, and digital uncertainty. No literal devices or interfaces — just an abstract representation of account takeover and evolving phishing tactics."
+      },
+      "content_plain_text": "Google has confirmed it is investigating an ongoing phishing campaign that is locking users out of their Gmail accounts by exploiting the platform’s family management system. Attackers who gain access through stolen credentials are adding compromised accounts to a family plan as a child profile, which restricts key account controls and blocks standard recovery options.\n\nHow the Attack Works\n\nThe method begins with credential theft, typically through phishing pages designed to mimic Google’s login flow. Once attackers obtain access, they immediately enroll the victim’s Gmail account into a family group that they control. Because child accounts are subject to parental restrictions, victims lose the ability to adjust security settings, remove themselves from the group, or initiate normal recovery procedures.\n\nLimited Recovery Window\n\nGoogle states that affected users have a seven-day window to regain access by responding to automated recovery prompts sent to their original recovery email or phone number. If the victim does not complete the process within that period, regaining access becomes significantly more difficult, often requiring additional verification steps.\n\nWho Is at Risk?\n\nSecurity researchers note that the exploit does not rely on a flaw in Google’s systems but on successful phishing. This makes the attack scalable, putting a large portion of Gmail’s global user base at potential risk. Any user who can be tricked into entering credentials on a fraudulent page is vulnerable to this takeover method.\n\nRecommended Protections\n\nExperts advise enabling passkeys or hardware-based authentication to reduce the chances of credential theft, as these methods are resistant to phishing. Users should also ensure their recovery email and phone number are up to date, since these details are essential for reclaiming access during the seven-day recovery window.\n\nThe Takeaway\n\nThe attack highlights how social engineering and misuse of account features can have major security consequences. Google’s investigation remains ongoing, but the company emphasizes that prevention hinges on avoiding phishing attempts and adopting stronger authentication methods.",
+      "excerpt": "Google is investigating a phishing-driven attack that locks Gmail users out by adding compromised accounts to family plans as child profiles. Victims have a seven-day window for recovery, and experts recommend passkeys and updated recovery details to reduce risk.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765112645/gmail-attacks.png",
+      "caption": "Google Probes Attacks",
+      "alt": "google-probes-attacks",
+      "created_at": "2025-12-07T08:56:38.773Z",
+      "updated_at": "2025-12-07T13:06:55.860Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 138,
+    "fields": {
+      "title": "Bitcoin Plunges 30%: Crypto Winter Bites Amid Regulatory Shifts",
+      "slug": "bitcoin-plunges-30pc-crypto-winter",
+      "category": 10,
+      "subcategory": 8,
+      "content_JSON": {
+        "slug": "bitcoin-plunges-30pc-crypto-winter-bites-amid-regulatory-shifts",
+        "tags": [
+          "bitcoin",
+          "crypto",
+          "ethereum",
+          "crypto winter",
+          "regulation",
+          "stablecoins",
+          "etf",
+          "markets"
+        ],
+        "topic": "Bitcoin Plunges 30%: Crypto Winter Bites Amid Regulatory Shifts",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "The crypto market just took a big hit: Bitcoin dropped over 30% from its recent peak, and Ethereum tumbled even harder - down roughly 40%. The crash came as economic pressure mounts and uncertainty around regulation refuses to let crypto off the hook."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "What’s Fueling the Slide?"
+          },
+          {
+            "type": "paragraph",
+            "content": "The slump isn’t just about price swings. Growing regulatory pressure, especially from U.S. regulators cracking down on crypto firms and compliance standards, has spooked investors. At the same time macroeconomic headwinds - think rising interest rates, inflation worries, and shaky global markets - are pushing risk‑assets like crypto into retreat."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Where Investors Are Turning Instead"
+          },
+          {
+            "type": "paragraph",
+            "content": "With Bitcoin and Ether dropping hard, many investors are shifting toward more stable, regulated options like stablecoins and crypto ETFs, hoping to ride out volatility with less risk. This shift may mark a maturation phase for the ~$2T crypto market, where protection and stability start to matter as much as hype and growth."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "What This Means for the Crypto Cycle"
+          },
+          {
+            "type": "paragraph",
+            "content": "This could be the start of a real “crypto winter” where speculation cools, valuations compress, and only projects with solid fundamentals survive. The shake‑out may create room for smarter investments and long‑term plays rather than quick gains."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "If you’re holding crypto, this crash is a reminder that volatility is part of the game. If you’re new, maybe treat this as a wake‑up call to diversify, think longer‑term, and consider stable or regulated alternatives as part of the mix. This downturn might be painful, but it could also be the reset crypto needs before the next cycle."
+          }
+        ],
+        "excerpt": "Bitcoin plunged over 30% while Ethereum shed about 40% amid regulatory crackdowns and macro pressure. Investors are gravitating toward stablecoins and ETFs, signaling a shift from hype‑driven crypto boom to a more cautious, maturity‑driven market.",
+        "image_prompt": "A moody, conceptual editorial illustration capturing crypto winter vibes: a cracked Bitcoin symbol sinking into dark, turbulent waves, surrounded by ghostly outlines of falling price charts and regulatory warning signs. Cold, muted tones with faint red highlights evoke panic, uncertainty, and a sense of market collapse — reflecting Bitcoin’s dramatic drop and the uncertainty across the crypto landscape."
+      },
+      "content_plain_text": "The crypto market just took a big hit: Bitcoin dropped over 30% from its recent peak, and Ethereum tumbled even harder - down roughly 40%. The crash came as economic pressure mounts and uncertainty around regulation refuses to let crypto off the hook.\n\nWhat’s Fueling the Slide?\n\nThe slump isn’t just about price swings. Growing regulatory pressure, especially from U.S. regulators cracking down on crypto firms and compliance standards, has spooked investors. At the same time macroeconomic headwinds - think rising interest rates, inflation worries, and shaky global markets - are pushing risk‑assets like crypto into retreat.\n\nWhere Investors Are Turning Instead\n\nWith Bitcoin and Ether dropping hard, many investors are shifting toward more stable, regulated options like stablecoins and crypto ETFs, hoping to ride out volatility with less risk. This shift may mark a maturation phase for the ~$2T crypto market, where protection and stability start to matter as much as hype and growth.\n\nWhat This Means for the Crypto Cycle\n\nThis could be the start of a real “crypto winter” where speculation cools, valuations compress, and only projects with solid fundamentals survive. The shake‑out may create room for smarter investments and long‑term plays rather than quick gains.\n\nThe Takeaway\n\nIf you’re holding crypto, this crash is a reminder that volatility is part of the game. If you’re new, maybe treat this as a wake‑up call to diversify, think longer‑term, and consider stable or regulated alternatives as part of the mix. This downturn might be painful, but it could also be the reset crypto needs before the next cycle.",
+      "excerpt": "Bitcoin plunged over 30% while Ethereum shed about 40% amid regulatory crackdowns and macro pressure. Investors are gravitating toward stablecoins and ETFs, signaling a shift from hype‑driven crypto boom to a more cautious, maturity‑driven market.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765112654/bitcoin-dips-big.png",
+      "caption": "Bitcoin Plunges 30%",
+      "alt": "bitcoin-plunges-30pc",
+      "created_at": "2025-12-07T11:34:35.568Z",
+      "updated_at": "2025-12-07T13:09:08.098Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 139,
+    "fields": {
+      "title": "Meta AI Taps News Partners for Real-Time Queries",
+      "slug": "meta-ai-taps-news-partners-for-real-time-queries",
+      "category": 7,
+      "subcategory": 15,
+      "content_JSON": {
+        "slug": "meta-ai-taps-news-partners-cnn-fox-integrate-for-real-time-queries",
+        "tags": [
+          "meta",
+          "meta ai",
+          "cnn",
+          "fox news",
+          "news",
+          "ai assistant",
+          "social media",
+          "tech"
+        ],
+        "topic": "Meta AI Taps News Partners: CNN, Fox Integrate for Real-Time Queries",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Meta announced today that Meta AI will now integrate real‑time news content from major outlets - including CNN, Fox News, USA Today, Le Monde and others - across its platforms such as Facebook, Instagram, and WhatsApp. The goal: to let users get up-to-the-minute, verified info when they ask news‑related questions, directly from trusted publishers."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "What changes for users"
+          },
+          {
+            "type": "paragraph",
+            "content": "When you ask Meta AI for news, say, about global events, politics, or entertainment, it will now surface up‑to‑date stories from its partner publishers, along with links to the original articles so you can dive deeper. The idea is to give you more accurate, up-to-date content (not old or hallucinated info), combining AI convenience with real journalism."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Why Meta did this"
+          },
+          {
+            "type": "paragraph",
+            "content": "For Meta, this is a pivot toward making Meta AI more relevant and reliable, especially when timed events or breaking news are involved, which traditional AI assistants often struggle to keep up with. By licensing content from established news organizations, Meta aims to improve accuracy and balance, and reduce misinformation risk."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "What it means for info access globally"
+          },
+          {
+            "type": "paragraph",
+            "content": "Because Meta AI is accessible inside popular apps used by billions worldwide, this integration potentially expands access to credible journalism for a massive audience. It could help people get timely news without leaving their chats or feeds, which means potentially improved awareness and faster dissemination of important stories."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "What to watch out for"
+          },
+          {
+            "type": "paragraph",
+            "content": "As always, the quality of information will depend on which publishers are included and how broadly their views are represented. Meta’s partner list already spans a variety of outlets from mainstream to more conservative-leaning ones which could produce a mix of perspectives, for better or worse. Also, while the idea is to reduce misinformation, the system’s effectiveness will depend on how responsibly users treat the output and whether the links lead to full context articles or just summaries."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "Meta AI pulling in real-time news from CNN, Fox News, USA Today, Le Monde and others feels like one of the boldest moves yet in blending journalism with generative tech. This could reshape how billions of users get news. If it works well, this could make first-line info access smoother and more reliable. If not, it’ll show how tricky building trustworthy news‑driven AI can be."
+          }
+        ],
+        "excerpt": "Meta AI now integrates real-time news from major outlets like CNN, Fox News, and USA Today across Facebook, Instagram, and WhatsApp - aiming to give users instant access to verified reporting when they ask news‑related questions.",
+        "image_prompt": "A conceptual, editorial-style illustration of a global AI-powered news network. A lone, shadowy silhouette observes streams of abstract, floating panels that ripple like liquid data, representing digital news feeds, breaking headlines, live updates, and hidden currents of information. Lines, geometric forms, and stylized ticker-like shapes weave across a layered, semi-opaque grid, hinting at unseen connections, AI mediation, and the flow of knowledge beyond human perception. Abstract icons, notification badges, and glowing news tiles float ethereally, suggesting diverse sources and media formats without literal logos. Colors are deep and moody — bold blues, muted neon highlights, and soft, shifting gradients — evoking secrecy, speed, and the enigmatic fusion of human dialogue with AI-curated news."
+      },
+      "content_plain_text": "Meta announced today that Meta AI will now integrate real‑time news content from major outlets - including CNN, Fox News, USA Today, Le Monde and others - across its platforms such as Facebook, Instagram, and WhatsApp. The goal: to let users get up-to-the-minute, verified info when they ask news‑related questions, directly from trusted publishers.\n\nWhat changes for users\n\nWhen you ask Meta AI for news, say, about global events, politics, or entertainment, it will now surface up‑to‑date stories from its partner publishers, along with links to the original articles so you can dive deeper. The idea is to give you more accurate, up-to-date content (not old or hallucinated info), combining AI convenience with real journalism.\n\nWhy Meta did this\n\nFor Meta, this is a pivot toward making Meta AI more relevant and reliable, especially when timed events or breaking news are involved, which traditional AI assistants often struggle to keep up with. By licensing content from established news organizations, Meta aims to improve accuracy and balance, and reduce misinformation risk.\n\nWhat it means for info access globally\n\nBecause Meta AI is accessible inside popular apps used by billions worldwide, this integration potentially expands access to credible journalism for a massive audience. It could help people get timely news without leaving their chats or feeds, which means potentially improved awareness and faster dissemination of important stories.\n\nWhat to watch out for\n\nAs always, the quality of information will depend on which publishers are included and how broadly their views are represented. Meta’s partner list already spans a variety of outlets from mainstream to more conservative-leaning ones which could produce a mix of perspectives, for better or worse. Also, while the idea is to reduce misinformation, the system’s effectiveness will depend on how responsibly users treat the output and whether the links lead to full context articles or just summaries.\n\nThe Takeaway\n\nMeta AI pulling in real-time news from CNN, Fox News, USA Today, Le Monde and others feels like one of the boldest moves yet in blending journalism with generative tech. This could reshape how billions of users get news. If it works well, this could make first-line info access smoother and more reliable. If not, it’ll show how tricky building trustworthy news‑driven AI can be.",
+      "excerpt": "Meta AI now integrates real-time news from major outlets like CNN, Fox News, and USA Today across Facebook, Instagram, and WhatsApp - aiming to give users instant access to verified reporting when they ask news‑related questions.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765112636/meta-partners-news.png",
+      "caption": "Meta AI Taps News Partners",
+      "alt": "meta-ai-taps-news-partners",
+      "created_at": "2025-12-07T11:43:32.308Z",
+      "updated_at": "2025-12-07T13:10:05.832Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 140,
+    "fields": {
+      "title": "AI Powers Glasses-Free 3D: Mimics Human Depth Perception",
+      "slug": "ai-powers-glasses-free-3d-mimics-human-depth-perception",
+      "category": 12,
+      "subcategory": 2,
+      "content_JSON": {
+        "slug": "ai-powers-glasses-free-3d-new-system-mimics-human-depth-perception",
+        "tags": [
+          "AI",
+          "3D display",
+          "glasses-free 3D",
+          "EyeReal",
+          "deep learning",
+          "visual tech",
+          "display technology",
+          "innovation"
+        ],
+        "topic": "AI Powers Glasses-Free 3D: New System Mimics Human Depth Perception",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "A team of researchers has unveiled a breakthrough glasses‑free 3D display system powered by AI, meaning you can now get immersive 3D visuals without wearing any headsets or special glasses. The system, known as EyeReal, dynamically adjusts visuals based on where the viewer’s eyes are, delivering natural depth perception and seamless motion parallax as you move around."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "How It Works"
+          },
+          {
+            "type": "paragraph",
+            "content": "EyeReal tracks the viewer’s eye and head position in real time using sensors, and an AI‑driven neural rendering pipeline calculates the correct light‑field output so each eye receives a slightly different image, mimicking natural binocular vision. The display uses a stack of off‑the‑shelf LCD panels and relies on deep‑learning to modulate light accordingly."
+          },
+          {
+            "type": "paragraph",
+            "content": "Thanks to this combination, EyeReal achieves an ultra‑wide viewing angle (over 100°) with full HD resolution (1920×1080), updating the display output at more than 50 frames per second so the 3D effect stays stable even when you move your head."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "What This Could Mean"
+          },
+          {
+            "type": "paragraph",
+            "content": "Because the system doesn’t require glasses or bulky headsets, this could be a game‑changer for gaming, education, 3D design, and virtual collaboration. Imagine 3D models or virtual scenes that pop out on a regular desktop screen, or immersive telepresence experiences where depth and perspective feel natural, all with just a single display."
+          },
+          {
+            "type": "paragraph",
+            "content": "It also lowers the barrier for mass adoption: since the technology uses standard LCD components and AI-driven optimizations, it could eventually become accessible and affordable, not a niche or luxury item limited to labs or high‑end hardware."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "What to Watch Out For"
+          },
+          {
+            "type": "paragraph",
+            "content": "Right now, the prototype supports only single‑viewer mode, which means the 3D effect optimizes for one person at a time. Scaling this to multiple viewers, or making it work in large shared settings, remains a challenge. Researchers say that’s part of the next steps."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "This AI‑driven, glasses‑free 3D display feels like a glimpse into a future where immersive visuals are accessible and seamless - no bulky gear, no awkward headsets, just natural depth and realism on a screen. If it keeps scaling, we might soon see 3D become part of everyday computing - from learning, to gaming, to remote collaboration. It’s a neat reminder that AI + optics still have surprise tricks up their sleeve."
+          }
+        ],
+        "excerpt": "Researchers unveiled EyeReal, an AI‑powered glasses‑free 3D display that tracks eye position and delivers real‑time neural‑rendered depth visuals with wide viewing angles and full‑HD resolution, hinting at a future of immersive 3D without bulky hardware.",
+        "image_prompt": "A conceptual editorial illustration showing a single observer in front of a modern display panel emitting layered light‑field waves and soft glows. Subtle depth cues — shifting planes, floating translucent geometries, and refracted light — create the sense of 3D popping off the screen. Cool, futuristic tones with neon‑blue and soft gradients evoke technological breakthrough, immersion, and a new era of display technology."
+      },
+      "content_plain_text": "A team of researchers has unveiled a breakthrough glasses‑free 3D display system powered by AI, meaning you can now get immersive 3D visuals without wearing any headsets or special glasses. The system, known as EyeReal, dynamically adjusts visuals based on where the viewer’s eyes are, delivering natural depth perception and seamless motion parallax as you move around.\n\nHow It Works\n\nEyeReal tracks the viewer’s eye and head position in real time using sensors, and an AI‑driven neural rendering pipeline calculates the correct light‑field output so each eye receives a slightly different image, mimicking natural binocular vision. The display uses a stack of off‑the‑shelf LCD panels and relies on deep‑learning to modulate light accordingly.\n\nThanks to this combination, EyeReal achieves an ultra‑wide viewing angle (over 100°) with full HD resolution (1920×1080), updating the display output at more than 50 frames per second so the 3D effect stays stable even when you move your head.\n\nWhat This Could Mean\n\nBecause the system doesn’t require glasses or bulky headsets, this could be a game‑changer for gaming, education, 3D design, and virtual collaboration. Imagine 3D models or virtual scenes that pop out on a regular desktop screen, or immersive telepresence experiences where depth and perspective feel natural, all with just a single display.\n\nIt also lowers the barrier for mass adoption: since the technology uses standard LCD components and AI-driven optimizations, it could eventually become accessible and affordable, not a niche or luxury item limited to labs or high‑end hardware.\n\nWhat to Watch Out For\n\nRight now, the prototype supports only single‑viewer mode, which means the 3D effect optimizes for one person at a time. Scaling this to multiple viewers, or making it work in large shared settings, remains a challenge. Researchers say that’s part of the next steps.\n\nThe Takeaway\n\nThis AI‑driven, glasses‑free 3D display feels like a glimpse into a future where immersive visuals are accessible and seamless - no bulky gear, no awkward headsets, just natural depth and realism on a screen. If it keeps scaling, we might soon see 3D become part of everyday computing - from learning, to gaming, to remote collaboration. It’s a neat reminder that AI + optics still have surprise tricks up their sleeve.",
+      "excerpt": "Researchers unveiled EyeReal, an AI‑powered glasses‑free 3D display that tracks eye position and delivers real‑time neural‑rendered depth visuals with wide viewing angles and full‑HD resolution, hinting at a future of immersive 3D without bulky hardware.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765112635/glasses-free-3d.png",
+      "caption": "AI Powers Glasses-Free 3D",
+      "alt": "ai-powers-glasses-free-3d",
+      "created_at": "2025-12-07T11:57:35.959Z",
+      "updated_at": "2025-12-07T13:06:19.753Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 136,
+    "fields": {
+      "title": "CSS if() Goes Live: Native Conditionals for Smarter Styling",
+      "slug": "css-if-function-goes-live",
+      "category": 3,
+      "subcategory": 23,
+      "content_JSON": {
+        "slug": "css-if-function-goes-live-native-conditionals-web-styling",
+        "tags": [
+          "css",
+          "web-development",
+          "chrome",
+          "frontend",
+          "if-function",
+          "responsive-design",
+          "sass",
+          "web-styling"
+        ],
+        "topic": "CSS if() Function Goes Live: Native Conditionals Revolutionize Web Styling",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Big news for frontend developers today! Chrome 137 just shipped the CSS if() function, finally bringing native conditional logic to CSS. That means you can now write styles that react to conditions like media queries, custom properties, or feature support - all directly in CSS without needing preprocessors like Sass or Less."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "How It Works"
+          },
+          {
+            "type": "code",
+            "content": "color: if(var(--is-dark-mode), black, white);"
+          },
+          {
+            "type": "paragraph",
+            "content": "Essentially, you’re telling the browser: “If this condition is true, apply this style; otherwise, apply that style.” Developers can now make responsive and dynamic layouts right in the stylesheet without extra tooling or build steps."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Practical Examples"
+          },
+          {
+            "type": "paragraph",
+            "content": "The new if() function unlocks a lot of creative possibilities. For example, you can change styles based on screen width, feature support, or even user preference variables without extra JavaScript."
+          },
+          {
+            "type": "code",
+            "content": "font-size: if(screen-width > 800px, 2rem, 1rem);"
+          },
+          {
+            "type": "code",
+            "content": "display: if(supports(grid), grid, flex);"
+          },
+          {
+            "type": "code",
+            "content": "background-color: if(var(--user-preference) == 'light', white, #111);"
+          },
+          {
+            "type": "paragraph",
+            "content": "You can even nest conditions to handle more complex scenarios, like applying different styles depending on both theme and screen size."
+          },
+          {
+            "type": "code",
+            "content": "color: if(var(--is-dark-mode), if(screen-width > 600px, gray, black), white);"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Why It Matters"
+          },
+          {
+            "type": "paragraph",
+            "content": "This is a pretty big deal because it streamlines workflows and reduces the reliance on preprocessors that many teams have been using for years. Imagine fewer build steps, less compiled CSS, and more readable, native code. It also opens doors for more creative and adaptive styling patterns directly in CSS, which could make building truly dynamic designs faster and cleaner in 2025."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Front-End Developer Excitement"
+          },
+          {
+            "type": "paragraph",
+            "content": "Developers online are buzzing about the possibilities. The ability to apply logic natively in CSS feels like a step toward smarter, more intelligent styling without overcomplicating the workflow. People are already exploring conditional theming, adaptive layouts, and responsive tweaks that previously required extra JavaScript or preprocessor hacks."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "The CSS if() function may seem small, but it’s a big shift in how we think about styling. Inline conditionals let the browser do the heavy lifting, reduce complexity, and open up new ways to create responsive, adaptive designs. For frontend teams, it’s another tool to build smarter, cleaner, and more maintainable styles - and it’s exciting to finally see it live in Chrome!"
+          }
+        ],
+        "excerpt": "Chrome 137 introduces the CSS if() function, enabling native conditional styling based on media queries, custom properties, or feature support. Developers can now streamline workflows and build smarter, more responsive designs directly in CSS.",
+        "image_prompt": "A vibrant, conceptual editorial illustration, abstract, layered shapes dynamically shift and transform, representing conditional styling and responsive layout changes. Geometric blocks, flowing lines, and subtle grids suggest adaptive designs, nested conditions, and live style recalculations. Hints of browser windows, color swatches, interface panels, and animated patterns emerge from the composition, reflecting the creative possibilities of native CSS logic. Bright, energetic gradients and layered textures convey excitement, curiosity, and the playful intelligence of smarter, dynamic web design. No literal text, code snippets, or devices — purely abstract, immersive, and full of motion."
+      },
+      "content_plain_text": "Big news for frontend developers today! Chrome 137 just shipped the CSS if() function, finally bringing native conditional logic to CSS. That means you can now write styles that react to conditions like media queries, custom properties, or feature support - all directly in CSS without needing preprocessors like Sass or Less.\n\nHow It Works\n\ncolor: if(var(--is-dark-mode), black, white);\n\nEssentially, you’re telling the browser: “If this condition is true, apply this style; otherwise, apply that style.” Developers can now make responsive and dynamic layouts right in the stylesheet without extra tooling or build steps.\n\nPractical Examples\n\nThe new if() function unlocks a lot of creative possibilities. For example, you can change styles based on screen width, feature support, or even user preference variables without extra JavaScript.\n\nfont-size: if(screen-width > 800px, 2rem, 1rem);\n\ndisplay: if(supports(grid), grid, flex);\n\nbackground-color: if(var(--user-preference) == 'light', white, #111);\n\nYou can even nest conditions to handle more complex scenarios, like applying different styles depending on both theme and screen size.\n\ncolor: if(var(--is-dark-mode), if(screen-width > 600px, gray, black), white);\n\nWhy It Matters\n\nThis is a pretty big deal because it streamlines workflows and reduces the reliance on preprocessors that many teams have been using for years. Imagine fewer build steps, less compiled CSS, and more readable, native code. It also opens doors for more creative and adaptive styling patterns directly in CSS, which could make building truly dynamic designs faster and cleaner in 2025.\n\nFront-End Developer Excitement\n\nDevelopers online are buzzing about the possibilities. The ability to apply logic natively in CSS feels like a step toward smarter, more intelligent styling without overcomplicating the workflow. People are already exploring conditional theming, adaptive layouts, and responsive tweaks that previously required extra JavaScript or preprocessor hacks.\n\nThe Takeaway\n\nThe CSS if() function may seem small, but it’s a big shift in how we think about styling. Inline conditionals let the browser do the heavy lifting, reduce complexity, and open up new ways to create responsive, adaptive designs. For frontend teams, it’s another tool to build smarter, cleaner, and more maintainable styles - and it’s exciting to finally see it live in Chrome!",
+      "excerpt": "Chrome 137 introduces the CSS if() function, enabling native conditional styling. Developers can now streamline workflows and build smarter, more responsive designs directly in CSS.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765112616/css-if-function.png",
+      "caption": "CSS if() Goes Live",
+      "alt": "css-if-goes-live",
+      "created_at": "2025-12-07T09:49:52.097Z",
+      "updated_at": "2025-12-07T13:08:03.222Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 137,
+    "fields": {
+      "title": "Meta Delays Mixed Reality Glasses to 2027",
+      "slug": "meta-delays-mixed-reality-glasses-to-2027",
+      "category": 6,
+      "subcategory": 17,
+      "content_JSON": {
+        "slug": "meta-delays-mixed-reality-glasses-to-2027",
+        "tags": [
+          "meta",
+          "augmented reality",
+          "ar",
+          "mixed reality",
+          "hardware",
+          "phoenix",
+          "vr",
+          "tech",
+          "enterprise"
+        ],
+        "topic": "Meta Delays Mixed Reality Glasses to 2027",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Meta has reportedly postponed the launch of its next‑generation mixed reality glasses, codenamed “Phoenix,” shifting the release window from late 2026 to the first half of 2027. The delay - confirmed in internal memos - is meant to give the team “breathing room” to polish hardware and deliver a more reliable user experience."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Why the Pushback?"
+          },
+          {
+            "type": "paragraph",
+            "content": "According to sources, the move stems from supply‑chain challenges and the complexity of refining lightweight mixed‑reality hardware. The upcoming glasses - previously referred to as “Puffin” - reportedly weigh about 100 grams and use an external power puck to reduce heat and improve comfort."
+          },
+          {
+            "type": "paragraph",
+            "content": "Meta leaders reportedly told staff that rather than rushing to hit the 2026 target, the extra time is needed to ensure the device meets quality and performance expectations. One memo, seen by insiders, emphasized that “getting the details right” was more important than launching on schedule."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "What This Means for Enterprise AR"
+          },
+          {
+            "type": "paragraph",
+            "content": "This delay underscores how hard it remains to build AR hardware that’s light, comfortable, and robust enough for real‑world use. For enterprises which had pinned hopes on MR glasses for training, collaboration, and hybrid work, it signals that real adoption might take longer than expected. Until the hardware matures, many organizations may hold off investing in AR‑driven tools."
+          },
+          {
+            "type": "paragraph",
+            "content": "It also reflects the broader caution in the XR space: mixed‑reality isn’t just about flashy demos or marketing. It’s about ergonomic design, battery life, thermal management, and seamless integration. Meta’s recalibration shows that achieving all these at an affordable price is still a major challenge."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Larger Picture"
+          },
+          {
+            "type": "paragraph",
+            "content": "The postponement comes as part of a wider pullback: reports suggest Meta’s metaverse division may see budget reductions as it reorganizes priorities and re-evaluates the long‑term viability of AR/VR hardware in a competitive landscape."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "Meta’s decision to delay Phoenix until 2027 is a reminder that building mainstream‑ready mixed‑reality hardware remains a tough, complicated process. For anyone betting on AR for enterprise or creative workflows: patience might be the name of the game. When it arrives, the glasses may be better, but for now, timelines have been reset."
+          }
+        ],
+        "excerpt": "Meta has pushed its upcoming mixed‑reality glasses launch to 2027, citing hardware refinement, supply‑chain issues, and the challenges of building lightweight AR devices.",
+        "image_prompt": "A conceptual editorial illustration reflecting delay and recalibration in AR development. A single silhouette of an observer stands in a dimly lit, abstract lab or design studio, watching shadowy outlines of lightweight glasses and floating schematic diagrams. Muted tones with soft glows highlight tension between ambition and unfinished hardware. Subtle geometric shapes, power‑puck outlines, and faint blueprint lines evoke supply‑chain constraints, design challenges, and the uncertain path to refined AR — representing the struggle behind mixed‑reality hardware development."
+      },
+      "content_plain_text": "Meta has reportedly postponed the launch of its next‑generation mixed reality glasses, codenamed “Phoenix,” shifting the release window from late 2026 to the first half of 2027. The delay - confirmed in internal memos - is meant to give the team “breathing room” to polish hardware and deliver a more reliable user experience.\n\nWhy the Pushback?\n\nAccording to sources, the move stems from supply‑chain challenges and the complexity of refining lightweight mixed‑reality hardware. The upcoming glasses - previously referred to as “Puffin” - reportedly weigh about 100 grams and use an external power puck to reduce heat and improve comfort.\n\nMeta leaders reportedly told staff that rather than rushing to hit the 2026 target, the extra time is needed to ensure the device meets quality and performance expectations. One memo, seen by insiders, emphasized that “getting the details right” was more important than launching on schedule.\n\nWhat This Means for Enterprise AR\n\nThis delay underscores how hard it remains to build AR hardware that’s light, comfortable, and robust enough for real‑world use. For enterprises which had pinned hopes on MR glasses for training, collaboration, and hybrid work, it signals that real adoption might take longer than expected. Until the hardware matures, many organizations may hold off investing in AR‑driven tools.\n\nIt also reflects the broader caution in the XR space: mixed‑reality isn’t just about flashy demos or marketing. It’s about ergonomic design, battery life, thermal management, and seamless integration. Meta’s recalibration shows that achieving all these at an affordable price is still a major challenge.\n\nThe Larger Picture\n\nThe postponement comes as part of a wider pullback: reports suggest Meta’s metaverse division may see budget reductions as it reorganizes priorities and re-evaluates the long‑term viability of AR/VR hardware in a competitive landscape.\n\nThe Takeaway\n\nMeta’s decision to delay Phoenix until 2027 is a reminder that building mainstream‑ready mixed‑reality hardware remains a tough, complicated process. For anyone betting on AR for enterprise or creative workflows: patience might be the name of the game. When it arrives, the glasses may be better, but for now, timelines have been reset.",
+      "excerpt": "Meta has pushed its upcoming mixed‑reality glasses launch to 2027, citing hardware refinement, supply‑chain issues, and the challenges of building lightweight AR devices.",
+      "author": "Admin",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765112651/meta-ar-delay.png",
+      "caption": "Meta Delays AR Glasses to 2027",
+      "alt": "meta-delays-ar-glasses-to-2027",
+      "created_at": "2025-12-07T11:27:39.711Z",
+      "updated_at": "2025-12-07T13:08:43.709Z",
+      "status": "published"
+    }
+  }
+]
