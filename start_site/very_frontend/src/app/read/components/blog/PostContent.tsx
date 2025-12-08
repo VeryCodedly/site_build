@@ -80,7 +80,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
             {new Date(post.created_at).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
-              day: 'numeric',
+              day: '2-digit',
               hour: '2-digit',
             })}
           </span>

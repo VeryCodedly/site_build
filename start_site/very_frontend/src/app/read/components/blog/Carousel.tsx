@@ -19,7 +19,7 @@ export default function Carousel({ posts = [], className = "" }: CarouselProps) 
     return (
       <section className={`py-6 px-5 mt-6 ${className}`}>
         <p className="text-xs text-right text-lime-400 uppercase font-semibold mb-2">
-          {'Category'}
+          {''}
         </p>
         <div className="bg-gray-900/50 rounded-xl h-96 animate-pulse" />
       </section>
@@ -75,7 +75,7 @@ export default function Carousel({ posts = [], className = "" }: CarouselProps) 
             <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 line-clamp-3">
               {current.title}
             </h1>
-            <p className="text-gray-300 text-sm line-clamp-2">
+            <p className="text-gray-300 text-sm line-clamp-3">
               {current.excerpt}
             </p>
           </Motion.div>
