@@ -114,3 +114,9 @@ ai-meme-trends-2025
 secure-accounts-after-ai-phishing
 setting-up-passkeys
 eu-fines-x-140m-over-dsa-violations
+react2shell-cve-2025-55182-rce-vulnerability
+eu-ai-act-delay-2027
+windows-11-december-update-16-features
+run-ai-model-locally
+screenshots-vs-surveys
+real-time-collaboration-mainstream

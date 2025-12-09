@@ -241,9 +241,6 @@ export default function ReadHome() {
           </Motion.p>
         </div>
 
-        {/* Floating Menu */}
-        {/* <FloatingMenu /> */}
-
         {/* scroll cue */}
         <Link href="#posts">
           <Motion.div
@@ -271,9 +268,7 @@ export default function ReadHome() {
         </Motion.h2>
 
         {isLoading && (
-          <div className="text-center py-20">
-            <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-lime-400" />
-          </div>
+          <div className="bg-zinc-900/50 rounded-xl h-96 animate-pulse" />
         )}
 
         {error && (
@@ -1032,7 +1027,7 @@ export default function ReadHome() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-3xl text-white mb-4 flex justify-start">Buy<span className="text-lime-400">Guides</span>
+              className="text-3xl text-white mb-4 flex justify-start">Beginner<span className="text-lime-400">Guides</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {buyGuides.map(post => (

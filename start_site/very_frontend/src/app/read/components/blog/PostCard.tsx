@@ -70,7 +70,7 @@ export default function PostCard({ post }: { post: Post }) {
 
         <Link href={`/read/${post.slug}`} aria-label={`Link for ${post.caption}`}>
           {/* Title */}
-          <h2 className="text-base sm:text-md font-semibold text-gray-100 group-hover:text-lime-400 group-active:text-lime-400 transition leading-tight">
+          <h2 className="line-clamp-3 text-base sm:text-md font-semibold text-gray-100 group-hover:text-lime-400 group-active:text-lime-400 transition leading-tight">
             {post.title}
           </h2>
 

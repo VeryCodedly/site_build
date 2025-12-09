@@ -6,6 +6,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import TopButton from "@/components/TopButton";
 import Footer from "@/components/Footer";
+import { usePathname } from "next/navigation";
 
 config.autoAddCss = false;
 
@@ -115,9 +116,9 @@ export default function RootLayout({
   );
 }
 
-export const viewport = {
-  width: "device-width",
-  initialScale: 1,
-  interactiveWidget: "restores",
-};
+// export const viewport = {
+//   width: "device-width",
+//   initialScale: 1,
+//   interactiveWidget: "restores",
+// };
 // Tech. Code. Culture. We’re your friendly neighborhood tech hub — decoding the stories, tools, and trends shaping the future of the web.

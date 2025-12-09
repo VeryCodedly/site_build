@@ -23,7 +23,8 @@ STATUS_CHOICES = [
 def flatten_blocks(content_json: dict) -> str:
     """
     Flattens structured JSON blocks into plain text for SEO, search, and previews.
-    Handles paragraphs, headings, lists, code, quotes, images, and inline spans.
+    Handles paragraphs, headings, callouts, lists, code, quotes, images, review images, tables, links, and inline spans.
+    Maintains existing functionality and avoids errors for strings vs dicts.
     """
 
     if not content_json or "blocks" not in content_json:
@@ -34,31 +35,25 @@ def flatten_blocks(content_json: dict) -> str:
     for block in content_json.get("blocks", []):
         block_type = block.get("type")
 
-        # --- Text-based blocks (paragraph, heading, etc.)
-        if "content" in block:
-            content = block["content"]
+        # --- Text-based blocks: paragraph, heading, callout
+        if block_type in ["paragraph", "heading", "callout"]:
+            content = block.get("content", "")
 
             if isinstance(content, list):
                 spans = []
                 for span in content:
-                    text = span.get("text", "")
-                    url = span.get("url")
-                    if url:
-                        # Inline link fallback → "text (url)"
-                        spans.append(f"{text} ({url})")
+                    if isinstance(span, dict):
+                        text = span.get("text", "")
+                        url = span.get("url")
+                        if url:
+                            spans.append(f"{text} ({url})")
+                        else:
+                            spans.append(text)
                     else:
-                        spans.append(text)
+                        spans.append(str(span))  # fallback if span is a string
                 text = "".join(spans)
             else:
                 text = str(content)
-                
-                # Flatten inline spans (bold, italic, links etc.)
-            #     text = "".join(span.get("text", "") for span in content)
-            # else:
-            #     text = str(content)
-
-            # if block_type == "heading":
-            #     text = text.title().strip().capitalize()  # optional: make headings stand out
 
             parts.append(text.strip())
 
@@ -73,26 +68,22 @@ def flatten_blocks(content_json: dict) -> str:
                 text = "\n".join(f"• {item}" for item in items)
 
             parts.append(text.strip())
-
-        # Links
+        
+        # --- Links
         elif block_type == "link":
             text = f"{block.get('text', '')} ({block.get('url', '')})"
             parts.append(text.strip())
-            
-                # --- Tables
+
+        # --- Tables
         elif block_type == "table":
             headers = block.get("headers", [])
             rows = block.get("rows", [])
-
-            # Convert header row
             if headers:
-                parts.append(" | ".join(headers))
-
-            # Convert each table row
+                parts.append(" | ".join(str(h) for h in headers))
             for row in rows:
                 parts.append(" | ".join(str(cell) for cell in row))
 
-        # --- Code blocks
+        # --- Code
         elif block_type == "code":
             code = block.get("content", "")
             parts.append(f"[CODE]\n{code}\n[/CODE]")
@@ -103,17 +94,28 @@ def flatten_blocks(content_json: dict) -> str:
             parts.append(f"“{content}”")
 
         # --- Images
-        elif block_type == "image":
+        elif block_type in ["image", "reviewImg"]:
             caption = block.get("caption", "")
             if caption:
                 parts.append(f"[Image: {caption}]")
+            else:
+                parts.append("[Image]")
 
-        # --- Fallback (if no recognized keys)
+        # --- Fallback for any block with a content key
         else:
-            text = str(block.get("content", "")).strip()
+            content = block.get("content", "")
+            if isinstance(content, str):
+                text = content.strip()
+            elif isinstance(content, list):
+                text = "".join(
+                    str(span.get("text", "")) if isinstance(span, dict) else str(span)
+                    for span in content
+                )
+            else:
+                text = str(content)
             if text:
                 parts.append(text)
-        
+
     return "\n\n".join(p for p in parts if p)
 
 

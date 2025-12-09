@@ -321,7 +321,7 @@ class PostViewSet(viewsets.ModelViewSet):
         return Response({"stack": self._multi_posts("stack")})
     @action(detail=False, methods=['get'])
     def buyGuides(self, request): 
-        return Response({"buyGuides": self._multi_posts("buy-guides")})
+        return Response({"buyGuides": self._multi_posts("beginner-guides")})
     @action(detail=False, methods=['get'])
     def theClimb(self, request): 
         return Response({"theClimb": self._multi_posts("the-climb")})

@@ -21,7 +21,7 @@ export default function Carousel({ posts = [], className = "" }: CarouselProps) 
         <p className="text-xs text-right text-lime-400 uppercase font-semibold mb-2">
           {''}
         </p>
-        <div className="bg-gray-900/50 rounded-xl h-96 animate-pulse" />
+        <div className="bg-zinc-900/50 rounded-xl h-96 animate-pulse" />
       </section>
     );
   }
@@ -67,10 +67,13 @@ export default function Carousel({ posts = [], className = "" }: CarouselProps) 
           {/* Gradient + Text */}
           <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent rounded-xl pointer-events-none" />
           <Motion.div
+            key={`text-${current.slug}`}
             className="absolute bottom-6 left-6 right-6"
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            viewport={{ once: true }}
           >
             <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 line-clamp-3">
               {current.title}

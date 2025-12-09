@@ -21,7 +21,7 @@ export default function MiniPostCard({ post }: { post: Post }) {
 
       )}
       <div>
-        <h3 className="text-sm lg:text-base text-white group-hover:text-lime-400 group-active:text-lime-400 line-clamp-">
+        <h3 className="text-sm lg:text-base text-white group-hover:text-lime-400 group-active:text-lime-400 line-clamp-3">
           {post.title}
         </h3>
         <p className="text-xs text-gray-400/80 mt-1">

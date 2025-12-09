@@ -1,65 +1,56 @@
-// app/components/ScrollRestorer.tsx  ← rename it so you know it's the good one
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 
-export default function ScrollRestoration() {
+function useScrollRestoration() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const hasRestored = useRef(false);
+  const scrollPositions = useRef(new Map<string, number>());
 
   useEffect(() => {
-    if (typeof window === "undefined" || hasRestored.current) return;
+    // Disable Next's auto-scroll to top on route changes
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
 
-    const key = `scrollPos:${pathname}${searchParams.toString()}`;
+    // Key by pathname for multi-page support
+    const key = `scroll:${pathname}`;
 
-    // Only restore once per page load
+    // Restore on mount (after hydration)
     const saved = sessionStorage.getItem(key);
     if (saved) {
-      const scrollY = parseInt(saved, 10);
-
-      // Wait for fonts + images + layout to settle
-      const tryRestore = () => {
-        if (document.readyState === "complete") {
-          requestAnimationFrame(() => {
-            window.scrollTo(0, scrollY);
-            hasRestored.current = true;
-          });
-        } else {
-          setTimeout(tryRestore, 50);
-        }
-      };
-
-      tryRestore();
+      const pos = parseInt(saved, 10);
+      if (pos > 0) {  // Skip if already at top
+        requestAnimationFrame(() => {
+          window.scrollTo(0, pos);  // Use RAF to wait for paint
+        });
+      }
     }
-  }, [pathname, searchParams]);
 
-  // Save scroll position — but only when user actually scrolls
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    let timeout: NodeJS.Timeout;
-
-    const save = () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        const key = `scrollPos:${pathname}${searchParams.toString()}`;
-        sessionStorage.setItem(key, window.scrollY.toString());
-      }, 100); // debounce
+    // Save on scroll (throttled to avoid spam)
+    let ticking = false;
+    const saveScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          scrollPositions.current.set(key, window.scrollY);
+          sessionStorage.setItem(key, window.scrollY.toString());
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener("scroll", save, { passive: true });
-    window.addEventListener("beforeunload", save);
-    window.addEventListener("pagehide", save);
+    window.addEventListener('scroll', saveScroll, { passive: true });
 
+    // Save on unload/route change
+    const handleUnload = () => {
+      sessionStorage.setItem(key, window.scrollY.toString());
+    };
+    window.addEventListener('beforeunload', handleUnload);
     return () => {
-      window.removeEventListener("scroll", save);
-      window.removeEventListener("beforeunload", save);
-      window.removeEventListener("pagehide", save);
-      clearTimeout(timeout);
+      window.removeEventListener('scroll', saveScroll);
+      window.removeEventListener('beforeunload', handleUnload);
+      handleUnload();  // Save on unmount too
     };
-  }, [pathname, searchParams]);
-
-  return null;
+  }, [pathname]);
 }

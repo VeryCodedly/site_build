@@ -1,0 +1,577 @@
+[
+  {
+    "model": "codedly.post",
+    "pk": 151,
+    "fields": {
+      "title": "React2Shell Flaw: CVE-2025-55182 Enables Remote Code Execution",
+      "slug": "react2shell-cve-2025-55182-rce-vulnerability",
+      "category": 4,
+      "subcategory": 19,
+      "content_JSON": {
+        "slug": "react2shell-cve-2025-55182-rce-vulnerability",
+        "tags": [
+          "react",
+          "security",
+          "rce",
+          "cve-2025-55182",
+          "supply-chain",
+          "webdev"
+        ],
+        "topic": "React2Shell Vulnerability Exposed: CVE-2025-55182 Enables Remote Code Execution",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "A major supply-chain vulnerability hit the JavaScript ecosystem today. The flaw, nicknamed React2Shell and officially tracked as CVE-2025-55182, received a maximum-severity CVSS 10.0 score - the highest rating possible. The issue allows unauthenticated attackers to achieve remote code execution by injecting malicious payloads into React package dependencies."
+          },
+          {
+            "type": "paragraph",
+            "content": "The vulnerability stems from React’s build pipeline being tricked into executing untrusted code during component compilation. Because many projects rely on automated build scripts, attackers could target CI pipelines, local dev environments, or production systems with a single compromised package."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "What 'RCE' Actually Means"
+          },
+          {
+            "type": "paragraph",
+            "content": "Remote Code Execution (RCE) is a class of vulnerability that lets an attacker run their own code on someone else’s machine - remotely and without permission. They don’t need login access or physical proximity. If the system is exposed, a single malicious request or dependency can make the machine execute arbitrary commands."
+          },
+          {
+            "type": "paragraph",
+            "content": "This can lead to full compromise: malware installation, data exfiltration, privilege escalation, or complete server takeover. It’s one of the most dangerous categories in cybersecurity, which is why RCE vulnerabilities often score extremely high on severity scales."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "What Developers Should Do Right Now"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Audit all React-related dependencies for suspicious or recently published versions.",
+              "Review lockfiles (`package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`) for unexpected changes.",
+              "Disable or restrict scripts that run automatically during package installation.",
+              "Verify the integrity of CI/CD pipelines and container build steps.",
+              "Enable dependency-pinning and signature verification if supported by your package manager.",
+              "Monitor official React and npm security advisories for patched releases."
+            ],
+            "style": "bullet"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Why This Matters"
+          },
+          {
+            "type": "paragraph",
+            "content": "React is used everywhere - consumer apps, dashboards, admin tools, internal systems, and enterprise products. A supply-chain exploit targeting React packages doesn’t just hit one project; it cascades through thousands. CVE-2025-55182 is another reminder that open-source ecosystems are extremely powerful but equally vulnerable when trust breaks."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "Stay alert, audit early, and lock down your dependencies. Supply-chain attacks aren’t slowing down, and with a CVSS 10.0 vulnerability landing squarely in the React ecosystem, this one deserves immediate attention."
+          }
+        ],
+        "excerpt": "A new critical React vulnerability, CVE-2025-55182, scored a perfect 10.0 CVSS, allowing unauthenticated attackers to run arbitrary code via poisoned packages. Developers are urged to audit dependencies immediately.",
+        "image_prompt": "A mysterious, conceptual editorial illustration depicting abstract layers of code and infrastructure under pressure. Interlocking panels shapes suggest a fragile supply-chain system, with subtle cracks forming through the geometry. No logos, no devices — just tension between structures and chaotic digital fragments. Deep blues, charcoal tones, and restrained highlights create an atmosphere of urgency and precision, symbolizing the invisible risks inside modern web development workflows."
+      },
+      "content_plain_text": "A major supply-chain vulnerability hit the JavaScript ecosystem today. The flaw, nicknamed React2Shell and officially tracked as CVE-2025-55182, received a maximum-severity CVSS 10.0 score - the highest rating possible. The issue allows unauthenticated attackers to achieve remote code execution by injecting malicious payloads into React package dependencies.\n\nThe vulnerability stems from React’s build pipeline being tricked into executing untrusted code during component compilation. Because many projects rely on automated build scripts, attackers could target CI pipelines, local dev environments, or production systems with a single compromised package.\n\nWhat 'RCE' Actually Means\n\nRemote Code Execution (RCE) is a class of vulnerability that lets an attacker run their own code on someone else’s machine - remotely and without permission. They don’t need login access or physical proximity. If the system is exposed, a single malicious request or dependency can make the machine execute arbitrary commands.\n\nThis can lead to full compromise: malware installation, data exfiltration, privilege escalation, or complete server takeover. It’s one of the most dangerous categories in cybersecurity, which is why RCE vulnerabilities often score extremely high on severity scales.\n\nWhat Developers Should Do Right Now\n\n• Audit all React-related dependencies for suspicious or recently published versions.\n• Review lockfiles (`package-lock.json`, `yarn.lock`, `pnpm-lock.yaml`) for unexpected changes.\n• Disable or restrict scripts that run automatically during package installation.\n• Verify the integrity of CI/CD pipelines and container build steps.\n• Enable dependency-pinning and signature verification if supported by your package manager.\n• Monitor official React and npm security advisories for patched releases.\n\nWhy This Matters\n\nReact is used everywhere - consumer apps, dashboards, admin tools, internal systems, and enterprise products. A supply-chain exploit targeting React packages doesn’t just hit one project; it cascades through thousands. CVE-2025-55182 is another reminder that open-source ecosystems are extremely powerful but equally vulnerable when trust breaks.\n\nThe Takeaway\n\nStay alert, audit early, and lock down your dependencies. Supply-chain attacks aren’t slowing down, and with a CVSS 10.0 vulnerability landing squarely in the React ecosystem, this one deserves immediate attention.",
+      "excerpt": "A new critical React vulnerability, CVE-2025-55182, scored a perfect 10.0 CVSS, allowing unauthenticated attackers to run arbitrary code via poisoned packages. Developers are urged to audit dependencies immediately.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765311755/react2shell-flaw.png",
+      "caption": "React2Shell Flaw Exposed",
+      "alt": "react2shell-flaw-exposed",
+      "created_at": "2025-12-09T13:07:18.191Z",
+      "updated_at": "2025-12-09T20:23:30.419Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 152,
+    "fields": {
+      "title": "EU Delays AI Act Rules to 2027: Big Tech Wins Lobby Battle",
+      "slug": "eu-ai-act-delay-2027",
+      "category": 4,
+      "subcategory": 21,
+      "content_JSON": {
+        "slug": "eu-ai-act-delay-2027",
+        "tags": [
+          "eu",
+          "ai-act",
+          "regulation",
+          "big-tech",
+          "google",
+          "meta",
+          "high-risk-ai"
+        ],
+        "topic": "EU Delays AI Act Rules to 2027: Big Tech Wins Lobby Battle on High-Risk AI",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Today, the European Commission announced that the enforcement of stricter AI Act rules for high-risk systems will be delayed from August 2026 to December 2027. The extra time comes after heavy lobbying from big tech names like Google and Meta, giving them more space to prepare for compliance."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "What’s Changing"
+          },
+          {
+            "type": "paragraph",
+            "content": "Originally, high-risk AI applications - think biometric ID, critical infrastructure, and social scoring -were supposed to face strict oversight next year. Now, companies have more than a year to implement transparency measures, auditing processes, and other risk management steps before the rules officially kick in."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Role of Lobbying"
+          },
+          {
+            "type": "paragraph",
+            "content": "Google and Meta pushed hard for this delay, pointing to the technical complexity of AI systems and the speed at which the technology evolves. Some critics worry that this tilts the balance in favor of large corporations, leaving smaller developers scrambling to meet the original deadlines."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Global Ripple Effects"
+          },
+          {
+            "type": "paragraph",
+            "content": "For AI developers and regulators around the world, this delay changes planning and compliance timelines. The extra months could allow more careful preparation, but they also mean high-risk AI won’t be under the same tight scrutiny for a little longer than expected."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Innovation vs. Ethics"
+          },
+          {
+            "type": "paragraph",
+            "content": "This shift highlights the tricky balance between fostering innovation and enforcing ethical standards. High-risk AI has real-world impacts on privacy, fairness, and safety. Extra time helps companies get things right - but lobbying influence shows how policy decisions and corporate interests can shape the rules."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "The EU’s AI Act is still setting the global standard. Companies have a longer runway to comply, but the rules are coming, and they matter. If you’re in AI development or regulation, now’s the time to adjust your plans and keep ethics front and center."
+          }
+        ],
+        "excerpt": "The European Commission has delayed enforcement of high-risk AI rules from August 2026 to December 2027, following lobbying from Google and Meta. Developers and regulators now have extra time, but the AI ethics and compliance stakes remain high.",
+        "image_prompt": "A conceptual editorial illustration showing EU oversight pressing against complex AI systems. Abstract layers represent high-risk AI, corporate lobbying, and regulatory tension. Soft textures blend with rigid geometric shapes, suggesting negotiation and compromise. Palette is muted with deep blues, charcoal, and soft grays. Tone is serious but approachable, reflective and thought-provoking, without neon or literal AI elements."
+      },
+      "content_plain_text": "Today, the European Commission announced that the enforcement of stricter AI Act rules for high-risk systems will be delayed from August 2026 to December 2027. The extra time comes after heavy lobbying from big tech names like Google and Meta, giving them more space to prepare for compliance.\n\nWhat’s Changing\n\nOriginally, high-risk AI applications - think biometric ID, critical infrastructure, and social scoring -were supposed to face strict oversight next year. Now, companies have more than a year to implement transparency measures, auditing processes, and other risk management steps before the rules officially kick in.\n\nThe Role of Lobbying\n\nGoogle and Meta pushed hard for this delay, pointing to the technical complexity of AI systems and the speed at which the technology evolves. Some critics worry that this tilts the balance in favor of large corporations, leaving smaller developers scrambling to meet the original deadlines.\n\nGlobal Ripple Effects\n\nFor AI developers and regulators around the world, this delay changes planning and compliance timelines. The extra months could allow more careful preparation, but they also mean high-risk AI won’t be under the same tight scrutiny for a little longer than expected.\n\nInnovation vs. Ethics\n\nThis shift highlights the tricky balance between fostering innovation and enforcing ethical standards. High-risk AI has real-world impacts on privacy, fairness, and safety. Extra time helps companies get things right - but lobbying influence shows how policy decisions and corporate interests can shape the rules.\n\nThe Takeaway\n\nThe EU’s AI Act is still setting the global standard. Companies have a longer runway to comply, but the rules are coming, and they matter. If you’re in AI development or regulation, now’s the time to adjust your plans and keep ethics front and center.",
+      "excerpt": "The European Commission has delayed enforcement of high-risk AI rules from August 2026 to December 2027, following lobbying from Google and Meta. Developers and regulators now have extra time, but the AI ethics and compliance stakes remain high.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1763878238/very-codedly-banner.png",
+      "caption": "EU Delays AI Act to 2027",
+      "alt": "eu-ai-act-delay-2027",
+      "created_at": "2025-12-09T16:07:34.766Z",
+      "updated_at": "2025-12-09T16:07:34.766Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 153,
+    "fields": {
+      "title": "Windows 11 December Update: Drag Tray Tweaks and 15 More",
+      "slug": "windows-11-december-update-16-features",
+      "category": 3,
+      "subcategory": 22,
+      "content_JSON": {
+        "slug": "windows-11-december-update-16-features",
+        "tags": [
+          "windows-11",
+          "microsoft",
+          "update",
+          "patch-tuesday",
+          "ui",
+          "productivity",
+          "features"
+        ],
+        "topic": "Windows 11 December Update Packs 16 New Features: Drag Tray Tweaks and More",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Microsoft’s December Patch Tuesday has landed, and Windows 11 users are getting a hefty batch of 16 new features. Among the highlights: easier ways to disable the Drag Tray and revamped info pages that promise a cleaner, more organized desktop experience."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Drag Tray Gets Smarter"
+          },
+          {
+            "type": "paragraph",
+            "content": "One of the most talked-about changes is the Drag Tray. Users can now turn it off more easily, which should make multitasking smoother and reduce accidental window moves. For anyone juggling multiple apps, this is a small tweak that feels like a big relief."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Polished Info Pages"
+          },
+          {
+            "type": "paragraph",
+            "content": "The update also brings refreshed info pages across Windows 11, designed to declutter the desktop and make system settings and notifications easier to scan. It’s all about subtle UI polish that keeps your workspace tidy without asking for extra effort."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "16 Features, Lots to Explore"
+          },
+          {
+            "type": "paragraph",
+            "content": "Beyond these highlights, the update packs in 16 improvements across multitasking, system notifications, and performance. Users can expect a smoother, more responsive experience overall. It’s not a massive redesign, but the tweaks add up, especially for productivity-focused users."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Bridging to Windows 12"
+          },
+          {
+            "type": "paragraph",
+            "content": "With Windows 12 expected in 2026, these updates feel like a bridge - cleaner visuals, smarter controls, and a more polished interface. Microsoft is smoothing out the experience so users aren’t waiting on the next big release to feel improvements in day-to-day tasks."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "If you’re on Windows 11, December’s Patch Tuesday is worth checking out. From Drag Tray tweaks to cleaner info pages, these 16 updates are small adjustments that collectively make your workflow smoother and your desktop a little less cluttered - just in time for the holidays."
+          }
+        ],
+        "excerpt": "Microsoft’s December Patch Tuesday for Windows 11 delivers 16 new features, including easier Drag Tray management and cleaner info pages. Users can expect smoother multitasking and UI polish ahead of Windows 12 in 2026.",
+        "image_prompt": "A conceptual editorial illustration showing a Windows 11 desktop being refreshed. Abstract layers represent multitasking, UI tweaks, and smoother workflows. Shapes suggest order and polish, with subtle glowing highlights on system windows and trays. Palette includes soft blues, muted grays, and light accent colors. Tone is approachable, modern, and slightly playful, reflecting a productive and refined desktop environment."
+      },
+      "content_plain_text": "Microsoft’s December Patch Tuesday has landed, and Windows 11 users are getting a hefty batch of 16 new features. Among the highlights: easier ways to disable the Drag Tray and revamped info pages that promise a cleaner, more organized desktop experience.\n\nDrag Tray Gets Smarter\n\nOne of the most talked-about changes is the Drag Tray. Users can now turn it off more easily, which should make multitasking smoother and reduce accidental window moves. For anyone juggling multiple apps, this is a small tweak that feels like a big relief.\n\nPolished Info Pages\n\nThe update also brings refreshed info pages across Windows 11, designed to declutter the desktop and make system settings and notifications easier to scan. It’s all about subtle UI polish that keeps your workspace tidy without asking for extra effort.\n\n16 Features, Lots to Explore\n\nBeyond these highlights, the update packs in 16 improvements across multitasking, system notifications, and performance. Users can expect a smoother, more responsive experience overall. It’s not a massive redesign, but the tweaks add up, especially for productivity-focused users.\n\nBridging to Windows 12\n\nWith Windows 12 expected in 2026, these updates feel like a bridge - cleaner visuals, smarter controls, and a more polished interface. Microsoft is smoothing out the experience so users aren’t waiting on the next big release to feel improvements in day-to-day tasks.\n\nThe Takeaway\n\nIf you’re on Windows 11, December’s Patch Tuesday is worth checking out. From Drag Tray tweaks to cleaner info pages, these 16 updates are small adjustments that collectively make your workflow smoother and your desktop a little less cluttered - just in time for the holidays.",
+      "excerpt": "Microsoft’s December Patch Tuesday for Windows 11 delivers 16 new features, including easier Drag Tray management and cleaner info pages. Users can expect smoother multitasking and UI polish ahead of Windows 12 in 2026.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1765311756/windows-11-update.png",
+      "caption": "Windows 11 December Update",
+      "alt": "windows-11-december-update",
+      "created_at": "2025-12-09T16:14:46.171Z",
+      "updated_at": "2025-12-09T20:24:43.810Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 155,
+    "fields": {
+      "title": "How to Run Your Own AI Model Locally",
+      "slug": "run-ai-model-locally",
+      "category": 1,
+      "subcategory": 25,
+      "content_JSON": {
+        "slug": "run-ai-model-locally",
+        "tags": [
+          "ai",
+          "local-ai",
+          "machine-learning",
+          "tutorial",
+          "python",
+          "step-by-step"
+        ],
+        "topic": "How to Run Your Own AI Model Locally",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Running an AI model on your own machine might sound intimidating, but it’s easier than you think. With the right setup, you can test, tweak, and even train models without sending data to the cloud. Here’s a step-by-step guide to get you started."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Step 1: Choose Your Model"
+          },
+          {
+            "type": "paragraph",
+            "content": "First, decide what kind of AI you want to run. Do you want text generation, image recognition, or something else? Some popular models (links below) you can run locally include:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Hugging Face Transformers (text & NLP)",
+              "Stable Diffusion (image generation)",
+              "OpenAI GPT-like models via `llama.cpp` or other open-source variants"
+            ],
+            "style": "bullet"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Step 2: Set Up Your Environment"
+          },
+          {
+            "type": "paragraph",
+            "content": "You’ll need Python installed (version 3.9+ recommended) and a virtual environment to keep dependencies tidy."
+          },
+          {
+            "type": "code",
+            "content": "python -m venv ai-env\nsource ai-env/bin/activate  # macOS/Linux\nai-env\\Scripts\\activate    # Windows"
+          },
+          {
+            "type": "paragraph",
+            "content": "Then, install the libraries for your chosen model. For a Hugging Face text model, for example:"
+          },
+          {
+            "type": "code",
+            "content": "pip install torch transformers"
+          },
+          {
+            "type": "callout",
+            "content": "💡 Tip: If you have an NVIDIA GPU, install the GPU version of PyTorch for faster inference. See [PyTorch installation guide](https://pytorch.org/get-started/locally/)."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Step 3: Load the Model"
+          },
+          {
+            "type": "paragraph",
+            "content": "Once your environment is ready, you can load a model and tokenizer. Here’s an example using Hugging Face’s GPT-2:"
+          },
+          {
+            "type": "code",
+            "content": "from transformers import GPT2LMHeadModel, GPT2Tokenizer\n\n# Load tokenizer and model\ntokenizer = GPT2Tokenizer.from_pretrained('gpt2')\nmodel = GPT2LMHeadModel.from_pretrained('gpt2')"
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Step 4: Run Inference"
+          },
+          {
+            "type": "paragraph",
+            "content": "Now you can generate text locally:"
+          },
+          {
+            "type": "code",
+            "content": "input_text = 'Once upon a time'\ninputs = tokenizer(input_text, return_tensors='pt')\noutput = model.generate(**inputs, max_length=50)\nprint(tokenizer.decode(output[0], skip_special_tokens=True))"
+          },
+          {
+            "type": "paragraph",
+            "content": "This produces a short text continuation directly on your machine, no internet required."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Step 5: Explore and Experiment"
+          },
+          {
+            "type": "paragraph",
+            "content": "From here, you can tweak parameters like `max_length`, temperature, or top-k sampling. You can also try different models, batch multiple inputs, or integrate the model into small apps."
+          },
+          {
+            "type": "callout",
+            "content": "⚠️ Note: Running large models locally can eat up memory and CPU/GPU. Make sure your machine can handle the model you choose, or stick with smaller versions like `distilgpt2`."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Next Steps"
+          },
+          {
+            "type": "paragraph",
+            "content": "Once comfortable, you can move on to more advanced topics: training your own models on custom data, deploying AI in local apps, or even experimenting with offline image generation using models like Stable Diffusion. The key is starting small and building confidence."
+          },
+          {
+            "type": "paragraph",
+            "content": "Running AI locally gives you control, privacy, and speed—perfect for hobby projects, prototypes, or just exploring the AI world safely on your own machine."
+          }
+        ],
+        "excerpt": "Learn how to run an AI model locally with Python. Step-by-step guide covers environment setup, installing libraries, loading a model, running inference, and tips for experimentation.",
+        "image_prompt": "A conceptual editorial illustration showing a user running an AI model on their laptop. Abstract layers represent neural networks, data flow, and local computation. The scene is approachable and friendly, with warm tech-inspired colors like blues, greens, and soft yellows. Tone is educational, hands-on, and inviting, highlighting control and experimentation with AI locally."
+      },
+      "content_plain_text": "Running an AI model on your own machine might sound intimidating, but it’s easier than you think. With the right setup, you can test, tweak, and even train models without sending data to the cloud. Here’s a step-by-step guide to get you started.\n\nStep 1: Choose Your Model\n\nFirst, decide what kind of AI you want to run. Do you want text generation, image recognition, or something else? Some popular models (links below) you can run locally include:\n\n• Hugging Face Transformers (text & NLP)\n• Stable Diffusion (image generation)\n• OpenAI GPT-like models via `llama.cpp` or other open-source variants\n\nStep 2: Set Up Your Environment\n\nYou’ll need Python installed (version 3.9+ recommended) and a virtual environment to keep dependencies tidy.\n\n[CODE]\npython -m venv ai-env\nsource ai-env/bin/activate  # macOS/Linux\nai-env\\Scripts\\activate    # Windows\n[/CODE]\n\nThen, install the libraries for your chosen model. For a Hugging Face text model, for example:\n\n[CODE]\npip install torch transformers\n[/CODE]\n\n💡 Tip: If you have an NVIDIA GPU, install the GPU version of PyTorch for faster inference. See [PyTorch installation guide](https://pytorch.org/get-started/locally/).\n\nStep 3: Load the Model\n\nOnce your environment is ready, you can load a model and tokenizer. Here’s an example using Hugging Face’s GPT-2:\n\n[CODE]\nfrom transformers import GPT2LMHeadModel, GPT2Tokenizer\n\n# Load tokenizer and model\ntokenizer = GPT2Tokenizer.from_pretrained('gpt2')\nmodel = GPT2LMHeadModel.from_pretrained('gpt2')\n[/CODE]\n\nStep 4: Run Inference\n\nNow you can generate text locally:\n\n[CODE]\ninput_text = 'Once upon a time'\ninputs = tokenizer(input_text, return_tensors='pt')\noutput = model.generate(**inputs, max_length=50)\nprint(tokenizer.decode(output[0], skip_special_tokens=True))\n[/CODE]\n\nThis produces a short text continuation directly on your machine, no internet required.\n\nStep 5: Explore and Experiment\n\nFrom here, you can tweak parameters like `max_length`, temperature, or top-k sampling. You can also try different models, batch multiple inputs, or integrate the model into small apps.\n\n⚠️ Note: Running large models locally can eat up memory and CPU/GPU. Make sure your machine can handle the model you choose, or stick with smaller versions like `distilgpt2`.\n\nNext Steps\n\nOnce comfortable, you can move on to more advanced topics: training your own models on custom data, deploying AI in local apps, or even experimenting with offline image generation using models like Stable Diffusion. The key is starting small and building confidence.\n\nRunning AI locally gives you control, privacy, and speed—perfect for hobby projects, prototypes, or just exploring the AI world safely on your own machine.",
+      "excerpt": "Learn how to run an AI model locally with Python. Step-by-step guide covers environment setup, installing libraries, loading a model, running inference, and tips for experimentation.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1763878238/very-codedly-banner.png",
+      "caption": "Run an AI Model Locally",
+      "alt": "run-an-ai-model-locally",
+      "created_at": "2025-12-09T17:13:08.440Z",
+      "updated_at": "2025-12-09T17:31:54.265Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 156,
+    "fields": {
+      "title": "Screenshots > Surveys: Internet Humor is Driving Tech Decisions",
+      "slug": "screenshots-vs-surveys",
+      "category": 9,
+      "subcategory": 10,
+      "content_JSON": {
+        "slug": "screenshots-vs-surveys-internet-humor-driving-tech-decisions",
+        "tags": [
+          "tech-culture",
+          "internet",
+          "memes",
+          "product-design",
+          "ui-ux"
+        ],
+        "topic": "Screenshots > Surveys: Internet Humor is Driving Tech Decisions",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Somewhere along the way, tech stopped listening to surveys and started reacting to screenshots. Not the formal kind, just the ones people post in group chats, on X, or inside a random Discord server where someone yells, “who asked for this update?” And suddenly, a meme becomes a feature request the entire industry has to take seriously."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Screenshots as the New Product Feedback"
+          },
+          {
+            "type": "paragraph",
+            "content": "It feels dramatic, but the feedback loop has genuinely shifted. Companies used to wait for quarterly reports, user research sessions, or formal UX audits. Now? A single viral screenshot can spark internal meetings, generate urgency, and end in a 'reconsidered' feature within 48 hours."
+          },
+          {
+            "type": "paragraph",
+            "content": "Think about the last wave of UI design drama, rounded corners, new icons, random spacing changes, AI buttons appearing out of nowhere. People roast it instantly. Teams feel the shockwave before the rollout finishes. Product managers are paying attention not because memes are data, but because memes show energy and energy spreads."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Figma Effect, the Discord Effect, the 'Why Did You Move That Button?' Effect"
+          },
+          {
+            "type": "paragraph",
+            "content": "Remember the Figma icon redesign? The internet had jokes lined up within minutes, some genuinely hilarious, others borderline brutal. Same with Discord’s UI changes earlier this year. Screenshots flooded timelines faster than the official blog posts. Users didn’t quietly complain; they created punchlines. And those punchlines traveled far."
+          },
+          {
+            "type": "paragraph",
+            "content": "This isn’t just about aesthetics. Screenshots turn tiny friction points into shareable artifacts. One person sighs about a relocated settings button, then ten more chime in, then someone adds a meme template, and suddenly it looks like a global revolt."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Why Teams Are More Scared of Memes Than Bug Reports"
+          },
+          {
+            "type": "paragraph",
+            "content": "A bug report is private. A meme is public, immortal, and searchable. A screenshot can trend. A survey sits in a dashboard no one outside the team sees. A meme hits executives, investors, journalists, and users all at the same time."
+          },
+          {
+            "type": "paragraph",
+            "content": "Engineers will tell you: bad PR lands harder than bad code. A trending joke about your interface becomes the story, not the release notes. Nobody wants to be the next 'look at this cursed UI' Twitter post."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Crossover: When Jokes Start Fixing Real UX"
+          },
+          {
+            "type": "paragraph",
+            "content": "Here’s the twist. Sometimes the humor works. Screenshots often highlight genuine pain points. Small annoyances, unnecessary clicks, tedious microinteractions. If a meme hits because it’s relatable, that’s signal. Companies are quietly adjusting their metrics to include sentiment heat, not just engagement charts."
+          },
+          {
+            "type": "paragraph",
+            "content": "When the joke is accurate, it becomes a mirror. And mirrors are harder to ignore than dashboards."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "Internet humor isn’t just entertainment anymore; it’s a distributed sense-making system. Product teams might not admit it publicly, but they’re watching the jokes. Screenshots and memes aren’t replacing UX research, but they’re absolutely speeding up the pressure cycle. And if the internet hates your redesign? Well… good luck outrunning that timeline."
+          }
+        ],
+        "excerpt": "From Figma’s icon drama to chaotic UI redesign memes, internet humor now spreads faster than product announcements, and companies are quietly building features around it.",
+        "image_prompt": "A conceptual editorial illustration showing cascading screenshots floating through layered digital space. Abstract shapes representing apps, interface elements, and message bubbles drift in a controlled swirl, hinting at viral reactions and rapid feedback loops. Soft shadows and playful tension, with no literal devices or text. Bold, varied colors but clean and editorial rather than neon."
+      },
+      "content_plain_text": "Somewhere along the way, tech stopped listening to surveys and started reacting to screenshots. Not the formal kind, just the ones people post in group chats, on X, or inside a random Discord server where someone yells, “who asked for this update?” And suddenly, a meme becomes a feature request the entire industry has to take seriously.\n\nScreenshots as the New Product Feedback\n\nIt feels dramatic, but the feedback loop has genuinely shifted. Companies used to wait for quarterly reports, user research sessions, or formal UX audits. Now? A single viral screenshot can spark internal meetings, generate urgency, and end in a 'reconsidered' feature within 48 hours.\n\nThink about the last wave of UI design drama, rounded corners, new icons, random spacing changes, AI buttons appearing out of nowhere. People roast it instantly. Teams feel the shockwave before the rollout finishes. Product managers are paying attention not because memes are data, but because memes show energy and energy spreads.\n\nThe Figma Effect, the Discord Effect, the 'Why Did You Move That Button?' Effect\n\nRemember the Figma icon redesign? The internet had jokes lined up within minutes, some genuinely hilarious, others borderline brutal. Same with Discord’s UI changes earlier this year. Screenshots flooded timelines faster than the official blog posts. Users didn’t quietly complain; they created punchlines. And those punchlines traveled far.\n\nThis isn’t just about aesthetics. Screenshots turn tiny friction points into shareable artifacts. One person sighs about a relocated settings button, then ten more chime in, then someone adds a meme template, and suddenly it looks like a global revolt.\n\nWhy Teams Are More Scared of Memes Than Bug Reports\n\nA bug report is private. A meme is public, immortal, and searchable. A screenshot can trend. A survey sits in a dashboard no one outside the team sees. A meme hits executives, investors, journalists, and users all at the same time.\n\nEngineers will tell you: bad PR lands harder than bad code. A trending joke about your interface becomes the story, not the release notes. Nobody wants to be the next 'look at this cursed UI' Twitter post.\n\nThe Crossover: When Jokes Start Fixing Real UX\n\nHere’s the twist. Sometimes the humor works. Screenshots often highlight genuine pain points. Small annoyances, unnecessary clicks, tedious microinteractions. If a meme hits because it’s relatable, that’s signal. Companies are quietly adjusting their metrics to include sentiment heat, not just engagement charts.\n\nWhen the joke is accurate, it becomes a mirror. And mirrors are harder to ignore than dashboards.\n\nThe Takeaway\n\nInternet humor isn’t just entertainment anymore; it’s a distributed sense-making system. Product teams might not admit it publicly, but they’re watching the jokes. Screenshots and memes aren’t replacing UX research, but they’re absolutely speeding up the pressure cycle. And if the internet hates your redesign? Well… good luck outrunning that timeline.",
+      "excerpt": "From Figma’s icon drama to chaotic UI redesign memes, internet humor now spreads faster than product announcements, and companies are quietly building features around it.",
+      "author": "Admin",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1763878238/very-codedly-banner.png",
+      "caption": "Screenshots > Surveys",
+      "alt": "screenshots-vs-surveys",
+      "created_at": "2025-12-09T19:31:50.827Z",
+      "updated_at": "2025-12-09T19:31:50.827Z",
+      "status": "published"
+    }
+  },
+  {
+    "model": "codedly.post",
+    "pk": 154,
+    "fields": {
+      "title": "Real-time Collaboration Features Going Mainstream Across Tools",
+      "slug": "real-time-collaboration-mainstream",
+      "category": 3,
+      "subcategory": 24,
+      "content_JSON": {
+        "slug": "real-time-collaboration-mainstream",
+        "tags": [
+          "collaboration",
+          "productivity",
+          "figma",
+          "canva",
+          "airtable",
+          "workflow",
+          "tools",
+          "real-time"
+        ],
+        "topic": "Real-time Collaboration Features Going Mainstream Across Tools",
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": "Real-time collaboration is no longer a niche perk, it’s quickly becoming standard across productivity and design tools. Platforms like Figma, Canva, Airtable, and others are doubling down on features that let multiple users work together instantly, from anywhere in the world."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "From Design to Data"
+          },
+          {
+            "type": "paragraph",
+            "content": "Figma popularized live collaboration for design teams, and now Canva is following suit, letting creatives co-edit projects in real time. Airtable and other workflow platforms are adding similar capabilities for spreadsheets, databases, and project management boards. The goal is simple: fewer back-and-forth emails and more seamless teamwork."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "Why It Matters"
+          },
+          {
+            "type": "paragraph",
+            "content": "Real-time collaboration isn’t just a convenience, it’s a productivity booster. Teams can see updates immediately, comment inline, and iterate faster. The shift also levels the playing field for remote and distributed teams, making it easier to work together without being in the same room."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Trend Is Expanding"
+          },
+          {
+            "type": "paragraph",
+            "content": "What started with design tools is spreading to more and more platforms, from document editors to project management apps. Expect live cursors, instant commenting, and simultaneous updates to become baseline expectations in almost every professional tool you use."
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": "The Takeaway"
+          },
+          {
+            "type": "paragraph",
+            "content": "Real-time collaboration is now a core feature, not a nice-to-have. Teams that embrace it can move faster, communicate clearer, and keep work flowing without constant handoffs. If your favorite tools aren’t fully live yet, they probably will be soon."
+          }
+        ],
+        "excerpt": "Real-time collaboration features are becoming standard across Figma, Canva, Airtable, and more. Teams can work together instantly, improving productivity and communication while streamlining workflows.",
+        "image_prompt": "A conceptual editorial illustration showing multiple users interacting with shared digital interfaces in real time. Abstract layers represent live edits, cursors, and data flowing between screens. Palette uses soft blues, greens, and pastels to convey clarity and collaboration. Tone is friendly, approachable, and energetic, reflecting seamless teamwork and connectivity across tools."
+      },
+      "content_plain_text": "Real-time collaboration is no longer a niche perk, it’s quickly becoming standard across productivity and design tools. Platforms like Figma, Canva, Airtable, and others are doubling down on features that let multiple users work together instantly, from anywhere in the world.\n\nFrom Design to Data\n\nFigma popularized live collaboration for design teams, and now Canva is following suit, letting creatives co-edit projects in real time. Airtable and other workflow platforms are adding similar capabilities for spreadsheets, databases, and project management boards. The goal is simple: fewer back-and-forth emails and more seamless teamwork.\n\nWhy It Matters\n\nReal-time collaboration isn’t just a convenience, it’s a productivity booster. Teams can see updates immediately, comment inline, and iterate faster. The shift also levels the playing field for remote and distributed teams, making it easier to work together without being in the same room.\n\nThe Trend Is Expanding\n\nWhat started with design tools is spreading to more and more platforms, from document editors to project management apps. Expect live cursors, instant commenting, and simultaneous updates to become baseline expectations in almost every professional tool you use.\n\nThe Takeaway\n\nReal-time collaboration is now a core feature, not a nice-to-have. Teams that embrace it can move faster, communicate clearer, and keep work flowing without constant handoffs. If your favorite tools aren’t fully live yet, they probably will be soon.",
+      "excerpt": "Real-time collaboration features are becoming standard across Figma, Canva, Airtable, and more. Teams can work together instantly, improving productivity and communication while streamlining workflows.",
+      "author": "Chrise",
+      "image": "https://res.cloudinary.com/verycodedly/image/upload/v1763878238/very-codedly-banner.png",
+      "caption": "Real-time Collaboration Going Mainstream",
+      "alt": "real-time-collaboration-mainstream",
+      "created_at": "2025-12-09T16:44:30.531Z",
+      "updated_at": "2025-12-09T20:23:03.458Z",
+      "status": "published"
+    }
+  }
+]
