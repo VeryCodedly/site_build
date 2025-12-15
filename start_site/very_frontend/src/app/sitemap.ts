@@ -27,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
     let postsUrl: string | null = `${API_BASE}/posts/`;
     while (postsUrl) {
-      const res = await fetch(postsUrl, { next: { revalidate: 3600 } });
+      const res: Response = await fetch(postsUrl, { next: { revalidate: 3600 } });
       if (!res.ok) {
         console.error(`Failed to fetch posts from ${postsUrl}`);
         break;

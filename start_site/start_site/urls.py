@@ -18,11 +18,19 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
+from django.http import HttpResponse
+
+def robots_txt(request):
+    content = """User-agent: *
+                Disallow: /
+                """
+    return HttpResponse(content, content_type="text/plain")
 
 
 urlpatterns = [
     path(f"{settings.ADDY}/", admin.site.urls),
     path('', include('codedly.urls')),
     path('nkemjika/', include('codedly.api_urls')),
+    path("robots.txt", robots_txt),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -4,7 +4,7 @@ import { motion as Motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLongArrowRight, faCalendar, faUser, faComment, faHashtag, faImage, faLink, faCopy, faCommentDots } from '@fortawesome/free-solid-svg-icons';
+import { faLongArrowRight, faCalendar, faUser, faHashtag, faImage, faLink, faCopy, faCommentDots } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faLinkedinIn, faTwitter, faWhatsapp, faDiscord, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import CodeBlock from '@/app/learn/components/CodeBlock';
 import { Post } from '@/types/post';
@@ -303,69 +303,69 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
         )}
       </Motion.div> */}
 
-      <Motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6, delay: 0.6 }}
-  className="mb-8 sm:mb-12"
->
-  <h3 className="text-lg sm:text-xl font-bold mb-4 text-lime-300 flex items-center gap-3">
-    <FontAwesomeIcon icon={faCommentDots} /> Join the Discussion
-  </h3>
-
-  <p className="italic text-gray-400 text-sm sm:text-base mb-6 leading-relaxed">
-    Enjoyed this? Ask questions, share your take (hot, lukewarm, or undecided), or follow the thread with people in real time.
-    The community’s open — join us.
-  </p>
-
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-    {/* Discord - Primary */}
-    <Link
-      href="https://discord.gg/53wVsqEcbE" 
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group w-fit flex items-center group justify-between p- bg-black/40 rounded-xl transition-all duration-300"
+    <Motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.6 }}
+      className="mb-8 sm:mb-12"
     >
-      <div className="flex items-center gap-4">
-        <div className="w-12 h-12 bg-gray-300/10 rounded-lg flex items-center justify-center">
-          <FontAwesomeIcon icon={faDiscord} className="text-2xl text-gray-400 group-hover:text-indigo-500 group-active:text-red-500" />
-        </div>
-        <div>
-          <p className="font-semibold text-white group-hover:underline group-active::underline">Discord Community</p>
-          <p className="text-sm text-gray-400">Chat, code sharing & more</p>
-        </div>
-      </div>
-      {/* <FontAwesomeIcon 
-        icon={faLongArrowRight} 
-        className="text-lime-400 group-hover:translate-x-1 transition"
-      /> */}
-    </Link>
+      <h3 className="text-lg sm:text-xl font-bold mb-4 text-lime-300 flex items-center gap-3">
+        <FontAwesomeIcon icon={faCommentDots} /> Join the Discussion
+      </h3>
 
-    {/* YouTube - When videos */}
-    <Link
-      href="https://youtube.com/@verycodedly" 
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group flex items-center group justify-between p- bg-black/40 rounded-xl transition-all duration-300"
-    >
-      <div className="flex items-center gap-4">
-        <div className="w-12 h-12 bg-gray-300/10 rounded-lg flex items-center justify-center">
-          <FontAwesomeIcon icon={faYoutube} className="text-2xl text-gray-400 group-hover:text-red-500 group-active:text-red-500" />
-        </div>
-        <div>
-          <p className="font-semibold text-white group-hover:underline group-active::underline">YouTube Comments</p>
-          <p className="text-sm text-gray-400">Watch the video version & discuss</p>
-        </div>
-      </div>
-      {/* <FontAwesomeIcon 
-        icon={faLongArrowRight} 
-        className="text-lime-400 group-hover:translate-x-1 transition"
-      /> */}
-    </Link>
+      <p className="italic text-gray-400 text-sm sm:text-base mb-6 leading-relaxed">
+        Enjoyed this? Ask questions, share your take (hot, lukewarm, or undecided), or follow the thread with people in real time.
+        The community’s open — join us.
+      </p>
 
-    {/* Add more if needed, e.g. dev.to, Bluesky */}
-  </div>
-</Motion.div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        {/* Discord - Primary */}
+        <Link
+          href="https://discord.gg/53wVsqEcbE" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group w-full flex items-center group justify-between p- bg-black/40 rounded-xl transition-all duration-300"
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-gray-300/10 rounded-lg flex items-center justify-center">
+              <FontAwesomeIcon icon={faDiscord} className="text-2xl text-gray-400 group-hover:text-indigo-500 group-active:text-red-500" />
+            </div>
+            <div>
+              <p className="font-semibold text-white group-hover:underline group-active:underline">Discord Community</p>
+              <p className="text-sm text-gray-400 italic">Chat, code sharing & more</p>
+            </div>
+          </div>
+          {/* <FontAwesomeIcon 
+            icon={faLongArrowRight} 
+            className="text-lime-400 group-hover:translate-x-1 transition"
+          /> */}
+        </Link>
+
+        {/* YouTube - When videos */}
+        <Link
+          href="https://youtube.com/@verycodedly" 
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group flex items-center w-full group justify-between p- bg-black/40 rounded-xl transition-all duration-300"
+        >
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 bg-gray-300/10 rounded-lg flex items-center justify-center">
+              <FontAwesomeIcon icon={faYoutube} className="text-2xl text-gray-400 group-hover:text-red-500 group-active:text-red-500" />
+            </div>
+            <div>
+              <p className="font-semibold text-white group-hover:underline group-active:underline">YouTube Comments</p>
+              <p className="text-sm text-gray-400 italic">Video version & comments</p>
+            </div>
+          </div>
+          {/* <FontAwesomeIcon 
+            icon={faLongArrowRight} 
+            className="text-lime-400 group-hover:translate-x-1 transition"
+          /> */}
+        </Link>
+
+        {/* Add more if needed, e.g. dev.to, Bluesky */}
+      </div>
+    </Motion.div>
 
       {/* Meta Footer */}
       <div className="pt-10">

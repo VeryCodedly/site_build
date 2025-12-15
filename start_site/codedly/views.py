@@ -25,35 +25,6 @@ from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, C
 from .serializers import CategoryPostsSerializer, PostSerializer, CategorySerializer, CommentSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer
 
 
-class BaseAPIView(APIView):
-    def finalize_response(self, request, response, *args, **kwargs):
-        response = super().finalize_response(request, response, *args, **kwargs)
-        # response.headers['X-Robots-Tag'] = 'noindex, nofollow'
-        return response
-    def dispatch(self, request, *args, **kwargs):
-        if request.path.startswith('/nkemjika/'):
-            ip = request.META.get('REMOTE_ADDR', 'unknown')
-            user_agent = request.META.get('HTTP_USER_AGENT', '').lower()
-            key = f"rate_limit_{ip}"
-            now = time.time()
-            requests = cache.get(key, [])
-
-            # Clean old timestamps (40-sec window)
-            requests = [t for t in requests if now - t < 40]
-
-            if any(bot in user_agent for bot in ['scraper', 'curl', 'wget', 'python-requests', 'scrapy', 'headless']):
-                if len(requests) >= 3:
-                    return JsonResponse({"error": "Access denied."}, status=403)
-
-            # Normal limit — 40/min
-            if len(requests) >= 40:
-                return JsonResponse({"error": "Too many requests"}, status=429)
-
-            requests.append(now)
-            cache.set(key, requests, timeout=60)  # keep for 60s total
-
-        return super().dispatch(request, *args, **kwargs)
-
 def api_home(request):
     return HttpResponse("""
         <!DOCTYPE html>
