@@ -181,6 +181,7 @@ class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.filter(status="published").order_by("-created_at")
     serializer_class = PostSerializer
     lookup_field = "slug"
+    search_fields = '__all__'
 
     # SINGLE POST ENDPOINTS
     # @action(detail=False, methods=['get'])
@@ -333,6 +334,48 @@ class PostViewSet(viewsets.ModelViewSet):
         return Response({"industryInsights": self._multi_posts("industry-insights")})
 
 
+class ReadPageDataView(APIView):
+    def get(self, request):
+        viewset = PostViewSet()
+        viewset.request = request  # need for full URLs in serializer
+
+        def multi(slug, limit=6):
+            posts = Post.objects.filter(subcategory__slug=slug).order_by('-created_at')[:limit]
+            return PostSerializer(posts, many=True, context={'request': request}).data
+
+        return Response({
+            "latest": PostSerializer(
+                Post.objects.filter(status="published").order_by('-created_at')[:10],
+                many=True,
+                context={'request': request}
+            ).data,
+
+            "featured": multi("featured", 3),
+            "trending": viewset._multi_posts("trending-now"),
+            "spotlight": viewset._multi_posts("entertainment"),
+            "bigDeal": viewset._multi_posts("big-deal"),
+            "digitalMoney": multi("digital-money", 3),
+            "bchCrypto": viewset._multi_posts("blockchain-crypto"),
+            "startups": viewset._multi_posts("startups"),
+            "prvCompliance": viewset._multi_posts("privacy-compliance"),
+            "AI": viewset._multi_posts("ai"),
+            "emergingTech": viewset._multi_posts("emerging-tech"),
+            "hardware": multi("hardware", 3),
+            "techCulture": viewset._multi_posts("tech-culture"),
+            "social": multi("social", 3),
+            "globalLens": viewset._multi_posts("wired-world"),
+            "africaRising": viewset._multi_posts("africa-now"),
+            "keyPlayers": viewset._multi_posts("key-players"),
+            "dataDefense": multi("data-defense", 3),
+            "secureHabits": viewset._multi_posts("secure-habits"),
+            "stack": viewset._multi_posts("stack"),
+            "buyGuides": viewset._multi_posts("beginner-guides"),
+            "devDigest": multi("dev-digest", 3),
+            "theClimb": viewset._multi_posts("the-climb"),
+            "rundown": viewset._multi_posts("rundown"),
+            "industryInsights": viewset._multi_posts("industry-insights"),
+        })
+        
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all().order_by("name")
     serializer_class = CategorySerializer
@@ -402,6 +445,7 @@ class LessonViewSet(viewsets.ReadOnlyModelViewSet):
 class CourseListView(generics.ListAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+    lookup_field = "slug"
 
 
 class CourseDetailView(generics.RetrieveAPIView):
@@ -412,6 +456,7 @@ class CourseDetailView(generics.RetrieveAPIView):
 
 class LessonListView(generics.ListAPIView):
     serializer_class = LessonSerializer
+    lookup_field = "slug"
 
     def get_queryset(self):
         course_slug = self.kwargs["slug"]

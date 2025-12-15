@@ -1,56 +1,35 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
 
-function useScrollRestoration() {
-  const pathname = usePathname();
-  const scrollPositions = useRef(new Map<string, number>());
-
+export default function ScrollRestoration() {
   useEffect(() => {
-    // Disable Next's auto-scroll to top on route changes
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
+    // Restore scroll position on mount (after refresh or navigation)
+    const savedScroll = sessionStorage.getItem(`scrollPos_${window.location.pathname}`);
+    if (savedScroll) {
+        window.scrollTo(0, parseInt(savedScroll, 10));
     }
 
-    // Key by pathname for multi-page support
-    const key = `scroll:${pathname}`;
-
-    // Restore on mount (after hydration)
-    const saved = sessionStorage.getItem(key);
-    if (saved) {
-      const pos = parseInt(saved, 10);
-      if (pos > 0) {  // Skip if already at top
-        requestAnimationFrame(() => {
-          window.scrollTo(0, pos);  // Use RAF to wait for paint
-        });
-      }
-    }
-
-    // Save on scroll (throttled to avoid spam)
-    let ticking = false;
-    const saveScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          scrollPositions.current.set(key, window.scrollY);
-          sessionStorage.setItem(key, window.scrollY.toString());
-          ticking = false;
-        });
-        ticking = true;
-      }
+    // Save scroll position before unload/refresh/navigation
+    const saveScrollPosition = () => {
+      sessionStorage.setItem(`scrollPos_${window.location.pathname}`, window.scrollY.toString());
     };
 
-    window.addEventListener('scroll', saveScroll, { passive: true });
+    // Save on beforeunload (refresh, close tab, etc.)
+    window.addEventListener('beforeunload', saveScrollPosition);
 
-    // Save on unload/route change
-    const handleUnload = () => {
-      sessionStorage.setItem(key, window.scrollY.toString());
-    };
-    window.addEventListener('beforeunload', handleUnload);
+    // save on Next.js route change (client-side navigation)
+    // handle this via popstate listener for simplicity
+    window.addEventListener('popstate', saveScrollPosition);
+
     return () => {
-      window.removeEventListener('scroll', saveScroll);
-      window.removeEventListener('beforeunload', handleUnload);
-      handleUnload();  // Save on unmount too
+      window.removeEventListener('beforeunload', saveScrollPosition);
+      window.removeEventListener('popstate', saveScrollPosition);
+      // Final save on unmount
+      saveScrollPosition();
     };
-  }, [pathname]);
+  }, []);
+
+  // This component renders nothing
+  return null;
 }

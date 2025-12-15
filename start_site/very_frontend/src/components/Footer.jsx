@@ -34,11 +34,11 @@ export default function Footer() {
           <ul className="space-y-3 text-sm">
             {[
               ["About", "/about"],
+              ["Shop", "/shop"],
               ["Read", "/read"],
               ["Learn", "/learn"],
               ["Know", "/know"],
               ["Connect", "/connect"],
-              ["Shop", "/shop"],
             ].map(([label, href]) => (
               <li key={href}>
                 <Link
@@ -63,8 +63,8 @@ export default function Footer() {
               ["FAQs", "/faqs"],
               ["Contact", "/contact"],
               ["Support", "/support"],
+              ["Privacy", "/privacy"],
               ["Community", "/community"],
-              ["Privacy Policy", "/privacy"],
               ["Terms of Use", "/terms"],
             ].map(([label, href]) => (
               <li key={href}>
@@ -123,7 +123,8 @@ export default function Footer() {
             className="h-[100px] w-[100px] object-contain hover:scale-105 active:scale-75 transition-transform duration-300"
             width={100}
             height={100}
-            priority={false}
+            priority={true}
+            aria-label="VeryCodedly Logo and Home Link"
           />
         </Link>
 

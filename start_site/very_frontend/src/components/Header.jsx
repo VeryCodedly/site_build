@@ -70,7 +70,7 @@ export default function Header() {
                     width={0}
                     height={0}
                     priority
-                    aria-label="Brand Logo and Home Link"
+                    aria-label="VeryCodedly Logo and Home Link"
                   />
                 </div>
               </Link>
@@ -78,7 +78,7 @@ export default function Header() {
               <nav className="space-x-18 text-xs hidden md:flex">
                 <Link aria-label="Read Page link" href="/read" className="px-2 text-white hover:text-lime-400 transition">READ</Link>
                 <Link aria-label="Learn Page link" href="/learn" className="px-2 text-white hover:text-lime-400 transition">LEARN</Link>
-                <Link aria-label="Youtube Channel link" href="https://www.youtube.com/channel/UCNDy9Q0qPHcY-TT2BD7B1kw" target="_blank" className="px-2 text-white hover:text-lime-400 transition">KNOW</Link>
+                <Link aria-label="Youtube Channel link" href="https://www.youtube.com/@verycodedly" target="_blank" className="px-2 text-white hover:text-lime-400 transition">KNOW</Link>
                 <Link aria-label="Discord link" href="https://discord.gg/53wVsqEcbE" className="px-2 text-white hover:text-lime-400 transition" target="_blank" rel="noopener">CONNECT</Link>
                 {/* <p className="px-2 text-white hover:text-lime-400 transition">🚧</p> */}
               </nav>
@@ -95,24 +95,23 @@ export default function Header() {
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden text-white"
             aria-haspopup="true"
-            tabIndex="0"
             aria-label="More options"
             title="More options"
           >
-            <FontAwesomeIcon icon={menuOpen ? faTimes : faEllipsisV} className="pr-2 hover:text-lime-400 active:text-lime-400" size="lg" />
+            <FontAwesomeIcon icon={menuOpen ? faTimes : faEllipsisV} className="mr-2 hover:text-lime-400 active:text-lime-400" size="lg" />
           </button>
 
       {/* Mobile dropdown */}
       <div
         ref={menuRef}
         className={`fixed top-full left-1/2 w-[84%] -translate-x-1/2 flex flex-col items-center transform transition-all duration-500 ease-in-out
-                bg-black backdrop-blur-lg border-3 border-zinc-700 rounded-4xl py-6.5 space-y-4 md:hidden  
+                bg-black backdrop-blur-lg border-3 border-zinc-700 rounded-4xl py-7 space-y-4 md:hidden  
                 ${menuOpen ? "opacity-100 translate-y-0 z-[60]" : "opacity-0 -translate-y-5 pointer-events-none"}`}
         onClick={() => setMenuOpen(false)}
         >
           <Link
             href="/read"
-            // aria-label="Blog Page link" 
+            aria-label="Read Page link" 
             className="text-white hover:text-lime-400 active:text-lime-400 transition"
             onClick={() => setMenuOpen(false)}
           >
@@ -121,7 +120,7 @@ export default function Header() {
 
           <Link
             href="/learn"
-            // aria-label="Learn Page link"
+            aria-label="Learn Page link"
             className="text-white hover:text-lime-400 active:text-lime-400 transition"
             onClick={() => setMenuOpen(false)}
           >
@@ -129,16 +128,18 @@ export default function Header() {
           </Link>
 
           <Link
-            // aria-label="Youtube Channel link"
-            href="https://www.youtube.com/channel/UCNDy9Q0qPHcY-TT2BD7B1kw"
+            aria-label="Youtube Channel link"
+            href="https://www.youtube.com/@verycodedly"
             className="text-white hover:text-lime-400 active:text-lime-400 transition"
+            target="_blank"
+            rel="noopener"
             onClick={() => setMenuOpen(false)}
           >
             KNOW
           </Link>
 
           <Link
-            // aria-label="Discord link"
+            aria-label="Discord link"
             href="https://discord.gg/53wVsqEcbE"
             className="text-white hover:text-lime-400 active:text-lime-400 transition"
             target="_blank"

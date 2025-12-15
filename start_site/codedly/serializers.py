@@ -49,11 +49,7 @@ class PostSerializer(serializers.ModelSerializer):
     # content_plain_text = serializers.CharField()
     links = PostLinkSerializer(many=True)
     tags = serializers.SlugRelatedField(many=True, read_only=True, slug_field='name')
-    
-    queryset = Post.objects.filter(status="published")
-    filter_backends = [SearchFilter]
-    search_fields = '__all__'
-    
+        
     class Meta:
         model = Post
         fields = '__all__'

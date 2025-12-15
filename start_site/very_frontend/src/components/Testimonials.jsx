@@ -80,7 +80,7 @@ export default function Testimonials() {
           {testimonials.map((_, index) => (
             <span
               key={index}
-              className="relative w-3 h-3 rounded-full bg-gray-600 overflow-hidden"
+              className="relative w-3 h-2.5 rounded-full bg-gray-600 overflow-hidden"
               onClick={() => setCurrent(index)}
             >
               {current === index && (

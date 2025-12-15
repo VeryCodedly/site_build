@@ -1,4 +1,3 @@
-// app/learn/[slug]/layout.tsx
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { unstable_cache } from 'next/cache';
@@ -26,7 +25,7 @@ const getCachedCourse = unstable_cache(
 
       if (!res.ok) return null;
 
-      const data = await res.json(); // AWAIT
+      const data = await res.json(); 
       return data as Course;
     } catch (error) {
       console.error('Fetch failed:', error);

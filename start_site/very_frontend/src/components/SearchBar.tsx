@@ -13,6 +13,7 @@ export default function SearchBar() {
     const [results, setResults] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
+    const [showTopBtn, setShowTopBtn] = useState(false);
 
     // Close on Esc or click outside
     useEffect(() => {
@@ -39,9 +40,7 @@ export default function SearchBar() {
             setResults([]);
             return;
         }
-        const API_URL = process.env.NODE_ENV === "production"
-            ? process.env.NEXT_PUBLIC_API_URL
-            : "http://localhost:8000/api";
+        const API_URL = process.env.NEXT_PUBLIC_API_URL
 
         const timeout = setTimeout(() => {
             setLoading(true);
@@ -86,24 +85,31 @@ export default function SearchBar() {
     document.body.style.overflow = '';
   };
 }, [isOpen]);
+  
+      useEffect(() => {
+          const handleScroll = () => setShowTopBtn(window.scrollY > 100);
+          window.addEventListener("scroll", handleScroll);
+          return () => window.removeEventListener("scroll", handleScroll);
+      }, []);
+
 
     return (
         <>
             {/* Trigger */}
-            <button
+            {showTopBtn && (<button
                 onClick={() => setIsOpen(true)}
                 aria-label="Toggle Search"
                 className="cursor-pointer fixed top-1/2 -translate-y-1/2 right-0 z-50 px-1 py-1 bg-transparent rounded-l-2xl transition-all hover:scale-110
                             shadow-[0_0_5px_3px_rgba(55,55,55,0.4)] outline-none"
             >
-                <FontAwesomeIcon icon={faSearch} className="w-6 h-8 text-gray-300/90 hover:text-white" />
-            </button>
+                <FontAwesomeIcon icon={faSearch} className="w-6 h-6 text-gray-300/90 hover:text-white" size="sm" />
+            </button>)}
 
             {/* Overlay + Search Panel */}
             {isOpen && (
                 <>
                     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-70" />
-                    <div className="fixed top-0 left-0 right-0 z-70 flex justify-center pt-24 px-4">
+                    <div className="fixed top-0 left-0 right-0 z-70 flex justify-center pt-20 px-4">
                         <div
                             ref={inputRef}
                             className="w-full max-w-2xl relative"
@@ -134,7 +140,7 @@ export default function SearchBar() {
                                 className="mt-4 bg-black/5 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl overflow-hidden
                                 w-[94%] sm:w-full max-w-2xl mx-auto">
                                     <div 
-                                        className="overflow-y-auto max-h-[70vh] sm:max-h-[60vh] ax-h-150 m:max-h-80 custom-scrollbar">
+                                        className="overflow-y-auto max-h-[68vh] sm:max-h-[58vh] ax-h-150 m:max-h-80 custom-scrollbar">
                                         {loading && (
                                             <div className="p-3 text-center text-white/70">Searching...</div>
                                         )}

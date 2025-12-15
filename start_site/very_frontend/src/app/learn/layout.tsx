@@ -1,4 +1,4 @@
-import { Providers } from "@/lib/providers";
+// import { Providers } from "@/lib/providers";
 import type { Metadata } from "next";
 import SearchBar from "@/components/SearchBar";
 
@@ -32,10 +32,10 @@ export default function LearnLayout({
 }) {
   return (
     <>
-      <Providers>
+      {/* <Providers> */}
         <SearchBar />
         {children}
-      </Providers>
+      {/* </Providers> */}
     </>
   );
 }

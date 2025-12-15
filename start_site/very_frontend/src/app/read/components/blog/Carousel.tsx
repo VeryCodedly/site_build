@@ -14,18 +14,6 @@ interface CarouselProps {
 export default function Carousel({ posts = [], className = "" }: CarouselProps) {
   const [index, setIndex] = useState(0);
 
-  // Loading / empty state
-  if (!posts || posts.length === 0) {
-    return (
-      <section className={`py-6 px-5 mt-6 ${className}`}>
-        <p className="text-xs text-right text-lime-400 uppercase font-semibold mb-2">
-          {''}
-        </p>
-        <div className="bg-zinc-900/50 rounded-xl h-96 animate-pulse" />
-      </section>
-    );
-  }
-
   const current = posts[index];
 
   return (
@@ -57,7 +45,7 @@ export default function Carousel({ posts = [], className = "" }: CarouselProps) 
                 width={1200}
                 height={600}
                 className="w-full h-96 object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
-                priority={index === 0}
+                priority
               />
             ) : (
               <div className="w-full h-96 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl" />
@@ -78,7 +66,7 @@ export default function Carousel({ posts = [], className = "" }: CarouselProps) 
             <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 line-clamp-3">
               {current.title}
             </h1>
-            <p className="text-gray-300 text-sm line-clamp-3">
+            <p className="text-gray-300 text-sm line-clamp-4">
               {current.excerpt}
             </p>
           </Motion.div>
@@ -86,12 +74,12 @@ export default function Carousel({ posts = [], className = "" }: CarouselProps) 
       </Link>
 
       {/* Dots */}
-      <div className="flex justify-center gap-2 mt-4">
+      <div className="flex justify-center gap-3 mt-4">
         {posts.map((_, i) => (
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`cursor-pointer w-2 h-2 rounded-full transition-all duration-300 ${
+            className={`cursor-pointer w-2.5 h-2 rounded-full transition-all duration-300 ${
               i === index ? 'bg-lime-400 w-8' : 'bg-gray-600'
             }`}
             aria-label={`Go to slide ${i + 1}`}

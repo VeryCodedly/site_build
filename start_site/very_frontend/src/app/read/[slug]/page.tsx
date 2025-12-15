@@ -1,3 +1,57 @@
+import { notFound } from 'next/navigation';
+import { unstable_cache } from 'next/cache';
+import { Post } from '@/types/post';
+import PostClient from './PostClient';
+
+const getCachedPost = unstable_cache(
+  async (slug: string): Promise<Post | null> => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    if (!apiUrl) return null;
+
+    const res = await fetch(`${apiUrl}/posts/${slug}/`, {
+      next: { revalidate: 60 },
+    });
+
+    if (!res.ok) return null;
+    return (await res.json()) as Post;
+  },
+  ['post-by-slug'],
+  { revalidate: 60 }
+);
+
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = await getCachedPost(slug);
+
+  if (!post) notFound();
+  
+  // Extract subcategory slug
+  const subSlug = post.subcategory?.slug;
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    if (!apiUrl) return null;
+
+  // 2. Fetch related + trending in parallel
+  const [relatedRes, trendingRes] = await Promise.all([
+    subSlug
+      ? fetch(`${apiUrl}/subcategories/${subSlug}/posts/`)
+      : Promise.resolve(new Response(JSON.stringify({ ok: false }))),
+
+    fetch(`${apiUrl}/subcategories/trending-now/posts/`)
+  ]);
+
+  const related = relatedRes.ok ? await relatedRes.json() : { results: [] };
+  const trending = trendingRes.ok ? await trendingRes.json() : { results: [] };
+
+
+  return (
+    <PostClient post={post} related={related.results || []} trending={trending.results || []} />
+     );
+}
+
 // 'use client';
 
 // import { useParams } from 'next/navigation';
@@ -45,86 +99,3 @@
 //     </div>
 //   );
 // }
-
-'use client';
-
-import { useParams } from 'next/navigation';
-import { useGetPostBySlugQuery } from '@/features/api/apiSlice';
-import Link from 'next/link';
-import { motion as Motion } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { Post } from '@/types/post';
-import NewsletterCard from '../components/blog/NewsletterCard';
-import RelatedPostsSection from '../components/blog/RelatedPostsSection';
-import PostContent, { BlogBlock } from '../components/blog/PostContent';
-
-
-interface BlogContentJSON {
-  title?: string;
-  blocks: BlogBlock[];
-}
-
-export default function BlogPost() {
-  const { slug } = useParams<{ slug: string }>();
-  const { data: postData, error, isLoading } = useGetPostBySlugQuery(slug!);
-
-  if (isLoading) {
-    return (
-      <section className="flex justify-center items-center min-h-screen bg-gradient-to-b from-black to-zinc-900 text-gray-400">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-lime-400 mx-auto mb-4"></div>
-        </div>
-      </section>
-    );
-  }
-
-  if (error || !postData) {
-    return (
-      <section className="flex flex-col justify-center items-center min-h-screen bg-gradient-to-b from-black to-zinc-900 text-gray-400 px-4">
-        <div className="text-center py-20">
-          <p className="text-rose-400 text-lg mb-4">
-            Failed to load posts
-          </p>
-          <button
-            onClick={() => window.location.reload()}
-            className="px-6 py-1 bg-rose-500/20 hover:bg-rose-500/30 border border-rose-500/30 rounded-full text-rose-300 transition-all"
-          >
-            Try Again
-          </button>
-        </div>
-      </section >
-    );
-  }
-
-  const post: Post = postData;
-
-  let contentJson: BlogContentJSON | null = null;
-  try {
-    contentJson = typeof post.content_JSON === 'string'
-      ? JSON.parse(post.content_JSON)
-      : post.content_JSON as BlogContentJSON | unknown;
-  } catch (err) {
-    console.error('BlogPost: Failed to parse content_JSON →', err);
-  }
-
-  return (
-    <section className="relative w-full bg-gradient-to-b from-black via-zinc-950 to-black text-white min-h-screen py-12 sm:py-12 px-9">
-      {/* Back Button */}
-      <Motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }} className="max-w-6xl mx-auto mb-6 sm:mb-6">
-        <Link href="/read" className="inline-flex items-center gap-2 text-lime-400 hover:text-white underline underline-offset-2 transition-all duration-200 text-sm sm:text-base">
-          <FontAwesomeIcon icon={faArrowLeft} size="lg" />
-          <span className="sr-only">Go Home</span>
-        </Link>
-      </Motion.div>
-
-      <article className="max-w-4xl mx-auto">
-        <PostContent post={post} contentJson={contentJson} />
-      </article>
-
-      <RelatedPostsSection subSlug={post.subcategory?.slug || "Posts"} />
-
-      <NewsletterCard />
-    </section>
-  );
-}

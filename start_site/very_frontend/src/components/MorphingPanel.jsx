@@ -153,7 +153,7 @@ export default function MorphingPanel({ className = "" }) {
                   key={i}
                   src={logo.src}
                   alt={logo.alt}
-                  className="object-contain absolute transition duration-300 hover:drop-shadow-[0_0_4px_#fff] hover:scale-110 hover:opacity-100 opacity-80 active:drop-shadow-[0_0_6px_#fff] active:scale-110 active:opacity-100"
+                  className="object-contain touch-none select-none absolute transition duration-300 hover:drop-shadow-[0_0_4px_#fff] hover:scale-110 hover:opacity-100 opacity-80 active:drop-shadow-[0_0_6px_#fff] active:scale-110 active:opacity-100"
                   style={{
                     left: `calc(50% + ${x}px)`,
                     top: `calc(50% + ${y}px)`,
@@ -164,7 +164,7 @@ export default function MorphingPanel({ className = "" }) {
                   }}
                   width={35}
                   height={35}
-                  onContextMenu={(e) => e.preventDefault()}
+                  onContextMenu={(e) => {e.preventDefault(); e.stopPropagation(); return false;}}
                   draggable={false}
                 />
               );

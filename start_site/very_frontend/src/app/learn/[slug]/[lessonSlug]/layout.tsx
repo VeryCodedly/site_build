@@ -1,4 +1,3 @@
-// app/learn/[slug]/[lessonSlug]/layout.tsx
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { unstable_cache } from 'next/cache';
@@ -17,8 +16,7 @@ const getCachedLesson = unstable_cache(
         return null;
       }
 
-      // YOUR BACKEND ENDPOINT
-      const url = `${apiUrl}/courses/${courseSlug}/lessons/${lessonSlug}`;
+      const url = `${apiUrl}/${courseSlug}/${lessonSlug}`;
       // Example: /courses/html-for-beginners/lessons/intro-to-html
 
       const res = await fetch(url, {
@@ -28,7 +26,7 @@ const getCachedLesson = unstable_cache(
 
       if (!res.ok) return null;
 
-      const data = await res.json(); // AWAIT
+      const data = await res.json(); 
       return data as Lessons;
     } catch (error) {
       console.error('Fetch failed:', error);

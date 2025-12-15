@@ -1,4 +1,3 @@
-// components/blog/PostCardMini.tsx
 import Image from 'next/image';
 import Link from 'next/link';
 import { Post } from '@/types/post';
@@ -18,10 +17,9 @@ export default function MiniPostCard({ post }: { post: Post }) {
             aria-label={`${post.caption} link`}
           />
         </div>
-
       )}
       <div>
-        <h3 className="text-sm lg:text-base text-white group-hover:text-lime-400 group-active:text-lime-400 line-clamp-3">
+        <h3 className="text-sm sm:text-base text-white group-hover:text-lime-400 group-active:text-lime-400 line-clamp-3">
           {post.title}
         </h3>
         <p className="text-xs text-gray-400/80 mt-1">

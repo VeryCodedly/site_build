@@ -64,12 +64,12 @@ export default function LearnSection() {
             href="/learn"
             aria-label="Learn page button"
             //   className="inline-block mt-14 px-8 py-3 rounded-full bg-lime-400/10 hover:bg-lime-400/20 text-lime-300 transition-all duration-300"
-            className="font-bold cursor-pointer border-3 border-gray-500/100 bg-transparent px-7.5 py-1 rounded-full text-white hover:bg-white active:bg-white hover:text-black
+            className="font-bold cursor-pointer border-3 border-gray-500/100 bg-transparent px-8.5 py-1 rounded-full text-white hover:bg-white active:bg-white hover:text-black
                     active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
           >
-            <span className="sr-only">Learn Here</span>
+            <span className="sr-only">Learn Now</span>
             <span className="lg:hidden">Learn</span>
-            <span className="hidden lg:inline">Learn Here</span>
+            <span className="hidden lg:inline">Learn Now</span>
           </Link>
         </div>
       </div>

@@ -1,8 +1,18 @@
 import type { Metadata } from "next";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { Providers } from '../../lib/providers';
+// import { Providers } from '../../lib/providers';
 import FloatingMenu from "./components/blog/FloatingMenu";
 import SearchBar from "@/components/SearchBar";
+
+async function getCategories() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories/`, {
+    next: { revalidate: 3600 },
+  });
+  if (!res.ok) return [];
+  const data = await res.json();
+  return data.results || [];
+}
+
 
 export const metadata: Metadata = {
   title: "Read",
@@ -27,18 +37,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ReadLayout({
+export default async function ReadLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const categories = await getCategories();
   return (
     <>
-      <Providers>
-        <FloatingMenu />
+      {/* <Providers> */}
+        <FloatingMenu categories={categories} />
         <SearchBar />
         {children}
-      </Providers>
+      {/* </Providers> */}
     </>
   );
 }

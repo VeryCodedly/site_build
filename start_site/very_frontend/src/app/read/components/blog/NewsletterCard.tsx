@@ -15,10 +15,25 @@ export default function NewsletterCard() {
   const [isVisible, setIsVisible] = useState(false);
 
   // Show card after 25 seconds
+  // useEffect(() => {
+  //   const timer = setTimeout(() => setIsVisible(true), 25000);
+  //   return () => clearTimeout(timer);
+  // }, []);
+
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 25000);
+  // Check if shown this session
+  const hasSeenThisSession = sessionStorage.getItem('hasSeenNewsletterCard');
+
+  if (!hasSeenThisSession) {
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+      // Mark seen for session only
+      sessionStorage.setItem('hasSeenNewsletterCard', 'true');
+    }, 25000); // 25 seconds
+
     return () => clearTimeout(timer);
-  }, []);
+  }
+}, []);
 
   // Validation 
   const validate = useCallback(() => {
@@ -79,7 +94,7 @@ export default function NewsletterCard() {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.4 }}
-      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 max-w-[80vw] sm:max-w-md rounded-xl border-2 
+      className="fixed bottom-5 right-8 sm:bottom-5.5 sm:right-8 max-w-[80vw] sm:max-w-md rounded-xl border-2 
       border-white/20 bg-gradient-to-br from-black/30 to-transparent/60 backdrop-blur-lg shadow-[0_0_2px_#cccccc] 
       hover:shadow-[0_0_10px_#222222] active:shadow-[0_0_10px_#222222] p-6 sm:p-8 text-center transition-all duration-300 z-50"
       role="dialog"
@@ -88,7 +103,7 @@ export default function NewsletterCard() {
     >
       <button
         onClick={handleClose}
-        className="absolute top-2 right-2 text-gray-300 hover:text-lime-400 active:text-lime-400 focus:outline-none 
+        className="absolute top-2 right-2 text-sm sm:text-base text-gray-300 hover:text-lime-400 active:text-lime-400 focus:outline-none 
         focus:ring-2 focus:ring-lime-400 focus:ring-offset-2 focus:ring-offset-[#181d1d] p-1 rounded-md"
         aria-label="Close newsletter modal"
       >

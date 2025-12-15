@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function CTA() {
   return (
-    <section className="relative bg-gradient-to-br from-black via-zinc-900 to-black text-white py-28 px-10 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black text-white py-20 px-10 overflow-hidden">
 
       {/* Accent Glow */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-lime-400/20 rounded-full blur-[120px]"></div>
@@ -11,9 +11,9 @@ export default function CTA() {
       <div className="max-w-6xl mx-auto px-6 relative z-10 flex justify-end">
         <div className="text-right md:w-1/2">
           <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight bg-gradient-to-r from-white to-lime-300 bg-clip-text text-transparent">
-            Ready to Create <br /> Something Brilliant?
+            Ready<br /> to Create <br /> Something Brilliant?
           </h2>
-          <p className="text-gray-300/90 text-md md:text-lg mb-10 max-w-lg ml-auto">
+          <p className="text-gray-300/90 px-1 sm:px-0 text-base md:text-lg mb-10 max-w-sm ml-auto">
             Start learning with a community of bold thinkers, dreamers, and doers. Your next big thing starts here.
           </p>
 

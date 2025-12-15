@@ -6,7 +6,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import TopButton from "@/components/TopButton";
 import Footer from "@/components/Footer";
-import { usePathname } from "next/navigation";
+import ScrollRestoration from '@/components/ScrollRestoration';
 
 config.autoAddCss = false;
 
@@ -87,6 +87,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://api.verycodedly.com" />
 
@@ -108,6 +109,7 @@ export default function RootLayout({
       </head>
       <body className={`${pops.variable} ${robo.variable} ${geist.variable} antialiased`}>
         <Header />
+        <ScrollRestoration />
         {children}
         <TopButton />
         <Footer />
@@ -116,9 +118,4 @@ export default function RootLayout({
   );
 }
 
-// export const viewport = {
-//   width: "device-width",
-//   initialScale: 1,
-//   interactiveWidget: "restores",
-// };
 // Tech. Code. Culture. We’re your friendly neighborhood tech hub — decoding the stories, tools, and trends shaping the future of the web.

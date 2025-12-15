@@ -186,6 +186,9 @@ class Post(models.Model):
         default="draft"
     )
 
+    class Meta:
+        ordering = ["-created_at"]
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
@@ -210,7 +213,6 @@ class Post(models.Model):
             # Auto-generate alt if empty
             if not self.alt:
                 self.alt = self.caption.lower().replace(" ", "-")
-
 
         super().save(*args, **kwargs)
 
