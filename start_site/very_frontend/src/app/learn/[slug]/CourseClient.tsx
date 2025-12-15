@@ -22,6 +22,7 @@ const LessonCard = memo(
     const isCompleted = completed.includes(lesson.slug);
 
     return (
+      <Link href={`/learn/${courseSlug}/${lesson.slug}`} aria-label={lesson.title}>
       <Motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -32,7 +33,6 @@ const LessonCard = memo(
                    hover:border-gray-400/30 hover:shadow-[0_0_10px_rgba(164,255,130,0.15)] ease-in-out
                    active:border-gray-400/30 active:shadow-[0_0_10px_rgba(164,255,130,0.1)] transition-all duration-300 group relative"
       >
-        <Link href={`/learn/${courseSlug}/${lesson.slug}`} aria-label={lesson.title}>
           {isCompleted && (
             <FontAwesomeIcon
               icon={faCheckCircle}
@@ -51,8 +51,8 @@ const LessonCard = memo(
               className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform"
             />
           </p>
-        </Link>
       </Motion.div>
+      </Link>
     );
   }
 );

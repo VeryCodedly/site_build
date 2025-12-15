@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function CTA() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-black via-zinc-900 to-black text-white py-20 px-10 overflow-hidden">
+    <section className="relative in-h-screen bg-gradient-to-br from-black via-zinc-900 to-black text-white py-30 px-10 overflow-hidden">
 
       {/* Accent Glow */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[250px] h-[250px] bg-lime-400/20 rounded-full blur-[120px]"></div>

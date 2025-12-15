@@ -25,7 +25,7 @@
  export default function LearnPage({ courses }: Props) {
    return (
      <div>
-       <section className="relative w-full min-h-screen my-auto bg-black text-white overflow-hidden pt-24 pb-0 sm:pb-12 px-8 sm:px-6 lg:px-8">
+       <section className="relative w-full min-h-screen my-auto bg-black text-white overflow-hidden pt-30 sm:pt-24 pb-0 sm:pb-12 px-8 sm:px-6 lg:px-8">
          {/* subtle grid / pattern background */}
          <div className="absolute inset-0 bg-linear-gradient(135deg, #0f111a, #1a1c2c) bg-center bg-cover opacity-20 pointer-events-none"></div>
          {/* content wrapper */}
@@ -98,7 +98,7 @@
            <p className="text-xs uppercase tracking-widest text-gray-500 mb-3">The Philosophy</p>
            <h2 className="text-2xl font-semibold text-white">Why Learn</h2>
          </div>
-         <div className="md:col-span-2 text-gray-300 leading-relaxed space-y-4">
+         <div className="md:col-span-2 text-gray-300/90 leading-relaxed space-y-4">
            <p>
              Some coding resources rush you from syntax to frameworks. VeryCodedly goes the other way —
              understanding first, speed later.
@@ -156,7 +156,7 @@
            ].map((track) => (
              <Motion.div
                key={track.name}
-               className="bg-zinc-900/60 border border-zinc-800 m-3 sm:m-0 p-4 sm:p-6 rounded-2xl 
+               className="bg-zinc-900/60 border border-zinc-800 m-3 sm:m-0 p-6 rounded-2xl 
                            hover:shadow-[0_0_10px_#222222] backdrop-blur-md transition-all"
                whileHover={{ y: -5 }}
                tabIndex={0}
@@ -185,7 +185,7 @@
          <div className="relative grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6">
            {[
              {
-               name: "Introduction to Python",
+               name: "Intro to Python",
                slug: "introduction-to-python",
                course: "python-course",
                desc: "Python is one of the most widely used languages in the world. You'll find it everywhere: powering apps like Instagram, helping scientists train AI models, and running simple scripts that automate everyday tasks.",

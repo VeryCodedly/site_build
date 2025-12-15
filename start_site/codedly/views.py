@@ -28,7 +28,7 @@ from .serializers import CategoryPostsSerializer, PostSerializer, CategorySerial
 class BaseAPIView(APIView):
     def finalize_response(self, request, response, *args, **kwargs):
         response = super().finalize_response(request, response, *args, **kwargs)
-        response.headers['X-Robots-Tag'] = 'noindex, nofollow'
+        # response.headers['X-Robots-Tag'] = 'noindex, nofollow'
         return response
     def dispatch(self, request, *args, **kwargs):
         if request.path.startswith('/nkemjika/'):
@@ -41,9 +41,9 @@ class BaseAPIView(APIView):
             # Clean old timestamps (40-sec window)
             requests = [t for t in requests if now - t < 40]
 
-            if any(bot in user_agent for bot in ['bot', 'scraper', 'curl', 'wget', 'python-requests', 'scrapy', 'headless']):
-                if len(requests) >= 5:
-                    return JsonResponse({"error": "Bot detected. Access denied."}, status=403)
+            if any(bot in user_agent for bot in ['scraper', 'curl', 'wget', 'python-requests', 'scrapy', 'headless']):
+                if len(requests) >= 3:
+                    return JsonResponse({"error": "Access denied."}, status=403)
 
             # Normal limit — 40/min
             if len(requests) >= 40:
@@ -94,10 +94,10 @@ def api_home(request):
         </head>
         <body>
             <a href="/">VeryCodedly</a>
-            <span>As you don reach here, well don, you try, but as I dey look you, waka commot before I close eye, open am. Nice meeting you.</span>
         </body>
         </html>
     """)
+            # <span>As you don reach here, well don, you try, but as I dey look you, waka commot before I close eye, open am. Nice meeting you.</span>
     
 @api_view(["GET"])
 def global_search(request):

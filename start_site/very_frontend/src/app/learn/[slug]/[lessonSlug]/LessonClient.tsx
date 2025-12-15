@@ -75,7 +75,7 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
         <Link
           href={`/learn/${courseSlug}`}
           aria-label="Back to Lessons"
-          className="inline-flex items-center gap-2 text-lime-400 mb-8 ml-8 hover:text-white active:text-white active:scale-60 text-sm sm:text-base transition-all duration-300"
+          className="inline-flex items-center gap-2 text-lime-400 mb-8 ml-4 hover:text-white active:text-white active:scale-60 text-sm sm:text-base transition-all duration-300"
         >
           <FontAwesomeIcon icon={faArrowLeft} size="lg" />
           <span className="sr-only">Back to Lessons</span>
@@ -88,7 +88,7 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
           onMouseEnter={() => setIsMenuOpen(true)}
           onMouseLeave={() => setIsMenuOpen(false)}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="fixed p-2 left-0 top-1/2 -translate-y-1/2 z-[60] w-6 h-7 sm:w-6 sm:h-7 flex items-center justify-center rounded-r-xl bg-transparent text-white hover:bg-white/8 active:bg-white/8 backdrop-blur-md border-l-0 transition-all focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-pink-300/70 shadow-[0_0_5px_3px_rgba(55,55,55,0.08)] hover:shadow-[0_0_7px_3px_rgba(255,255,255,0.1)] active:shadow-[0_0_7px_3px_rgba(255,255,255,0.1)]"
+          className="fixed p-2 left-0 top-1/2 -translate-y-1/2 z-[60] w-6 h-7 sm:w-6 sm:h-7 flex items-center justify-center rounded-r-xl bg-transparent text-white hover:bg-white/8 active:bg-white/8 backdrop-blur-md border-l-0 transition-all focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-pink-300/70 shadow-[0_0_5px_3px_rgba(55,55,55,0.4)] hover:shadow-[0_0_7px_3px_rgba(255,255,255,0.08)] active:shadow-[0_0_7px_3px_rgba(255,255,255,0.08)]"
           aria-label="Toggle menu"
         >
           <FontAwesomeIcon

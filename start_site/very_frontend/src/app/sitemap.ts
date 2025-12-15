@@ -25,10 +25,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // READ POSTS
   const readUrls: MetadataRoute.Sitemap = [];
   try {
-    const res = await fetch(`${API_BASE}/posts/`, { next: { revalidate: 3600 } });
-    if (res.ok) {
+    let postsUrl: string | null = `${API_BASE}/posts/`;
+    while (postsUrl) {
+      const res = await fetch(postsUrl, { next: { revalidate: 3600 } });
+      if (!res.ok) {
+        console.error(`Failed to fetch posts from ${postsUrl}`);
+        break;
+      }
       const data = await res.json();
-      (data.results || []).forEach((post: Post) => {
+      const posts = data.results || [];
+
+      posts.forEach((post: Post) => {
         readUrls.push({
           url: `${baseUrl}/read/${post.slug}`,
           lastModified: new Date(post.updated_at || post.created_at || new Date()),
@@ -36,9 +43,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           priority: 0.9,
         });
       });
+
+      postsUrl = data.next || null;
     }
+
+    console.log(`Added ${readUrls.length} post URLs to sitemap`);
   } catch (err) {
-    console.error("Failed to fetch posts:", err);
+    console.error("Error fetching paginated posts:", err);
   }
 
   // READ CATEGORIES
@@ -79,42 +90,52 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Failed to fetch subcategories:", err);
   }
 
-  // COURSES
+  // COURSES + LESSONS
   const courseUrls: MetadataRoute.Sitemap = [];
   const lessonUrls: MetadataRoute.Sitemap = [];
 
   try {
-    const res = await fetch(`${API_BASE}/courses/`, { next: { revalidate: 3600 } });
-    if (res.ok) {
-      const data = await res.json();
-      const courses = data.results || [];
+    const coursesRes = await fetch(`${API_BASE}/courses/`, { next: { revalidate: 3600 } });
+    if (coursesRes.ok) {
+      const coursesData = await coursesRes.json();
+      const courses = coursesData.results || coursesData || [];
 
+      // Add course URLs
       courses.forEach((course: Course) => {
-        // Course page
         courseUrls.push({
           url: `${baseUrl}/learn/${course.slug}`,
           lastModified: new Date(course.updated_at || course.created_at || new Date()),
           changeFrequency: "weekly" as const,
           priority: 0.9,
         });
-
-        // Fetch lessons
-        fetch(`${API_BASE}/courses/${course.slug}/lessons/`, { next: { revalidate: 3600 } })
-          .then(r => r.ok ? r.json() : null)
-          .then(data => {
-            if (data?.results) {
-              data.results.forEach((lesson: Lessons) => {
-                lessonUrls.push({
-                  url: `${baseUrl}/learn/${course.slug}/${lesson.slug}`,
-                  lastModified: new Date(lesson.updated_at || lesson.created_at || new Date()),
-                  changeFrequency: "monthly" as const,
-                  priority: 0.7,
-                });
-              });
-            }
-          })
-          .catch(err => console.error(`Lessons fetch failed for ${course.slug}:`, err));
       });
+
+      // Fetch lessons in parallel
+      const lessonPromises = courses.map(async (course: Course) => {
+        try {
+          const lessonsRes = await fetch(`${API_BASE}/courses/${course.slug}/`, {
+            next: { revalidate: 3600 },
+          });
+          if (!lessonsRes.ok) return [];
+
+          const lessonsData = await lessonsRes.json();
+          const rawLessons = lessonsData.lessons || lessonsData.results || lessonsData || [];
+          const lessons = Array.isArray(rawLessons) ? rawLessons : [];
+
+          return lessons.map((lesson: Lessons) => ({
+            url: `${baseUrl}/learn/${course.slug}/${lesson.slug}`,
+            lastModified: new Date(lesson.updated_at || lesson.created_at || new Date()),
+            changeFrequency: "weekly" as const, 
+            priority: 0.8,
+          }));
+        } catch (err) {
+          console.error(`Lessons fetch failed for ${course.slug}:`, err);
+          return [];
+        }
+      });
+
+      const allLessonsArrays = await Promise.all(lessonPromises);
+      lessonUrls.push(...allLessonsArrays.flat());
     }
   } catch (err) {
     console.error("Failed to fetch courses:", err);

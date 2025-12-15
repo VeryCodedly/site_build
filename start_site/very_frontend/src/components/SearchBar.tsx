@@ -109,7 +109,7 @@ export default function SearchBar() {
             {isOpen && (
                 <>
                     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-70" />
-                    <div className="fixed top-0 left-0 right-0 z-70 flex justify-center pt-20 px-4">
+                    <div className="fixed top-0 left-0 right-0 z-70 flex justify-center pt-24 sm:pt-20 px-4">
                         <div
                             ref={inputRef}
                             className="w-full max-w-2xl relative"
