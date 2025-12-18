@@ -78,8 +78,8 @@ MIDDLEWARE = [
 ]
 
 # Axes settings 
-AXES_FAILURE_LIMIT = 25                  # lock after 5 wrong passwords
-AXES_COOLOFF_TIME = 60 * 60             # 1-hour lockout
+AXES_FAILURE_LIMIT = 3                  # lock after 5 wrong passwords
+AXES_COOLOFF_TIME = 60 * 120             # 1-hour lockout
 AXES_LOCK_OUT_BY_IP = True              # lock IP
 AXES_RESET_ON_SUCCESS = True            # reset counter on correct
 AXES_LOCK_OUT_BY_USER_AGENT = True

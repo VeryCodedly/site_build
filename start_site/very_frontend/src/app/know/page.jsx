@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export default function KnowPage() {
   return (
-    <main className="relative min-h-screen bg-black text-white overflow-hidden">
+    <main className="relative min-h-screen bg-black mb-30 text-white overflow-hidden">
       {/* subtle background accent */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(239,68,68,0.08),_transparent_55%)]" />
 
-      <section className="relative z-10 max-w-3xl mx-auto px-6 py-30 text-center">
+      <section className="relative z-10 max-w-3xl mx-auto px-6 py-36 text-center">
         <p className="text-xs uppercase tracking-widest text-gray-500 mb-4">
           Video
         </p>
@@ -17,7 +17,7 @@ export default function KnowPage() {
         </h1>
 
         <p className="text-base text-gray-300 max-w-2xl mx-auto px- leading-relaxed">
-          Clear explanations of tech trends, tools, and ideas — for people
+          Unfiltered takes on Tech, Code, Culture and everything in between — for people
           who want to understand what’s happening, not just keep up.
         </p>
 
