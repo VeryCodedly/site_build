@@ -94,7 +94,7 @@ export default function NewsletterCard() {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.4 }}
-      className="fixed bottom-5 right-8 sm:bottom-5.5 sm:right-8 max-w-[80vw] sm:max-w-md rounded-xl border-2 
+      className="fixed bottom-12 right-8 sm:bottom-5.5 sm:right-8 max-w-[80vw] sm:max-w-md rounded-xl border-2 
       border-white/20 bg-gradient-to-br from-black/30 to-transparent/60 backdrop-blur-lg shadow-[0_0_2px_#cccccc] 
       hover:shadow-[0_0_10px_#222222] active:shadow-[0_0_10px_#222222] p-6 sm:p-8 text-center transition-all duration-300 z-50"
       role="dialog"

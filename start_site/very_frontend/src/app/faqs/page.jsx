@@ -26,6 +26,9 @@ export default function FAQsPage() {
         >
           FAQs
         </Motion.h2>
+        <p className="text-gray-300 text-sm sm:text-base leading-relaxed pb-4">
+          Get answers to your questions.
+        </p>
         <div className="space-y-6 sm:space-y-8">
           <Motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -33,7 +36,7 @@ export default function FAQsPage() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Is this platform free?</h3>
-            <p className="text-gray-300/80 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed">
               Yes! Most of our content is free to access. Premium resources may come later,
               but our goal is to keep learning open.
             </p>
@@ -44,7 +47,7 @@ export default function FAQsPage() {
             transition={{ duration: 0.5, delay: 0.3 }}
           >
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Do I need prior coding experience?</h3>
-            <p className="text-gray-300/80 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed">
               Nope. We design lessons and articles for absolute beginners all the way to advanced learners.
             </p>
           </Motion.div>
@@ -54,7 +57,7 @@ export default function FAQsPage() {
             transition={{ duration: 0.5, delay: 0.5 }}
           >
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Can I learn at my own pace?</h3>
-            <p className="text-gray-300/80 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed">
               Absolutely. All content is self-paced. No deadlines, no pressure. Learn whenever and however you want.
             </p>
           </Motion.div>
@@ -76,7 +79,7 @@ export default function FAQsPage() {
             transition={{ duration: 0.5, delay: 0.7 }}
           >
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">What if I get stuck on a lesson?</h3>
-            <p className="text-gray-300/80 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed">
               Jump into our <Link href="https://discord.gg/53wVsqEcbE" className="text-lime-400 underline hover:text-lime-300 transition-colors duration-200"> community</Link>.
               Ask questions, see solutions, or pair up with a study buddy. You're never alone.
             </p>
@@ -88,7 +91,7 @@ export default function FAQsPage() {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">How do I join the community?</h3>
-            <p className="text-gray-300/80 text-sm sm:text-base leading-relaxed">
+            <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed">
               Check out our <Link href="/community" className="text-lime-400 underline hover:text-lime-300 transition-colors duration-200">community page</Link> to join Discord or Facebook groups.
             </p>
           </Motion.div>

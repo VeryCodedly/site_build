@@ -44,7 +44,7 @@ export default function Carousel({ posts = [], className = "" }: CarouselProps) 
                 alt={current.alt || current.title}
                 width={1200}
                 height={600}
-                className="w-full h-96 object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                className="w-full h-98 object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
                 priority
               />
             ) : (
@@ -74,13 +74,13 @@ export default function Carousel({ posts = [], className = "" }: CarouselProps) 
       </Link>
 
       {/* Dots */}
-      <div className="flex justify-center gap-3 mt-4">
+      <div className="flex justify-center gap-2.5 mt-4">
         {posts.map((_, i) => (
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`cursor-pointer w-2.5 h-2 rounded-full transition-all duration-300 ${
-              i === index ? 'bg-lime-400 w-8' : 'bg-gray-600'
+            className={`cursor-pointer w-2 h-2 rounded-full transition-all duration-300 ${
+              i === index ? 'bg-lime-400 w-7' : 'bg-gray-600'
             }`}
             aria-label={`Go to slide ${i + 1}`}
           />

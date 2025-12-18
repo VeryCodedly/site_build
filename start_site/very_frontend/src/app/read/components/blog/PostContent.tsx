@@ -4,7 +4,7 @@ import { motion as Motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLongArrowRight, faCalendar, faUser, faHashtag, faImage, faLink, faCopy, faCommentDots } from '@fortawesome/free-solid-svg-icons';
+import { faLongArrowRight, faCalendar, faUser, faHashtag, faImage, faLink, faCopy, faComment } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faLinkedinIn, faTwitter, faWhatsapp, faDiscord, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import CodeBlock from '@/app/learn/components/CodeBlock';
 import { Post } from '@/types/post';
@@ -310,7 +310,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
       className="mb-8 sm:mb-12"
     >
       <h3 className="text-lg sm:text-xl font-bold mb-4 text-lime-300 flex items-center gap-3">
-        <FontAwesomeIcon icon={faCommentDots} /> Join the Discussion
+        <FontAwesomeIcon icon={faComment} /> Join the Discussion
       </h3>
 
       <p className="italic text-gray-400 text-sm sm:text-base mb-6 leading-relaxed">

@@ -4,9 +4,21 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXTwitter, faYoutube, faFacebook, faDiscord, faLinkedin, faTiktok, faInstagram, faReddit, faMedium } from "@fortawesome/free-brands-svg-icons";
-import { library } from "@fortawesome/fontawesome-svg-core";
-library.add(faXTwitter, faYoutube, faFacebook, faDiscord, faLinkedin, faTiktok, faInstagram, faReddit, faMedium);
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faXTwitter, faYoutube, faFacebook, faDiscord, faLinkedin, faTiktok, faInstagram, faMedium } from "@fortawesome/free-brands-svg-icons";
+
+
+const socials = [
+  { icon: faXTwitter, link: "https://x.com/verycodedly" },
+  { icon: faYoutube, link: "https://www.youtube.com/@verycodedly" },
+  { icon: faEnvelope, link: "https://verycodedly.substack.com" },
+  { icon: faDiscord, link: "https://discord.gg/53wVsqEcbE" },
+  { icon: faMedium, link: "https://medium.com/@verycodedly" },
+  { icon: faLinkedin, link: "https://linkedin.com/in/verycodedly" },
+  { icon: faFacebook, link: "https://facebook.com/verycodedly" },
+  { icon: faInstagram, link: "https://instagram.com/verycodedly" },
+  { icon: faTiktok, link: "https://tiktok.com/@verycodedly" },
+];
 
 export default function Footer() {
   return (
@@ -19,7 +31,7 @@ export default function Footer() {
         {/* Brand Column */}
         <div>
           <h3 className="text-lime-400 text-xl font-bold mb-3">
-            VeryCodedly{/* <span className="text-xs">™</span> */}
+            VeryCodedly<span className="text-xs">™</span>
           </h3>
           <p className="text-sm text-gray-400/80 leading-tight w-[140px]">
             For the curious minds shaping the future, you're in good company here.
@@ -86,25 +98,15 @@ export default function Footer() {
             Connect
           </h3>
           <div className="grid grid-cols-3 gap-y-5 gap-x-4 mt-4 items-start">
-            {[
-              ["x-twitter", "https://x.com/verycodedly"],
-              ["youtube", "https://www.youtube.com/@verycodedly"],
-              ["reddit", "https://reddit.com/r/VeryCodedly"],
-              ["discord", "https://discord.gg/53wVsqEcbE"],
-              ["medium", "https://medium.com/@verycodedly"],
-              ["linkedin", "https://linkedin.com/in/verycodedly"],
-              ["facebook", "https://facebook.com/verycodedly"],
-              ["instagram", "https://instagram.com/verycodedly"],
-              ["tiktok", "https://tiktok.com/@verycodedly"],
-            ].map(([icon, link]) => (
+            {socials.map(({ icon, link }) => (
               <Link
-                key={icon}
+                key={link}
                 href={link}
                 aria-label={`${icon} link`}
                 target="_blank"
-                className="text-gray-400/80 hover:text-lime-500 hover:scale-110 transition-transform duration-300"
+                className="text-gray-400/80 hover:text-lime-500 active:text-lime-500 hover:scale-110 active:hover:scale-110 transition-transform duration-300"
               >
-                <FontAwesomeIcon icon={["fab", icon]} size="lg" />
+                <FontAwesomeIcon icon={icon} size="lg" />
               </Link>
             ))}
           </div>
@@ -129,7 +131,7 @@ export default function Footer() {
         </Link>
 
         <p className="text-xs text-gray-600 text-center sm:text-right">
-            Powered by curiosity. © VeryCodedly<span className="text-xs">™</span>{" "}{new Date().getFullYear()}.
+            Powered by curiosity. VeryCodedly<span className="text-xs">™</span>{" "}{new Date().getFullYear()}.
         </p>
       </div>
     </footer>

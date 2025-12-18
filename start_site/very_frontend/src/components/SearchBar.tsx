@@ -158,7 +158,7 @@ export default function SearchBar() {
                                             >
                                                 <span className="text-xl sm:text-2xl text-pink-200"><FontAwesomeIcon icon={getIcon(item.icon)} /></span>
                                                 <div>
-                                                    <div className="text-white text-base font-medium">{item.title}</div>
+                                                    <div className="text-white/90 text-base font-medium">{item.title}</div>
                                                     {item.subtitle && (
                                                         <div className="text-white/50 text-sm">{item.subtitle}</div>
                                                     )}
