@@ -11,7 +11,7 @@ class Command(BaseCommand):
     help = "Export published posts from the last X hours without duplicates"
 
     # Change this to 24 or 48 as needed
-    HOURS_WINDOW = 24
+    HOURS_WINDOW = 24 
 
     LOG_FILE = "migrated_slugs.txt"
 
