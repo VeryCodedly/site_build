@@ -5,19 +5,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { faXTwitter, faYoutube, faFacebook, faDiscord, faLinkedin, faTiktok, faInstagram, faMedium } from "@fortawesome/free-brands-svg-icons";
+import { faTwitter, faYoutube, faFacebook, faDiscord, faLinkedin, faTiktok, faInstagram, faMedium } from "@fortawesome/free-brands-svg-icons";
 
 
 const socials = [
-  { icon: faXTwitter, link: "https://x.com/verycodedly" },
   { icon: faYoutube, link: "https://www.youtube.com/@verycodedly" },
-  { icon: faEnvelope, link: "https://verycodedly.substack.com" },
   { icon: faDiscord, link: "https://discord.gg/53wVsqEcbE" },
+  { icon: faTwitter, link: "https://x.com/verycodedly" },
+  { icon: faEnvelope, link: "https://verycodedly.substack.com" },
   { icon: faMedium, link: "https://medium.com/@verycodedly" },
   { icon: faLinkedin, link: "https://linkedin.com/in/verycodedly" },
-  { icon: faFacebook, link: "https://facebook.com/verycodedly" },
   { icon: faInstagram, link: "https://instagram.com/verycodedly" },
   { icon: faTiktok, link: "https://tiktok.com/@verycodedly" },
+  { icon: faFacebook, link: "https://facebook.com/verycodedly" },
 ];
 
 export default function Footer() {
@@ -104,7 +104,7 @@ export default function Footer() {
                 href={link}
                 aria-label={`${icon} link`}
                 target="_blank"
-                className="text-gray-400/80 hover:text-lime-500 active:text-lime-500 hover:scale-110 active:hover:scale-110 transition-transform duration-300"
+                className="shadow-[0_0_5px_3px_rgba(55,55,55,0.3)] rounded-2xl p-1 text-gray-400/80 hover:text-lime-500 active:text-lime-500 hover:scale-110 active:hover:scale-110 transition-transform duration-300"
               >
                 <FontAwesomeIcon icon={icon} size="lg" />
               </Link>

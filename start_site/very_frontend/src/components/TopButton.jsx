@@ -9,7 +9,7 @@ export default function TopButton() {
     const [showTopBtn, setShowTopBtn] = React.useState(false);
 
     React.useEffect(() => {
-        const handleScroll = () => setShowTopBtn(window.scrollY > 300);
+        const handleScroll = () => setShowTopBtn(window.scrollY > 800);
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);

@@ -64,8 +64,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       description,
       url: `https://verycodedly.com/read/${slug}`,
       type: 'article',
-      images: [{ url: post.image || 'https://verycodedly.com/read/opengraph-image.png' },
-      ],
+      images: [{ url: post.image || 'https://verycodedly.com/read/opengraph-image.png' }],
     },
     twitter: {
       card: 'summary_large_image',

@@ -134,7 +134,7 @@ export default function ReadPageClient({ data }: Props){
         {/* scroll cue */}
         <Link href="#posts">
           <Motion.div 
-            className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30 text-gray-400"
+            className="absolute bottom-6 sm:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30 text-gray-400"
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
             tabIndex={0}

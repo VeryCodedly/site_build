@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export default function KnowPage() {
   return (
-    <main className="relative min-h-screen bg-black mb-30 text-white overflow-hidden">
+    <main className="relative min-h-screen bg-black mb-15 mt-15 sm:mt-0 text-white overflow-hidden">
       {/* subtle background accent */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(239,68,68,0.08),_transparent_55%)]" />
 
-      <section className="relative z-10 max-w-3xl mx-auto px-6 py-36 text-center">
+      <section className="relative z-10 max-w-3xl mx-auto px-6 py-34 text-center">
         <p className="text-xs uppercase tracking-widest text-gray-500 mb-4">
           Video
         </p>

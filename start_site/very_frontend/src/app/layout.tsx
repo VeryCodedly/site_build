@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     "tech blog",
   ],
   openGraph: {
-    title: 'VeryCodedly',
+    title: 'VeryCodedly | Tech. Code. Culture.',
     description: "Tech. Code. Culture. VeryCodedly is your go-to tech hub for hardware deep-dives, free coding courses, unfiltered takes and the latest digital trends. No cookies, no login, no tracking.",
     url: 'https://verycodedly.com',
     siteName: 'VeryCodedly',
@@ -91,16 +91,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://api.verycodedly.com" />
 
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        {/* <link rel="icon" href="/favicon.ico" />
         <link rel="icon" href="/icon-48x48.png" type="image/png" sizes="48x48" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" /> */}
 
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content="VeryCodedly" />
         <meta name="theme-color" content="#000000" />
-
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         {/* <script
           defer
