@@ -97,14 +97,14 @@ export default function Footer() {
           <h3 className="text-white text-lg font-semibold mb- tracking-tight">
             Connect
           </h3>
-          <div className="grid grid-cols-3 gap-y-5 gap-x-4 mt-4 items-start">
+          <div className="grid grid-cols-3 gap-y-5 gap-x-4 mt-2 items-start">
             {socials.map(({ icon, link }) => (
               <Link
                 key={link}
                 href={link}
                 aria-label={`${icon} link`}
                 target="_blank"
-                className="shadow-[0_0_5px_3px_rgba(55,55,55,0.3)] rounded-2xl p-1 text-gray-400/80 hover:text-lime-500 active:text-lime-500 hover:scale-110 active:hover:scale-110 transition-transform duration-300"
+                className="p-0.5 text-gray-400/80 hover:text-lime-500 active:text-lime-500 hover:scale-110 active:hover:scale-110 transition-transform duration-300"
               >
                 <FontAwesomeIcon icon={icon} size="lg" />
               </Link>

@@ -29,25 +29,24 @@ export default function AboutPage() {
             About Us
           </Motion.h2>
           <p className="text-gray-300 text-sm sm:text-base leading-relaxed pb-6">
-            VeryCodedly is a community-driven platform that isn’t just about learning how to code.
-            It’s about understanding the world that builds around it. We bridge the gap between tech
-            education and tech culture, helping people not only learn how technology works but also why it matters.
+            VeryCodedly is a community-driven space for people who want to understand tech without being talked down to or overwhelmed. It’s not just about learning how to code. It’s about making sense of the systems, ideas, and culture that grow around technology.
+            We focus on clarity over noise, context over hype, and curiosity over credentials. Whether you’re learning, building, watching the industry shift, or just trying to keep up, this is a place to slow things down and actually understand what’s happening.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-left">
             <div>
               <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Our Mission</h3>
               <p className="text-gray-300/80 text-sm sm:text-base leading-relaxed">
-                To connect tech education with the culture around it, helping people see both how
-                technology works and why it shapes the world we live in.
+                To make technology feel understandable, human, and relevant, by connecting how it’s built with how it shapes work, culture, and everyday life.
+                We’re here to explain things clearly, question them honestly, and help people form their own perspective on tech, not just consume it.
               </p>
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Our Values</h3>
               <ul className="text-gray-300/80 text-sm sm:text-base list-disc list-inside space-y-1">
-                <li>No gatekeeping</li>
-                <li>Accessibility & clarity</li>
-                <li>Community over competition</li>
-                <li>Curiosity & lifelong learning</li>
+                <li>No gatekeeping - curiosity is enough</li>
+                <li>Accessibility & clarity - explain it like a human would</li>
+                <li>Community over competition - learning isn’t a race</li>
+                <li>Curiosity & lifelong learning - nobody ever “finishes” tech</li>
               </ul>
             </div>
           </div>

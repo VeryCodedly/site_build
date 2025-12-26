@@ -140,7 +140,7 @@ export default function SearchBar() {
                                 className="mt-4 bg-black/5 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl overflow-hidden
                                 w-[94%] sm:w-full max-w-2xl mx-auto">
                                     <div 
-                                        className="overflow-y-auto max-h-[68vh] sm:max-h-[58vh] ax-h-150 m:max-h-80 custom-scrollbar">
+                                        className="overflow-y-auto max-h-[68vh] sm:max-h-[58vh] lg:max-h-[60vh] ax-h-150 m:max-h-80 custom-scrollbar">
                                         {loading && (
                                             <div className="p-3 text-center text-white/70">Searching...</div>
                                         )}
@@ -158,7 +158,7 @@ export default function SearchBar() {
                                             >
                                                 <span className="text-xl sm:text-2xl text-pink-200"><FontAwesomeIcon icon={getIcon(item.icon)} /></span>
                                                 <div>
-                                                    <div className="text-white/90 text-base font-medium">{item.title}</div>
+                                                    <div className="text-white/80 text-base font-medium">{item.title}</div>
                                                     {item.subtitle && (
                                                         <div className="text-white/50 text-sm">{item.subtitle}</div>
                                                     )}

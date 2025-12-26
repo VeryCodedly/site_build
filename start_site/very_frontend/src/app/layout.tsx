@@ -85,9 +85,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="custom-scrollbar">
       <head>
-        <link rel="manifest" href="/manifest.json" />
+        {/* <link rel="manifest" href="/manifest.json" /> */}
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://api.verycodedly.com" />
 

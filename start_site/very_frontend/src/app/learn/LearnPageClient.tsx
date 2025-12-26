@@ -95,17 +95,17 @@
      <section className="border-t border-zinc-900 py-24">
        <div className="max-w-4xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-5">
          <div>
-           <p className="text-xs uppercase tracking-widest text-gray-500 mb-3">The Philosophy</p>
+           <p className="text-xs uppercase tracking-widest text-gray-500 mb-3">The Approach</p>
            <h2 className="text-2xl font-semibold text-white">Why Learn</h2>
          </div>
-         <div className="md:col-span-2 text-gray-300/90 leading-relaxed space-y-4">
+         <div className="md:col-span-2 text-sm sm:text-base text-gray-300/90 leading-relaxed space-y-4">
            <p>
              Some coding resources rush you from syntax to frameworks. VeryCodedly goes the other way —
              understanding first, speed later.
            </p>
            <p>
              These lessons are designed to help ideas stick, not overwhelm. If you’ve ever felt like code
-             explanations move too fast, this page is for you.
+             explanations move too fast, this is for you.
            </p>
          </div>
        </div>
@@ -129,7 +129,7 @@
        </section>
 
        {/* LEARNING PATHS */}
-       <section className="bg-black max-w-4xl mx-auto min-h-screen py-22 px-8 flex flex-col items-left justify-center">
+       <section className="bg-gradient-to-b from-black to-zinc-950/60 max-w-4xl mx-auto min-h-screen py-22 px-8 flex flex-col items-left justify-center">
          <Motion.h2
            className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-12 px-2 text-left text-white/90"
            initial={{ opacity: 0, y: 20 }}
@@ -268,7 +268,7 @@
          </div>
        </section>
        {/* COMMUNITY SECTION */}
-       <section className="bg-gradient-to-b from-zinc-950/70 to-zinc-900/60 py-12 w-full mx-auto text-right px-16 justify-end">
+       <section className="bg-gradient-to-b from-zinc-950/70 to-zinc-900/60 py-12 pb-22 w-full mx-auto text-right px-16 justify-end">
          <Motion.h2
            className="text-3xl sm:text-4xl font-bold mb-6 text-white/90"
            initial={{ opacity: 0, y: 20 }}

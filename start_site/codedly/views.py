@@ -249,7 +249,7 @@ class PostViewSet(viewsets.ModelViewSet):
     
     # DRY helper for the [:6]
     def _multi_posts(self, subcategory_slug):
-        posts = Post.objects.filter(subcategory__slug=subcategory_slug).order_by('-created_at')[:6]
+        posts = Post.objects.filter(subcategory__slug=subcategory_slug).order_by('-created_at')[:3]
         return PostSerializer(posts, many=True).data
 
     @action(detail=False, methods=['get'])
