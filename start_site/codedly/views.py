@@ -224,10 +224,10 @@ class PostViewSet(viewsets.ModelViewSet):
         return Response({"digitalMoney": data})
     
     @action(detail=False, methods=['get'])
-    def social(self, request):
-        posts = Post.objects.filter(subcategory__slug="social").order_by('-created_at')[:3]
+    def globalLens(self, request):
+        posts = Post.objects.filter(subcategory__slug="wired-world").order_by('-created_at')[:3]
         data = PostSerializer(posts, many=True).data
-        return Response({"social": data})
+        return Response({"globalLens": data})
     
     @action(detail=False, methods=['get'])
     def dataDefense(self, request):
@@ -249,7 +249,7 @@ class PostViewSet(viewsets.ModelViewSet):
     
     # DRY helper for the [:6]
     def _multi_posts(self, subcategory_slug):
-        posts = Post.objects.filter(subcategory__slug=subcategory_slug).order_by('-created_at')[:3]
+        posts = Post.objects.filter(subcategory__slug=subcategory_slug).order_by('-created_at')[:6]
         return PostSerializer(posts, many=True).data
 
     @action(detail=False, methods=['get'])
@@ -259,8 +259,8 @@ class PostViewSet(viewsets.ModelViewSet):
     def bigDeal(self, request): 
         return Response({"bigDeal": self._multi_posts("big-deal")})
     @action(detail=False, methods=['get'])
-    def globalLens(self, request): 
-        return Response({"globalLens": self._multi_posts("wired-world")})
+    def policyProgress(self, request): 
+        return Response({"policyProgress": self._multi_posts("policy-progress")})
     @action(detail=False, methods=['get'])
     def africaRising(self, request): 
         return Response({"africaRising": self._multi_posts("africa-now")})
@@ -333,8 +333,8 @@ class ReadPageDataView(APIView):
             "emergingTech": viewset._multi_posts("emerging-tech"),
             "hardware": multi("hardware", 3),
             "techCulture": viewset._multi_posts("tech-culture"),
-            "social": multi("social", 3),
-            "globalLens": viewset._multi_posts("wired-world"),
+            "policyProgress": viewset._multi_posts("policy-progress"),
+            "globalLens": multi("wired-world", 3),
             "africaRising": viewset._multi_posts("africa-now"),
             "keyPlayers": viewset._multi_posts("key-players"),
             "dataDefense": multi("data-defense", 3),

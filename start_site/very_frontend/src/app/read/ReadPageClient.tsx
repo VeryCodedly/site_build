@@ -28,7 +28,7 @@ interface Props {
   emergingTech: Post[];
   hardware: Post[];
   techCulture: Post[];
-  social: Post[];
+  policyProgress: Post[];
   globalLens: Post[];
   africaRising: Post[];
   keyPlayers: Post[];
@@ -58,7 +58,7 @@ export default function ReadPageClient({ data }: Props){
     emergingTech = [],
     hardware = [],
     techCulture = [],
-    social = [],
+    policyProgress = [],
     globalLens = [],
     africaRising = [],
     keyPlayers = [],
@@ -189,72 +189,8 @@ export default function ReadPageClient({ data }: Props){
           </div>
         )}
 
-        {/* 1 HERO: Featured Post */}
-        <Carousel posts={featured} />
-
-        {/* 2 TRENDING NOW */}
-        {trending.length > 0 && (
-          <section className="py-6 px-3">
-            <Motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-3xl text-white mb-4">Trending<span className="text-lime-400">Now</span>
-            </Motion.h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-              {trending.map((post) => (
-                <MiniPostCard key={post.id} post={post} />
-              ))}
-
-            </div>
-          </section>
-        )}
-
-        {/* 3 SPOTLIGHT */}
-        {spotlight.length > 0 && (
-          <section className="py-6 px-3">
-            <Motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-3xl text-white mb-4 flex justify-end">
-              Entertainment
-            </Motion.h2>
-            {/* <h2 className="text-3xl sm:text-4xl font-bold text-pink-400 mb-10">Editor’s<span className="text-white"> Picks</span></h2> */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {spotlight.map(post => (
-                <MiniPostCard key={post.id} post={post} />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* 4 BIG DEAL */}
-        {bigDeal.length > 0 && (
-          <section className="py-6 px-3">
-            <Motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-3xl text-lime-400 mb-4 flex justify-start">Big<span className="text-white">Deal</span>
-            </Motion.h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {bigDeal.map(post => (
-                <MiniPostCard key={post.id} post={post} />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* 5 HARDWARE */}
         <Carousel posts={hardware} />
 
-        {/* <NewsletterCard /> */}
-
-        {/* 11 EMERGING TECH */}
         {emergingTech.length > 0 && (
           <section className="py-6 px-3">
             <Motion.h2
@@ -290,82 +226,23 @@ export default function ReadPageClient({ data }: Props){
           </section>
         )}
 
-        {/* 12 TECH CULTURE */}
-        {techCulture.length > 0 && (
+        {bigDeal.length > 0 && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-3xl text-lime-400 mb-4 flex justify-start">Tech<span className="text-white">Culture</span>
+              className="text-3xl text-lime-400 mb-4 flex justify-start">Big<span className="text-white">Deal</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {techCulture.map(post => (
+              {bigDeal.map(post => (
                 <MiniPostCard key={post.id} post={post} />
               ))}
             </div>
           </section>
         )}
 
-        <Carousel posts={devDigest} />
-
-        {theClimb.length > 0 && (
-          <section className="py-6 px-3">
-            <Motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-3xl text-white mb-4 flex justify-start">
-              The<span className="text-lime-400">Climb</span>
-
-            </Motion.h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {theClimb.map(post => (
-                <MiniPostCard key={post.id} post={post} />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {rundown.length > 0 && (
-          <section className="py-6 px-3">
-            <Motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-3xl text-white mb-4 flex justify-end">
-              Rundown
-            </Motion.h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {rundown.map(post => (
-                <MiniPostCard key={post.id} post={post} />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {industryInsights.length > 0 && (
-          <section className="py-6 px-3">
-            <Motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="text-3xl text-lime-400 mb-4 flex justify-start">
-              Industry<span className="text-white">Insights</span>
-            </Motion.h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {industryInsights.map(post => (
-                <MiniPostCard key={post.id} post={post} />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* 9 DIGITAL MONEY */}
         <Carousel posts={digitalMoney} />
 
         {/* 10 BLOCKCHAIN & CRYPTO */}
@@ -426,11 +303,9 @@ export default function ReadPageClient({ data }: Props){
           </section>
         )}
 
-        {/* 5 HARDWARE */}
-        <Carousel posts={social} />
+        <Carousel posts={devDigest} />
 
-        {/* 6 GLOBAL LENS */}
-        {globalLens.length > 0 && (
+        {theClimb.length > 0 && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -438,36 +313,35 @@ export default function ReadPageClient({ data }: Props){
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               className="text-3xl text-white mb-4 flex justify-start">
-              Wired<span className="text-lime-400">World</span>
+              The<span className="text-lime-400">Climb</span>
+
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {globalLens.map(post => (
+              {theClimb.map(post => (
                 <MiniPostCard key={post.id} post={post} />
               ))}
             </div>
           </section>
         )}
 
-        {/* 7 AFRICA RISING */}
-        {africaRising.length > 0 && (
+        {stack.length > 0 && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-3xl text-lime-400 mb-4 flex justify-end">Africa<span className="text-white">Now</span>
+              className="text-3xl text-white mb-4 flex justify-end">Stack
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {africaRising.map(post => (
+              {stack.map(post => (
                 <MiniPostCard key={post.id} post={post} />
               ))}
             </div>
           </section>
         )}
 
-        {/* 8 KEY PLAYERS */}
-        {keyPlayers.length > 0 && (
+        {industryInsights.length > 0 && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -475,10 +349,10 @@ export default function ReadPageClient({ data }: Props){
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
               className="text-3xl text-lime-400 mb-4 flex justify-start">
-              Key<span className="text-white">Players</span>
+              Industry<span className="text-white">Insights</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {keyPlayers.map(post => (
+              {industryInsights.map(post => (
                 <MiniPostCard key={post.id} post={post} />
               ))}
             </div>
@@ -505,17 +379,18 @@ export default function ReadPageClient({ data }: Props){
           </section>
         )}
 
-        {stack.length > 0 && (
+        {rundown.length > 0 && (
           <section className="py-6 px-3">
             <Motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-3xl text-white mb-4 flex justify-end">Stack
+              className="text-3xl text-white mb-4 flex justify-end">
+              Rundown
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {stack.map(post => (
+              {rundown.map(post => (
                 <MiniPostCard key={post.id} post={post} />
               ))}
             </div>
@@ -539,6 +414,135 @@ export default function ReadPageClient({ data }: Props){
           </section>
         )}
 
+        {/* 1 HERO: Featured Post */}
+        <Carousel posts={featured} />
+
+        {/* 2 TRENDING NOW */}
+        {trending.length > 0 && (
+          <section className="py-6 px-3">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-3xl text-white mb-4">Trending<span className="text-lime-400">Now</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {trending.map((post) => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+
+            </div>
+          </section>
+        )}
+
+        {/* 3 SPOTLIGHT */}
+        {spotlight.length > 0 && (
+          <section className="py-6 px-3">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-3xl text-white mb-4 flex justify-end">
+              Entertainment
+            </Motion.h2>
+            {/* <h2 className="text-3xl sm:text-4xl font-bold text-pink-400 mb-10">Editor’s<span className="text-white"> Picks</span></h2> */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {spotlight.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 4 BIG DEAL */}
+        
+        {/* 5 HARDWARE */}
+
+        {/* <NewsletterCard /> */}
+
+        {/* 11 EMERGING TECH */}
+        
+        {/* 12 TECH CULTURE */}
+        {techCulture.length > 0 && (
+          <section className="py-6 px-3">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-3xl text-lime-400 mb-4 flex justify-start">Tech<span className="text-white">Culture</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {techCulture.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 9 DIGITAL MONEY */}
+
+        {/* 5 HARDWARE */}
+        <Carousel posts={globalLens} />
+
+        {/* 6 GLOBAL LENS */}
+        {keyPlayers.length > 0 && (
+          <section className="py-6 px-3">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-3xl text-white mb-4 flex justify-start">
+              Key<span className="text-lime-400">Players</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {keyPlayers.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 7 AFRICA RISING */}
+        {africaRising.length > 0 && (
+          <section className="py-6 px-3">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-3xl text-lime-400 mb-4 flex justify-end">Africa<span className="text-white">Now</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {africaRising.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 8 KEY PLAYERS */}
+        {policyProgress.length > 0 && (
+          <section className="py-6 px-3">
+            <Motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-3xl text-lime-400 mb-4 flex justify-start">
+              Policy<span className="text-white">&Progress</span>
+            </Motion.h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {policyProgress.map(post => (
+                <MiniPostCard key={post.id} post={post} />
+              ))}
+            </div>
+          </section>
+        )}
+
         <section className="py-20 px-6 bg-black/50 text-center">
           <h2 className="text-2xl font-bold mb-6">Join the Conversation</h2>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -546,7 +550,7 @@ export default function ReadPageClient({ data }: Props){
               href="https://www.youtube.com/@verycodedly"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm sm:text-base inline-flex items-center gap-3 bg-red-700 hover:bg-red-800 text-white font-medium py-3 px-11 rounded-lg transition"
+              className="text-sm sm:text-base inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-11 rounded-lg transition"
             >
               <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.016 3.016 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>

@@ -87,13 +87,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="custom-scrollbar">
       <head>
-        {/* <link rel="manifest" href="/manifest.json" /> */}
+        <link rel="manifest" href="/manifest.json" />
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://api.verycodedly.com" />
 
-        {/* <link rel="icon" href="/favicon.ico" />
-        <link rel="icon" href="/icon-48x48.png" type="image/png" sizes="48x48" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" /> */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content="VeryCodedly" />

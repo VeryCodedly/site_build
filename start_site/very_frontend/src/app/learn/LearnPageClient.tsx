@@ -100,8 +100,8 @@
          </div>
          <div className="md:col-span-2 text-sm sm:text-base text-gray-300/90 leading-relaxed space-y-4">
            <p>
-             Some coding resources rush you from syntax to frameworks. VeryCodedly goes the other way —
-             understanding first, speed later.
+             Some coding resources rush you from syntax to frameworks. VeryCodedly goes the other way
+             - we start with understanding, then build speed.
            </p>
            <p>
              These lessons are designed to help ideas stick, not overwhelm. If you’ve ever felt like code
