@@ -276,7 +276,7 @@ class ReadPageDataView(APIView):
         viewset = PostViewSet()
         viewset.request = request  # needed for full URLs in serializer
 
-        def multi(slug, limit=6):
+        def multi(slug, limit=3):
             posts = Post.objects.filter(subcategory__slug=slug).order_by('-created_at')[:limit]
             return PostSerializer(posts, many=True, context={'request': request}).data
 
