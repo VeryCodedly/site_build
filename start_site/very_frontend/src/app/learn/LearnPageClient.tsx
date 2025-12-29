@@ -93,7 +93,7 @@
 
       {/* WHY THIS EXISTS */}
      <section className="border-t border-zinc-900 py-24">
-       <div className="max-w-4xl mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-5">
+       <div className="w-[80%] mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-5">
          <div>
            <p className="text-xs uppercase tracking-widest text-gray-500 mb-3">The Approach</p>
            <h2 className="text-2xl font-semibold text-white">Why Learn</h2>
@@ -110,7 +110,7 @@
          </div>
        </div>
      </section>
-       <section className="bg-black min-h-screen mx-auto max-w-4xl px-8 py-22 border-t border-b border-zinc-900">
+       <section className="bg-black min-h-screen mx-auto px-8 py-22 border-y border-zinc-900">
          <Motion.h2
            className="text-3xl sm:text-4xl font-bold mb-12 text-center text-white/90"
            initial={{ opacity: 0, y: 20 }}
@@ -120,7 +120,7 @@
          >
            <span className="text-white">Courses from <span className="text-lime-400">VeryCodedly</span></span>
          </Motion.h2>
-         <div className="space-y-2.5 -[97%] m:w-[90%] g:w-[80%] mx-auto">
+         <div className="w-[80%] space-y-2.5 -[97%] m:w-[90%] g:w-[80%] mx-auto">
            {/* <div className="absolute inset-0 bg-[url('/images/bg-plain.jpg')] bg-center bg-stretch opacity-50"></div> */}
            {/* <div className=""> */}
            <CourseListClient courses={courses} />
@@ -282,7 +282,7 @@
            {/* Connect with learners, share progress, and get feedback on your projects. */}
            {/* We’re building a friendly hub for curious minds, come hang out. */}
            Ask questions, share progress, get feedback, 
-           and learn alongside people who are also figuring things out — no pressure.
+           and learn alongside people who are also figuring things out, no pressure.
          </p>
          <div className="flex justify-end">
            <Link

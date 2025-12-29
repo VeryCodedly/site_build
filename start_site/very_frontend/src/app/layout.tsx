@@ -91,7 +91,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://api.verycodedly.com" />
 
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icons/icon-48x48.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />

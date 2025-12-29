@@ -169,42 +169,8 @@ class PostViewSet(viewsets.ModelViewSet):
     #     post = Post.objects.filter(subcategory__slug="hardware", image__isnull=False).order_by('-created_at').first()
     #     data = PostSerializer(post).data if post else None
     #     return Response({"hardware": data})
-
-    # @action(detail=False, methods=['get'])
-    # def digitalMoney(self, request):
-    #     post = Post.objects.filter(subcategory__slug="digital-money", image__isnull=False).order_by('-created_at').first()
-    #     data = PostSerializer(post).data if post else None
-    #     return Response({"digitalMoney": data})
-
-    # @action(detail=False, methods=['get'])
-    # def social(self, request):
-    #     post = Post.objects.filter(subcategory__slug="social", image__isnull=False).order_by('-created_at').first()
-    #     data = PostSerializer(post).data if post else None
-    #     return Response({"social": data})
-
-    # @action(detail=False, methods=['get'])
-    # def dataDefense(self, request):
-    #     post = Post.objects.filter(subcategory__slug="data-defense", image__isnull=False).order_by('-created_at').first()
-    #     data = PostSerializer(post).data if post else None
-    #     return Response({"dataDefense": data})
-
-    # @action(detail=False, methods=['get'])
-    # def devDigest(self, request):
-    #     post = Post.objects.filter(subcategory__slug="dev-digest", image__isnull=False).order_by('-created_at').first()
-    #     data = PostSerializer(post).data if post else None
-    #     return Response({"devDigest": data})
-
-    # @action(detail=False, methods=['get'])
-    # def featured(self, request):
-    #     post = Post.objects.filter(
-    #         image__isnull=False,
-    #         subcategory__slug="featured"
-    #     ).order_by('-created_at').first()
-    #     data = PostSerializer(post).data if post else None
-    #     return Response({"featured": data})
     
     # MULTIPLE POSTS ENDPOINTS
-    
     @action(detail=False, methods=['get'])
     def featured(self, request):
         posts = Post.objects.filter(subcategory__slug="featured").order_by('-created_at')[:3]
@@ -308,7 +274,7 @@ class PostViewSet(viewsets.ModelViewSet):
 class ReadPageDataView(APIView):
     def get(self, request):
         viewset = PostViewSet()
-        viewset.request = request  # need for full URLs in serializer
+        viewset.request = request  # needed for full URLs in serializer
 
         def multi(slug, limit=6):
             posts = Post.objects.filter(subcategory__slug=slug).order_by('-created_at')[:limit]
