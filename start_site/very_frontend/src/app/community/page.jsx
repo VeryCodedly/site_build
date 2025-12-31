@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function CommunityPage() {
   return (
-    <section className="relative min-h-screen py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-900/50">
+    <section className="relative min-h-screen py-20 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-900/50">
       <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-cover opacity-60"></div>
       <Motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -32,7 +32,7 @@ export default function CommunityPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-left">
           <div>
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Ways to Join</h3>
-            <ul className="text-gray-300/80 text-sm sm:text-base list-disc list-inside space-y-1">
+            <ul className="text-gray-300/80 text-sm sm:text-base list-disc list-inside space-y-2">
               <li>Chat with peers on <Link target="_blank" rel="noopener noreferrer" href="https://discord.gg/53wVsqEcbE" className="text-lime-400 underline hover:text-lime-300 active:text-lime-300 transition-colors duration-200">Discord</Link></li>
               <li>Join conversations in our <Link target="_blank" rel="noopener noreferrer" href="https://facebook.com/verycodedly" className="text-lime-400 underline hover:text-lime-300 active:text-lime-300 transition-colors duration-200">Facebook</Link> group</li>
               <li>Collaborate on community projects</li>

@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export default function PrivacyPage() {
   return (
-    <section className="relative min-h-screen py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-900/50">
+    <section className="relative min-h-screen py-20 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-900/50">
       <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-cover opacity-60"></div>
 
       <Motion.div
@@ -114,7 +114,7 @@ export default function PrivacyPage() {
           </div>
           <div>
             <h3 className="text-white font-semibold mb-1">What we store (on your device):</h3>
-            <ul className="text-gray-300/80 space-y-1 list-disc list-inside mb-3">
+            <ul className="text-gray-300/80 space-y-2 list-disc list-inside mb-3">
               <li><strong>Course progress</strong> (e.g., “HTML Module 3 completed”)</li>
               {/* <li><strong>Preferences</strong> (dark mode, text size)</li> */}
               <li><strong>That’s it</strong> — all in your browser’s local storage</li>
@@ -123,7 +123,7 @@ export default function PrivacyPage() {
 
           <div>
             <h3 className="text-white font-semibold mb-1">What we don’t do:</h3>
-            <ul className="text-gray-300/80 space-y-1 list-disc list-inside mb-3">
+            <ul className="text-gray-300/80 space-y-2 list-disc list-inside mb-3">
               <li>No user accounts</li>
               <li>No behavioral tracking</li>
               <li>No ad profiling</li>

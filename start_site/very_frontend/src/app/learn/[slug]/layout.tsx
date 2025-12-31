@@ -44,6 +44,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
   const title = `${course.title} | VeryCodedly`;
   const description = course.description || `"Start the ${course.title}" with hands-on lessons on VeryCodedly.`;
+  const imageUrl = course?.image || 'https://verycodedly.com/learn/opengraph-image.png';
 
   return {
     title,
@@ -57,14 +58,14 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       url: `https://verycodedly.com/learn/${slug}`,
       type: 'website', 
       images: [
-        { url: course.image || 'https://verycodedly.com/learn/opengraph-image.png' },
+        { url: imageUrl },
       ],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [course.image || 'https://verycodedly.com/learn/twitter-image.png'],
+      images: [imageUrl],
       creator: '@verycodedly',
     },
   };

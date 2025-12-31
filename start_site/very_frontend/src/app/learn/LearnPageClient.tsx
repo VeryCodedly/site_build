@@ -74,7 +74,7 @@
                </span>
              </Motion.span>
            </h1>
-           <p className="text-gray-400 px-0 text-md md:text-lg max-w-2xl">
+           <p className="text-gray-400 px-2 sm:px-0 text-md md:text-lg max-w-2xl">
              Beginner-friendly coding lessons that help complex ideas click,
              one concept at a time.
              {/* Every concept explained clearly — the VeryCodedly way. */}
@@ -100,8 +100,8 @@
          </div>
          <div className="md:col-span-2 text-sm sm:text-base text-gray-300/90 leading-relaxed space-y-4">
            <p>
-             Some coding resources rush you from syntax to frameworks. VeryCodedly goes the other way
-             - we start with understanding, then build speed.
+             Some coding resources rush you from syntax to frameworks. VeryCodedly goes the other way,
+             we start with understanding, then build speed.
            </p>
            <p>
              These lessons are designed to help ideas stick, not overwhelm. If you’ve ever felt like code
@@ -120,7 +120,7 @@
          >
            <span className="text-white">Courses from <span className="text-lime-400">VeryCodedly</span></span>
          </Motion.h2>
-         <div className="w-[80%] space-y-2.5 -[97%] m:w-[90%] g:w-[80%] mx-auto">
+         <div className="space-y-2.5 w-[98%] sm:w-[90%] lg:w-[80%] mx-auto">
            {/* <div className="absolute inset-0 bg-[url('/images/bg-plain.jpg')] bg-center bg-stretch opacity-50"></div> */}
            {/* <div className=""> */}
            <CourseListClient courses={courses} />
@@ -143,15 +143,15 @@
            {[
              {
                name: "Frontend Starter",
-               desc: "HTML, CSS, JavaScript, React — build the visual layer of the web you interact with.",
+               desc: "HTML, CSS, JavaScript, React - build the visual layer of the web you interact with.",
              },
              {
                name: "Backend Mastery",
-               desc: "APIs, databases, Django — create powerful, robust server-side logic.",
+               desc: "APIs, databases, Django - create powerful, robust server-side logic.",
              },
              {
                name: "AI & Data Science",
-               desc: "Python, Machine Learning, data handling — dive into the future of software.",
+               desc: "Python, Machine Learning, data handling - dive into the future of software.",
              },
            ].map((track) => (
              <Motion.div

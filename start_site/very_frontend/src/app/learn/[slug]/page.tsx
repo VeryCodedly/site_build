@@ -16,7 +16,7 @@ const getCachedCourse = cache(async (slug: string): Promise<Course | null> => {
     }
 
     const url = `${apiUrl}/${slug}/`;
-    console.log(`Fetching course from: ${url}`);
+    // console.log(`Fetching course from: ${url}`);
 
     const res = await fetch(url, {
       next: { revalidate: 60 },
@@ -25,7 +25,7 @@ const getCachedCourse = cache(async (slug: string): Promise<Course | null> => {
     });
 
     if (!res.ok) {
-      console.error(`Backend returned ${res.status} for ${url}`);
+      // console.error(`Backend returned ${res.status} for ${url}`);
       return null;
     }
 

@@ -17,7 +17,7 @@ export default function KnowPage() {
         </h1>
 
         <p className="text-base text-gray-300 max-w-2xl mx-auto px- leading-relaxed">
-          Unfiltered takes on Tech, Code, Culture and everything in between — for people
+          Unfiltered takes on Tech, Code, Culture and everything in between, for people
           who want to understand what’s happening, not just keep up.
         </p>
 

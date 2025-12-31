@@ -56,11 +56,11 @@ export default function ContactPage() {
     }
 
     // ---- mailto ----
-    const subject = encodeURIComponent('Message from VeryCodedly Site');
+    const subject = encodeURIComponent('Message from the VeryCodedly Site');
     const body = encodeURIComponent(
       `Hi!\n\n${formData.message}\n\nFrom: ${formData.name}\nEmail: ${formData.email}`
     );
-    const mailtoLink = `mailto:verycodedly@gmail.com?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:connect@verycodedly.com?subject=${subject}&body=${body}`;
     window.location.href = mailtoLink;
 
     // Reset
@@ -73,7 +73,7 @@ export default function ContactPage() {
   // const hasErrors = Object.keys(errors).length > 0;
 
   return (
-    <section className="relative min-h-screen py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-900/50">
+    <section className="relative min-h-screen py-20 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-900/50">
       <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-cover opacity-60"></div>
 
       <Motion.div

@@ -5,19 +5,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { faTwitter, faYoutube, faFacebook, faDiscord, faLinkedin, faTiktok, faInstagram, faMedium } from "@fortawesome/free-brands-svg-icons";
+import { faTwitter, faYoutube, faFacebook, faDiscord, faLinkedin, faTiktok, faInstagram, faMedium, faDev } from "@fortawesome/free-brands-svg-icons";
 
 
 const socials = [
-  { icon: faYoutube, link: "https://www.youtube.com/@verycodedly" },
-  { icon: faDiscord, link: "https://discord.gg/53wVsqEcbE" },
-  { icon: faTwitter, link: "https://x.com/verycodedly" },
-  { icon: faEnvelope, link: "https://verycodedly.substack.com" },
-  { icon: faMedium, link: "https://medium.com/@verycodedly" },
-  { icon: faLinkedin, link: "https://linkedin.com/in/verycodedly" },
-  { icon: faInstagram, link: "https://instagram.com/verycodedly" },
-  { icon: faTiktok, link: "https://tiktok.com/@verycodedly" },
-  { icon: faFacebook, link: "https://facebook.com/verycodedly" },
+  { icon: faYoutube, link: "https://www.youtube.com/@verycodedly", name: "Youtube" },
+  { icon: faDiscord, link: "https://discord.gg/53wVsqEcbE", name: "Discord" },
+  { icon: faTwitter, link: "https://x.com/verycodedly", name: "Twitter" },
+  { icon: faEnvelope, link: "https://verycodedly.substack.com", name: "Substack" },
+  { icon: faDev, link: "https://dev.to/verycodedly", name: "Dev.to" },
+  { icon: faLinkedin, link: "https://linkedin.com/in/verycodedly", name: "LinkedIn" },
+  { icon: faInstagram, link: "https://instagram.com/verycodedly", name: "Instagram" },
+  { icon: faTiktok, link: "https://tiktok.com/@verycodedly", name: "TikTok" },
+  { icon: faFacebook, link: "https://facebook.com/verycodedly", name: "Facebook" },
 ];
 
 export default function Footer() {
@@ -94,17 +94,18 @@ export default function Footer() {
 
         {/* Socials */}
         <div className="flex flex-col items-start">
-          <h3 className="text-white text-lg font-semibold mb- tracking-tight">
+          <h3 className="text-white text-lg font-semibold tracking-tight">
             Connect
           </h3>
           <div className="grid grid-cols-3 gap-y-5 gap-x-4 mt-2 items-start">
-            {socials.map(({ icon, link }) => (
+            {socials.map(({ icon, link, name }) => (
               <Link
                 key={link}
                 href={link}
-                aria-label={`${icon} link`}
+                title={name}
+                aria-label={`${name} link`}
                 target="_blank"
-                className="p-0.5 text-gray-400/80 hover:text-lime-500 active:text-lime-500 hover:scale-110 active:hover:scale-110 transition-transform duration-300"
+                className="p-0.5 text-gray-400/80 hover:text-lime-500 active:text-lime-500 hover:scale-110 active:scale-110 transition-transform duration-300"
               >
                 <FontAwesomeIcon icon={icon} size="lg" />
               </Link>

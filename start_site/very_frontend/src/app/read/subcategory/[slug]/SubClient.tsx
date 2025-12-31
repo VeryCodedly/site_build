@@ -52,10 +52,11 @@ export default function SubClient({
 
             <section className="min-h-screen max-w-[90%] mx-auto bg-black text-white pt- pb-14">
                 <div className="max-w-5xl mx-auto">
-                    <h1 className="text-3xl sm:text-4xl font-semibold text-center uppercase pt-4">{name}</h1>
-
+                    <h1 className="text-3xl sm:text-4xl font-semibold text-center uppercase pt-4">
+                        {name}
+                    </h1>
                     {about && (
-                        <div className="my-10 flex justify-center px-3 sm:px-">
+                        <div className="my-10 flex justify-center px-4 sm:px-">
                             <p className="whitespace-pre-wra italic text-sm m:text-base max-w-2xl tracking-tighter leading- text-zinc-300/80 pl-4 border-l-4 border-lime-500 rounded-sm last:text-center">
                                 {about}
                             </p>

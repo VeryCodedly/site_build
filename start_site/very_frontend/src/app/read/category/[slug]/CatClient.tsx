@@ -52,17 +52,15 @@ export default function CatClient({ category,
                 className="min-h-screen max-w-[90%] bg-black text-white pt- pb-14 px-2 mx-auto"
             >
                 <div className="max-w-5xl mx-auto">
-
                     {/* Title */}
                     <Motion.h1
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5 }}
-                        className="text-3xl sm:text-4xl font-semibold text-center uppercase"
+                        className="text-3xl sm:text-4xl pt-4 font-semibold text-center uppercase"
                     >
                         {name}
                     </Motion.h1>
-
                     {/* Count */}
                     <Motion.p
                         initial={{ opacity: 0, y: 10 }}

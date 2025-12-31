@@ -18,8 +18,8 @@ export default function ConnectPage() {
         </h1>
 
         <p className="text-base text-gray-300 max-w-2xl px-2 mx-auto leading-relaxed">
-          Ask questions, share progress, get feedback, 
-           and learn with people who are also figuring things out.
+          Ask questions, get feedback, share progress and learn alongside others,
+          with real-time updates on tools, trends, and tech.
         </p>
 
         <div className="mt-24 flex flex-col sm:flex-row items-center justify-center gap-6">

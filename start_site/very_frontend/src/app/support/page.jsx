@@ -8,7 +8,7 @@ import { faCoffee, faComment, faEnvelope, faPeopleGroup } from '@fortawesome/fre
 
 export default function SupportPage() {
   return (
-    <section className="relative min-h-screen py-12 sm:py-20 px-6 sm:px-8 bg-gradient-to-b from-black to-zinc-900/50">
+    <section className="relative min-h-screen py-20 px-6 sm:px-8 bg-gradient-to-b from-black to-zinc-900/50">
       <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-cover opacity-60"></div>
       <Motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -63,7 +63,7 @@ export default function SupportPage() {
                 className="block w-full text-center text-sm sm:text-base px-4 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
                            active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
               >
-                Buy me a coffee <FontAwesomeIcon icon={faCoffee} className="inline ml-1 text-lime-300" size="1x" />
+                Buy me a coffee <FontAwesomeIcon icon={faCoffee} className="inline ml-1 text-lime-400" size="1x" />
               </Link>
               <Link
                 href="https://www.paypal.com/ncp/payment/55H59YCYZ5HSY"
@@ -72,7 +72,7 @@ export default function SupportPage() {
                 className="block w-full text-center text-sm sm:text-base px-4 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
                            active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
               >
-                Paypal Donation <FontAwesomeIcon icon={faPaypal} className="inline ml-1 text-lime-300" size="1x" />
+                Paypal Donation <FontAwesomeIcon icon={faPaypal} className="inline ml-1 text-lime-400" size="1x" />
               </Link>
               <Link
                 href="https://github.com/sponsors/VeryCodedly"
@@ -81,7 +81,7 @@ export default function SupportPage() {
                 className="block w-full text-center text-sm sm:text-base px-4 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
                            active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
               >
-                Sponsor on GitHub <FontAwesomeIcon icon={faGithub} className="inline ml-1 text-lime-300" size="1x" />
+                Sponsor on GitHub <FontAwesomeIcon icon={faGithub} className="inline ml-1 text-lime-400" size="1x" />
               </Link>
             </div>
           </Motion.div>
@@ -119,13 +119,13 @@ export default function SupportPage() {
             </ul>
             <div className="flex gap-8 justify-center">
               <Link
-                href="https://twitter.com/intent/tweet?text=Into%20coding%20+%20tech%20trends?%20Check%20out%20Very%20Codedly%20-%20https://verycodedly.com"
+                href="https://twitter.com/intent/tweet?text=Into%20coding%20+%20tech%20trends?%20Explore%20VeryCodedly%20-%20https://verycodedly.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-center text-sm sm:text-base px-3 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
                            active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
               >
-                Share <FontAwesomeIcon icon={faTwitter} className="inline-flex ml-1 text-lime-300" size="1x" />
+                Share <FontAwesomeIcon icon={faTwitter} className="inline-flex ml-1 text-lime-400" size="1x" />
               </Link>
               <Link
                 href="https://github.com/VeryCodedly/site_build"
@@ -134,7 +134,7 @@ export default function SupportPage() {
                 className="block text-center text-sm sm:text-base px-3.5 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
                            active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
               >
-                Star <FontAwesomeIcon icon={faGithub} className="inline ml-1 text-lime-300" size="1x" />
+                Star <FontAwesomeIcon icon={faGithub} className="inline ml-1 text-lime-400" size="1x" />
               </Link>
             </div>
           </Motion.div>
@@ -158,21 +158,21 @@ export default function SupportPage() {
                 className="block w-full text-center text-sm sm:text-base px-4 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
                            active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
               >
-                Join the community <FontAwesomeIcon icon={faPeopleGroup} className="inline ml-1 text-lime-300" size="1x" />
+                Join the community <FontAwesomeIcon icon={faPeopleGroup} className="inline ml-1 text-lime-400" size="1x" />
               </Link>
               <Link
-                href="mailto:verycodedly@gmail.com?subject=Support%20VeryCodedly"
+                href="mailto:connect@verycodedly.com?subject=Support%20VeryCodedly"
                 className="block w-full text-center text-sm sm:text-base px-4 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
                            active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
               >
-                Email us <FontAwesomeIcon icon={faEnvelope} className="inline ml-1 text-lime-300" size="1x" />
+                Email us <FontAwesomeIcon icon={faEnvelope} className="inline ml-1 text-lime-400" size="1x" />
               </Link>
               <Link
                 href="/contact"
                 className="block w-full text-center text-sm sm:text-base px-4 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
                            active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
               >
-                Send feedback <FontAwesomeIcon icon={faComment} className="inline ml-1 text-lime-300" size="1x" />
+                Send feedback <FontAwesomeIcon icon={faComment} className="inline ml-1 text-lime-400" size="1x" />
               </Link>
             </div>
           </Motion.div>
@@ -188,13 +188,13 @@ export default function SupportPage() {
                      transition-all duration-300"
         >
           <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Quick FAQ</h3>
-          <div className="space-y-3 text-sm sm:text-base">
+          <div className="space-y-4 text-sm sm:text-base">
             <Motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.7 }}
             >
-              <dt className="font-medium text-gray-300">Will support change the content?</dt>
+              <dt className="font-medium text-gray-300 mb-1">Will support change the content?</dt>
               <dd className="text-gray-400">No. The core content remains free and available to everyone.</dd>
             </Motion.div>
             <Motion.div
@@ -202,7 +202,7 @@ export default function SupportPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.8 }}
             >
-              <dt className="font-medium text-gray-300">Is support tax-deductible?</dt>
+              <dt className="font-medium text-gray-300 mb-1">Is support tax-deductible?</dt>
               <dd className="text-gray-400">We’re a community-driven project, not a registered charity yet — so contributions aren’t tax-deductible.
                 But every bit goes directly into keeping our resources free for everyone.</dd>
             </Motion.div>
@@ -211,7 +211,7 @@ export default function SupportPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.9 }}
             >
-              <dt className="font-medium text-gray-300">Can I contribute content?</dt>
+              <dt className="font-medium text-gray-300 mb-1">Can I contribute content?</dt>
               <dd className="text-gray-400">Yes. Mail us or open a PR on our GitHub repo to get started.</dd>
             </Motion.div>
           </div>

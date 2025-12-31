@@ -7,7 +7,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <section className="relaive min-h-screen py-12 sm:py-20 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-900/50">
+      <section className="relative min-h-screen py-20 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-900/50">
         <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-cover opacity-60"></div>
         <Motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,22 +29,23 @@ export default function AboutPage() {
             About Us
           </Motion.h2>
           <p className="text-gray-300 text-sm sm:text-base leading-relaxed pb-6">
-            VeryCodedly is a community-driven space for people who want to understand tech without being talked down to or overwhelmed. It’s not just about learning how to code. It’s about making sense of the systems, ideas, and culture that grow around technology.
-            We focus on clarity over noise, context over hype, and curiosity over credentials. Whether you’re learning, building, watching the industry shift, or just trying to keep up, this is a place to slow things down and actually understand what’s happening.
+            VeryCodedly is a community-driven space for everyone. It’s about making sense of the tools, concepts, and culture that grow around technology.
+            Whether you’re learning, building, watching the industry shift, 
+            or just trying to keep up, this is a place to slow things down and actually understand what’s happening.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 text-left">
             <div>
               <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Our Mission</h3>
               <p className="text-gray-300/80 text-sm sm:text-base leading-relaxed">
-                To make technology feel understandable, human, and relevant, by connecting how it’s built with how it shapes work, culture, and everyday life.
-                We’re here to explain things clearly, question them honestly, and help people form their own perspective on tech, not just consume it.
+                To make technology feel understandable and relevant, by connecting how it’s built with how it shapes work, culture, and everyday life.
+                We’ll explain things clearly, question them honestly, and help people form their own perspective on tech, not just consume it.
               </p>
             </div>
             <div>
               <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Our Values</h3>
-              <ul className="text-gray-300/80 text-sm sm:text-base list-disc list-inside space-y-1">
-                <li>No gatekeeping - curiosity is enough</li>
-                <li>Accessibility & clarity - explain it like a human would</li>
+              <ul className="text-gray-300/80 text-sm sm:text-base list-disc list-inside space-y-2">
+                <li>No gatekeeping</li>
+                <li>Accessibility & clarity</li>
                 <li>Community over competition - learning isn’t a race</li>
                 <li>Curiosity & lifelong learning - nobody ever “finishes” tech</li>
               </ul>

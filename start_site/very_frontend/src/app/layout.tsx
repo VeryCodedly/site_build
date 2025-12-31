@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import TopButton from "@/components/TopButton";
 import Footer from "@/components/Footer";
 import ScrollRestoration from '@/components/ScrollRestoration';
+import ServiceWorkerRegister from './sw-register';
 
 config.autoAddCss = false;
 
@@ -91,7 +92,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://api.verycodedly.com" />
 
-        <link rel="icon" href="/icons/icon-48x48.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -107,6 +107,7 @@ export default function RootLayout({
       </head>
       <body className={`${pops.variable} ${robo.variable} ${geist.variable} antialiased`}>
         <Header />
+        <ServiceWorkerRegister />
         <ScrollRestoration />
         {children}
         <TopButton />

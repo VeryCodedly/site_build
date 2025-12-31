@@ -18,7 +18,7 @@ export default function LearnSection() {
           {[
             {
               title: "Python Basics",
-              desc: "From print statements to first projects: start simple, start smart.",
+              desc: "From print statements to first projects, start simple, start smart.",
               tag: "Beginner",
             },
             {

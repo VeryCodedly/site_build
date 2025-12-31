@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Connect",
-  description: "Join the VeryCodedly Discord for fast, real-time updates on trends, tools, and tech insights.",
+  description: "Join the VeryCodedly Discord to ask questions, get feedback, share progress, and get real-time updates on tools, trends, and tech.",
   alternates: {
     canonical: "https://verycodedly.com/connect",
   },
   openGraph: {
     title: "Connect",
-    description: "Join the VeryCodedly Discord for fast, real-time updates on trends, tools, and tech insights.",
+    description: "Join the VeryCodedly Discord to ask questions, get feedback, share progress, and get real-time updates on tools, trends, and tech.",
     siteName: 'VeryCodedly',
     url: "https://verycodedly.com/connect",
     images: [{ url: "https://verycodedly.com/opengraph-image.png" }],
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Connect",
-    description: "Stay informed on tech trends, updates, and insights from the VeryCodedly Youtube channel.",
+    description: "Join the VeryCodedly Discord to ask questions, get feedback, share progress, and get real-time updates on tools, trends, and tech.",
     images: ["https://verycodedly.com/twitter-image.png"],
     creator: '@verycodedly'
   },
