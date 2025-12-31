@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     "tech blog",
   ],
   openGraph: {
-    title: 'VeryCodedly | Tech. Code. Culture.',
+    title: 'VeryCodedly | Tech. Code. Culture. From the inside.',
     description: "Tech. Code. Culture. VeryCodedly is your go-to tech hub for hardware deep-dives, free coding courses, unfiltered takes and the latest digital trends. No cookies, no login, no tracking.",
     url: 'https://verycodedly.com',
     siteName: 'VeryCodedly',
@@ -74,7 +74,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "VeryCodedly",
+    title: "VeryCodedly | Tech. Code. Culture. From the inside.",
     description: "Tech. Code. Culture. VeryCodedly is your go-to tech hub for hardware deep-dives, free coding courses, unfiltered takes and the latest digital trends. No cookies, no login, no tracking.",
     images: ["https://verycodedly.com/twitter-image.png"],
   },
