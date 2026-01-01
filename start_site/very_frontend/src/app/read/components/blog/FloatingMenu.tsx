@@ -126,7 +126,7 @@ export default function FloatingMenu({ categories }: { categories: Category[] })
                 }}
               >
                 <div className="flex items-center gap-3 sm:gap-4 p-2.5 md:p-1.5 px-4 rounded-xl hover:bg-white/8 active:bg-white/8 transition-all duration-200">
-                  <span className="text-xl text-pink-200 hover:text-rose-200">
+                  <span className="text-xl text-pink-100 hover:text-rose-200">
                     {icon ?
                       <Link href={`/read/category/${cat.slug}`}
                         aria-label="Category page link"

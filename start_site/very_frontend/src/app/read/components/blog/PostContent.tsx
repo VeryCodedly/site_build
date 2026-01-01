@@ -110,7 +110,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
             </Link>
           </div>
           <div className="inline-block px-">
-            <span className="flex gap-3">
+            <span className="flex gap-3.5">
               <Link href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition active:text-lime-400 active:scale-60 text-lg" title="Share on Twitter">
                 <FontAwesomeIcon icon={faTwitter} size="1x" />
               </Link>
