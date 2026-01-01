@@ -93,11 +93,7 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
       </Motion.div>
 
       <div className="max-w-5xl mx-auto px-3 sm:px-8">
-        <Motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-8 sm:mb-10"
+        <div className="mb-8 sm:mb-10"
         >
           <h1 className="text-2xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-lime-300 to-lime-400 bg-clip-text text-transparent">
             {course.title}
@@ -115,7 +111,7 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
               {completedLessons.length} / {lessons.length} completed
             </span>
           </div>
-        </Motion.div>
+        </div>
 
         <Motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -19,13 +19,13 @@ export default function TopButton() {
         {showTopBtn && (
             <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-6 right-3 z-50 bg-lime-400 text-black px-0.5 py-2 rounded-full cursor-pointer border-3 border-gray-500/100 hover:bg-white active:bg-white hover:text-black
+            className="text-sm fixed bottom-6 right-3 sm:right-4 z-50 bg-lime-400 text-black px-0.5 py-2 rounded-full cursor-pointer border-3 border-gray-500/100 hover:bg-white active:bg-white hover:text-black
                     active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
             aria-label="Scroll to top"
             tabIndex={0}
             >
                 <span className="sr-only">Scroll to top</span>
-                <FontAwesomeIcon className="text-sm sm:text-base" icon={faArrowUp} size='lg' />
+                <FontAwesomeIcon icon={faArrowUp} size='lg' />
             </button>
         )}
         </>

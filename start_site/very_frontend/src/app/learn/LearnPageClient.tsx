@@ -37,11 +37,11 @@
                <span className="text-pink-400 mx-1">Create.</span>{" "}
              </span>
              {/* Animated color fade-in */}
-             <Motion.span
+             <span
                className="px-30 sm:px-0 inline-block"
-               initial={{ opacity: 0 }}
-               animate={{ opacity: 1 }}
-               transition={{ duration: 0.4 }}
+              //  initial={{ opacity: 0 }}
+              //  animate={{ opacity: 1 }}
+              //  transition={{ duration: 0.4 }}
              >
                Learn.{" "}
                <Motion.span
@@ -72,7 +72,7 @@
                  </Motion.span>
                  {/* <span>&nbsp;Creatively.</span> */}
                </span>
-             </Motion.span>
+             </span>
            </h1>
            <p className="text-gray-400 px-2 sm:px-0 text-md md:text-lg max-w-2xl">
              Beginner-friendly coding lessons that help complex ideas click,
@@ -120,7 +120,7 @@
          >
            <span className="text-white">Courses from <span className="text-lime-400">VeryCodedly</span></span>
          </Motion.h2>
-         <div className="space-y-2.5 w-[98%] sm:w-[90%] lg:w-[80%] mx-auto">
+         <div className="space-y-2.5 w-[98%] md:w-[90%] lg:w-[75%] mx-auto">
            {/* <div className="absolute inset-0 bg-[url('/images/bg-plain.jpg')] bg-center bg-stretch opacity-50"></div> */}
            {/* <div className=""> */}
            <CourseListClient courses={courses} />
@@ -129,7 +129,7 @@
        </section>
 
        {/* LEARNING PATHS */}
-       <section className="bg-gradient-to-b from-black to-zinc-950/60 max-w-4xl mx-auto min-h-screen py-22 px-8 flex flex-col items-left justify-center">
+       <section className="bg-gradient-to-b from-black to-zinc-950/60 max-w-4xl md:max-w-3xl lg:max-w-4xl mx-auto min-h-screen py-22 px-8 flex flex-col items-left justify-center">
          <Motion.h2
            className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-12 px-2 text-left text-white/90"
            initial={{ opacity: 0, y: 20 }}
@@ -143,7 +143,7 @@
            {[
              {
                name: "Frontend Starter",
-               desc: "HTML, CSS, JavaScript, React - build the visual layer of the web you interact with.",
+               desc: "HTML, CSS, JavaScript - build the visual layer of the web you interact with.",
              },
              {
                name: "Backend Mastery",
@@ -216,16 +216,16 @@
                    <p className="text-sm text-gray-300 line-clamp-4 sm:line-clamp-5 mb-3 leading-relaxed">
                      {topic.desc}
                    </p>
-                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-x-3 text-base text-lime-400 group-hover:text-white">
+                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-x-2 text-base text-lime-400 group-hover:text-white">
                      <span className="text-gray-400/80 text-sm">Beginner</span>
-                     <div className="font-bold mt-1 sm:mt-0 inline-flex items-center gap-2 ">
+                     <div className="font-bold mt-1 sm:mt-0 inline-flex items-center gap-2">
                        Start Now <FontAwesomeIcon className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform" icon={faLongArrowRight} size="sm" />
                      </div>
                    </div>
                  </div>
                  {/* Right Image */}
                  <div className="flex-shrink-0 mb-3 sm:mb-0">
-                   <div className="relative max-w-[100px] w-[70px] h-[70px] sm:w-[120px] sm:h-[120px] aspect-square mx-auto sm:mx-0">
+                   <div className="relative max-w-[100px] w-[70px] h-[70px] sm:w-[100px] sm:h-[100px] aspect-square mx-auto sm:mx-0">
                      <Image
                        fill
                        src={topic.image}
