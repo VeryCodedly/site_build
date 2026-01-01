@@ -46,7 +46,8 @@ export default function BlogSection() {
               </h3>
               <p className="text-gray-300/90 mb-4">{post.desc}</p>
               <Link
-                href="/blog"
+                // href="/blog"
+                href="/read"
                 aria-label={`${post.tag} button`}
                 className="text-pink-400 font-semibold hover:text-pink-300 active:text-pink-300
                  inline-flex items-center gap-2 hover:underline transition-all"

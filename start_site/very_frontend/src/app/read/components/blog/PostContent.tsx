@@ -43,7 +43,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
       <Motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.5 }}
         className="relative w-full group mb-6 sm:mb-8 overflow-hidden rounded-2xl select-none"
       >
         <Image
@@ -67,7 +67,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
       <Motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
+        transition={{ duration: 0.5 }}
         className="mb-6 sm:mb-8"
       >
         {/* <span className="bg-gray-400/10 text-gray-400 px-2 py-1 rounded-full font-medium gap-1 flex items-center">
@@ -76,11 +76,11 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           </span> */}
         <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4 text-sm text-gray-400">
           <span className="bg-gray-400/10 text-gray-400 px-2 py-1 rounded-full font-medium flex items-center gap-2 group">
-            <span className="relative inline-block w-4 h-4">
+            <span className="relative inline-block w-4 h-4 select-none">
               {/* Default icon - User */}
               <FontAwesomeIcon
                 icon={faUser}
-                className="text-pink-500/90 text-sm absolute inset-0 transition-all duration-75 ease-out group-hover:rotate-12 group-hover:scale-0 group-hover:opacity-0 group-active:rotate-12 group-active:scale-0 group-active:opacity-0"
+                className="text-pink-300 text-sm absolute inset-0 transition-all duration-75 ease-out group-hover:rotate-12 group-hover:scale-0 group-hover:opacity-0 group-active:rotate-12 group-active:scale-0 group-active:opacity-0"
               />
               {/* Hover icon - Pen */}
               <FontAwesomeIcon
@@ -143,7 +143,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
       <Motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        transition={{ duration: 0.5 }}
         className="mb-8 sm:mb-12 space-y-6 sm:space-y-8"
       >
         {contentJson && contentJson.blocks && Array.isArray(contentJson.blocks) ? (
@@ -194,7 +194,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                       key={index}
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8 }}
+                      transition={{ duration: 0.6 }}
                       className="my-12 mx-auto relative w-full max-w-full group overflow-hidden rounded-2xl select-none"
                     >
                       <Image

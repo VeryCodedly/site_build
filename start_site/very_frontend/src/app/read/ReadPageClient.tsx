@@ -159,7 +159,7 @@ export default function ReadPageClient({ data }: Props){
 
         <div className="">
         {posts && (
-          <div className="space-y-2.5 w-[90%] lg:w-[75%] mx-auto my-12">
+          <div className="space-y-2.5 w-[90%] md:w-[80%] lg:w-[75%] mx-auto my-12">
             {posts?.slice(0, visiblePosts).map((post: Post) => (
               <Motion.div
                 key={post.id}
@@ -169,7 +169,7 @@ export default function ReadPageClient({ data }: Props){
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.5 }}
               >
                 <PostCard post={post} />
               </Motion.div>

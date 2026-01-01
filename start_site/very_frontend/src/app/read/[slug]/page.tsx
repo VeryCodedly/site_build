@@ -3,21 +3,50 @@ import { unstable_cache } from 'next/cache';
 import { Post } from '@/types/post';
 import PostClient from './PostClient';
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+if (!apiUrl) throw new Error('API_URL missing'); // Server-only fail
+
+export const revalidate = 3600; // 1hr page reval
+export const dynamicParams = true;
+
+// Cached post fetch
 const getCachedPost = unstable_cache(
   async (slug: string): Promise<Post | null> => {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    if (!apiUrl) return null;
-
-    const res = await fetch(`${apiUrl}/posts/${slug}/`, {
-      next: { revalidate: 60 },
-    });
-
+    const res = await fetch(`${apiUrl}/posts/${slug}/`);
     if (!res.ok) return null;
     return (await res.json()) as Post;
   },
-  ['post-by-slug'],
-  { revalidate: 60 }
+  ['posts-by-slug'], // + slug arg → per-post keys
+  { revalidate: 3600 }
 );
+
+// Cached related/trending
+const getRelatedPosts = unstable_cache(
+  async (subSlug?: string) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if (!subSlug) return { results: [] as any[] };
+    const res = await fetch(`${apiUrl}/subcategories/${subSlug}/posts/`);
+    return res.ok ? await res.json() : { results: [] };
+  },
+  ['related-posts'],
+  { revalidate: 1800 }
+);
+
+const getTrendingPosts = unstable_cache(
+  async () => {
+    const res = await fetch(`${apiUrl}/subcategories/trending-now/posts/`);
+    return res.ok ? await res.json() : { results: [] };
+  },
+  ['trending-posts'],
+  { revalidate: 900 }
+);
+
+// Static params (if API lists slugs at build)
+// export async function generateStaticParams() {
+//   const res = await fetch(`${apiUrl}/posts/?limit=100`); // Paginate if many
+//   const { results } = await res.json();
+//   return results.map((post: Post) => ({ slug: post.slug }));
+// }
 
 export default async function BlogPostPage({
   params,
@@ -26,30 +55,21 @@ export default async function BlogPostPage({
 }) {
   const { slug } = await params;
   const post = await getCachedPost(slug);
-
   if (!post) notFound();
-  
-  // Extract subcategory slug
+
   const subSlug = post.subcategory?.slug;
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    if (!apiUrl) return null;
-
-  // 2. Fetch related + trending in parallel
-  const [relatedRes, trendingRes] = await Promise.all([
-    subSlug
-      ? fetch(`${apiUrl}/subcategories/${subSlug}/posts/`)
-      : Promise.resolve(new Response(JSON.stringify({ ok: false }))),
-
-    fetch(`${apiUrl}/subcategories/trending-now/posts/`)
+  const [related, trending] = await Promise.all([
+    getRelatedPosts(subSlug),
+    getTrendingPosts()
   ]);
 
-  const related = relatedRes.ok ? await relatedRes.json() : { results: [] };
-  const trending = trendingRes.ok ? await trendingRes.json() : { results: [] };
-
-
   return (
-    <PostClient post={post} related={related.results || []} trending={trending.results || []} />
-     );
+    <PostClient
+      post={post}
+      related={related.results || []}
+      trending={trending.results || []}
+    />
+  );
 }
 
 // 'use client';
