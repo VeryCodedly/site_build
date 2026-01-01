@@ -40,10 +40,10 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
   return (
     <>
       {/* Featured Image */}
-      <Motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+      <div
+        // initial={{ opacity: 0, y: 20 }}
+        // animate={{ opacity: 1, y: 0 }}
+        // transition={{ duration: 0.5 }}
         className="relative w-full group mb-6 sm:mb-8 overflow-hidden rounded-2xl select-none"
       >
         <Image
@@ -61,13 +61,13 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
         <p className="absolute -bottom-0.5 sm:bottom-3 left-0 sm:left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-md rounded-lg p-2 text-sm">
           {post.caption || 'Featured Image'}
         </p>
-      </Motion.div>
+      </div>
 
       {/* Post Header */}
-      <Motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+      <div
+        // initial={{ opacity: 0, y: 20 }}
+        // animate={{ opacity: 1, y: 0 }}
+        // transition={{ duration: 0.5 }}
         className="mb-6 sm:mb-8"
       >
         {/* <span className="bg-gray-400/10 text-gray-400 px-2 py-1 rounded-full font-medium gap-1 flex items-center">
@@ -75,12 +75,12 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
             {post.author || 'Anonymous'}
           </span> */}
         <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4 text-sm text-gray-400">
-          <span className="bg-gray-400/10 text-gray-400 px-2 py-1 rounded-full font-medium flex items-center gap-2 group">
-            <span className="relative inline-block w-4 h-4 select-none">
+          <span className="bg-gray-400/10 text-gray-400 select-none px-2 py-1 rounded-full font-medium flex items-center gap-2 group">
+            <span className="relative inline-block w-4 h-4">
               {/* Default icon - User */}
               <FontAwesomeIcon
                 icon={faUser}
-                className="text-pink-300 text-sm absolute inset-0 transition-all duration-75 ease-out group-hover:rotate-12 group-hover:scale-0 group-hover:opacity-0 group-active:rotate-12 group-active:scale-0 group-active:opacity-0"
+                className="text-pink-400/90 text-sm absolute inset-0 transition-all duration-75 ease-out group-hover:rotate-12 group-hover:scale-0 group-hover:opacity-0 group-active:rotate-12 group-active:scale-0 group-active:opacity-0"
               />
               {/* Hover icon - Pen */}
               <FontAwesomeIcon
@@ -137,13 +137,13 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
         <p className="text-gray-300/80 text-sm sm:text-base tracking-wide italic border-l-4 border-lime-400/50 rounded-sm pl-4 mb-6">
           {post.excerpt || 'No excerpt available for this post.'}
         </p>
-      </Motion.div>
+      </div>
 
       {/* Post Content */}
-      <Motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+      <div
+        // initial={{ opacity: 0, y: 20 }}
+        // animate={{ opacity: 1, y: 0 }}
+        // transition={{ duration: 0.5 }}
         className="mb-8 sm:mb-12 space-y-6 sm:space-y-8"
       >
         {contentJson && contentJson.blocks && Array.isArray(contentJson.blocks) ? (
@@ -228,10 +228,10 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
             {post.content_plain_text && <p className="text-gray-300 mt-2">{post.content_plain_text}</p>}
           </div>
         )}
-      </Motion.div>
+      </div>
 
       {/* Gallery */}
-      <Motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="mb-8 sm:mb-12">
+      <div className="mb-8 sm:mb-12">
         <h2 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-lime-300 flex items-center gap-2">
           <FontAwesomeIcon icon={faImage} /> Gallery
         </h2>
@@ -251,10 +251,10 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
         ) : (
           <p className="text-gray-400 italic text-sm sm:text-base">No additional images available.</p>
         )}
-      </Motion.div>
+      </div>
 
       {/* Tags */}
-      <Motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="mb-8 sm:mb-12">
+      <div className="mb-8 sm:mb-12">
         <h3 className="text-lg sm:text-xl font-semibold mb-4 text-lime-300 gap-2 flex items-center">
           <FontAwesomeIcon icon={faHashtag} /> Tags
         </h3>
@@ -269,10 +269,10 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
         ) : (
           <p className="text-gray-400 italic text-sm sm:text-base">No tags assigned.</p>
         )}
-      </Motion.div>
+      </div>
 
       {/* Related Links */}
-      <Motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.5 }} className="mb-8 sm:mb-12">
+      <div className="mb-8 sm:mb-12">
         <h3 className="text-lg sm:text-xl font-semibold mb-4 text-lime-300 gap-2 flex items-center">
           <FontAwesomeIcon icon={faLink} /> Related Links
         </h3>
@@ -292,7 +292,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
         ) : (
           <p className="text-gray-400 italic text-sm sm:text-base">No related links available.</p>
         )}
-      </Motion.div>
+      </div>
 
       {/* Comments */}
       {/* <Motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }} className="mb-8 sm:mb-12">
@@ -318,10 +318,10 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
         )}
       </Motion.div> */}
 
-      <Motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
+      <div
+        // initial={{ opacity: 0, y: 20 }}
+        // animate={{ opacity: 1, y: 0 }}
+        // transition={{ duration: 0.6, delay: 0.6 }}
         className="mb-8 sm:mb-12"
       >
         <h3 className="text-lg sm:text-xl font-bold mb-4 text-lime-300 flex items-center gap-3">
@@ -380,12 +380,11 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
 
           {/* Add more if needed, e.g. dev.to, Bluesky */}
         </div>
-      </Motion.div>
+      </div>
 
       {/* Meta Footer */}
       <div className="pt-10">
-        <Motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.7 }}
-          className="text-center text-gray-500 text-sm border-t border-b border-zinc-700 rounded-xl py-8">
+        <div className="text-center text-gray-500 text-sm border-t border-b border-zinc-700 rounded-xl py-8">
           <p className="flex flex-col justify-center sm:flex-row sm:gap-2">
             <span>
               Published{' '}
@@ -414,7 +413,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
             )}
           </p>
           <p className="mt-4 text-pink-400 capitalize">{post.status || 'Draft'}</p>
-        </Motion.div>
+        </div>
       </div>
     </>
   );
