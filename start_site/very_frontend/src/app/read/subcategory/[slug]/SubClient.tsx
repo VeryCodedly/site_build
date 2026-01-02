@@ -81,11 +81,13 @@ export default function SubClient({
                         </div>
                     </div>
 
-                    <RelatedPostsSection
-                        subcategoryName={subcategory.name}
-                        posts={posts}
-                        trending={trending}
-                    />
+                    <div className="px-2">
+                        <RelatedPostsSection
+                            subcategoryName={subcategory.name}
+                            posts={posts}
+                            trending={trending}
+                        />
+                    </div>
                 </div>
             </section>
         </>

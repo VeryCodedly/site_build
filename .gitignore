@@ -66,6 +66,8 @@ db_backup.*
 db_backup.sqlite3
 data.json
 create_superuser.py
+migrated_slugs.txt
+
 # Flask stuff:
 instance/
 .webassets-cache

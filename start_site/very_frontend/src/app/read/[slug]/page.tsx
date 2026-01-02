@@ -6,7 +6,7 @@ import PostClient from './PostClient';
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 if (!apiUrl) throw new Error('API_URL missing'); // Server-only fail
 
-export const revalidate = 3600; // 1hr page reval
+export const revalidate = 900; // 15 minutes
 export const dynamicParams = true;
 
 // Cached post fetch
@@ -17,7 +17,7 @@ const getCachedPost = unstable_cache(
     return (await res.json()) as Post;
   },
   ['posts-by-slug'], // + slug arg → per-post keys
-  { revalidate: 3600 }
+  { revalidate: 900 }
 );
 
 // Cached related/trending
@@ -29,7 +29,7 @@ const getRelatedPosts = unstable_cache(
     return res.ok ? await res.json() : { results: [] };
   },
   ['related-posts'],
-  { revalidate: 1800 }
+  { revalidate: 900 }
 );
 
 const getTrendingPosts = unstable_cache(

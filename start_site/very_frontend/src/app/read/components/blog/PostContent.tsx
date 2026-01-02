@@ -58,7 +58,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           sizes="100vw"
           tabIndex={0}
         />
-        <p className="absolute -bottom-0.5 sm:bottom-3 left-0 sm:left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-md rounded-lg p-2 text-sm">
+        <p className="absolute -bottom-0.5 sm:bottom-3 left-0 sm:left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-sm md:backdrop-blur-md rounded-lg px-2 py-1.5 text-xs md:text-sm">
           {post.caption || 'Featured Image'}
         </p>
       </div>
