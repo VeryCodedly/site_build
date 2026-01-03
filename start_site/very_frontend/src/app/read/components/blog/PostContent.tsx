@@ -58,7 +58,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           sizes="100vw"
           tabIndex={0}
         />
-        <p className="absolute -bottom-0.5 sm:bottom-3 left-0 sm:left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-sm md:backdrop-blur-md rounded-lg px-2 py-1.5 text-xs md:text-sm">
+        <p className="absolute bottom-0 sm:bottom-3 left-0 sm:left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-sm md:backdrop-blur-md rounded-lg px-2 py-1.5 text-xs md:text-sm">
           {post.caption || 'Featured Image'}
         </p>
       </div>
@@ -111,16 +111,16 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           </div>
           <div className="inline-block px-">
             <span className="flex gap-3.5">
-              <Link href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition active:text-lime-400 active:scale-60 text-lg" title="Share on Twitter">
+              <Link href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition duration-400 active:text-lime-400 active:scale-60 text-lg" title="Share on Twitter">
                 <FontAwesomeIcon icon={faTwitter} size="1x" />
               </Link>
-              <Link href={`https://www.linkedin.com/sharing/share-offsite/?url=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition active:text-lime-400 active:scale-60 text-lg" title="Share on LinkedIn">
+              <Link href={`https://www.linkedin.com/sharing/share-offsite/?url=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition duration-400 active:text-lime-400 active:scale-60 text-lg" title="Share on LinkedIn">
                 <FontAwesomeIcon icon={faLinkedinIn} size="1x" />
               </Link>
-              <Link href={`https://www.facebook.com/sharer/sharer.php?u=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition active:text-lime-400 active:scale-60 text-lg" title="Share on Facebook">
+              <Link href={`https://www.facebook.com/sharer/sharer.php?u=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition duration-400 active:text-lime-400 active:scale-60 text-lg" title="Share on Facebook">
                 <FontAwesomeIcon icon={faFacebook} size="1x" />
               </Link>
-              <Link href={`https://wa.me/?text=${encodeURIComponent(post.title + " — https://verycodedly.com/read/" + post.slug)}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition active:text-lime-400 active:scale-60 text-lg" title="Share on WhatsApp">
+              <Link href={`https://wa.me/?text=${encodeURIComponent(post.title + " — https://verycodedly.com/read/" + post.slug)}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition duration-400 active:text-lime-400 active:scale-60 text-lg" title="Share on WhatsApp">
                 <FontAwesomeIcon icon={faWhatsapp} size="1x" />
               </Link>
               <button onClick={() => navigator.clipboard.writeText(`https://verycodedly.com/read/${post.slug}`)} className="hover:text-lime-400 transition duration-400 active:text-lime-400 active:scale-60 text-lg" title="Copy link">
@@ -207,7 +207,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                         priority={index < 3}   // prioritize first few images
                       />
 
-                      <p className="absolute bottom-0 sm:bottom-3 left-0 sm:left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-md rounded-lg p-2 text-sm">
+                      <p className="absolute bottom-0 sm:bottom-3 left-0 sm:left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-sm md:backdrop-blur-md rounded-lg px-2 py-1.5 text-xs md:text-sm">
                         {block.imageCaption || 'First Look'}
                       </p>
                     </Motion.div>
@@ -384,7 +384,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
 
       {/* Meta Footer */}
       <div className="pt-10">
-        <div className="text-center text-gray-500 text-sm border-t border-b border-zinc-700 rounded-xl py-8">
+        <div className="text-center text-gray-500 text-sm border-t border-b border-zinc-800 rounded-md py-8">
           <p className="flex flex-col justify-center sm:flex-row sm:gap-2">
             <span>
               Published{' '}

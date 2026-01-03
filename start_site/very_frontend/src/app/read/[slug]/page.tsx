@@ -1,76 +1,147 @@
 import { notFound } from 'next/navigation';
-import { unstable_cache } from 'next/cache';
+import { cache } from 'react';
 import { Post } from '@/types/post';
 import PostClient from './PostClient';
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-if (!apiUrl) throw new Error('API_URL missing'); // Server-only fail
+if (!apiUrl) throw new Error('NEXT_PUBLIC_API_URL is missing'); // Server-only fail
 
 export const revalidate = 900; // 15 minutes
 export const dynamicParams = true;
 
-// Cached post fetch
-const getCachedPost = unstable_cache(
-  async (slug: string): Promise<Post | null> => {
-    const res = await fetch(`${apiUrl}/posts/${slug}/`);
-    if (!res.ok) return null;
-    return (await res.json()) as Post;
-  },
-  ['posts-by-slug'], // + slug arg → per-post keys
-  { revalidate: 900 }
-);
+// --- Fetch with React cache ---
+const getPost = cache(async (slug: string): Promise<Post | null> => {
+  const res = await fetch(`${apiUrl}/posts/${slug}/`, {
+    next: { revalidate },
+    cache: 'force-cache', // ensure server caching
+    headers: { 'Content-Type': 'application/json' },
+  });
 
-// Cached related/trending
-const getRelatedPosts = unstable_cache(
-  async (subSlug?: string) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if (!subSlug) return { results: [] as any[] };
-    const res = await fetch(`${apiUrl}/subcategories/${subSlug}/posts/`);
-    return res.ok ? await res.json() : { results: [] };
-  },
-  ['related-posts'],
-  { revalidate: 900 }
-);
+  if (!res.ok) return null;
+  return (await res.json()) as Post;
+});
 
-const getTrendingPosts = unstable_cache(
-  async () => {
-    const res = await fetch(`${apiUrl}/subcategories/trending-now/posts/`);
-    return res.ok ? await res.json() : { results: [] };
-  },
-  ['trending-posts'],
-  { revalidate: 900 }
-);
+const getRelatedPosts = cache(async (subSlug?: string) => {
+  if (!subSlug) return { results: [] as Post[] };
+  const res = await fetch(`${apiUrl}/subcategories/${subSlug}/posts/`, {
+    next: { revalidate },
+    cache: 'force-cache',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  return res.ok ? await res.json() : { results: [] };
+});
 
-// Static params (if API lists slugs at build)
-// export async function generateStaticParams() {
-//   const res = await fetch(`${apiUrl}/posts/?limit=100`); // Paginate if many
-//   const { results } = await res.json();
-//   return results.map((post: Post) => ({ slug: post.slug }));
-// }
+const getTrendingPosts = cache(async () => {
+  const res = await fetch(`${apiUrl}/subcategories/trending-now/posts/`, {
+    next: { revalidate },
+    cache: 'force-cache',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  return res.ok ? await res.json() : { results: [] };
+});
 
+// Page
 export default async function BlogPostPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>; // mark as Promise
 }) {
-  const { slug } = await params;
-  const post = await getCachedPost(slug);
+  const { slug } = await params;  
+
+  const post = await getPost(slug);
   if (!post) notFound();
 
   const subSlug = post.subcategory?.slug;
   const [related, trending] = await Promise.all([
     getRelatedPosts(subSlug),
-    getTrendingPosts()
+    getTrendingPosts(),
   ]);
 
   return (
     <PostClient
+      key={post.slug} // force refresh if slug change
       post={post}
-      related={related.results || []}
-      trending={trending.results || []}
+      related={related.results ?? []}
+      trending={trending.results ?? []}
     />
   );
 }
+
+
+// import { notFound } from 'next/navigation';
+// import { unstable_cache } from 'next/cache';
+// import { Post } from '@/types/post';
+// import PostClient from './PostClient';
+
+// const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+// if (!apiUrl) throw new Error('API_URL missing'); // Server-only fail
+
+// export const revalidate = 900; // 15 minutes
+// export const dynamicParams = true;
+
+// // Cached post fetch
+// const getCachedPost = unstable_cache(
+//   async (slug: string): Promise<Post | null> => {
+//     const res = await fetch(`${apiUrl}/posts/${slug}/`);
+//     if (!res.ok) return null;
+//     return (await res.json()) as Post;
+//   },
+//   ['posts-by-slug', 'slug'], // + slug arg → per-post keys
+//   { revalidate: 900 }
+// );
+
+// // Cached related/trending
+// const getRelatedPosts = unstable_cache(
+//   async (subSlug?: string) => {
+//     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//     if (!subSlug) return { results: [] as any[] };
+//     const res = await fetch(`${apiUrl}/subcategories/${subSlug}/posts/`);
+//     return res.ok ? await res.json() : { results: [] };
+//   },
+//   ['related-posts'],
+//   { revalidate: 900 }
+// );
+
+// const getTrendingPosts = unstable_cache(
+//   async () => {
+//     const res = await fetch(`${apiUrl}/subcategories/trending-now/posts/`);
+//     return res.ok ? await res.json() : { results: [] };
+//   },
+//   ['trending-posts'],
+//   { revalidate: 900 }
+// );
+
+// // Static params (if API lists slugs at build)
+// // export async function generateStaticParams() {
+// //   const res = await fetch(`${apiUrl}/posts/?limit=100`); // Paginate if many
+// //   const { results } = await res.json();
+// //   return results.map((post: Post) => ({ slug: post.slug }));
+// // }
+
+// export default async function BlogPostPage({
+//   params,
+// }: {
+//   params: Promise<{ slug: string }>;
+// }) {
+//   const { slug } = await params;
+//   const post = await getCachedPost(slug);
+//   if (!post) notFound();
+
+//   const subSlug = post.subcategory?.slug;
+//   const [related, trending] = await Promise.all([
+//     getRelatedPosts(subSlug),
+//     getTrendingPosts()
+//   ]);
+
+//   return (
+//     <PostClient
+//       key={post.slug}
+//       post={post}
+//       related={related.results || []}
+//       trending={trending.results || []}
+//     />
+//   );
+// }
 
 // 'use client';
 
