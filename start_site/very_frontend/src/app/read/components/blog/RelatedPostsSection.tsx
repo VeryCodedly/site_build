@@ -70,6 +70,7 @@ export default function RelatedPostsSection({
             <p className="text-gray-500">Quiet for now.</p>
           )}
         </motion.div>
+        
       </div>
     </section>
   );
