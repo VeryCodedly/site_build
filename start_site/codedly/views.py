@@ -209,7 +209,7 @@ class PostViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def trending(self, request):
-        posts = Post.objects.filter(subcategory__slug="trending-now").order_by('-created_at')[:6]
+        posts = Post.objects.filter(subcategory__slug="right-now").order_by('-created_at')[:6]
         data = PostSerializer(posts, many=True).data
         return Response({"trending": data})
     
@@ -288,7 +288,7 @@ class ReadPageDataView(APIView):
             ).data,
 
             "featured": multi("featured", 3),
-            "trending": viewset._multi_posts("trending-now"),
+            "trending": viewset._multi_posts("right-now"),
             "spotlight": viewset._multi_posts("entertainment"),
             "bigDeal": viewset._multi_posts("big-deal"),
             "digitalMoney": multi("digital-money", 3),

@@ -136,6 +136,7 @@ export default function ReadPageClient({ data }: Props){
           <Motion.div 
             className="absolute bottom-6 sm:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30 text-gray-400"
             animate={{ y: [0, 10, 0] }}
+            style={{ minHeight: '3rem' }} // reserve vertical space
             transition={{ repeat: Infinity, duration: 2 }}
             tabIndex={0}
           >
@@ -425,13 +426,12 @@ export default function ReadPageClient({ data }: Props){
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-3xl text-white mb-4">Trending<span className="text-lime-400">Now</span>
+              className="text-3xl text-white mb-4">Right<span className="text-lime-400">Now</span>
             </Motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {trending.map((post) => (
                 <MiniPostCard key={post.id} post={post} />
               ))}
-
             </div>
           </section>
         )}

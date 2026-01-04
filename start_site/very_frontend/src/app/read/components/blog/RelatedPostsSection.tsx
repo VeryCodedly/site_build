@@ -60,7 +60,7 @@ export default function RelatedPostsSection({
         >
           <h2 className="text-2xl lg:text-2xl font-bold text-white flex items-center gap-3">
             <span className="w-1.5 h-8 bg-pink-400 rounded-xs" />
-            Trending Now
+            Right Now in Tech
           </h2>
           {trendingSlice.length > 0 ? (
             <div className="grid gap-4">

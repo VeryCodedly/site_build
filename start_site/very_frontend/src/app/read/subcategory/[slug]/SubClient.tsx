@@ -57,7 +57,7 @@ export default function SubClient({
                     </h1>
                     {about && (
                         <div className="my-10 flex justify-center px-4 sm:px-">
-                            <p className="whitespace-pre-wra italic text-sm m:text-base max-w-2xl tracking-tighter leading- text-zinc-300/80 pl-5 sm:pl-4 border-l-4 border-lime-500 rounded-sm last:text-center">
+                            <p className="whitespace-pre-wra italic text-sm m:text-base max-w-2xl tracking-tighter leading- text-zinc-300/80 pl-4.5 sm:pl-4 border-l-4 border-lime-500 rounded-sm last:text-center">
                                 {about}
                             </p>
                         </div>

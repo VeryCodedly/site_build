@@ -32,7 +32,7 @@ const getRelatedPosts = cache(async (subSlug?: string) => {
 });
 
 const getTrendingPosts = cache(async () => {
-  const res = await fetch(`${apiUrl}/subcategories/trending-now/posts/`, {
+  const res = await fetch(`${apiUrl}/subcategories/right-now/posts/`, {
     next: { revalidate },
     cache: 'force-cache',
     headers: { 'Content-Type': 'application/json' },
