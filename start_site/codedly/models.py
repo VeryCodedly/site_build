@@ -170,7 +170,7 @@ class Post(models.Model):
     content_JSON = models.JSONField(default=dict, blank=True)
     content_plain_text = models.TextField(blank=True)
     excerpt = models.CharField(max_length=300, blank=True)
-    author = models.CharField(max_length=50, default="Admin")
+    author = models.CharField(max_length=50, default="Chrise")
     
     image = models.URLField(max_length=500, blank=True, null=True, default='https://res.cloudinary.com/verycodedly/image/upload/v1763878238/very-codedly-banner.png')
     caption = models.CharField(max_length=200, blank=True)
@@ -212,7 +212,7 @@ class Post(models.Model):
 
             # Auto-generate alt if empty
             if not self.alt:
-                self.alt = self.caption.lower().replace(" ", "-")
+                self.alt = slugify(self.caption)
 
         super().save(*args, **kwargs)
 
