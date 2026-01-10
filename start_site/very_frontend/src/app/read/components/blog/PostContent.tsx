@@ -281,8 +281,8 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
             {post.links.map((link) => (
               <Link key={link.id} aria-label={`Link for ${link.target_post}`} href={link.external_url || `/read/${link.target_post?.slug || '#'}`}
                 target={link.external_url ? '_blank' : '_self'} rel={link.external_url ? 'noopener noreferrer' : ''}
-                className="group flex items-center w-fit gap-2 px-3 py-2 bg-zinc-900/50 hover:bg-lime-500/10 active:bg-lime-500/10 border border-zinc-800/30
-                hover:border-lime-500/20 active:border-lime-500/20 rounded-xl transition-all text-lime-300 hover:text-white active:text-white text-sm sm:text-sm">
+                className="group flex items-center w-fit gap-2 px-4 py-2 bg-zinc-900/50 hover:bg-lime-500/10 active:bg-lime-500/10 border border-zinc-800/30
+                hover:border-lime-500/20 active:border-lime-500/20 rounded-xl transition-all text-lime-400 hover:text-lime-300 active:text-white text-sm sm:text-sm">
                 <span className="font-normal">{link.label || 'Related Link'}</span>
                 {link.type === 'affiliate' && <span className="text-xs bg-pink-500/20 text-pink-400 px-2 py-1 rounded-full">Affiliate</span>}
                 {link.external_url && <FontAwesomeIcon icon={faLongArrowRight} className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform" />}

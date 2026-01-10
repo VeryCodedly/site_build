@@ -107,9 +107,9 @@ export default function FloatingMenu({ categories }: { categories: Category[] })
       <div
         ref={menuRef}
         onMouseEnter={() => setExpanded(true)}
-        className={`fixed overflow-hidden pl-6 top-1/2 left-0 transform -translate-y-1/2 bg-black/30 hover:backdrop-blur-lg
+        className={`fixed overflow-hidden pl-6 md:pl-7 top-1/2 left-0 transform -translate-y-1/2 bg-black/30 hover:backdrop-blur-lg
                    shadow-lg rounded-r-3xl border border-l-0 border-white/20 transition-all duration-200 ease-in-out
-                   ${expanded ? "w-70 sm:w-70 h-[61%] md:h-[461px] lg:h-[461px] m:h-full ax-h-[86vh] opacity-100 backdrop-blur-lg" : "opacity-0 w-8 h-10"} z-50`}
+                   ${expanded ? "w-72 md:w-68 h-[61%] md:h-[461px] lg:h-[461px] m:h-full ax-h-[86vh] opacity-100 backdrop-blur-lg" : "opacity-0 w-8 h-10"} z-50`}
       >
         <ul className="flex flex-col gap-1 py-3 text-gray-200 h-full min-h-0 overflow-y-auto -webkit-overflow-scrolling-touch custom-scrollbar">
           {categories.map(cat => {
@@ -125,8 +125,8 @@ export default function FloatingMenu({ categories }: { categories: Category[] })
                   setActiveCatId(activeCatId === cat.id ? null : cat.id);
                 }}
               >
-                <div className="flex items-center gap-3 sm:gap-4 p-2.5 md:p-1.5 px-4 rounded-xl hover:bg-white/8 active:bg-white/8 transition-all duration-200">
-                  <span className="text-xl text-pink-100 hover:text-rose-200">
+                <div className="flex items-center gap-4 p-2.5 md:p-1.5 px-4 rounded-xl hover:bg-white/8 active:bg-white/8 transition-all duration-200">
+                  <span className="text-xl text-pink-200/90 hover:text-pink-300/90 active:text-pink-300/90">
                     {icon ?
                       <Link href={`/read/category/${cat.slug}`}
                         aria-label="Category page link"
@@ -140,7 +140,7 @@ export default function FloatingMenu({ categories }: { categories: Category[] })
                       : <span className="w-6 h-6 md:w-5 md:h-5" />}
                   </span>
                   {expanded && (
-                    <span className="text-md md:text-sm text-white font-medium active:text-lime-200 select-none">
+                    <span className="text-base md:text-sm text-white font-medium active:text-lime-200 select-none">
                       {cat.name}
                     </span>
                   )}
@@ -149,7 +149,7 @@ export default function FloatingMenu({ categories }: { categories: Category[] })
                 {expanded && activeCatId === cat.id && (
                   <div 
                   onClick={(e) => e.stopPropagation()}
-                  className="ml-7 bg-black/3 hover:backdrop-blur-md rounded-xl shadow-lg text-xs sm:text-sm flex flex-col animate-fade-in">
+                  className="ml-8.5 md:ml-6 bg-black/3 hover:backdrop-blur-md rounded-xl shadow-lg text-xs md:text-sm flex flex-col animate-fade-in">
                     {cat?.subcategories?.slice()
                       .sort((a, b) => a.name.length - b.name.length)
                       .map(sub => (
@@ -161,7 +161,7 @@ export default function FloatingMenu({ categories }: { categories: Category[] })
                             setExpanded(false);
                             setActiveCatId(null);
                           }}
-                          className="rounded-md py-1.5 sm:py-1 hover:bg-white/8 active:bg-white/8">
+                          className="rounded-md py-1.5 md:py-1 hover:bg-white/8 active:bg-white/8">
                           <span className="text-white font-medium active:text-pink-200 text-sm md:text-xs fle items-start justify-cente p-5 transition">
                             {sub.name}
                           </span>

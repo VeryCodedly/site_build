@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter, faYoutube, faFacebook, faDiscord, faLinkedin, faTiktok, faInstagram, faMedium, faDev } from "@fortawesome/free-brands-svg-icons";
@@ -21,6 +22,13 @@ const socials = [
 ];
 
 export default function Footer() {
+  
+  const [year, setYear] = useState(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="relative bg-gradient-to-b from-zinc-950 via-black to-zinc-950 text-gray-300/80 py-24 px-8 overflow-hidden border-t border-zinc-800">
       {/* faint glow background */}
@@ -132,7 +140,7 @@ export default function Footer() {
         </Link>
 
         <p className="text-xs text-gray-600 text-center sm:text-right">
-            Powered by curiosity. VeryCodedly<span className="text-xs">™</span>{" "}{new Date().getFullYear()}.
+            Powered by curiosity. VeryCodedly<span className="text-xs">™</span>{" "}{year && `${year}.`}.
         </p>
       </div>
     </footer>

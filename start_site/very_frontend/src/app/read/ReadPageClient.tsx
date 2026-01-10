@@ -160,7 +160,7 @@ export default function ReadPageClient({ data }: Props){
 
         <div className="">
         {posts && (
-          <div className="space-y-2.5 w-[90%] md:w-[80%] lg:w-[75%] mx-auto my-12">
+          <div className="space-y-2.5 w-[93%] md:w-[80%] lg:w-[75%] mx-auto my-12">
             {posts?.slice(0, visiblePosts).map((post: Post) => (
               <Motion.div
                 key={post.id}

@@ -47,8 +47,8 @@ export const metadata: Metadata = {
     }
   },
   icons: {
-    icon: '/icon.svg',
-    apple: '/apple-icon.svg',
+    icon: '/favicon.ico',
+    apple: '/apple-icon.png',
   },
   keywords: [
     "tech",
@@ -89,10 +89,9 @@ export default function RootLayout({
     <html lang="en" className="custom-scrollbar">
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <link rel="preconnect" href="https://res.cloudinary.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://api.verycodedly.com" />
-
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-icon" href="/apple-icon.png" />
 
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content="VeryCodedly" />
@@ -108,7 +107,6 @@ export default function RootLayout({
       <body className={`${pops.variable} ${robo.variable} ${geist.variable} antialiased`}>
         <Header />
         <ServiceWorkerRegister />
-        {/* <ScrollRestoration /> */}
         {children}
         <TopButton />
         <Footer />
