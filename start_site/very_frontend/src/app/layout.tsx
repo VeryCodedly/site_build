@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 // import ScrollRestoration from '@/components/ScrollRestoration';
 import ServiceWorkerRegister from './sw-register';
 
+
 config.autoAddCss = false;
 
 const pops = localFont({
@@ -35,19 +36,12 @@ const geist = localFont({
   display: "swap",
 });
 
-export const viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#000000' },
-    { media: '(prefers-color-scheme: dark)', color: '#000000' },
-  ],
-};
 
 export const metadata: Metadata = {
   title: { default: 'VeryCodedly', template: '%s | VeryCodedly' },
   description: "Tech. Code. Culture. VeryCodedly is your go-to tech hub for hardware deep-dives, free coding courses, unfiltered takes and the latest digital trends. No cookies, no login, no tracking.",
   metadataBase: new URL("https://verycodedly.com"),
   manifest: '/manifest.json',
-  themeColor: "#000000",
   alternates: {
     canonical: "https://verycodedly.com",
     languages: {
@@ -103,7 +97,7 @@ export default function RootLayout({
 
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content="VeryCodedly" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="black" />
 
         {/* <script
           defer
