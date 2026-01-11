@@ -40,6 +40,7 @@ export const metadata: Metadata = {
   description: "Tech. Code. Culture. VeryCodedly is your go-to tech hub for hardware deep-dives, free coding courses, unfiltered takes and the latest digital trends. No cookies, no login, no tracking.",
   metadataBase: new URL("https://verycodedly.com"),
   manifest: '/manifest.json',
+  themeColor: "#000000",
   alternates: {
     canonical: "https://verycodedly.com",
     languages: {
