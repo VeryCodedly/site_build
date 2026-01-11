@@ -7,9 +7,9 @@ import MorphingPanel from "./MorphingPanel.jsx";
 
 export default function Hero() {
   return (
-    <section className="bg-transparent w-full max-w-7xl overflow-hidden mx-auto flex flex-wrap gap-8 items-center pb-1 py-22 px-8 sm:px-12 md:py-14 lg:py-16 lg:px-16">
+    <section className="bg-transparent min-h-screen w-full max-w-7xl overflow-hidden mx-auto flex flex-wrap gap-8 items-center py-22 px-8 sm:px-12 md:py-14 lg:py-16 lg:px-16">
       {/* <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center py-16 px-14 md:px-14"> */}
-      <div className="flex-1 space-y-6 z-20 md:items-center">
+      <div className="flex-1 space-y-6 z-20 mx-auto md:items-center">
         {/* <div className="min-h-[230px] w-[400px] flex relative"> */}
         {/* <div className="w-full max-w-[400px] min-w-[180px] min-h-[180px] sm:min-h-[180px] md:min-h-[230px] flex relative"> */}
         <div className="w-full max-w-[400px] min-h-[180px] min-w-[300px] sm:min-h-[230px] sm:min-w-[400px] flex relative">
@@ -21,7 +21,7 @@ export default function Hero() {
               words={["Ready to see what's next in Tech? "]}
               // cursor
               // cursorStyle="|"
-              typeSpeed={40}
+              typeSpeed={50}
             // deleteSpeed={50}
             // delaySpeed={1500}
             />
@@ -44,7 +44,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="flex-1 items-center justify-center w-full px-8 sm:px-10 mt-14 py-22 sm:py-16 md:py-12 lg:py-0 lg:mt-0">
+      <div className="flex-1 items-center justify-center w-full px-8 sm:px-10 lg:px-0 mt-14 py-22 sm:py-16 md:py-12 lg:py-0 lg:mt-0">
         <MorphingPanel />
       </div>
 

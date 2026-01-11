@@ -21,9 +21,9 @@ export default function SubClient({
 
     if (posts.length === 0) {
         return (
-            <>
+            <main>
                 <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }} className="max-w-6xl mx-auto mb-6">
-                    <Link href="/read" className="inline-flex items-center gap-2 mt-8 pl-7 text-lime-400 hover:text-white underline underline-offset-2 text-sm">
+                    <Link href="/read" className="inline-flex items-center gap-2 mt-8 pl-7 text-lime-400 hover:text-white underline underline-offset-2 text-sm" aria-label="Back to Read button">
                         <FontAwesomeIcon icon={faArrowLeft} size="lg" />
                     </Link>
                 </motion.div>
@@ -38,14 +38,15 @@ export default function SubClient({
                         </p>
                     </div>
                 </div>
-            </>
+            </main>
         );
     }
 
     return (
-        <>
+        <main>
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-                <Link href="/read" className="inline-flex items-center gap-2 text-lime-400 pt-8 ml-8 hover:text-white text-sm sm:text-base active:text-white active:scale-60 transition-all duration-300">
+                <Link href="/read" className="inline-flex items-center gap-2 text-lime-400 pt-8 ml-8 hover:text-white text-sm sm:text-base active:text-white active:scale-60 transition-all duration-300"
+                 aria-label="Back to Read button">
                     <FontAwesomeIcon icon={faArrowLeft} size="lg" />
                 </Link>
             </motion.div>
@@ -71,7 +72,7 @@ export default function SubClient({
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: 0.05 }}
+                                    transition={{ delay: 0.02 }}
                                 //     className="bg-zinc-900/80 rounded-2xl p-2 border border-zinc-800 transition-transform duration-500 transform hover:-translate-y-2 
                                 //                 hover:rotateX-3 hover:rotateY-3 active:-translate-y-2 active:rotateX-3 active:rotateY-3" style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
                                 >
@@ -90,6 +91,6 @@ export default function SubClient({
                     </div>
                 </div>
             </section>
-        </>
+        </main>
     );
 }

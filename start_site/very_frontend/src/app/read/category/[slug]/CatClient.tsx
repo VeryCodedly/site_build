@@ -13,7 +13,7 @@ const containerVariants = {
     hidden: {},
     visible: {
         transition: {
-            staggerChildren: 0.12,
+            staggerChildren: 0.10,
             delayChildren: 0.1,
         },
     },
@@ -24,7 +24,7 @@ const cardVariants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.10, ease: [0.16, 1, 0.3, 1] as [number, number, number, number], },
+        transition: { duration: 0.10, ease: [0.10, 1, 0.3, 1] as [number, number, number, number], },
     },
 };
 
@@ -65,7 +65,7 @@ export default function CatClient({ category,
                     <Motion.p
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.15, duration: 0.5 }}
+                        transition={{ delay: 0.10, duration: 0.5 }}
                         className="text-md text-center mx-auto text-gray-400 mt-6 mb-12 w-fit border-l-4 border-lime-400 rounded-sm pl-4 sm:pl-4"
                     >
                         {posts?.length} {posts?.length === 1 ? "post" : "posts"} in this category

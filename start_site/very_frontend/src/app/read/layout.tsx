@@ -4,6 +4,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import FloatingMenu from "./components/blog/FloatingMenu";
 import SearchBar from "@/components/SearchBar";
 
+
 async function getCategories() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories/`, {
     next: { revalidate: 3600 },
@@ -12,7 +13,6 @@ async function getCategories() {
   const data = await res.json();
   return data.results || [];
 }
-
 
 export const metadata: Metadata = {
   title: "Read",

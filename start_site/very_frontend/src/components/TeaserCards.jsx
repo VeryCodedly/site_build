@@ -53,7 +53,7 @@ const cards = [
 
 export default function TeaserCards() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-20 px-6 md:px-8 lg:px-22 overflow-hidden border-b border-zinc-900">
+    <section className="relative min-h-screen flex items-center justify-center py-20 px-6 md:px-8 lg:px-22 overflow-hidden border-y border-zinc-900">
       {/* faded bg */}
       <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-cover opacity-60"></div>
 

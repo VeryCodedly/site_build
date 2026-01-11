@@ -81,7 +81,7 @@ export default function ReadPageClient({ data }: Props){
   };
 
   return (
-    <section className="relative w-full min-h-screen bg-black text-white overflow-hidden">
+    <main className="relative w-full min-h-screen bg-black text-white overflow-hidden">
       {/* 🪶 HERO SECTION */}
       <div className="relative min-h-screen -mt-8 sm:mt-0 flex flex-col justify-center items-center text-center overflow-hidden">
         {/* layered typography */}
@@ -160,7 +160,7 @@ export default function ReadPageClient({ data }: Props){
 
         <div className="">
         {posts && (
-          <div className="space-y-2.5 w-[93%] md:w-[80%] lg:w-[75%] mx-auto my-12">
+          <div className="space-y-2.5 w-[92%] md:w-[80%] lg:w-[75%] mx-auto my-12">
             {posts?.slice(0, visiblePosts).map((post: Post) => (
               <Motion.div
                 key={post.id}
@@ -574,7 +574,7 @@ export default function ReadPageClient({ data }: Props){
 
       </div>
       </div>
-    </section>
+    </main>
   );
 }
 

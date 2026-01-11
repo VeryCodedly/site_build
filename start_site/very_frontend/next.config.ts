@@ -121,11 +121,11 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/manifest.json",
-        headers: [{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }],
+        headers: [{ key: "Cache-Control", value: "public, s-maxage=600, stale-while-revalidate=60" }],
       },
       {
         source: "/icons/:path*",
-        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+        headers: [{ key: "Cache-Control", value: "public, s-maxage=600, stale-while-revalidate=60" }],
       },
       {
         source: "/images/:path*",

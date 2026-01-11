@@ -140,7 +140,7 @@ export default function Footer() {
         </Link>
 
         <p className="text-xs text-gray-600 text-center sm:text-right">
-            Powered by curiosity. VeryCodedly<span className="text-xs">™</span>{" "}{year && `${year}.`}.
+            Powered by curiosity. VeryCodedly<span className="text-xs">™</span>{" "}{year && `${year}`}.
         </p>
       </div>
     </footer>

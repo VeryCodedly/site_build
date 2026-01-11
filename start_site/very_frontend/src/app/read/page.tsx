@@ -1,14 +1,15 @@
 import ReadPageClient from "./ReadPageClient";
 
 
-const API = process.env.NEXT_PUBLIC_API_URL!;
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+if (!apiUrl) throw new Error('NEXT_PUBLIC_API_URL is missing!');
 
 
 export const revalidate = 180;
 
 export default async function ReadPage() {
-  const res = await fetch(`${API}/read-page-data/`, {
-    next: { revalidate: 180 },
+  const res = await fetch(`${apiUrl}/read-page-data/`, {
+    next: { revalidate },
   });
 
   const data = res.ok ? await res.json() : {};
