@@ -32,7 +32,7 @@ export default function PostClient({ post, related, trending }: PostClientProps)
     }
 
     return (
-        <section className="relative w-full bg-gradient-to-b from-black via-zinc-950 to-black text-white min-h-screen py-10 px-9">
+        <main className="relative w-full bg-gradient-to-b from-black via-zinc-950 to-black text-white min-h-screen py-10 px-9">
             {/* Back Button */}
             <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -49,12 +49,12 @@ export default function PostClient({ post, related, trending }: PostClientProps)
                 </Link>
             </motion.div>
 
-            <main className="max-w-4xl mx-auto">
+            <section className="max-w-4xl mx-auto">
                 <PostContent post={post} contentJson={contentJson} />
                 <RelatedPostsSection posts={related} trending={trending} name={post.subcategory?.name} />
-            </main>
+            </section>
 
             <NewsletterCard />
-        </section>
+        </main>
     );
 }
