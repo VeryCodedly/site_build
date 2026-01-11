@@ -35,6 +35,13 @@ const geist = localFont({
   display: "swap",
 });
 
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#000000' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
+  ],
+};
+
 export const metadata: Metadata = {
   title: { default: 'VeryCodedly', template: '%s | VeryCodedly' },
   description: "Tech. Code. Culture. VeryCodedly is your go-to tech hub for hardware deep-dives, free coding courses, unfiltered takes and the latest digital trends. No cookies, no login, no tracking.",
@@ -49,7 +56,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: '/favicon.ico',
-    apple: '/apple-icon.png',
+    apple: '/apple-touch-icon.png',
   },
   keywords: [
     "tech",
@@ -92,7 +99,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-icon" href="/apple-icon.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="apple-mobile-web-app-title" content="VeryCodedly" />
