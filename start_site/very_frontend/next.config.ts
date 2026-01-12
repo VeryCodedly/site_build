@@ -89,55 +89,131 @@ const nextConfig: NextConfig = {
   async headers() {
     const csp = isDev ? cspDev : cspProd;
     return [
-      // Next.js static assets
-      {
-        source: "/_next/static/(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-
-      // Fonts & media
-      {
-        source: "/_next/static/media/(.*)",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      },
-      {
-        source: "/(.*)",
-        headers: [
-          { key: "Content-Security-Policy", value: csp },
-          ...securityHeaders,
-          // Add caching for CDN / ISR
-          { key: "Cache-Control", value: "s-maxage=600, stale-while-revalidate=60" },
-        ],
-      },
-      {
-        source: "/manifest.json",
-        headers: [{ key: "Cache-Control", value: "public, s-maxage=600, stale-while-revalidate=60" }],
-      },
-      {
-        source: "/icons/:path*",
-        headers: [{ key: "Cache-Control", value: "public, s-maxage=600, stale-while-revalidate=60" }],
-      },
-      {
-        source: "/images/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "public, max-age=31536000, immutable",
-          },
-        ],
-      }
+      // 1️⃣ Next.js static JS chunks
+    {
+      source: "/_next/static/chunks/(.*)",
+      headers: [
+        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+      ],
+    },
+    // 2️⃣ Next.js CSS chunks
+    {
+      source: "/_next/static/css/(.*)",
+      headers: [
+        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+      ],
+    },
+    // 3️⃣ Fonts / media
+    {
+      source: "/_next/static/media/(.*)",
+      headers: [
+        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+      ],
+    },
+    // 4️⃣ Service worker
+    {
+      source: "/sw.js",
+      headers: [
+        { key: "Content-Type", value: "application/javascript; charset=utf-8" },
+        { key: "Cache-Control", value: "max-age=3600, must-revalidate" },
+        { key: "Content-Security-Policy", value: "default-src 'self'; script-src 'self'" },
+      ],
+    },
+    // 5️⃣ Manifest
+    {
+      source: "/manifest.json",
+      headers: [
+        { key: "Cache-Control", value: "public, s-maxage=600, stale-while-revalidate=60" },
+      ],
+    },
+    // 6️⃣ Offline page and images
+    {
+      source: "/offline.html",
+      headers: [
+        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+      ],
+    },
+    {
+      source: "/images/:path*",
+      headers: [
+        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+      ],
+    },
+    // 7️⃣ All other pages (dynamic, API, etc.)
+    {
+      source: "/(.*)",
+      headers: [
+        { key: "Content-Security-Policy", value: csp },
+        ...securityHeaders,
+        { key: "Cache-Control", value: "s-maxage=600, stale-while-revalidate=60" },
+      ],
+    },
     ];
   },
 };
 
 export default nextConfig;
+
+ // {
+      //   source: "/(.*)",
+      //   headers: [
+      //     { key: "Content-Security-Policy", value: csp },
+      //     ...securityHeaders,
+      //     // Add caching for CDN / ISR
+      //     { key: "Cache-Control", value: "s-maxage=600, stale-while-revalidate=60" },
+      //   ],
+      // },
+      // // Next.js static assets
+      // {
+      //   source: "/_next/static/(.*)",
+      //   headers: [
+      //     {
+      //       key: "Cache-Control",
+      //       value: "public, max-age=31536000, immutable",
+      //     },
+      //   ],
+      // },
+      // // Fonts & media
+      // {
+      //   source: "/_next/static/media/(.*)",
+      //   headers: [
+      //     {
+      //       key: "Cache-Control",
+      //       value: "public, max-age=31536000, immutable",
+      //     },
+      //   ],
+      // },
+      // {
+      //   source: '/sw.js',
+      //   headers: [
+      //     {
+      //       key: 'Content-Type',
+      //       value: 'application/javascript; charset=utf-8',
+      //     },
+      //     {
+      //       key: 'Cache-Control',
+      //       value: 'max-age=3600, must-revalidate',
+      //     },
+      //     {
+      //       key: 'Content-Security-Policy',
+      //       value: "default-src 'self'; script-src 'self'",
+      //     },
+      //   ],
+      // },
+      // {
+      //   source: "/manifest.json",
+      //   headers: [{ key: "Cache-Control", value: "public, s-maxage=600, stale-while-revalidate=60" }],
+      // },
+      // {
+      //   source: "/icons/:path*",
+      //   headers: [{ key: "Cache-Control", value: "public, s-maxage=600, stale-while-revalidate=60" }],
+      // },
+      // {
+      //   source: "/images/:path*",
+      //   headers: [
+      //     {
+      //       key: "Cache-Control",
+      //       value: "public, max-age=31536000, immutable",
+      //     },
+      //   ],
+      // }

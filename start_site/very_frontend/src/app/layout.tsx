@@ -6,7 +6,6 @@ import "./globals.css";
 import Header from "@/components/Header";
 import TopButton from "@/components/TopButton";
 import Footer from "@/components/Footer";
-// import ScrollRestoration from '@/components/ScrollRestoration';
 import ServiceWorkerRegister from './sw-register';
 
 
@@ -95,9 +94,12 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
         <meta name="apple-mobile-web-app-title" content="VeryCodedly" />
-        <meta name="theme-color" content="black" />
+        <meta name="theme-color" content="#000000" />
+
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#000000" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
 
         {/* <script
           defer
