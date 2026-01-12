@@ -89,6 +89,7 @@
   scroll-behavior: auto !important;
   font-size: 100%;             /* rem-based scaling */
   -webkit-text-size-adjust: 100%; /* prevent forced browser zoom on mobile */
+  height: 100svh;
   }
   body, pre {
     background-color: #000;
