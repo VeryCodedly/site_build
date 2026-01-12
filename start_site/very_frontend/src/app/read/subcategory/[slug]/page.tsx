@@ -30,7 +30,7 @@ const getSubPostsCached = cache(async (slug: string) => {
 
 // Cached trending posts
 const getTrendingPostsCached = cache(async () => {
-  const res = await fetch(`${apiUrl}/subcategories/trending-now/posts/`, {
+  const res = await fetch(`${apiUrl}/subcategories/right-now/posts/`, {
     next: { revalidate },
     headers: { 'Content-Type': 'application/json' },
   });

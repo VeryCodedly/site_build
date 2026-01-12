@@ -37,7 +37,7 @@ export default function RelatedPostsSection({
           transition={{ duration: 0.6 }}
           className="space-y-6"
         >
-          <h2 className="text-xl lg:text-2xl tracking-tight font-bold text-white flex items-center gap-3">
+          <h2 className="text-2xl lg:text-2xl tracking-tight font-bold text-white flex items-center gap-3">
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs" />
             Latest in {displayName}
           </h2>

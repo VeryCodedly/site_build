@@ -33,7 +33,7 @@ const getCategory = cache(async (slug: string): Promise<Category | null> => {
 // Cached trending posts fetch
 const getTrendingPosts = cache(async (): Promise<Post[]> => {
   try {
-    const res = await fetch(`${apiUrl}/subcategories/trending-now/posts/`, {
+    const res = await fetch(`${apiUrl}/subcategories/right-now/posts/`, {
       next: { revalidate },
       headers: { 'Content-Type': 'application/json' },
     });
