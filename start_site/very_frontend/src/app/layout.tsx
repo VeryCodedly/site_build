@@ -98,9 +98,6 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="VeryCodedly" />
         <meta name="theme-color" content="#000000" />
 
-        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#000000" />
-        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000" />
-
         {/* <script
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
