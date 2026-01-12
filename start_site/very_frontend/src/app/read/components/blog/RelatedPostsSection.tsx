@@ -27,7 +27,7 @@ export default function RelatedPostsSection({
 
   return (
     <section className="mt-10">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 py-14 px-2.5 sm:px-0">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 md:gap-8 py-10 px-2.5 sm:px-0">
 
         {/* Latest */}
         <motion.div
