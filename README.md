@@ -1,4 +1,4 @@
-# VeryCodedly — Backend
+# VeryCodedly - Backend
 
 The engine behind https://verycodedly.com
 
@@ -14,7 +14,6 @@ No cookies, no login, no tracking.
 
 - Django 5 + Django REST Framework
 - PostgreSQL
-<!-- - Redis (caching + rate limiting) -->
 - Cloudflare
 
 ## Running locally
