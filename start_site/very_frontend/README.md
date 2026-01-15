@@ -1,6 +1,6 @@
-# VeryCodedly — Source Code
+# VeryCodedly - Source Code
 
-Tech. Code. Culture.
+Tech. Code. Culture. From the inside.
 
 No cookies, no login, no tracking.
 
@@ -10,7 +10,7 @@ Next.js 14 + Tailwind + Django backend + PostgreSQL + Cloudflare
 ## Purpose
 
 Open for learning and inspiration only.  
-Fork it, study it, steal the tricks — just don’t run a clone or use the VeryCodedly name/brand.
+Fork it, study it, steal the tricks, just don’t run a clone or use the VeryCodedly name/brand.
 
 See [LICENSE-CODE](LICENSE-CODE) and [LICENSE-CONTENT](LICENSE-CONTENT) for the exact rules.
 
@@ -22,4 +22,4 @@ See [LICENSE-CODE](LICENSE-CODE) and [LICENSE-CONTENT](LICENSE-CONTENT) for the 
 - CDN + Analytics: Cloudflare (zero cookies)
 
 
-Powered by curiosity — VeryCodedly · 2025
+Powered by curiosity. VeryCodedly™ · 2026
