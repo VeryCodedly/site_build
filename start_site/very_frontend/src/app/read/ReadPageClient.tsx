@@ -199,7 +199,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-4 flex justify-start">Emerging<span className="text-lime-400">Tech</span>
+            className="text-3xl text-white mb-5 flex justify-start">Emerging<span className="text-lime-400">Tech</span>
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {emergingTech.map(post => (
@@ -217,7 +217,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-4 flex justify-end">AI
+            className="text-3xl text-white mb-5 flex justify-end">AI
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {AI.map(post => (
@@ -234,7 +234,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-lime-400 mb-4 flex justify-start">Big<span className="text-white">Deal</span>
+            className="text-3xl text-lime-400 mb-5 flex justify-start">Big<span className="text-white">Deal</span>
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {bigDeal.map(post => (
@@ -254,7 +254,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-4 flex justify-start">
+            className="text-3xl text-white mb-5 flex justify-start">
             Blockchain&<span className="text-lime-400">Crypto</span>
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -273,7 +273,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-4 flex justify-end">
+            className="text-3xl text-white mb-5 flex justify-end">
             Startups
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -292,7 +292,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-lime-400 mb-4 flex justify-start">
+            className="text-3xl text-lime-400 mb-5 flex justify-start">
             Privacy<span className="text-white">&Compliance</span>
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -312,7 +312,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-4 flex justify-start">
+            className="text-3xl text-white mb-5 flex justify-start">
             The<span className="text-lime-400">Climb</span>
 
           </Motion.h3>
@@ -331,7 +331,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-4 flex justify-end">Stack
+            className="text-3xl text-white mb-5 flex justify-end">Stack
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {stack.map(post => (
@@ -348,7 +348,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-lime-400 mb-4 flex justify-start">
+            className="text-3xl text-lime-400 mb-5 flex justify-start">
             Industry<span className="text-white">Insights</span>
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -369,7 +369,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-4 flex justify-start">Secure<span className="text-lime-400">Habits</span>
+            className="text-3xl text-white mb-5 flex justify-start">Secure<span className="text-lime-400">Habits</span>
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {secureHabits.map(post => (
@@ -386,7 +386,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-4 flex justify-end">
+            className="text-3xl text-white mb-5 flex justify-end">
             Rundown
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -404,7 +404,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-lime-400 mb-4 flex justify-start">Beginner<span className="text-white">Guides</span>
+            className="text-3xl text-lime-400 mb-5 flex justify-start">Beginner<span className="text-white">Guides</span>
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {buyGuides.map(post => (
@@ -425,7 +425,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-4">Right<span className="text-lime-400">Now</span>
+            className="text-3xl text-white mb-5">Right<span className="text-lime-400">Now</span>
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {trending.map((post) => (
@@ -443,7 +443,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-4 flex justify-end">
+            className="text-3xl text-white mb-5 flex justify-end">
             Entertainment
           </Motion.h3>
           {/* <h2 className="text-3xl sm:text-4xl font-bold text-pink-400 mb-10">Editor’s<span className="text-white"> Picks</span></h2> */}
@@ -471,7 +471,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-lime-400 mb-4 flex justify-start">Tech<span className="text-white">Culture</span>
+            className="text-3xl text-lime-400 mb-5 flex justify-start">Tech<span className="text-white">Culture</span>
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {techCulture.map(post => (
@@ -494,7 +494,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-4 flex justify-start">
+            className="text-3xl text-white mb-5 flex justify-start">
             Key<span className="text-lime-400">Players</span>
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -513,7 +513,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-lime-400 mb-4 flex justify-end">Africa<span className="text-white">Now</span>
+            className="text-3xl text-lime-400 mb-5 flex justify-end">Africa<span className="text-white">Now</span>
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {africaRising.map(post => (
@@ -531,7 +531,7 @@ export default function ReadPageClient({ data }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-lime-400 mb-4 flex justify-start">
+            className="text-3xl text-lime-400 mb-5 flex justify-start">
             Policy<span className="text-white">&Progress</span>
           </Motion.h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
