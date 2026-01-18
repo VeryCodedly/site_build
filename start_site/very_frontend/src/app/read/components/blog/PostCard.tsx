@@ -7,7 +7,7 @@ import { faLongArrowRight } from '@fortawesome/free-solid-svg-icons';
 export default function PostCard({ post }: { post: Post }) {
   return (
     <div className="flex flex-row px-4 py-2 rounded-xl shadow bg-zinc-900 group hover:-translate-y-[5px] hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)] 
-                    active:-translate-y-[15px] active:shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition transform duration-300 gap-3">
+                    active:-translate-y-[10px] active:shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition transform duration-400 gap-3">
 
       {/* Left Section: Text */}
       <div className="flex-1 flex flex-col justify-between">
