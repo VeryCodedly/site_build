@@ -193,7 +193,7 @@ export default function ReadPageClient({ data }: Props) {
       <Carousel posts={hardware} />
 
       {emergingTech.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -211,7 +211,7 @@ export default function ReadPageClient({ data }: Props) {
 
       {/* 10 AI */}
       {AI.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -228,7 +228,7 @@ export default function ReadPageClient({ data }: Props) {
       )}
 
       {bigDeal.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -248,7 +248,7 @@ export default function ReadPageClient({ data }: Props) {
 
       {/* 10 BLOCKCHAIN & CRYPTO */}
       {bchCrypto.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -267,7 +267,7 @@ export default function ReadPageClient({ data }: Props) {
 
       {/* 11 STARTUPS */}
       {startups.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -286,7 +286,7 @@ export default function ReadPageClient({ data }: Props) {
 
       {/* 12 PRIVACY & COMPLIANCE */}
       {prvCompliance.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -306,7 +306,7 @@ export default function ReadPageClient({ data }: Props) {
       <Carousel posts={devDigest} />
 
       {theClimb.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -325,7 +325,7 @@ export default function ReadPageClient({ data }: Props) {
       )}
 
       {stack.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -342,7 +342,7 @@ export default function ReadPageClient({ data }: Props) {
       )}
 
       {industryInsights.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -363,7 +363,7 @@ export default function ReadPageClient({ data }: Props) {
 
       {/* 13 SECURE HABITS */}
       {secureHabits.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -380,7 +380,7 @@ export default function ReadPageClient({ data }: Props) {
       )}
 
       {rundown.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -398,7 +398,7 @@ export default function ReadPageClient({ data }: Props) {
       )}
 
       {buyGuides.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -419,7 +419,7 @@ export default function ReadPageClient({ data }: Props) {
 
       {/* 2 TRENDING NOW */}
       {trending.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -437,7 +437,7 @@ export default function ReadPageClient({ data }: Props) {
 
       {/* 3 SPOTLIGHT */}
       {spotlight.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -465,7 +465,7 @@ export default function ReadPageClient({ data }: Props) {
 
       {/* 12 TECH CULTURE */}
       {techCulture.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -488,7 +488,7 @@ export default function ReadPageClient({ data }: Props) {
 
       {/* 6 GLOBAL LENS */}
       {keyPlayers.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -507,7 +507,7 @@ export default function ReadPageClient({ data }: Props) {
 
       {/* 7 AFRICA RISING */}
       {africaRising.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -525,7 +525,7 @@ export default function ReadPageClient({ data }: Props) {
 
       {/* 8 KEY PLAYERS */}
       {policyProgress.length > 0 && (
-        <section className="py-8 lg:py-5 px-3">
+        <section className="py-7 lg:py-5 px-3">
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
