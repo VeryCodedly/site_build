@@ -330,7 +330,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
 
         <p className="italic text-gray-400 text-sm sm:text-base mb-6 leading-relaxed">
           Enjoyed this? Ask questions, share your take (hot, lukewarm, or undecided), or follow the thread with people in real time.
-          The community’s open — join us.
+          The community’s open, join us.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">

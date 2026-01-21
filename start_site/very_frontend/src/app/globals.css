@@ -80,6 +80,16 @@
   scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
 }
 
+::selection {
+  background: #6da301;
+  color: white;
+}
+
+::-moz-selection {
+  background: #6da301;
+  color: white;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-float, .animate-spin-twice, .animate-fade-in { animation: none; }
 }
