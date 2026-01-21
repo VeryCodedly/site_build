@@ -40,7 +40,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-    comments = CommentSerializer(many=True, read_only=True)
+    # comments = CommentSerializer(many=True, read_only=True)
     category = CategorySerializer()
     subcategory = SubcategorySerializer()
     images = PostImageSerializer(many=True, read_only=True)

@@ -162,28 +162,28 @@ class Subcategory(models.Model):
 
     
 class Post(models.Model):
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=60, unique=True, blank=True)
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=False, null=True, related_name="posts")
-    subcategory = models.ForeignKey(Subcategory, on_delete=models.SET_NULL, blank=False, null=True, related_name="posts")  
+    title = models.CharField(max_length=200, db_index=True)
+    slug = models.SlugField(max_length=60, unique=True, blank=True, db_index=True)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=False, null=True, related_name="posts", db_index=True)
+    subcategory = models.ForeignKey(Subcategory, on_delete=models.SET_NULL, blank=False, null=True, related_name="posts", db_index=True)  
 
-    content_JSON = models.JSONField(default=dict, blank=True)
-    content_plain_text = models.TextField(blank=True)
-    excerpt = models.CharField(max_length=300, blank=True)
-    author = models.CharField(max_length=50, default="Chrise")
+    content_JSON = models.JSONField(default=dict, blank=True, db_index=True)
+    content_plain_text = models.TextField(blank=True, db_index=True)
+    excerpt = models.CharField(max_length=300, blank=True, db_index=True)
+    author = models.CharField(max_length=50, default="Chrise", db_index=True)
     
-    image = models.URLField(max_length=500, blank=True, null=True, default='https://res.cloudinary.com/verycodedly/image/upload/v1763878238/very-codedly-banner.png')
-    caption = models.CharField(max_length=200, blank=True)
-    alt = models.CharField(max_length=100, blank=True)
+    image = models.URLField(max_length=500, blank=True, null=True, default='https://res.cloudinary.com/verycodedly/image/upload/v1763878238/very-codedly-banner.png', db_index=True)
+    caption = models.CharField(max_length=200, blank=True, db_index=True)
+    alt = models.CharField(max_length=100, blank=True, db_index=True)
     
     tags = TaggableManager()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+    updated_at = models.DateTimeField(auto_now=True, db_index=True)
     
     status = models.CharField(
         max_length=10,
         choices=STATUS_CHOICES,
-        default="draft"
+        default="published"
     )
 
     class Meta:

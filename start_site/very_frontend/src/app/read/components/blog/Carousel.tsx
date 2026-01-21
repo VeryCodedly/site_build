@@ -14,6 +14,7 @@ interface CarouselProps {
 export default function Carousel({ posts = [], className = "" }: CarouselProps) {
   const [index, setIndex] = useState(0);
 
+  if (!posts.length) return null;
   const current = posts[index];
 
   return (

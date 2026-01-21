@@ -128,3 +128,45 @@
 #         post = Post.objects.filter(status="published", image__isnull=False, subcategory__slug="social").order_by('-created_at').first()
 #         serializer = PostSerializer(post, context={'request': request}) if post else None
 #         return Response({"social": serializer.data if serializer else None})
+
+# class ReadPageDataView(APIView):
+#     def get(self, request):
+#         viewset = PostViewSet()
+#         viewset.request = request  # needed for full URLs in serializer
+
+#         def multi(slug, limit=3):
+#             posts = Post.objects.filter(subcategory__slug=slug).order_by('-created_at')[:limit]
+#             return PostSerializer(posts, many=True, context={'request': request}).data
+
+#         return Response({
+#             "latest": PostSerializer(
+#                 Post.objects.filter(status="published").order_by('-created_at')[:10],
+#                 many=True,
+#                 context={'request': request}
+#             ).data,
+
+#             "featured": multi("featured", 3),
+#             "trending": viewset._multi_posts("right-now"),
+#             "spotlight": viewset._multi_posts("entertainment"),
+#             "bigDeal": viewset._multi_posts("big-deal"),
+#             "digitalMoney": multi("digital-money", 3),
+#             "bchCrypto": viewset._multi_posts("blockchain-crypto"),
+#             "startups": viewset._multi_posts("startups"),
+#             "prvCompliance": viewset._multi_posts("privacy-compliance"),
+#             "AI": viewset._multi_posts("ai"),
+#             "emergingTech": viewset._multi_posts("emerging-tech"),
+#             "hardware": multi("hardware", 3),
+#             "techCulture": viewset._multi_posts("tech-culture"),
+#             "policyProgress": viewset._multi_posts("policy-progress"),
+#             "globalLens": multi("wired-world", 3),
+#             "africaRising": viewset._multi_posts("africa-now"),
+#             "keyPlayers": viewset._multi_posts("key-players"),
+#             "dataDefense": multi("data-defense", 3),
+#             "secureHabits": viewset._multi_posts("secure-habits"),
+#             "stack": viewset._multi_posts("stack"),
+#             "buyGuides": viewset._multi_posts("beginner-guides"),
+#             "devDigest": multi("dev-digest", 3),
+#             "theClimb": viewset._multi_posts("the-climb"),
+#             "rundown": viewset._multi_posts("rundown"),
+#             "industryInsights": viewset._multi_posts("industry-insights"),
+#         })

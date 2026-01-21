@@ -3,19 +3,22 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework import status
+# from rest_framework import status
 # from django.conf import settings
 from rest_framework.decorators import action
 from django.db.models import Q
-from functools import wraps
-import time
-from django.core.cache import cache
+# from functools import wraps
 
-from django.http import JsonResponse
-from django.views.generic import ListView
-from django.shortcuts import get_object_or_404
+from collections import defaultdict
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.core.cache import cache
+
+# from django.http import JsonResponse
+# from django.views.generic import ListView
+# from django.shortcuts import get_object_or_404
+# from rest_framework.views import APIView
+# from rest_framework.response import Response
 
 from rest_framework import viewsets
 from rest_framework import generics
@@ -272,46 +275,79 @@ class PostViewSet(viewsets.ModelViewSet):
 
 
 class ReadPageDataView(APIView):
+    CACHE_KEY = "read_page_data"
+
+    # Single mapping: slug -> (frontend key, limit)
+    CATEGORY_CONFIG = {
+        "featured": ("featured", 3),
+        "right-now": ("trending", 6),
+        "entertainment": ("spotlight", 6),
+        "big-deal": ("bigDeal", 6),
+        "digital-money": ("digitalMoney", 3),
+        "blockchain-crypto": ("bchCrypto", 6),
+        "startups": ("startups", 6),
+        "privacy-compliance": ("prvCompliance", 6),
+        "ai": ("AI", 6),
+        "emerging-tech": ("emergingTech", 6),
+        "hardware": ("hardware", 3),
+        "tech-culture": ("techCulture", 6),
+        "policy-progress": ("policyProgress", 6),
+        "wired-world": ("globalLens", 3),
+        "africa-now": ("africaRising", 6),
+        "key-players": ("keyPlayers", 6),
+        "data-defense": ("dataDefense", 3),
+        "secure-habits": ("secureHabits", 6),
+        "stack": ("stack", 6),
+        "beginner-guides": ("buyGuides", 6),
+        "dev-digest": ("devDigest", 3),
+        "the-climb": ("theClimb", 6),
+        "rundown": ("rundown", 6),
+        "industry-insights": ("industryInsights", 6),
+    }
+
     def get(self, request):
-        viewset = PostViewSet()
-        viewset.request = request  # needed for full URLs in serializer
+        cached = cache.get(self.CACHE_KEY)
+        if cached:
+            return Response(cached)
 
-        def multi(slug, limit=3):
-            posts = Post.objects.filter(subcategory__slug=slug).order_by('-created_at')[:limit]
-            return PostSerializer(posts, many=True, context={'request': request}).data
+        slugs = self.CATEGORY_CONFIG.keys()
 
-        return Response({
+        # Fetch all posts in one query
+        posts = (
+            Post.objects
+            .select_related("subcategory")
+            .filter(status="published", subcategory__slug__in=slugs)
+            .order_by("-created_at")
+        )
+
+        # Group by slug, respecting limits
+        grouped = defaultdict(list)
+        for post in posts:
+            slug = post.subcategory.slug
+            _, limit = self.CATEGORY_CONFIG[slug]
+            if len(grouped[slug]) < limit:
+                grouped[slug].append(post)
+
+        # Serialize data
+        data = {
             "latest": PostSerializer(
-                Post.objects.filter(status="published").order_by('-created_at')[:10],
+                Post.objects
+                .select_related("subcategory")
+                .filter(status="published")
+                .order_by("-created_at")[:10],
                 many=True,
-                context={'request': request}
+                context={"request": request},
             ).data,
+        }
 
-            "featured": multi("featured", 3),
-            "trending": viewset._multi_posts("right-now"),
-            "spotlight": viewset._multi_posts("entertainment"),
-            "bigDeal": viewset._multi_posts("big-deal"),
-            "digitalMoney": multi("digital-money", 3),
-            "bchCrypto": viewset._multi_posts("blockchain-crypto"),
-            "startups": viewset._multi_posts("startups"),
-            "prvCompliance": viewset._multi_posts("privacy-compliance"),
-            "AI": viewset._multi_posts("ai"),
-            "emergingTech": viewset._multi_posts("emerging-tech"),
-            "hardware": multi("hardware", 3),
-            "techCulture": viewset._multi_posts("tech-culture"),
-            "policyProgress": viewset._multi_posts("policy-progress"),
-            "globalLens": multi("wired-world", 3),
-            "africaRising": viewset._multi_posts("africa-now"),
-            "keyPlayers": viewset._multi_posts("key-players"),
-            "dataDefense": multi("data-defense", 3),
-            "secureHabits": viewset._multi_posts("secure-habits"),
-            "stack": viewset._multi_posts("stack"),
-            "buyGuides": viewset._multi_posts("beginner-guides"),
-            "devDigest": multi("dev-digest", 3),
-            "theClimb": viewset._multi_posts("the-climb"),
-            "rundown": viewset._multi_posts("rundown"),
-            "industryInsights": viewset._multi_posts("industry-insights"),
-        })
+        for slug, items in grouped.items():
+            key, _ = self.CATEGORY_CONFIG[slug]
+            data[key] = PostSerializer(items, many=True, context={"request": request}).data
+
+        # Cache and return
+        cache.set(self.CACHE_KEY, data, timeout=120)
+        return Response(data)
+    
         
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all().order_by("name")
