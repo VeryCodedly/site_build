@@ -1,7 +1,6 @@
 const CACHE_NAME = 'verycodedly-v8';
 
 const OFFLINE_ASSETS = [
-  '/',
   '/offline.html',
   '/favicon.ico',
   '/images/mascot.svg'
@@ -31,10 +30,14 @@ self.addEventListener('activate', (event) => {
 
 // FETCH: navigation only → offline fallback
 self.addEventListener('fetch', (event) => {
-  if (event.request.mode !== 'navigate') return;
+  if (event.request.mode !== 'navigate') {
+    return;
+  }
 
   event.respondWith(
-    fetch(event.request).catch(() => caches.match('/offline.html'))
+    fetch(event.request).catch(() => {
+      return caches.match('/offline.html');
+    })
   );
 });
 
