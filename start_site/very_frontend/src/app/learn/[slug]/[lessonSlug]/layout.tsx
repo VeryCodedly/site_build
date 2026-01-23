@@ -46,7 +46,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const language = lesson?.course?.split(" ")[1] || "Course";
 
   const title = `${lesson.title} | ${language} | VeryCodedly`;
-  const description = `Learn "${lesson.title}" in the "${language}" from VeryCodedly.`;
+  const description = `Learn "${lesson.title}" in the "${language}" course from VeryCodedly.`;
 
   return {
     title,

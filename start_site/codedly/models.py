@@ -167,8 +167,8 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, blank=False, null=True, related_name="posts", db_index=True)
     subcategory = models.ForeignKey(Subcategory, on_delete=models.SET_NULL, blank=False, null=True, related_name="posts", db_index=True)  
 
-    content_JSON = models.JSONField(default=dict, blank=True, db_index=True)
-    content_plain_text = models.TextField(blank=True, db_index=True)
+    content_JSON = models.JSONField(default=dict, blank=True)
+    content_plain_text = models.TextField(blank=True)
     excerpt = models.CharField(max_length=300, blank=True, db_index=True)
     author = models.CharField(max_length=50, default="Chrise", db_index=True)
     
