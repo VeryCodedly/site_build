@@ -23,7 +23,7 @@ export default function Hero() {
               // cursorStyle="|"
               typeSpeed={20}
             // deleteSpeed={50}
-            // delaySpeed={1500}
+              delaySpeed={0}
             />
           </h1>
         </div>
