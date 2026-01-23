@@ -4,12 +4,12 @@
   "description": "Tech. Code. Culture. VeryCodedly is your go-to tech hub for hardware deep-dives, free coding courses, unfiltered takes and the latest digital trends. No cookies, no login, no tracking.",
   "start_url": "/",
   "scope": "/",
-  "id": "/",
-  "display": "fullscreen",
-  "display_override": ["fullscreen", "standalone"],
+
+  "display": "standalone",
+
   "background_color": "#000000",
   "theme_color": "#000000",
-  "orientation": "any",
+  "orientation": "portrait-primary",
   "protocol_handlers": [
     {
       "protocol": "web+verycodedly",

@@ -99,11 +99,13 @@
   scroll-behavior: auto !important;
   font-size: 100%;             /* rem-based scaling */
   -webkit-text-size-adjust: 100%; /* prevent forced browser zoom on mobile */
+  height: 100%;
   }
   body, pre {
     background-color: #000;
     font-family: var(--font-robo);
     scroll-behavior: smooth;
+    min-height: 100dvh; /* dynamic viewport */
   }
   .hero {
     font-family: var(--font-pops);
