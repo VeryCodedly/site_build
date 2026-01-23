@@ -1,6 +1,7 @@
 const CACHE_NAME = 'verycodedly-v8';
 
 const OFFLINE_ASSETS = [
+  '/',
   '/offline.html',
   '/favicon.ico',
   '/images/mascot.svg'
