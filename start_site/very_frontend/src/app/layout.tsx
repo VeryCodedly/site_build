@@ -94,8 +94,6 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-        
         <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
         <meta name="apple-mobile-web-app-title" content="VeryCodedly" />
         <meta name="theme-color" content="#000000" />
@@ -109,7 +107,7 @@ export default function RootLayout({
       </head>
       <body className={`${pops.variable} ${robo.variable} ${geist.variable} antialiased`}>
         <Header />
-        <ServiceWorkerRegister />
+        {/* <ServiceWorkerRegister /> */}
         {children}
         <TopButton />
         <Footer />

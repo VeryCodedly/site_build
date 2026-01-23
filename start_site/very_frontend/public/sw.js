@@ -1,47 +1,44 @@
-const CACHE_NAME = 'verycodedly-v8';
+const CACHE_NAME = 'verycodedly-v7';
 
-const OFFLINE_ASSETS = [
+const PRECACHE_URLS = [
   '/offline.html',
   '/favicon.ico',
   '/images/mascot.svg'
 ];
 
-// INSTALL: cache offline page + required images
+// INSTALL: precache offline assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(OFFLINE_ASSETS))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE_URLS))
   );
   self.skipWaiting();
 });
 
-// ACTIVATE: clean old caches
+// ACTIVATE
 self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys
-          .filter((key) => key !== CACHE_NAME)
-          .map((key) => caches.delete(key))
-      )
-    )
-  );
-  self.clients.claim();
+  event.waitUntil(self.clients.claim());
 });
 
-// FETCH: navigation only → offline fallback
+// FETCH: navigation + serve cached offline assets
 self.addEventListener('fetch', (event) => {
-  if (event.request.mode !== 'navigate') {
+  const { request } = event;
+
+  // Navigation requests → network first, fallback to offline.html
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request).catch(() => caches.match('/offline.html'))
+    );
     return;
   }
 
+  // Offline assets → serve if available
   event.respondWith(
-    fetch(event.request).catch(() => {
-      return caches.match('/offline.html');
-    })
+    caches.match(request).then((cached) => cached || fetch(request))
   );
 });
 
-// const CACHE_NAME = 'verycodedly-v7';
+
+// const CACHE_NAME = 'verycodedly-v6';
 
 // const PRECACHE_URLS = [
 //   '/offline.html',
@@ -49,7 +46,7 @@ self.addEventListener('fetch', (event) => {
 //   '/images/mascot.svg'
 // ];
 
-// // INSTALL: precache offline assets
+// // INSTALL
 // self.addEventListener('install', (event) => {
 //   event.waitUntil(
 //     caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE_URLS))
@@ -59,23 +56,55 @@ self.addEventListener('fetch', (event) => {
 
 // // ACTIVATE
 // self.addEventListener('activate', (event) => {
-//   event.waitUntil(self.clients.claim());
+//   event.waitUntil(
+//     caches.keys().then((keys) =>
+//       Promise.all(
+//         keys
+//           .filter((key) => key !== CACHE_NAME)
+//           .map((key) => caches.delete(key))
+//       )
+//     )
+//   );
+//   self.clients.claim();
 // });
 
-// // FETCH: navigation + serve cached offline assets
+// // FETCH
 // self.addEventListener('fetch', (event) => {
-//   const { request } = event;
+//   if (event.request.method !== 'GET') return;
 
-//   // Navigation requests → network first, fallback to offline.html
-//   if (request.mode === 'navigate') {
+//   const url = new URL(event.request.url);
+
+//   // Navigation: network-first, offline fallback ONLY
+//   if (event.request.mode === 'navigate') {
 //     event.respondWith(
-//       fetch(request).catch(() => caches.match('/offline.html'))
+//       fetch(event.request).catch(() => caches.match('/offline.html'))
 //     );
 //     return;
 //   }
 
-//   // Offline assets → serve if available
+//   // Ignore Next.js internals & APIs
+//   if (
+//     url.pathname.startsWith('/_next') ||
+//     url.pathname.startsWith('/api')
+//   ) {
+//     return;
+//   }
+
+//   // Static assets only
 //   event.respondWith(
-//     caches.match(request).then((cached) => cached || fetch(request))
+//     (async () => {
+//       const cache = await caches.open(CACHE_NAME);
+
+//       const cached = await cache.match(event.request);
+//       if (cached) return cached;
+
+//       const response = await fetch(event.request);
+
+//       if (response?.ok) {
+//         cache.put(event.request, response.clone());
+//       }
+
+//       return response;
+//     })()
 //   );
 // });
