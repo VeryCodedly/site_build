@@ -1,39 +1,32 @@
-const CACHE_NAME = 'verycodedly-v7';
+const CACHE_NAME = 'verycodedly-v9';
 
-const PRECACHE_URLS = [
+// Offline page + visual assets only
+const OFFLINE_ASSETS = [
   '/offline.html',
   '/favicon.ico',
-  '/images/mascot.svg'
+  '/images/mascot.svg',
 ];
 
-// INSTALL: precache offline assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE_URLS))
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(OFFLINE_ASSETS))
   );
   self.skipWaiting();
 });
 
-// ACTIVATE
 self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim());
+  // Immediately take control of all pages
+  self.clients.claim();
 });
 
-// FETCH: navigation + serve cached offline assets
 self.addEventListener('fetch', (event) => {
-  const { request } = event;
+  // Only intercept navigation requests
+  if (event.request.mode !== 'navigate') return;
 
-  // Navigation requests → network first, fallback to offline.html
-  if (request.mode === 'navigate') {
-    event.respondWith(
-      fetch(request).catch(() => caches.match('/offline.html'))
-    );
-    return;
-  }
-
-  // Offline assets → serve if available
   event.respondWith(
-    caches.match(request).then((cached) => cached || fetch(request))
+    fetch(event.request)
+      .catch(() => caches.match('/offline.html'))
   );
 });
 

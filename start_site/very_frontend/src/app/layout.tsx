@@ -107,7 +107,7 @@ export default function RootLayout({
       </head>
       <body className={`${pops.variable} ${robo.variable} ${geist.variable} antialiased`}>
         <Header />
-        {/* <ServiceWorkerRegister /> */}
+        <ServiceWorkerRegister />
         {children}
         <TopButton />
         <Footer />
