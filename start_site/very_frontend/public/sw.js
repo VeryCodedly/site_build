@@ -1,4 +1,4 @@
-const CACHE_NAME = 'verycodedly-v9';
+const CACHE_NAME = 'verycodedly-v01';
 
 // Offline page + visual assets only
 const OFFLINE_ASSETS = [
@@ -15,9 +15,18 @@ self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
 
+
+// ACTIVATE
 self.addEventListener('activate', (event) => {
-  // Immediately take control of all pages
-  self.clients.claim();
+  // Don't wait. claim clients immediately
+  event.waitUntil(self.clients.claim());
+  
+  // Cleanup old caches in background without blocking
+  caches.keys().then(keys => {
+    keys.forEach(key => {
+      if (key !== CACHE_NAME) caches.delete(key);
+    });
+  });
 });
 
 self.addEventListener('fetch', (event) => {
