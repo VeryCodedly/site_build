@@ -207,7 +207,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                         priority={index < 3}   // prioritize first few images
                       />
 
-                      <p className="absolute bottom-0 sm:bottom-3 left-0 sm:left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-sm md:backdrop-blur-md rounded-lg px-2 py-1.5 text-xs md:text-sm">
+                      <p className="absolute bottom-0 sm:bottom-3 left-0 sm:left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-sm md:backdrop-blur-md rounded-lg px-2 py-1 text-xs md:text-sm">
                         {block.imageCaption || 'First Look'}
                       </p>
                     </Motion.div>
@@ -231,7 +231,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
       </div>
 
       {/* Gallery */}
-      <div className="mb-8 sm:mb-12">
+      {post.images && post.images.length > 1 && ( <div className="mb-8 sm:mb-12">
         <h2 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-lime-300 flex items-center gap-2">
           <FontAwesomeIcon icon={faImage} /> Gallery
         </h2>
@@ -241,7 +241,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
               <div key={img.id || index} className="group relative overflow-hidden rounded-2xl bg-black/50 select-none">
                 <Image src={img.image || 'read-post-image.png'} alt={img.alt || 'Gallery image'} width={400} height={300} className="w-full h-50 sm:h-58 object-cover group-hover:scale-105 group-active:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" tabIndex={0} />
                 {(img.alt || img.caption) && (
-                  <div className="absolute -bottom-0.5 sm:bottom-2 left-0 sm:left-2 right-2 w-fit bg-black/15 group-hover:bg-transparent group-active:bg-transparent backdrop-blur-md group-hover:!backdrop-blur-none group-active:!backdrop-blur-none rounded-lg px-2 py-1">
+                  <div className="absolute -bottom-0.5 sm:bottom-2 left-0 sm:left-2 w-fit bg-black/15 group-hover:bg-transparent group-active:bg-transparent backdrop-blur-md group-hover:!backdrop-blur-none group-active:!backdrop-blur-none rounded-lg px-2 py-1">
                     {img.caption && <p className="text-gray-50/80 group-hover:opacity-0 group-active:opacity-0 text-xs mb-1">{img.caption}</p>}
                   </div>
                 )}
@@ -252,6 +252,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           <p className="text-gray-400 italic text-sm sm:text-base">No additional images available.</p>
         )}
       </div>
+      )}
 
       {/* Tags */}
       <div className="mb-8 sm:mb-12">
@@ -272,7 +273,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
       </div>
 
       {/* Related Links */}
-      <div className="mb-8 sm:mb-12">
+      {post.links && post.links.length > 1 && ( <div className="mb-8 sm:mb-12">
         <h3 className="text-lg sm:text-xl font-semibold mb-4 text-lime-300 gap-2 flex items-center">
           <FontAwesomeIcon icon={faLink} /> Related Links
         </h3>
@@ -293,6 +294,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           <p className="text-gray-400 italic text-sm sm:text-base">No related links available.</p>
         )}
       </div>
+      )}
 
       {/* Comments */}
       {/* <Motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.6 }} className="mb-8 sm:mb-12">

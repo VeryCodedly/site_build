@@ -118,7 +118,7 @@ export default function ReadPageClient({ data }: Props) {
               animate={{ color: "#fb64b6" }}
               transition={{ delay: 0.6, duration: 1 }}
             >
-              Culture.<span className="text-xs">™</span>
+              Culture.<span className="text-xs text-transparent">™</span>
             </Motion.span>
           </h1>
           <Motion.p

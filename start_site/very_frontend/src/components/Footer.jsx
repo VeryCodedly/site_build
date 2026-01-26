@@ -113,7 +113,7 @@ export default function Footer() {
                 title={name}
                 aria-label={`${name} link`}
                 target="_blank"
-                className="p-0.5 text-gray-400/80 hover:text-lime-500 active:text-lime-500 hover:scale-110 active:scale-110 transition-transform duration-300"
+                className="p-0.5 text-gray-400/80 hover:text-lime-500 hover:scale-110 transition duration-400 active:scale-60"
               >
                 <FontAwesomeIcon icon={icon} size="lg" />
               </Link>
