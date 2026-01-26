@@ -101,29 +101,29 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           </span>
           <div className="flex gap-4">
             <Link href={`/read/category/${post.category?.slug}`} aria-label="Link to Category page"
-              className="cursor-pointer bg-lime-400/10 text-lime-400 hover:text-lime-200 active:text-lime-200 hover:scale-95 active:scale-95 transition duration-200 px-3 py-1 rounded-full text-sm font-medium tracking-tighter">
+              className="cursor-pointer bg-lime-400/10 text-lime-400 active:text-lime-200 hover:scale-105 active:scale-95 transition duration-200 px-3 py-1 rounded-full text-sm font-medium tracking-tighter">
               {post.category?.name || 'General'}
             </Link>
             <Link href={`/read/subcategory/${post.subcategory?.slug}`} aria-label="Link to Subcategory page"
-              className="cursor-pointer bg-pink-400/10 text-pink-400 hover:text-pink-200 active:text-pink-200 hover:scale-95 active:scale-95 transition duration-200 px-3 py-1 rounded-full text-sm font-medium tracking-tighter">
+              className="cursor-pointer bg-pink-400/10 text-pink-400 active:text-pink-200 hover:scale-105 active:scale-95 transition duration-200 px-3 py-1 rounded-full text-sm font-medium tracking-tighter">
               {post.subcategory?.name || 'General'}
             </Link>
           </div>
           <div className="inline-block px-">
             <span className="flex gap-3.5">
-              <Link href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition duration-400 active:text-lime-400 active:scale-60 text-lg" title="Share on Twitter">
+              <Link href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-500 transition duration-400 active:text-lime-400 hover:scale-110 active:scale-60 text-lg" title="Share on Twitter">
                 <FontAwesomeIcon icon={faTwitter} size="1x" />
               </Link>
-              <Link href={`https://www.linkedin.com/sharing/share-offsite/?url=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition duration-400 active:text-lime-400 active:scale-60 text-lg" title="Share on LinkedIn">
+              <Link href={`https://www.linkedin.com/sharing/share-offsite/?url=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-500 transition duration-400 active:text-lime-400 hover:scale-110 active:scale-60 text-lg" title="Share on LinkedIn">
                 <FontAwesomeIcon icon={faLinkedinIn} size="1x" />
               </Link>
-              <Link href={`https://www.facebook.com/sharer/sharer.php?u=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition duration-400 active:text-lime-400 active:scale-60 text-lg" title="Share on Facebook">
+              <Link href={`https://www.facebook.com/sharer/sharer.php?u=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-500 transition duration-400 active:text-lime-400 hover:scale-110 active:scale-60 text-lg" title="Share on Facebook">
                 <FontAwesomeIcon icon={faFacebook} size="1x" />
               </Link>
-              <Link href={`https://wa.me/?text=${encodeURIComponent(post.title + " — https://verycodedly.com/read/" + post.slug)}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-400 transition duration-400 active:text-lime-400 active:scale-60 text-lg" title="Share on WhatsApp">
+              <Link href={`https://wa.me/?text=${encodeURIComponent(post.title + " — https://verycodedly.com/read/" + post.slug)}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-500 transition duration-400 active:text-lime-400 hover:scale-110 active:scale-60 text-lg" title="Share on WhatsApp">
                 <FontAwesomeIcon icon={faWhatsapp} size="1x" />
               </Link>
-              <button onClick={() => navigator.clipboard.writeText(`https://verycodedly.com/read/${post.slug}`)} className="hover:text-lime-400 transition duration-400 active:text-lime-400 active:scale-60 text-lg" title="Copy link">
+              <button onClick={() => navigator.clipboard.writeText(`https://verycodedly.com/read/${post.slug}`)} className="hover:text-lime-400 transition duration-400 active:text-lime-500 hover:scale-110 active:scale-60 text-lg" title="Copy link">
                 <FontAwesomeIcon icon={faCopy} size="1x" />
               </button>
             </span>
