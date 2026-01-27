@@ -231,7 +231,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
       </div>
 
       {/* Gallery */}
-      {post.images && post.images.length > 1 && ( <div className="mb-8 sm:mb-12">
+      {post.images && post.images.length > 0 && ( <div className="mb-8 sm:mb-12">
         <h2 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-lime-300 flex items-center gap-2">
           <FontAwesomeIcon icon={faImage} /> Gallery
         </h2>
@@ -273,7 +273,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
       </div>
 
       {/* Related Links */}
-      {post.links && post.links.length > 1 && ( <div className="mb-8 sm:mb-12">
+      {post.links && post.links.length > 0 && ( <div className="mb-8 sm:mb-12">
         <h3 className="text-lg sm:text-xl font-semibold mb-4 text-lime-300 gap-2 flex items-center">
           <FontAwesomeIcon icon={faLink} /> Related Links
         </h3>
