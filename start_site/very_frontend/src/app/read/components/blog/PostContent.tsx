@@ -144,7 +144,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
         // initial={{ opacity: 0, y: 20 }}
         // animate={{ opacity: 1, y: 0 }}
         // transition={{ duration: 0.5 }}
-        className="mb-8 sm:mb-12 space-y-6 sm:space-y-8"
+        className="mb-8 sm:mb-12 space-y-6 sm:space-y-6"
       >
         {contentJson && contentJson.blocks && Array.isArray(contentJson.blocks) ? (
           contentJson.blocks.map((block, index) => {
