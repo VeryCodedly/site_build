@@ -109,7 +109,7 @@ export default function FloatingMenu({ categories }: { categories: Category[] })
         onMouseEnter={() => setExpanded(true)}
         className={`fixed overflow-hidden pl-6 sm:pl-7 top-1/2 left-0 transform -translate-y-1/2 bg-black/30 hover:backdrop-blur-lg
                    shadow-lg rounded-r-3xl border border-l-0 border-white/20 transition-all duration-200 ease-in-out
-                   ${expanded ? "w-74 sm:w-70 h-[541.5px] sm:h-[461px] md:h-[74vh] lg:h-[461px] m:h-full ax-h-[86vh] opacity-100 backdrop-blur-lg" : "opacity-0 w-8 h-10"} z-50`}
+                   ${expanded ? "w-74 sm:w-70 h-[541.5px] sm:h-[461px] md:h-[461px] lg:h-[461px] m:h-full ax-h-[86vh] opacity-100 backdrop-blur-lg" : "opacity-0 w-8 h-10"} z-50`}
       >
         <ul className="flex flex-col gap-1 py-3 text-gray-200 h-full min-h-0 overflow-y-auto -webkit-overflow-scrolling-touch custom-scrollbar">
           {categories.map(cat => {

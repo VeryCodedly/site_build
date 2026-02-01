@@ -130,7 +130,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           </div>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent leading-tight">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent leading-tight">
           {post.title || 'Untitled Post'}
         </h1>
 
