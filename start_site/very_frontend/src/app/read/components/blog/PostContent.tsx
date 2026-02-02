@@ -74,7 +74,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
             <FontAwesomeIcon icon={faUser} className="text-rose-400" />
             {post.author || 'Anonymous'}
           </span> */}
-        <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4 text-sm text-gray-400">
+        <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 mb-4 text-sm text-gray-400">
           <span className="bg-gray-400/10 text-gray-400 select-none px-2 py-1 rounded-full font-medium flex items-center gap-2 group">
             <span className="relative inline-block w-4 h-4">
               {/* Default icon - User */}
@@ -90,13 +90,13 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
             </span>
             {post.author || 'Anonymous'}
           </span>
-          <span className="inline-flex text-sm items-center gap-1 tracking-tighter">
+          <span className="inline-flex text-xs md:text-sm items-center gap-1 tracking-tighter">
             <FontAwesomeIcon icon={faCalendar} />
             {new Date(post.created_at).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
               day: '2-digit',
-              hour: '2-digit',
+              hour: 'numeric',
               // minute: '2-digit',
               // hour12: false,    // optional: 24-hour format
               // timeZone: 'Africa/Lagos',
