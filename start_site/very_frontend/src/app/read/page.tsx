@@ -5,7 +5,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 if (!apiUrl) throw new Error('NEXT_PUBLIC_API_URL is missing!');
 
 
-export const revalidate = 180;
+export const revalidate = 60;
 
 export default async function ReadPage() {
   const res = await fetch(`${apiUrl}/read-page-data/`, {

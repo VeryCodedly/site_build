@@ -6,7 +6,7 @@ import PostClient from './PostClient';
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 if (!apiUrl) throw new Error('NEXT_PUBLIC_API_URL is missing'); // Server-only fail
 
-export const revalidate = 0; // 3 minutes
+export const revalidate = 180; // 3 minutes
 export const dynamicParams = true;
 
 // --- Fetch with React cache ---
