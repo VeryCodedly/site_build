@@ -140,7 +140,7 @@ export default function FloatingMenu({ categories }: { categories: Category[] })
                       : <span className="w-6 h-6 md:w-5 md:h-5" />}
                   </span>
                   {expanded && (
-                    <span className="text-base sm:text-sm text-white sm:font-medium active:text-lime-200 select-none">
+                    <span className="text-base sm:text-sm text-white/80 sm:font-medium active:text-lime-200 select-none">
                       {cat.name}
                     </span>
                   )}
@@ -162,7 +162,7 @@ export default function FloatingMenu({ categories }: { categories: Category[] })
                             setActiveCatId(null);
                           }}
                           className="rounded-md py-1.5 sm:py-1 hover:bg-white/8 active:bg-white/8">
-                          <span className="text-white font-medium active:text-pink-200 text-sm sm:text-xs fle items-start justify-cente p-5 transition">
+                          <span className="text-white/80 font-medium active:text-pink-200 text-sm sm:text-xs fle items-start justify-cente p-5 transition">
                             {sub.name}
                           </span>
                         </Link>
