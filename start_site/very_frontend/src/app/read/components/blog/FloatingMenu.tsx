@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCodeBranch, faUserShield, faMicrochip, faGlobeAfrica,
-  faFire, faPersonRays, faHandHoldingDollar, faCogs,
+  faFire, faPersonRays, faMoneyBillTrendUp, faCogs,
   faCameraRetro, faChalkboardTeacher, faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
@@ -17,11 +17,11 @@ const iconMap: Record<string, any> = {
   "Apps & Software": faCodeBranch,
   "Cybersecurity": faUserShield,
   "Digital Lifestyle": faCameraRetro,
-  "Fintech & Crypto": faHandHoldingDollar,
   "Gadgets & Gear": faCogs,
   "Guides & Tutorials": faChalkboardTeacher,
   "Innovation & AI": faMicrochip,
   "Learning & Growth": faPersonRays,
+  "Financial": faMoneyBillTrendUp,
   "Spotlight": faFire,
   "WorldWideTech": faGlobeAfrica,
 };

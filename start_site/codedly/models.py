@@ -333,6 +333,7 @@ class Lesson(models.Model):
     level = models.CharField(max_length=50, default="Beginner", choices=[('Beginner','Beginner'),
                             ('Intermediate','Intermediate'),('Advanced','Advanced')])
     
+    description = models.CharField(null=True, blank=True) 
     content_JSON = models.JSONField(blank=True, default=dict)
     content_plain_text = models.TextField(null=True, blank=True)
     video_url = models.URLField(blank=True, null=True)      # embedding videos
