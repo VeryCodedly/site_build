@@ -64,7 +64,7 @@ export default function Carousel({ posts = [], className = "" }: CarouselProps) 
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             viewport={{ once: true }}
           >
-            <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 line-clamp-3">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 line-clamp-3">
               {current.title}
             </h1>
             <p className="text-gray-300 text-sm line-clamp-4">
