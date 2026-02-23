@@ -76,7 +76,7 @@ export default function CourseListClient({ courses }: CourseListClientProps) {
         return (
           <div
             key={course.id}
-            className="flex flex-row px-4 py-2 sm:px-5 sm:py-3 rounded-2xl shadow bg-zinc-900/50 border-2 border-zinc-900 group hover:-translate-y-[5px] hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)] active:-translate-y-[5px] active:shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition transform duration-300 gap-4 sm:gap-5 mb-3"
+            className="flex flex-row px-4 py-2.5 sm:px-5 sm:py-3 rounded-2xl shadow bg-zinc-900/50 border-2 border-zinc-900 group hover:-translate-y-[5px] hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)] active:-translate-y-[5px] active:shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition transform duration-300 gap-4 sm:gap-5 mb-3"
           >
             <div className="flex-1 flex flex-col justify-between">
               <p className="text-xs font-semibold tracking-tighter text-pink-400 uppercase my-1">

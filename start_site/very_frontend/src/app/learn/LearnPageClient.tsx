@@ -129,7 +129,7 @@
        </section>
 
        {/* LEARNING PATHS */}
-       <section className="bg-gradient-to-b from-black to-zinc-950/60 max-w-4xl md:max-w-3xl lg:max-w-4xl mx-auto min-h-screen py-22 px-8 flex flex-col items-left justify-center">
+       <section className="bg-gradient-to-b from-black to-zinc-950/60 max-w-4xl md:max-w-3xl lg:max-w-5xl mx-auto min-h-screen py-22 px-8 flex flex-col items-left justify-center">
          <Motion.h2
            className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-12 px-2 text-left text-white/90"
            initial={{ opacity: 0, y: 20 }}
@@ -156,7 +156,7 @@
            ].map((track) => (
              <Motion.div
                key={track.name}
-               className="bg-zinc-900/60 border border-zinc-800 m-3 sm:m-0 p-6 rounded-2xl 
+               className="bg-zinc-900/40 border border-zinc-900 m-3 sm:m-0 p-6 rounded-2xl 
                            hover:shadow-[0_0_10px_#222222] backdrop-blur-md transition-all"
                whileHover={{ y: -5 }}
                tabIndex={0}
@@ -172,7 +172,7 @@
        {/* FEATURED LESSONS */}
        <section className="bg-gradient-to-b to-zinc-900/70 from-zinc-950/60 relative min-h-screen w-full mx-auto px-6 sm:px-18 py-28 flex flex-col items-start border-t border-zinc-900">
          <div className="absolute inset-0 bg-center bg-stretch opacity-40"></div>
-           <p className="text-xs uppercase tracking-widest text-gray-500 mb-2">Start Here</p>
+           <p className="text-xs uppercase tracking-widest text-gray-500 ml-2 sm:ml-0 mb-2">Start Here</p>
          <Motion.h2
            className="relative text-3xl sm:text-4xl font-bold mb-6 sm:mb-12 text-start text-white/90"
            initial={{ opacity: 0, y: 20 }}
@@ -180,7 +180,7 @@
            transition={{ duration: 0.6 }}
            viewport={{ once: true }}
          >
-           <span className="text-lime-400">Featured</span> Lessons
+           <span className="text-lime-400 ml-2 sm:ml-0">Featured</span> Lessons
          </Motion.h2>
          <div className="relative grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 sm:gap-6">
            {[
@@ -201,7 +201,7 @@
            ].map((topic) => (
              <Motion.div
                key={topic.name}
-               className="flex flex-col sm:flex-row p-6 m-3 sm:m-0 rounded-2xl shadow bg-zinc-900/80 border border-zinc-800 group hover:-translate-y-[5px] 
+               className="flex flex-col sm:flex-row p-6 m-3 sm:m-0 rounded-2xl shadow bg-zinc-900/50 border border-zinc-800 group hover:-translate-y-[5px] 
                   hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition transform duration-300 gap-1 sm:gap-4"
              >
                <Link href={`/learn/${topic.course}/${topic.slug}`} className="inline-flex items-center gap-1 w-full">
@@ -216,8 +216,8 @@
                    <p className="text-sm text-gray-300 line-clamp-4 sm:line-clamp-5 mb-3 leading-relaxed">
                      {topic.desc}
                    </p>
-                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-x-2 text-base text-lime-400 group-hover:text-white">
-                     <span className="text-gray-400/80 text-sm">Beginner</span>
+                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-x-1 text-base text-lime-400 group-hover:text-white">
+                     <span className="text-gray-400/80 text-xs">Beginner</span>
                      <div className="font-bold mt-1 sm:mt-0 inline-flex items-center gap-2">
                        Start Now <FontAwesomeIcon className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform" icon={faLongArrowRight} size="sm" />
                      </div>
