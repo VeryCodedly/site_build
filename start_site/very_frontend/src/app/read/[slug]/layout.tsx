@@ -53,10 +53,12 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const title = `${post.title} | VeryCodedly`;
   const description = post.excerpt || `Read "${post.title}" on VeryCodedly.`;
   const imageUrl = post?.image || 'https://verycodedly.com/read/opengraph-image.png';
+  const tags = post.tags || [];
 
   return {
     title,
     description,
+    keywords: tags,
     alternates: {
     canonical: `https://verycodedly.com/read/${slug}`,
   },

@@ -302,7 +302,7 @@ class Course(models.Model):
     level = models.CharField(max_length=50, default="Beginner")
     image = models.URLField(max_length=500, null=True, blank=True)
     alt = models.CharField(max_length=100, blank=True)
-    keywords = TaggableManager()
+    tags = TaggableManager()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -327,7 +327,7 @@ class Course(models.Model):
 class Lesson(models.Model):
     course = models.ForeignKey(Course, related_name='lessons', on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=40, blank=True)
+    slug = models.SlugField(max_length=60, blank=True)
     order = models.PositiveIntegerField(default=1)
     duration = models.CharField(null=True, blank=True) 
     level = models.CharField(max_length=50, default="Beginner", choices=[('Beginner','Beginner'),
@@ -337,6 +337,8 @@ class Lesson(models.Model):
     content_JSON = models.JSONField(blank=True, default=dict)
     content_plain_text = models.TextField(null=True, blank=True)
     video_url = models.URLField(blank=True, null=True)      # embedding videos
+    
+    tags = TaggableManager()
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,

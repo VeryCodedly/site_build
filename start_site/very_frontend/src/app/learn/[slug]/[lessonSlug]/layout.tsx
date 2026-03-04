@@ -43,10 +43,11 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
   if (!lesson) notFound();
 
-  const language = lesson?.course?.split(" ")[1] || "Course";
+  const language = lesson?.course?.split(" ")[0] || "Course";
 
   const title = `${lesson.title} | ${language} | VeryCodedly`;
-  const description = `Learn "${lesson.title}" in the "${language}" course from VeryCodedly.`;
+  const description = lesson.description || `Learn "${lesson.title}" in the "${language}" course from VeryCodedly.`;
+  const tags = lesson.tags || [];
 
   return {
     title,
@@ -54,6 +55,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     alternates: {
     canonical: `https://verycodedly.com/learn/${slug}/${lessonSlug}`,
   },
+    keywords: tags,
     openGraph: {
       title,
       description,

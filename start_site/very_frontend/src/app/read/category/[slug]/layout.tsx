@@ -60,6 +60,19 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     alternates: {
     canonical: `https://verycodedly.com/read/category/${slug}`,
   },
+    keywords: [
+    "tech",
+    "coding",
+    "software development",
+    "programming",
+    "ai",
+    "tech news",
+    "tech stories",
+    "developer tools",
+    "web development",
+    "trending tech",
+    "tech blog",
+  ],
     openGraph: {
       title: `${category.name} | VeryCodedly`,
       description: `All posts in ${category.name}`,

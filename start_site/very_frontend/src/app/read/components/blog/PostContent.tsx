@@ -400,12 +400,12 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
               })}
             </span>
 
-            {post.updated_at && post.updated_at !== post.created_at && (
+            {/* {post.updated_at && post.updated_at !== post.created_at && (
               <>
-                {/* only shows on sm+ */}
+                only shows on sm+
                 <span className="hidden sm:inline"> • </span>
 
-                {/* Updated date — drops to new line on mobile, stays inline on sm+ */}
+                Updated date — drops to new line on mobile, stays inline on sm+
                 <span>
                   Updated{' '}
                   {new Date(post.updated_at).toLocaleDateString('en-US', {
@@ -415,7 +415,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                   })}
                 </span>
               </>
-            )}
+            )} */}
           </p>
           <p className="mt-4 text-pink-400 capitalize">{post.status || 'Draft'}</p>
         </div>

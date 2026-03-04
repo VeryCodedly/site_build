@@ -21,6 +21,20 @@ interface LessonClientProps {
 
 const PROGRESS_KEY = (slug: string) => `course_progress_${slug}`;
 
+const formatSlug = (slug: string) => {
+  const smallWords = ["and", "or", "with", "to", "for", "of", "in"];
+
+  return slug
+    .split("-")
+    .map((word, index) => {
+      if (index !== 0 && smallWords.includes(word)) {
+        return word;
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+};
+
 export default function LessonClient({ lesson, courseSlug }: LessonClientProps) {
   const { lessonSlug } = useParams() as { lessonSlug: string };
 
@@ -100,24 +114,23 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
 
         <div
           ref={menuRef}
-          className={`fixed pl-4 sm:pl-5 top-1/2 left-0 transform -translate-y-1/2 bg-black/20 hover:backdrop-blur-lg shadow-lg rounded-r-3xl overflow-hidden border border-white/20 transition-all duration-200 ease-in-out ${
-            isMenuOpen
-              ? "w-60 sm:w-70 opacity-100 backdrop-blur-lg"
-              : "opacity-0 w-8 h-10 pointer-events-none"
-          } z-50`}
+          className={`fixed pl-4 sm:pl-5 top-1/2 left-0 transform -translate-y-1/2 bg-black/20 hover:backdrop-blur-lg shadow-lg rounded-r-3xl overflow-hidden border border-white/20 transition-all duration-200 ease-in-out ${isMenuOpen
+            ? "w-60 sm:w-70 opacity-100 backdrop-blur-lg"
+            : "opacity-0 w-8 h-10 pointer-events-none"
+            } z-50`}
         >
           <ul className="flex flex-col gap-1 p-2 pb-3 text-gray-200">
             <h2 className="text-md text-white font-semibold pt-3">Page</h2>
             {Array.isArray(lesson?.content_JSON?.blocks)
               ? (lesson.content_JSON.blocks as Block[])
-                  .filter((block) => block.type === "heading")
-                  .map((block, index) => (
-                    <li key={index}>
-                      <span className="flex items-center gap-2 p-2 rounded-lg hover:bg-white/8 transition-all duration-200 text-sm">
-                        - {block.content}
-                      </span>
-                    </li>
-                  ))
+                .filter((block) => block.type === "heading")
+                .map((block, index) => (
+                  <li key={index}>
+                    <span className="flex items-center gap-2 p-2 rounded-lg hover:bg-white/8 transition-all duration-200 text-sm">
+                      - {block.content}
+                    </span>
+                  </li>
+                ))
               : null}
           </ul>
         </div>
@@ -133,11 +146,10 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
             <button
               onClick={markComplete}
               disabled={isCompleted}
-              className={`flex items-center gap-2 px-6 py-2 rounded-full text-base transition-all duration-200 ${
-                isCompleted
-                  ? "bg-lime-900/50 text-lime-300 cursor-default"
-                  : "bg-lime-400 text-black hover:bg-white active:bg-white shadow-lg active:scale-90"
-              }`}
+              className={`flex items-center gap-2 px-6 py-2 rounded-full text-base transition-all duration-200 ${isCompleted
+                ? "bg-lime-900/50 text-lime-300 cursor-default"
+                : "bg-lime-400 text-black hover:bg-white active:bg-white shadow-lg active:scale-90"
+                }`}
             >
               <FontAwesomeIcon icon={faCheckCircle} />
               {isCompleted ? "Completed" : "Mark as Complete"}
@@ -145,25 +157,36 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
           </div>
 
           <div
-            className={`flex mt-16 mx-auto max-w-xs px-4 sm:px-0 ${
-              lesson.previous_lesson && lesson.next_lesson ? "justify-between" : "justify-center"
-            }`}
+            className={`flex mt-16 mx-auto max-w-sm px-4 sm:px-0 ${lesson.previous_lesson && lesson.next_lesson ? "justify-between" : "justify-center"
+              }`}
           >
             {lesson.previous_lesson && (
-              <Link
-                href={`/learn/${courseSlug}/${lesson.previous_lesson.slug}`}
-                className="gap-2 bg-lime-400 text-black px-2.5 py-0.5 rounded-full cursor-pointer border-3 border-gray-500/100 hover:bg-white active:bg-white shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
-              >
-                <FontAwesomeIcon icon={faLongArrowLeft} size="lg" />
-              </Link>
+              <div className="flex flex-col items-center text-center max-w-[150px]">
+                <Link
+                  href={`/learn/${courseSlug}/${lesson.previous_lesson.slug}`}
+                  className="gap-2 bg-lime-400 text-black px-2.5 py-0.5 rounded-full cursor-pointer border-3 border-gray-500/100 hover:bg-white active:bg-white shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
+                >
+                  <FontAwesomeIcon icon={faLongArrowLeft} size="lg" />
+                </Link>
+
+                <span className="mt-5 text-xs text-gray-400 tracking-tighter">
+                  {formatSlug(lesson.previous_lesson.slug)}
+                </span>
+              </div>
             )}
             {lesson.next_lesson && (
-              <Link
-                href={`/learn/${courseSlug}/${lesson.next_lesson.slug}`}
-                className="gap-2 bg-lime-400 text-black px-2.5 py-0.5 rounded-full cursor-pointer border-3 border-zinc-500/100 hover:bg-white active:bg-white shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
-              >
-                <FontAwesomeIcon icon={faLongArrowRight} size="lg" />
-              </Link>
+              <div className="flex flex-col items-center text-center max-w-[150px]">
+                <Link
+                  href={`/learn/${courseSlug}/${lesson.next_lesson.slug}`}
+                  className="gap-2 bg-lime-400 text-black px-2.5 py-0.5 rounded-full cursor-pointer border-3 border-zinc-500/100 hover:bg-white active:bg-white shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
+                >
+                  <FontAwesomeIcon icon={faLongArrowRight} size="lg" />
+                </Link>
+
+                <span className="mt-5 text-xs text-gray-400 tracking-snug">
+                  {formatSlug(lesson.next_lesson.slug)}
+                </span>
+              </div>
             )}
           </div>
         </div>

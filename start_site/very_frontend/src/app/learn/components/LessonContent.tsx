@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from 'next/link';
+import Image from "next/image.js";
 import CodeBlock from "./CodeBlock.jsx";
 
 interface LessonBlock {
@@ -12,7 +13,8 @@ interface LessonBlock {
     | "link"
     | "callout"
     | "code"
-    | "table";
+    | "table"
+    | "lessonImg";
 
   level?: number;
   content?: string;
@@ -24,6 +26,9 @@ interface LessonBlock {
   table?: string;
   headers?: string[];
   rows?: string[][];
+  imageUrl?: string;
+  imageAlt?: string;
+  imageCaption?: string;
 }
 
 interface LessonContentJSON {
@@ -108,7 +113,7 @@ export default function LessonContent({
 
             case "paragraph":
               return (
-                <p key={index} className="text-base text-gray-300 leading-relaxed">
+                <p key={index} className="text-sm sm:text-base text-gray-300 leading-relaxed">
                   {block.content}
                 </p>
               );
@@ -138,13 +143,13 @@ export default function LessonContent({
               case "table":
                 return (
                   <div key={index} className="overflow-x-auto my-10 transition-transform duration-300 hover:scale-[1.01]">
-                    <table className="w-full border-collapse backdrop-blur-md bg-white/10 dark:bg-[#181d1d]/90 border border-white/20 dark:border-zinc-700/50 rounded-xl shadow-lg overflow-hidden">
-                      <thead className="bg-white/20 dark:bg-zinc-700/30">
+                    <table className="w-full border-collapse backdrop-blur-md bg-zinc-900/80 border border-white/70 rounded-xl shadow-lg overflow-hidden">
+                      <thead className="bg-zinc-700/30">
                         <tr>
                           {block.headers?.map((header, i) => (
                             <th
                               key={i}
-                              className="px-4 py-3 text-left text-sm sm:text-base font-semibold text-white/90 border-b border-white/10"
+                              className="px-4 py-3 text-left text-sm sm:text-base font-semibold text-white/90 border-b border-white/30"
                             >
                               {header}
                             </th>
@@ -191,11 +196,37 @@ export default function LessonContent({
               return (
                 <div
                   key={index}
-                  className="p-3 sm:p-4 border border-pink-600/20 bg-zinc-800/60 rounded-xl text-gray-300 italic backdrop-blur-sm shadow-lg text-xs sm:text-base"
+                  className="p-3 sm:p-4 border border-pink-600/20 bg-zinc-900/60 rounded-xl text-gray-300 italic backdrop-blur-sm shadow-lg text-xs sm:text-sm"
                 >
                   💡 {block.content}
                 </div>
               );
+
+              case 'lessonImg':
+                if (!block.imageUrl) return null;
+                return (
+                  <div
+                    key={index}
+                    // initial={{ opacity: 0, y: 30 }}
+                    // animate={{ opacity: 1, y: 0 }}
+                    // transition={{ duration: 0.6 }}
+                    className="my-12 mx-auto relative w-full max-w-full group overflow-hidden rounded-2xl select-none"
+                  >
+                    <Image
+                      src={block.imageUrl}
+                      alt={block.imageAlt || 'First Look'}
+                      width={800}
+                      height={500}
+                      className="w-full object-cover brightness-90 group-hover:brightness-100 transition-all duration-500"
+                      sizes="100vw"
+                      priority={index < 3}   // prioritize first few images
+                    />
+
+                    <p className="absolute bottom-0 sm:bottom-3 left-0 sm:left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-sm md:backdrop-blur-md rounded-lg px-2 py-1 text-xs">
+                      {block.imageCaption || 'First Look'}
+                    </p>
+                  </div>
+                );
 
             default:
               console.warn("LessonContent: Unrecognized block type →", block);

@@ -2,6 +2,7 @@
 
 import React, { memo, useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion as Motion } from "framer-motion";
 import { Lessons, Course } from "@/types/post";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,16 +24,16 @@ const LessonCard = memo(
 
     return (
       <Link href={`/learn/${courseSlug}/${lesson.slug}`} aria-label={lesson.title}>
-      <Motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.03 }}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        className="bg-zinc-900/80 backdrop-blur-sm rounded-2xl p-4 sm:p-5 border border-zinc-700/50
+        <Motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.03 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="bg-zinc-900/50 backdrop-blur-sm rounded-2xl p-4 sm:p-5 border border-zinc-900
                    hover:border-gray-400/30 hover:shadow-[0_0_10px_rgba(164,255,130,0.15)] ease-in-out
                    active:border-gray-400/30 active:shadow-[0_0_10px_rgba(164,255,130,0.1)] transition-all duration-300 group relative"
-      >
+        >
           {isCompleted && (
             <FontAwesomeIcon
               icon={faCheckCircle}
@@ -51,7 +52,7 @@ const LessonCard = memo(
               className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform"
             />
           </p>
-      </Motion.div>
+        </Motion.div>
       </Link>
     );
   }
@@ -93,6 +94,30 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
       </Motion.div>
 
       <div className="max-w-5xl mx-auto px-3 sm:px-8">
+        {/* Featured Image */}
+      <div
+        // initial={{ opacity: 0, y: 20 }}
+        // animate={{ opacity: 1, y: 0 }}
+        // transition={{ duration: 0.5 }}
+        className="relative w-full group mb-6 sm:mb-8 overflow-hidden rounded-2xl select-none"
+      >
+        <Image
+          src={course.image || '/learn-post-image.png'}
+          alt={course.alt || 'Featured image'}
+          width={1200}
+          height={600}
+          rel="preload"
+          fetchPriority="high"
+          className="w-full h-[250px] sm:h-[70vh] lg:h-[72vh] object-cover rounded-2xl brightness-65 hover:brightness-90 active:brightness-90 transition-all duration-500"
+          priority
+          sizes="100vw"
+          tabIndex={0}
+        />
+        <p className="absolute bottom-0 sm:bottom-3 left-0 sm:left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-sm md:backdrop-blur-md rounded-lg px-2 py-1.5 text-xs md:text-sm">
+          {course.language || 'Featured Image'}
+        </p>
+      </div>
+      
         <div className="mb-8 sm:mb-10"
         >
           <h1 className="text-2xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-lime-300 to-lime-400 bg-clip-text text-transparent">

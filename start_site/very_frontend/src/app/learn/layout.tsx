@@ -8,6 +8,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://verycodedly.com/learn",
   },
+  keywords: [
+    "tech",
+    "coding",
+    "software development",
+    "programming",
+    "ai",
+    "coding courses",
+    "programming tutorials",
+    "developer tools",
+    "web dev",
+    "trending courses",
+    "tech course",
+  ],
   openGraph: {
     title: "Learn",
     description: "Beginner-friendly coding lessons that help complex ideas click, one concept at a time. No cookies, no login, no tracking. Straight to the point.",

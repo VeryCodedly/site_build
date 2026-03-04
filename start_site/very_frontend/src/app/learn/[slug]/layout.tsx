@@ -43,8 +43,9 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   if (!course) notFound();
 
   const title = `${course.title} | VeryCodedly`;
-  const description = course.description || `"Start the ${course.title}" with hands-on lessons on VeryCodedly.`;
+  const description = course.meta || `"Start the ${course.title}" with hands-on lessons on VeryCodedly.`;
   const imageUrl = course?.image || 'https://verycodedly.com/learn/opengraph-image.png';
+  const tags = course.tags || [];
 
   return {
     title,
@@ -52,6 +53,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     alternates: {
     canonical: `https://verycodedly.com/learn/${slug}`,
   },
+  keywords: tags,
     openGraph: {
       title,
       description,

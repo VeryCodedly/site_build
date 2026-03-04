@@ -116,11 +116,13 @@ export interface Lessons {
   slug: string;
   level: string; // e.g. "beginner", "intermediate", "advanced"
   duration: string;
+  description: string;
   video_url?: string;
   order: number; // order of lesson in course
   content_plain_text: string;
   content_JSON: Record<string, unknown>; // flexible JSON blocks
   course: string; 
+  tags: string[];
   created_at: string;
   updated_at: string;
   count: number;

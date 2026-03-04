@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from rest_framework.filters import SearchFilter
 from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson, LessonResource
+from taggit.serializers import TagListSerializerField
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -67,6 +68,7 @@ class LessonSerializer(serializers.ModelSerializer):
     previous_lesson = serializers.SerializerMethodField()
     next_lesson = serializers.SerializerMethodField()
     course = serializers.CharField(source="course.title", read_only=True)
+    tags = TagListSerializerField()
 
     class Meta:
         model = Lesson
@@ -80,9 +82,11 @@ class LessonSerializer(serializers.ModelSerializer):
         next = Lesson.objects.filter(course=obj.course, order__gt=obj.order).order_by('order').first()
         return {"slug": next.slug} if next else None
 
+
 class CourseSerializer(serializers.ModelSerializer):
     image = serializers.CharField()
     lessons = LessonSerializer(many=True, read_only=True)
+    tags = TagListSerializerField()
     
     class Meta:
         model = Course
@@ -90,6 +94,7 @@ class CourseSerializer(serializers.ModelSerializer):
         
         
 class LessonResourceSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = LessonResource
         fields = ["title", "url"]

@@ -20,6 +20,19 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://verycodedly.com/read",
   },
+  keywords: [
+    "tech",
+    "coding",
+    "software development",
+    "programming",
+    "ai",
+    "tech news",
+    "tech stories",
+    "developer tools",
+    "web development",
+    "trending tech",
+    "tech blog",
+  ],
   openGraph: {
     title: "Read",
     description: "Unfiltered takes on Tech, Code, Culture and everything in between. No cookies, no login, no tracking. Just good reads.",
