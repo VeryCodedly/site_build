@@ -395,10 +395,10 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
       <div className="pt-10">
         <div className="text-center text-gray-500 text-sm border-t border-b border-gray-800/80 rounded-md py-8">
           {/* <p className=""> */}
-            <span className="inline-flex items-center text-gray-700 text-xs sm:text-sm font-medium transition-colors hover:text-lime-400">
+            <span className="inline-flex items-center text-gray-700 text-xs sm:text-sm font-medium transition-colors hover:text-lime-400 active:text-lime-400 select-none">
               <FontAwesomeIcon 
                 icon={faFlagCheckered} 
-                className="rotate-[40deg] duration-300 hover:rotate-[15deg] hover:scale-110"
+                className="rotate-[40deg] duration-300 hover:rotate-[15deg] hover:scale-110 active:rotate-[15deg] active:scale-110"
               />
             </span>
 
