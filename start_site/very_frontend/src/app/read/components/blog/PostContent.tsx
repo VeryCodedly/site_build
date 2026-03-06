@@ -4,7 +4,7 @@ import { motion as Motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLongArrowRight, faCalendar, faUser, faPencil, faHashtag, faImage, faLink, faCopy, faComment } from '@fortawesome/free-solid-svg-icons';
+import { faLongArrowRight, faCalendar, faUser, faPencil, faHashtag, faImage, faLink, faCopy, faComment, faFlagCheckered } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faLinkedinIn, faTwitter, faWhatsapp, faDiscord, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import CodeBlock from '@/app/learn/components/CodeBlock';
 import { Post } from '@/types/post';
@@ -51,10 +51,10 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           alt={post.alt || 'Featured image'}
           width={1200}
           height={600}
-          rel="preload"
           fetchPriority="high"
           className="w-full h-[250px] sm:h-[70vh] lg:h-[72vh] object-cover rounded-2xl brightness-65 hover:brightness-90 active:brightness-90 transition-all duration-500"
           priority
+          // loading="eager"
           sizes="100vw"
           tabIndex={0}
         />
@@ -207,7 +207,8 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                         height={500}
                         className="w-full object-cover brightness-90 group-hover:brightness-100 transition-all duration-500"
                         sizes="100vw"
-                        priority={index < 3}   // prioritize first few images
+                        loading="eager"
+                        priority={index < 3}  //  prioritize first few images
                       />
 
                       <p className="absolute bottom-0 sm:bottom-3 left-0 sm:left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-sm md:backdrop-blur-md rounded-lg px-2 py-1 text-xs md:text-sm">
@@ -242,7 +243,10 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {post.images.map((img, index) => (
               <div key={img.id || index} className="group relative overflow-hidden rounded-2xl bg-black/50 select-none">
-                <Image src={img.image || 'read-post-image.png'} alt={img.alt || 'Gallery image'} width={400} height={300} className="w-full h-50 sm:h-58 object-cover group-hover:scale-105 group-active:scale-105 transition-transform duration-500" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" tabIndex={0} />
+                <Image src={img.image || 'read-post-image.png'} alt={img.alt || 'Gallery image'} width={400} height={300} 
+                  className="w-full h-50 sm:h-58 object-cover group-hover:scale-105 group-active:scale-105 transition-transform duration-500" 
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" 
+                />
                 {(img.alt || img.caption) && (
                   <div className="absolute -bottom-0.5 sm:bottom-2 left-0 sm:left-2 w-fit bg-black/15 group-hover:bg-transparent group-active:bg-transparent backdrop-blur-md group-hover:!backdrop-blur-none group-active:!backdrop-blur-none rounded-lg px-2 py-1">
                     {img.caption && <p className="text-gray-50/80 group-hover:opacity-0 group-active:opacity-0 text-xs mb-1">{img.caption}</p>}
@@ -283,7 +287,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
         {post.links && post.links.length > 0 ? (
           <div className="space-y-3">
             {post.links.map((link) => (
-              <Link key={link.id} aria-label={`Link for ${link.target_post}`} href={link.external_url || `/read/${link.target_post?.slug || '#'}`}
+              <Link key={link.label} aria-label={`Link for ${link.target_post}`} href={link.external_url || `/read/${link.target_post?.slug || '#'}`}
                 target={link.external_url ? '_blank' : '_self'} rel={link.external_url ? 'noopener noreferrer' : ''}
                 className="group flex items-center w-fit gap-2 px-4 py-2 bg-zinc-900/50 hover:bg-lime-500/10 active:bg-lime-500/10 border border-zinc-800/30
                 hover:border-lime-500/20 active:border-lime-500/20 rounded-xl transition-all text-lime-400 hover:text-lime-300 active:text-white text-sm sm:text-sm">
@@ -389,15 +393,13 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
 
       {/* Meta Footer */}
       <div className="pt-10">
-        <div className="text-center text-gray-500 text-sm border-t border-b border-zinc-800 rounded-md py-8">
-          <p className="flex flex-col justify-center sm:flex-row sm:gap-2">
-            <span>
-              Published{' '}
-              {new Date(post.created_at).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
+        <div className="text-center text-gray-500 text-sm border-t border-b border-gray-800/80 rounded-md py-8">
+          {/* <p className=""> */}
+            <span className="inline-flex items-center text-gray-700 text-xs sm:text-sm font-medium transition-colors hover:text-lime-400">
+              <FontAwesomeIcon 
+                icon={faFlagCheckered} 
+                className="rotate-[40deg] duration-300 hover:rotate-[15deg] hover:scale-110"
+              />
             </span>
 
             {/* {post.updated_at && post.updated_at !== post.created_at && (
@@ -416,8 +418,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                 </span>
               </>
             )} */}
-          </p>
-          <p className="mt-4 text-pink-400 capitalize">{post.status || 'Draft'}</p>
+          {/* </p> */}
         </div>
       </div>
     </>

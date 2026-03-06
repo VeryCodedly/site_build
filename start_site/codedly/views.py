@@ -13,6 +13,7 @@ from collections import defaultdict
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.core.cache import cache
+from collections import defaultdict
 
 # from django.http import JsonResponse
 # from django.views.generic import ListView
@@ -25,7 +26,7 @@ from rest_framework import generics
 from django.http import HttpResponse
 from django.db.models.functions import Length
 from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson
-from .serializers import CategoryPostsSerializer, PostSerializer, CategorySerializer, CommentSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer
+from .serializers import CategoryPostsSerializer, PostSerializer, PostFeedSerializer, CategorySerializer, CommentSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer
 
 
 def api_home(request):
@@ -151,202 +152,201 @@ def global_search(request):
 
     return Response({"results": results})
 
+
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.filter(status="published").order_by("-created_at")
     serializer_class = PostSerializer
     lookup_field = "slug"
-    search_fields = '__all__'
-
-    # SINGLE POST ENDPOINTS
-    # @action(detail=False, methods=['get'])
-    # def featured(self, request):
-    #     post = Post.objects.filter(
-    #         image__isnull=False,
-    #         subcategory__slug="featured"
-    #     ).order_by('-created_at').first()
-    #     data = PostSerializer(post).data if post else None
-    #     return Response({"featured": data})
-
-    # @action(detail=False, methods=['get'])
-    # def hardware(self, request):
-    #     post = Post.objects.filter(subcategory__slug="hardware", image__isnull=False).order_by('-created_at').first()
-    #     data = PostSerializer(post).data if post else None
-    #     return Response({"hardware": data})
-    
-    # MULTIPLE POSTS ENDPOINTS
-    @action(detail=False, methods=['get'])
-    def featured(self, request):
-        posts = Post.objects.filter(subcategory__slug="featured").order_by('-created_at')[:3]
-        data = PostSerializer(posts, many=True).data
-        return Response({"featured": data})
-    
-    @action(detail=False, methods=['get'])
-    def hardware(self, request):
-        posts = Post.objects.filter(subcategory__slug="hardware").order_by('-created_at')[:3]
-        data = PostSerializer(posts, many=True).data
-        return Response({"hardware": data})
-    
-    @action(detail=False, methods=['get'])
-    def digitalMoney(self, request):
-        posts = Post.objects.filter(subcategory__slug="digital-money").order_by('-created_at')[:3]
-        data = PostSerializer(posts, many=True).data
-        return Response({"digitalMoney": data})
-    
-    @action(detail=False, methods=['get'])
-    def globalLens(self, request):
-        posts = Post.objects.filter(subcategory__slug="wired-world").order_by('-created_at')[:3]
-        data = PostSerializer(posts, many=True).data
-        return Response({"globalLens": data})
-    
-    @action(detail=False, methods=['get'])
-    def dataDefense(self, request):
-        posts = Post.objects.filter(subcategory__slug="data-defense").order_by('-created_at')[:3]
-        data = PostSerializer(posts, many=True).data
-        return Response({"dataDefense": data})
-    
-    @action(detail=False, methods=['get'])
-    def devDigest(self, request):
-        posts = Post.objects.filter(subcategory__slug="dev-digest").order_by('-created_at')[:3]
-        data = PostSerializer(posts, many=True).data
-        return Response({"devDigest": data})
-
-    @action(detail=False, methods=['get'])
-    def trending(self, request):
-        posts = Post.objects.filter(subcategory__slug="right-now").order_by('-created_at')[:6]
-        data = PostSerializer(posts, many=True).data
-        return Response({"trending": data})
-    
-    # DRY helper for the [:6]
-    def _multi_posts(self, subcategory_slug):
-        posts = Post.objects.filter(subcategory__slug=subcategory_slug).order_by('-created_at')[:6]
-        return PostSerializer(posts, many=True).data
-
-    @action(detail=False, methods=['get'])
-    def spotlight(self, request): 
-        return Response({"spotlight": self._multi_posts("entertainment")})
-    @action(detail=False, methods=['get'])
-    def bigDeal(self, request): 
-        return Response({"bigDeal": self._multi_posts("big-deal")})
-    @action(detail=False, methods=['get'])
-    def policyProgress(self, request): 
-        return Response({"policyProgress": self._multi_posts("policy-progress")})
-    @action(detail=False, methods=['get'])
-    def africaRising(self, request): 
-        return Response({"africaRising": self._multi_posts("africa-now")})
-    @action(detail=False, methods=['get'])
-    def emergingTech(self, request): 
-        return Response({"emergingTech": self._multi_posts("emerging-tech")})
-    @action(detail=False, methods=['get'])
-    def techCulture(self, request): 
-        return Response({"techCulture": self._multi_posts("tech-culture")})
-    @action(detail=False, methods=['get'])
-    def secureHabits(self, request): 
-        return Response({"secureHabits": self._multi_posts("secure-habits")})
-    @action(detail=False, methods=['get'])
-    def keyPlayers(self, request): 
-        return Response({"keyPlayers": self._multi_posts("key-players")})
-    @action(detail=False, methods=['get'])
-    def AI(self, request): 
-        return Response({"AI": self._multi_posts("ai")})
-    @action(detail=False, methods=['get'])
-    def bchCrypto(self, request): 
-        return Response({"bchCrypto": self._multi_posts("blockchain-crypto")})
-    @action(detail=False, methods=['get'])
-    def startups(self, request): 
-        return Response({"startups": self._multi_posts("startups")})
-    @action(detail=False, methods=['get'])
-    def prvCompliance(self, request): 
-        return Response({"prvCompliance": self._multi_posts("privacy-compliance")})
-    @action(detail=False, methods=['get'])
-    def stack(self, request): 
-        return Response({"stack": self._multi_posts("stack")})
-    @action(detail=False, methods=['get'])
-    def buyGuides(self, request): 
-        return Response({"buyGuides": self._multi_posts("beginner-guides")})
-    @action(detail=False, methods=['get'])
-    def theClimb(self, request): 
-        return Response({"theClimb": self._multi_posts("the-climb")})
-    @action(detail=False, methods=['get'])
-    def rundown(self, request): 
-        return Response({"rundown": self._multi_posts("rundown")})
-    @action(detail=False, methods=['get'])
-    def industryInsights(self, request): 
-        return Response({"industryInsights": self._multi_posts("industry-insights")})
+    search_fields = ["title", "excerpt"]
 
 
 class ReadPageDataView(APIView):
-    CACHE_KEY = "read_page_data"
 
-    # Single mapping: slug -> (frontend key, limit)
+    CACHE_KEY = "read_page_data"
+    CACHE_TIMEOUT = 300
+
     CATEGORY_CONFIG = {
         "featured": ("featured", 3),
         "right-now": ("trending", 6),
-        "entertainment": ("spotlight", 6),
-        "big-deal": ("bigDeal", 6),
+        "showtime": ("spotlight", 6),
         "digital-money": ("digitalMoney", 3),
         "blockchain-crypto": ("bchCrypto", 6),
-        "startups": ("startups", 6),
-        "privacy-compliance": ("prvCompliance", 6),
+        "key-players": ("keyPlayers", 6),
         "ai": ("AI", 6),
-        "emerging-tech": ("emergingTech", 6),
+        "big-deal": ("bigDeal", 6),
         "hardware": ("hardware", 3),
-        "tech-culture": ("techCulture", 6),
         "policy-progress": ("policyProgress", 6),
         "wired-world": ("globalLens", 3),
         "africa-now": ("africaRising", 6),
-        "key-players": ("keyPlayers", 6),
         "data-defense": ("dataDefense", 3),
         "secure-habits": ("secureHabits", 6),
-        "stack": ("stack", 6),
+        "privacy-compliance": ("prvCompliance", 6),
         "beginner-guides": ("buyGuides", 6),
         "dev-digest": ("devDigest", 3),
-        "the-climb": ("theClimb", 6),
-        "rundown": ("rundown", 6),
-        "industry-insights": ("industryInsights", 6),
+        "upskill": ("upskill", 6),
     }
 
     def get(self, request):
+
         cached = cache.get(self.CACHE_KEY)
         if cached:
             return Response(cached)
 
-        slugs = self.CATEGORY_CONFIG.keys()
+        data = {}
 
-        # Fetch all posts in one query
+        slugs = list(self.CATEGORY_CONFIG.keys())
+
+        # ONE query for all section posts
         posts = (
             Post.objects
             .select_related("subcategory")
-            .filter(status="published", subcategory__slug__in=slugs)
+            .filter(
+                status="published",
+                subcategory__slug__in=slugs
+            )
+            .only(
+                "id",
+                "title",
+                "slug",
+                "image",
+                "category",
+                "created_at",
+                "subcategory_id"
+            )
             .order_by("-created_at")
         )
 
-        # Group by slug, respecting limits
         grouped = defaultdict(list)
+
         for post in posts:
+
             slug = post.subcategory.slug
-            _, limit = self.CATEGORY_CONFIG[slug]
+            key, limit = self.CATEGORY_CONFIG[slug]
+
             if len(grouped[slug]) < limit:
                 grouped[slug].append(post)
 
-        # Serialize data
-        data = {
-            "latest": PostSerializer(
-                Post.objects
-                .select_related("subcategory")
-                .filter(status="published")
-                .order_by("-created_at")[:10],
-                many=True,
-                context={"request": request},
-            ).data,
-        }
-
+        # serialize grouped data
         for slug, items in grouped.items():
-            key, _ = self.CATEGORY_CONFIG[slug]
-            data[key] = PostSerializer(items, many=True, context={"request": request}).data
 
-        # Cache and return
-        cache.set(self.CACHE_KEY, data, timeout=120)
+            key, _ = self.CATEGORY_CONFIG[slug]
+
+            data[key] = PostFeedSerializer(
+                items,
+                many=True,
+                context={"request": request}
+            ).data
+
+        # latest posts query
+        latest_posts = (
+            Post.objects
+            .select_related("subcategory")
+            .filter(status="published")
+            .only(
+                "id",
+                "title",
+                "slug",
+                "excerpt",
+                "image",
+                "category",
+                "created_at",
+                "subcategory_id"
+            )
+            .order_by("-created_at")[:9]
+        )
+
+        data["latest"] = PostFeedSerializer(
+            latest_posts,
+            many=True,
+            context={"request": request}
+        ).data
+
+        cache.set(self.CACHE_KEY, data, timeout=self.CACHE_TIMEOUT)
+
         return Response(data)
+
+
+# class ReadPageDataView(APIView):
+#     CACHE_KEY = "read_page_data"
+#     CACHE_TIMEOUT = 300
+
+#     # Single mapping: slug -> (frontend key, limit)
+#     CATEGORY_CONFIG = {
+#         "featured": ("featured", 3),
+#         "right-now": ("trending", 6),
+#         "entertainment": ("spotlight", 6),
+#         "big-deal": ("bigDeal", 6),
+#         "digital-money": ("digitalMoney", 3),
+#         # "blockchain-crypto": ("bchCrypto", 6),
+#         # "startups": ("startups", 6),
+#         "privacy-compliance": ("prvCompliance", 6),
+#         "ai": ("AI", 6),
+#         # "emerging-tech": ("emergingTech", 6),
+#         "hardware": ("hardware", 3),
+#         "tech-culture": ("techCulture", 6),
+#         "policy-progress": ("policyProgress", 6),
+#         "wired-world": ("globalLens", 3),
+#         "africa-now": ("africaRising", 6),
+#         # "key-players": ("keyPlayers", 6),
+#         "data-defense": ("dataDefense", 3),
+#         "secure-habits": ("secureHabits", 6),
+#         "stack": ("stack", 6),
+#         "beginner-guides": ("buyGuides", 6),
+#         "dev-digest": ("devDigest", 3),
+#         "the-climb": ("theClimb", 6),
+#         # "rundown": ("rundown", 6),
+#         # "industry-insights": ("industryInsights", 6),
+#     }
+
+#     def get(self, request):
+#         cached = cache.get(self.CACHE_KEY)
+#         if cached:
+#             return Response(cached)
+
+#         data = {}
+
+#         # Fetch individually for low memory 
+#         for slug, (key, limit) in self.CATEGORY_CONFIG.items():
+#             posts = (
+#                 Post.objects
+#                 .select_related("subcategory") 
+#                 .filter(
+#                     status="published",
+#                     subcategory__slug=slug
+#                 )
+#                 .order_by("-created_at")
+#                 .only(
+#                     "id", "title", "slug", "image", "category",
+#                     "created_at", "subcategory_id"  
+#                 )[:limit]
+#             )
+#             data[key] = PostFeedSerializer(
+#                 posts,
+#                 many=True,
+#                 context={"request": request}
+#             ).data
+
+#         # Latest posts (top 9 for all cats)
+#         latest_posts = (
+#             Post.objects
+#             .select_related("subcategory")
+#             .filter(status="published")
+#             .order_by("-created_at")
+#             .only(
+#                 "id", "title", "slug", "excerpt", "image", "category",
+#                 "created_at", "subcategory_id"
+#             )[:9]
+#         )
+#         data["latest"] = PostFeedSerializer(
+#             latest_posts,
+#             many=True,
+#             context={"request": request}
+#         ).data
+
+#         # Cache the full response
+#         cache.set(self.CACHE_KEY, data, timeout=self.CACHE_TIMEOUT)
+
+#         return Response(data)
     
         
 class CategoryViewSet(viewsets.ModelViewSet):

@@ -43,7 +43,7 @@ export default function RelatedPostsSection({
           </h2>
           {latest.length > 0 ? (
             <div className="grid gap-4">
-              {latest.map(post => <MiniPostCard key={post.id} post={post} />)}
+              {latest.map(post => <MiniPostCard key={post.slug} post={post} />)}
             </div>
           ) : (
             <p className="text-gray-500">No posts yet.</p>
@@ -64,7 +64,7 @@ export default function RelatedPostsSection({
           </h2>
           {trendingSlice.length > 0 ? (
             <div className="grid gap-4">
-              {trendingSlice.map(post => <MiniPostCard key={post.id} post={post} />)}
+              {trendingSlice.map(post => <MiniPostCard key={post.slug} post={post} />)}
             </div>
           ) : (
             <p className="text-gray-500">Quiet for now.</p>

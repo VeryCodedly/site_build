@@ -156,7 +156,7 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
             <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
               {lessons.map((lesson, index) => (
                 <LessonCard
-                  key={lesson.id}
+                  key={lesson.slug}
                   lesson={lesson}
                   courseSlug={slug}
                   index={index}

@@ -22,24 +22,24 @@ interface Props {
     bigDeal: Post[];
     digitalMoney: Post[];
     bchCrypto: Post[];
-    startups: Post[];
+    // startups: Post[];
     prvCompliance: Post[];
     AI: Post[];
-    emergingTech: Post[];
+    // emergingTech: Post[];
     hardware: Post[];
-    techCulture: Post[];
+    // techCulture: Post[];
     policyProgress: Post[];
     globalLens: Post[];
     africaRising: Post[];
     keyPlayers: Post[];
     dataDefense: Post[];
     secureHabits: Post[];
-    stack: Post[];
+    // stack: Post[];
     buyGuides: Post[];
     devDigest: Post[];
-    theClimb: Post[];
-    rundown: Post[];
-    industryInsights: Post[];
+    upskill: Post[];
+    // rundown: Post[];
+    // industryInsights: Post[];
   };
 }
 
@@ -49,27 +49,24 @@ export default function ReadPageClient({ data }: Props) {
     featured = [],
     trending = [],
     spotlight = [],
-    bigDeal = [],
     digitalMoney = [],
     bchCrypto = [],
-    startups = [],
-    prvCompliance = [],
+    keyPlayers = [],
     AI = [],
-    emergingTech = [],
+    bigDeal = [],
     hardware = [],
-    techCulture = [],
+    // techCulture = [],
     policyProgress = [],
     globalLens = [],
     africaRising = [],
-    keyPlayers = [],
     dataDefense = [],
     secureHabits = [],
-    stack = [],
+    prvCompliance = [],
     buyGuides = [],
     devDigest = [],
-    theClimb = [],
-    rundown = [],
-    industryInsights = [],
+    upskill = [],
+    // rundown = [],
+    // industryInsights = [],
   } = data;
 
   const posts = latest;
@@ -163,7 +160,7 @@ export default function ReadPageClient({ data }: Props) {
         <div className="space-y-2.5 w-[92%] md:w-[80%] lg:w-[75%] mx-auto my-12">
           {posts?.slice(0, visiblePosts).map((post: Post) => (
             <Motion.div
-              key={post.id}
+              key={post.slug}
               // className="bg-white/5 border border-zinc-700 rounded-xl backdrop-blur-md p-6 hover:border-lime-200/30 transition-all duration-300"
               className="bg-zinc-900/40 rounded-2xl p-3 border border-zinc-900 transition-transform duration-500 transform hover:-translate-y-2 
                 hover:rotateX-3 hover:rotateY-3 active:-translate-y-2 active:rotateX-3 active:rotateY-3" style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
@@ -190,55 +187,48 @@ export default function ReadPageClient({ data }: Props) {
         </div>
       )}
 
+      {/* 5 HARDWARE */}
       <Carousel posts={hardware} />
 
-      {emergingTech.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
-          <Motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-3xl text-white mb-5 flex justify-start">Emerging<span className="text-lime-400">Tech</span>
-          </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {emergingTech.map(post => (
-              <MiniPostCard key={post.id} post={post} />
-            ))}
-          </div>
-        </section>
-      )}
-
+      
       {/* 10 AI */}
       {AI.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
+        <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+              <div className="flex items-center gap-2">
+            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-5 flex justify-end">AI
+            className="text-xl text-white leading-tight whitespace-normal max-w-[70px]">AI
           </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
             {AI.map(post => (
-              <MiniPostCard key={post.id} post={post} />
+              <MiniPostCard key={post.slug} post={post} />
             ))}
           </div>
         </section>
       )}
 
       {bigDeal.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
+        <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+              <div className="flex items-center gap-2">
+            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-lime-400 mb-5 flex justify-start">Big<span className="text-white">Deal</span>
+            className="text-xl text-white leading-tight whitespace-normal max-w-[50px]">Big Deal
           </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
             {bigDeal.map(post => (
-              <MiniPostCard key={post.id} post={post} />
+              <MiniPostCard key={post.slug} post={post} />
             ))}
           </div>
         </section>
@@ -246,58 +236,46 @@ export default function ReadPageClient({ data }: Props) {
 
       <Carousel posts={digitalMoney} />
 
+      {keyPlayers.length > 0 && (
+        <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+              <div className="flex items-center gap-2">
+            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
+          <Motion.h3
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-xl text-white leading-tight whitespace-normal max-w-[85px]">
+            Key Players
+          </Motion.h3>
+              </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 flex-1">
+            {keyPlayers.map(post => (
+              <MiniPostCard key={post.slug} post={post} />
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* 10 BLOCKCHAIN & CRYPTO */}
       {bchCrypto.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
+        <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+              <div className="flex items-center gap-2">
+            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-5 flex justify-start">
-            Blockchain&<span className="text-lime-400">Crypto</span>
+            className="text-xl text-white leading-tight whitespace-normal max-w-[90px] mr-7">
+            Blockchain & Crypto
           </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
             {bchCrypto.map(post => (
-              <MiniPostCard key={post.id} post={post} />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* 11 STARTUPS */}
-      {startups.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
-          <Motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-3xl text-white mb-5 flex justify-end">
-            Startups
-          </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {startups.map(post => (
-              <MiniPostCard key={post.id} post={post} />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* 12 PRIVACY & COMPLIANCE */}
-      {prvCompliance.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
-          <Motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-3xl text-lime-400 mb-5 flex justify-start">
-            Privacy<span className="text-white">&Compliance</span>
-          </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {prvCompliance.map(post => (
-              <MiniPostCard key={post.id} post={post} />
+              <MiniPostCard key={post.slug} post={post} />
             ))}
           </div>
         </section>
@@ -305,55 +283,44 @@ export default function ReadPageClient({ data }: Props) {
 
       <Carousel posts={devDigest} />
 
-      {theClimb.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
+      {upskill.length > 0 && (
+        <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+              <div className="flex items-center gap-2">
+            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-5 flex justify-start">
-            The<span className="text-lime-400">Climb</span>
-
+            className="text-xl text-white leading-tight whitespace-normal max-w-[87px]">
+              Upskill
           </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {theClimb.map(post => (
-              <MiniPostCard key={post.id} post={post} />
+              </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
+            {upskill.map(post => (
+              <MiniPostCard key={post.slug} post={post} />
             ))}
           </div>
         </section>
       )}
 
-      {stack.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
+      {buyGuides.length > 0 && (
+        <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+              <div className="flex items-center gap-2">
+            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-5 flex justify-end">Stack
+            className="text-xl text-white leading-tight whitespace-normal max-w-[100px]">Beginner Guides
           </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {stack.map(post => (
-              <MiniPostCard key={post.id} post={post} />
-            ))}
-          </div>
-        </section>
-      )}
+              </div>
 
-      {industryInsights.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
-          <Motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-3xl text-lime-400 mb-5 flex justify-start">
-            Industry<span className="text-white">Insights</span>
-          </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {industryInsights.map(post => (
-              <MiniPostCard key={post.id} post={post} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
+            {buyGuides.map(post => (
+              <MiniPostCard key={post.slug} post={post} />
             ))}
           </div>
         </section>
@@ -363,73 +330,70 @@ export default function ReadPageClient({ data }: Props) {
 
       {/* 13 SECURE HABITS */}
       {secureHabits.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
+        <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+              <div className="flex items-center gap-2">
+            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-5 flex justify-start">Secure<span className="text-lime-400">Habits</span>
+            className="text-xl text-white leading-tight whitespace-normal max-w-[87px]">Secure Habits
           </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
             {secureHabits.map(post => (
-              <MiniPostCard key={post.id} post={post} />
+              <MiniPostCard key={post.slug} post={post} />
             ))}
           </div>
         </section>
       )}
 
-      {rundown.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
+      {/* 12 PRIVACY & COMPLIANCE */}
+      {prvCompliance.length > 0 && (
+        <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+              <div className="flex items-center gap-2">
+            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-5 flex justify-end">
-            Rundown
+            className="text-xl text-white leading-tight whitespace-normal max-w-[107px] mr-2">
+            Privacy & Compliance
           </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {rundown.map(post => (
-              <MiniPostCard key={post.id} post={post} />
-            ))}
-          </div>
-        </section>
-      )}
+              </div>
 
-      {buyGuides.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
-          <Motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-3xl text-lime-400 mb-5 flex justify-start">Beginner<span className="text-white">Guides</span>
-          </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {buyGuides.map(post => (
-              <MiniPostCard key={post.id} post={post} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
+            {prvCompliance.map(post => (
+              <MiniPostCard key={post.slug} post={post} />
             ))}
           </div>
         </section>
       )}
+      
 
       {/* 1 HERO: Featured Post */}
       <Carousel posts={featured} />
 
       {/* 2 TRENDING NOW */}
       {trending.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
+        <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+              <div className="flex items-center gap-2">
+            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-5">Right<span className="text-lime-400">Now</span>
+            className="text-xl text-white leading-tight whitespace-normal max-w-[60px]">Right Now
           </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 flex-1">
             {trending.map((post) => (
-              <MiniPostCard key={post.id} post={post} />
+              <MiniPostCard key={post.slug} post={post} />
             ))}
           </div>
         </section>
@@ -437,106 +401,72 @@ export default function ReadPageClient({ data }: Props) {
 
       {/* 3 SPOTLIGHT */}
       {spotlight.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
+        <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+              <div className="flex items-center gap-2">
+            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-white mb-5 flex justify-end">
-            Entertainment
+            className="text-xl text-white leading-tight whitespace-normal max-w-[93px]">
+            Showtime
           </Motion.h3>
+              </div>
+
           {/* <h2 className="text-3xl sm:text-4xl font-bold text-pink-400 mb-10">Editor’s<span className="text-white"> Picks</span></h2> */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 flex-1">
             {spotlight.map(post => (
-              <MiniPostCard key={post.id} post={post} />
+              <MiniPostCard key={post.slug} post={post} />
             ))}
           </div>
         </section>
       )}
-
-      {/* 4 BIG DEAL */}
-
-      {/* 5 HARDWARE */}
 
       {/* <NewsletterCard /> */}
 
-      {/* 11 EMERGING TECH */}
-
-      {/* 12 TECH CULTURE */}
-      {techCulture.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
-          <Motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-3xl text-lime-400 mb-5 flex justify-start">Tech<span className="text-white">Culture</span>
-          </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {techCulture.map(post => (
-              <MiniPostCard key={post.id} post={post} />
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* 9 DIGITAL MONEY */}
-
-      {/* 5 HARDWARE */}
       <Carousel posts={globalLens} />
 
-      {/* 6 GLOBAL LENS */}
-      {keyPlayers.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
-          <Motion.h3
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-3xl text-white mb-5 flex justify-start">
-            Key<span className="text-lime-400">Players</span>
-          </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {keyPlayers.map(post => (
-              <MiniPostCard key={post.id} post={post} />
-            ))}
-          </div>
-        </section>
-      )}
 
-      {/* 7 AFRICA RISING */}
+      {/* 7 AFRICA NOW */}
       {africaRising.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
+        <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+              <div className="flex items-center gap-2">
+            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-lime-400 mb-5 flex justify-end">Africa<span className="text-white">Now</span>
+            className="text-xl text-white leading-tight whitespace-normal max-w-[70px]">Africa Now
           </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 flex-1">
             {africaRising.map(post => (
-              <MiniPostCard key={post.id} post={post} />
+              <MiniPostCard key={post.slug} post={post} />
             ))}
           </div>
         </section>
       )}
 
-      {/* 8 KEY PLAYERS */}
       {policyProgress.length > 0 && (
-        <section className="py-7 lg:py-5 px-3">
+        <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+              <div className="flex items-center gap-2">
+            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
           <Motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl text-lime-400 mb-5 flex justify-start">
-            Policy<span className="text-white">&Progress</span>
+            className="text-xl text-white leading-tight whitespace-normal max-w-[90px]">
+            Policy & Progress
           </Motion.h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 flex-1">
             {policyProgress.map(post => (
-              <MiniPostCard key={post.id} post={post} />
+              <MiniPostCard key={post.slug} post={post} />
             ))}
           </div>
         </section>

@@ -116,13 +116,13 @@ export default function FloatingMenu({ categories }: { categories: Category[] })
             const icon = iconMap[cat.name] || null;
             return (
               <li
-                key={cat.id}
+                key={cat.slug}
                 className="relative group"
-                onMouseEnter={() => setActiveCatId(cat.id)}
+                onMouseEnter={() => setActiveCatId(cat.slug)}
                 onMouseLeave={() => setActiveCatId(null)}
                 onClick={(e) => {
                   e.stopPropagation();
-                  setActiveCatId(activeCatId === cat.id ? null : cat.id);
+                  setActiveCatId(activeCatId === cat.slug ? null : cat.slug);
                 }}
               >
                 <div className="flex items-center gap-5 sm:gap-6 p-2.5 sm:p-1.5 px-4 rounded-xl hover:bg-white/8 active:bg-white/8 transition-all duration-200">
@@ -146,7 +146,7 @@ export default function FloatingMenu({ categories }: { categories: Category[] })
                   )}
                 </div>
 
-                {expanded && activeCatId === cat.id && (
+                {expanded && activeCatId === cat.slug && (
                   <div 
                   onClick={(e) => e.stopPropagation()}
                   className="ml-9.5 sm:ml-8 bg-black/3 hover:backdrop-blur-md rounded-xl shadow-lg text-xs sm:text-sm flex flex-col animate-fade-in">
@@ -154,7 +154,7 @@ export default function FloatingMenu({ categories }: { categories: Category[] })
                       .sort((a, b) => a.name.length - b.name.length)
                       .map(sub => (
                         <Link
-                          key={sub.id}
+                          key={sub.slug}
                           href={`/read/subcategory/${sub.slug}`}
                           onClick={(e) => {
                             e.stopPropagation();

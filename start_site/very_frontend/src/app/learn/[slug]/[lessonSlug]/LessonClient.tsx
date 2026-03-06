@@ -22,17 +22,7 @@ interface LessonClientProps {
 const PROGRESS_KEY = (slug: string) => `course_progress_${slug}`;
 
 const formatSlug = (slug: string) => {
-  const smallWords = ["and", "or", "with", "to", "for", "of", "in"];
-
-  return slug
-    .split("-")
-    .map((word, index) => {
-      if (index !== 0 && smallWords.includes(word)) {
-        return word;
-      }
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    })
-    .join(" ");
+  return slug.replace(/-/g, " ");
 };
 
 export default function LessonClient({ lesson, courseSlug }: LessonClientProps) {
@@ -100,7 +90,7 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
         <button
           ref={buttonRef}
           onMouseEnter={() => setIsMenuOpen(true)}
-          onMouseLeave={() => setIsMenuOpen(false)}
+          // onMouseLeave={() => setIsMenuOpen(false)}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="fixed p-2 left-0 top-1/2 -translate-y-1/2 z-[60] w-6 h-7 sm:w-6 sm:h-7 flex items-center justify-center rounded-r-xl bg-transparent text-white hover:bg-white/8 active:bg-white/8 backdrop-blur-md border-l-0 transition-all focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-pink-300/70 shadow-[0_0_5px_3px_rgba(55,55,55,0.4)] hover:shadow-[0_0_7px_3px_rgba(255,255,255,0.08)] active:shadow-[0_0_7px_3px_rgba(255,255,255,0.08)]"
           aria-label="Toggle menu"
@@ -157,11 +147,11 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
           </div>
 
           <div
-            className={`flex mt-16 mx-auto max-w-sm px-4 sm:px-0 ${lesson.previous_lesson && lesson.next_lesson ? "justify-between" : "justify-center"
+            className={`flex mt-16 mx-auto max-w-md px-4 sm:px-0 ${lesson.previous_lesson && lesson.next_lesson ? "justify-between" : "justify-center"
               }`}
-          >
+            >
             {lesson.previous_lesson && (
-              <div className="flex flex-col items-center text-center max-w-[150px]">
+              <div className="flex flex-col items-center text-center w-1/2">
                 <Link
                   href={`/learn/${courseSlug}/${lesson.previous_lesson.slug}`}
                   className="gap-2 bg-lime-400 text-black px-2.5 py-0.5 rounded-full cursor-pointer border-3 border-gray-500/100 hover:bg-white active:bg-white shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
@@ -169,13 +159,13 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
                   <FontAwesomeIcon icon={faLongArrowLeft} size="lg" />
                 </Link>
 
-                <span className="mt-5 text-xs text-gray-400 tracking-tighter">
+                <span className="mt-5 text-xs text-gray-500 tracking-tighter leading-tight line-clamp-2 break-words">
                   {formatSlug(lesson.previous_lesson.slug)}
                 </span>
               </div>
-            )}
-            {lesson.next_lesson && (
-              <div className="flex flex-col items-center text-center max-w-[150px]">
+              )}
+              {lesson.next_lesson && (
+              <div className="flex flex-col items-center text-center w-1/2">
                 <Link
                   href={`/learn/${courseSlug}/${lesson.next_lesson.slug}`}
                   className="gap-2 bg-lime-400 text-black px-2.5 py-0.5 rounded-full cursor-pointer border-3 border-zinc-500/100 hover:bg-white active:bg-white shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
@@ -183,7 +173,7 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
                   <FontAwesomeIcon icon={faLongArrowRight} size="lg" />
                 </Link>
 
-                <span className="mt-5 text-xs text-gray-400 tracking-snug">
+                <span className="mt-5 text-xs text-gray-500 tracking-tighter leading-tight line-clamp-2 break-words">
                   {formatSlug(lesson.next_lesson.slug)}
                 </span>
               </div>

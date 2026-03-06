@@ -7,13 +7,13 @@ from taggit.serializers import TagListSerializerField
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = '__all__'
+        fields = ["name", "post", "body"]
 
 
 class PostImageSerializer(serializers.ModelSerializer):    
     class Meta:
         model = PostImage
-        fields = '__all__'
+        fields = ["post", "image", "alt", "caption", "url"]
 
 
 class PostLinkSerializer(serializers.ModelSerializer):
@@ -21,7 +21,7 @@ class PostLinkSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PostLink
-        fields = '__all__'
+        fields = ["post", "label", "external_url", "type", "position", "target_post"]
 
 
 class SubcategorySerializer(serializers.ModelSerializer):
@@ -29,7 +29,7 @@ class SubcategorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Subcategory
-        fields = '__all__'
+        fields = ["category", "name", "slug", "about"]
         
         
 class CategorySerializer(serializers.ModelSerializer):
@@ -53,8 +53,26 @@ class PostSerializer(serializers.ModelSerializer):
         
     class Meta:
         model = Post
-        fields = '__all__'
+        fields = ["title", "slug", "category", "subcategory", "content_JSON", "excerpt", "author", "caption", "image", "images", "alt", "tags", "links", "created_at"]
 
+
+class PostFeedSerializer(serializers.ModelSerializer):
+    category = CategorySerializer(read_only=True)
+    subcategory = SubcategorySerializer(read_only=True)
+
+    class Meta:
+        model = Post
+        fields = [
+            "title",
+            "slug",
+            "excerpt",
+            "image",
+            "alt",
+            "category",
+            "subcategory",
+            "created_at",
+        ]
+        read_only_fields = fields
 
 class CategoryPostsSerializer(serializers.ModelSerializer):
     posts = PostSerializer(many=True, read_only=True)
@@ -72,7 +90,7 @@ class LessonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lesson
-        fields = "__all__"
+        fields = ["previous_lesson", "next_lesson", "course", "title", "slug", "description", "content_JSON", "duration", "order", "level", "video_url", "is_preview", "tags"]
 
     def get_previous_lesson(self, obj):
         prev = Lesson.objects.filter(course=obj.course, order__lt=obj.order).order_by('-order').first()
@@ -90,11 +108,11 @@ class CourseSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Course
-        fields = '__all__'
+        fields = ["lessons", "title", "slug", "description", "meta", "language", "prerequisites", "sort", "level", "image", "alt", "tags"]
         
         
 class LessonResourceSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = LessonResource
-        fields = ["title", "url"]
+        fields = ["title", "url", "lesson", "description", "resource_type"]

@@ -68,7 +68,7 @@ export default function SubClient({
                         <div className="w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-5 py-10 px-4 border-y border-zinc-800 rounded-xl">
                             {posts.map((post) => (
                                 <motion.div
-                                    key={post.id}
+                                    key={post.slug}
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
