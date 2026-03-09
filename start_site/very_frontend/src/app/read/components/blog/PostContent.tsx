@@ -4,7 +4,7 @@ import { motion as Motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLongArrowRight, faCalendar, faUser, faPencil, faHashtag, faImage, faLink, faCopy, faComment, faFlagCheckered } from '@fortawesome/free-solid-svg-icons';
+import { faLongArrowRight, faCalendar, faUser, faPencil, faHashtag, faImage, faLink, faCopy, faComment, faCode } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faLinkedinIn, faTwitter, faWhatsapp, faDiscord, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import CodeBlock from '@/app/learn/components/CodeBlock';
 import { Post } from '@/types/post';
@@ -393,12 +393,12 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
 
       {/* Meta Footer */}
       <div className="pt-10">
-        <div className="text-center text-gray-500 text-sm border-t border-b border-gray-800/80 rounded-md py-8">
+        <div className="text-center text-gray-500 text-sm border-t border-b border-gray-600/60 rounded-md py-8">
           {/* <p className=""> */}
             <span className="inline-flex items-center text-gray-700 text-xs sm:text-sm font-medium transition-colors hover:text-lime-400 active:text-lime-400 select-none">
               <FontAwesomeIcon 
-                icon={faFlagCheckered} 
-                className="rotate-[40deg] duration-300 hover:rotate-[15deg] hover:scale-110 active:rotate-[15deg] active:scale-110"
+                icon={faCode} 
+                className="duration-900 hover:rotate-[180deg] hover:scale-120 active:rotate-[180deg] active:scale-140"
               />
             </span>
 

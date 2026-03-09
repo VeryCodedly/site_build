@@ -187,14 +187,14 @@
              {
                name: "Intro to Python",
                slug: "introduction-to-python",
-               course: "python-course",
+               course: "python-programming-foundations",
                desc: "Python is one of the most widely used languages in the world. You'll find it everywhere: powering apps like Instagram, helping scientists train AI models, and running simple scripts that automate everyday tasks.",
                image: "logos/python.svg"
              },
              {
                name: "What is JavaScript?",
                slug: "what-is-javascript",
-               course: "javascript-course",
+               course: "javascript-programming-foundations",
                desc: "JavaScript is the programming language that brings web pages to life. While HTML handles structure and CSS handles style, JavaScript controls interactivity — it lets websites respond to clicks, inputs, and real-time data.",
                image: "logos/javascript.svg"
              }
