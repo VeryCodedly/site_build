@@ -51,12 +51,11 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           alt={post.alt || 'Featured image'}
           width={1200}
           height={600}
-          fetchPriority="high"
+          // fetchPriority="high"
           className="w-full h-[250px] sm:h-[70vh] lg:h-[72vh] object-cover rounded-2xl brightness-65 hover:brightness-90 active:brightness-90 transition-all duration-500"
           priority
           // loading="eager"
           sizes="100vw"
-          tabIndex={0}
         />
         <p className="absolute bottom-0 sm:bottom-3 left-0 sm:left-3 right-4 w-fit text-gray-50/50 group-hover:opacity-0 group-active:opacity-0 bg-black/15 backdrop-blur-sm md:backdrop-blur-md rounded-lg px-2 py-1.5 text-xs md:text-sm">
           {post.caption || 'Featured Image'}
@@ -88,7 +87,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                 className="text-lime-400 text-sm absolute inset-0 opacity-0 scale-150 rotate-[-30deg] transition-all duration-200 ease-in delay-75 group-hover:opacity-100 group-hover:scale-100 group-hover:rotate-0 group-active:opacity-100 group-active:scale-100 group-active:rotate-0"
               />
             </span>
-            {post.author || 'Anonymous'}
+            {post.author || 'Anon'}
           </span>
           <span className="inline-flex text-xs md:text-sm items-center gap-1 tracking-tighter">
             <FontAwesomeIcon icon={faCalendar} />

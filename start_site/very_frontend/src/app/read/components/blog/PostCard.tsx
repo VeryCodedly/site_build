@@ -59,7 +59,7 @@ export default function PostCard({ post }: { post: Post }) {
             sizes="(max-width: 640px) 65vw, 120px"
             className="text-xs rounded-lg object-cover group-hover:brightness-110 transition duration-300 overflow-hidden"
             priority
-            fetchPriority="high"
+            // fetchPriority="high"
           />
         </div>
       </div>
