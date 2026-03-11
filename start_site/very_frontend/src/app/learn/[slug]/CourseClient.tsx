@@ -124,7 +124,7 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
       </motion.div>
 
       {/* Course Header */}
-      <div className="ax-w-7xl mx-auto px-3 m:px-8 mb-8">
+      <div className="mx-auto px-3 mb-8">
         <div className="relative w-full mb-6 overflow-hidden rounded-2xl">
           <Image
             src={course.image || '/learn-post-image.png'}
@@ -158,9 +158,9 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
       </div>
 
       {lessons.length > 0 && (
-        <section className="py-5 px-3 group/bar flex flex-col md:flex-row md:items-start gap-6 md:gap-4 max-w-5xl mx-auto">
+        <section className="py-5 px-2.5 group/bar flex flex-col md:flex-row md:items-start gap-6 md:gap-4 max-w-5xl mx-auto">
           <div className="px-1 md:px-0 flex items-center gap-2">
-            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/bar:bg-pink-400 group-active:bg-pink-400 transition-colors" />
+            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/bar:bg-pink-400 group-active/bar:bg-pink-400 transition-colors" />
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -173,7 +173,7 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
           </div>
 
           {/* Grid of lessons */}
-          <div className="px-2 md:px-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 flex-1">
+          <div className="px-1 md:px-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 flex-1">
             {lessons.map((lesson, index) => (
               <LessonCard
                 key={lesson.slug}
