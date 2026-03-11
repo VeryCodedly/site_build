@@ -81,18 +81,29 @@ export default function LessonContent({
   return (
     <article className="max-w-3xl mx-auto space-y-6 sm:space-y-6 px-4 sm:px-6 text-gray-300 leading-relaxed">
       {json.title && (
-        <header className="mb-10 text-center mx-auto">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 leading-tight">
-            {json.id}. {json.title}
-          </h1>
-          {json.duration && (
-            <div className="flex flex-col items-center text-xs sm:text-sm text-pink-300 italic">
-              <span>Level: {json.level}</span>
-              <span>Duration: {json.duration}</span>
-            </div>
-          )}
-        </header>
-      )}
+  <header className="mb-12 text-center mx-auto max-w-4xl">    
+    <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 leading-tight">
+      <span className="text-white bg-white/8 px-3 py-1 rounded-full inline-block mr-4 text-xl align-middle border border-white/20">
+        {json.id}
+      </span>
+      <span className="align-middle">{json.title}</span>
+    </h1>
+
+    {json.duration && (
+      <div className="flex justify-center gap-4 my-4 mb-6">
+        <span className="text-xs bg-lime-400/10 text-lime-400 px-3 py-1 rounded-full border border-lime-400/20">
+          {json.level}
+        </span>
+        <span className="text-xs bg-pink-400/10 text-pink-400 px-3 py-1 rounded-full border border-pink-400/20">
+          {json.duration}
+        </span>
+      </div>
+    )}
+
+    {/* Decorative line */}
+    {/* <div className="w-24 h-0.5 bg-gradient-to-r from-lime-400 to-pink-400 rounded-full mx-auto mt-4" /> */}
+  </header>
+)}
 
       {json.blocks.map((block, index) => {
         try {

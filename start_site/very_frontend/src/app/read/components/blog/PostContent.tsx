@@ -52,7 +52,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           width={1200}
           height={600}
           // fetchPriority="high"
-          className="w-full h-[250px] sm:h-[70vh] lg:h-[72vh] object-cover rounded-2xl brightness-65 hover:brightness-90 active:brightness-90 transition-all duration-500"
+          className="w-full h-[252px] sm:h-[72vh] lg:h-[74vh] object-cover rounded-2xl brightness-65 hover:brightness-90 active:brightness-90 transition-all duration-500"
           priority
           // loading="eager"
           sizes="100vw"
@@ -132,7 +132,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           </div>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent leading-tight">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent leading-tighter">
           {post.title || 'Untitled Post'}
         </h1>
 
@@ -242,9 +242,9 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {post.images.map((img, index) => (
               <div key={img.id || index} className="group relative overflow-hidden rounded-2xl bg-black/50 select-none">
-                <Image src={img.image || 'read-post-image.png'} alt={img.alt || 'Gallery image'} width={400} height={300} 
-                  className="w-full h-50 sm:h-58 object-cover group-hover:scale-105 group-active:scale-105 transition-transform duration-500" 
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" 
+                <Image src={img.image || 'read-post-image.png'} alt={img.alt || 'Gallery image'} width={400} height={300}
+                  className="w-full h-50 sm:h-58 object-cover group-hover:scale-105 group-active:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 {(img.alt || img.caption) && (
                   <div className="absolute -bottom-0.5 sm:bottom-2 left-0 sm:left-2 w-fit bg-black/15 group-hover:bg-transparent group-active:bg-transparent backdrop-blur-md group-hover:!backdrop-blur-none group-active:!backdrop-blur-none rounded-lg px-2 py-1">
@@ -289,7 +289,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
               <Link key={link.label} aria-label={`Link for ${link.target_post}`} href={link.external_url || `/read/${link.target_post?.slug || '#'}`}
                 target={link.external_url ? '_blank' : '_self'} rel={link.external_url ? 'noopener noreferrer' : ''}
                 className="group flex items-center w-fit gap-2 px-4 py-2 bg-zinc-900/50 hover:bg-lime-500/10 active:bg-lime-500/10 border border-zinc-800/30
-                hover:border-lime-500/20 active:border-lime-500/20 rounded-xl transition-all text-lime-400 hover:text-lime-300 active:text-white text-sm sm:text-sm">
+                hover:border-lime-500/20 active:border-lime-500/20 rounded-2xl transition-all text-lime-400 hover:text-lime-300 active:text-white text-sm sm:text-sm">
                 <span className="font-normal">{link.label || 'Related Link'}</span>
                 {link.type === 'affiliate' && <span className="text-xs bg-pink-500/20 text-pink-400 px-2 py-1 rounded-full">Affiliate</span>}
                 {link.external_url && <FontAwesomeIcon icon={faLongArrowRight} className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform" />}
@@ -354,7 +354,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                 <FontAwesomeIcon icon={faDiscord} className="text-2xl text-gray-400 group-hover:text-indigo-600 group-active:text-indigo-600" />
               </div>
               <div>
-                <p className="font-semibold text-white group-hover:underline group-active:underline">Discord Community</p>
+                <p className="text-white group-hover:underline group-active:underline">Discord Community</p>
                 <p className="text-sm text-gray-400 italic">Chat, code sharing & more</p>
               </div>
             </div>
@@ -369,14 +369,14 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
             href="https://youtube.com/@verycodedly"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center w-full group justify-between p- bg-black/40 rounded-xl transition-all duration-300"
+            className="group flex items-center w-full group justify-between bg-black/40 rounded-xl transition-all duration-300"
           >
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-gray-300/10 rounded-lg flex items-center justify-center">
                 <FontAwesomeIcon icon={faYoutube} className="text-2xl text-gray-400 group-hover:text-red-600 group-active:text-red-600" />
               </div>
               <div>
-                <p className="font-semibold text-white group-hover:underline group-active:underline">YouTube Comments</p>
+                <p className="text-white group-hover:underline group-active:underline">YouTube Comments</p>
                 <p className="text-sm text-gray-400 italic">Video version & comments</p>
               </div>
             </div>
@@ -392,16 +392,25 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
 
       {/* Meta Footer */}
       <div className="pt-10">
-        <div className="text-center text-gray-500 text-sm border-t border-b border-gray-600/60 rounded-md py-8">
-          {/* <p className=""> */}
+        {/* <div className="pt-16 pb-8"> */}
+        <div className="relative flex justify-center">
+          <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent" />
+          <FontAwesomeIcon
+            icon={faCode}
+            className="relative bg-black px-4 text-gray-700 text-sm transition-all duration-500 hover:text-lime-400 hover:rotate-180"
+          />
+          {/* </div> */}
+          {/* </div> */}
+          {/* <div className="text-center text-gray-500 text-sm border-t border-b border-gray-600/60 rounded-md py-8">
+          <p className=""> 
             <span className="inline-flex items-center text-gray-700 text-xs sm:text-sm font-medium transition-colors hover:text-lime-400 active:text-lime-400 select-none">
               <FontAwesomeIcon 
                 icon={faCode} 
                 className="duration-900 hover:rotate-[180deg] hover:scale-120 active:rotate-[180deg] active:scale-140"
               />
-            </span>
+            </span> */}
 
-            {/* {post.updated_at && post.updated_at !== post.created_at && (
+          {/* {post.updated_at && post.updated_at !== post.created_at && (
               <>
                 only shows on sm+
                 <span className="hidden sm:inline"> • </span>

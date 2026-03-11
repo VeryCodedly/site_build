@@ -76,7 +76,7 @@ export default function CourseListClient({ courses }: CourseListClientProps) {
         return (
           <div
             key={course.slug}
-            className="flex flex-row px-4 py-2.5 sm:px-5 sm:py-3 rounded-2xl shadow bg-zinc-900/50 border-2 border-zinc-900 group hover:-translate-y-[5px] hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)] active:-translate-y-[5px] active:shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition transform duration-300 gap-4 sm:gap-5 mb-3"
+            className="flex flex-row px-4 py-2.5 sm:px-5 sm:py-3 rounded-2xl shadow bg-zinc-900/40 border-2 border-zinc-900 group hover:-translate-y-[5px] hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)] active:-translate-y-[5px] active:shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition transform duration-300 gap-4 sm:gap-5 mb-2"
           >
             <div className="flex-1 flex flex-col justify-between">
               <p className="text-xs font-semibold tracking-tighter text-pink-400 uppercase my-1">
@@ -89,7 +89,7 @@ export default function CourseListClient({ courses }: CourseListClientProps) {
                   {isComplete && <FontAwesomeIcon icon={faCheckCircle} className="text-lime-400" />}
                 </h2>
 
-                <p className="text-sm text-gray-300 line-clamp-3 sm:line-clamp-4 my-1.5 leading-relaxed">
+                <p className="text-xs text-gray-300 line-clamp-3 sm:line-clamp-4 my-1.5 leading-relaxed">
                   {course.description || "No description available yet."}
                 </p>
 
@@ -110,7 +110,7 @@ export default function CourseListClient({ courses }: CourseListClientProps) {
                   </div>
                 )}
 
-                <div className="flex items-center justify-between text-base mt-2.5">
+                <div className="flex items-center justify-between text-sm mt-2">
                   <span className="text-lime-400 font-semibold group-hover:text-white flex items-center gap-2">
                     {progress > 0 ? "Continue" : "Start Now"}
                     <FontAwesomeIcon
@@ -125,7 +125,7 @@ export default function CourseListClient({ courses }: CourseListClientProps) {
             </div>
 
             <div className="flex-shrink-0 items-center justify-center my-auto">
-              <div className="relative w-[90px] h-[110px] sm:h-[130px] sm:w-[110px] lg:w-[120px] lg:h-[140px] mx-auto aspect-[5/6] sm:aspect-square overflow-hidden">
+              <div className="relative w-[80px] h-[110px] sm:h-[120px] sm:w-[120px] mx-auto aspect-[5/6] sm:aspect-square overflow-hidden">
                 <Image
                   fill
                   className="rounded-lg object-cover object-center group-hover:brightness-110 transition duration-300"

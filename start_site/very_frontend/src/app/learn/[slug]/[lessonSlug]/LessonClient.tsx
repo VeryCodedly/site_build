@@ -70,7 +70,7 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
   }, [isMenuOpen]);
 
   return (
-    <section className="relative w-full min-h-screen bg-black text-white pt-8 sm:pt-12 pb-24 px-4">
+    <section className="relative w-full min-h-screen bg-gradient-to-b from-black to-zinc-950 text-white pt-8 sm:pt-12 pb-24 px-4">
       <Motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
@@ -136,13 +136,13 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
             <button
               onClick={markComplete}
               disabled={isCompleted}
-              className={`flex items-center gap-2 px-6 py-2 rounded-full text-base transition-all duration-200 ${isCompleted
-                ? "bg-lime-900/50 text-lime-300 cursor-default"
+              className={`flex items-center gap-2 px-8 py-2.5 rounded-full text-base tracking-tight transition-all duration-200 ${isCompleted
+                ? "bg-lime-900/50 text-lime-300 cursor-not-allowed"
                 : "bg-lime-400 text-black hover:bg-white active:bg-white shadow-lg active:scale-90"
                 }`}
             >
-              <FontAwesomeIcon icon={faCheckCircle} />
-              {isCompleted ? "Completed" : "Mark as Complete"}
+              <FontAwesomeIcon icon={faCheckCircle} className={isCompleted ? "opacity-50" : ""}/>
+              {isCompleted ? "Mastered" : "Mark Complete"}
             </button>
           </div>
 
@@ -159,7 +159,7 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
                   <FontAwesomeIcon icon={faLongArrowLeft} size="lg" />
                 </Link>
 
-                <span className="mt-5 text-xs text-gray-500 tracking-tighter leading-tight line-clamp-2 break-words">
+                <span className="mt-4 text-xs text-gray-600 tracking-tighter leading-tight line-clamp-2 max-w-[150px] break-words">
                   {formatSlug(lesson.previous_lesson.slug)}
                 </span>
               </div>
@@ -173,7 +173,7 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
                   <FontAwesomeIcon icon={faLongArrowRight} size="lg" />
                 </Link>
 
-                <span className="mt-5 text-xs text-gray-500 tracking-tighter leading-tight line-clamp-2 break-words">
+                <span className="mt-4 text-xs text-gray-600 tracking-tighter leading-tight line-clamp-2 max-w-[150px] break-words">
                   {formatSlug(lesson.next_lesson.slug)}
                 </span>
               </div>

@@ -163,7 +163,7 @@
              >
               {/* // <p className="text-xs uppercase tracking-wide text-gray-500 mb-2">Path</p> */}
                <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 sm:mb-3">{track.name}</h3>
-               <p className="text-gray-300/90 text-sm leading-relaxed">{track.desc}</p>
+               <p className="text-gray-400 text-sm leading-relaxed">{track.desc}</p>
              </Motion.div>
            ))}
          </div>
