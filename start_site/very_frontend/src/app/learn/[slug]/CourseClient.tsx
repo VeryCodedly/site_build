@@ -25,8 +25,11 @@ const LessonCard = memo(
     return (
       <Link href={`/learn/${courseSlug}/${lesson.slug}`} aria-label={lesson.title}>
         <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          // transition={{ delay: index * 0.03 }}
           whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.1 }}
+          whileTap={{ scale: 0.92 }}
           className="bg-zinc-900/40 backdrop-blur-sm rounded-2xl p-3 border border-zinc-800
                    hover:border-zinc-500/50 hover:shadow-[0_0_6px_#222222] 
                    transition-all duration-300 relative h-full flex flex-col group"
@@ -46,7 +49,7 @@ const LessonCard = memo(
             `}>
               {lesson.order}
             </span>
-            <h3 className="text-sm text-gray-200 group-hover:text-lime-400 transition-colors flex-1">
+            <h3 className="text-sm text-gray-200 group-hover:text-lime-400 group-active:text-lime-400 transition-colors flex-1">
               {lesson.title}
             </h3>
           </div>
@@ -57,7 +60,7 @@ const LessonCard = memo(
           
           {/* Start/Review link */}
           <p className="inline-flex items-center gap-2 text-lime-400 text-xs font-bold 
-                      group-hover:text-white mt-auto pl-9">
+                      group-hover:text-white group-active:text-white mt-auto pl-9">
             {isCompleted ? "Review" : "Start"}
             <FontAwesomeIcon
               icon={faLongArrowRight}
@@ -102,7 +105,7 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
   }
 
   return (
-    <section className="w-full bg-gradient-to-b from-black to-zinc-950 text-white min-h-screen pt-10 pb-24 px-4 sm:px-8">
+    <section className="w-full bg-gradient-to-b from-black to-zinc-950 text-white min-h-screen pt-10 pb-24 px-6 sm:px-8">
       {/* Back button */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -155,7 +158,7 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
       </div>
 
       {lessons.length > 0 && (
-        <section className="py-5 px-2 group/bar flex flex-col md:flex-row md:items-start gap-6 md:gap-4 max-w-5xl mx-auto">
+        <section className="py-5 px-3 group/bar flex flex-col md:flex-row md:items-start gap-6 md:gap-4 max-w-5xl mx-auto">
           <div className="px-1 md:px-0 flex items-center gap-2">
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/bar:bg-pink-400 group-active:bg-pink-400 transition-colors" />
             <motion.h2
@@ -170,7 +173,7 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
           </div>
 
           {/* Grid of lessons */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 flex-1">
+          <div className="px-2 md:px-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 flex-1">
             {lessons.map((lesson, index) => (
               <LessonCard
                 key={lesson.slug}

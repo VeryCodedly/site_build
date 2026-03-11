@@ -397,7 +397,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent" />
           <FontAwesomeIcon
             icon={faCode}
-            className="relative bg-black px-4 text-gray-700 text-sm transition-all duration-500 hover:text-lime-400 hover:rotate-180"
+            className="relative bg-black px-4 text-gray-700 text-sm transition-all duration-500 hover:text-lime-400 hover:rotate-180 active:text-lime-400 active:rotate-180"
           />
           {/* </div> */}
           {/* </div> */}
