@@ -38,7 +38,7 @@ export default function Community() {
               aria-label="Join Discord button"
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-block font-bold border-3 border-gray-500 px-8.5 md:px-9 lg:px-9.5 py-1 rounded-full text-white text-md hover:bg-white active:bg-white hover:text-black
+              className="inline-block font-semibold border-3 border-gray-500 px-8 md:px-9 lg:px-9 py-1 rounded-full text-white text-md hover:bg-white active:bg-white hover:text-black
                        active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#0f0] active:shadow-[0_2px_0_0_#0f0] active:translate-y-1.5 hover:translate-y-0.5  transition-all duration-200"
             >Join Now
               {/* <span className="lg:hidden">Join</span> */}

@@ -45,22 +45,22 @@ function CodeBlock({ block }) {
   };
 
   return (
-    <div className="relative group my-10 text-xs sm:text-sm md:text-base rounded-xl overflow-auto border-y-4 border-zinc-900 bg-zinc-900/60 backdrop-blur-md shadow-lg transition-all">
+    <div className="relative group my-10 text-xs sm:text-sm md:text-base rounded-xl overflow-auto border-y-3 border-zinc-800/30 bg-zinc-900/40 backdrop-blur-md shadow-lg transition-all">
 
       {/* <div className="relative"> */}
-        <span className="absolute top-2 left-3 text-xs font-semibold text-gray-300 tracking-tight bg-zinc-800/70 px-2 py-0.5 rounded-md">
+        <span className="absolute top-2 left-3 text-xs font-semibold text-gray-300 tracking-tight bg-zinc-800/70 px-2 py-1 rounded-md">
           {block.language || "code"}
         </span>
 
         <button
           aria-label="Copy code block"
           onClick={handleCopy}
-          className="absolute top-2 right-3 text-xs px-2 py-1 rounded-md bg-zinc-800/70 text-gray-300 hover:text-lime-400 
+          className="absolute top-2 right-3 text-xs font-semibold px-2 py-1 rounded-md bg-zinc-800/70 text-gray-300 hover:text-lime-400 
           hover:bg-zinc-700/70 transition-all duration-200 flex items-center gap-1 focus:outline-none focus:ring-2 
           focus:ring-lime-400 focus:ring-offset-2 focus:ring-offset-[#181d1d] aria-label"
         >
           <FontAwesomeIcon icon={copied ? faCheck : faClipboard} />
-          {copied ? "Copied" : "Copy"}
+          {copied ? "copied" : "copy"}
         </button>
       {/* </div> */}
 

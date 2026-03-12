@@ -30,7 +30,7 @@ export default function Hero() {
         <p className="w-full max-w-[320px] sm:max-w-[380px] md:max-w-[400px] text-gray-400 text-md sm:text-base">
           Deep insights on what you need to know. No noise, just clarity.
         </p>
-        <div className="flex space-x-5">
+        <div className="flex space-x-4.5">
           <Link href="/learn" aria-label="Learn Page button" className="font-bold sm:font-bold cursor-pointer border-3 border-gray-500/100 bg-lime-400 text-black px-6 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
             active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
             <span className="lg:hidden">Learn</span>
