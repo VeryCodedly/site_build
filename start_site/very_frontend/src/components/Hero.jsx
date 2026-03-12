@@ -7,12 +7,12 @@ import MorphingPanel from "./MorphingPanel.jsx";
 
 export default function Hero() {
   return (
-    <section className="bg-transparent min-h-screen w-full max-w-7xl overflow-hidden mx-auto flex flex-wrap gap-8 items-center py-22 px-8 sm:px-12 md:py-14 lg:py-16 lg:px-16">
+    <section className="bg-transparent min-h-screen w-full max-w-7xl overflow-hidden mx-auto flex flex-wrap gap-8 items-center py-22 px-8 sm:px-12 md:py-18 lg:py-10 lg:px-16">
       {/* <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center py-16 px-14 md:px-14"> */}
       <div className="flex-1 space-y-6 z-20 mx-auto md:items-center">
         {/* <div className="min-h-[230px] w-[400px] flex relative"> */}
         {/* <div className="w-full max-w-[400px] min-w-[180px] min-h-[180px] sm:min-h-[180px] md:min-h-[230px] flex relative"> */}
-        <div className="w-full max-w-[400px] min-h-[180px] min-w-[300px] sm:min-h-[230px] sm:min-w-[400px] flex relative">
+        <div className="w-full max-w-[400px] min-h-[180px] min-w-[300px] sm:min-h-[220px] sm:min-w-[400px] flex relative">
           <h1 className="hero text-[2.9rem] sm:text-6xl md:text-6xl lg:text-6xl text-white font-extrabold leading-tight">
             <span className="hero opacity-0 w-full max-w-[400px] min-h-[180px] min-w-[300px] sm:min-h-[230px] sm:min-w-[400px] flex absolute">
               Ready to see what's next in Tech?
@@ -27,8 +27,8 @@ export default function Hero() {
             />
           </h1>
         </div>
-        <p className="w-full max-w-[320px] sm:max-w-[380px] md:max-w-[400px] text-gray-400 text-md sm:text-base">
-          Deep insights on what you need to know. No noise, just clarity.
+        <p className="w-full max-w-[320px] sm:max-w-[380px] md:max-w-[400px] text-gray-400 text-md sm:text-base tracking-wide sm:tracking-wider md:tracking-widest leading-snug">
+          Everything you need to know, straight to the point.
         </p>
         <div className="flex space-x-4.5">
           <Link href="/learn" aria-label="Learn Page button" className="font-bold sm:font-bold cursor-pointer border-3 border-gray-500/100 bg-lime-400 text-black px-6 py-1 rounded-full hover:bg-white active:bg-white hover:text-black

@@ -1,7 +1,7 @@
 {
   "name": "VeryCodedly",
   "short_name": "VeryCodedly",
-  "description": "Tech. Code. Culture. VeryCodedly is your go-to tech hub for hardware deep-dives, free coding courses, unfiltered takes and the latest digital trends. No cookies, no login, no tracking.",
+  "description": "We like Tech, Code, Culture and everything in between, so we built a place to talk about it with you. Here you'll find hardware deep dives, free coding courses, and the latest digital trends. Come in.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

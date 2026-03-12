@@ -15,7 +15,7 @@ const cards = [
   {
     id: "read",
     title: "Read",
-    description: "Daily posts with technical depth and clarity.",
+    description: "Daily tech rundowns you'll actually understand.",
     icon: faNewspaper,
     accent: "bg-lime-400",
     color: "text-lime-400",
@@ -24,7 +24,7 @@ const cards = [
   {
     id: "learn",
     title: "Learn",
-    description: "Step-by-step coding paths for beginner to advanced.",
+    description: "Structured coding lessons for beginner to advanced.",
     icon: faGraduationCap,
     accent: "bg-lime-500",
     color: "text-lime-500",
@@ -63,7 +63,7 @@ export default function TeaserCards() {
           <Motion.div
             id={`card-${card.id}`}
             key={index}
-            className={`relative rounded-3xl px-10 py-9 border border-gray-700/60 bg-white/5 backdrop-blur-md active:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
+            className={`relative rounded-3xl px-8 sm:px-10 py-9 border border-gray-700/60 bg-white/5 backdrop-blur-md active:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               shadow-[0_15px_20px_rgba(0,0,0,0.6),0_15px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               hover:ring-1 transition-all duration-300 group`}
             whileHover={{ scale: 1.10 }}
@@ -82,7 +82,7 @@ export default function TeaserCards() {
             </h2>
           </Link>
 
-            <p className="text-gray-300/90 text-base md:text-sm leading-relaxed">
+            <p className="text-gray-300/90 text-base sm:text-sm leading-relaxed">
               {card.description}
             </p>
 
