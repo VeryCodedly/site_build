@@ -59,7 +59,7 @@ export default function Community() {
             alt="Community illustration" 
             width={600} 
             height={400} 
-            priority={false}
+            loading="eager"
             />
         </div>
       </div>

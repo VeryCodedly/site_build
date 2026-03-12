@@ -66,7 +66,6 @@ export default function Header() {
                     src="/images/favicon-main.svg"
                     alt="Logo"
                     className="h-12 w-20 object-cover hover:scale-105 active:scale-75 transition-all duration-400"
-                    loading="eager"
                     width={0}
                     height={0}
                     priority

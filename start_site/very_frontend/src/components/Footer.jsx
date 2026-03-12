@@ -30,7 +30,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative bg-gradient-to-b from-zinc-950 via-black to-zinc-950 text-gray-300/80 py-24 px-8 overflow-hidden border-t border-zinc-800">
+    <footer className="relative bg-gradient-to-b from-zinc-950 via-black to-zinc-950 text-gray-300/80 py-24 px-8 overflow-hidden border-t border-zinc-900">
       {/* faint glow background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
 
@@ -113,6 +113,7 @@ export default function Footer() {
                 title={name}
                 aria-label={`${name} link`}
                 target="_blank"
+                loading="lazy"
                 className="p-0.5 text-gray-400/80 hover:text-lime-500 active:text-lime-500 hover:scale-110 transition duration-400 active:scale-60"
               >
                 <FontAwesomeIcon icon={icon} size="lg" />
