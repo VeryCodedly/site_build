@@ -29,6 +29,8 @@ from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, C
 from .serializers import CategoryPostsSerializer, PostSerializer, PostFeedSerializer, CategorySerializer, CommentSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer
 
 
+CACHE_TIMEOUT = 300
+
 def api_home(request):
     return HttpResponse("""
         <!DOCTYPE html>
@@ -163,7 +165,6 @@ class PostViewSet(viewsets.ModelViewSet):
 class ReadPageDataView(APIView):
 
     CACHE_KEY = "read_page_data"
-    CACHE_TIMEOUT = 300
 
     CATEGORY_CONFIG = {
         "featured": ("featured", 3),
@@ -270,42 +271,66 @@ class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all().order_by("name")
     serializer_class = CategorySerializer
     lookup_field = "slug"
-    
+
     def get_serializer_class(self):
-        # List view → simple serializer
         if self.action == "list":
             return CategorySerializer
-        
-        # Detail view → nested posts serializer
         if self.action == "retrieve":
             return CategoryPostsSerializer
-        
-        # Create/update/delete → basic serializer
         return CategorySerializer
-    
-        
+
+    def retrieve(self, request, *args, **kwargs):
+        category = self.get_object()
+        cache_key = f"category_{category.slug}_posts"
+        cached = cache.get(cache_key)
+        if cached:
+            return Response(cached)
+
+        # Fetch minimal fields for published posts
+        posts = Post.objects.filter(category=category, status="published") \
+            .only("title", "slug", "image", "created_at", "alt") \
+            .order_by("-created_at")
+
+        # Serialize
+        serialized_posts = PostSerializer(posts, many=True, context={"request": request}).data
+
+        # Build dict in shape CategoryPostsSerializer expects
+        data = CategoryPostsSerializer(category, context={"request": request}).data
+        data["posts"] = serialized_posts
+
+        # Cache and return
+        cache.set(cache_key, data, timeout=CACHE_TIMEOUT)
+        return Response(data)
+
+
 class SubcategoryViewSet(viewsets.ModelViewSet):
-    queryset = Subcategory.objects.annotate(name_length=Length('name')).order_by('name_length')  # shortest → longest
+    queryset = Subcategory.objects.annotate(name_length=Length("name")).order_by("name_length")
     serializer_class = SubcategorySerializer
-    lookup_field = 'slug'
-    
-    # print("SubcategoryViewSet queryset:", queryset)
-    @action(detail=True, methods=['get'], url_path='posts')
+    lookup_field = "slug"
+
+    @action(detail=True, methods=["get"], url_path="posts")
     def posts(self, request, *args, **kwargs):
-        subcategory = self.get_object()  # DRF handles slug lookup safely
-        posts = Post.objects.filter(
-            subcategory=subcategory,
-            status='published'
-        ).order_by('-created_at')
+        subcategory = self.get_object()  # safe DRF lookup
+        cache_key = f"subcategory_{subcategory.slug}_posts"
+        cached = cache.get(cache_key)
+        if cached:
+            return Response(cached)
 
-        serializer = PostSerializer(posts, many=True, context={'request': request})
-        subcategory_serializer = SubcategorySerializer(subcategory, context={'request': request})
+        posts = (
+            Post.objects.filter(subcategory=subcategory, status="published")
+            .only("title", "slug", "image", "created_at", "alt")
+            .order_by("-created_at")
+        )
 
-        return Response({
-            "subcategory": subcategory_serializer.data, 
+        serialized_posts = PostSerializer(posts, many=True, context={"request": request}).data
+        data = {
+            "subcategory": SubcategorySerializer(subcategory, context={"request": request}).data,
             "count": posts.count(),
-            "results": serializer.data
-        })
+            "results": serialized_posts
+        }
+
+        cache.set(cache_key, data, timeout=CACHE_TIMEOUT)
+        return Response(data)
             
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
