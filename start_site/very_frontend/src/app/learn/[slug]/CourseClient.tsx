@@ -105,7 +105,7 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
   }
 
   return (
-    <section className="w-full bg-gradient-to-b from-black to-zinc-950 text-white min-h-screen pt-10 pb-24 px-6 sm:px-8">
+    <section className="w-full bg-gradient-to-b from-black to-zinc-950 text-white min-h-screen pt-10 pb-24 px-8 sm:px-8">
       {/* Back button */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}

@@ -3,6 +3,7 @@ import LessonClient from "./LessonClient";
 import { notFound } from "next/navigation";
 import { cache } from "react";
 import { Lessons } from "@/types/post";
+import Script from "next/script";
 
 type Props = {
   params: Promise<{ slug: string; lessonSlug: string }>;
@@ -50,7 +51,61 @@ export default async function LessonPage(props: Props) {
     notFound();
   }
 
-  return <LessonClient lesson={lesson} courseSlug={slug} />;
+  return (
+    <>
+      {/* Structured Data for Google */}
+      <Script id="course-structured-data" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Lesson",
+          "name": lesson.title,
+          "description": lesson.description || `Learn something new with this ${lesson.title} lesson from VeryCodedly.`,
+          "provider": {
+            "@type": "Organization",
+            "name": "VeryCodedly",
+            "sameAs": "https://verycodedly.com"
+          },
+          "url": `https://verycodedly.com/learn/${lesson.course}/${lesson.title}`,
+          "datePublished": lesson.created_at,
+          "inLanguage": "en"
+        })}
+      </Script>
+      <Script id="breadcrumb-structured-data" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "VeryCodedly | Tech. Code. Culture.",
+              "item": "https://verycodedly.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Learn | VeryCodedly",
+              "item": "https://verycodedly.com/learn"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": `${lesson.course} | VeryCodedly`,
+              "item": `https://verycodedly.com/learn/${lesson.course}`
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": `${lesson.title} | VeryCodedly`,
+              "item": `https://verycodedly.com/learn/${lesson.course}/${lesson.title}`
+            }
+          ]
+        })}
+      </Script>
+
+      <LessonClient lesson={lesson} courseSlug={slug} />;
+    </>
+);
 }
 
 // "use client";

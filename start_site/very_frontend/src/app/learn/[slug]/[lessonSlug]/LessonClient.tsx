@@ -136,12 +136,13 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
             <button
               onClick={markComplete}
               disabled={isCompleted}
-              className={`flex items-center gap-2 px-8 py-2.5 rounded-full text-base tracking-tight transition-all duration-200 ${isCompleted
-                ? "bg-lime-900/50 text-lime-300 cursor-not-allowed"
-                : "bg-lime-400 text-black hover:bg-white active:bg-white shadow-lg active:scale-90"
+              className={`flex items-center gap-2 px-8 py-3 rounded-full text-base font-bold tracking-tight transition-all duration-200 
+                ${isCompleted
+                  ? "bg-lime-900/30 text-lime-400/50 cursor-not-allowed border border-lime-900/50"
+                  : "bg-lime-400 text-black hover:bg-white active:bg-white shadow-[0_4px_0_0_#9ca3af] hover:shadow-[0_2px_0_0_#9ca3af] active:shadow-[0_1px_0_0_#9ca3af] active:translate-y-1 hover:-translate-y-0.5"
                 }`}
             >
-              <FontAwesomeIcon icon={faCheckCircle} className={isCompleted ? "opacity-50" : ""}/>
+              <FontAwesomeIcon icon={faCheckCircle} className={isCompleted ? "opacity-50" : ""} />
               {isCompleted ? "Mastered" : "Mark Complete"}
             </button>
           </div>
@@ -149,7 +150,7 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
           <div
             className={`flex mt-16 mx-auto max-w-md px-4 sm:px-0 ${lesson.previous_lesson && lesson.next_lesson ? "justify-between" : "justify-center"
               }`}
-            >
+          >
             {lesson.previous_lesson && (
               <div className="flex flex-col items-center text-center w-1/2">
                 <Link
@@ -163,8 +164,8 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
                   {formatSlug(lesson.previous_lesson.slug)}
                 </span>
               </div>
-              )}
-              {lesson.next_lesson && (
+            )}
+            {lesson.next_lesson && (
               <div className="flex flex-col items-center text-center w-1/2">
                 <Link
                   href={`/learn/${courseSlug}/${lesson.next_lesson.slug}`}

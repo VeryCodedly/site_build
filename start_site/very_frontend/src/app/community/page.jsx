@@ -33,7 +33,7 @@ export default function CommunityPage() {
           <div>
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Ways to Join</h3>
             <ul className="text-gray-300/80 text-sm sm:text-base list-disc list-inside space-y-2">
-              <li>Chat with peers on <Link target="_blank" rel="noopener noreferrer" href="https://discord.gg/53wVsqEcbE" className="text-lime-400 underline hover:text-lime-300 active:text-lime-300 transition-colors duration-200">Discord</Link></li>
+              <li>Chat with people on <Link target="_blank" rel="noopener noreferrer" href="https://discord.gg/53wVsqEcbE" className="text-lime-400 underline hover:text-lime-300 active:text-lime-300 transition-colors duration-200">Discord</Link></li>
               <li>Join conversations in our <Link target="_blank" rel="noopener noreferrer" href="https://facebook.com/verycodedly" className="text-lime-400 underline hover:text-lime-300 active:text-lime-300 transition-colors duration-200">Facebook</Link> group</li>
               <li>Collaborate on community projects</li>
             </ul>

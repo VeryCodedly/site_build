@@ -85,6 +85,30 @@ export default function TermsPage() {
           ))}
         </Motion.ul>
 
+        {/* Store */}
+        <Motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1.1 }}
+          className="pt-5 border-t border-gray-700/50 max-w-4xl"
+        >
+          <b className="text-white text-base sm:text-lg leading-relaxed">
+            <Link
+              href="/shop"
+              className="text-lime-400 underline hover:text-lime-300 transition-colors duration-200"
+            >
+              Store
+            </Link>
+            {' '} Use
+          </b>
+          <Motion.ul className="pt-4 text-gray-300/80 text-sm space-y-1.5">
+            <Motion.li>Orders are fulfilled manually.</Motion.li>
+            <Motion.li>Multiple items may ship separately.</Motion.li>
+            <Motion.li>Shipping times may vary.</Motion.li>
+            <Motion.li>Store products are non-refundable.</Motion.li>
+          </Motion.ul>
+        </Motion.div>
+
         {/* Contact */}
         <Motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -94,8 +118,8 @@ export default function TermsPage() {
         >
           <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
             Questions about these terms? Contact us via the{' '}
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="text-lime-400 underline hover:text-lime-300 transition-colors duration-200"
             >
               contact page
@@ -111,7 +135,7 @@ export default function TermsPage() {
           transition={{ duration: 0.5, delay: 1.3 }}
           className="text-xs text-gray-500 italic"
         >
-          Last revised: November 2025
+          Last revised: March 2026
         </Motion.p>
       </Motion.div>
     </section>
@@ -129,8 +153,8 @@ export default function TermsPage() {
 //         initial={{ opacity: 0, y: 20 }}
 //         animate={{ opacity: 1, y: 0 }}
 //         transition={{ duration: 0.6 }}
-//         className="group max-w-4xl mx-auto rounded-2xl p-6 sm:p-10 text-center space-y-6 sm:space-y-8 border-2 border-gray-700/60 bg-white/3 backdrop-blur-lg 
-//                    shadow-[0_5px_10px_rgba(0,0,0,0.6)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)] 
+//         className="group max-w-4xl mx-auto rounded-2xl p-6 sm:p-10 text-center space-y-6 sm:space-y-8 border-2 border-gray-700/60 bg-white/3 backdrop-blur-lg
+//                    shadow-[0_5px_10px_rgba(0,0,0,0.6)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)]
 //                    focus:outline-none focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white/20
 //                    transition-all duration-300"
 //         tabIndex={0}

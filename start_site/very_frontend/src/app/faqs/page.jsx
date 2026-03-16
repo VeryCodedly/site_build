@@ -80,7 +80,7 @@ export default function FAQsPage() {
           >
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">What if I get stuck on a lesson?</h3>
             <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed">
-              Jump into our <Link href="https://discord.gg/53wVsqEcbE" className="text-lime-400 underline hover:text-lime-300 transition-colors duration-200"> community</Link>.
+              Jump into our <Link href="https://discord.gg/53wVsqEcbE" className="text-lime-400 underline hover:text-lime-300 transition-colors duration-200" target="_blank" rel="noopener noreferrer"> community</Link>.
               Ask questions, see solutions, or pair up with a study buddy. You're never alone.
             </p>
           </Motion.div>

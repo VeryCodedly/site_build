@@ -30,7 +30,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative bg-gradient-to-b from-zinc-950 via-black to-zinc-950 text-gray-300/80 py-24 px-8 overflow-hidden border-t border-zinc-900">
+    <footer className="relative bg-gradient-to-b from-zinc-950 via-black to-zinc-950 text-gray-300/80 py-24 px-8 overflow-hidden border-t border-gray-700/20">
       {/* faint glow background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
 
@@ -124,7 +124,7 @@ export default function Footer() {
       </div>
 
       {/* Divider */}
-      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent my-16" />
+      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-gray-600/40 to-transparent my-16" />
 
       {/* Logo + Bottom line */}
       <div className="relative flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto gap-6">
@@ -141,7 +141,7 @@ export default function Footer() {
         </Link>
 
         <p className="text-xs text-gray-600 text-center sm:text-right">
-            Powered by curiosity. VeryCodedly<span className="text-xs">™</span>{" "}{year && `${year}`}.
+            VeryCodedly<span className="text-xs">™</span>{" "}{year && `${year}`}.
         </p>
       </div>
     </footer>

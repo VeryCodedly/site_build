@@ -77,6 +77,7 @@ export default function ReadPageClient({ data }: Props) {
     setVisiblePosts((prev) => Math.min(prev + 3, 10));
   };
 
+
   return (
     <div className="relative w-full min-h-screen bg-black text-white overflow-hidden">
       {/* 🪶 HERO SECTION */}
@@ -187,6 +188,12 @@ export default function ReadPageClient({ data }: Props) {
         </div>
       )}
 
+      <div className="flex items-center gap-3 mt-30">
+            <span className="w-1.5 h-10 rounded-xs font-black bg-gradient-to-r from-white via-lime-500 to-white" />
+            <h2 className="text-4xl font-bold">Tech</h2>
+            <p className="text-sm text-gray-600 ml-2">Where new technology, big ideas, and the people behind them meet.</p>
+          </div>
+
       {/* 5 HARDWARE */}
       <Carousel posts={hardware} />
 
@@ -281,6 +288,12 @@ export default function ReadPageClient({ data }: Props) {
         </section>
       )}
 
+      <div className="flex items-center gap-3 mt-30">
+            <span className="w-1.5 h-10 bg-lime-400 rounded-xs" />
+            <h2 className="text-4xl font-bold text-white">Code</h2>
+            <p className="text-sm text-gray-600 ml-2">Modern software, from logic to security.</p>
+          </div>
+
       <Carousel posts={devDigest} />
 
       {upskill.length > 0 && (
@@ -372,7 +385,12 @@ export default function ReadPageClient({ data }: Props) {
           </div>
         </section>
       )}
-      
+
+      <div className="flex items-center gap-3 mt-30">
+            <span className="w-1.5 h-10 bg-pink-400 rounded-xs" />
+            <h2 className="text-4xl font-bold text-white">Culture</h2>
+            <p className="text-sm text-gray-600 ml-2">Trends, stories, places and the world changing around us.</p>
+          </div>      
 
       {/* 1 HERO: Featured Post */}
       <Carousel posts={featured} />

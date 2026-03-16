@@ -7,7 +7,7 @@ import { useState, useRef, useEffect } from 'react';
 // import ScrollLink from './ScrollLink';
 import useScrollShadow from '../hooks/useScrollShadow';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faTimes, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faTimes, faEllipsisV, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
   const isScrolled = useScrollShadow();
@@ -81,10 +81,10 @@ export default function Header() {
                 <Link aria-label="Discord link" href="https://discord.gg/53wVsqEcbE" className="px-2 text-white hover:text-lime-400 transition" target="_blank" rel="noopener">CONNECT</Link>
                 {/* <p className="px-2 text-white hover:text-lime-400 transition">🚧</p> */}
               </nav>
-              <div className="mr-4.5">
-                <Link href="/contact" className="hidden md:inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 text-black px-3 py-0.5 rounded-full hover:bg-white active:bg-white hover:text-black
+              <div className="mr-4 flex items-center">
+                <Link href="/shop" className="hidden md:inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 text-black px-3 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
                 active:text-black shadow-[0_3.5px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
-                  <FontAwesomeIcon className="" icon={faEnvelope} size="sm" />
+                  <FontAwesomeIcon className="" icon={faCartShopping} size="sm" />
                 </Link>
               </div>
               
@@ -149,13 +149,13 @@ export default function Header() {
           </Link>
 
           <Link
-            href="/contact"
+            href="/shop"
             className="inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 text-black px-3.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
                 active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
             onClick={() => setMenuOpen(false)}
-            aria-label="Contact Page button" 
+            aria-label="Shop button" 
           >
-            <FontAwesomeIcon icon={faEnvelope} size="sm" />
+            <FontAwesomeIcon icon={faCartShopping} size="sm" />
           </Link>
           
           {/* <p className="px-2 text-white hover:text-lime-400 transition">Beta 🚧</p> */}

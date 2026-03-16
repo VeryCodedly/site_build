@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import TopButton from "@/components/TopButton";
 import Footer from "@/components/Footer";
 import ServiceWorkerRegister from './sw-register';
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 
 config.autoAddCss = false;
@@ -94,7 +95,10 @@ export default function RootLayout({
     <html lang="en" className="custom-scrollbar">
       <head>
         <link rel="manifest" href="/manifest.json" />
-        
+        <link rel="alternate" type="application/rss+xml"
+          title="VeryCodedly RSS Feed" href="/rss.xml"
+        />
+
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
@@ -113,6 +117,7 @@ export default function RootLayout({
         <Header />
         <ServiceWorkerRegister />
         {children}
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
         <TopButton />
         <Footer />
       </body>

@@ -26,7 +26,7 @@ export default function CTA() {
             >
               <span className="sr-only">Start</span>
               <span className="lg:hidden">Start</span>
-              <span className="hidden lg:inline">Get Started</span>
+              <span className="hidden lg:inline">Start Here</span>
               {/* <span className="absolute inset-0 bg-gradient-to-t from-lime-400 to-lime-300 
                                translate-y-full group-hover:translate-y-0 transition-all duration-500 ease-out"></span> */}
               {/* <span className="relative z-10 group-hover:text-black">Get Started</span> */}

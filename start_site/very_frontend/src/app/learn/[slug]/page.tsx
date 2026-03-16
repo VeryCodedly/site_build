@@ -2,6 +2,7 @@ import CourseClient from "./CourseClient";
 import { notFound } from "next/navigation";
 import { cache } from "react";
 import { Course } from "@/types/post";
+import Script from "next/script";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -48,7 +49,54 @@ export default async function CoursePage(props: Props) {
     notFound();
   }
 
-  return <CourseClient course={course} slug={slug} />;
+  return (
+    <>
+      {/* Structured Data for Google */}
+      <Script id="course-structured-data" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": course.title,
+          "description": course.meta || `Start the ${course.title} course with hands-on lessons on VeryCodedly.`,
+          "provider": {
+            "@type": "Organization",
+            "name": "VeryCodedly",
+            "sameAs": "https://verycodedly.com"
+          },
+          "url": `https://verycodedly.com/learn/${course.slug}`,
+          "datePublished": course.created_at,
+          "inLanguage": "en"
+        })}
+      </Script>
+      <Script id="breadcrumb-structured-data" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "VeryCodedly | Tech. Code. Culture.",
+              "item": "https://verycodedly.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Learn | VeryCodedly",
+              "item": "https://verycodedly.com/learn"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": `${course.title} | VeryCodedly`,
+              "item": `https://verycodedly.com/learn/${course.slug}`
+            }
+          ]
+        })}
+      </Script>
+      <CourseClient course={course} slug={slug} />;
+    </>
+  );
 }
 
 // "use client";
@@ -63,10 +111,10 @@ export default async function CoursePage(props: Props) {
 // import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 // // Memoized Lesson Card Component
-// const LessonCard = memo(({ lesson, slug, index }: { 
-//   lesson: Lessons; 
-//   slug: string; 
-//   index: number 
+// const LessonCard = memo(({ lesson, slug, index }: {
+//   lesson: Lessons;
+//   slug: string;
+//   index: number
 // }) => (
 //   <Motion.div
 //     initial={{ opacity: 0, y: 30 }}
@@ -74,8 +122,8 @@ export default async function CoursePage(props: Props) {
 //     transition={{ delay: index * 0.05 }}
 //     whileHover={{ scale: 1.02 }}
 //     whileTap={{ scale: 0.98 }}
-//     className="bg-zinc-900/80 backdrop-blur-sm rounded-2xl p-4 sm:p-5 border border-zinc-700/50 
-//                hover:border-lime-400/30 hover:shadow-[0_0_10px_rgba(164,255,130,0.1)] 
+//     className="bg-zinc-900/80 backdrop-blur-sm rounded-2xl p-4 sm:p-5 border border-zinc-700/50
+//                hover:border-lime-400/30 hover:shadow-[0_0_10px_rgba(164,255,130,0.1)]
 //                active:border-lime-400/30 active:shadow-[0_0_10px_rgba(164,255,130,0.1)] transition-all duration-300 group"
 //   >
 //     <h3 className="text-base sm:text-md mb-2 text-gray-200 group-hover:text-lime-300 group-active:text-lime-300 transition-colors">
@@ -83,10 +131,10 @@ export default async function CoursePage(props: Props) {
 //     </h3>
 //     <Link
 //       href={`/learn/${slug}/${lesson.slug}`}
-//       className="inline-flex items-center gap-1 text-lime-400 text-sm font-medium 
+//       className="inline-flex items-center gap-1 text-lime-400 text-sm font-medium
 //                  hover:text-white active:text-white hover:underline active:underline transition-all duration-200"
 //     >
-//       View Lesson 
+//       View Lesson
 //       <FontAwesomeIcon icon={faArrowRight} size="sm" className="group-hover:translate-x-1 group-active:translate-x-1 transition-transform" />
 //     </Link>
 //   </Motion.div>
@@ -118,7 +166,7 @@ export default async function CoursePage(props: Props) {
 //           <p>Oops! Could not load this course.</p>
 //           <Link
 //             href="/learn"
-//             className="mt-6 inline-flex items-center gap-2 text-lime-400 hover:text-white 
+//             className="mt-6 inline-flex items-center gap-2 text-lime-400 hover:text-white
 //                      underline underline-offset-2 transition-all duration-200"
 //           >
 //             <FontAwesomeIcon icon={faArrowLeft} size="sm" />
@@ -142,7 +190,7 @@ export default async function CoursePage(props: Props) {
 //         >
 //           <Link
 //             href="/learn"
-//             className="inline-flex items-center gap-2 text-lime-400 mb-7 hover:text-white active:text-white 
+//             className="inline-flex items-center gap-2 text-lime-400 mb-7 hover:text-white active:text-white
 //                      underline underline-offset-2 transition-all duration-200"
 //           >
 //             <FontAwesomeIcon icon={faArrowLeft} size="lg" />
@@ -184,11 +232,11 @@ export default async function CoursePage(props: Props) {
 //           ) : (
 //             <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-2">
 //               {lessons.map((lesson, index) => (
-//                 <LessonCard 
-//                   key={lesson.id} 
-//                   lesson={lesson} 
-//                   slug={slug as string} 
-//                   index={index} 
+//                 <LessonCard
+//                   key={lesson.id}
+//                   lesson={lesson}
+//                   slug={slug as string}
+//                   index={index}
 //                 />
 //               ))}
 //             </div>

@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import SubClient from './SubClient';
 import { Subcategory } from '@/types/post';
 import { cache } from 'react';
+import Script from "next/script";
+
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 if (!apiUrl) throw new Error('NEXT_PUBLIC_API_URL is missing!');
@@ -55,11 +57,71 @@ export default async function SubcategoryPage({
   const trending = Array.isArray(trendingData.results) ? trendingData.results : [];
 
   return (
+    <>
+    {/* Structured Data */}
+      <Script id="structured-data" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "headline": subcategory.name,
+          "description": subcategory.about || `Explore posts in the ${subcategory.name} subcategory on VeryCodedly.`,
+          "author": {
+            "@type": "Person",
+            "name": "Chrise"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "VeryCodedly",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://verycodedly.com/icon.svg"
+            }
+          },
+          "datePublished": subcategory.created_at,
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": `https://verycodedly.com/read/${subcategory.category}/${subcategory.slug}`
+          }
+        })}
+      </Script>
+      <Script id="breadcrumb-structured-data" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "VeryCodedly | Tech. Code. Culture.",
+              "item": "https://verycodedly.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Read | VeryCodedly",
+              "item": "https://verycodedly.com/read"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": `${subcategory.category} | VeryCodedly`,
+              "item": `https://verycodedly.com/read/${subcategory.category}`
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": `${subcategory.name} | VeryCodedly`,
+              "item": `https://verycodedly.com/read/${subcategory.category}/${subcategory.slug}`
+            }
+          ]
+        })}
+      </Script>
     <SubClient
       subcategory={subcategory}
       posts={posts}
       trending={trending}
     />
+    </>
   );
 }
 

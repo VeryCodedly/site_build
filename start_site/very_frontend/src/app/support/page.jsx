@@ -97,7 +97,7 @@ export default function SupportPage() {
           >
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Support without spending</h3>
             <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed mb-4">
-              Share, star, join, and help other learners. These actions make a
+              Share, star, join, and help other learners. These make a
               huge difference to discoverability and morale.
             </p>
             <ul className="text-gray-300/90 text-sm sm:text-base list-disc list-inside space-y-2 mb-4">
@@ -155,6 +155,7 @@ export default function SupportPage() {
             <div className="space-y-3">
               <Link
                 href="https://discord.gg/53wVsqEcbE"
+                target="_blank" rel="noopener noreferrer"
                 className="block w-full text-center text-sm sm:text-base px-4 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
                            active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
               >
@@ -203,7 +204,7 @@ export default function SupportPage() {
               transition={{ duration: 0.3, delay: 0.8 }}
             >
               <dt className="font-medium text-gray-300 mb-1">Is support tax-deductible?</dt>
-              <dd className="text-gray-400">We’re a community-driven project, not a registered charity yet — so contributions aren’t tax-deductible.
+              <dd className="text-gray-400">We’re a community-driven project, not a registered charity yet, so contributions aren’t tax-deductible.
                 But every bit goes directly into keeping our resources free for everyone.</dd>
             </Motion.div>
             <Motion.div
@@ -227,7 +228,7 @@ export default function SupportPage() {
                      focus:ring-offset-white/20 text-center transition-all duration-300"
         >
           <p className="text-gray-400 text-sm sm:text-base">
-            Thank you ❤️ for reading, learning, and being part of this little corner of the web.
+            Thank you ❤️ for reading, learning, and being part of this little corner of the interweb.
           </p>
           <p className="mt-2 text-gray-400 text-sm sm:text-base">Every share, star, and coffee waters this tree. 🌳</p>
         </Motion.footer>
