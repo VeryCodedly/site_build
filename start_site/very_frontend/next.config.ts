@@ -74,7 +74,6 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  workerThreads: false,
 
   experimental: {
     optimizeCss: true,
