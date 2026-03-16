@@ -262,7 +262,7 @@ class ReadPageDataView(APIView):
             context={"request": request}
         ).data
 
-        cache.set(self.CACHE_KEY, data, timeout=self.CACHE_TIMEOUT)
+        cache.set(self.CACHE_KEY, data, timeout=CACHE_TIMEOUT)
 
         return Response(data)
 
