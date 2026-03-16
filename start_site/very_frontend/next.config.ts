@@ -20,9 +20,9 @@ const cspProd = [
   "block-all-mixed-content",
   "font-src 'self' data:",
   "img-src 'self' data: blob: https://res.cloudinary.com",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://www.googletagmanager.com https://www.google-analytics.com",
   "style-src 'self' 'unsafe-inline'",
-  "connect-src 'self' https://api.verycodedly.com https://res.cloudinary.com wss:",
+  "connect-src 'self' https://api.verycodedly.com https://res.cloudinary.com wss: https://www.google-analytics.com https://analytics.google.com",
   "frame-src 'self' https://www.youtube.com",
   "frame-ancestors 'none'",
   "form-action 'self'",
@@ -34,11 +34,11 @@ const cspProd = [
 const cspDev = cspProd
   .replace(
     /connect-src[^;]*/,
-    "connect-src 'self' http://localhost:8000 https://api.verycodedly.com https://res.cloudinary.com wss:"
+    "connect-src 'self' http://localhost:8000 https://api.verycodedly.com https://res.cloudinary.com wss: https://www.google-analytics.com https://analytics.google.com"
   )
   .replace(
     /script-src[^;]*/,
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://www.googletagmanager.com https://www.google-analytics.com"
   );
 
 const securityHeaders = [

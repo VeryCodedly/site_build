@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-import { cache } from 'react';
 import { Post } from '@/types/post';
 import PostClient from './PostClient';
 import Script from "next/script";
@@ -11,36 +10,39 @@ if (!apiUrl) throw new Error('NEXT_PUBLIC_API_URL is missing'); // Server-only f
 export const revalidate = 180; // 3 minutes
 export const dynamicParams = true;
 
-// --- Fetch with React cache ---
-const getPost = cache(async (slug: string): Promise<Post | null> => {
+async function getPost(slug: string): Promise<Post | null> {
   const res = await fetch(`${apiUrl}/posts/${slug}/`, {
-    next: { revalidate },
-    cache: 'force-cache', // ensure server caching
+    next: { revalidate: 180 },
     headers: { 'Content-Type': 'application/json' },
   });
 
   if (!res.ok) return null;
-  return (await res.json()) as Post;
-});
+  return res.json();
+}
 
-const getRelatedPosts = cache(async (subSlug?: string) => {
+async function getRelatedPosts(subSlug?: string) {
   if (!subSlug) return { results: [] as Post[] };
-  const res = await fetch(`${apiUrl}/subcategories/${subSlug}/posts/`, {
-    next: { revalidate },
-    cache: 'force-cache',
-    headers: { 'Content-Type': 'application/json' },
-  });
-  return res.ok ? await res.json() : { results: [] };
-});
 
-const getTrendingPosts = cache(async () => {
-  const res = await fetch(`${apiUrl}/subcategories/right-now/posts/`, {
-    next: { revalidate },
-    cache: 'force-cache',
+  const res = await fetch(`${apiUrl}/subcategories/${subSlug}/posts/`, {
+    next: { revalidate: 180 },
     headers: { 'Content-Type': 'application/json' },
   });
-  return res.ok ? await res.json() : { results: [] };
-});
+
+  if (!res.ok) return { results: [] };
+
+  return res.json();
+}
+
+async function getTrendingPosts() {
+  const res = await fetch(`${apiUrl}/subcategories/right-now/posts/`, {
+    next: { revalidate: 180 },
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (!res.ok) return { results: [] };
+
+  return res.json();
+}
 
 // Page
 export default async function BlogPostPage({

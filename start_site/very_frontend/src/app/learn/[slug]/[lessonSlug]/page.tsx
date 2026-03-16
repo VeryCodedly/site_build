@@ -1,7 +1,5 @@
-import React from "react";
 import LessonClient from "./LessonClient";
 import { notFound } from "next/navigation";
-import { cache } from "react";
 import { Lessons } from "@/types/post";
 import Script from "next/script";
 
@@ -9,36 +7,32 @@ type Props = {
   params: Promise<{ slug: string; lessonSlug: string }>;
 };
 
-const getLesson = cache(async (courseSlug: string, lessonSlug: string): Promise<Lessons | null> => {
+async function getLesson(
+  courseSlug: string,
+  lessonSlug: string
+): Promise<Lessons | null> {
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
     if (!apiUrl) {
       console.error("NEXT_PUBLIC_API_URL is not set");
       return null;
     }
 
-    const url = `${apiUrl}/${courseSlug}/${lessonSlug}`;
-    // console.log(`Fetching lesson from: ${url}`); 
-
-    const res = await fetch(url, {
+    const res = await fetch(`${apiUrl}/${courseSlug}/${lessonSlug}`, {
       next: { revalidate: 60 },
-      cache: "force-cache",
-      headers: { "Content-Type": "application/json" },
     });
 
-    if (!res.ok) {
-      // console.error(`Backend returned ${res.status} for ${url}`);
-      return null;
-    }
+    if (!res.ok) return null;
 
     const data = await res.json();
     return data as Lessons;
+
   } catch (error) {
     console.error("Lesson fetch error:", error);
     return null;
   }
-});
-
+}
 
 export default async function LessonPage(props: Props) {
   const params = await props.params;

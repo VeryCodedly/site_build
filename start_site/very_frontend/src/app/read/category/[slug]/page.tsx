@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-import { cache } from 'react';
 import { Category, Post } from '@/types/post';
 import CatClient from './CatClient';
 import Script from "next/script";
@@ -11,8 +10,7 @@ if (!apiUrl) throw new Error('NEXT_PUBLIC_API_URL is missing!');
 export const revalidate = 60; 
 export const dynamicParams = true;
 
-// Cached category fetch 
-const getCategory = cache(async (slug: string): Promise<Category | null> => {
+async function getCategory(slug: string): Promise<Category | null> {
   try {
     const res = await fetch(`${apiUrl}/categories/${slug}`, {
       next: { revalidate },
@@ -25,15 +23,14 @@ const getCategory = cache(async (slug: string): Promise<Category | null> => {
       return null;
     }
 
-    return (await res.json()) as Category;
+    return res.json();
   } catch (err) {
     console.error('Category fetch failed:', err);
     return null;
   }
-});
+}
 
-// Cached trending posts fetch
-const getTrendingPosts = cache(async (): Promise<Post[]> => {
+async function getTrendingPosts(): Promise<Post[]> {
   try {
     const res = await fetch(`${apiUrl}/subcategories/right-now/posts/`, {
       next: { revalidate },
@@ -46,7 +43,7 @@ const getTrendingPosts = cache(async (): Promise<Post[]> => {
     console.error('Trending posts fetch failed:', err);
     return [];
   }
-});
+}
 
 // --- Page component ---
 export default async function CategoryPage({

@@ -106,12 +106,6 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="VeryCodedly" />
         <meta name="theme-color" content="#000000" />
 
-        {/* <script
-          defer
-          src="https://static.cloudflareinsights.com/beacon.min.js"
-          data-cf-beacon='{"token": "9a2f443e5bad423184ad04e9c0146df"}'>
-        </script> */}
-
       </head>
       <body className={`${pops.variable} ${robo.variable} ${geist.variable} antialiased`}>
         <Header />

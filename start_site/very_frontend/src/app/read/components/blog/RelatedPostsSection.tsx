@@ -31,16 +31,21 @@ export default function RelatedPostsSection({
 
         {/* Latest */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          // initial={{ opacity: 0, x: -20 }}
+          // whileInView={{ opacity: 1, x: 0 }}
+          // viewport={{ once: true }}
+          // transition={{ duration: 0.6 }}
           className="space-y-6"
         >
-          <h2 className="text-xl md:text-2xl tracking-tight font-bold text-white flex items-center gap-3">
+          <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }} 
+              className="text-xl md:text-2xl tracking-tight font-bold text-white flex items-center gap-3">
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs" />
             Latest in {displayName}
-          </h2>
+          </motion.h2>
           {latest.length > 0 ? (
             <div className="grid gap-4">
               {latest.map(post => <MiniPostCard key={post.slug} post={post} />)}
@@ -52,16 +57,21 @@ export default function RelatedPostsSection({
 
         {/* Trending */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          // initial={{ opacity: 0, x: 20 }}
+          // whileInView={{ opacity: 1, x: 0 }}
+          // viewport={{ once: true }}
+          // transition={{ duration: 0.6 }}
           className="space-y-6"
         >
-          <h2 className="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
+          <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-xl md:text-2xl font-bold text-white flex items-center gap-3">
             <span className="w-1.5 h-8 bg-pink-400 rounded-xs" />
             Right Now in Tech
-          </h2>
+          </motion.h2>
           {trendingSlice.length > 0 ? (
             <div className="grid gap-4">
               {trendingSlice.map(post => <MiniPostCard key={post.slug} post={post} />)}

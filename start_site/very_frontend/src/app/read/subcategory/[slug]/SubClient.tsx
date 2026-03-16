@@ -43,54 +43,49 @@ export default function SubClient({
     }
 
     return (
-        <main>
-            <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-                <Link href="/read" className="inline-flex items-center gap-2 text-lime-400 pt-8 ml-8 hover:text-white text-sm sm:text-base active:text-white active:scale-60 transition-all duration-300"
-                 aria-label="Back to Read button">
-                    <FontAwesomeIcon icon={faArrowLeft} size="lg" />
-                </Link>
-            </motion.div>
-
-            <section className="min-h-screen max-w-[90%] mx-auto bg-black text-white pt- pb-14">
+        <section>
+            <section className="min-h-screen max-w-[90%] sm:max-w-[94%] mx-auto bg-black text-white pb-14">
                 <div className="max-w-5xl mx-auto">
-                    <h1 className="text-3xl sm:text-4xl font-semibold text-center uppercase pt-4">
-                        {name}
-                    </h1>
-                    {about && (
-                        <div className="my-10 flex justify-center px-4 sm:px-">
-                            <p className="whitespace-pre-wra italic text-sm m:text-base max-w-2xl tracking-tighter leading- text-zinc-300/80 pl-4.5 sm:pl-4 border-l-4 border-lime-500 rounded-sm last:text-center">
-                                {about}
-                            </p>
-                        </div>
-                    )}
-
-                    <div className="space-y-2.5 px-2 sm:px-0">
-                        <div className="w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-5 py-10 px-4 border-y border-zinc-800 rounded-xl">
-                            {posts.map((post) => (
-                                <motion.div
-                                    key={post.slug}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.02 }}
-                                //     className="bg-zinc-900/80 rounded-2xl p-2 border border-zinc-800 transition-transform duration-500 transform hover:-translate-y-2 
-                                //                 hover:rotateX-3 hover:rotateY-3 active:-translate-y-2 active:rotateX-3 active:rotateY-3" style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
-                                >
-                                    <MiniPostCard post={post} />
-                                </motion.div>
-                            ))}
-                        </div>
+                    <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
+                        <Link href="/read" className="inline-flex items-center  text-lime-400 pt-8 hover:text-white text-sm sm:text-base active:text-white active:scale-60 transition-all duration-300"
+                            aria-label="Back to Read button">
+                            <FontAwesomeIcon icon={faArrowLeft} size="lg" />
+                        </Link>
+                    </motion.div>
+                    <div className="max-w-5xl mx-auto">
+                        <h1 className="pt-8 text-4xl sm:text-5xl font-black tracking-tight bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent uppercase">
+                            {name}
+                        </h1>
+                        {about && (
+                            <div className="mt-4 py-2 mb-10">
+                                <p className="whitespace-pre-wra italic text-sm m:text-base max-w-2xl tracking-tight text-zinc-300/80 pl-4.5 sm:pl-4 border-l-4 border-lime-500 rounded-sm">
+                                    {about}
+                                </p>
+                            </div>
+                        )}
                     </div>
-
-                    <div className="px-2">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.02 }}
+                        className="py-10 px-4 w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-5 border-y border-zinc-700 rounded-xl"
+                    >
+                        {posts?.map((post: Post) => (
+                            <motion.div key={post.slug} >
+                                <MiniPostCard post={post} />
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                    {/* <div className=""> */}
                         <RelatedPostsSection
                             subcategoryName={subcategory.name}
                             posts={posts}
                             trending={trending}
                         />
-                    </div>
+                    {/* </div> */}
                 </div>
             </section>
-        </main>
+        </section>
     );
 }

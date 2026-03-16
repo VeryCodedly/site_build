@@ -136,7 +136,7 @@ export default function LearnPage({ courses }: Props) {
                   </div>
                 ))}
               </div>
-              <p className="text-gray-400 border-l-4 border-pink-400/50 pl-4 py-2 italic text-sm rounded-md">
+              <p className="text-gray-400 border-l-4 border-lime-400/50 pl-4 py-1 italic text-sm rounded-md">
                 &quot;If you&apos;ve ever felt like code explanations move too fast, this is for you.&quot;
               </p>
             </div>

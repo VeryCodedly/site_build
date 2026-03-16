@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
 import SubClient from './SubClient';
 import { Subcategory } from '@/types/post';
-import { cache } from 'react';
 import Script from "next/script";
 
 
@@ -10,47 +9,50 @@ if (!apiUrl) throw new Error('NEXT_PUBLIC_API_URL is missing!');
 
 export const revalidate = 60; 
 
-// Cached subcategory fetch
-const getSubcategoryCached = cache(async (slug: string): Promise<Subcategory | null> => {
+async function getSubcategory(slug: string): Promise<Subcategory | null> {
   const res = await fetch(`${apiUrl}/subcategories/${slug}/`, {
-    next: { revalidate }, // refresh every 1 minute
+    next: { revalidate },
     headers: { 'Content-Type': 'application/json' },
   });
-  if (!res.ok) return null;
-  return res.json();
-});
 
-// Cached posts fetch
-const getSubPostsCached = cache(async (slug: string) => {
+  if (!res.ok) return null;
+
+  return res.json();
+}
+
+async function getSubPosts(slug: string) {
   const res = await fetch(`${apiUrl}/subcategories/${slug}/posts/`, {
     next: { revalidate },
     headers: { 'Content-Type': 'application/json' },
   });
-  if (!res.ok) return { results: [] };
-  return res.json();
-});
 
-// Cached trending posts
-const getTrendingPostsCached = cache(async () => {
+  if (!res.ok) return { results: [] };
+
+  return res.json();
+}
+
+async function getTrendingPosts() {
   const res = await fetch(`${apiUrl}/subcategories/right-now/posts/`, {
     next: { revalidate },
     headers: { 'Content-Type': 'application/json' },
   });
+
   if (!res.ok) return { results: [] };
+
   return res.json();
-});
+}
 
 export default async function SubcategoryPage({
   params,
 }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
 
-  const subcategory = await getSubcategoryCached(slug);
+  const subcategory = await getSubcategory(slug);
   if (!subcategory) notFound();
 
   const [postsData, trendingData] = await Promise.all([
-    getSubPostsCached(slug),
-    getTrendingPostsCached(),
+    getSubPosts(slug),
+    getTrendingPosts(),
   ]);
 
   const posts = Array.isArray(postsData.results) ? postsData.results : [];

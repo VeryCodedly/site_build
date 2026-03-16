@@ -45,41 +45,44 @@ function CodeBlock({ block }) {
   };
 
   return (
-    <div className="relative group my-10 text-xs sm:text-sm md:text-base rounded-xl overflow-auto border-y-3 border-zinc-800/30 bg-zinc-900/40 backdrop-blur-md shadow-lg transition-all">
+    <div className="relative group my-10 text-xs sm:text-sm md:text-base rounded-xl overflow-auto border border-zinc-800/50 bg-zinc-900/40 backdrop-blur-md shadow-lg transition-all">
 
       {/* <div className="relative"> */}
-        <span className="absolute top-2 left-3 text-xs font-semibold text-gray-300 tracking-tight bg-zinc-800/70 px-2 py-1 rounded-md">
-          {block.language || "code"}
-        </span>
+      <span className="absolute top-2 md:top-3 left-3 md:left-5 text-xs font-semibold text-gray-300 tracking-tight bg-zinc-800/70 px-2 py-1 rounded-md">
+        {block.language || "code"}
+      </span>
 
-        <button
-          aria-label="Copy code block"
-          onClick={handleCopy}
-          className="absolute top-2 right-3 text-xs font-semibold px-2 py-1 rounded-md bg-zinc-800/70 text-gray-300 hover:text-lime-400 
+      <button
+        aria-label="Copy code block"
+        onClick={handleCopy}
+        className="absolute top-2 md:top-3 right-3 md:right-5 text-xs font-semibold px-2 py-1 rounded-md bg-zinc-800/70 text-gray-300 hover:text-lime-400 
           hover:bg-zinc-700/70 transition-all duration-200 flex items-center gap-1 focus:outline-none focus:ring-2 
           focus:ring-lime-400 focus:ring-offset-2 focus:ring-offset-[#181d1d] aria-label"
-        >
-          <FontAwesomeIcon icon={copied ? faCheck : faClipboard} />
-          {copied ? "copied" : "copy"}
-        </button>
+      >
+        <FontAwesomeIcon icon={copied ? faCheck : faClipboard} />
+        {copied ? "copied" : "copy"}
+      </button>
       {/* </div> */}
 
-      <SyntaxHighlighter
-        language={block.language || "javascript"}
-        style={oneDark}
-        wrapLongLines
-        showLineNumbers={false}
-        customStyle={{
-          background: "transparent",
-          borderRadius: "0.75rem",
-          padding: "2.2rem 1rem 1rem 1rem",
-        }}
-        codeTagProps={{
-          style: { backgroundColor: "transparent" },
-        }}
-      >
-        {block.content || ""}
-      </SyntaxHighlighter>
+      <div className="md:p-2">
+        <SyntaxHighlighter
+          language={block.language || "javascript"}
+          style={oneDark}
+          wrapLongLines
+          showLineNumbers={false}
+          customStyle={{
+            background: "transparent",
+            borderRadius: "0.75rem",
+            padding: "2.2rem 1rem 1rem 1rem",
+          }}
+          codeTagProps={{
+            style: { backgroundColor: "transparent" },
+          }}
+        >
+          {block.content || ""}
+        </SyntaxHighlighter>
+      </div>
+      <div className="h-1 bg-gradient-to-r from-lime-700/20 via-pink-400/20 to-transparent"></div>
     </div>
   );
 }
@@ -125,7 +128,7 @@ export default CodeBlock;
 //         wrapLongLines
 //         showLineNumbers={false}
 //         customStyle={{
-//           background: "rgba(26,29,29,0.9)", 
+//           background: "rgba(26,29,29,0.9)",
 //           borderRadius: "0.75rem",
 //           padding: "2rem 1rem 1rem 1rem",
 //           fontSize: "0.9rem",
@@ -133,7 +136,7 @@ export default CodeBlock;
 //         }}
 //         codeTagProps={{
 //           style: {
-//             backgroundColor: "transparent", 
+//             backgroundColor: "transparent",
 //           },
 //         }}
 //       >

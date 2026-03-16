@@ -1,4 +1,3 @@
-// app/store/page.tsx
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -463,22 +462,17 @@ export default function StorePage() {
             </motion.div>
 
             {/* Header */}
-            <div className="max-w-7xl mx-auto px-3 sm:px-4 mb-12">
-                <h1
-                    className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent"
-                >
-                    VeryCodedly Merch
+            <div className="max-w-7xl mx-auto px-3 sm:px-4 mb-18">
+                <h1 className="mb-6">
+                    <span className="text-4xl md:text-5xl font-black bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent">
+                        VeryCodedly Merch </span><span className="text-4xl md:text-5xl">🚧</span>
                 </h1>
-                <p
-                    className="text-gray-400 text-base md:text-lg max-w-3xl tracking-wide"
-                >
+                <p className="text-gray-400 text-base md:text-lg max-w-3xl tracking-wide">
                     Shirts, mugs, and other things for people who read the source code, and people who don&apos;t know what that means.
                 </p>
 
                 {/* Badges */}
-                <div
-                    className="flex flex-col sm:flex-row flex-wrap gap-2 mt-6 max-w-xs sm:max-w-none"
-                >
+                <div className="flex flex-col sm:flex-row flex-wrap gap-2 mt-6 max-w-xs sm:max-w-none">
                     <div className="w-fit flex items-center gap-2 text-xs text-gray-500 bg-zinc-900/30 px-3 py-1.5 rounded-full border border-zinc-800">
                         <FontAwesomeIcon icon={faTruck} className="text-lime-600" />
                         <span>Ships worldwide</span>

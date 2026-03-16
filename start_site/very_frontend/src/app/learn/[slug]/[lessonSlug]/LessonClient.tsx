@@ -143,7 +143,7 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
                 }`}
             >
               <FontAwesomeIcon icon={faCheckCircle} className={isCompleted ? "opacity-50" : ""} />
-              {isCompleted ? "Mastered" : "Mark Complete"}
+              {isCompleted ? "Completed" : "Mark Complete"}
             </button>
           </div>
 

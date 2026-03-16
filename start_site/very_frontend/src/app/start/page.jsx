@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowRight,
@@ -11,25 +14,20 @@ import {
   faFire,
 } from '@fortawesome/free-solid-svg-icons';
 
-export const metadata = {
-  title: "Start Here",
-  description:
-    "New to VeryCodedly? Start here to explore.",
-};
 
 export default function StartPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black to-zinc-950 text-white px-6 py-16">
-      <div className="max-w-5xl mx-auto space-y-24">
+    <main className="min-h-screen bg-gradient-to-b from-black to-zinc-950 text-white px-6 pt-16 pb-16">
+      <div className="max-w-5xl mx-auto space-y-16">
 
         {/* HERO */}
         <section className="space-y-6 text-center md:text-left">
-          <div className="inline-flex items-center gap-2 bg-lime-400/10 px-3 py-1.5 rounded-full border border-lime-400/20 mb-2">
+          {/* <div className="inline-flex items-center gap-2 bg-lime-400/10 px-3 py-1.5 rounded-full border border-lime-400/20 mb-2">
             <FontAwesomeIcon icon={faCompass} className="text-lime-400 text-sm" />
             <span className="text-xs text-lime-400 font-medium tracking-wide">YOUR STARTING POINT</span>
-          </div>
+          </div> */}
 
-          <h1 className="text-5xl sm:text-6xl font-black tracking-tight">
+          <h1 className="text-4xl md:text-5xl font-black tracking-tight">
             Start <span className="bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent">Here</span>
           </h1>
 
@@ -40,22 +38,27 @@ export default function StartPage() {
             paths you can follow depending on what you&apos;re trying to learn.
           </p>
 
-          <div className="flex items-center justify-center md:justify-start gap-2 text-gray-500 italic border-l-4 border-pink-400/50 pl-4 py-2 rounded-md">
-            <FontAwesomeIcon icon={faBookOpen} className="text-pink-400/90 text-sm" />
+          <div className="flex items-center justify-center md:justify-start gap-2 text-gray-500 italic border-l-4 border-lime-400/50 pl-4 rounded-md">
             <p className="text-sm">Start here. Or wander. Both work. Enjoy.</p>
           </div>
         </section>
 
         {/* COURSES */}
-        <section className="space-y-8">
+        <section className="space-y-8 group/courses">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
-              <div className="flex items-center gap-3 mb-2">
-                <span className="w-1.5 h-8 bg-lime-400 rounded-xs" />
-                <h2 className="text-2xl font-bold text-white mb-6">Learn the Fundamentals</h2>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/courses:bg-pink-400 group-active/courses:bg-pink-400" />
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="text-2xl font-bold text-white">Learn the Fundamentals
+                </motion.h2>
               </div>
               <p className="text-gray-400 max-w-2xl text-sm">
-                If you prefer structured learning, start with the courses. They&apos;re
+                If you prefer structured learning, start with the courses. VeryCodedly courses are
                 designed to move from fundamentals to practical concepts used in real
                 projects.
               </p>
@@ -104,10 +107,16 @@ export default function StartPage() {
         </section>
 
         {/* LEARNING PATHS */}
-        <section className="space-y-8">
+        <section className="space-y-8 group/paths">
           <div className="flex items-center gap-3 mb-6">
-            <span className="w-1.5 h-8 bg-lime-400 rounded-xs" />
-            <h2 className="text-2xl font-bold text-white">Suggested Learning Paths</h2>
+            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/paths:bg-pink-400 group-active/paths:bg-pink-400" />
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-2xl font-bold text-white">Suggested Learning Paths
+            </motion.h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-5">
@@ -130,12 +139,18 @@ export default function StartPage() {
         </section>
 
         {/* TECH DEEP DIVES */}
-        <section className="space-y-8">
+        <section className="space-y-8 group/takes">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <span className="w-1.5 h-8 bg-lime-400 rounded-xs" />
-                <h2 className="text-2xl font-bold text-white">Tech Takes</h2>
+                <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/takes:bg-pink-400 group-active/takes:bg-pink-400" />
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="text-2xl font-bold text-white">Tech Takes
+                </motion.h2>
               </div>
               <p className="text-gray-400 max-w-2xl text-sm">
                 Just what’s happening in tech, how it works, and why it counts.
@@ -154,35 +169,41 @@ export default function StartPage() {
             <Topic
               title="Artificial Intelligence"
               description="“AI” follows the trends, breakthroughs, and debates in artificial intelligence, spotlighting the tech reshaping industries."
-              href="/subcategory/ai"
+              href="read/subcategory/ai"
               icon={faMicrochip}
             />
             <Topic
               title="Featured"
               description="“Featured” gives you the top stories shaping tech this week, all in one scroll."
-              href="/subcategory/featured"
+              href="read/subcategory/featured"
               icon={faFire}
             />
             <Topic
               title="Digital Money"
               description="“Digital Money” tracks the business side of the tech world: markets, funding, infrastructure, and how money moves."
-              href="/subcategory/digital-money"
+              href="read/subcategory/digital-money"
               icon={faMoneyBillTrendUp}
             />
             <Topic
               title="Policy & Progress"
               description="“Policy & Progress” covers the tech + society mix: the moves, rules, and trade-offs that steer how we live with technology."
-              href="/subcategory/policy-progress"
+              href="read/subcategory/policy-progress"
               icon={faGlobeAfrica}
             />
           </div>
         </section>
 
         {/* POPULAR GUIDES */}
-        <section className="space-y-6">
+        <section className="space-y-6 group/reads">
           <div className="flex items-center gap-3 mb-6">
-            <span className="w-1.5 h-8 bg-lime-400 rounded-xs" />
-            <h2 className="text-2xl font-bold text-white">Popular Reads</h2>
+            <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/reads:bg-pink-400 group-active/reads:bg-pink-400" />
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-2xl font-bold text-white">Popular Reads
+            </motion.h2>
           </div>
 
           <p className="text-gray-400 text-sm max-w-2xl">
@@ -228,7 +249,7 @@ export default function StartPage() {
             </p>
 
             <div className="py-6 flex items-center gap-3 text-sm text-gray-500 border-t border-zinc-800">
-              <p>Explore the courses. Read the deep dives. Build something interesting.</p>
+              <p>Explore the courses. Read the articles. Build something interesting.</p>
             </div>
           </div>
         </section>
@@ -240,7 +261,12 @@ export default function StartPage() {
 function Course({ title, description, href, icon }) {
   return (
     <Link href={href} className="group block">
-      <div className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(163,230,53,0.1)] transition-all duration-300 h-full">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.92 }}
+        className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(163,230,53,0.1)] transition-all duration-300 h-full">
         <div className="flex items-start justify-between mb-3">
           <div className="w-8 h-8 rounded-lg bg-lime-400/10 flex items-center justify-center">
             <FontAwesomeIcon icon={icon} className="text-lime-400 text-sm" />
@@ -249,7 +275,7 @@ function Course({ title, description, href, icon }) {
         </div>
         <h3 className="font-semibold text-white mb-1 group-hover:text-lime-400 transition-colors">{title}</h3>
         <p className="text-gray-400 text-sm">{description}</p>
-      </div>
+      </motion.div>
     </Link>
   );
 }
@@ -257,7 +283,12 @@ function Course({ title, description, href, icon }) {
 function Topic({ title, description, href, icon }) {
   return (
     <Link href={href} className="group block">
-      <div className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(244,114,182,0.1)] transition-all duration-300 h-full">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.92 }}
+        className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(244,114,182,0.1)] transition-all duration-300 h-full">
         <div className="flex items-start justify-between mb-3">
           <div className="w-8 h-8 rounded-lg bg-lime-400/10 flex items-center justify-center">
             <FontAwesomeIcon icon={icon} className="text-lime-400 text-sm" />
@@ -266,7 +297,7 @@ function Topic({ title, description, href, icon }) {
         </div>
         <h3 className="font-semibold text-white mb-1 group-hover:lime-pink-400 transition-colors">{title}</h3>
         <p className="text-gray-400 text-sm">{description}</p>
-      </div>
+      </motion.div>
     </Link>
   );
 }
@@ -282,7 +313,12 @@ function GuideLink({ href, children }) {
 
 function Path({ title, steps, start }) {
   return (
-    <div className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 space-y-4 hover:border-zinc-400/30 transition-all duration-300">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.92 }}
+      className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 space-y-4 hover:border-zinc-400/30 transition-all duration-300">
       <h3 className="font-semibold text-white">{title}</h3>
       <div className="flex flex-wrap gap-2">
         {steps.map((step, i) => (
@@ -298,6 +334,6 @@ function Path({ title, steps, start }) {
         Start here
         <FontAwesomeIcon icon={faArrowRight} className="text-xs group-hover:translate-x-1 transition-transform" />
       </Link>
-    </div>
+    </motion.div>
   );
 }
