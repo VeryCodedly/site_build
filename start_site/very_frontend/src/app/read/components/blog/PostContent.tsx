@@ -354,7 +354,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                 <FontAwesomeIcon icon={faDiscord} className="text-2xl text-gray-400 group-hover:text-indigo-600 group-active:text-indigo-600" />
               </div>
               <div>
-                <p className="text-white group-hover:underline group-active:underline">Discord Community</p>
+                <p className="text-white group-active:underline">Discord Community</p>
                 <p className="text-sm text-gray-400 italic">Chat, code sharing & more</p>
               </div>
             </div>
@@ -376,7 +376,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                 <FontAwesomeIcon icon={faYoutube} className="text-2xl text-gray-400 group-hover:text-red-600 group-active:text-red-600" />
               </div>
               <div>
-                <p className="text-white group-hover:underline group-active:underline">YouTube Comments</p>
+                <p className="text-white group-active:underline">YouTube Comments</p>
                 <p className="text-sm text-gray-400 italic">Video version & comments</p>
               </div>
             </div>
