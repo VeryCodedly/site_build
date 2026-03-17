@@ -67,7 +67,7 @@ export default function TeaserCards() {
               shadow-[0_15px_20px_rgba(0,0,0,0.6),0_15px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               hover:ring-1 transition-all duration-300 group`}
             whileHover={{ scale: 1.10 }}
-            whileTap={{ scale: 1.10 }}
+            whileTap={{ scale: 0.92 }}
             style={{ zIndex: 0 }} 
             onMouseEnter={(e) => (e.currentTarget.style.zIndex = 10)}
             onMouseLeave={(e) => (e.currentTarget.style.zIndex = 0)}
