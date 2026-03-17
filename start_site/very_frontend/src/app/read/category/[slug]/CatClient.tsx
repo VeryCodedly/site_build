@@ -23,7 +23,7 @@ export default function CatClient({ category,
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4 }}
-                className="min-h-screen max-w-[90%] sm:max-w-[94%] bg-black text-white pt- pb-14 px-2 mx-auto"
+                className="min-h-screen max-w-[90%] sm:max-w-[94%] bg-black text-white pb-14 px-2 mx-auto"
             >
                 <Motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
                 <Link href="/read" className="inline-flex items-center pt-8 text-lime-400 hover:text-white active:text-white active:scale-60 transition-all duration-300 text-sm sm:text-base">

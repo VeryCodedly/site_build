@@ -302,7 +302,7 @@ export default function StorePage() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setIsCartOpen(true)}
-                    className="fixed bottom-4 right-1 z-60 bg-lime-400 text-black text-base md:text-lg p-3 md:p-4 rounded-full hadow-md hadow-lime-400/20 over:shadow-lg transition-all duration-200"
+                    className="fixed bottom-4 right-1 z-60 bg-lime-400 text-black text-base md:text-lg p-4 md:p-4 rounded-full hadow-md hadow-lime-400/20 over:shadow-lg transition-all duration-200"
                 >
                     <FontAwesomeIcon icon={faCartShopping} />
                     {totalItems > 0 && (

@@ -65,10 +65,10 @@ export default function StartPage() {
             </div>
             <Link
               href="/learn/#courses"
-              className="group flex items-center gap-2 text-lime-400 hover:text-white text-sm font-medium transition-colors"
+              className="group flex items-center gap-2 text-lime-400 hover:text-lime-200 active:text-lime-200 text-sm font-medium transition-colors"
             >
               View all courses
-              <FontAwesomeIcon icon={faArrowRight} className="text-xs group-hover:translate-x-1 transition-transform" />
+              <FontAwesomeIcon icon={faArrowRight} className="text-xs group-active:translate-x-1 transition-transform" />
             </Link>
           </div>
 
@@ -158,10 +158,10 @@ export default function StartPage() {
             </div>
             <Link
               href="/read/#posts"
-              className="group flex items-center gap-2 text-lime-400 hover:text-white text-sm font-medium transition-colors"
+              className="group flex items-center gap-2 text-lime-400 hover:text-lime-200 active:text-lime-200 text-sm font-medium transition-colors"
             >
-              Explore all articles
-              <FontAwesomeIcon icon={faArrowRight} className="text-xs group-hover:translate-x-1 transition-transform" />
+              Explore
+              <FontAwesomeIcon icon={faArrowRight} className="text-xs group-active:translate-x-1 transition-transform" />
             </Link>
           </div>
 
@@ -266,14 +266,14 @@ function Course({ title, description, href, icon }) {
         animate={{ opacity: 1, y: 0 }}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.92 }}
-        className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(163,230,53,0.1)] transition-all duration-300 h-full">
+        className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(163,230,53,0.1)] active:border-zinc-400/30 active:shadow-[0_0_15px_rgba(163,230,53,0.1)] transition-all duration-300 h-full">
         <div className="flex items-start justify-between mb-3">
           <div className="w-8 h-8 rounded-lg bg-lime-400/10 flex items-center justify-center">
             <FontAwesomeIcon icon={icon} className="text-lime-400 text-sm" />
           </div>
-          <span className="text-xs text-gray-600 group-hover:text-lime-400 transition-colors">Course</span>
+          <span className="text-xs text-gray-600 group-hover:text-white group-active:text-white transition-colors">Course</span>
         </div>
-        <h3 className="font-semibold text-white mb-1 group-hover:text-lime-400 transition-colors">{title}</h3>
+        <h3 className="font-semibold text-white mb-1 group-hover:text-lime-400 group-active:text-lime-400 transition-colors">{title}</h3>
         <p className="text-gray-400 text-sm">{description}</p>
       </motion.div>
     </Link>
@@ -288,14 +288,14 @@ function Topic({ title, description, href, icon }) {
         animate={{ opacity: 1, y: 0 }}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.92 }}
-        className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(244,114,182,0.1)] transition-all duration-300 h-full">
+        className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(244,114,182,0.1)] active:border-zinc-400/30 active:shadow-[0_0_15px_rgba(244,114,182,0.1)] transition-all duration-300 h-full">
         <div className="flex items-start justify-between mb-3">
           <div className="w-8 h-8 rounded-lg bg-lime-400/10 flex items-center justify-center">
-            <FontAwesomeIcon icon={icon} className="text-lime-400 text-sm" />
+            <FontAwesomeIcon icon={icon} className="group-active:translate-x-1 text-lime-400 text-sm" />
           </div>
-          <span className="text-xs text-gray-600 group-hover:text-lime-400 transition-colors">Subcategory</span>
+          <span className="text-xs text-gray-600 group-hover:text-white group-active:text-white transition-colors">Subcategory</span>
         </div>
-        <h3 className="font-semibold text-white mb-1 group-hover:lime-pink-400 transition-colors">{title}</h3>
+        <h3 className="font-semibold text-white mb-1 group-hover:text-lime-400 group-active:text-lime-400 transition-colors">{title}</h3>
         <p className="text-gray-400 text-sm">{description}</p>
       </motion.div>
     </Link>
@@ -304,9 +304,9 @@ function Topic({ title, description, href, icon }) {
 
 function GuideLink({ href, children }) {
   return (
-    <Link href={href} className="group flex items-center gap-2 bg-zinc-900/40 border border-zinc-800 rounded-lg px-4 py-3 hover:border-zinc-400/30 hover:shadow-[0_0_10px_rgba(163,230,53,0.05)] transition-all duration-200">
-      <span className="text-sm text-gray-300 group-hover:text-lime-400 transition-colors">{children}</span>
-      <FontAwesomeIcon icon={faArrowRight} className="text-xs text-gray-600 group-hover:text-lime-400 group-hover:translate-x-1 transition-all" />
+    <Link href={href} className="group flex items-center gap-2 bg-zinc-900/40 border border-zinc-800 rounded-lg px-4 py-3 hover:border-zinc-400/30 hover:shadow-[0_0_10px_rgba(163,230,53,0.05)] active:border-zinc-400/30 active:shadow-[0_0_10px_rgba(163,230,53,0.05)] transition-all duration-200">
+      <span className="text-sm text-gray-300 group-hover:text-lime-400 group-active:text-lime-400 transition-colors">{children}</span>
+      <FontAwesomeIcon icon={faArrowRight} className="text-xs text-gray-600 group-hover:text-lime-400 group-active:text-lime-400 group-active:translate-x-1 transition-all" />
     </Link>
   );
 }
@@ -318,8 +318,8 @@ function Path({ title, steps, start }) {
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.92 }}
-      className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 space-y-4 hover:border-zinc-400/30 transition-all duration-300">
-      <h3 className="font-semibold text-white">{title}</h3>
+      className="bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 space-y-4 group hover:border-zinc-400/30 active:border-zinc-400/30 transition-all duration-300">
+      <h3 className="font-semibold text-white group-hover:text-lime-400 group-active:text-lime-400 transition-colors">{title}</h3>
       <div className="flex flex-wrap gap-2">
         {steps.map((step, i) => (
           <span key={i} className="text-xs bg-zinc-800 text-gray-300 px-2 py-1 rounded-full">
@@ -329,10 +329,10 @@ function Path({ title, steps, start }) {
       </div>
       <Link
         href={start}
-        className="group flex items-center gap-2 text-lime-400 text-sm hover:text-white transition-colors"
+        className="group flex items-center gap-2 text-lime-400 text-sm group-hover:text-white group-active:text-white transition-colors"
       >
         Start here
-        <FontAwesomeIcon icon={faArrowRight} className="text-xs group-hover:translate-x-1 transition-transform" />
+        <FontAwesomeIcon icon={faArrowRight} className="text-xs group-active:translate-x-1 transition-transform" />
       </Link>
     </motion.div>
   );

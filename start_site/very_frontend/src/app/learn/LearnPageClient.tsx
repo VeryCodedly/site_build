@@ -38,7 +38,7 @@ export default function LearnPage({ courses }: Props) {
       {/* HERO SECTION */}
       <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-30 sm:pt-24 pb-22 px-6 sm:px-6 lg:px-8">
         {/* Background gradient */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(163,230,53,0.05),transparent_50%)] pointer-events-none" />
+        {/* <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(163,230,53,0.05),transparent_50%)] pointer-events-none" /> */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(244,114,182,0.05),transparent_50%)] pointer-events-none" />
         
         {/* Content wrapper */}
@@ -86,7 +86,7 @@ export default function LearnPage({ courses }: Props) {
             </Link>
             <Link 
               href="#featured" 
-              className="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-2"
+              className="text-sm text-gray-400 hover:text-white active:text-white transition-colors flex items-center gap-2"
             >
               <span>Featured Lessons</span>
               <FontAwesomeIcon icon={faLongArrowRight} size="sm" />
@@ -192,13 +192,15 @@ export default function LearnPage({ courses }: Props) {
               desc: "HTML, CSS, JavaScript - build the visual layer of the web you interact with.",
               icon: faCode,
               color: "lime",
+              href: "/learn/html-beginner-tutorial",
               steps: ["HTML", "CSS", "JavaScript", "React"]
             },
             {
               name: "Backend Mastery",
               desc: "APIs, databases, Django - create powerful, robust server-side logic.",
               icon: faServer,
-              color: "pink",
+              color: "lime",
+              href: "/learn/python-programming-foundations",
               steps: ["Python", "APIs", "Databases", "Django"]
             },
             {
@@ -206,13 +208,14 @@ export default function LearnPage({ courses }: Props) {
               desc: "Python, Machine Learning, data handling - dive into the future of software.",
               icon: faBrain,
               color: "lime",
+              href: "/learn/python-programming-foundations",
               steps: ["Python", "Pandas", "ML Basics"]
             },
           ].map((track, index) => (
             <Motion.div
               key={track.name}
               className="bg-zinc-900/40 border border-zinc-800 p-6 rounded-2xl 
-                       hover:border-zinc-500/50 hover:shadow-[0_0_6px_#222222]
+                       hover:border-zinc-500/50 group hover:shadow-[0_0_6px_#222222]
                        backdrop-blur-sm transition-all duration-300 group relative"
               whileHover={{ y: -5 }}
               initial={{ opacity: 0, y: 20 }}
@@ -224,7 +227,7 @@ export default function LearnPage({ courses }: Props) {
               <div className={`w-10 h-10 rounded-lg bg-lime-400/10 flex items-center justify-center mb-4`}>
                 <FontAwesomeIcon icon={track.icon} className={`text-lime-400`} />
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-lime-400 transition-colors">
+              <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-lime-400 group-active:text-lime-400 transition-colors">
                 {track.name}
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed mb-4">{track.desc}</p>
@@ -235,8 +238,8 @@ export default function LearnPage({ courses }: Props) {
                   </span>
                 ))}
               </div>
-              <Link href={`/learn?path=${track.name.toLowerCase().replace(' ', '-')}`} className="inline-flex items-center gap-2 text-sm text-lime-400 group-hover:text-white transition-colors">
-                Start this path <FontAwesomeIcon icon={faArrowRight} size="xs" className="group-hover:translate-x-1 transition-transform" />
+              <Link href={track.href} className="inline-flex items-center gap-2 text-sm text-lime-400 group-hover:text-white group-active:text-white transition-colors">
+                Start this path <FontAwesomeIcon icon={faArrowRight} size="xs" className="group-active:translate-x-1 transition-transform" />
               </Link>
             </Motion.div>
           ))}
@@ -244,7 +247,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* FEATURED LESSONS - ENHANCED */}
-      <section id="featured" className="relative min-h-screen w-full mx-auto px-6 py-28 group/bar flex flex-row items-start border-t border-zinc-900 bg-gradient-to-b from-zinc-950 to-black">
+      <section id="featured" className="relative min-h-screen w-full mx-auto px-6 py-28 group/bar flex flex-row items-start border-t border-zinc-900">
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-12">
             <p className="text-xs uppercase tracking-widest text-gray-500 ml-2 mb-2 flex items-center gap-3">
@@ -259,7 +262,7 @@ export default function LearnPage({ courses }: Props) {
             <h2 className="text-4xl sm:text-5xl font-black mb-4">
               <span className="text-lime-400">Featured</span> Lessons
             </h2>
-            <p className="text-gray-400 max-w-2xl">
+            <p className="text-gray-400 max-w-2xl tracking-wide">
               Solid introductions to core concepts. Pick one and start learning in minutes.
             </p>
           </div>
@@ -291,7 +294,7 @@ export default function LearnPage({ courses }: Props) {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="group bg-zinc-900/40  border border-zinc-800 rounded-2xl p-6
+                className="group bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 active:border-zinc-500/50 active:shadow-[0_0_6px_#222222]
                    hover:border-zinc-500/50 hover:shadow-[0_0_6px_#222222] transition-all duration-500"
               >
                 <Link href={`/learn/${topic.course}/${topic.slug}`} className="flex flex-row gap-6">
@@ -304,7 +307,7 @@ export default function LearnPage({ courses }: Props) {
                       <span className="text-xs text-gray-600">•</span>
                       <span className="text-xs text-gray-600">{topic.duration}</span>
                     </div>
-                    <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-lime-400 transition-colors">
+                    <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-lime-400 group-active:text-lime-400 transition-colors">
                       {topic.name}
                     </h3>
                     <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
@@ -312,8 +315,8 @@ export default function LearnPage({ courses }: Props) {
                     </p>
                     <div className="flex items-center justify-between">
                       <span className="text-xs text-gray-600">{topic.level}</span>
-                      <div className="flex items-center gap-2 text-lime-400 font-medium text-sm group-hover:text-white transition-colors">
-                        Start Now <FontAwesomeIcon icon={faLongArrowRight} className="group-hover:translate-x-1 transition-transform" />
+                      <div className="flex items-center gap-2 text-lime-400 font-medium text-sm group-hover:text-white group-active:text-white transition-colors">
+                        Start Now <FontAwesomeIcon icon={faLongArrowRight} className="group-active:translate-x-1 transition-transform" />
                       </div>
                     </div>
                   </div>
@@ -336,7 +339,7 @@ export default function LearnPage({ courses }: Props) {
           </div>
           
           <div className="mt-12 text-center">
-            <Link href="#courses" className="text-sm inline-flex items-center gap-2 text-gray-400 hover:text-lime-400 transition-colors">
+            <Link href="#courses" className="text-sm inline-flex items-center gap-2 text-gray-400 hover:text-white active:text-white transition-colors">
               Browse courses <FontAwesomeIcon icon={faArrowRight} size="sm" />
             </Link>
           </div>
@@ -362,7 +365,7 @@ export default function LearnPage({ courses }: Props) {
                 Tools & <span className="text-lime-400">Resources</span>
               </h2>
             </div>
-            <p className="text-gray-400 max-w-md text-sm">
+            <p className="text-gray-400 max-w-md tracking-wide">
               The technologies we teach are actually used in production. You&apos;ll learn how.
             </p>
           </div>
@@ -416,7 +419,7 @@ export default function LearnPage({ courses }: Props) {
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed mb-8">
                 Ask questions, share progress, get feedback, and learn alongside 
-                people who are also figuring things out. No pressure, just progress.
+                people who are also figuring things out. No pressure.
               </p>
               <div className="flex gap-4">
                 <Link
