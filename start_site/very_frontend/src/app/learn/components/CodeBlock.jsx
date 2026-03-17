@@ -64,7 +64,7 @@ function CodeBlock({ block }) {
       </button>
       {/* </div> */}
 
-      <div className="md:p-2">
+      <div className="mt-3 md:p-2">
         <SyntaxHighlighter
           language={block.language || "javascript"}
           style={oneDark}

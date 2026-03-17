@@ -111,7 +111,7 @@ export default function CourseListClient({ courses }: CourseListClientProps) {
                 )}
 
                 <div className="flex items-center justify-between text-sm mt-2">
-                  <span className="text-lime-400 font-semibold group-hover:text-white flex items-center gap-2">
+                  <span className="text-lime-400 font-semibold group-hover:text-white group-active:text-white flex items-center gap-2">
                     {progress > 0 ? "Continue" : "Start Now"}
                     <FontAwesomeIcon
                       className="items-center group-active:translate-x-1 transition-transform"

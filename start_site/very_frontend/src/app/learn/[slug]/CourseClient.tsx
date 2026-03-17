@@ -65,7 +65,7 @@ const LessonCard = memo(
             <FontAwesomeIcon
               icon={faLongArrowRight}
               size="sm"
-              className="group-hover:translate-x-1 transition-transform"
+              className="group-active:translate-x-1 transition-transform"
             />
           </p>
         </motion.div>
