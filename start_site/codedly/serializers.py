@@ -111,6 +111,44 @@ class CourseSerializer(serializers.ModelSerializer):
         fields = ["lessons", "title", "slug", "description", "meta", "language", "prerequisites", "sort", "level", "image", "alt", "tags"]
         
         
+class LessonListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Lesson
+        fields = [
+            'slug', 
+            'title', 
+            'order', 
+            'description',
+            'duration',
+            'created_at',
+            'updated_at'
+        ]
+        read_only_fields = fields
+
+
+class CourseDetailSerializer(serializers.ModelSerializer):
+    """Course detail with nested lessons"""
+    lessons = LessonListSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Course
+        fields = [
+            'id',
+            'slug',
+            'title',
+            'description',
+            'image',
+            'alt',
+            'language',
+            'prerequisites',
+            'meta',
+            'created_at',
+            'updated_at',
+            'sort',
+            'lessons'
+        ]
+
+
 class LessonResourceSerializer(serializers.ModelSerializer):
     
     class Meta:

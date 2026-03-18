@@ -1,6 +1,6 @@
 // app/sitemap.ts
 import type { MetadataRoute } from "next";
-import { Post, Course, Lessons, Category, Subcategory } from "@/types/post"
+import { Post, Lessons, Category, Subcategory } from "@/types/post"  // Course
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
@@ -13,13 +13,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // STATIC PAGES
   const staticPages = [
-    "", "about", "read", "learn","know", "connect", "community", "contact",
-     "faqs", "privacy", "shop", "support", "terms"
-  ].map((path) => ({
+    { path: "", priority: 1.0 },
+    { path: "read", priority: 0.9 },
+    { path: "learn", priority: 0.9 },
+    { path: "know", priority: 0.9 },
+    { path: "connect", priority: 0.9 },
+    { path: "shop", priority: 0.9 },
+    { path: "about", priority: 0.8 },
+    { path: "community", priority: 0.8 },
+    { path: "contact", priority: 0.7 },
+    { path: "faqs", priority: 0.7 },
+    { path: "support", priority: 0.7 },
+    { path: "privacy", priority: 0.4 },
+    { path: "terms", priority: 0.4 },
+  ].map(({ path, priority }) => ({
     url: `${baseUrl}/${path}`,
-    // lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: path === "" ? 1.0 : 0.8,
+    changeFrequency: path === "" ? "daily" as const :
+      path === "read" || path === "learn" || path === "know" ? "weekly" as const :
+        "monthly" as const,
+    priority,
   }));
 
   // READ POSTS
@@ -47,7 +59,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       postsUrl = data.next || null;
     }
 
-    console.log(`Added ${readUrls.length} post URLs to sitemap`);
+    // console.log(`Added ${readUrls.length} post URLs to sitemap`);
   } catch (err) {
     console.error("Error fetching paginated posts:", err);
   }
@@ -61,12 +73,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       (data.results || []).forEach((cat: Category) => {
         categoryUrls.push({
           url: `${baseUrl}/read/category/${cat.slug}`,
-          // lastModified: new Date(subcat.updated_at || new Date()),
+          lastModified: new Date(),
           changeFrequency: "weekly" as const,
-          priority: 0.85,
+          priority: 0.8,
         });
       });
     }
+    // console.log(`Added ${categoryUrls.length} category URLs to sitemap`);
   } catch (err) {
     console.error("Failed to fetch categories:", err);
   }
@@ -80,12 +93,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       (data.results || []).forEach((subcat: Subcategory) => {
         subcategoryUrls.push({
           url: `${baseUrl}/read/subcategory/${subcat.slug}`,
-          // lastModified: new Date(subcat.updated_at || new Date()),
+          lastModified: new Date(),
           changeFrequency: "weekly" as const,
-          priority: 0.85,
+          priority: 0.8,
         });
       });
     }
+    // console.log(`Added ${subcategoryUrls.length} subcategory URLs to sitemap`);
   } catch (err) {
     console.error("Failed to fetch subcategories:", err);
   }
@@ -95,47 +109,47 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lessonUrls: MetadataRoute.Sitemap = [];
 
   try {
+    // Fetch ALL courses first
     const coursesRes = await fetch(`${API_BASE}/courses/`, { next: { revalidate: 3600 } });
+
     if (coursesRes.ok) {
       const coursesData = await coursesRes.json();
       const courses = coursesData.results || coursesData || [];
 
-      // Add course URLs
-      courses.forEach((course: Course) => {
+      // console.log(`Found ${courses.length} total courses`);
+
+      // Process each course ONCE
+      for (const course of courses) {
+        // Add course URL
         courseUrls.push({
           url: `${baseUrl}/learn/${course.slug}`,
           lastModified: new Date(course.updated_at || course.created_at || new Date()),
           changeFrequency: "weekly" as const,
           priority: 0.9,
         });
-      });
 
-      // Fetch lessons in parallel
-      const lessonPromises = courses.map(async (course: Course) => {
-        try {
-          const lessonsRes = await fetch(`${API_BASE}/courses/${course.slug}/`, {
-            next: { revalidate: 3600 },
-          });
-          if (!lessonsRes.ok) return [];
+        // Fetch lessons for THIS course (once)
+        const lessonsRes = await fetch(`${API_BASE}/courses/${course.slug}/`, {
+          next: { revalidate: 3600 },
+        });
 
+        if (lessonsRes.ok) {
           const lessonsData = await lessonsRes.json();
-          const rawLessons = lessonsData.lessons || lessonsData.results || lessonsData || [];
-          const lessons = Array.isArray(rawLessons) ? rawLessons : [];
+          const lessons = lessonsData.lessons || lessonsData.results || [];
 
-          return lessons.map((lesson: Lessons) => ({
-            url: `${baseUrl}/learn/${course.slug}/${lesson.slug}`,
-            lastModified: new Date(lesson.updated_at || lesson.created_at || new Date()),
-            changeFrequency: "weekly" as const, 
-            priority: 0.8,
-          }));
-        } catch (err) {
-          console.error(`Lessons fetch failed for ${course.slug}:`, err);
-          return [];
+          // console.log(`Course "${course.title}": ${lessons.length} lessons`);
+
+          lessons.forEach((lesson: Lessons) => {
+            lessonUrls.push({
+              url: `${baseUrl}/learn/${course.slug}/${lesson.slug}`,
+              lastModified: new Date(lesson.updated_at || lesson.created_at || new Date()),
+              changeFrequency: "weekly" as const,
+              priority: 0.8,
+            });
+          });
         }
-      });
-
-      const allLessonsArrays = await Promise.all(lessonPromises);
-      lessonUrls.push(...allLessonsArrays.flat());
+      }
+      // console.log(`Total: ${courseUrls.length} courses, ${lessonUrls.length} lessons`);
     }
   } catch (err) {
     console.error("Failed to fetch courses:", err);

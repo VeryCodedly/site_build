@@ -26,7 +26,7 @@ from rest_framework import generics
 from django.http import HttpResponse
 from django.db.models.functions import Length
 from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson
-from .serializers import CategoryPostsSerializer, PostSerializer, PostFeedSerializer, CategorySerializer, CommentSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer
+from .serializers import CategoryPostsSerializer, PostSerializer, PostFeedSerializer, CategorySerializer, CommentSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer, CourseDetailSerializer 
 
 
 CACHE_TIMEOUT = 300
@@ -331,7 +331,8 @@ class SubcategoryViewSet(viewsets.ModelViewSet):
 
         cache.set(cache_key, data, timeout=CACHE_TIMEOUT)
         return Response(data)
-            
+
+
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
@@ -343,8 +344,8 @@ class PostImageViewSet(viewsets.ModelViewSet):
 class PostLinkViewSet(viewsets.ModelViewSet):
     queryset = PostLink.objects.all()
     serializer_class = PostLinkSerializer
-    
-    
+
+
 class CourseViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Course.objects.all().order_by("sort")
     serializer_class = CourseSerializer
@@ -365,7 +366,7 @@ class CourseListView(generics.ListAPIView):
 
 class CourseDetailView(generics.RetrieveAPIView):
     queryset = Course.objects.all()
-    serializer_class = CourseSerializer
+    serializer_class = CourseDetailSerializer
     lookup_field = "slug"
 
 

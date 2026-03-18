@@ -247,7 +247,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* FEATURED LESSONS - ENHANCED */}
-      <section id="featured" className="relative min-h-screen w-full mx-auto px-6 py-28 group/bar flex flex-row items-start border-t border-zinc-900">
+      <section id="featured" className="relative min-h-screen w-full mx-auto px-6 py-32 group/bar flex flex-row items-start border-t border-zinc-900">
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-12">
             <p className="text-xs uppercase tracking-widest text-gray-500 ml-2 mb-2 flex items-center gap-3">
@@ -262,7 +262,7 @@ export default function LearnPage({ courses }: Props) {
             <h2 className="text-4xl sm:text-5xl font-black mb-4">
               <span className="text-lime-400">Featured</span> Lessons
             </h2>
-            <p className="text-gray-400 max-w-2xl tracking-wide">
+            <p className="text-gray-400 max-w-xl tracking-wide">
               Solid introductions to core concepts. Pick one and start learning in minutes.
             </p>
           </div>
@@ -307,7 +307,7 @@ export default function LearnPage({ courses }: Props) {
                       <span className="text-xs text-gray-600">•</span>
                       <span className="text-xs text-gray-600">{topic.duration}</span>
                     </div>
-                    <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-lime-400 group-active:text-lime-400 transition-colors">
+                    <h3 className="text-xl font-bold mb-3 text-white group-hover:text-lime-400 group-active:text-lime-400 transition-colors">
                       {topic.name}
                     </h3>
                     <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
@@ -328,7 +328,7 @@ export default function LearnPage({ courses }: Props) {
                         fill
                         src={topic.image}
                         alt={topic.name}
-                        className="relative z-10 object-contain group-hover:scale-110 group-active:scale-110 transition-transform duration-300"
+                        className="relative z-10 object-contain group-hover:scale-105 group-active:scale-110 transition-transform duration-300"
                         sizes="100px"
                       />
                     </div>

@@ -104,7 +104,7 @@ export default function Header() {
       <div
         ref={menuRef}
         className={`fixed top-full left-1/2 w-[84%] -translate-x-1/2 flex flex-col items-center transform transition-all duration-500 ease-in-out
-                bg-black backdrop-blur-lg border-3 border-zinc-700 rounded-4xl py-7 space-y-4 md:hidden  
+                bg-black backdrop-blur-lg border-3 border-zinc-700 rounded-4xl py-7 space-y-4.5 md:hidden  
                 ${menuOpen ? "opacity-100 translate-y-0 z-[60]" : "opacity-0 -translate-y-5 pointer-events-none"}`}
         onClick={() => setMenuOpen(false)}
         >
