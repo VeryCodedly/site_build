@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Start Here",
+  title: "Start",
   description: "New to VeryCodedly? Start here. It's a quick guide to what you’ll see here, how things work, and where to begin.",
   alternates: {
     canonical: "https://verycodedly.com/start",
   },
   openGraph: {
-    title: "Start Here",
+    title: "Start",
     description: "New to VeryCodedly? Start here. It's a quick guide to what you’ll see here, how things work, and where to begin.",
     siteName: 'VeryCodedly',
     url: "https://verycodedly.com/start",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Start Here",
+    title: "Start",
     description: "New to VeryCodedly? Start here. It's a quick guide to what you’ll see here, how things work, and where to begin.",
     images: ["https://verycodedly.com/twitter-image.png"],
     creator: '@verycodedly'
