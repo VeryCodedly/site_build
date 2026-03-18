@@ -19,7 +19,7 @@ async function getLesson(
       return null;
     }
 
-    const res = await fetch(`${apiUrl}/${courseSlug}/${lessonSlug}`, {
+    const res = await fetch(`${apiUrl}/${courseSlug}/${lessonSlug}/`, {
       next: { revalidate: 60 },
     });
 
