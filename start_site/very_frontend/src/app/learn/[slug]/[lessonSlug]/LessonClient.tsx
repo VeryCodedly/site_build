@@ -139,7 +139,7 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
               className={`flex items-center gap-2 px-8 py-3 rounded-full text-base font-bold tracking-tight transition-all duration-200 
                 ${isCompleted
                   ? "bg-lime-900/30 text-lime-400/50 cursor-not-allowed border border-lime-900/50"
-                  : "bg-lime-400 text-black hover:bg-white active:bg-white shadow-[0_4px_0_0_#9ca3af] hover:shadow-[0_2px_0_0_#9ca3af] active:shadow-[0_1px_0_0_#9ca3af] active:translate-y-1 hover:-translate-y-0.5"
+                  : "bg-lime-400 text-black hover:bg-white active:bg-white shadow-[0_4px_0_0_#3f3f46] hover:shadow-[0_2px_0_0_#9ca3af] active:shadow-[0_1px_0_0_#9ca3af] active:translate-y-1 hover:-translate-y-0.5"
                 }`}
             >
               <FontAwesomeIcon icon={faCheckCircle} className={isCompleted ? "opacity-50" : ""} />
@@ -148,7 +148,7 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
           </div>
 
           <div
-            className={`flex mt-16 mx-auto max-w-md px-4 sm:px-0 ${lesson.previous_lesson && lesson.next_lesson ? "justify-between" : "justify-center"
+            className={`flex mt-16 mx-auto max-w-3xl px-4 sm:px-0 ${lesson.previous_lesson && lesson.next_lesson ? "justify-between" : "justify-center"
               }`}
           >
             {lesson.previous_lesson && (

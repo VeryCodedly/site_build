@@ -97,7 +97,7 @@ export default async function LessonPage(props: Props) {
         })}
       </Script>
 
-      <LessonClient lesson={lesson} courseSlug={slug} />;
+      <LessonClient lesson={lesson} courseSlug={slug} />
     </>
 );
 }
