@@ -31,14 +31,14 @@ export default function StartPage() {
             Start <span className="bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent">Here</span>
           </h1>
 
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto md:mx-0 leading-relaxed">
+          <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto md:mx-0 leading-relaxed">
             Welcome to <span className="font-semibold text-lime-400">VeryCodedly</span>.
             If this is your first time here, this page will guide you through the
             best places to begin from courses to articles, and a few
             paths you can follow depending on what you&apos;re trying to learn.
           </p>
 
-          <div className="flex items-center justify-center md:justify-start gap-2 text-gray-500 italic border-l-4 border-lime-400/50 pl-4 rounded-md">
+          <div className="flex items-center justify-center md:justify-start gap-2 text-gray-500 italic border-l-4 border-lime-400/50 pl-2 md:pl-4 rounded-md">
             <p className="text-sm">Start here. Or wander. Both work. Enjoy.</p>
           </div>
         </section>

@@ -154,13 +154,13 @@ export default function LessonContent({
               case "table":
                 return (
                   <div key={index} className="overflow-x-auto my-10 transition-transform duration-300 hover:scale-[1.01]">
-                    <table className="w-full border-collapse backdrop-blur-md bg-zinc-900/80 border border-white/70 rounded-xl shadow-lg overflow-hidden">
+                    <table className="w-full border-collapse backdrop-blur-md bg-zinc-900/40 border border-white/70 rounded-xl shadow-lg overflow-hidden">
                       <thead className="bg-zinc-700/30">
                         <tr>
                           {block.headers?.map((header, i) => (
                             <th
                               key={i}
-                              className="px-4 py-3 text-left text-sm sm:text-base font-semibold text-white/90 border-b border-white/30"
+                              className="px-4 py-3 text-left text-sm sm:text-base text-white/90 border-b border-white/30"
                             >
                               {header}
                             </th>

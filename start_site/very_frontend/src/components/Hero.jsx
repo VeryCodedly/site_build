@@ -12,7 +12,7 @@ export default function Hero() {
       <div className="flex-1 space-y-6 z-20 mx-auto md:items-center">
         {/* <div className="min-h-[230px] w-[400px] flex relative"> */}
         {/* <div className="w-full max-w-[400px] min-w-[180px] min-h-[180px] sm:min-h-[180px] md:min-h-[230px] flex relative"> */}
-        <div className="w-full max-w-[400px] min-h-[180px] min-w-[300px] sm:min-h-[220px] sm:min-w-[400px] flex relative">
+        <div className="w-full max-w-[400px] min-h-[180px] min-w-[300px] sm:min-h-[230px] sm:min-w-[400px] flex relative">
           <h1 className="hero text-[2.9rem] sm:text-6xl md:text-6xl lg:text-6xl text-white font-extrabold leading-tight">
             <span className="hero opacity-0 w-full max-w-[400px] min-h-[180px] min-w-[300px] sm:min-h-[230px] sm:min-w-[400px] flex absolute">
               Ready to see what's next in Tech?
