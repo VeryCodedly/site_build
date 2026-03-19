@@ -39,7 +39,7 @@ const geist = localFont({
 
 export const metadata: Metadata = {
   title: { default: 'VeryCodedly', template: '%s | VeryCodedly' },
-  description: "Tech. Code. Culture. VeryCodedly is your go-to tech hub for hardware deep-dives, free coding courses, unfiltered takes and the latest digital trends. No cookies, no login, no tracking.",
+  description: "We like Tech, Code, Culture and everything in between, so we built a place to talk about it. Here you'll find hardware deep dives, free coding courses, and the latest digital trends. Come in.",
   metadataBase: new URL("https://verycodedly.com"),
   manifest: '/manifest.json',
   alternates: {
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'VeryCodedly | Tech. Code. Culture. From the inside.',
-    description: "We like Tech, Code, Culture and everything in between, so we built a place to talk about it with you. Here you'll find hardware deep dives, free coding courses, and the latest digital trends. Come in.",
+    description: "We like Tech, Code, Culture and everything in between, so we built a place to talk about it. Here you'll find hardware deep dives, free coding courses, and the latest digital trends. Come in.",
     url: 'https://verycodedly.com',
     siteName: 'VeryCodedly',
     images: [{ url: 'https://verycodedly.com/opengraph-image.png' }],
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "VeryCodedly | Tech. Code. Culture. From the inside.",
-    description: "Tech. Code. Culture. VeryCodedly is your go-to tech hub for hardware deep-dives, free coding courses, unfiltered takes and the latest digital trends. No cookies, no login, no tracking.",
+    description: "We like Tech, Code, Culture and everything in between, so we built a place to talk about it. Here you'll find hardware deep dives, free coding courses, and the latest digital trends. Come in.",
     images: ["https://verycodedly.com/twitter-image.png"],
   },
 };

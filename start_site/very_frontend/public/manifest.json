@@ -1,7 +1,8 @@
 {
   "name": "VeryCodedly",
   "short_name": "VeryCodedly",
-  "description": "We like Tech, Code, Culture and everything in between, so we built a place to talk about it with you. Here you'll find hardware deep dives, free coding courses, and the latest digital trends. Come in.",
+  "description": "We like Tech, Code, Culture and everything in between, so we built a place to talk about it. Here you'll find hardware deep dives, free coding courses, and the latest digital trends. Come in.",
+  "id": "/",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

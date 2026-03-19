@@ -1,44 +1,51 @@
-const CACHE_NAME = 'verycodedly-v01';
+const CACHE_NAME = 'verycodedly-v2';
 
-// Offline page + visual assets only
 const OFFLINE_ASSETS = [
   '/offline.html',
   '/favicon.ico',
-  '/images/mascot.svg',
+  '/images/mascot.svg'
 ];
 
+// INSTALL
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(OFFLINE_ASSETS))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(OFFLINE_ASSETS))
   );
   self.skipWaiting();
 });
 
-
 // ACTIVATE
 self.addEventListener('activate', (event) => {
-  // Don't wait. claim clients immediately
-  event.waitUntil(self.clients.claim());
-  
-  // Cleanup old caches in background without blocking
-  caches.keys().then(keys => {
-    keys.forEach(key => {
-      if (key !== CACHE_NAME) caches.delete(key);
-    });
-  });
-});
-
-self.addEventListener('fetch', (event) => {
-  // Only intercept navigation requests
-  if (event.request.mode !== 'navigate') return;
-
-  event.respondWith(
-    fetch(event.request)
-      .catch(() => caches.match('/offline.html'))
+  event.waitUntil(
+    caches.keys().then((keys) =>
+      Promise.all(
+        keys.filter((key) => key !== CACHE_NAME)
+            .map((key) => caches.delete(key))
+      )
+    )
   );
+  self.clients.claim();
 });
 
+// FETCH
+self.addEventListener('fetch', (event) => {
+  const { request } = event;
+
+  // Only handle navigation or offline assets
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request).catch(() => caches.match('/offline.html'))
+    );
+    return;
+  }
+
+  // Serve offline assets if network fails
+  if (OFFLINE_ASSETS.includes(new URL(request.url).pathname)) {
+    event.respondWith(
+      caches.match(request).catch(() => fetch(request))
+    );
+  }
+});
 
 // const CACHE_NAME = 'verycodedly-v6';
 
