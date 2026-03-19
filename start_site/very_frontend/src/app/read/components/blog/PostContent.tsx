@@ -243,7 +243,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
             {post.images.map((img, index) => (
               <div key={img.id || index} className="group relative overflow-hidden rounded-2xl bg-black/50 select-none">
                 <Image src={img.image || 'read-post-image.png'} alt={img.alt || 'Gallery image'} width={400} height={300}
-                  className="w-full h-50 sm:h-58 object-cover group-hover:scale-105 group-active:scale-105 transition-transform duration-500"
+                  className="w-full h-56 sm:h-58 object-cover group-hover:scale-105 group-active:scale-105 transition-transform duration-500"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 {(img.alt || img.caption) && (

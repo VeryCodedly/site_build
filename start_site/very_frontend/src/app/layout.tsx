@@ -38,7 +38,7 @@ const geist = localFont({
 
 
 export const metadata: Metadata = {
-  title: { default: 'VeryCodedly', template: '%s | VeryCodedly' },
+  title: { default: 'VeryCodedly | Tech. Code. Culture. From the inside.', template: '%s | VeryCodedly' },
   description: "We like Tech, Code, Culture and everything in between, so we built a place to talk about it. Here you'll find hardware deep dives, free coding courses, and the latest digital trends. Come in.",
   metadataBase: new URL("https://verycodedly.com"),
   manifest: '/manifest.json',
