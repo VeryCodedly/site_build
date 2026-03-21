@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Shop",
+  title: "Merch",
   description: "Shop VeryCodedly merch, tools and premium content.",
   alternates: {
-    canonical: "https://verycodedly.com/shop",
+    canonical: "https://verycodedly.com/merch",
   },
   openGraph: {
-    title: "Shop",
+    title: "Merch",
     description: "Shop VeryCodedly merch, tools and premium content.",
     siteName: 'VeryCodedly',
-    url: "https://verycodedly.com/shop",
+    url: "https://verycodedly.com/merch",
     images: [{ url: "https://verycodedly.com/opengraph-image.png" }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shop",
+    title: "Merch",
     description: "Shop VeryCodedly merch, tools and premium content.",
     images: ["https://verycodedly.com/twitter-image.png"],
     creator: '@verycodedly'

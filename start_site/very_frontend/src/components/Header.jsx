@@ -82,7 +82,7 @@ export default function Header() {
                 {/* <p className="px-2 text-white hover:text-lime-400 transition">🚧</p> */}
               </nav>
               <div className="mr-4 flex items-center">
-                <Link href="/shop" className="hidden md:inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 text-black px-3 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
+                <Link href="/merch" className="hidden md:inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 text-black px-3 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
                 active:text-black shadow-[0_3.5px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
                   <FontAwesomeIcon className="" icon={faCartShopping} size="sm" />
                 </Link>
@@ -149,7 +149,7 @@ export default function Header() {
           </Link>
 
           <Link
-            href="/shop"
+            href="/merch"
             className="inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 text-black px-3.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
                 active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
             onClick={() => setMenuOpen(false)}

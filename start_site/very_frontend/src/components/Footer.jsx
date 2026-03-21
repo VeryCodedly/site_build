@@ -54,10 +54,10 @@ export default function Footer() {
           <ul className="space-y-3 text-sm">
             {[
               ["About", "/about"],
-              ["Shop", "/shop"],
               ["Read", "/read"],
               ["Learn", "/learn"],
               ["Know", "/know"],
+              ["Merch", "/merch"],
               ["Connect", "/connect"],
             ].map(([label, href]) => (
               <li key={href}>

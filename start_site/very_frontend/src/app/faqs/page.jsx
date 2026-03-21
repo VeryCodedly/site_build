@@ -95,6 +95,25 @@ export default function FAQsPage() {
               Check out our <Link href="/community" className="text-lime-400 underline hover:text-lime-300 transition-colors duration-200">community page</Link> to join Discord or Facebook groups.
             </p>
           </Motion.div>
+          <Motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+          >
+            <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">How does the store work?</h3>
+            <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed mb-3">
+              We're a small operation running things manually. Multiple items might ship separately depending on what they are. Shipping times vary because, well, shipping is weird sometimes.
+            </p>
+            <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed">
+              Everything is final sale for now. We're figuring out the logistics and don't want to promise returns we can't handle cleanly. No vex.
+            </p>
+            <Link 
+              href="/merch" 
+              className="inline-block mt-4 text-lime-400 hover:text-lime-300 active:text-lime-300 underline transition-colors duration-200 text-sm font-medium"
+            >
+              Take a look →
+            </Link>
+          </Motion.div>
         </div>
       </Motion.div>
     </section>
