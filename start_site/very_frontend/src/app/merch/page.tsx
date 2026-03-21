@@ -544,7 +544,7 @@ export default function StorePage() {
                         VeryCodedly Merch </span><span className="text-4xl md:text-5xl">🚧</span>
                 </h1>
                 <p className="text-gray-400 text-base md:text-lg max-w-full sm:max-w-3xl tracking-wide">
-                    Shirts, mugs, and other things for people who read the source code, and people who don&apos;t know what that means.
+                    For people who read the source code, and people who have no idea what that means.
                 </p>
 
                 {/* Badges */}
