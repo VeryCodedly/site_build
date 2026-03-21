@@ -48,10 +48,10 @@ export default async function LessonPage(props: Props) {
   return (
     <>
       {/* Structured Data for Google */}
-      <Script id="course-structured-data" type="application/ld+json">
+      <Script id="course-structured-data" type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Lesson",
+          "@type": "CollectionPage",
           "name": lesson.title,
           "description": lesson.description || `Learn something new with this ${lesson.title} lesson from VeryCodedly.`,
           "provider": {

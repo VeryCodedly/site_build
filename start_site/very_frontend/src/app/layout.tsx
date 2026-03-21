@@ -8,7 +8,7 @@ import TopButton from "@/components/TopButton";
 import Footer from "@/components/Footer";
 import ServiceWorkerRegister from './sw-register';
 import { GoogleAnalytics } from '@next/third-parties/google'
-
+import Script from "next/script";
 
 config.autoAddCss = false;
 
@@ -39,7 +39,7 @@ const geist = localFont({
 
 export const metadata: Metadata = {
   title: { default: 'VeryCodedly | Tech. Code. Culture. From the inside.', template: '%s | VeryCodedly' },
-  description: "We like Tech, Code, Culture and everything in between, so we built a place to talk about it. Here you'll find hardware deep dives, free coding courses, and the latest digital trends. Come in.",
+  description: "We like Tech, Code, Culture and everything in between, so we built a place to talk about it. Here you'll find hardware deep dives, free coding courses, the latest digital trends, and a community that actually helps. Come in.",
   metadataBase: new URL("https://verycodedly.com"),
   manifest: '/manifest.json',
   alternates: {
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: 'VeryCodedly | Tech. Code. Culture. From the inside.',
-    description: "We like Tech, Code, Culture and everything in between, so we built a place to talk about it. Here you'll find hardware deep dives, free coding courses, and the latest digital trends. Come in.",
+    description: "We like Tech, Code, Culture and everything in between, so we built a place to talk about it. Here you'll find hardware deep dives, free coding courses, the latest digital trends, and a community that helps. Come in.",
     url: 'https://verycodedly.com',
     siteName: 'VeryCodedly',
     images: [{ url: 'https://verycodedly.com/opengraph-image.png' }],
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "VeryCodedly | Tech. Code. Culture. From the inside.",
-    description: "We like Tech, Code, Culture and everything in between, so we built a place to talk about it. Here you'll find hardware deep dives, free coding courses, and the latest digital trends. Come in.",
+    description: "We like Tech, Code, Culture and everything in between, so we built a place to talk about it. Here you'll find hardware deep dives, free coding courses, the latest digital trends, and a community that helps. Come in.",
     images: ["https://verycodedly.com/twitter-image.png"],
   },
 };
@@ -91,6 +91,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en" className="custom-scrollbar">
       <head>
@@ -110,6 +111,20 @@ export default function RootLayout({
       <body className={`${pops.variable} ${robo.variable} ${geist.variable} antialiased`}>
         <Header />
         <ServiceWorkerRegister />
+        <Script id="website-structured-data" type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "VeryCodedly",
+            "url": "https://verycodedly.com",
+            "description": "We like Tech, Code, Culture and everything in between, so we built a place to talk about it. Here you'll find hardware deep dives, free coding courses, the latest digital trends, and a community that helps. Come in.",
+            "provider": {
+              "@type": "Organization",
+              "name": "VeryCodedly",
+              "sameAs": "https://verycodedly.com"
+            },
+          })}
+        </Script>
         {children}
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
         <TopButton />
@@ -119,4 +134,4 @@ export default function RootLayout({
   );
 }
 
-// Tech. Code. Culture. We’re your friendly neighborhood tech hub — decoding the stories, tools, and trends shaping the future of the web.
+// Tech. Code. Culture. We’re your friendly neighborhood tech hub.

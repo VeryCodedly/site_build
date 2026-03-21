@@ -61,7 +61,7 @@ export default async function SubcategoryPage({
   return (
     <>
     {/* Structured Data */}
-      <Script id="structured-data" type="application/ld+json">
+      <Script id="structured-data" type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CollectionPage",

@@ -44,7 +44,7 @@ export default async function CoursePage(props: Props) {
   return (
     <>
       {/* Structured Data for Google */}
-      <Script id="course-structured-data" type="application/ld+json">
+      <Script id="course-structured-data" type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CollectionPage",
