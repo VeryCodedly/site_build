@@ -143,7 +143,7 @@ export default function CTA() {
           <div className="flex justify-center lg:justify-end">
             <Link
               href="/start"
-              className="font-semibold border-3 border-gray-500 px-8 py-1 rounded-full bg-lime-400 hover:bg-white active:bg-white text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1 transition-all duration-200"
+              className="font-semibold border-3 border-gray-500 px-6 py-1 rounded-full bg-lime-400 hover:bg-white active:bg-white text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1 transition-all duration-200"
             >
               Start Here
             </Link>

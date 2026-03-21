@@ -2,7 +2,7 @@ import { faLongArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 
-export default function BlogSection() {
+export default function ReadSection() {
   return (
     <section className="py-24 bg-transparent border-b border-zinc-900">
       <div className="max-w-6xl mx-auto px-6 text-center">

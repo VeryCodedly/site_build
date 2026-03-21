@@ -5,7 +5,7 @@ import TeaserCards from "@/components/TeaserCards";
 import Community from "@/components/Community";
 import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
-import BlogSection from "../components/BlogSection";
+import ReadSection from "../components/ReadSection";
 import LearnSection from "../components/LearnSection";
 
 
@@ -19,9 +19,9 @@ export default function Home() {
 
         <TeaserCards />
 
-        <LearnSection />
+        <ReadSection />
 
-        <BlogSection />
+        <LearnSection />
 
         <Community />
 

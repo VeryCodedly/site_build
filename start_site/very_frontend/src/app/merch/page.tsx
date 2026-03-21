@@ -488,9 +488,9 @@ export default function StorePage() {
                                                 {/* Remove Button */}
                                                 <button
                                                     onClick={() => removeItem(item.id)}
-                                                    className="p-2 hover:bg-zinc-800 active:bg-zinc-800 rounded-lg transition-colors"
+                                                    className="group p-2 hover:bg-zinc-800 active:bg-zinc-800 rounded-lg transition-colors"
                                                 >
-                                                    <FontAwesomeIcon icon={faTrashCan} className="text-gray-600 active:text-pink-400" />
+                                                    <FontAwesomeIcon icon={faTrashCan} className="text-gray-600 group-active:text-pink-400" />
                                                 </button>
                                             </motion.div>
                                         ))}
