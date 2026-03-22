@@ -539,16 +539,16 @@ export default function StorePage() {
 
             {/* Header */}
             <div className="max-w-7xl mx-auto px-3 sm:px-4 mb-18">
-                <h1 className="mb-6">
+                <h1 className="mb-8">
                     <span className="text-4xl md:text-5xl font-black bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent">
                         VeryCodedly Merch </span><span className="text-4xl md:text-5xl">🚧</span>
                 </h1>
-                <p className="text-gray-400 text-base md:text-lg max-w-full sm:max-w-3xl tracking-wide">
+                <p className="text-gray-400 text-base md:text-lg max-w-full">
                     For people who read the source code, and people who have no idea what that means.
                 </p>
 
                 {/* Badges */}
-                <div className="flex flex-col sm:flex-row flex-wrap gap-2 mt-6 max-w-xs sm:max-w-none">
+                <div className="flex flex-col sm:flex-row flex-wrap gap-2 mt-8 max-w-xs sm:max-w-none">
                     <div className="w-fit flex items-center gap-2 text-xs text-gray-500 bg-zinc-900/30 px-3 py-1.5 rounded-full border border-zinc-800">
                         <FontAwesomeIcon icon={faTruck} className="text-lime-600" />
                         <span>Ships worldwide</span>
