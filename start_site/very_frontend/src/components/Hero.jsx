@@ -27,8 +27,8 @@ export default function Hero() {
             />
           </h1>
         </div>
-        <p className="w-full max-w-[320px] sm:max-w-[380px] md:max-w-[400px] text-gray-400 text-md sm:text-base tracking-wide sm:tracking-wider md:tracking-widest leading-snug">
-          Everything you need to know, straight to the point.
+        <p className="w-full max-w-[360px] sm:max-w-[400px] text-gray-400 text-lg tracking-wider leading-relaxed">
+          What you need to know, straight to the point.
         </p>
         <div className="flex space-x-4.5">
           <Link href="/learn" aria-label="Learn Page button" className="font-bold sm:font-bold cursor-pointer border-3 border-gray-500/100 bg-lime-400 text-black px-6 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
