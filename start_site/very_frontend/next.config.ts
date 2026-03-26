@@ -75,10 +75,17 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
 
+  // LOW RAM + COOLIFY
+  output: 'standalone',
+
   experimental: {
-    optimizeCss: true,
     scrollRestoration: true,
+    // helps with memory during webpack build
+    webpackMemoryOptimizations: true,
   },
+
+  productionBrowserSourceMaps: false, // (saves memory & size)
+  compress: true, // recommended for ISR + performance
 
   images: {
     remotePatterns: [

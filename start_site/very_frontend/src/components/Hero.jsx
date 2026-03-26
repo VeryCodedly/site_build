@@ -27,7 +27,7 @@ export default function Hero() {
             />
           </h1>
         </div>
-        <p className="w-full max-w-[360px] sm:max-w-[400px] text-gray-400 text-lg tracking-wider leading-relaxed">
+        <p className="w-full max-w-[360px] sm:max-w-[395px] text-gray-400 text-lg tracking-wider leading-snug">
           What you need to know, straight to the point.
         </p>
         <div className="flex space-x-4.5">
