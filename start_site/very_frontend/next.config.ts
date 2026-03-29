@@ -72,16 +72,16 @@ const securityHeaders = [
 
 /*  Next.js Config  */
 const nextConfig: NextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: !isDev,
   poweredByHeader: false,
 
   // LOW RAM + COOLIFY
-  output: 'standalone',
+  output: isDev ? undefined : 'standalone',
 
   experimental: {
     scrollRestoration: true,
     // helps with memory during webpack build
-    webpackMemoryOptimizations: true,
+    webpackMemoryOptimizations: !isDev,
   },
 
   productionBrowserSourceMaps: false, // (saves memory & size)
@@ -151,6 +151,7 @@ const nextConfig: NextConfig = {
       source: "/(.*)",
       headers: [
         { key: "Content-Security-Policy", value: csp },
+        { key: "Cache-Control", value: "public, s-maxage=3600, stale-while-revalidate=59" },
         ...securityHeaders,
       ],
     },
