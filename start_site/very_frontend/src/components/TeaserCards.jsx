@@ -63,17 +63,17 @@ export default function TeaserCards() {
           <Motion.div
             id={`card-${card.id}`}
             key={index}
-            className={`relative rounded-3xl px-8 sm:px-10 py-9 border border-gray-700/60 bg-white/5 backdrop-blur-md active:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
+            className={`relative rounded-3xl px-10 sm:px-10 py-9 border border-gray-700/60 bg-white/5 backdrop-blur-md active:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               shadow-[0_15px_20px_rgba(0,0,0,0.6),0_15px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               hover:ring-1 transition-all duration-300 group`}
-            whileHover={{ scale: 1.10 }}
+            whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.92 }}
             style={{ zIndex: 0 }} 
             onMouseEnter={(e) => (e.currentTarget.style.zIndex = 10)}
             onMouseLeave={(e) => (e.currentTarget.style.zIndex = 0)}
           >        
           <Link aria-label={card.title} href={card.href} key={index}>
-            <div className={`${card.color} text-3xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
+            <div className={`${card.color} text-3xl mb-4 transition-transform duration-300`}>
               <FontAwesomeIcon icon={card.icon} />
             </div>
 
@@ -86,7 +86,7 @@ export default function TeaserCards() {
               {card.description}
             </p>
 
-            <div className={`absolute bottom-4 left-8 h-0.5 w-20 ${card.accent} opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500`}></div>
+            <div className={`absolute bottom-4 left-10 h-0.5 w-20 ${card.accent} opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500`}></div>
           </Motion.div>
         ))}
       </div>
