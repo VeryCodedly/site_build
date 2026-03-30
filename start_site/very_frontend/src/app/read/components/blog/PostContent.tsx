@@ -90,7 +90,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
             </span>
             {post.author || 'Anon'}
           </span>
-          <span className="inline-flex text-xs md:text-sm items-center gap-1 tracking-tighter">
+          <span className="inline-flex text-xs md:text-sm items-center gap-1 tracking-tighter" suppressHydrationWarning>
             <FontAwesomeIcon icon={faCalendar} />
             {new Date(post.created_at).toLocaleDateString('en-US', {
               year: 'numeric',

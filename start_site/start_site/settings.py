@@ -140,6 +140,9 @@ DATABASES = {
     )
 }
 
+# make the Supabase Pooler work
+DATABASES["default"]["DISABLE_SERVER_SIDE_CURSORS"] = True
+
 # --- PASSWORD VALIDATION ---
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
