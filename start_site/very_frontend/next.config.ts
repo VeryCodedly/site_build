@@ -75,8 +75,8 @@ const nextConfig: NextConfig = {
   reactStrictMode: !isDev,
   poweredByHeader: false,
 
-  // LOW RAM + COOLIFY
-  output: isDev ? undefined : 'standalone',
+  // LOW RAM + COOLIFY (revisit if miration)
+  // output: isDev ? undefined : 'standalone',
 
   experimental: {
     scrollRestoration: true,

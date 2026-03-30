@@ -28,6 +28,7 @@ export interface BlogBlock {
 interface BlogContentJSON {
   title?: string;
   blocks: BlogBlock[];
+  image_prompt?: string;
 }
 
 interface PostContentProps {

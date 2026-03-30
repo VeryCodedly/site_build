@@ -12,6 +12,7 @@ interface LessonBlock {
     | "list"
     | "link"
     | "callout"
+    | "note"
     | "code"
     | "table"
     | "lessonImg";
@@ -204,6 +205,7 @@ export default function LessonContent({
               );
 
             case "callout":
+              case "note":
               return (
                 <div
                   key={index}
