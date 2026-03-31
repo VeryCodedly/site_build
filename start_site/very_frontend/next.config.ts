@@ -19,7 +19,7 @@ const cspProd = [
   "base-uri 'self'",
   "block-all-mixed-content",
   "font-src 'self' data:",
-  "img-src 'self' data: blob: https://res.cloudinary.com",
+  "img-src 'self' data: blob: https://res.cloudinary.com https://www.googletagmanager.com https://google-analytics.com",
   "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://www.googletagmanager.com https://www.google-analytics.com",
   "style-src 'self' 'unsafe-inline'",
   "connect-src 'self' https://api.verycodedly.com https://res.cloudinary.com wss: https://www.google-analytics.com https://analytics.google.com",
@@ -96,25 +96,13 @@ const nextConfig: NextConfig = {
   async headers() {
     const csp = isDev ? cspDev : cspProd;
     return [
-      // 1️⃣ Next.js static JS chunks
     {
-      source: "/_next/static/chunks/(.*)",
+      source: "/_next/static/:path*",
       headers: [
-        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-      ],
-    },
-    // 2️⃣ Next.js CSS chunks
-    {
-      source: "/_next/static/css/(.*)",
-      headers: [
-        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
-      ],
-    },
-    // 3️⃣ Fonts / media
-    {
-      source: "/_next/static/media/(.*)",
-      headers: [
-        { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        { 
+          key: "Cache-Control", 
+          value: "public, max-age=31536000, immutable" 
+        },
       ],
     },
     // 4️⃣ Service worker
@@ -225,3 +213,24 @@ export default nextConfig;
       //     },
       //   ],
       // }
+      //   // 1️⃣ Next.js static JS chunks
+    // {
+    //   source: "/_next/static/chunks/(.*)",
+    //   headers: [
+    //     { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+    //   ],
+    // },
+    // // 2️⃣ Next.js CSS chunks
+    // {
+    //   source: "/_next/static/css/(.*)",
+    //   headers: [
+    //     { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+    //   ],
+    // },
+    // // 3️⃣ Fonts / media
+    // {
+    //   source: "/_next/static/media/(.*)",
+    //   headers: [
+    //     { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+    //   ],
+    // },
