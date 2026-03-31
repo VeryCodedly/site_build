@@ -399,7 +399,7 @@ export default function StorePage() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setIsCartOpen(false)}
-                            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+                            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50"
                         />
 
                         {/* Cart Panel */}
@@ -408,7 +408,7 @@ export default function StorePage() {
                             animate={{ x: 0 }}
                             exit={{ x: "100%" }}
                             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-                            className="fixed right-0 top-0 h-full w-full max-w-md bg-black/30 border-l border-zinc-800 shadow-2xl z-70 flex flex-col backdrop-blur-lg"
+                            className="fixed right-0 top-0 h-full w-full max-w-md bg-black/30 border-l border-zinc-800 shadow-2xl z-70 flex flex-col backdrop-blur-md"
                         >
                             {/* Cart Header */}
                             <div className="flex items-center justify-between p-6 border-b border-zinc-800">
@@ -488,7 +488,7 @@ export default function StorePage() {
                                                 {/* Remove Button */}
                                                 <button
                                                     onClick={() => removeItem(item.id)}
-                                                    className="group p-2 hover:bg-zinc-800 active:bg-zinc-800 rounded-lg transition-colors"
+                                                    className="group p-2 hover:bg-zinc-800 active:bg-zinc-800 rounded-lg transition-all"
                                                 >
                                                     <FontAwesomeIcon icon={faTrashCan} className="text-gray-600 group-active:text-pink-400" />
                                                 </button>
@@ -748,7 +748,7 @@ export default function StorePage() {
             <div className="max-w-7xl mx-auto px-3 sm:px-8 mt-16 text-center">
                 <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent mx-auto mb-4" />
                 <p className="text-xs text-gray-700">
-                    See anything you like? • Thanks for the support!
+                    See anything you like? Thanks for the support!
                 </p>
             </div>
         </section>
