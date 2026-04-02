@@ -22,7 +22,7 @@ export default function MiniPostCard({ post }: { post: Post }) {
         <h3 className="text-sm sm:text-base text-white hover:text-lime-400 active:text-lime-400 line-clamp-3">
           {post.title}
         </h3>
-        <p className="text-xs text-gray-400/80 mt-1">
+        <p className="text-xs text-gray-400/80 mt-1" suppressHydrationWarning>
           {new Date(post.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
         </p>
       </div>

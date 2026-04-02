@@ -130,7 +130,7 @@ export default function ReadPageClient({ data }: Props) {
         </div>
 
         {/* scroll cue */}
-        <Link href="#posts">
+        <a href="#posts">
           <Motion.div
             className="absolute bottom-6 sm:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30 text-gray-400"
             animate={{ y: [0, 10, 0] }}
@@ -141,7 +141,7 @@ export default function ReadPageClient({ data }: Props) {
             <span className="text-base sm:text-sm tracking-widest uppercase">read</span>
             <span className="text-base sm:text-base"><FontAwesomeIcon icon={faLongArrowDown} size="sm" /></span>
           </Motion.div>
-        </Link>
+        </a>
       </section>
 
       {/* POSTS SECTION */}

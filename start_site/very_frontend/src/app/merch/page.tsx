@@ -509,7 +509,7 @@ export default function StorePage() {
                                         <span>Shipping & taxes calculated at checkout</span>
                                     </div>
                                     <button
-                                        className="w-full bg-lime-400 text-black py-3 rounded-full font-semibold hover:bg-white transition-colors shadow-[0_4px_0_0_#3f3f46] hover:shadow-[0_2px_0_0_#3f3f46] active:shadow-[0_1px_0_0_#3f3f46] active:translate-y-1 hover:-translate-y-0.5 transition-all duration-200"
+                                        className="w-full bg-lime-400 text-black py-3 rounded-full font-semibold hover:bg-white shadow-[0_4px_0_0_#3f3f46] hover:shadow-[0_2px_0_0_#3f3f46] active:shadow-[0_1px_0_0_#3f3f46] active:translate-y-1 hover:-translate-y-0.5 transition-all duration-200"
                                     >
                                         Checkout
                                     </button>
