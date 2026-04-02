@@ -84,13 +84,13 @@ export default function LearnPage({ courses }: Props) {
             >
               Start Learning
             </Link>
-            <Link 
+            <a 
               href="#featured" 
               className="text-sm text-gray-400 hover:text-white active:text-white transition-colors flex items-center gap-2"
             >
               <span>Featured Lessons</span>
               <FontAwesomeIcon icon={faLongArrowRight} size="sm" />
-            </Link>
+            </a>
           </div>
           
           {/* <div className="h-0.5 w-24 bg-gradient-to-r from-lime-400 to-lime-400 mt-8 rounded-full"></div> */}
@@ -339,9 +339,9 @@ export default function LearnPage({ courses }: Props) {
           </div>
           
           <div className="mt-12 text-center">
-            <Link href="#courses" className="text-sm inline-flex items-center gap-2 text-gray-400 hover:text-white active:text-white transition-colors">
+            <a href="#courses" className="text-sm inline-flex items-center gap-2 text-gray-400 hover:text-white active:text-white transition-colors">
               Browse courses <FontAwesomeIcon icon={faArrowRight} size="sm" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -441,7 +441,7 @@ export default function LearnPage({ courses }: Props) {
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { stat: "500+", label: "Learners" },
+                { stat: "Study", label: "Buddies" },
                 { stat: "24/7", label: "Support" },
                 { stat: "Free", label: "Always" },
                 { stat: "Zero", label: "Judgment" }

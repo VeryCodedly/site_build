@@ -97,7 +97,7 @@ const nextConfig: NextConfig = {
     const csp = isDev ? cspDev : cspProd;
     return [
       {
-        source: "/_next/static/:path*",
+        source: "/_next/static/(.*)",
         headers: [
           {
             key: "Cache-Control",
@@ -106,7 +106,16 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/(images|logos|icons|screenshots|favicon.ico|apple-touch-icon.png|manifest.json|offline.html)/:path*",
+        source: "/_next/image/(.*)",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable"
+          },
+        ],
+      },
+      {
+        source: "/(images|logos|icons|screenshots|favicon.ico|apple-touch-icon.png|manifest.json|offline.html)/(.*)",
         headers: [
           {
             key: "Cache-Control",
@@ -115,7 +124,7 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/(about|community|connect|contact|faqs|support|know|privacy|terms|merch|thank-you|start)/:path*",
+        source: "/(about|community|connect|contact|faqs|support|know|privacy|terms|merch|thank-you|start)/(.*)",
         headers: [
           {
             key: "Cache-Control",
@@ -128,25 +137,25 @@ const nextConfig: NextConfig = {
         source: "/sw.js",
         headers: [
           { key: "Content-Type", value: "application/javascript; charset=utf-8" },
-          { key: "Cache-Control", value: "no-cache, no-store, must-revalidate" },
+          { key: "Cache-Control", value: "max-age=0, must-revalidate" },
           { key: "Content-Security-Policy", value: "default-src 'self'; script-src 'self'" },
         ],
       },
       {
-        source: "/read/:path*",
+        source: "/read/(.*)",
         headers: [
           {
             key: "Cache-Control",
-            value: "public, s-maxage=60, stale-while-revalidate=86400"
+            value: "public, s-maxage=3600, stale-while-revalidate=86400"
           },
         ],
       },
       {
-        source: "/learn/:path*",
+        source: "/learn/(.*)",
         headers: [
           {
             key: "Cache-Control",
-            value: "public, s-maxage=60, stale-while-revalidate=86400"
+            value: "public, s-maxage=21600, stale-while-revalidate=86400"
           },
         ],
       },
