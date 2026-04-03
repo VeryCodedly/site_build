@@ -36,7 +36,7 @@ export default function LearnPage({ courses }: Props) {
   return (
     <div className="bg-gradient-to-b from-black via-black to-zinc-950/40 text-white">
       {/* HERO SECTION */}
-      <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-26 sm:pt-20 pb-0 px-6 sm:px-6 lg:px-8">
+      <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-26 sm:pt-20 pb-10 px-6 sm:px-6 lg:px-8">
         {/* Background gradient */}
         {/* <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(163,230,53,0.05),transparent_50%)] pointer-events-none" /> */}
         {/* <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(244,114,182,0.05),transparent_50%)] pointer-events-none" /> */}
