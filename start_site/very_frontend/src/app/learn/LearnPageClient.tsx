@@ -76,7 +76,7 @@ export default function LearnPage({ courses }: Props) {
             one concept at a time.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center gap-6 py-12">
+          <div className="flex flex-col sm:flex-row items-center gap-8 py-12">
             <Link 
               href="#courses" 
               className="font-bold sm:font-bold cursor-pointer border-3 border-gray-500/100 bg-lime-400 text-black px-6 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
@@ -114,7 +114,7 @@ export default function LearnPage({ courses }: Props) {
               <h2 className="text-3xl font-bold text-white">Why Learn <span className="text-lime-400">Here</span></h2>
             </div>
             <div className="md:col-span-2 space-y-6">
-              <p className="text-gray-300 text-lg leading-relaxed">
+              <p className="text-gray-300/90 text-base leading-relaxed">
                 Most coding resources rush you from syntax to frameworks. 
                 <span className="text-lime-400 font-medium"> VeryCodedly goes the other way</span>. We start with understanding, then build speed.
               </p>
@@ -366,7 +366,7 @@ export default function LearnPage({ courses }: Props) {
               </h2>
             </div>
             <p className="text-gray-400 max-w-md tracking-wide">
-              The technologies we teach are actually used in production. You&apos;ll learn how.
+              The technologies we teach are used in production. You&apos;ll learn how.
             </p>
           </div>
           
@@ -417,7 +417,7 @@ export default function LearnPage({ courses }: Props) {
               <h2 className="text-4xl sm:text-5xl font-black mb-6">
                 Join the <span className="text-lime-400">Community</span>
               </h2>
-              <p className="text-gray-400 text-lg leading-relaxed mb-8">
+              <p className="text-gray-400 text-base leading-relaxed mb-8">
                 Ask questions, share progress, get feedback, and learn with 
                 people who are also figuring things out. No pressure.
               </p>
