@@ -322,7 +322,7 @@ export default function StorePage() {
     const totalPrice = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
     return (
-        <section className="w-full bg-gradient-to-b from-black to-zinc-950 text-white min-h-screen pt-10 pb-24 px-6 sm:px-8">
+        <section className="w-full bg-gradient-to-b from-black via-black to-zinc-950 text-white min-h-screen pt-10 pb-24 px-6 sm:px-8">
             {/* Ghost animation */}
             {ghost && (
                 <motion.div
@@ -399,7 +399,7 @@ export default function StorePage() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setIsCartOpen(false)}
-                            className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50"
+                            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
                         />
 
                         {/* Cart Panel */}
@@ -538,7 +538,7 @@ export default function StorePage() {
             </motion.div>
 
             {/* Header */}
-            <div className="max-w-7xl mx-auto px-3 sm:px-4 mb-18">
+            <div className="max-w-7xl mx-auto mb-18">
                 <h1 className="mb-8">
                     <span className="text-4xl md:text-5xl font-black bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent">
                         VeryCodedly Merch </span><span className="text-4xl md:text-5xl">🚧</span>
@@ -566,7 +566,7 @@ export default function StorePage() {
 
             {/* Hats Section */}
             {hats.length > 0 && (
-                <section className="max-w-7xl mx-auto px-3 sm:px-4 mb-16">
+                <section className="max-w-7xl mx-auto pr-4 mb-16">
                     <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-4 mb-6 group/mugs">
                         <div className="flex items-center gap-2">
                             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/mugs:bg-pink-400 transition-colors" />
@@ -596,7 +596,7 @@ export default function StorePage() {
 
             {/* Mugs Section */}
             {mugs.length > 0 && (
-                <section className="max-w-7xl mx-auto px-3 sm:px-4 mb-16">
+                <section className="max-w-7xl mx-auto pr-4 mb-16">
                     <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-4 mb-6 group/mugs">
                         <div className="flex items-center gap-2">
                             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/mugs:bg-pink-400 transition-colors" />
@@ -626,7 +626,7 @@ export default function StorePage() {
 
             {/* Hoodies Section */}
             {hoodies.length > 0 && (
-                <section className="max-w-7xl mx-auto px-3 sm:px-4 mb-16">
+                <section className="max-w-7xl mx-auto pr-4 mb-16">
                     <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-4 mb-6 group/shirts">
                         <div className="flex items-center gap-2">
                             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/shirts:bg-pink-400 transition-colors" />
@@ -656,7 +656,7 @@ export default function StorePage() {
 
             {/* Shirts Section */}
             {shirts.length > 0 && (
-                <section className="max-w-7xl mx-auto px-3 sm:px-4 mb-16">
+                <section className="max-w-7xl mx-auto pr-4 mb-16">
                     <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-4 mb-6 group/shirts">
                         <div className="flex items-center gap-2">
                             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/shirts:bg-pink-400 transition-colors" />
@@ -686,7 +686,7 @@ export default function StorePage() {
 
             {/* Digital Products Section */}
             {digital.length > 0 && (
-                <section className="max-w-7xl mx-auto px-3 sm:px-4 mb-16">
+                <section className="max-w-7xl mx-auto pr-4 mb-16">
                     <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-4 mb-6 group/digital">
                         <div className="flex items-center gap-2">
                             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/digital:bg-pink-400 transition-colors" />
@@ -695,7 +695,7 @@ export default function StorePage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6 }}
                                 viewport={{ once: true }}
-                                className="text-xl text-white font-semibold tracking-tight"
+                                className="text-xl text-white font-semibold tracking-tighter"
                             >
                                 PDFs/Guides
                             </motion.h2>
@@ -716,7 +716,7 @@ export default function StorePage() {
 
             {/* Cheats Section */}
             {cheats.length > 0 && (
-                <section className="max-w-7xl mx-auto px-3 sm:px-4 mb-16">
+                <section className="max-w-7xl mx-auto pr-4 mb-16">
                     <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-4 mb-6 group/shirts">
                         <div className="flex items-center gap-2">
                             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/shirts:bg-pink-400 transition-colors" />
@@ -725,7 +725,7 @@ export default function StorePage() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6 }}
                                 viewport={{ once: true }}
-                                className="text-xl text-white font-semibold tracking-tight"
+                                className="text-xl text-white font-semibold tracking-tighter"
                             >
                                 Cheatsheets
                             </motion.h2>
@@ -745,7 +745,7 @@ export default function StorePage() {
             )}
 
             {/* Footer note */}
-            <div className="max-w-7xl mx-auto px-3 sm:px-8 mt-16 text-center">
+            <div className="max-w-7xl mx-auto x-3 m:px-8 mt-16 text-center">
                 <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent mx-auto mb-4" />
                 <p className="text-xs text-gray-700">
                     See anything you like? Thanks for the support!

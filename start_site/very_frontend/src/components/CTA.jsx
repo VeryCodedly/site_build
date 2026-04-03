@@ -23,13 +23,13 @@ export default function CTA() {
   }, [startTyping]);
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-black to-zinc-950 text-white py-16 md:py-24 lg:py-24 px-6 lg:px-16 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-b from-black to-zinc-950 text-white py-28 md:py-32 lg:py-32 px-6 lg:px-16 overflow-hidden">
       <div className="max-w-7xl mx-auto">
 
         {/* Terminal FIRST on small screens */}
-        <div className="lg:hidden flex justify-center mb-12">
+        <div className="lg:hidden flex justify-center mb-22">
           <div className="w-full max-w-md">
-            <div className="relative bg-zinc-900/30 backdrop-blur-sm border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden">
+            <div className="relative bg-zinc-900/30 backdrop-blur-sm order order-zinc-800 rounded-2xl shadow-2xl overflow-hidden">
               {/* Terminal Header */}
               <div className="flex items-center gap-1.5 px-4 py-3 bg-zinc-900/70 border-b border-zinc-800">
                 <div className="w-3 h-3 rounded-full bg-red-500/70" />
@@ -131,19 +131,19 @@ export default function CTA() {
 
         {/* MAIN */}
         <div className="relative z-10 max-w-2xl mx-auto lg:ml-auto lg:w-1/2 lg:mr-0 text-center lg:text-right">
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight bg-gradient-to-r from-white to-lime-300 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-7 leading-tight bg-gradient-to-r from-white to-lime-300 bg-clip-text text-transparent">
             Ready<br /> to Create <br /> Something <br /> Brilliant?
           </h2>
 
-          <p className="text-gray-300/90 text-base md:text-lg mb-10 max-w-sm mx-auto lg:ml-auto lg:mr-0">
-            Start learning with a community of bold thinkers, dreamers, and doers.
+          <p className="text-gray-300/90 text-base px-2 md:px-0 md:text-lg mb-10 max-w-sm mx-auto lg:ml-auto lg:mr-0">
+            Start learning with a community of bold thinkers, dreamers, and doers.<br />
             Your next big thing starts here.
           </p>
 
           <div className="flex justify-center lg:justify-end">
             <Link
               href="/start"
-              className="font-semibold border-3 border-gray-500 px-6 py-1 rounded-full bg-lime-400 hover:bg-white active:bg-white text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1 transition-all duration-200"
+              className="font-semibold border-3 border-gray-500 px-7 py-1 rounded-full bg-lime-400 hover:bg-white active:bg-white text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1 transition-all duration-200"
             >
               Start Here
             </Link>

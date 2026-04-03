@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function LearnSection() {
   return (
-    <section className="py-24 bg-transparent border-y border-zinc-900">
+    <section className="py-24 bg-transparent order-y border-zinc-900">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
           Learn with <span className="text-lime-400">VeryCodedly</span>

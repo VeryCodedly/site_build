@@ -34,12 +34,12 @@ interface Props {
 
 export default function LearnPage({ courses }: Props) {
   return (
-    <div className="bg-gradient-to-b from-black to-zinc-950 text-white">
+    <div className="bg-gradient-to-b from-black via-black to-zinc-950 text-white">
       {/* HERO SECTION */}
-      <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-30 sm:pt-24 pb-22 px-6 sm:px-6 lg:px-8">
+      <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-26 sm:pt-20 pb-20 px-6 sm:px-6 lg:px-8">
         {/* Background gradient */}
-        {/* <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(163,230,53,0.05),transparent_50%)] pointer-events-none" /> */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(244,114,182,0.05),transparent_50%)] pointer-events-none" />
+        {/* <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(163,230,53,0.05),transparent_50%)] pointer-events-none" /> */}
+        {/* <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(244,114,182,0.05),transparent_50%)] pointer-events-none" /> */}
         
         {/* Content wrapper */}
         <div className="relative max-w-6xl mx-auto flex flex-col items-center justify-center text-center gap-8">
@@ -76,7 +76,7 @@ export default function LearnPage({ courses }: Props) {
             one concept at a time.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center gap-4 py-12 bottom-12">
+          <div className="flex flex-col sm:flex-row items-center gap-6 py-12 bottom-12">
             <Link 
               href="#courses" 
               className="font-bold sm:font-bold cursor-pointer border-3 border-gray-500/100 bg-lime-400 text-black px-6 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
@@ -98,7 +98,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* WHY THIS EXISTS - ENHANCED */}
-      <section className="border-t border-zinc-900 py-24 px-6 group">
+      <section className="order-t order-zinc-900 py-20 px-6 group">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             <div>
@@ -145,7 +145,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* COURSES SECTION */}
-      <section id="courses" className="bg-black min-h-screen mx-auto px-6 py-22 border-y border-zinc-900">
+      <section id="courses" className="bg-black min-h-screen mx-auto px-6 py-20 order-y order-zinc-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-lime-400/10 px-3 py-1.5 rounded-full border border-lime-400/20 mb-4">
@@ -166,7 +166,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* LEARNING PATHS - ENHANCED */}
-      <section className="max-w-6xl mx-auto min-h-screen py-22 px-6 flex flex-col items-left justify-center group/bar">
+      <section className="max-w-6xl mx-auto min-h-screen py-20 px-6 flex flex-col items-left justify-center group/bar">
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-4">
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/bar:bg-pink-400 group-active/bar:bg-pink-400" />
@@ -224,14 +224,14 @@ export default function LearnPage({ courses }: Props) {
               viewport={{ once: true }}
               tabIndex={0}
             >
-              <div className={`w-10 h-10 rounded-lg bg-lime-400/10 flex items-center justify-center mb-4`}>
+              <div className={`w-10 h-6 rounded-lg bg-lime-400/10 flex items-center justify-center mb-3`}>
                 <FontAwesomeIcon icon={track.icon} className={`text-lime-400`} />
               </div>
               <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-lime-400 group-active:text-lime-400 transition-colors">
                 {track.name}
               </h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-4">{track.desc}</p>
-              <div className="flex flex-wrap gap-2 mb-4">
+              <p className="text-gray-400 text-sm leading-relaxed mb-3">{track.desc}</p>
+              <div className="flex flex-wrap gap-2 mb-3">
                 {track.steps.map((step, i) => (
                   <span key={i} className="text-xs bg-zinc-800 text-gray-400 px-2 py-1 rounded-full">
                     {step}
@@ -247,7 +247,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* FEATURED LESSONS - ENHANCED */}
-      <section id="featured" className="relative min-h-screen w-full mx-auto px-6 py-32 group/bar flex flex-row items-start border-t border-zinc-900">
+      <section id="featured" className="relative min-h-screen w-full mx-auto px-6 py-20 group/bar flex flex-row items-start order-t order-zinc-900">
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-12">
             <p className="text-xs uppercase tracking-widest text-gray-500 ml-2 mb-2 flex items-center gap-3">
@@ -347,7 +347,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* TOOLS & RESOURCES - ENHANCED */}
-      <section className="py-20 w-full mx-auto px-6 border-t border-zinc-900 group">
+      <section className="py-20 w-full mx-auto px-6 order-t order-zinc-900 group">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
@@ -370,7 +370,7 @@ export default function LearnPage({ courses }: Props) {
             </p>
           </div>
           
-          <div className="grid grid-cols-3 sm:grid-cols-6 gap-4">
+          <div className="grid grid-cols-3 sm:grid-cols-6 gap-4 mb-4">
             {[
               { src: "/logos/vscode.svg", name: "VS Code" },
               { src: "/logos/react.svg", name: "React" },
@@ -400,7 +400,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* COMMUNITY SECTION - ENHANCED */}
-      <section className="py-20 w-full mx-auto px-6 border-t border-zinc-900 group">
+      <section className="py-20 w-full mx-auto px-6 order-t order-zinc-900 group">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -418,7 +418,7 @@ export default function LearnPage({ courses }: Props) {
                 Join the <span className="text-lime-400">Community</span>
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed mb-8">
-                Ask questions, share progress, get feedback, and learn alongside 
+                Ask questions, share progress, get feedback, and learn with 
                 people who are also figuring things out. No pressure.
               </p>
               <div className="flex gap-4">
@@ -459,7 +459,7 @@ export default function LearnPage({ courses }: Props) {
       {/* FOOTER NOTE */}
       <div className="max-w-6xl mx-auto px-6 text-center pb-16">
         <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent mx-auto mb-4" />
-        <p className="text-xs text-gray-700">
+        <p className="text-xs text-gray-700 pb-6">
           We keep it simple, one concept at a time.
         </p>
       </div>

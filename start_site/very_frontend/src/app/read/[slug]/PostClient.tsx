@@ -49,7 +49,7 @@ export default function PostClient({ post, related, trending }: PostClientProps)
                 </Link>
             </motion.div>
 
-            <section className="max-w-4xl mx-auto">
+            <section className="max-w-4xl mx-auto pb-12">
                 <PostContent post={post} contentJson={contentJson} />
                 <RelatedPostsSection posts={related} trending={trending} name={post.subcategory?.name} />
             </section>

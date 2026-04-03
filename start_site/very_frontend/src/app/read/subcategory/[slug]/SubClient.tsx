@@ -44,7 +44,7 @@ export default function SubClient({
 
     return (
         <section>
-            <section className="min-h-screen max-w-[90%] sm:max-w-[94%] mx-auto bg-black text-white px-2 pb-14">
+            <section className="min-h-screen max-w-[90%] sm:max-w-[94%] mx-auto bg-black text-white px-2 pb-20">
                 <div className="max-w-5xl mx-auto">
                     <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
                         <Link href="/read" className="inline-flex items-center  text-lime-400 pt-8 hover:text-white text-sm sm:text-base active:text-white active:scale-60 transition-all duration-300"
