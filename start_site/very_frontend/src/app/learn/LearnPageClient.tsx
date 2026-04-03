@@ -34,9 +34,9 @@ interface Props {
 
 export default function LearnPage({ courses }: Props) {
   return (
-    <div className="bg-gradient-to-b from-black via-black to-zinc-950 text-white">
+    <div className="bg-gradient-to-b from-black via-black to-zinc-950/40 text-white">
       {/* HERO SECTION */}
-      <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-26 sm:pt-20 pb-20 px-6 sm:px-6 lg:px-8">
+      <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden pt-26 sm:pt-20 pb-0 px-6 sm:px-6 lg:px-8">
         {/* Background gradient */}
         {/* <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(163,230,53,0.05),transparent_50%)] pointer-events-none" /> */}
         {/* <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(244,114,182,0.05),transparent_50%)] pointer-events-none" /> */}
@@ -76,7 +76,7 @@ export default function LearnPage({ courses }: Props) {
             one concept at a time.
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center gap-6 py-12 bottom-12">
+          <div className="flex flex-col sm:flex-row items-center gap-6 py-12">
             <Link 
               href="#courses" 
               className="font-bold sm:font-bold cursor-pointer border-3 border-gray-500/100 bg-lime-400 text-black px-6 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
@@ -98,7 +98,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* WHY THIS EXISTS - ENHANCED */}
-      <section className="order-t order-zinc-900 py-20 px-6 group">
+      <section className="pt-16 pb-20 px-6 group">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             <div>
@@ -148,10 +148,10 @@ export default function LearnPage({ courses }: Props) {
       <section id="courses" className="bg-black min-h-screen mx-auto px-6 py-20 order-y order-zinc-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-lime-400/10 px-3 py-1.5 rounded-full border border-lime-400/20 mb-4">
+            {/* <div className="inline-flex items-center gap-2 bg-lime-400/10 px-3 py-1.5 rounded-full border border-lime-400/20 mb-4">
               <FontAwesomeIcon icon={faCode} className="text-lime-400 text-sm" />
               <span className="text-xs text-lime-400 font-medium tracking-wide">STRUCTURED LEARNING</span>
-            </div>
+            </div> */}
             <h2 className="text-4xl sm:text-5xl font-black mb-4">
               Courses from <span className="text-lime-400">VeryCodedly</span>
             </h2>
@@ -247,7 +247,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* FEATURED LESSONS - ENHANCED */}
-      <section id="featured" className="relative min-h-screen w-full mx-auto px-6 py-20 group/bar flex flex-row items-start order-t order-zinc-900">
+      <section id="featured" className="relative min-h-screen w-full mx-auto px-6 py-20 group/bar flex flex-row items-start">
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-12">
             <p className="text-xs uppercase tracking-widest text-gray-500 ml-2 mb-2 flex items-center gap-3">
@@ -347,7 +347,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* TOOLS & RESOURCES - ENHANCED */}
-      <section className="py-20 w-full mx-auto px-6 order-t order-zinc-900 group">
+      <section className="py-20 w-full mx-auto px-6 group">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
@@ -400,7 +400,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* COMMUNITY SECTION - ENHANCED */}
-      <section className="py-20 w-full mx-auto px-6 order-t order-zinc-900 group">
+      <section className="py-20 w-full mx-auto px-6 group">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -457,7 +457,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* FOOTER NOTE */}
-      <div className="max-w-6xl mx-auto px-6 text-center pb-16">
+      <div className="max-w-6xl mx-auto px-6 text-center pb-24">
         <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent mx-auto mb-4" />
         <p className="text-xs text-gray-700 pb-6">
           We keep it simple, one concept at a time.

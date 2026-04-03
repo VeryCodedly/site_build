@@ -57,7 +57,7 @@ export default function SubClient({
                             {name}
                         </h1>
                         {about && (
-                            <div className="mt-6 py-2 mb-12">
+                            <div className="mt-6 py-2 mb-10">
                                 <p className="whitespace-pre-wra italic text-sm m:text-base max-w-2xl tracking-tight text-zinc-300/80 pl-4.5 sm:pl-4 border-l-4 border-lime-500 rounded-sm">
                                     {about}
                                 </p>
@@ -69,7 +69,7 @@ export default function SubClient({
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.02 }}
-                        className="py-10 px-4 w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-5 border-y border-zinc-700 rounded-xl"
+                        className="py-12 px-4 w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-5 border-y border-zinc-700 rounded-xl"
                     >
                         {posts?.map((post: Post) => (
                             <motion.div key={post.slug} >
@@ -77,13 +77,13 @@ export default function SubClient({
                             </motion.div>
                         ))}
                     </motion.div>
-                    {/* <div className=""> */}
+                    <div className="pt-4">
                         <RelatedPostsSection
                             subcategoryName={subcategory.name}
                             posts={posts}
                             trending={trending}
                         />
-                    {/* </div> */}
+                    </div>
                 </div>
             </section>
         </section>

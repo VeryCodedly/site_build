@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function CommunityPage() {
   return (
-    <section className="relative min-h-screen py-20 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-900/50">
+    <section className="relative min-h-screen pt-10 pb-30 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-900/50">
       <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-cover opacity-60"></div>
       <Motion.div
         initial={{ opacity: 0, y: 20 }}

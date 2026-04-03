@@ -95,7 +95,7 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
 
   if (lessons.length === 0) {
     return (
-      <section className="w-full bg-gradient-to-b from-black to-zinc-950 text-white min-h-screen pt-10 pb-24 px-6">
+      <section className="w-full bg-gradient-to-b from-black to-zinc-950/40 text-white min-h-screen pt-10 pb-24 px-6">
         <div className="max-w-5xl mx-auto text-center py-12 text-gray-400">
           <p className="text-lg italic">No lessons available yet.</p>
           <p className="mt-2 text-sm">Check back soon for updates!</p>
@@ -105,7 +105,7 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
   }
 
   return (
-    <section className="w-full bg-gradient-to-b from-black to-zinc-950 text-white min-h-screen pt-10 pb-24 px-8 sm:px-8">
+    <section className="w-full bg-gradient-to-b from-black to-zinc-950/40 text-white min-h-screen pt-10 pb-28 px-8 sm:px-8">
       {/* Back button */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}

@@ -23,7 +23,7 @@ export default function CTA() {
   }, [startTyping]);
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-black to-zinc-950 text-white py-28 md:py-32 lg:py-32 px-6 lg:px-16 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-b from-black to-zinc-950/40 text-white py-28 md:py-32 lg:py-32 px-6 lg:px-16 overflow-hidden">
       <div className="max-w-7xl mx-auto">
 
         {/* Terminal FIRST on small screens */}

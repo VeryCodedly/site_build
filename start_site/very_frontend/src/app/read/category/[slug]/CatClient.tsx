@@ -26,11 +26,11 @@ export default function CatClient({ category,
                 className="min-h-screen max-w-[90%] sm:max-w-[94%] bg-black text-white pb-20 px-2 mx-auto"
             >
                 <Motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-                <Link href="/read" className="inline-flex items-center pt-8 text-lime-400 hover:text-white active:text-white active:scale-60 transition-all duration-300 text-sm sm:text-base">
-                    <FontAwesomeIcon icon={faArrowLeft} size="lg" />
-                    <span className="sr-only">Go Home</span>
-                </Link>
-            </Motion.div>
+                    <Link href="/read" className="inline-flex items-center pt-8 text-lime-400 hover:text-white active:text-white active:scale-60 transition-all duration-300 text-sm sm:text-base">
+                        <FontAwesomeIcon icon={faArrowLeft} size="lg" />
+                        <span className="sr-only">Go Home</span>
+                    </Link>
+                </Motion.div>
                 <div className="max-w-5xl mx-auto">
                     {/* Title */}
                     <h1
@@ -40,7 +40,7 @@ export default function CatClient({ category,
                     </h1>
                     {/* Count */}
                     <p
-                        className="text-md text-left text-gray-400 mt-6 mb-12 w-fit border-l-4 border-lime-400 rounded-sm pl-4 sm:pl-4"
+                        className="text-md text-left text-gray-400 mt-6 mb-10 w-fit border-l-4 border-lime-400 rounded-sm pl-4 sm:pl-4"
                     >
                         {posts?.length} {posts?.length === 1 ? "post" : "posts"} in this category
                     </p>
@@ -50,7 +50,7 @@ export default function CatClient({ category,
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.02 }}
-                        className="py-10 px-4 w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-5 border-y border-zinc-700 rounded-xl"
+                        className="py-12 px-4 w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-5 border-y border-zinc-700 rounded-xl"
                     >
                         {posts?.map((post: Post) => (
                             <Motion.div key={post.slug} >
@@ -59,11 +59,13 @@ export default function CatClient({ category,
                         ))}
                     </Motion.div>
                 </div>
-                <RelatedPostsSection
-                    subcategoryName={category.name}
-                    posts={posts}
-                    trending={trending}
-                />
+                <div className="pt-4">
+                    <RelatedPostsSection
+                        subcategoryName={category.name}
+                        posts={posts}
+                        trending={trending}
+                    />
+                </div>
             </Motion.div>
         </>
     );

@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 export default function PrivacyPage() {
   return (
-    <section className="relative min-h-screen py-20 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-900/50">
+    <section className="relative min-h-screen pt-10 pb-30 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-900/50">
       <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-cover opacity-60"></div>
 
       <Motion.div
@@ -38,8 +38,8 @@ export default function PrivacyPage() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto"
         >
-          No cookies · No login · No tracking · No bullshit.<br />
-          We built this platform to help you learn and keep up with the tech space, not to track or exploit you. Here’s exactly how we handle your data.
+          {/* No cookies · No login · No tracking · No bullshit.<br /> */}
+          We built this place to help you learn and keep up with the tech space, so here’s exactly how we handle your data.
         </Motion.p>
 
         {/* Key Promises */}

@@ -30,12 +30,12 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative bg-gradient-to-b from-zinc-950 via-black to-zinc-950 text-gray-300/80 py-24 px-8 overflow-hidden border-t border-gray-700/20">
+    <footer className="relative bg-gradient-to-b from-black to-zinc-950 text-gray-300/80 py-24 px-8 overflow-hidden border-t border-zinc-950">
       {/* faint glow background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
 
       {/* content grid */}
-      <div className="relative max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-14 lg:pl-16">
+      <div className="relative max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 pt-8 gap-14 lg:pl-16">
         {/* Brand Column */}
         <div>
           <h3 className="text-lime-400 text-xl font-bold mb-3">
@@ -124,7 +124,7 @@ export default function Footer() {
       </div>
 
       {/* Divider */}
-      <div className="relative w-full h-px bg-gradient-to-r from-transparent via-gray-600/40 to-transparent my-16" />
+      <div className="relative w-full h-px g-gradient-to-r from-transparent via-gray-800/50 to-transparent my-12" />
 
       {/* Logo + Bottom line */}
       <div className="relative flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto gap-6">
@@ -140,8 +140,8 @@ export default function Footer() {
           />
         </Link>
 
-        <p className="text-xs text-gray-600 text-center sm:text-right">
-            VeryCodedly<span className="text-xs">™</span>{" "}{year && `${year}`}.
+        <p className="text-xs text-gray-600 text-center sm:text-right sm:pr-3">
+            VeryCodedly<span className="text-xs">™</span>{" "}{year && `${year}`}
         </p>
       </div>
     </footer>

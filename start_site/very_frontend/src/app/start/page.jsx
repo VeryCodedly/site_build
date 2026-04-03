@@ -17,7 +17,7 @@ import {
 
 export default function StartPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black to-zinc-950 text-white px-6 pt-16 pb-16">
+    <main className="min-h-screen bg-gradient-to-b from-black to-zinc-950/40 text-white px-6 pt-20 pb-28">
       <div className="max-w-5xl mx-auto space-y-16">
 
         {/* HERO */}
@@ -31,7 +31,7 @@ export default function StartPage() {
             Start <span className="bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent">Here</span>
           </h1>
 
-          <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto md:mx-0 leading-relaxed">
+          <p className="text-base md:text-lg text-gray-300/90 max-w-2xl mx-auto md:mx-0 leading-relaxed">
             Welcome to <span className="font-semibold text-lime-400">VeryCodedly</span>.
             If this is your first time here, this page will guide you through the
             best places to begin from courses to articles, and a few
@@ -44,7 +44,7 @@ export default function StartPage() {
         </section>
 
         {/* COURSES */}
-        <section className="space-y-8 group/courses">
+        <section className="mt-6 space-y-8 group/courses">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
               <div className="flex items-center gap-3 mb-6">
@@ -234,21 +234,21 @@ export default function StartPage() {
 
         {/* PHILOSOPHY */}
         <section className="relative pt-12">
-          <div className="absolute left-0 top-0 w-24 h-px bg-zinc-800" />
+          {/* <div className="absolute left-0 top-0 w-24 h-px bg-zinc-800" /> */}
 
           <div className="space-y-4 max-w-3xl">
-            <h2 className="text-2xl font-bold text-white">Why We Do This</h2>
+            <h2 className="text-2xl font-bold text-white pb-2.5">Why We Do This</h2>
 
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-gray-300/90 leading-relaxed">
               VeryCodedly exists to make tech clear and a little less intimidating.
             </p>
 
-            <p className="text-gray-300 leading-relaxed">
+            <p className="text-gray-300/90 leading-relaxed">
               We connect how software is built with how it shapes the world around us, whether that’s a new gadget, a coding workflow, or an industry trend most people haven’t noticed yet.
               Instead of treating tech like an exclusive club, we treat it like a conversation. If you're curious enough to ask questions, you're already in the right place.
             </p>
 
-            <div className="py-6 flex items-center gap-3 text-sm text-gray-500 border-t border-zinc-800">
+            <div className="py-3 flex items-center gap-2 text-sm text-gray-500">
               <p>Explore the courses. Read the articles. Build something interesting.</p>
             </div>
           </div>

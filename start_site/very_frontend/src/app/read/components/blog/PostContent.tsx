@@ -392,7 +392,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
       </div>
 
       {/* Meta Footer */}
-      <div className="pt-16 pb-6">
+      <div className="pt-18 pb-6">
         {/* <div className="pt-16 pb-8"> */}
         <div className="relative flex justify-center">
           <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent" />

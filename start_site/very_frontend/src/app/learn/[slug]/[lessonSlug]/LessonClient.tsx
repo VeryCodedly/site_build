@@ -70,7 +70,7 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
   }, [isMenuOpen]);
 
   return (
-    <section className="relative w-full min-h-screen bg-gradient-to-b from-black to-zinc-950 text-white pt-8 sm:pt-12 pb-24 px-4">
+    <section className="relative w-full min-h-screen bg-gradient-to-b from-black to-zinc-950/40 text-white pt-8 sm:pt-12 pb-28 px-4">
       <Motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
