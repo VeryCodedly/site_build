@@ -32,7 +32,7 @@ export default function PostClient({ post, related, trending }: PostClientProps)
     }
 
     return (
-        <main className="relative w-full bg-gradient-to-b from-black to-zinc-950/60 text-white min-h-screen py-10 px-9">
+        <main className="relative w-full bg-gradient-to-b from-black to-zinc-950/30 text-white min-h-screen py-10 px-9">
             {/* Back Button */}
             <motion.div
                 initial={{ opacity: 0, x: -20 }}

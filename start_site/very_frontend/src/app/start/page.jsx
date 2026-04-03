@@ -31,7 +31,7 @@ export default function StartPage() {
             Start <span className="bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent">Here</span>
           </h1>
 
-          <p className="text-base md:text-lg text-gray-300/90 max-w-2xl mx-auto md:mx-0 leading-relaxed">
+          <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto md:mx-0 leading-relaxed">
             Welcome to <span className="font-semibold text-lime-400">VeryCodedly</span>.
             If this is your first time here, this page will guide you through the
             best places to begin from courses to articles, and a few
