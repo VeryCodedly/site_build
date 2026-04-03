@@ -30,7 +30,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative bg-gradient-to-b from-black to-zinc-950 text-gray-300/80 py-24 px-8 overflow-hidden border-t border-zinc-950">
+    <footer className="relative bg-gradient-to-b from-black to-zinc-950 text-gray-400/95 py-24 px-8 overflow-hidden border-t border-zinc-950">
       {/* faint glow background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
 
@@ -51,7 +51,7 @@ export default function Footer() {
           <h3 className="text-white text-lg font-semibold mb-3 tracking-tight">
             Explore
           </h3>
-          <ul className="space-y-3 text-sm">
+          <ul className="space-y-4 text-sm">
             {[
               ["About", "/about"],
               ["Read", "/read"],
@@ -78,7 +78,7 @@ export default function Footer() {
           <h3 className="text-white text-lg font-semibold mb-3 tracking-tight">
             Help
           </h3>
-          <ul className="space-y-3 text-sm">
+          <ul className="space-y-4 text-sm">
             {[
               ["FAQs", "/faqs"],
               ["Contact", "/contact"],

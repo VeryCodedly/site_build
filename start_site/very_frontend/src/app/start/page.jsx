@@ -21,7 +21,7 @@ export default function StartPage() {
       <div className="max-w-5xl mx-auto space-y-16">
 
         {/* HERO */}
-        <section className="space-y-6 text-center md:text-left">
+        <section className="space-y-6 text-left">
           {/* <div className="inline-flex items-center gap-2 bg-lime-400/10 px-3 py-1.5 rounded-full border border-lime-400/20 mb-2">
             <FontAwesomeIcon icon={faCompass} className="text-lime-400 text-sm" />
             <span className="text-xs text-lime-400 font-medium tracking-wide">YOUR STARTING POINT</span>
