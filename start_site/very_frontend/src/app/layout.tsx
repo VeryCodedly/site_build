@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import ServiceWorkerRegister from './sw-register';
 import { GoogleAnalytics } from '@next/third-parties/google'
 import Script from "next/script";
+import { CartProvider } from '@/context/CartContext';
 
 config.autoAddCss = false;
 
@@ -125,7 +126,13 @@ export default function RootLayout({
             },
           })}
         </Script>
-        {children}
+        <CartProvider>
+          {children}
+        </CartProvider>
+        <Script 
+          src="https://checkout.flutterwave.com/v3.js" 
+          strategy="beforeInteractive" 
+        />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
         <TopButton />
         <Footer />

@@ -1,45 +1,83 @@
 "use client";
 
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 import { motion as Motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
+import Link from "next/link";
 
-const testimonials = [
+
+const items = [
   {
-    quote: "I was honestly just looking for a place to learn, but somehow ended up finding people who actually get what I do. It’s been refreshing.",
-    name: "Ada U.",
-    role: "Digital Artist • Lagos 🇳🇬",
+    image: "/merch/beanie-grey.png",
+    alt: "signature-beanie",
+    name: "Signature Beanie",
   },
   {
-    quote: "It’s not all shiny tech talk, people here actually share ideas, give feedback, and help you grow without ego. That’s rare online.",
-    name: "Jordan K.",
-    role: "AI Storyteller • Berlin 🇩🇪",
+    image: "/merch/cap-camo-pink.png",
+    alt: "off-duty-cap",
+    name: "Off-Duty Cap",
   },
   {
-    quote: "There were moments I almost gave up on my project, but a few honest chats in the community kept me going. Now it’s finally live.",
-    name: "Nia R.",
-    role: "Creative Coder • Nairobi 🇰🇪",
+    image: "/merch/hoodie-grey.png",
+    alt: "VC-zip-hoodie",
+    name: "VC Zip Hoodie",
+  },
+  {
+    image: "/merch/got-bugs.png",
+    alt: "baby-shelly-tee",
+    name: "Baby Shelly Tee",
+  },
+  {
+    image: "/merch/SHELLy-hat.png",
+    alt: "cool-person-alert",
+    name: "Cool person alert",
+  },
+  {
+    image: "/merch/oversized-tee.png",
+    alt: "oversized-tee",
+    name: "Oversized Tee",
+  },
+  {
+    image: "/merch/bottle-lime.png",
+    alt: "active-bottle-lime",
+    name: "Active Bottle - Lime",
+  },
+  {
+    image: "/merch/hoodie-pink.png",
+    alt: "VC-hoodie",
+    name: "VC Hoodie - Pink",
+  },
+  {
+    image: "/merch/laptop-sleeve.png",
+    alt: "VC-laptop-sleeve",
+    name: "Laptop Sleeve",
+  },
+  {
+    image: "/merch/mug-read.png",
+    alt: "read-mug",
+    name: "Read Mug",
   },
 ];
 
 
-export default function Testimonials() {
+export default function MerchSection() {
   const [current, setCurrent] = useState(0);
 
   // Auto-slide 6 seconds
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 8000);
+      setCurrent((prev) => (prev + 1) % items.length);
+    }, 6000);
     return () => clearInterval(timer);
   }, []);
 
-  const nextTestimonial = () => setCurrent((prev) => (prev + 1) % testimonials.length);
-  const prevTestimonial = () => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const nextItem = () => setCurrent((prev) => (prev + 1) % items.length);
+  const prevItem = () => setCurrent((prev) => (prev - 1 + items.length) % items.length);
 
   return (
-    <section className="relative w-full mt-10 py-24 bg-black px-6 md:px-12 text-center overflow-hidden order-b order-t order-zinc-900">
+    <section className="relative w-full py-20 bg-black px-2 text-center overflow-hidden order-b order-t order-zinc-900">
       {/* Floating accents */}
       {/* <div className="absolute inset-0 -z-10 pointer-events-none">
         <div className="w-2 h-2 bg-lime-400 rounded-full absolute top-10 left-20 animate-ping"></div>
@@ -49,35 +87,49 @@ export default function Testimonials() {
 
       {/* Header */}
       <div className="max-w-3xl mx-auto mb-12">
-        <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">
-          What Creatives Are Saying
+        <h3 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent">
+          VeryCodedly Supply
         </h3>
-        <p className="text-gray-400 text-base md:text-lg">
-          Real voices from our global community.
+        <p className="text-gray-400 text-base sm:text-lg mt-6">
+          We make it. You make it look good.
         </p>
       </div>
 
       {/* Carousel */}
-      <div className="relative max-w-md mx-auto">
+      <div className="relative flex items-center gap-10 lg:gap-6 flex-col lg:flex-row min-h-screen">
+      <div className="relative mx-auto px-2 order-1 lg:order-2 w-full h-full lg:w-[40%] lg:h-[50%]">
         <AnimatePresence mode="wait">
+          <Link href="/merch">
           <Motion.div
             key={current}
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.5 }}
-            className="rounded-2xl p-6 shadow-xl border border-gray-800 bg-gradient-to-b from-white/10 to-white/0 backdrop-blur-md hover:ring-2 hover:ring-lime-400/30 transition-all duration-300"
+            className="w-full h-[40vh] rounded-2xl p-6 transition-all duration-300"
           >
-            <div className="text-lime-400 text-3xl font-bold mb-4">“</div>
-            <p className="text-gray-300/80 italic mb-6">“{testimonials[current].quote}”</p>
-            <div className="text-lime-300/70 font-semibold">{testimonials[current].name}</div>
-            <div className="text-gray-400 text-sm">{testimonials[current].role}</div>
+            {/* theres more */}
+            {/* <div className="mb-4" /> */}
+              <Image 
+                src={items[current].image} 
+                alt={items[current].alt} 
+                // width={200}
+                // height={200}
+                fill
+                className="mx-auto object-contain object-center"
+                loading="eager"
+                quality={90}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              {/* <div className="text-lime-300 font-semibold mt-3">{items[current].name}</div> */}
+              {/* <div className="text-gray-400 text-sm">{items[current].role}</div> */}
           </Motion.div>
+          </Link>
         </AnimatePresence>
 
         {/* Animated Progress Dots */}
-        <div className="flex justify-center mt-6 gap-3">
-          {testimonials.map((_, index) => (
+        {/* <div className="flex justify-center mt-8 gap-3">
+          {items.map((_, index) => (
             <span
               key={index}
               className="relative w-3 h-2.5 rounded-full bg-gray-600 overflow-hidden"
@@ -94,15 +146,15 @@ export default function Testimonials() {
               )}
             </span>
           ))}
-        </div>
+        </div> */}
 
         {/* Controls */}
         <div className="flex justify-between mt-4 gap-4">
           {/* Left Arrow */}
           <button
-            onClick={prevTestimonial}
+            onClick={prevItem}
             aria-label="Toggle button"
-            className="bg-gradient-to-b from-white/10 to-white/0 relative px-4 py-2 rounded-full border border-gray-700 text-lime-300 font-medium overflow-hidden group"
+            className="bg-gradient-to-b from-white/5 to-white/0 relative px-4 py-2 rounded-full text-lime-300 font-medium overflow-hidden group"
           >
             <span className="relative z-10 transition-colors duration-300 group-hover:text-black group-active:text-black">
               <FontAwesomeIcon icon={faArrowLeft} size="sm" />
@@ -119,9 +171,9 @@ export default function Testimonials() {
 
           {/* Right Arrow */}
           <button
-            onClick={nextTestimonial}
+            onClick={nextItem}
             aria-label="Toggle button"
-            className="bg-gradient-to-b from-white/10 to-white/0 relative px-4 py-2 rounded-full border border-gray-700 text-lime-300 font-medium overflow-hidden group"
+            className="bg-gradient-to-b from-white/5 to-white/0 relative px-4 py-2 rounded-full text-lime-300 font-medium overflow-hidden group"
           >
             <span className="relative z-10 transition-colors duration-300 group-hover:text-black group-active:text-black">
               <FontAwesomeIcon icon={faArrowRight} size="sm" />
@@ -135,6 +187,19 @@ export default function Testimonials() {
                         transition-transform duration-300 ease-out"
             />
           </button>
+        </div>
+      </div>
+      <div className="relative w-full lg:w-[50vw] h-[50vh] lg:h-screen flex-shrink-0 order-2 lg:order-1">
+          <Image
+            src="/merch/merch-photo.webp"
+            alt="VeryCodedly Supply"
+            fill
+            className="object-contain object-center"
+            loading="eager"
+            quality={50}
+            unoptimized={true}
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
         </div>
       </div>
     </section>

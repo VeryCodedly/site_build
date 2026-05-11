@@ -8,6 +8,7 @@ import LessonContent from "../../components/LessonContent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faLongArrowLeft, faLongArrowRight, faChevronRight, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import PageLoader from "@/components/PageLoader";
 
 interface Block {
   type: string;
@@ -26,6 +27,7 @@ const formatSlug = (slug: string) => {
 };
 
 export default function LessonClient({ lesson, courseSlug }: LessonClientProps) {
+  const [loading, setLoading] = useState(true);
   const { lessonSlug } = useParams() as { lessonSlug: string };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,6 +42,10 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
     const saved = localStorage.getItem(PROGRESS_KEY(courseSlug));
     if (saved) setCompleted(JSON.parse(saved));
   }, [courseSlug]);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
 
   const markComplete = () => {
     if (isCompleted) return;
@@ -68,6 +74,8 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
 
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isMenuOpen]);
+
+  if (loading) return <PageLoader />;
 
   return (
     <section className="relative w-full min-h-screen bg-gradient-to-b from-black to-zinc-950/40 text-white pt-8 sm:pt-12 pb-28 px-4">

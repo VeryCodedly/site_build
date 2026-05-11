@@ -34,9 +34,9 @@ export default function LearnSection() {
           ].map((lesson, i) => (
             <div
               key={i}
-              className="bg-[linear-gradient(to_bottom_right,rgba(0,255,100,0.09),rgba(0,255,150,0.04))] rounded-2xl 
-                        p-6 text-left transition-all duration-300 hover:translate-y-[-5px] hover:shadow-[0_0_30px_-10px_rgba(144,238,144,0.4)]
-                        active:translate-y-[-5px] active:shadow-[0_0_30px_-10px_rgba(144,238,144,0.4)]"
+              className="bg-zinc-900/50 rounded-2xl 
+                        p-6 text-left transition-all duration-300 hover:translate-y-[-5px] hover:shadow-[0_0_30px_-10px_rgba(144,238,144,0.2)]
+                        active:translate-y-[-5px] active:shadow-[0_0_30px_-10px_rgba(144,238,144,0.2)]"
             >
               <span className="inline-block font-semibold tracking-tight mb-3 text-xs text-lime-400 bg-lime-400/10 px-2 py-1 rounded">
                 {lesson.tag}
@@ -65,7 +65,7 @@ export default function LearnSection() {
             aria-label="Learn page button"
             //   className="inline-block mt-14 px-8 py-3 rounded-full bg-lime-400/10 hover:bg-lime-400/20 text-lime-300 transition-all duration-300"
             className="font-bold cursor-pointer border-3 border-gray-500/100 bg-transparent px-7.5 py-1 rounded-full text-white hover:bg-white active:bg-white hover:text-black
-                    active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
+                    active:text-black shadow-[0_4px_0_0_#9AE600] hover:shadow-[0_2px_0_0_#9AE600] active:shadow-[0_2px_0_0_#9AE600] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
           >
             <span className="sr-only">Learn Now</span>
             <span className="lg:hidden">Learn</span>

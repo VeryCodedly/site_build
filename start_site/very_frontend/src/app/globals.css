@@ -50,6 +50,17 @@
 }
 .animate-fade-in { animation: fade-in 0.2s ease-out; }
 
+.perspective-800 {
+  perspective: 800px;
+}
+@keyframes spin-slow {
+  0% { transform: rotateX(20deg) rotateY(30deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 2.5s linear infinite;
+}
 
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;

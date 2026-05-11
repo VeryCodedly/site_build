@@ -31,8 +31,8 @@ export default function StartPage() {
             Start <span className="bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent">Here</span>
           </h1>
 
-          <p className="text-base md:text-lg text-gray-300/90 max-w-2xl mx-auto md:mx-0 leading-relaxed">
-            Welcome to <span className="font-semibold text-lime-400">VeryCodedly</span>.
+          <p className="text-base md:text-lg text-gray-300/80 max-w-5xl mx-auto md:mx-0 leading-relaxed">
+            Welcome to <span className="font-semibold text-lime-400">VeryCodedly.</span>{" "}
             If this is your first time here, this page will guide you through the
             best places to begin from courses to articles, and a few
             paths you can follow depending on what you&apos;re trying to learn.
@@ -57,7 +57,7 @@ export default function StartPage() {
                   className="text-2xl font-bold text-white">Learn the Fundamentals
                 </motion.h2>
               </div>
-              <p className="text-gray-400 max-w-2xl text-sm">
+              <p className="text-gray-400 max-w-4xl text-sm sm:text-base">
                 If you prefer structured learning, start with the courses. VeryCodedly courses are
                 designed to move from fundamentals to practical concepts used in real
                 projects.
@@ -65,9 +65,9 @@ export default function StartPage() {
             </div>
             <Link
               href="/learn/#courses"
-              className="group flex items-center gap-2 text-lime-400 hover:text-lime-200 active:text-lime-200 text-sm font-medium transition-colors"
+              className="group flex items-center gap-2 text-lime-400 hover:text-lime-200 active:text-lime-200 tracking-tighter text-sm font-medium transition-colors"
             >
-              View all courses
+              All courses
               <FontAwesomeIcon icon={faArrowRight} className="text-xs group-active:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -152,7 +152,7 @@ export default function StartPage() {
                   className="text-2xl font-bold text-white">Tech Takes
                 </motion.h2>
               </div>
-              <p className="text-gray-400 max-w-2xl text-sm">
+              <p className="text-gray-400 max-w-2xl text-sm sm:text-base">
                 Just what’s happening in tech, how it works, and why it counts.
               </p>
             </div>
@@ -206,8 +206,8 @@ export default function StartPage() {
             </motion.h2>
           </div>
 
-          <p className="text-gray-400 text-sm max-w-2xl">
-            The top stories and helpful guides.
+          <p className="text-gray-400 text-sm sm:text-base max-w-2xl">
+            Top stories and helpful guides.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-3">

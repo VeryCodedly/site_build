@@ -63,7 +63,7 @@ export default function TeaserCards() {
           <Motion.div
             id={`card-${card.id}`}
             key={index}
-            className={`relative rounded-3xl px-10 sm:px-10 py-9 border border-gray-700/60 bg-white/5 backdrop-blur-md active:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
+            className={`relative rounded-3xl px-10 sm:px-10 py-9 border border-gray-700/60 bg-white/3 backdrop-blur-lg active:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               shadow-[0_15px_20px_rgba(0,0,0,0.6),0_15px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               hover:ring-1 transition-all duration-300 group`}
             whileHover={{ scale: 1.1 }}

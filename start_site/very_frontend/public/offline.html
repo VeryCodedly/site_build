@@ -1,54 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Offline | VeryCodedly</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" href="/favicon.ico">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Geist Mono', monospace;
-      background: #000;
-      color: rgba(229, 231, 235, 0.8); /* gray-300/80 */
+      background: black;
+      color: #e5e7eb;
       min-height: 100vh;
       display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Central wrapper – limits max width and keeps everything together */
+    .offline-wrapper {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    /* Flex container – side by side on desktop, stacked on mobile */
+    .offline-container {
+      display: flex;
       flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (min-width: 900px) {
+      .offline-container {
+        flex-direction: row;
+        gap: 3rem;
+      }
+    }
+
+    /* Left side – text content */
+    .offline-content {
+      flex: 1;
+      max-width: 450px;
+      text-align: left;
+    }
+
+    /* Badge (green bar + text) */
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge-bar {
+      width: 5px;
+      height: 28px;
+      background-color: #A3FF52;
+      border-radius: 3px;
+    }
+
+    .badge-text {
+      font-size: 0.9rem;
+      letter-spacing: 0.2em;
+      color: #9ca3af;
+    }
+
+    /* Title */
+    .offline-title {
+      font-size: 2.5rem;
+      font-weight: 900;
+      line-height: 1.2;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+
+    .offline-title span {
+      background: #A3FF52;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    @media (min-width: 640px) {
+      .offline-title {
+        font-size: 3rem;
+      }
+    }
+
+    /* Retry button */
+    .retry-btn {
+      padding: 0.7rem 2rem;
+      background: #A3FF52;
+      color: black;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(154, 230, 0, 0.3);
+      width: auto;
+      min-width: 140px;
+    }
+
+    .retry-btn:hover {
+      background: #9AE600;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(154, 230, 0, 0.4);
+    }
+
+    .retry-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Right side – mascot image */
+    .offline-mascot {
+      flex: 1;
+      display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 2rem;
+      max-width: 470px;
     }
-    .logo { width: 40px; height: 40px; margin-bottom: 0.5rem; animation: pulse 2s infinite; }
-    h1 { font-size: 2rem; font-weight: 700; margin: 1rem 0; }
-    p { max-width: 500px; margin: 0.5rem auto; font-size: 1rem; opacity: 0.8; }
-    button.retry-btn {
-      margin-top: 2rem; padding: 0.75rem 2rem; background: #A3FF52; color: #000; font-weight: 600; font-size: 1rem; border: none; border-radius: 9999px; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(163, 255, 82, 0.3);
-    }
-    .retry-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(163, 255, 82, 0.4); } 
-    .retry-btn:active { transform: translateY(0); } small { margin-top: 2rem; opacity: 0.7; font-size: 0.8rem; } 
-    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
-    img.mascot {
-      width: 90%;
-      max-width: 600px;
+
+    .offline-mascot img {
+      width: 100%;
       height: auto;
-      margin: 1.5rem 0;
+      max-height: 600px;
+      object-fit: contain;
+      border-radius: 20px;
+      display: block;
     }
-    @media (min-width: 768px) {
-      img.mascot {
-        max-width: 700px;
+
+    /* adjust image size on smaller screens */
+    @media (max-width: 640px) {
+      .offline-mascot img {
+        max-height: 300px;
+      }
+      .offline-content {
+        text-align: center;
+      }
+      .badge {
+        justify-content: center;
+      }
+      .retry-btn {
+        margin: 0 auto;
       }
     }
   </style>
 </head>
 <body>
-  <img src="/favicon.ico" alt="VeryCodedly" class="logo" />
-  <h1>You're Offline</h1>
-  <p>Nothing’s coming through, looks like you’re disconnected.</p>
+  <div class="offline-wrapper">
+    <div class="offline-container">
+      <!-- Left side: text content -->
+      <div class="offline-content">
+        <div class="badge">
+          <div class="badge-bar"></div>
+          <div class="badge-text">Nothing's coming through.</div>
+        </div>
+        <h1 class="offline-title">
+          You're <span>Offline.</span>
+        </h1>
+        <button class="retry-btn" onclick="retryConnection()">Retry</button>
+      </div>
 
-  <img src="/images/mascot.svg" alt="Offline Mascot" class="mascot" />
-
-  <button class="retry-btn" onclick="retryConnection()">Retry</button>
+      <!-- Right side: mascot image (shelly-off.jpg) -->
+      <div class="offline-mascot">
+        <img src="/images/shelly-off.jpg" alt="SHELLy – VeryCodedly mascot" />
+      </div>
+    </div>
+  </div>
 
   <script>
     function retryConnection() {
@@ -67,7 +196,12 @@
         });
     }
 
-    setInterval(retryConnection, 10000);
+    // Auto-reload when back online
+    setInterval(() => {
+      if (navigator.onLine) {
+        location.reload();
+      }
+    }, 10000);
   </script>
 </body>
 </html>

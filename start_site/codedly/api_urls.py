@@ -1,6 +1,6 @@
 from rest_framework.routers import DefaultRouter
 from django.urls import path, include
-from .views import SubcategoryViewSet, PostViewSet, CategoryViewSet, CommentViewSet, PostImageViewSet, PostLinkViewSet, CourseViewSet, LessonViewSet, CourseListView, CourseDetailView, LessonListView, LessonDetailView
+from .views import SubcategoryViewSet, PostViewSet, CategoryViewSet, CommentViewSet, PostImageViewSet, PostLinkViewSet, CourseViewSet, LessonViewSet, CourseListView, CourseDetailView, LessonListView, LessonDetailView, StoreProductViewSet, PrintfulProductViewSet
 
 
 router = DefaultRouter()
@@ -12,6 +12,7 @@ router.register(r'postimages', PostImageViewSet, basename='postimage')
 router.register(r'postlinks', PostLinkViewSet, basename='postlink')
 router.register(r'courses', CourseViewSet, basename='course')
 router.register(r'lessons', LessonViewSet, basename='lesson')
+router.register(r'store/products', PrintfulProductViewSet, basename='store-product') 
 
 
 urlpatterns = [

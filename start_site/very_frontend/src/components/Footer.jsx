@@ -30,18 +30,18 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative bg-gradient-to-b from-black to-zinc-950 text-gray-400/95 py-24 px-8 overflow-hidden border-t border-zinc-950">
+    <footer className="relative bg-gradient-to-b from-black to-zinc-950 text-gray-400/95 pt-16 sm:pt-20 pb-16 sm:pb-14 px-8 overflow-hidden border-t border-zinc-950">
       {/* faint glow background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
 
       {/* content grid */}
-      <div className="relative max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 pt-8 gap-14 lg:pl-16">
+      <div className="relative max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 pt-8 gap-14 lg:pl-18">
         {/* Brand Column */}
         <div>
           <h3 className="text-lime-400 text-xl font-bold mb-3">
             VeryCodedly{/* <span className="text-xs">™</span> */}
           </h3>
-          <p className="text-sm text-gray-400/80 leading-tight w-[140px]">
+          <p className="text-sm text-gray-400/70 leading-tight w-[140px]">
             For the curious minds shaping the future, you're in good company here.
           </p>
         </div>
@@ -124,10 +124,10 @@ export default function Footer() {
       </div>
 
       {/* Divider */}
-      <div className="relative w-full h-px g-gradient-to-r from-transparent via-gray-800/50 to-transparent my-12" />
+      <div className="relative w-full h-px g-gradient-to-r from-transparent via-gray-800/50 to-transparent my-8 sm:my-10" />
 
       {/* Logo + Bottom line */}
-      <div className="relative flex flex-col sm:flex-row items-center justify-between max-w-7xl mx-auto gap-6">
+      <div className="relative flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto gap-6">
         <Link aria-label="Home button" href="/">
           <Image
             src="/images/favicon-main.svg"
@@ -140,7 +140,7 @@ export default function Footer() {
           />
         </Link>
 
-        <p className="text-xs text-gray-600 text-center sm:text-right sm:pr-3">
+        <p className="text-xs text-gray-600 text-center sm:text-right sm:pr-5">
             VeryCodedly<span className="text-xs">™</span>{" "}{year && `${year}`}
         </p>
       </div>

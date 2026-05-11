@@ -1,238 +1,233 @@
-'use client';
+"use client";
 
-import { motion as Motion } from 'framer-motion';
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faTwitter, faPaypal } from '@fortawesome/free-brands-svg-icons';
-import { faCoffee, faComment, faEnvelope, faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
+import { motion as Motion } from "framer-motion";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faCoffee, faComment, faEnvelope, faPeopleGroup, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
+
 
 export default function SupportPage() {
   return (
-    <section className="relative min-h-screen pt-10 pb-30 px-6 sm:px-8 bg-gradient-to-b from-black to-zinc-900/50">
-      <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-cover opacity-60"></div>
-      <Motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="group max-w-5xl mx-auto rounded-2xl p-6 sm:p-8 text-cente space-y-6 sm:space-y-8 border-2 border-gray-700/60 bg-white/3 backdrop-blur-lg 
-                   shadow-[0_5px_10px_rgba(0,0,0,0.6)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)] 
-                   focus:outline-none focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white/20
-                   transition-all duration-300"
-        tabIndex={0}
-        role="region"
-        aria-label="Support Section"
-      >
-        <Motion.header
+    <section className="relative min-h-screen py-16 mb-10 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-950/50">
+      <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-cover opacity-40 pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Header Card */}
+        <Motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5 }}
+          className="group rounded-2xl p-8 sm:p-12 mb-8 text-center border border-gray-700/40 bg-white/3 backdrop-blur-lg shadow-lg hover:shadow-xl transition-all duration-300"
         >
           <Motion.h2
-            className="text-3xl sm:text-4xl text-center py-4 font-black text-lime-400 group-hover:scale-105 group-active:scale-105 transition-transform duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="text-3xl sm:text-4xl font-black text-lime-400 group-hover:scale-105 transition-transform duration-300"
+            whileHover={{ scale: 1.02 }}
           >
             Support VeryCodedly
           </Motion.h2>
-          <p className="text-gray-300 pb-6 text-sm sm:text-base text-center leading-relaxed max-w-2xl mx-auto">
+          <p className="text-gray-300 text-sm sm:text-base max-w-2xl mx-auto mt-4 leading-relaxed">
             VeryCodedly is run by a small, dedicated team. Your support helps us keep our content free, our community active,
-             and our servers running. Every bit makes a difference.
+            and our servers running. Every bit makes a difference.
           </p>
-        </Motion.header>
+        </Motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
+        {/* 3‑column grid */}
+        <div className="grid lg:grid-cols-3 gap-6 mb-5">
+          {/* Financial Support */}
           <Motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="p-6 rounded-2xl border-2 border-gray-700/60 bg-white/3 backdrop-blur-lg 
-                       shadow-[0_5px_10px_rgba(0,0,0,0.6)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)] 
-                       focus:outline-none focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white/20
-                       transition-all duration-300"
+            transition={{ delay: 0.1 }}
+            className="bg-white/3 text-sm sm:text-base backdrop-blur-lg border border-gray-700/40 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Financial support</h3>
-            <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed mb-4">
-              One-off or recurring donations fund hosting, tools, and new
-              tutorials. Pick whatever works for you.
+            <p className="text-gray-300 text-sm mb-5">
+              Buy merch, donate or give us a shoutout on socials. Pick whatever works for you.
             </p>
             <div className="space-y-3">
+              <Link
+                href="/merch"
+                className="flex items-center justify-between w-full px-6 py-2 rounded-xl border border-gray-700/70 text-gray-200 hover:bg-lime-400/10 hover:border-lime-400/30 transition-all duration-200 group"
+              >
+                <span>Shop VeryCodedly</span>
+                <FontAwesomeIcon icon={faShoppingCart} className="text-lime-400 group-hover:translate-x-0.5 transition-transform" />
+              </Link>
               <Link
                 href="https://ko-fi.com/verycodedly"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center text-sm sm:text-base px-4 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
-                           active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
+                className="flex items-center justify-between w-full px-6 py-2 rounded-xl border border-gray-700/70 text-gray-200 hover:bg-lime-400/10 hover:border-lime-400/30 transition-all duration-200 group"
               >
-                Buy me a coffee <FontAwesomeIcon icon={faCoffee} className="inline ml-1 text-lime-400" size="1x" />
-              </Link>
-              <Link
-                href="https://www.paypal.com/ncp/payment/55H59YCYZ5HSY"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center text-sm sm:text-base px-4 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
-                           active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
-              >
-                Paypal Donation <FontAwesomeIcon icon={faPaypal} className="inline ml-1 text-lime-400" size="1x" />
+                <span>Buy me a coffee</span>
+                <FontAwesomeIcon icon={faCoffee} className="text-lime-400 group-hover:translate-x-0.5 transition-transform" />
               </Link>
               <Link
                 href="https://github.com/sponsors/VeryCodedly"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center text-sm sm:text-base px-4 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
-                           active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
+                className="flex items-center justify-between w-full px-6 py-2 rounded-xl border border-gray-700/70 text-gray-200 hover:bg-lime-400/10 hover:border-lime-400/30 transition-all duration-200 group"
               >
-                Sponsor on GitHub <FontAwesomeIcon icon={faGithub} className="inline ml-1 text-lime-400" size="1x" />
+                <span>Sponsor on GitHub</span>
+                <FontAwesomeIcon icon={faGithub} className="text-lime-400 group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
           </Motion.div>
 
+          {/* Non‑financial support */}
           <Motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            className="p-6 rounded-2xl border-2 border-gray-700/60 bg-white/3 backdrop-blur-lg 
-                       shadow-[0_5px_10px_rgba(0,0,0,0.6)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)] 
-                       focus:outline-none focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white/20
-                       transition-all duration-300"
+            transition={{ delay: 0.2 }}
+            className="bg-white/3 text-sm sm:text-base backdrop-blur-lg border border-gray-700/40 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Support without spending</h3>
-            <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed mb-4">
-              Share, star, join, and help other learners. These make a
-              huge difference to discoverability and morale.
+            <p className="text-gray-300 text-sm mb-4">
+              Share, star, join, and help other learners. These make a huge difference to discoverability.
             </p>
-            <ul className="text-gray-300/90 text-sm sm:text-base list-disc list-inside space-y-2 mb-4">
-              {[
-                "Share an article on Twitter, LinkedIn, or Reddit",
-                "Star the repo on GitHub",
-                "Invite friends to our Discord",
-              ].map((item, index) => (
-                <Motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
-                  className="hover:text-lime-400 transition-colors duration-200"
-                >
-                  {item}
-                </Motion.li>
-              ))}
+            <ul className="space-y-2 mb-5 text-gray-300 text-sm">
+              <li className="flex items-center gap-3">
+                <span className="w-1.5 h-1.5 bg-white rounded-full mt-1.5 flex-shrink-0" />
+                Share an article on Twitter, LinkedIn, or Reddit
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-white rounded-full mt-1.5 flex-shrink-0" />
+                Star the repo on GitHub
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-white rounded-full mt-1.5 flex-shrink-0" />
+                Invite friends to our Discord
+              </li>
             </ul>
-            <div className="flex gap-8 justify-center">
+            <div className="flex gap-3">
               <Link
                 href="https://twitter.com/intent/tweet?text=Into%20coding%20+%20tech%20trends?%20Explore%20VeryCodedly%20-%20https://verycodedly.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-center text-sm sm:text-base px-3 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
-                           active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
+                className="flex-1 text-center px-3 py-2 rounded-xl border border-gray-700/70 text-gray-200 hover:bg-lime-400/10 transition-all duration-200 group"
               >
-                Share <FontAwesomeIcon icon={faTwitter} className="inline-flex ml-1 text-lime-400" size="1x" />
+                Share <FontAwesomeIcon icon={faTwitter} className="text-lime-400 ml-1 group-hover:translate-x-0.5 transition-transform" />
               </Link>
               <Link
                 href="https://github.com/VeryCodedly/site_build"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-center text-sm sm:text-base px-3.5 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
-                           active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
+                className="flex-1 text-center px-3 py-2 rounded-xl border border-gray-700/70 text-gray-200 hover:bg-lime-400/10 transition-all duration-200 group"
               >
-                Star <FontAwesomeIcon icon={faGithub} className="inline ml-1 text-lime-400" size="1x" />
+                Star <FontAwesomeIcon icon={faGithub} className="text-lime-400 ml-1 group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
           </Motion.div>
 
+          {/* Direct support & feedback */}
           <Motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="p-6 rounded-2xl border-2 border-gray-700/60 bg-white/3 backdrop-blur-lg 
-                       shadow-[0_5px_10px_rgba(0,0,0,0.6)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)] 
-                       focus:outline-none focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white/20
-                       transition-all duration-300"
+            transition={{ delay: 0.3 }}
+            className="bg-white/3 text-sm sm:text-base backdrop-blur-lg border border-gray-700/40 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Direct support & feedback</h3>
-            <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed mb-4">
+            <p className="text-gray-300 text-sm mb-5">
               Want to help shape the site? Here’s how you can get involved or contact us directly.
             </p>
             <div className="space-y-3">
               <Link
                 href="https://discord.gg/53wVsqEcbE"
-                target="_blank" rel="noopener noreferrer"
-                className="block w-full text-center text-sm sm:text-base px-4 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
-                           active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between w-full px-6 py-2 rounded-xl border border-gray-700/70 text-gray-200 hover:bg-lime-400/10 hover:border-lime-400/30 transition-all duration-200 group"
               >
-                Join the community <FontAwesomeIcon icon={faPeopleGroup} className="inline ml-1 text-lime-400" size="1x" />
+                <span>Join the community</span>
+                <FontAwesomeIcon icon={faPeopleGroup} className="text-lime-400 group-hover:translate-x-0.5 transition-transform" />
               </Link>
               <Link
                 href="mailto:connect@verycodedly.com?subject=Support%20VeryCodedly"
-                className="block w-full text-center text-sm sm:text-base px-4 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
-                           active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
+                className="flex items-center justify-between w-full px-6 py-2 rounded-xl border border-gray-700/70 text-gray-200 hover:bg-lime-400/10 hover:border-lime-400/30 transition-all duration-200 group"
               >
-                Email us <FontAwesomeIcon icon={faEnvelope} className="inline ml-1 text-lime-400" size="1x" />
+                <span>Email us</span>
+                <FontAwesomeIcon icon={faEnvelope} className="text-lime-400 group-hover:translate-x-0.5 transition-transform" />
               </Link>
               <Link
                 href="/contact"
-                className="block w-full text-center text-sm sm:text-base px-4 py-2 rounded-lg border-2 border-gray-700/60 text-white hover:bg-lime-400/20 
-                           active:bg-lime-400/20 focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white transition-all duration-300"
+                className="flex items-center justify-between w-full px-6 py-2 rounded-xl border border-gray-700/70 text-gray-200 hover:bg-lime-400/10 hover:border-lime-400/30 transition-all duration-200 group"
               >
-                Send feedback <FontAwesomeIcon icon={faComment} className="inline ml-1 text-lime-400" size="1x" />
+                <span>Send feedback</span>
+                <FontAwesomeIcon icon={faComment} className="text-lime-400 group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
           </Motion.div>
         </div>
 
+        {/* Quick FAQ Card */}
+        <Motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <Motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="group bg-white/3 text-sm sm:text-base backdrop-blur-lg border border-gray-700/40 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-1.5 h-6 bg-lime-400 rounded-xs group-hover:bg-pink-400" />
+              <h3 className="text-lg sm:text-xl font-semibold text-white">Quick FAQ</h3>
+            </div>
+            <div className="space-y-5">
+              <div>
+                <dt className="font-medium text-gray-100">Will support change the content?</dt>
+                <dd className="text-gray-300 text-sm mt-1">No. The core content remains free and available to everyone.</dd>
+              </div>
+              <div>
+                <dt className="font-medium text-gray-100">Is support tax-deductible?</dt>
+                <dd className="text-gray-300 text-sm mt-1">
+                  We’re a community-driven project, not a registered charity yet, so contributions aren’t tax-deductible.
+                  But every bit goes directly into keeping our resources free for everyone.
+                </dd>
+              </div>
+              <div>
+                <dt className="font-medium text-gray-100">Can I contribute content?</dt>
+                <dd className="text-gray-300 text-sm mt-1">Yes. Mail us or open a PR on our GitHub repo to get started.</dd>
+              </div>
+            </div>
+          </Motion.div>
+
+          {/* Social / SHELLy Card */}
+          <Motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="group bg-white/3 backdrop-blur-lg border border-gray-700/40 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+          >
+            <div className="flex items-center gap-3 ml-6 mt-6">
+              <span className="w-1.5 h-6 bg-lime-400 rounded-xs group-hover:bg-pink-400" />
+              <h3 className="text-lg sm:text-xl font-semibold text-white">Say Hi to SHELLy on our socials</h3>
+            </div>
+            {/* Image container with proper dimensions */}
+            <div className="relative w-full max-w-xs mx-auto aspect-square">
+              <Image
+                src="/images/SHELLy-smile.png"
+                alt="SHELLy says Hi"
+                fill
+                className="object-contain scale-110 sm:scale-150 mx-auto rounded-2xl"
+                sizes="..."
+                loading="eager"
+              />
+            </div>
+          </Motion.div>
+        </Motion.div>
+
+        {/* Footer thank‑you card */}
         <Motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="p-6 rounded-2xl border-2 border-gray-700/60 bg-white/3 backdrop-blur-lg 
-                     shadow-[0_5px_10px_rgba(0,0,0,0.6)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)] 
-                     focus:outline-none focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 focus:ring-offset-white/20
-                     transition-all duration-300"
+          transition={{ delay: 0.5 }}
+          className="bg-white/3 backdrop-blur-lg border border-gray-700/40 rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300"
         >
-          <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Quick FAQ</h3>
-          <div className="space-y-4 text-sm sm:text-base">
-            <Motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.7 }}
-            >
-              <dt className="font-medium text-gray-300 mb-1">Will support change the content?</dt>
-              <dd className="text-gray-400">No. The core content remains free and available to everyone.</dd>
-            </Motion.div>
-            <Motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.8 }}
-            >
-              <dt className="font-medium text-gray-300 mb-1">Is support tax-deductible?</dt>
-              <dd className="text-gray-400">We’re a community-driven project, not a registered charity yet, so contributions aren’t tax-deductible.
-                But every bit goes directly into keeping our resources free for everyone.</dd>
-            </Motion.div>
-            <Motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.9 }}
-            >
-              <dt className="font-medium text-gray-300 mb-1">Can I contribute content?</dt>
-              <dd className="text-gray-400">Yes. Mail us or open a PR on our GitHub repo to get started.</dd>
-            </Motion.div>
-          </div>
-        </Motion.div>
-
-        <Motion.footer
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1.0 }}
-          className="p-6 rounded-2xl border-2 border-gray-700/60 bg-white/3 backdrop-blur-lg 
-                     shadow-[0_5px_10px_rgba(0,0,0,0.6)] hover:shadow-[0_10px_20px_rgba(0,0,0,0.7)] 
-                     focus:outline-none focus:ring-2 focus:ring-lime-300/50 focus:ring-offset-2 
-                     focus:ring-offset-white/20 text-center transition-all duration-300"
-        >
-          <p className="text-gray-400 text-sm sm:text-base">
+          <p className="text-gray-300 text-sm">
             Thank you ❤️ for reading, learning, and being part of this little corner of the interweb.
           </p>
-          <p className="mt-2 text-gray-400 text-sm sm:text-base">Every share, star, and coffee waters this tree. 🌳</p>
-        </Motion.footer>
-      </Motion.div>
+          <p className="mt-2 text-gray-400 text-sm">Every share, star, and purchase waters this tree. 🌳</p>
+        </Motion.div>
+      </div>
     </section>
   );
 }

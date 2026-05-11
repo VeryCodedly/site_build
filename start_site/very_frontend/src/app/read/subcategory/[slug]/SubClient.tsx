@@ -7,6 +7,9 @@ import { faArrowLeft, faFileAlt } from '@fortawesome/free-solid-svg-icons';
 import RelatedPostsSection from '../../components/blog/RelatedPostsSection';
 import MiniPostCard from '../../components/blog/MiniPostCard';
 import { Post, Subcategory } from '@/types/post';
+import { useState, useEffect } from 'react';
+import PageLoader from '@/components/PageLoader';
+
 
 export default function SubClient({
     subcategory,
@@ -18,6 +21,13 @@ export default function SubClient({
     trending: Post[];
 }) {
     const { name, about } = subcategory;
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(false);
+    }, []);
+
+    if (loading) return <PageLoader />;
 
     if (posts.length === 0) {
         return (

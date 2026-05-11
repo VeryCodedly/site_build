@@ -51,11 +51,10 @@ export default function Community() {
           </p>
         </div>
         
-        {/* Right Visual */}
-        <div className="w-full md:w-1/2 flex-1 overflow-hidden">
+        <div className="w-full md:w-1/2 flex-1">
           <Image 
-            className="w-full h-72 md:h-96 rounded-3xl object-cover" 
-            src="images/community-img.svg" 
+            className="w-full h-72 md:h-96 object-cover" 
+            src="/images/community-img.jpg" 
             alt="Community illustration" 
             width={600} 
             height={400} 

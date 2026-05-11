@@ -1,6 +1,145 @@
 from django.contrib import admin
-from .models import Post, Category, Comment, PostImage, Subcategory, PostLink, Course, Lesson, LessonResource
+from django.db import models
+from django.forms import Textarea
+from .models import Post, Category, Comment, PostImage, Subcategory, PostLink, Course, Lesson, LessonResource, StoreOrder, StoreProduct
 from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin, SortableAdminBase
+from django.contrib import admin
+from .models import PrintfulProducts, PrintfulVariant
+
+
+@admin.register(PrintfulVariant)
+class PrintfulVariantAdmin(admin.ModelAdmin):
+    # 1. Fields to display in the list table
+    list_display = ('product', 'variant_id', 'sku', 'size', 'color', 'price', 'active', 'created_at')
+    
+    # 2. Add side filters for quick sorting
+    list_filter = ('active',)
+    
+    # 3. Make the name and category searchable
+    search_fields = ('name', 'product', 'sku')
+    
+    ordering = ['name', 'sku']
+    
+    # formfield_overrides = {
+    #     models.TextField: {'widget': Textarea(attrs={'rows': 7, 'cols': 41})},
+    # }
+    
+    
+@admin.register(PrintfulProducts)
+class PrintfulProductsAdmin(admin.ModelAdmin):
+    # 1. Fields to display in the list table
+    list_display = ('thumbnail', 'name', 'category', 'price', 'is_active', 'updated_at')
+    
+    # 2. Add side filters for quick sorting
+    list_filter = ('category', 'is_active')
+    
+    # 3. Make the name and category searchable
+    search_fields = ('name', 'category', 'tagline')
+    
+    ordering = ['category', 'name']
+    
+    # 4. Group fields into logical sections in the edit form
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('name', 'fancy_name', 'tagline', 'category', 'description', 'price', 'image_url', 'thumbnail_url', 'status')
+        }),
+        ('Printful Configuration', {
+            'fields': ('printful_id', 'slug', 'variant_mapping'),
+            'description': 'Mapping data fetched from Printful API'
+        }),
+        ('Brand & Visibility', {
+            'fields': ('is_active',),
+        }),
+    )
+    formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows': 7, 'cols': 41})},
+    }
+
+    # 5. Read-only fields to prevent accidental edits to API data
+    readonly_fields = ('printful_id', 'updated_at', 'created_at')
+
+    # Optional: Display a small thumbnail in the list view if image_url exists
+    def thumbnail(self, obj):
+        from django.utils.html import format_html
+        if obj.image_url:
+            return format_html('<img src="{}" style="width: 45px; height: 45px; border-radius: 5px;" />', obj.image_url)
+        return "No Image"
+    
+    thumbnail.short_description = 'Preview'
+    # Add 'thumbnail' to list_display if you want to see the image in the list
+
+
+@admin.register(StoreProduct)
+class StoreProductAdmin(admin.ModelAdmin):
+    list_display = ['product_id', 'name', 'price', 'category', 'status', 'sort_order', 'created_at']
+    list_filter = ['category', 'status', 'created_at']
+    search_fields = ['product_id', 'name', 'description']
+    list_editable = ['price', 'status', 'sort_order']
+    readonly_fields = ['created_at', 'updated_at']
+    
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('product_id', 'name', 'description', 'price', 'category')
+        }),
+        ('Details & Images', {
+            'fields': ('details', 'images'),
+            # 'help_text': 'Details: JSON array of strings. Images: JSON array of objects with src, alt, side'
+        }),
+        ('Status & Ordering', {
+            'fields': ('status', 'sort_order')
+        }),
+        ('Timestamps', {
+            'fields': ('created_at', 'updated_at'),
+            'classes': ('collapse',)
+        }),
+    )
+    formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows': 3, 'cols': 40})},
+    }
+    
+    def save_model(self, request, obj, form, change):
+        # Ensure product_id is unique and properly formatted
+        if not obj.product_id:
+            import uuid
+            obj.product_id = str(uuid.uuid4())[:8].upper()
+        super().save_model(request, obj, form, change)
+        
+        
+@admin.register(StoreOrder)
+class StoreOrderAdmin(admin.ModelAdmin):
+    list_display = ['order_id', 'customer_name', 'customer_email', 'total_amount', 'currency', 'status', 'created_at']
+    list_filter = ['status', 'payment_status', 'created_at', 'currency']
+    search_fields = ['order_id', 'customer_name', 'customer_email', 'payment_reference']
+    readonly_fields = ['order_id', 'payment_reference', 'created_at', 'updated_at', 'payment_response']
+    
+    fieldsets = (
+        ('Order Information', {
+            'fields': ('order_id', 'status', 'created_at', 'updated_at')
+        }),
+        ('Customer Details', {
+            'fields': ('customer_name', 'customer_email', 'customer_phone')
+        }),
+        ('Shipping Address', {
+            'fields': ('shipping_address', 'shipping_address2', 'shipping_city', 'shipping_state', 'shipping_country', 'shipping_postal')
+        }),
+        ('Order Items', {
+            'fields': ('items', 'subtotal', 'shipping_cost', 'tax', 'total_amount', 'currency')
+        }),
+        ('Payment', {
+            'fields': ('tx_ref', 'flw_ref', 'payment_reference', 'payment_status', 'payment_response')
+        }),
+        ('Fulfillment', {
+            'fields': ('tracking_number', 'tracking_url', 'notes')
+        }),
+    )
+    formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows': 3, 'cols': 40})},
+    }
+    
+    # def get_readonly_fields(self, request, obj=None):
+    #     if obj:  # Editing existing object
+    #         return self.readonly_fields + ['payment_reference', 'payment_status']
+    #     return self.readonly_fields
 
 
 class LessonInline(SortableInlineAdminMixin, admin.TabularInline):

@@ -1,9 +1,68 @@
 from rest_framework import serializers
 from rest_framework.filters import SearchFilter
-from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson, LessonResource
+from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson, LessonResource, StoreOrder, StoreProduct, PrintfulProducts
 from taggit.serializers import TagListSerializerField
+from rest_framework import serializers
 
 
+class PrintfulProductSerializer(serializers.ModelSerializer):
+    preview_image = serializers.SerializerMethodField()
+    colors = serializers.SerializerMethodField()
+    
+    def get_preview_image(self, obj):
+        # fallback logic
+        if obj.thumbnail_url:
+            return obj.thumbnail_url
+        if obj.image_url:
+            return obj.image_url
+        return None
+    
+    def get_colors(self, obj):
+        variants = obj.variant_mapping or []
+        unique_colors = set()
+        for variant in variants:
+            if variant.get('color'):
+                unique_colors.add(variant['color'])
+        return list(unique_colors)
+
+    class Meta:
+        model = PrintfulProducts
+        fields = [
+            "id",
+            "printful_id",
+            "slug",
+            "fancy_name",
+            "name",
+            "tagline",
+            "description",
+            "category",
+            "price",
+            "preview_image",
+            "thumbnail_url",
+            "variant_mapping",
+            "colors",
+        ]
+    
+    
+class StoreProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StoreProduct
+        fields = ['product_id', 'name', 'price', 'category', 'description', 'details', 'images']
+        
+        
+class StoreOrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StoreOrder
+        fields = [
+            'order_id', 'customer_name', 'customer_email', 'customer_phone',
+            'shipping_address', 'shipping_address2', 'shipping_city', 'shipping_state',
+            'shipping_country', 'shipping_postal', 'items', 'subtotal',
+            'shipping_cost', 'tax', 'total_amount', 'currency', 'status',
+            'created_at'
+        ]
+        read_only_fields = ['order_id', 'created_at', 'status']
+        
+        
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment

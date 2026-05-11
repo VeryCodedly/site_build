@@ -127,7 +127,7 @@ export default function MorphingPanel({ className = "" }) {
         {groupedLogos.map((group, faceIndex) => (
           <div
             key={faceIndex}
-            className="absolute w-full h-full bg-white/5 border-1 border-black/40 rounded-2xl flex flex-col items-center justify-center gap-2 backdrop-blur-sm ring-3 ring-lime-400/30 hover:ring-lime-400/60 active::ring-lime-400/60 inset-0 z-[-1]
+            className="absolute w-full h-full bg-black/10 border-1 border-black/40 rounded-2xl flex flex-col items-center justify-center gap-2 backdrop-blur-xl ring-3 ring-lime-400/30 hover:ring-lime-400/60 active::ring-lime-400/60 inset-0 z-[-1]
                         shadow-[0_15px_20px_rgba(0,0,0,0.6),0_15px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
                         select-none -webkit-tap-highlight-color-transparent touch-none"
             style={{ transform: getFaceTransform(faceIndex) }}

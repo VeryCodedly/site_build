@@ -8,6 +8,8 @@ import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Post } from '@/types/post';
+import { useEffect, useState } from 'react';
+import PageLoader from '@/components/PageLoader';
 
 interface BlogContentJSON {
     title?: string;
@@ -21,6 +23,14 @@ interface PostClientProps {
 }
 
 export default function PostClient({ post, related, trending }: PostClientProps) {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(false);
+    }, []);
+
+    if (loading) return <PageLoader />;
+
     let contentJson: BlogContentJSON | null = null;
     try {
         contentJson =

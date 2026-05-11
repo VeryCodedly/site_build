@@ -3,11 +3,11 @@
 import Hero from "@/components/Hero";
 import TeaserCards from "@/components/TeaserCards";
 import Community from "@/components/Community";
-import Testimonials from "@/components/Testimonials";
+import MerchSection from "@/components/MerchSection";
 import CTA from "@/components/CTA";
 import ReadSection from "../components/ReadSection";
 import LearnSection from "../components/LearnSection";
-
+import SHELLySection from "@/components/SHELLySection";
 
 export default function Home() {
   return (
@@ -25,7 +25,9 @@ export default function Home() {
 
         <Community />
 
-        <Testimonials />
+        <SHELLySection />
+
+        <MerchSection />
 
         <CTA />
 

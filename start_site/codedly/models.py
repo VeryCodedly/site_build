@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from taggit.managers import TaggableManager
 # from django.contrib.auth.models import User
+import uuid
 
 RESOURCE_TYPES = [
         ("article", "Article"),
@@ -19,7 +20,41 @@ STATUS_CHOICES = [
         ("archived", "Archived"),
     ]
 
+ORDER_STATUS = (
+        ('pending', 'Pending'),
+        ('paid', 'Paid'),
+        ('processing', 'Processing'),
+        ('shipped', 'Shipped'),
+        ('delivered', 'Delivered'),
+        ('cancelled', 'Cancelled'),
+        ('refunded', 'Refunded'),
+    )
 
+PRODUCT_CHOICES = (
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+        ('archived', 'Archived'),
+        ('pre_order', 'Pre-order'),
+        ('sold_out', 'Sold Out'),
+    )
+
+PAYMENT_STATUS = (
+        ('pending', 'Pending'),
+        ('success', 'Success'),
+        ('confirmed', 'Confirmed'),
+        ('failed', 'Failed'),
+        ('cancelled', 'Cancelled'),
+        ('refunded', 'Refunded'),
+    )
+
+FULFILLMENT_STATUS = (
+        ('not_sent', 'Not Sent'),
+        ('queued', 'Queued'),
+        ('processing', 'Processing'),
+        ('fulfilled', 'Fulfilled'),
+        ('failed', 'Failed'),
+    )
+ 
 def flatten_blocks(content_json: dict) -> str:
     """
     Flattens structured JSON blocks into plain text for SEO, search, and previews.
@@ -119,7 +154,220 @@ def flatten_blocks(content_json: dict) -> str:
     return "\n\n".join(p for p in parts if p)
 
 
+def generate_order_id():
+    """Generate a random 8-character order ID"""
+    return str(uuid.uuid4())[:8].upper()
 
+def generate_payment_reference():
+    """Generate a unique payment reference"""
+    return f"VC-{str(uuid.uuid4())[:8].upper()}"
+
+
+class PrintfulVariant(models.Model):
+    variant_id = models.PositiveIntegerField(unique=True, primary_key=True)
+    sync_id = models.CharField(max_length=50, unique=True, blank=True, null=True) 
+    
+    product = models.ForeignKey(
+        'PrintfulProducts', 
+        on_delete=models.CASCADE, 
+        related_name='variants'
+    )
+    
+    sku = models.CharField(max_length=100, blank=True)
+    name = models.CharField(max_length=255, blank=True)
+    size = models.CharField(max_length=50, blank=True)
+    color = models.CharField(max_length=100, blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    currency = models.CharField(max_length=3, default='USD')
+    active = models.BooleanField(default=True)
+    
+    preview_image = models.URLField(blank=True)
+    thumbnail_url = models.URLField(blank=True)
+    
+    raw_data = models.JSONField(default=dict)   # Keep full original object as backup
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['product', 'size', 'color']
+        indexes = [
+            models.Index(fields=['variant_id']),
+            models.Index(fields=['active']),
+        ]
+
+    def __str__(self):
+        return f"{self.variant_id} - {self.name} (${self.price})"
+    
+    
+class PrintfulProducts(models.Model):
+    CATEGORY_CHOICES = [
+        ("hoodies", "Hoodies"),
+        ("sweatshirts", "Sweatshirts"),
+        ("tshirts", "T-Shirts"),
+        ("hats", "Hats"),
+        ("drink", "Drink"),
+        ("workspace", "Workspace"),
+        ("totes", "Totes"),
+        ("mini dev", "Mini Dev"),
+        ("accessories", "Accessories"),
+    ]
+    # Core Printful Identifiers
+    name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=40, unique=True, blank=True, null=True)
+    printful_id = models.DecimalField(unique=True, max_digits=15, decimal_places=0) # SyncProduct ID from Printful
+    fancy_name = models.CharField(blank=True, null=True)
+    
+    # Classification for testing SHELLy tags and categories
+    category = models.CharField(
+                max_length=50,
+                choices=CATEGORY_CHOICES,
+                default="accessories"
+            )
+    description = models.TextField(blank=True)
+    # has_mascot = models.BooleanField(default=False)
+    
+    # Deep Data Storage
+    variant_mapping = models.JSONField(default=dict)
+    price = models.DecimalField(max_digits=10, decimal_places=2, help_text="Starting price")
+    image_url = models.URLField(blank=True, null=True)
+    thumbnail_url = models.URLField(blank=True, null=True)
+    
+    # Logic Controls
+    is_active = models.BooleanField(default=True)
+    tagline = models.CharField(max_length=255, blank=True)
+    status = models.CharField(max_length=20, choices=PRODUCT_CHOICES, default='published')
+    
+    # Audit trail for sync tests
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ['created_at']
+        verbose_name = 'Printful Products'
+        verbose_name_plural = 'Printful Products'
+        
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.name or self.fancy_name)[:40]
+            slug = base_slug
+            counter = 1
+
+            while PrintfulProducts.objects.filter(slug=slug).exclude(id=self.id).exists():
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+
+            self.slug = slug
+
+        super().save(*args, **kwargs)
+        
+    def __str__(self):
+        return f"[SYNC] {self.name}"
+
+
+class StoreProduct(models.Model):
+    PRODUCT_CATEGORIES = (
+        ('mug', 'Mug'),
+        ('hat', 'Hat'),
+        ('shirt', 'T-Shirt'),
+        ('hoodie', 'Hoodie'),
+        ('digital', 'Digital'),
+        ('cheatsheet', 'Cheatsheet'),
+    )
+    
+    # Basic info
+    product_id = models.CharField(max_length=50, unique=True)  # e.g., "dev-mug-1"
+    name = models.CharField(max_length=200)
+    description = models.CharField(max_length=300)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    category = models.CharField(max_length=20, choices=PRODUCT_CATEGORIES)
+    
+    # Details (stored as JSON array of strings)
+    details = models.JSONField(default=list)  # ["📏 11oz / 330ml", "🍽️ Microwave safe", ...]
+    
+    # Images (stored as JSON array of objects)
+    images = models.JSONField(default=list)  # [{src: "...", alt: "...", side: "f"}, ...]
+    
+    # Metadata
+    status = models.CharField(max_length=20, choices=PRODUCT_CHOICES, default='published')
+    sort_order = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ['sort_order', 'created_at']
+        verbose_name = 'Store Product'
+        verbose_name_plural = 'Store Products'
+        
+    def save(self, *args, **kwargs):
+        # Auto-generate product_id from name if empty
+        if not self.product_id:
+            self.product_id = slugify(self.name)
+           
+        super().save(*args, **kwargs)
+    
+    def __str__(self):
+        return f"{self.name} - ${self.price}"
+    
+
+class StoreOrder(models.Model):    
+    # Order identification
+    order_id = models.CharField(max_length=20, unique=True, default=generate_order_id)
+    printful_order_id = models.CharField(max_length=100, blank=True, null=True)
+    
+    # Customer information
+    customer_name = models.CharField(max_length=200)
+    customer_email = models.EmailField()
+    customer_phone = models.CharField(max_length=20)
+    
+    # Shipping address
+    shipping_address = models.TextField()
+    shipping_address2 = models.CharField(max_length=200, blank=True)
+    shipping_city = models.CharField(max_length=100)
+    shipping_state = models.CharField(max_length=100)
+    shipping_country = models.CharField(max_length=100)
+    shipping_postal = models.CharField(max_length=20, blank=True)
+    
+    shipping_details = models.JSONField(null=True, blank=True) # new
+    
+    # Order details
+    items = models.JSONField()  # Stores cart items as JSON
+    subtotal = models.DecimalField(max_digits=10, decimal_places=2)
+    shipping_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    tax = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    currency = models.CharField(max_length=3, default='USD')
+    
+    # Payment details
+    tx_ref = models.CharField(max_length=100, unique=True, null=True, blank=True)
+    flw_ref = models.CharField(max_length=100, unique=True, null=True, blank=True)
+    payment_reference = models.CharField(max_length=100, unique=True, default=generate_payment_reference)
+    payment_status = models.CharField(max_length=50, default='pending', choices=PAYMENT_STATUS)
+    payment_gateway = models.CharField(max_length=20, default='flutterwave')
+    payment_response = models.JSONField(null=True, blank=True)  # Store full webhook response
+    
+    # Order status
+    status = models.CharField(max_length=20, choices=ORDER_STATUS, default='pending')
+    fulfillment_status = models.CharField(max_length=50, choices=FULFILLMENT_STATUS, default='not_sent')
+    
+    # Tracking
+    tracking_number = models.CharField(max_length=100, blank=True)
+    tracking_url = models.URLField(blank=True)
+    notes = models.TextField(blank=True)
+    
+    # Timestamps
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Store Order'
+        verbose_name_plural = 'Store Orders'
+    
+    def __str__(self):
+        return f"#{self.order_id} - {self.customer_name} - {self.total_amount} {self.currency}"
+    
+    
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(max_length=40, unique=True, blank=True)

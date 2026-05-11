@@ -7,7 +7,8 @@ import { motion as Motion } from "framer-motion";
 import Link from "next/link";
 import { Category, Post } from "@/types/post";
 import RelatedPostsSection from "../../components/blog/RelatedPostsSection";
-
+import PageLoader from "@/components/PageLoader";
+import { useState, useEffect } from "react";
 
 export default function CatClient({ category,
     trending,
@@ -16,6 +17,13 @@ export default function CatClient({ category,
     trending: Post[];
 }) {
     const { name, posts = [] } = category;
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(false);
+    }, []);
+
+    if (loading) return <PageLoader />;
 
     return (
         <>

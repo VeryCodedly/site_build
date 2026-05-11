@@ -20,10 +20,10 @@ const cspProd = [
   "block-all-mixed-content",
   "font-src 'self' data:",
   "img-src 'self' data: blob: https://res.cloudinary.com https://www.googletagmanager.com https://google-analytics.com",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://www.googletagmanager.com https://www.google-analytics.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://www.googletagmanager.com https://www.google-analytics.com https://js.paystack.co",
   "style-src 'self' 'unsafe-inline'",
-  "connect-src 'self' https://api.verycodedly.com https://res.cloudinary.com wss: https://www.google-analytics.com https://analytics.google.com",
-  "frame-src 'self' https://www.youtube.com",
+  "connect-src 'self' https://api.verycodedly.com https://res.cloudinary.com wss: https://www.google-analytics.com https://analytics.google.com https://api.paystack.co https://ipapi.co/json/",
+  "frame-src 'self' https://www.youtube.com https://checkout.paystack.com/",
   "frame-ancestors 'none'",
   "form-action 'self'",
   "object-src 'none'",
@@ -34,23 +34,23 @@ const cspProd = [
 const cspDev = cspProd
   .replace(
     /connect-src[^;]*/,
-    "connect-src 'self' http://localhost:8000 https://api.verycodedly.com https://res.cloudinary.com wss: https://www.google-analytics.com https://analytics.google.com"
+    "connect-src 'self' http://localhost:8000 https://api.verycodedly.com https://res.cloudinary.com wss: https://www.google-analytics.com https://analytics.google.com https://api.paystack.co  https://ipapi.co/json/"
   )
   .replace(
     /script-src[^;]*/,
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://www.googletagmanager.com https://www.google-analytics.com"
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://www.googletagmanager.com https://www.google-analytics.com https://js.paystack.co"
   );
 
 const securityHeaders = [
   { key: "X-DNS-Prefetch-Control", value: "on" },
   { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
   { key: "X-XSS-Protection", value: "1; mode=block" },
-  { key: "X-Frame-Options", value: "DENY" },
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-  { key: "Cross-Origin-Embedder-Policy", value: "require-corp" },
-  { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
-  { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
+  { key: "Cross-Origin-Embedder-Policy", value: "unsafe-none" },
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
+  { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
   {
     key: "Permissions-Policy",
     value: [
@@ -59,10 +59,10 @@ const securityHeaders = [
       "geolocation=()",
       "gyroscope=()",
       "magnetometer=()",
-      "payment=()",
+      "payment=(self)", 
+      "fullscreen=()",
       "usb=()",
       "bluetooth=()",
-      "fullscreen=(self)",
       "clipboard-write=(self)",
       "browsing-topics=()",
       "interest-cohort=()",
@@ -90,10 +90,17 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "res.cloudinary.com", pathname: "/**" },
+      { protocol: "https", hostname: "files.cdn.printful.com", pathname: "/**" },
     ],
+    qualities: [50, 70, 80, 90, 100],
+    deviceSizes: [640, 750, 828, 1080, 1200],
+    minimumCacheTTL: 86400, // 24 hours
   },
 
   async headers() {
+    if (isDev) {
+      return [];
+    }
     const csp = isDev ? cspDev : cspProd;
     return [
       {
