@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion as Motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,62 +12,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import PageLoader from "@/components/PageLoader";
 
-export default function CheckoutSuccessPage() {
-  const searchParams = useSearchParams();
-  const orderId = searchParams.get("order_id");
+
+export default function CheckoutSuccessPage({ searchParams }: {
+  searchParams: { order_id?: string };
+})  {
+  const orderId = searchParams.order_id;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [order, setOrder] = useState<any>(null); 
   const [loading, setLoading] = useState(true);
 
-//   useEffect(() => {
-//   localStorage.removeItem("verycodedly-cart");
-
-//   if (!orderId) {
-//     setLoading(false);
-//     return;
-//   }
-
-//   const storedAuth = sessionStorage.getItem(`auth_${orderId}`);
-  
-//   // DEBUG: Check this in your browser console!
-//   console.log("Looking for key:", `auth_${orderId}`);
-//   console.log("Found data:", storedAuth);
-
-//   if (storedAuth) {
-//     const { email, payment_reference } = JSON.parse(storedAuth);
-//     const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
-//     const fetchOrderDetails = async () => {
-//       try {
-//         // Ensure this results in http://localhost:8000/nkemjika/store/track-order/
-//         const res = await fetch(`${API_URL}/store/track-order/`, { 
-//           method: 'POST',
-//           headers: { "Content-Type": "application/json" },
-//           body: JSON.stringify({
-//             order_id: orderId,
-//             email: email,
-//             payment_reference: payment_reference,
-//           }),
-//         });
-
-//         if (res.ok) {
-//           const data = await res.json();
-//           setOrder(data);
-//         } else {
-//           console.error("Server responded with error:", res.status);
-//         }
-//       } catch (err) {
-//         console.error("Fetch error:", err);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchOrderDetails();
-//   } else {
-//     setLoading(false);
-//   }
-// }, [orderId]);
   useEffect(() => {
   localStorage.removeItem("verycodedly-cart");
 
@@ -79,42 +31,41 @@ export default function CheckoutSuccessPage() {
 
   const storedAuth = sessionStorage.getItem(`auth_${orderId}`);
   
-  console.log("Order ID:", orderId);
-  console.log("Stored Auth:", storedAuth);
+  // DEBUG: Check this in your browser console!
+  console.log("Looking for key:", `auth_${orderId}`);
+  console.log("Found data:", storedAuth);
 
   if (storedAuth) {
     const { email, payment_reference } = JSON.parse(storedAuth);
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-    // === TEMPORARY HARD CODE FOR TESTING ===
-    fetch("http://localhost:8000/nkemjika/store/track-order/", {
-      method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        order_id: orderId,
-        email: email,
-        payment_reference: payment_reference,
-      }),
-    })
-    .then(res => {
-      console.log("Response status:", res.status);
-      if (!res.ok) {
-        return res.text().then(text => { 
-          console.error("Error body:", text);
-          throw new Error(`HTTP ${res.status}: ${text}`); 
+    const fetchOrderDetails = async () => {
+      try {
+        const res = await fetch(`${API_URL}/store/track-order/`, { 
+          method: 'POST',
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            order_id: orderId,
+            email: email,
+            payment_reference: payment_reference,
+          }),
         });
+
+        if (res.ok) {
+          const data = await res.json();
+          setOrder(data);
+        } else {
+          console.error("Server responded with error:", res.status);
+        }
+      } catch (err) {
+        console.error("Fetch error:", err);
+      } finally {
+        setLoading(false);
       }
-      return res.json();
-    })
-    .then(data => {
-      console.log("Order data received:", data);
-      setOrder(data);
-    })
-    .catch(err => {
-      console.error("Fetch error:", err);
-    })
-    .finally(() => setLoading(false));
+    };
+
+    fetchOrderDetails();
   } else {
-    console.error("No auth data in sessionStorage");
     setLoading(false);
   }
 }, [orderId]);
