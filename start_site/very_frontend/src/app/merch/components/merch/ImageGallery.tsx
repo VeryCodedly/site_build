@@ -59,7 +59,7 @@ export default function ImageGallery({
           sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
           className="object-contain transition-transform duration-500 group-hover:scale-105"
           priority
-          quality={50}
+          quality={80}
           unoptimized={true}
         />
         {description && (

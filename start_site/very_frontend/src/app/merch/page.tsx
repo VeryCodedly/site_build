@@ -78,7 +78,7 @@ export default function StorePage() {
                     fill 
                     sizes="(max-width: 768px) 100vw, 50vw" 
                     loading="eager"
-                    quality={70}
+                    quality={80}
                     className="object-contain transition-transform duration-500 group-hover:scale-105" />
                   {product.is_sold_out && (
                     <div className="absolute top-2 right-2 bg-black/80 backdrop-blur-sm px-2 py-0.5 rounded-full">
