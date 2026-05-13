@@ -19,11 +19,11 @@ const cspProd = [
   "base-uri 'self'",
   "block-all-mixed-content",
   "font-src 'self' data:",
-  "img-src 'self' data: blob: https://res.cloudinary.com https://www.googletagmanager.com https://google-analytics.com",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://www.googletagmanager.com https://www.google-analytics.com https://js.paystack.co",
+  "img-src 'self' data: blob: https://res.cloudinary.com https://www.googletagmanager.com https://google-analytics.com https://files.cdn.printful.com https://images.printful.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://www.googletagmanager.com https://www.google-analytics.com https://js.paystack.co https://checkout.flutterwave.com",
   "style-src 'self' 'unsafe-inline'",
-  "connect-src 'self' https://api.verycodedly.com https://res.cloudinary.com wss: https://www.google-analytics.com https://analytics.google.com https://api.paystack.co https://ipapi.co/json/",
-  "frame-src 'self' https://www.youtube.com https://checkout.paystack.com/",
+  "connect-src 'self' https://api.verycodedly.com https://res.cloudinary.com wss: https://www.google-analytics.com https://analytics.google.com https://api.paystack.co https://ipapi.co/json/ https://api.flutterwave.com",
+  "frame-src 'self' https://www.youtube.com https://checkout.paystack.com/ https://checkout.flutterwave.com",
   "frame-ancestors 'none'",
   "form-action 'self'",
   "object-src 'none'",
@@ -34,11 +34,11 @@ const cspProd = [
 const cspDev = cspProd
   .replace(
     /connect-src[^;]*/,
-    "connect-src 'self' http://localhost:8000 https://api.verycodedly.com https://res.cloudinary.com wss: https://www.google-analytics.com https://analytics.google.com https://api.paystack.co  https://ipapi.co/json/"
+    "connect-src 'self' http://localhost:8000 https://api.verycodedly.com https://res.cloudinary.com wss: https://www.google-analytics.com https://analytics.google.com https://api.paystack.co  https://ipapi.co/json/ https://checkout.flutterwave.com"
   )
   .replace(
     /script-src[^;]*/,
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://www.googletagmanager.com https://www.google-analytics.com https://js.paystack.co"
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' 'inline-speculation-rules' https://www.googletagmanager.com https://www.google-analytics.com https://js.paystack.co https://checkout.flutterwave.com"
   );
 
 const securityHeaders = [
