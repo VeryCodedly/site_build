@@ -69,7 +69,7 @@ export default function MerchSection() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % items.length);
-    }, 6000);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
@@ -77,7 +77,7 @@ export default function MerchSection() {
   const prevItem = () => setCurrent((prev) => (prev - 1 + items.length) % items.length);
 
   return (
-    <section className="relative w-full py-20 bg-black px-2 text-center overflow-hidden order-b order-t order-zinc-900">
+    <section className="relative w-full py-20 bg-black px-4 text-center overflow-hidden order-b order-t order-zinc-900">
       {/* Floating accents */}
       {/* <div className="absolute inset-0 -z-10 pointer-events-none">
         <div className="w-2 h-2 bg-lime-400 rounded-full absolute top-10 left-20 animate-ping"></div>
@@ -96,8 +96,8 @@ export default function MerchSection() {
       </div>
 
       {/* Carousel */}
-      <div className="relative flex items-center gap-10 lg:gap-6 flex-col lg:flex-row min-h-screen">
-      <div className="relative mx-auto px-2 order-1 lg:order-2 w-full h-full lg:w-[40%] lg:h-[50%]">
+      <div className="relative flex items-center gap-12 lg:gap-6 flex-col lg:flex-row min-h-screen">
+      <div className="relative mx-auto order-1 lg:order-2 w-full h-full lg:w-[40%] lg:h-[50%]">
         <AnimatePresence mode="wait">
           <Link href="/merch">
           <Motion.div
@@ -105,8 +105,9 @@ export default function MerchSection() {
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.5 }}
-            className="w-full h-[40vh] rounded-2xl p-6 transition-all duration-300"
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            // className="w-full h-[40vh] rounded-2xl p-6 transition-all duration-300"
+            className="relative w-full h-[40vh] rounded-2xl transition-all duration-300"
           >
             {/* theres more */}
             {/* <div className="mb-4" /> */}
@@ -116,10 +117,11 @@ export default function MerchSection() {
                 // width={200}
                 // height={200}
                 fill
-                className="mx-auto object-contain object-center"
+                // className="mx-auto object-contain object-center"
+                className="object-contain object-center"
+                quality={100}
                 loading="eager"
-                quality={90}
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 768px) 90vw, (max-width: 1200px) 60vw, 40vw"
                 />
               {/* <div className="text-lime-300 font-semibold mt-3">{items[current].name}</div> */}
               {/* <div className="text-gray-400 text-sm">{items[current].role}</div> */}
@@ -149,7 +151,7 @@ export default function MerchSection() {
         </div> */}
 
         {/* Controls */}
-        <div className="flex justify-between mt-4 gap-4">
+        <div className="flex justify-between mt-8 px-4 sm:px-8 md:px-14 lg:px-4">
           {/* Left Arrow */}
           <button
             onClick={prevItem}
@@ -195,10 +197,9 @@ export default function MerchSection() {
             alt="VeryCodedly Supply"
             fill
             className="object-contain object-center"
+            quality={100}
             loading="eager"
-            quality={50}
-            unoptimized={true}
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 768px) 100vw, 55vw"
           />
         </div>
       </div>

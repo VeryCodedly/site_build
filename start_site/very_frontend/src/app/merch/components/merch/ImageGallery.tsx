@@ -56,11 +56,10 @@ export default function ImageGallery({
           src={currentImage}
           alt={productName}
           fill
-          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 50vw"
           className="object-contain transition-transform duration-500 group-hover:scale-105"
           priority
-          quality={80}
-          unoptimized={true}
+          quality={100}
         />
         {description && (
           <button
