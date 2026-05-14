@@ -167,7 +167,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* LEARNING PATHS - ENHANCED */}
-      <section className="max-w-6xl mx-auto min-h-screen py-16 px-2 sm:px-7 flex flex-col items-left justify-center group/bar">
+      <section className="max-w-6xl mx-auto min-h-screen py-16 px-8 flex flex-col items-left justify-center group/bar">
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-4">
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/bar:bg-pink-400 group-active/bar:bg-pink-400" />
@@ -248,7 +248,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* FEATURED LESSONS - ENHANCED */}
-      <section id="featured" className="relative min-h-screen w-full mx-auto px-2 sm:px-7 py-16 group/bar flex flex-row items-start">
+      <section id="featured" className="relative min-h-screen w-full mx-auto px-8 py-16 group/bar flex flex-row items-start">
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-12">
             <p className="text-xs uppercase tracking-widest text-gray-500 ml-2 mb-2 flex items-center gap-3">
@@ -348,7 +348,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* TOOLS & RESOURCES - ENHANCED */}
-      <section className="py-12 w-full mx-auto px-2 sm:px-7 group">
+      <section className="py-12 w-full mx-auto px-8 group">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
@@ -401,7 +401,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* COMMUNITY SECTION - ENHANCED */}
-      <section className="py-12 w-full mx-auto px-2 sm:px-7 group">
+      <section className="py-12 w-full mx-auto px-8 group">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
