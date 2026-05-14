@@ -23,13 +23,13 @@ interface PostClientProps {
 }
 
 export default function PostClient({ post, related, trending }: PostClientProps) {
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        setLoading(false);
-    }, []);
+    // useEffect(() => {
+    //     setLoading(false);
+    // }, []);
 
-    if (loading) return <PageLoader />;
+    // if (loading) return <PageLoader />;
 
     let contentJson: BlogContentJSON | null = null;
     try {
@@ -59,7 +59,7 @@ export default function PostClient({ post, related, trending }: PostClientProps)
                 </Link>
             </motion.div>
 
-            <section className="max-w-4xl mx-auto pb-12">
+            <section className="max-w-4xl mx-auto pb-10">
                 <PostContent post={post} contentJson={contentJson} />
                 <RelatedPostsSection posts={related} trending={trending} name={post.subcategory?.name} />
             </section>

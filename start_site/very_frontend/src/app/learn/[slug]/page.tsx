@@ -17,7 +17,7 @@ async function getCourse(slug: string): Promise<Course | null> {
     }
 
     const res = await fetch(`${apiUrl}/${slug}/`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 1800 },
     });
 
     if (!res.ok) return null;

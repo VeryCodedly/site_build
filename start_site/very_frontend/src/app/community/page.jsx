@@ -42,7 +42,7 @@ export default function CommunityPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://discord.gg/53wVsqEcbE"
-                      className="text-lime-400 hover:underline hover:text-lime-300 transition-colors"
+                      className="text-lime-400 hover:text-lime-300 active:underline active:text-white transition-colors"
                     >
                       Discord
                     </Link>
@@ -56,7 +56,7 @@ export default function CommunityPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://facebook.com/verycodedly"
-                      className="text-lime-400 hover:underline hover:text-lime-300 transition-colors"
+                      className="text-lime-400 hover:text-lime-300 active:underline active:text-white transition-colors"
                     >
                       Facebook
                     </Link>{" "}
@@ -95,7 +95,7 @@ export default function CommunityPage() {
                 href="https://verycodedly.substack.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-lime-400 hover:underline hover:text-lime-300 transition-colors"
+                className="text-lime-400 hover:text-lime-300 active:underline active:text-white transition-colors"
               >
                 Substack
               </Link>{" "}

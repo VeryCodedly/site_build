@@ -12,7 +12,7 @@ export const dynamicParams = true;
 
 async function getPost(slug: string): Promise<Post | null> {
   const res = await fetch(`${apiUrl}/posts/${slug}/`, {
-    next: { revalidate: 180 },
+    next: { revalidate: 1800 },
     headers: { 'Content-Type': 'application/json' },
   });
 

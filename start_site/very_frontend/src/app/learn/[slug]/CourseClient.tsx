@@ -1,13 +1,12 @@
 "use client";
 
-import React, { memo, useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Lessons, Course } from "@/types/post";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faLongArrowRight, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import PageLoader from "@/components/PageLoader";
 
 const PROGRESS_KEY = (slug: string) => `course_progress_${slug}`;
 
@@ -84,11 +83,6 @@ interface CourseClientProps {
 
 export default function CourseClient({ course, slug }: CourseClientProps) {
   const [completedLessons, setCompletedLessons] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(false);
-  }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined" && slug) {
@@ -96,8 +90,6 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
       if (saved) setCompletedLessons(JSON.parse(saved));
     }
   }, [slug]);
-
-  if (loading) return <PageLoader />;
 
   const lessons: Lessons[] = Array.isArray(course.lessons) ? course.lessons : [];
 
@@ -113,7 +105,7 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
   }
 
   return (
-    <section className="w-full bg-gradient-to-b from-black to-zinc-950/40 text-white min-h-screen pt-10 pb-28 px-8 sm:px-8">
+    <section className="w-full bg-gradient-to-b from-black to-zinc-950/40 text-white min-h-screen pt-10 pb-28 px-6 sm:px-6">
       {/* Back button */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -132,16 +124,16 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
       </motion.div>
 
       {/* Course Header */}
-      <div className="mx-auto px-3 mb-8">
+      <div className="mx-auto mb-8 max-w-5xl">
         <div className="relative w-full mb-6 overflow-hidden rounded-2xl">
           <Image
             src={course.image || '/learn-post-image.png'}
             alt={course.alt || 'Featured image'}
             width={1200}
             height={600}
-            className="w-full h-[252px] sm:h-[72vh] lg:h-[74vh] object-cover rounded-2xl brightness-65 hover:brightness-90 active:brightness-90 transition-all duration-500"
+            className="w-full h-[252px] sm:h-[72vh] lg:h-[74vh] object-contain rounded-2xl brightness-65 hover:brightness-90 active:brightness-90 transition-all duration-500"
             priority
-            sizes="100vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 92vw, 1200px"
           />
         </div>
 
@@ -166,8 +158,8 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
       </div>
 
       {lessons.length > 0 && (
-        <section className="py-5 px-2.5 group/bar flex flex-col md:flex-row md:items-start gap-6 md:gap-4 max-w-5xl mx-auto">
-          <div className="px-1 md:px-0 flex items-center gap-2">
+        <section className="py-5 group/bar flex flex-col md:flex-row md:items-start gap-6 md:gap-4 max-w-5xl mx-auto">
+          <div className="flex items-center gap-2">
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/bar:bg-pink-400 group-active/bar:bg-pink-400 transition-colors" />
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
@@ -181,7 +173,7 @@ export default function CourseClient({ course, slug }: CourseClientProps) {
           </div>
 
           {/* Grid of lessons */}
-          <div className="px-1 md:px-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 flex-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 flex-1">
             {lessons.map((lesson, index) => (
               <LessonCard
                 key={lesson.slug}

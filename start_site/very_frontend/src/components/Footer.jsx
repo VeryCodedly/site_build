@@ -30,28 +30,50 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative bg-gradient-to-b from-black to-zinc-950 text-gray-400/95 pt-16 sm:pt-20 pb-16 sm:pb-14 px-8 overflow-hidden border-t border-zinc-950">
+    <footer className="relative bg-gradient-to-b from-black to-zinc-950 text-gray-400/95 pt-18 pb-10 px-8 overflow-clip border-t border-zinc-950">
       {/* faint glow background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
 
       {/* content grid */}
-      <div className="relative max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 pt-8 gap-14 lg:pl-18">
+      <div className="relative max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-4 pt-8 gap-8 lg:pl-20">
         {/* Brand Column */}
         <div>
-          <h3 className="text-lime-400 text-xl font-bold mb-3">
+          <h3 className="text-lime-400 text-xl font-bold mb-2">
             VeryCodedly{/* <span className="text-xs">™</span> */}
           </h3>
-          <p className="text-sm text-gray-400/70 leading-tight w-[140px]">
+          <p className="text-sm text-gray-400/70 leading-snug w-[140px]">
             For the curious minds shaping the future, you're in good company here.
           </p>
         </div>
 
+        {/* Socials */}
+        <div className="flex flex-col items-start">
+          <h3 className="text-white text-lg font-semibold tracking-tight">
+            Connect
+          </h3>
+          <div className="grid grid-cols-3 gap-y-4 gap-x-5 mt-2 items-start">
+            {socials.map(({ icon, link, name }) => (
+              <Link
+                key={link}
+                href={link}
+                title={name}
+                aria-label={`${name} link`}
+                target="_blank"
+                loading="lazy"
+                className="p-0 text-gray-400/80 hover:text-lime-500 active:text-lime-500 hover:scale-110 transition duration-400 active:scale-60"
+              >
+                <FontAwesomeIcon icon={icon} size="lg" />
+              </Link>
+            ))}
+          </div>
+        </div>
+
         {/* Explore */}
         <div>
-          <h3 className="text-white text-lg font-semibold mb-3 tracking-tight">
+          <h3 className="text-white text-lg font-semibold mb-2 tracking-tight">
             Explore
           </h3>
-          <ul className="space-y-4 text-sm">
+          <ul className="space-y-4 sm:space-y-2 text-sm">
             {[
               ["About", "/about"],
               ["Read", "/read"],
@@ -75,10 +97,10 @@ export default function Footer() {
 
         {/* Help */}
         <div>
-          <h3 className="text-white text-lg font-semibold mb-3 tracking-tight">
+          <h3 className="text-white text-lg font-semibold mb-2 tracking-tight">
             Help
           </h3>
-          <ul className="space-y-4 text-sm">
+          <ul className="space-y-4 sm:space-y-2 text-sm">
             {[
               ["FAQs", "/faqs"],
               ["Contact", "/contact"],
@@ -99,35 +121,13 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-
-        {/* Socials */}
-        <div className="flex flex-col items-start">
-          <h3 className="text-white text-lg font-semibold tracking-tight">
-            Connect
-          </h3>
-          <div className="grid grid-cols-3 gap-y-5 gap-x-4 mt-2 items-start">
-            {socials.map(({ icon, link, name }) => (
-              <Link
-                key={link}
-                href={link}
-                title={name}
-                aria-label={`${name} link`}
-                target="_blank"
-                loading="lazy"
-                className="p-0.5 text-gray-400/80 hover:text-lime-500 active:text-lime-500 hover:scale-110 transition duration-400 active:scale-60"
-              >
-                <FontAwesomeIcon icon={icon} size="lg" />
-              </Link>
-            ))}
-          </div>
-        </div>
       </div>
 
       {/* Divider */}
-      <div className="relative w-full h-px g-gradient-to-r from-transparent via-gray-800/50 to-transparent my-8 sm:my-10" />
+      <div className="relative w-full h-px g-gradient-to-r from-transparent via-gray-800/50 to-transparent my-16 sm:my-10 md:my-8" />
 
       {/* Logo + Bottom line */}
-      <div className="relative flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto gap-6">
+      <div className="relative flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto">
         <Link aria-label="Home button" href="/">
           <Image
             src="/images/favicon-main.svg"

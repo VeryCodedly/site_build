@@ -95,7 +95,7 @@ export default function FAQsPage() {
                 <h3 className="text-lg sm:text-xl font-semibold text-white">What if I get stuck on a lesson?</h3>
               </div>
               <p className="ml-4 sm:ml-3 text-gray-300 text-sm sm:text-base leading-relaxed pl-0 sm:pl-2">
-                Visit our <Link href="https://discord.gg/53wVsqEcbE" className="text-lime-400 underline active:text-white hover:text-lime-300 transition-colors duration-200"> community page</Link>.
+                Visit our <Link href="https://discord.gg/53wVsqEcbE" className="text-lime-400 active:underline active:text-white hover:text-lime-300 transition-colors duration-200"> community </Link>page.
                 Ask questions, see solutions, or pair up with a study buddy. You're never alone.
               </p>
             </Motion.div>
@@ -111,7 +111,7 @@ export default function FAQsPage() {
                 <h3 className="text-lg sm:text-xl font-semibold text-white">How do I join the community?</h3>
               </div>
               <p className="ml-4 sm:ml-3 text-gray-300 text-sm sm:text-base leading-relaxed pl-0 sm:pl-2">
-                Check out our <Link href="/community" className="text-lime-400 underline hover:text-lime-300 active:text-white transition-colors duration-200">community page</Link> to join Discord or Facebook groups.
+                Check out our <Link href="/community" className="text-lime-400 active:underline hover:text-lime-300 active:text-white transition-colors duration-200">community </Link>page to join Discord or Facebook groups.
               </p>
             </Motion.div>
 
@@ -134,7 +134,7 @@ export default function FAQsPage() {
                 </p>
                 <Link 
                   href="/merch" 
-                  className="text-base sm:text-lg inline-block mt-2 text-lime-400 hover:text-lime-300 active:text-white underline transition-colors duration-200 font-semibold"
+                  className="text-base inline-block mt-2 text-lime-400 hover:text-lime-300 active:text-white active:underline transition-colors duration-200 font-semibold"
                 >
                   Visit the store
                 </Link>

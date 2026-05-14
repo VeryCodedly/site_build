@@ -47,6 +47,8 @@ export default function Carousel({ posts = [], className = "" }: CarouselProps) 
                 height={600}
                 className="w-full h-98 object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
                 priority
+                quality={80}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 92vw, 1200px"
               />
             ) : (
               <div className="w-full h-96 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl" />

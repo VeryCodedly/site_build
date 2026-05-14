@@ -40,7 +40,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
  
-CACHE_TIMEOUT = 300
+CACHE_TIMEOUT = 1800
 
 def api_home(request):
     return HttpResponse("""
@@ -427,6 +427,10 @@ class PrintfulProductViewSet(viewsets.ReadOnlyModelViewSet):
         exclude = self.request.query_params.get("exclude")
         if exclude:
             queryset = queryset.exclude(id=exclude)
+            
+        # limit related products
+        if self.action == "list" and category:
+            return queryset[:4]
 
         return queryset
 

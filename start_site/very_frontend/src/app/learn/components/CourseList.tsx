@@ -14,7 +14,7 @@ type CourseResponse = {
     alt: string;
     lessons?: Lessons[];
   }>;
-};
+}
 
 const getCachedCourses = cache(async (): Promise<CourseResponse | null> => {
   try {
@@ -28,7 +28,7 @@ const getCachedCourses = cache(async (): Promise<CourseResponse | null> => {
     // console.log(`Fetching courses from: ${url}`);
 
     const res = await fetch(url, {
-      next: { revalidate: 60 },
+      next: { revalidate: 1800 },
       cache: "force-cache",
       headers: { "Content-Type": "application/json" },
     });

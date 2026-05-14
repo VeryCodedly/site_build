@@ -16,7 +16,7 @@ import {
   faCreditCard,
   faBoxes,
 } from "@fortawesome/free-solid-svg-icons";
-import PageLoader from "@/components/PageLoader";
+// import PageLoader from "@/components/PageLoader";
 
 interface OrderItem {
   name: string;
@@ -108,7 +108,8 @@ export default function OrderTrackingPage() {
     fetchOrder();
   }, [order_id]);
 
-  if (loading) return <PageLoader />;
+  if (loading) return;
+
   if (error) {
     return (
       <div className="min-h-screen flex items-center justify-center text-red-400 bg-gradient-to-b from-black to-zinc-950/50">

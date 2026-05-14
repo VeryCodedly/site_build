@@ -16,8 +16,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import CourseListClient from "./components/CourseListClient";
 import { Lessons } from "@/types/post";
-import PageLoader from "@/components/PageLoader";
-import { useEffect, useState } from "react";
 
 type Course = {
   id: number;
@@ -35,13 +33,6 @@ interface Props {
 }
 
 export default function LearnPage({ courses }: Props) {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(false);
-  }, []);
-
-  if (loading) return <PageLoader />;
 
   return (
     <div className="bg-gradient-to-b from-black via-black to-zinc-950/40 text-white">
@@ -87,13 +78,13 @@ export default function LearnPage({ courses }: Props) {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center gap-8 py-12">
-            <Link 
+            <a 
               href="#courses" 
               className="font-bold sm:font-bold cursor-pointer border-3 border-gray-500/100 bg-lime-400 text-black px-6 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
             active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
             >
               Start Learning
-            </Link>
+            </a>
             <a 
               href="#featured" 
               className="text-sm text-gray-400 hover:text-white active:text-white transition-colors flex items-center gap-2"
@@ -107,33 +98,33 @@ export default function LearnPage({ courses }: Props) {
         </div>
       </section>
 
-      {/* WHY THIS EXISTS - ENHANCED */}
-      <section className="pt-16 pb-20 px-12 group">
-        <div className="max-w-6xl mx-auto">
+      {/* WHY THIS EXISTS */}
+      <section className="mt-16 pb-20 px-8 group">
+        <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
                 <Motion.p 
                   initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
                   className="text-xs uppercase tracking-widest text-gray-500">The Approach</Motion.p>
               </div>
-              <h2 className="text-3xl font-bold text-white">Why Learn <span className="text-lime-400">Here</span></h2>
+              <h2 className="text-3xl font-bold text-white">Why  <span className="text-lime-400">Learn?</span></h2>
             </div>
             <div className="md:col-span-2 space-y-6">
               <p className="text-gray-300/90 text-base leading-relaxed">
                 Most coding resources rush you from syntax to frameworks. 
-                <span className="text-lime-400 font-medium"> VeryCodedly goes the other way</span>. We start with understanding, then build speed.
+                <span className="text-lime-400 font-medium"> VeryCodedly goes the other way.</span> We start with understanding, then build from there.
               </p>
               <div className="grid sm:grid-cols-2 gap-5">
                 {[
                   { title: "Concept First", desc: "Every lesson explains the why before the how.", icon: faBrain },
                   { title: "No Jargon", desc: "Just what you need to know, nothing more.", icon: faBolt },
                   { title: "Build Confidence", desc: "Ideas stick because they actually make sense.", icon: faRocket },
-                  { title: "Learn with Peers", desc: "Join a community that learns together.", icon: faUsers }
+                  { title: "Learn with Peers", desc: "Join a community and learn together.", icon: faUsers }
                 ].map((item, i) => (
                   <div key={i} className="bg-zinc-900/40 border border-zinc-800/50 rounded-xl p-4 flex items-start gap-3">
                     <div className="w-8 h-8 rounded-lg bg-lime-400/10 flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -146,7 +137,7 @@ export default function LearnPage({ courses }: Props) {
                   </div>
                 ))}
               </div>
-              <p className="text-gray-400 border-l-4 border-lime-400/50 pl-4 py-1 italic text-sm rounded-md">
+              <p className="text-gray-400 border-l-4 border-lime-400/50 pl-4 py-1 italic text-xs rounded-md">
                 &quot;If you&apos;ve ever felt like coding tutorials move too fast, this is for you.&quot;
               </p>
             </div>
@@ -155,7 +146,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* COURSES SECTION */}
-      <section id="courses" className="bg-black min-h-screen mx-auto px-12 py-20 order-y order-zinc-900">
+      <section id="courses" className="bg-black min-h-screen mx-auto px-8 py-20 order-y order-zinc-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             {/* <div className="inline-flex items-center gap-2 bg-lime-400/10 px-3 py-1.5 rounded-full border border-lime-400/20 mb-4">
@@ -176,7 +167,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* LEARNING PATHS - ENHANCED */}
-      <section className="max-w-6xl mx-auto min-h-screen py-20 px-12 flex flex-col items-left justify-center group/bar">
+      <section className="max-w-6xl mx-auto min-h-screen py-16 px-2 sm:px-7 flex flex-col items-left justify-center group/bar">
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-4">
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/bar:bg-pink-400 group-active/bar:bg-pink-400" />
@@ -257,7 +248,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* FEATURED LESSONS - ENHANCED */}
-      <section id="featured" className="relative min-h-screen w-full mx-auto px-12 py-20 group/bar flex flex-row items-start">
+      <section id="featured" className="relative min-h-screen w-full mx-auto px-2 sm:px-7 py-16 group/bar flex flex-row items-start">
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-12">
             <p className="text-xs uppercase tracking-widest text-gray-500 ml-2 mb-2 flex items-center gap-3">
@@ -331,7 +322,7 @@ export default function LearnPage({ courses }: Props) {
                     </div>
                   </div>
                   {/* Image */}
-                  <div className="flex-shrink-0">
+                  <div className="flex-shrink-0 my-auto">
                     <div className="relative w-[50px] h-[50px] sm:w-[100px] sm:h-[100px] mx-auto sm:mx-0">
                       <div className="absolute inset-0 bg-white/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                       <Image
@@ -348,7 +339,7 @@ export default function LearnPage({ courses }: Props) {
             ))}
           </div>
           
-          <div className="mt-12 text-center">
+          <div className="mt-10 text-center">
             <a href="#courses" className="text-sm inline-flex items-center gap-2 text-gray-400 hover:text-white active:text-white transition-colors">
               Browse courses <FontAwesomeIcon icon={faArrowRight} size="sm" />
             </a>
@@ -357,7 +348,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* TOOLS & RESOURCES - ENHANCED */}
-      <section className="py-20 w-full mx-auto px-12 group">
+      <section className="py-12 w-full mx-auto px-2 sm:px-7 group">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
@@ -365,10 +356,10 @@ export default function LearnPage({ courses }: Props) {
                 <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
                 <Motion.p
                   initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-                 className="text-xs uppercase tracking-widest text-gray-500">YOU&apos;LL USE THESE
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="text-xs uppercase tracking-widest text-gray-500">YOU&apos;LL USE THESE
                  </Motion.p>
               </div>
               <h2 className="text-4xl sm:text-5xl font-black">
@@ -410,7 +401,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* COMMUNITY SECTION - ENHANCED */}
-      <section className="py-20 w-full mx-auto px-12 group">
+      <section className="py-12 w-full mx-auto px-2 sm:px-7 group">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>

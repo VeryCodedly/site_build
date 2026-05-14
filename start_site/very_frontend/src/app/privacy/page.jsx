@@ -116,10 +116,10 @@ export default function PrivacyPage() {
               Got questions? Reach out anytime via our{' '}
               <Link
                 href="/contact"
-                className="text-lime-400 underline hover:text-lime-300 transition-colors duration-200 font-medium"
+                className="text-lime-400 active:underline hover:text-lime-300 active:text-white transition-colors duration-200 font-medium"
               >
-                contact page
-              </Link>.
+                contact
+              </Link> page.
             </p>
           </div>
 

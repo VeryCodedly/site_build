@@ -12,7 +12,7 @@ import type { CountryCode } from "libphonenumber-js";
 
 import CheckoutForm from "@/app/checkout/components/checkout/CheckoutForm";
 import OrderSummary from "@/app/checkout/components/checkout/OrderSummary";
-import PageLoader from '@/components/PageLoader';
+// import PageLoader from '@/components/PageLoader';
 import { useCart } from '@/context/CartContext';
 
 
@@ -127,13 +127,23 @@ export default function CheckoutPage() {
   }, []);
 
     // Redirect if cart is empty but not if checking out
+  // useEffect(() => {
+  //   if (cartItems.length > 0) {
+  //     setLoading(false);
+  //   } else if (cartItems.length === 0 && !loading) {
+  //     router.push("/merch");
+  //   }
+  // }, [cartItems.length, loading, router]);   // Better dependency?
+
   useEffect(() => {
-    if (cartItems.length > 0) {
-      setLoading(false);
-    } else if (cartItems.length === 0 && !loading) {
-      router.push("/merch");
+    if (cartItems.length === 0) {
+      const timeout = setTimeout(() => {
+        router.push("/merch");
+      }, 100);
+      return () => clearTimeout(timeout);
     }
-  }, [cartItems.length, loading, router]);   // Better dependency?
+    setLoading(false);
+  }, [cartItems.length, router]);
 
   const formatPhone = (value: string, country?: CountryCode) => {
     const parsed = parsePhoneNumberFromString(value, country);
@@ -295,7 +305,7 @@ export default function CheckoutPage() {
 
   const validate = useCallback(() => {
     const newErrors: Errors = {};
-    const req = (v: string) => !v?.trim();
+    const req = (v?: string) => !v?.trim();
     if (req(formData.firstName)) newErrors.firstName = "Required";
     if (req(formData.lastName)) newErrors.lastName = "Required";
     if (req(formData.email)) newErrors.email = "Required";
@@ -327,7 +337,7 @@ export default function CheckoutPage() {
   if (e) e.preventDefault();
   setShowErrors(true);
   if (!validate()) return;
-  if (shippingQuote === null) {
+  if (shippingQuote === null || isNaN(shippingQuote)) {
     setStatus({ type: 'error', message: "Please calculate shipping first" });
     return;
   }
@@ -431,7 +441,7 @@ export default function CheckoutPage() {
   // FIX for Pay button
   const handlePayClick = () => handleSubmit();
 
-  if (loading) return <PageLoader />;
+  // if (loading) return <PageLoader />;
 
   if (cartItems.length === 0) {
     return <section className="relative min-h-screen pt-10 pb-30 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-950/50 flex items-center justify-center"><div className="text-center"><p className="text-gray-400 mb-4">Your cart is empty.</p><Link href="/merch" className="text-lime-400 hover:text-white transition-colors">Continue shopping →</Link></div></section>;

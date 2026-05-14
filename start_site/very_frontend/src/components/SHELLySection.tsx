@@ -28,9 +28,9 @@ export default function HomeMascot() {
 
   return (
     <section className="relative w-full bg-black overflow-hidden">
-      <div className="relative flex flex-col lg:flex-row min-h-screen">
+      <div className="relative flex flex-col lg:flex-row in-h-screen">
         {/* Left side: Mascot image – on mobile it's below the text */}
-        <div className="relative w-full lg:w-[60%] h-[50vh] lg:h-screen flex-shrink-0 order-2 lg:order-1">
+        <div className="relative w-full lg:w-[60%] h-[40vh] sm:h-[50vh] lg:h-screen flex-shrink-0 order-2 lg:order-1">
           <Image
             src="/images/SHELLy.svg"
             alt="SHELLy – VeryCodedly mascot"

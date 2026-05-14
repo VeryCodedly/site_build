@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function TermsPage() {
   return (
-    <section className="relative min-h-screen py-16 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-950/50">
+    <section className="relative min-h-screen py-16 px-2 sm:px-6 bg-gradient-to-b from-black to-zinc-950/50">
       <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-cover opacity-40 pointer-events-none" />
 
       <div className="max-w-4xl mx-auto relative z-10">
@@ -94,9 +94,9 @@ export default function TermsPage() {
           <div className="mt-8 pt-6 border-t border-gray-800">
             <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed">
               Questions about these terms? Contact us via the{' '}
-              <Link href="/contact" className="text-lime-400 underline hover:text-lime-300 transition-colors duration-200">
-                contact page
-              </Link>.
+              <Link href="/contact" className="text-lime-400 hover:text-lime-300 active:underline active:text-white transition-colors">
+                contact 
+              </Link>page.
             </p>
           </div>
 

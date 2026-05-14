@@ -8,7 +8,7 @@ import RelatedPostsSection from '../../components/blog/RelatedPostsSection';
 import MiniPostCard from '../../components/blog/MiniPostCard';
 import { Post, Subcategory } from '@/types/post';
 import { useState, useEffect } from 'react';
-import PageLoader from '@/components/PageLoader';
+// import PageLoader from '@/components/PageLoader';
 
 
 export default function SubClient({
@@ -21,13 +21,13 @@ export default function SubClient({
     trending: Post[];
 }) {
     const { name, about } = subcategory;
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        setLoading(false);
-    }, []);
+    // useEffect(() => {
+    //     setLoading(false);
+    // }, []);
 
-    if (loading) return <PageLoader />;
+    // if (loading) return <PageLoader />;
 
     if (posts.length === 0) {
         return (

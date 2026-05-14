@@ -21,7 +21,7 @@ const getCourses = cache(async (): Promise<Course[]> => {
 
   try {
     const res = await fetch(`${apiUrl}/courses/`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 1800 },
     });
     if (!res.ok) return [];
     const json = await res.json();

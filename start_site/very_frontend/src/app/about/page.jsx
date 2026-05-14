@@ -83,7 +83,7 @@ export default function AboutPage() {
           {/* Closing statement */}
           <div className="mt-8 text-gray-300 text-sm leading-relaxed border-t border-gray-800 pt-6">
             <p>
-              If something is interesting, confusing, useful, or important, it’s probably worth talking about. That’s the entire idea behind <span className='text-lime-400'>VeryCodedly</span>.
+              If something is interesting, confusing, useful, or important, it’s probably worth talking about. That’s the entire idea behind <span className='text-lime-400'>VeryCodedly.</span>
             </p>
           </div>
 

@@ -10,7 +10,7 @@ import {
   faTruck,
   faEnvelope,
 } from "@fortawesome/free-solid-svg-icons";
-import PageLoader from "@/components/PageLoader";
+// import PageLoader from "@/components/PageLoader";
 
 
 export default function CheckoutSuccessPage({ searchParams }: {
@@ -63,14 +63,13 @@ export default function CheckoutSuccessPage({ searchParams }: {
         setLoading(false);
       }
     };
-
     fetchOrderDetails();
   } else {
     setLoading(false);
   }
 }, [orderId]);
 
-  if (loading) return <PageLoader />;
+  if (loading) return;
 
   return (
     <section className="relative min-h-screen pt-10 pb-30 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-950/50">

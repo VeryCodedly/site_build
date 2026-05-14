@@ -17,13 +17,13 @@ export default function CatClient({ category,
     trending: Post[];
 }) {
     const { name, posts = [] } = category;
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        setLoading(false);
-    }, []);
+    // useEffect(() => {
+    //     setLoading(false);
+    // }, []);
 
-    if (loading) return <PageLoader />;
+    // if (loading) return <PageLoader />;
 
     return (
         <>
