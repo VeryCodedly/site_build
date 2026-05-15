@@ -51,9 +51,8 @@ export default function StartPage() {
                 <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/courses:bg-pink-400 group-active/courses:bg-pink-400" />
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
                   className="text-2xl font-bold text-white">Learn the Fundamentals
                 </motion.h2>
               </div>
@@ -112,9 +111,8 @@ export default function StartPage() {
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/paths:bg-pink-400 group-active/paths:bg-pink-400" />
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
               className="text-2xl font-bold text-white">Suggested Learning Paths
             </motion.h2>
           </div>
@@ -146,9 +144,8 @@ export default function StartPage() {
                 <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/takes:bg-pink-400 group-active/takes:bg-pink-400" />
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
                   className="text-2xl font-bold text-white">Tech Takes
                 </motion.h2>
               </div>
@@ -199,9 +196,8 @@ export default function StartPage() {
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/reads:bg-pink-400 group-active/reads:bg-pink-400" />
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
               className="text-2xl font-bold text-white">Popular Reads
             </motion.h2>
           </div>

@@ -203,7 +203,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3 }}
-          className="max-w-7xl mx-auto mt-10 ml-4"
+          className="max-w-7xl mx-auto mt-10 ml-3"
         >
           <Link
             href="/merch"

@@ -97,6 +97,9 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 if not DEBUG:
+    # Optional for session backend on Redis
+    SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+    SESSION_CACHE_ALIAS = "default"
     CACHES = {
         "default": {
             "BACKEND": "django_redis.cache.RedisCache",
@@ -117,13 +120,10 @@ if not DEBUG:
 else:
     CACHES = {
         "default": {
-            "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+            "BACKEND": "django.core.cache.backends.dummy.DummyCache",
         }
     }
 
-# Optional for session backend on Redis
-SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-SESSION_CACHE_ALIAS = "default"
 
 LOGGING = {
     'version': 1,

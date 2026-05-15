@@ -25,7 +25,9 @@ const getCourses = cache(async (): Promise<Course[]> => {
     });
     if (!res.ok) return [];
     const json = await res.json();
-    return json.results || [];
+    
+    return Array.isArray(json) ? json : (json.results || []);
+    // return json.results || [];
   } catch {
     return [];
   }

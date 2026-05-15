@@ -7,8 +7,6 @@ import { motion as Motion } from "framer-motion";
 import Link from "next/link";
 import { Category, Post } from "@/types/post";
 import RelatedPostsSection from "../../components/blog/RelatedPostsSection";
-import PageLoader from "@/components/PageLoader";
-import { useState, useEffect } from "react";
 
 export default function CatClient({ category,
     trending,
@@ -17,28 +15,21 @@ export default function CatClient({ category,
     trending: Post[];
 }) {
     const { name, posts = [] } = category;
-    // const [loading, setLoading] = useState(true);
-
-    // useEffect(() => {
-    //     setLoading(false);
-    // }, []);
-
-    // if (loading) return <PageLoader />;
 
     return (
         <>
+            <Motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
+                <Link href="/read" className="inline-flex items-center pt-10 ml-5 text-lime-400 hover:text-white active:text-white active:scale-60 transition-all duration-300 text-sm sm:text-base">
+                    <FontAwesomeIcon icon={faArrowLeft} size="lg" />
+                    <span className="sr-only">Go Home</span>
+                </Link>
+            </Motion.div>
             <Motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4 }}
                 className="min-h-screen max-w-[90%] sm:max-w-[94%] bg-black text-white pb-20 px-2 mx-auto"
             >
-                <Motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-                    <Link href="/read" className="inline-flex items-center pt-8 text-lime-400 hover:text-white active:text-white active:scale-60 transition-all duration-300 text-sm sm:text-base">
-                        <FontAwesomeIcon icon={faArrowLeft} size="lg" />
-                        <span className="sr-only">Go Home</span>
-                    </Link>
-                </Motion.div>
                 <div className="max-w-5xl mx-auto">
                     {/* Title */}
                     <h1
@@ -55,8 +46,7 @@ export default function CatClient({ category,
 
                     <Motion.div
                         initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.02 }}
                         className="py-10 px-4 w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-5 border-y border-zinc-700 rounded-xl"
                     >
