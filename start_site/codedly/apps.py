@@ -7,4 +7,4 @@ class CodedlyConfig(AppConfig):
     verbose_name = "VeryCodedly"
     
     def ready(self):
-        import codedly.signals
+        import codedly.cache_utils   # register all signals

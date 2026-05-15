@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faNewspaper, faFolderOpen, faFolderBlank, faGraduationCap, faBookOpen, faMagnifyingGlassMinus } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faNewspaper, faFolderOpen, faFolderBlank, faGraduationCap, faBookOpen, faMagnifyingGlassMinus, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 
@@ -68,6 +68,8 @@ export default function SearchBar() {
                 return faGraduationCap;
             case "faBookOpen":
                 return faBookOpen;
+            case "faCartShopping":
+                return faCartShopping;
             default:
                 return faSearch;
         }

@@ -3,6 +3,7 @@ from django.utils.text import slugify
 from taggit.managers import TaggableManager
 # from django.contrib.auth.models import User
 import uuid
+from decimal import Decimal
 
 RESOURCE_TYPES = [
         ("article", "Article"),
@@ -249,11 +250,11 @@ class PrintfulProducts(models.Model):
         
     def save(self, *args, **kwargs):
         if not self.slug:
-            base_slug = slugify(self.name or self.fancy_name)[:40]
+            base_slug = slugify(self.name or self.fancy_name or "product")[:40]
             slug = base_slug
             counter = 1
 
-            while PrintfulProducts.objects.filter(slug=slug).exclude(id=self.id).exists():
+            while PrintfulProducts.objects.filter(slug=slug).exclude(id=self.pk).exists():
                 slug = f"{base_slug}-{counter}"
                 counter += 1
 
@@ -333,8 +334,8 @@ class StoreOrder(models.Model):
     # Order details
     items = models.JSONField()  # Stores cart items as JSON
     subtotal = models.DecimalField(max_digits=10, decimal_places=2)
-    shipping_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0)
-    tax = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    shipping_cost = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
+    tax = models.DecimalField(max_digits=10, decimal_places=2, default=Decimal('0.00'))
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
     currency = models.CharField(max_length=3, default='USD')
     
@@ -349,6 +350,7 @@ class StoreOrder(models.Model):
     # Order status
     status = models.CharField(max_length=20, choices=ORDER_STATUS, default='pending')
     fulfillment_status = models.CharField(max_length=50, choices=FULFILLMENT_STATUS, default='not_sent')
+    fulfillment_response = models.CharField(max_length=50, blank=True, null=True)
     
     # Tracking
     tracking_number = models.CharField(max_length=100, blank=True)

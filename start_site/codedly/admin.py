@@ -5,8 +5,27 @@ from .models import Post, Category, Comment, PostImage, Subcategory, PostLink, C
 from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin, SortableAdminBase
 from django.contrib import admin
 from .models import PrintfulProducts, PrintfulVariant
+from django.contrib import messages
+from .cache_utils import bump_cache_version, invalidate_home_page, invalidate_store_cache
+
+@admin.action(description="🔄 Clear ALL Cache")
+def clear_all_cache(modeladmin, request, queryset):
+    new_version = bump_cache_version()
+    modeladmin.message_user(request, f"✅ All cache cleared! New version: {new_version}", messages.SUCCESS)
 
 
+@admin.action(description="🏠 Clear Home Cache")
+def clear_home_cache(modeladmin, request, queryset):
+    invalidate_home_page()
+    modeladmin.message_user(request, "✅ Home page cache cleared", messages.SUCCESS)
+
+
+@admin.action(description="🛒 Clear Store Cache")
+def clear_store_cache(modeladmin, request, queryset):
+    invalidate_store_cache()
+    modeladmin.message_user(request, "✅ Store cache cleared", messages.SUCCESS)
+    
+    
 @admin.register(PrintfulVariant)
 class PrintfulVariantAdmin(admin.ModelAdmin):
     # 1. Fields to display in the list table
@@ -57,6 +76,7 @@ class PrintfulProductsAdmin(admin.ModelAdmin):
 
     # 5. Read-only fields to prevent accidental edits to API data
     readonly_fields = ('printful_id', 'updated_at', 'created_at')
+    actions = [clear_all_cache, clear_store_cache]
 
     # Optional: Display a small thumbnail in the list view if image_url exists
     def thumbnail(self, obj):
@@ -96,6 +116,7 @@ class StoreProductAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.TextField: {'widget': Textarea(attrs={'rows': 3, 'cols': 40})},
     }
+    actions = [clear_all_cache, clear_home_cache]
     
     def save_model(self, request, obj, form, change):
         # Ensure product_id is unique and properly formatted
@@ -177,6 +198,8 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ['name']
     prepopulated_fields = {"slug": ("name",)}
     inlines = [SubcategoryInline]  # show subs in category edit page
+    
+    actions = [clear_all_cache, clear_home_cache]
 
 
 @admin.register(Subcategory)
@@ -184,6 +207,8 @@ class SubcategoryAdmin(admin.ModelAdmin):
     list_display = ('name', 'category', 'slug', 'created_at')
     list_filter = ('category', 'name')
     prepopulated_fields = {"slug": ("name",)}
+    
+    actions = [clear_all_cache, clear_home_cache]
 
     
 @admin.register(Post)
@@ -194,6 +219,7 @@ class PostAdmin(admin.ModelAdmin):
     list_per_page = 200
     
     inlines = [PostImageInline, PostLinkInline]
+    actions = [clear_all_cache, clear_home_cache]
 
     def get_tags(self, obj):
         return ", ".join(tag.name for tag in obj.tags.all())
@@ -227,6 +253,7 @@ class CourseAdmin(SortableAdminBase, admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     
     inlines = [LessonInline]
+    actions = [clear_all_cache, clear_home_cache]
 
 
 @admin.register(Lesson)

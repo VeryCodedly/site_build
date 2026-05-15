@@ -36,11 +36,21 @@ from rest_framework.permissions import AllowAny
 import requests
 from django.db import transaction
 from dotenv import load_dotenv
+from .cache_utils import make_cache_key
 
 load_dotenv()
 
  
-CACHE_TIMEOUT = 1800
+HOME_CACHE_TTL = 60 * 15
+CATEGORY_CACHE_TTL = 60 * 30
+SUBCATEGORY_CACHE_TTL = 60 * 30
+POST_CACHE_TTL = 60 * 60
+STORE_CACHE_TTL = 60 * 10
+SEARCH_CACHE_TTL = 60 * 5
+COURSE_CACHE_TTL = 60 * 60          # 1 hour
+COURSE_LIST_TTL = 60 * 30           # 30 minutes
+LESSON_CACHE_TTL = 60 * 45
+
 
 def api_home(request):
     return HttpResponse("""
@@ -92,6 +102,11 @@ def global_search(request):
     q = request.GET.get("q", "").strip()
     if len(q) < 2:
         return Response({"results": []})
+    
+    cache_key = make_cache_key("global_search", q)
+    cached = cache.get(cache_key)
+    if cached:
+        return Response(cached)
 
     results = []
 
@@ -162,21 +177,28 @@ def global_search(request):
             "url": f"/learn/{l.course.slug}/{l.slug}",
             "icon": "faBookOpen",
         })
+        
+    products = PrintfulProducts.objects.filter(
+        Q(name__icontains=q) | Q(description__icontains=q),
+        status="published",
+        is_active=True
+    )[:6]
+    for p in products:
+        results.append({
+            "type": "VeryCodedly Supply",
+            "title": p.name,
+            "subtitle": p.category.title(),
+            "url": f"/merch/{p.slug}",
+            "icon": "faCartShopping",
+        })
 
-    return Response({"results": results})
-
-
-class PostViewSet(viewsets.ModelViewSet):
-    queryset = Post.objects.filter(status="published").order_by("-created_at")
-    serializer_class = PostSerializer
-    lookup_field = "slug"
-    search_fields = ["title", "excerpt"]
+    # return Response({"results": results})
+    results_dict = {"results": results}
+    cache.set(cache_key, results_dict, timeout=SEARCH_CACHE_TTL)
+    return Response(results_dict)
 
 
 class ReadPageDataView(APIView):
-
-    CACHE_KEY = "read_page_data"
-
     CATEGORY_CONFIG = {
         "featured": ("featured", 3),
         "right-now": ("trending", 6),
@@ -199,8 +221,8 @@ class ReadPageDataView(APIView):
     }
 
     def get(self, request):
-
-        cached = cache.get(self.CACHE_KEY)
+        cache_key = make_cache_key("read_page_data")
+        cached = cache.get(cache_key)
         if cached:
             return Response(cached)
 
@@ -231,6 +253,8 @@ class ReadPageDataView(APIView):
         grouped = defaultdict(list)
 
         for post in posts:
+            if post.subcategory is None:
+                continue
 
             slug = post.subcategory.slug
             key, limit = self.CATEGORY_CONFIG[slug]
@@ -273,11 +297,45 @@ class ReadPageDataView(APIView):
             context={"request": request}
         ).data
 
-        cache.set(self.CACHE_KEY, data, timeout=CACHE_TIMEOUT)
+        cache.set(cache_key, data, timeout=HOME_CACHE_TTL)
 
         return Response(data)
 
-        
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.filter(status="published").order_by("-created_at")
+    serializer_class = PostSerializer
+    lookup_field = "slug"
+    search_fields = ["title", "excerpt"]
+    
+    def list(self, request, *args, **kwargs):
+        cache_key = make_cache_key("all_posts_list")
+        cached = cache.get(cache_key)
+        if cached:
+            return Response(cached)
+
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = self.get_serializer(queryset, many=True, context={"request": request})
+        data = serializer.data
+
+        cache.set(cache_key, data, timeout=POST_CACHE_TTL)
+        return Response(data)
+
+    def retrieve(self, request, *args, **kwargs):
+        post = self.get_object()
+        cache_key = make_cache_key("post_detail", post.slug)
+
+        cached = cache.get(cache_key)
+        if cached:
+            return Response(cached)
+
+        serializer = self.get_serializer(post, context={"request": request})
+        data = serializer.data
+
+        cache.set(cache_key, data, timeout=POST_CACHE_TTL)
+        return Response(data)
+
+      
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all().order_by("name")
     serializer_class = CategorySerializer
@@ -292,7 +350,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         category = self.get_object()
-        cache_key = f"category_{category.slug}_posts"
+        cache_key = make_cache_key("category_posts", category.slug)
         cached = cache.get(cache_key)
         if cached:
             return Response(cached)
@@ -310,7 +368,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
         data["posts"] = serialized_posts
 
         # Cache and return
-        cache.set(cache_key, data, timeout=CACHE_TIMEOUT)
+        cache.set(cache_key, data, timeout=CATEGORY_CACHE_TTL)
         return Response(data)
 
 
@@ -322,7 +380,7 @@ class SubcategoryViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=["get"], url_path="posts")
     def posts(self, request, *args, **kwargs):
         subcategory = self.get_object()  # safe DRF lookup
-        cache_key = f"subcategory_{subcategory.slug}_posts"
+        cache_key = make_cache_key("subcategory_posts", subcategory.slug)
         cached = cache.get(cache_key)
         if cached:
             return Response(cached)
@@ -340,7 +398,7 @@ class SubcategoryViewSet(viewsets.ModelViewSet):
             "results": serialized_posts
         }
 
-        cache.set(cache_key, data, timeout=CACHE_TIMEOUT)
+        cache.set(cache_key, data, timeout=SUBCATEGORY_CACHE_TTL)
         return Response(data)
 
 
@@ -362,24 +420,93 @@ class CourseViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = CourseSerializer
     lookup_field = "slug"
     
-    
-class LessonViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Lesson.objects.all()
-    serializer_class = LessonSerializer
-    lookup_field = "slug"
+    def list(self, request, *args, **kwargs):
+        cache_key = make_cache_key("courses_list")
+        cached = cache.get(cache_key)
+        if cached:
+            return Response(cached)
+
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = self.get_serializer(queryset, many=True, context={"request": request})
+        data = serializer.data
+
+        cache.set(cache_key, data, timeout=COURSE_LIST_TTL)
+        return Response(data)
+
+    def retrieve(self, request, *args, **kwargs):
+        course = self.get_object()
+        cache_key = make_cache_key("course_detail", course.slug)
+        
+        cached = cache.get(cache_key)
+        if cached:
+            return Response(cached)
+
+        serializer = CourseDetailSerializer(course, context={"request": request})
+        data = serializer.data
+
+        cache.set(cache_key, data, timeout=COURSE_CACHE_TTL)
+        return Response(data)
     
     
 class CourseListView(generics.ListAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
     lookup_field = "slug"
+    
+    def list(self, request, *args, **kwargs):
+        cache_key = make_cache_key("courses_list")
+
+        cached = cache.get(cache_key)
+        if cached:
+            return Response(cached)
+
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True, context={"request": request})
+        data = serializer.data
+
+        cache.set(cache_key, data, timeout=COURSE_LIST_TTL)
+        return Response(data)
 
 
 class CourseDetailView(generics.RetrieveAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseDetailSerializer
     lookup_field = "slug"
+    
+    def retrieve(self, request, *args, **kwargs):
+        course = self.get_object()
+        cache_key = make_cache_key("course_detail", course.slug)
 
+        cached = cache.get(cache_key)
+        if cached:
+            return Response(cached)
+
+        serializer = self.get_serializer(course, context={"request": request})
+        data = serializer.data
+
+        cache.set(cache_key, data, timeout=COURSE_CACHE_TTL)
+        return Response(data)
+
+    
+class LessonViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Lesson.objects.all()
+    serializer_class = LessonSerializer
+    lookup_field = "slug"
+    
+    def retrieve(self, request, *args, **kwargs):
+        lesson = self.get_object()
+        cache_key = make_cache_key("lesson_detail", lesson.slug)
+        
+        cached = cache.get(cache_key)
+        if cached:
+            return Response(cached)
+
+        serializer = self.get_serializer(lesson, context={"request": request})
+        data = serializer.data
+
+        cache.set(cache_key, data, timeout=LESSON_CACHE_TTL)
+        return Response(data)
+    
 
 class LessonListView(generics.ListAPIView):
     serializer_class = LessonSerializer
@@ -388,6 +515,21 @@ class LessonListView(generics.ListAPIView):
     def get_queryset(self):
         course_slug = self.kwargs["slug"]
         return Lesson.objects.filter(course__slug=course_slug).order_by("order")
+    
+    def list(self, request, *args, **kwargs):
+        course_slug = self.kwargs["slug"]
+        cache_key = make_cache_key("course_lessons", course_slug)
+        
+        cached = cache.get(cache_key)
+        if cached:
+            return Response(cached)
+
+        queryset = self.get_queryset()
+        serializer = self.get_serializer(queryset, many=True, context={"request": request})
+        data = serializer.data
+
+        cache.set(cache_key, data, timeout=LESSON_CACHE_TTL)
+        return Response(data)
 
 
 class LessonDetailView(generics.RetrieveAPIView):
@@ -397,6 +539,20 @@ class LessonDetailView(generics.RetrieveAPIView):
     def get_queryset(self):
         course_slug = self.kwargs["course_slug"]
         return Lesson.objects.filter(course__slug=course_slug)
+    
+    def retrieve(self, request, *args, **kwargs):
+        lesson = self.get_object()
+        cache_key = make_cache_key("lesson_detail", lesson.slug)
+
+        cached = cache.get(cache_key)
+        if cached:
+            return Response(cached)
+
+        serializer = self.get_serializer(lesson, context={"request": request})
+        data = serializer.data
+
+        cache.set(cache_key, data, timeout=LESSON_CACHE_TTL)
+        return Response(data)
     
 
 class StoreProductViewSet(viewsets.ReadOnlyModelViewSet):
@@ -420,11 +576,11 @@ class PrintfulProductViewSet(viewsets.ReadOnlyModelViewSet):
         ).order_by("category", "name")
 
         # handle query params
-        category = self.request.query_params.get("category")
+        category = self.request.GET.get("category")
         if category:
             queryset = queryset.filter(category=category)
 
-        exclude = self.request.query_params.get("exclude")
+        exclude = self.request.GET.get("exclude")
         if exclude:
             queryset = queryset.exclude(id=exclude)
             
@@ -433,6 +589,23 @@ class PrintfulProductViewSet(viewsets.ReadOnlyModelViewSet):
             return queryset[:4]
 
         return queryset
+    
+    def list(self, request, *args, **kwargs):
+        category = request.GET.get("category")
+        exclude = request.GET.get("exclude")
+        
+        cache_key = make_cache_key("printful_products", category, exclude)
+        
+        cached = cache.get(cache_key)
+        if cached:
+            return Response(cached)
+
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = self.get_serializer(queryset, many=True, context={"request": request})
+        data = serializer.data
+
+        cache.set(cache_key, data, timeout=STORE_CACHE_TTL)
+        return Response(data)
 
    
 @api_view(['POST'])
@@ -474,7 +647,8 @@ def create_store_order(request):
             total_amount += item_total
 
             verified_items.append({
-                'id': product.id,
+                # 'id': product.id,
+                'id': getattr(product, 'pk', None),
                 'name': product.name,
                 'price': float(item_price),
                 'quantity': item['quantity'],
@@ -589,7 +763,7 @@ def calculate_shipping(items_for_printful, shipping):
     }
 
     response = requests.post(
-        os.getenv("SHIPPING_URL"),
+        os.getenv("SHIPPING_URL", "LADY"),
         headers={
             "Authorization": f"Bearer {os.getenv('PRINTFUL_ACCESS_KEY')}",
             "Content-Type": "application/json",
@@ -675,7 +849,7 @@ def create_printful_order(order):
     }
 
     response = requests.post(
-        os.getenv("PRINTFUL_ORDER_URL"),
+        os.getenv("PRINTFUL_ORDER_URL", "LADY"),
         headers={
             "Authorization": f"Bearer {os.getenv('PRINTFUL_ACCESS_KEY')}",
             "Content-Type": "application/json",

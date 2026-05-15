@@ -96,12 +96,48 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
 ]
 
-# CACHES = {
-#     "default": {
-#         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
-#         "LOCATION": "unique-snowflake",
-#     }
-# }
+if not DEBUG:
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": os.getenv("REDIS_URL", "localhost"),  # Change for prod
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+                "SOCKET_CONNECT_TIMEOUT": 10,
+                "SOCKET_TIMEOUT": 10,
+                "RETRY_ON_TIMEOUT": True,
+                "IGNORE_EXCEPTIONS": True,        # Critical - don't crash if Redis down
+                # "PASSWORD": os.getenv("REDIS_PASSWORD"),  # not now
+                "CONNECTION_POOL_KWARGS": {"max_connections": 50},
+            },
+            "KEY_PREFIX": "verycodedly",
+            "TIMEOUT": 300,
+        }
+    }
+else:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+        }
+    }
+
+# Optional for session backend on Redis
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+}
 
 ROOT_URLCONF = 'start_site.urls'
 

@@ -1,4 +1,6 @@
 import ProductClient from "./ProductClient";
+import Link from "next/link";
+
 
 interface PageProps {
   params: Promise<{
@@ -59,12 +61,12 @@ export default async function ProductPage({
             Product not found.
           </p>
 
-          <a
+          <Link
             href="/merch"
             className="text-lime-400 hover:text-white transition-colors"
           >
             Continue shopping →
-          </a>
+          </Link>
         </div>
       </section>
     );
