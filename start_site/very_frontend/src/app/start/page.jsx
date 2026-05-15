@@ -121,17 +121,17 @@ export default function StartPage() {
             <Path
               title="Frontend Path"
               steps={["HTML", "CSS", "JavaScript", "React"]}
-              start="learn/#courses"
+              start="/learn/#courses"
             />
             <Path
               title="Backend Path"
               steps={["Python", "APIs", "System Design"]}
-              start="learn/#courses"
+              start="/learn/#courses"
             />
             <Path
               title="Full Stack Path"
               steps={["HTML", "CSS", "JavaScript", "React", "Python"]}
-              start="learn/#courses"
+              start="/learn/#courses"
             />
           </div>
         </section>
@@ -166,25 +166,25 @@ export default function StartPage() {
             <Topic
               title="Artificial Intelligence"
               description="“AI” follows the trends, breakthroughs, and debates in artificial intelligence, spotlighting the tech reshaping industries."
-              href="read/subcategory/ai"
+              href="/read/subcategory/ai"
               icon={faMicrochip}
             />
             <Topic
               title="Featured"
               description="“Featured” gives you the top stories shaping tech this week, all in one scroll."
-              href="read/subcategory/featured"
+              href="/read/subcategory/featured"
               icon={faFire}
             />
             <Topic
               title="Digital Money"
               description="“Digital Money” tracks the business side of the tech world: markets, funding, infrastructure, and how money moves."
-              href="read/subcategory/digital-money"
+              href="/read/subcategory/digital-money"
               icon={faMoneyBillTrendUp}
             />
             <Topic
               title="Policy & Progress"
               description="“Policy & Progress” covers the tech + society mix: the moves, rules, and trade-offs that steer how we live with technology."
-              href="read/subcategory/policy-progress"
+              href="/read/subcategory/policy-progress"
               icon={faGlobeAfrica}
             />
           </div>
@@ -219,7 +219,7 @@ export default function StartPage() {
             <GuideLink href="/read/how-to-spot-a-phishing-website-in-seconds">
               How to Spot a Phishing Website in Seconds
             </GuideLink>
-            <GuideLink href="read/sci-fi-weekend-picks">
+            <GuideLink href="/read/sci-fi-weekend-picks">
               Want Sci-Fi This Weekend? Start With These
             </GuideLink>
             <GuideLink href="/read/children-teen-social-media-bans-where-why-and-how">
