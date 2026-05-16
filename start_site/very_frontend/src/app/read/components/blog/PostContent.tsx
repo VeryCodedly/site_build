@@ -4,7 +4,7 @@ import { motion as Motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLongArrowRight, faCalendar, faUser, faPencil, faHashtag, faImage, faLink, faCopy, faComment, faCode } from '@fortawesome/free-solid-svg-icons';
+import { faLongArrowRight, faCalendar, faUser, faPencil, faCopy, faCode } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faLinkedinIn, faTwitter, faWhatsapp, faDiscord, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import CodeBlock from '@/app/learn/components/CodeBlock';
 import { Post } from '@/types/post';
@@ -238,7 +238,8 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
       {/* Gallery */}
       {post.images && post.images.length > 0 && (<div className="mb-8 sm:mb-12">
         <h2 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-lime-300 flex items-center gap-2">
-          <FontAwesomeIcon icon={faImage} /> Gallery
+          <span className="w-2 h-2 rounded-full bg-lime-300" />
+           Gallery
         </h2>
         {post.images && post.images.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -265,13 +266,14 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
       {/* Tags */}
       <div className="mb-8 sm:mb-12">
         <h3 className="text-lg sm:text-xl font-semibold mb-4 text-lime-300 gap-2 flex items-center">
-          <FontAwesomeIcon icon={faHashtag} /> Tags
+            <span className="w-2 h-2 rounded-full bg-lime-300" />
+            Tags
         </h3>
         {post.tags && Array.isArray(post.tags) && post.tags.length > 0 ? (
           <div className="flex flex-wrap gap-2">
             {post.tags.map((tag, index) => (
               <span key={index} className="bg-zinc-900/50 hover:bg-lime-400/10 text-lime-400 hover:text-lime-300 lowercase px-3 py-1 rounded-full text-sm border border-zinc-800/30 transition-all" tabIndex={0}>
-                #{tag}
+                {tag}
               </span>
             ))}
           </div>
@@ -283,7 +285,8 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
       {/* Related Links */}
       {post.links && post.links.length > 0 && (<div className="mb-8 sm:mb-12">
         <h3 className="text-lg sm:text-xl font-semibold mb-4 text-lime-300 gap-2 flex items-center">
-          <FontAwesomeIcon icon={faLink} /> Related Links
+          <span className="w-2 h-2 rounded-full bg-lime-300" />
+          Related Links
         </h3>
         {post.links && post.links.length > 0 ? (
           <div className="space-y-3">
@@ -335,7 +338,8 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
         className="mb-8 sm:mb-12"
       >
         <h3 className="text-lg sm:text-xl font-bold mb-4 text-lime-300 flex items-center gap-3">
-          <FontAwesomeIcon icon={faComment} /> Join the Discussion
+          <span className="w-2 h-2 rounded-full bg-lime-300" />
+          Join the Discussion
         </h3>
 
         <p className="italic text-gray-400 text-sm sm:text-base mb-6 leading-relaxed">
@@ -388,12 +392,12 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           /> */}
           </Link>
 
-          {/* Add more if needed, e.g. dev.to, Bluesky */}
+          {/* more if needed, e.g. dev.to, Bluesky */}
         </div>
       </div>
 
       {/* Meta Footer */}
-      <div className="pt-18 pb-8">
+      <div className="pt-14 pb-8">
         {/* <div className="pt-16 pb-8"> */}
         <div className="relative flex justify-center">
           <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent" />

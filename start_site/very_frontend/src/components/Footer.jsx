@@ -30,7 +30,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative bg-gradient-to-b from-black to-zinc-950 text-gray-400/95 pt-18 pb-10 px-8 overflow-clip border-t border-zinc-950">
+    <footer className="relative bg-gradient-to-b from-black to-zinc-950 text-gray-400/95 pt-22 sm:pt-18 pb-10 px-8 overflow-clip border-t border-zinc-950">
       {/* faint glow background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
 
@@ -124,7 +124,7 @@ export default function Footer() {
       </div>
 
       {/* Divider */}
-      <div className="relative w-full h-px g-gradient-to-r from-transparent via-gray-800/50 to-transparent my-16 sm:my-10 md:my-8" />
+      <div className="relative w-full h-px g-gradient-to-r from-transparent via-gray-800/50 to-transparent my-14 sm:my-10 md:my-8" />
 
       {/* Logo + Bottom line */}
       <div className="relative flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto">
