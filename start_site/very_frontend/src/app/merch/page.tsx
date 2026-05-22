@@ -5,7 +5,7 @@ async function getProducts() {
 
   try {
     const res = await fetch(`${API_URL}/store/products/`, {
-        next: { revalidate: 1800 }
+        next: { revalidate: 300 }
         // cache: "no-store",
     });
 

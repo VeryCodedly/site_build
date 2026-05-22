@@ -26,7 +26,7 @@ export default function RelatedPostsSection({
   const trendingSlice = trending.slice(1, 6);
 
   return (
-    <section className="mt-10">
+    <section className="mt-6">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-14 md:gap-8 py-10 px-2.5 sm:px-0">
 
         {/* Latest */}

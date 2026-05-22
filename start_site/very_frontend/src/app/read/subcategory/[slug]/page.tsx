@@ -7,7 +7,7 @@ import Script from "next/script";
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 if (!apiUrl) throw new Error('NEXT_PUBLIC_API_URL is missing!');
 
-export const revalidate = 1800; 
+export const revalidate = 180; 
 
 async function getSubcategory(slug: string): Promise<Subcategory | null> {
   const res = await fetch(`${apiUrl}/subcategories/${slug}/`, {

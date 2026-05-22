@@ -20,7 +20,7 @@ async function getLesson(
     }
 
     const res = await fetch(`${apiUrl}/${courseSlug}/${lessonSlug}/`, {
-      next: { revalidate: 1800 },
+      next: { revalidate: 300 },
     });
 
     if (!res.ok) return null;

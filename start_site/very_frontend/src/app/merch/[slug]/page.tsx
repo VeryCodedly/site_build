@@ -13,7 +13,7 @@ async function getProduct(slug: string) {
 
   try {
     const res = await fetch(`${API_URL}/store/products/${slug}/`, {
-      cache: "no-store",
+      next: { revalidate: 300 }   // 5 minutes
     });
 
     if (!res.ok) {

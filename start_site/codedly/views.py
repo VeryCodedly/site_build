@@ -20,7 +20,7 @@ from rest_framework import viewsets
 from rest_framework import generics
 from django.http import HttpResponse
 from django.db.models.functions import Length
-from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson, StoreOrder, StoreProduct, PrintfulProducts
+from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson, StoreOrder, StoreProduct, PrintfulProducts, PrintfulVariant
 from .serializers import CategoryPostsSerializer, PostSerializer, PostFeedSerializer, CategorySerializer, CommentSerializer, StoreProductSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer, CourseDetailSerializer, StoreOrderSerializer, StoreProductSerializer, PrintfulProductSerializer
 
 import uuid
@@ -627,22 +627,15 @@ def create_store_order(request):
             variant_id = item.get('variant_id')
             if not variant_id:
                 return Response({"error": "variant_id is missing"}, status=400)
-
-            product = None
-            matching_variant = None
-            for p in PrintfulProducts.objects.iterator():
-                for v in p.variant_mapping:
-                    if str(v.get("variant_id")) == str(variant_id):
-                        product = p
-                        matching_variant = v
-                        break
-                if product:
-                    break
-
-            if not product or not matching_variant:
+            # Check if prices are correct for each variant, you changed the model to PrintfulVariant
+            try:
+                matching_variant = PrintfulVariant.objects.get(variant_id=variant_id)
+            except PrintfulVariant.DoesNotExist:
                 return Response({"error": f"Variant {variant_id} not found"}, status=404)
 
-            item_price = Decimal(matching_variant["price"])
+            product = matching_variant
+
+            item_price = Decimal(matching_variant.price)
             item_total = item_price * Decimal(item["quantity"])
             total_amount += item_total
 
@@ -652,11 +645,11 @@ def create_store_order(request):
                 'name': product.name,
                 'price': float(item_price),
                 'quantity': item['quantity'],
-                'variant_id': int(matching_variant["variant_id"]),
+                'variant_id': int(matching_variant.variant_id),
             })
 
             resolved_items_for_shipping.append({
-                "variant_id": int(matching_variant["variant_id"]),
+                "variant_id": int(matching_variant.variant_id),
                 "quantity": item["quantity"]
             })
 

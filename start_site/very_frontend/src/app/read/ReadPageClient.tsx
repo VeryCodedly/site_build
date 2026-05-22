@@ -8,10 +8,9 @@ import MiniPostCard from "../read/components/blog/MiniPostCard";
 import { faLongArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Post } from "@/types/post";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Carousel from "./components/blog/Carousel";
-// import PageLoader from "@/components/PageLoader";
 
 interface Props {
   data: {
@@ -77,12 +76,6 @@ export default function ReadPageClient({ data }: Props) {
   const loadMore = () => {
     setVisiblePosts((prev) => Math.min(prev + 3, 10));
   };
-
-  // useEffect(() => {
-  //   setLoading(false);
-  // }, []);
-
-  // if (loading) return <PageLoader />;
 
   return (
     <div className="relative w-full min-h-screen bg-black text-white overflow-hidden">

@@ -28,7 +28,7 @@ const getCachedCourses = cache(async (): Promise<CourseResponse | null> => {
     // console.log(`Fetching courses from: ${url}`);
 
     const res = await fetch(url, {
-      next: { revalidate: 1800 },
+      next: { revalidate: 300 },
       cache: "force-cache",
       headers: { "Content-Type": "application/json" },
     });
