@@ -96,34 +96,35 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
 ]
 
-if not DEBUG:
-    # Optional for session backend on Redis
-    SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-    SESSION_CACHE_ALIAS = "default"
-    CACHES = {
-        "default": {
-            "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": os.getenv("REDIS_URL", "localhost"),  # Change for prod
-            "OPTIONS": {
-                "CLIENT_CLASS": "django_redis.client.DefaultClient",
-                "SOCKET_CONNECT_TIMEOUT": 10,
-                "SOCKET_TIMEOUT": 10,
-                "RETRY_ON_TIMEOUT": True,
-                "IGNORE_EXCEPTIONS": True,        # Critical - don't crash if Redis down
-                # "PASSWORD": os.getenv("REDIS_PASSWORD"),  # not now
-                "CONNECTION_POOL_KWARGS": {"max_connections": 50},
-            },
-            "KEY_PREFIX": "verycodedly",
-            "TIMEOUT": 300,
-        }
-    }
-else:
-    CACHES = {
-        "default": {
-            "BACKEND": "django.core.cache.backends.dummy.DummyCache",
-        }
-    }
+# if not DEBUG:
+#     # Optional for session backend on Redis
+#     SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+#     SESSION_CACHE_ALIAS = "default"
+#     CACHES = {
+#         "default": {
+#             "BACKEND": "django_redis.cache.RedisCache",
+#             "LOCATION": os.getenv("REDIS_URL", "localhost"),  # Change for prod
+#             "OPTIONS": {
+#                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
+#                 "SOCKET_CONNECT_TIMEOUT": 10,
+#                 "SOCKET_TIMEOUT": 10,
+#                 "RETRY_ON_TIMEOUT": True,
+#                 "IGNORE_EXCEPTIONS": True,        # Critical - don't crash if Redis down
+#                 # "PASSWORD": os.getenv("REDIS_PASSWORD"),  # not now
+#                 "CONNECTION_POOL_KWARGS": {"max_connections": 50},
+#             },
+#             "KEY_PREFIX": "verycodedly",
+#             "TIMEOUT": 300,
+#         }
+#     }
+# else:
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.dummy.DummyCache",
+    }
+}
 
 LOGGING = {
     'version': 1,

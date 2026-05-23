@@ -3,38 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 export default function PageLoader() {
-  const [visible, setVisible] = useState(true);
-  const isPopNavigation = useRef(false);
 
-  useEffect(() => {
-    const handlePopState = () => {
-      isPopNavigation.current = true;
-    };
-
-    window.addEventListener("popstate", handlePopState);
-
-    return () => {
-      window.removeEventListener("popstate", handlePopState);
-    };
-  }, []);
-
-  useEffect(() => {
-    // Skip loader on browser back/forward
-    if (isPopNavigation.current) {
-      setVisible(false);
-      isPopNavigation.current = false;
-      return;
-    }
-
-    const timer = setTimeout(() => {
-      setVisible(false);
-    }, 1200);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (!visible) return null;
-  
   return (
     <section className="fixed h-screen inset-0 z-[9999] flex flex-col items-center justify-center bg-black">
       <div className="relative flex flex-col items-center">
