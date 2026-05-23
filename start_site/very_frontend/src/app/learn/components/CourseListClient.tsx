@@ -132,7 +132,6 @@ export default function CourseListClient({ courses }: CourseListClientProps) {
                   src={course?.image ?? "/Course-Image.png"}
                   alt={course?.alt ?? "Course image"}
                   sizes="(max-width: 640px) 100vw, 120px"
-                  fetchPriority="high"
                   priority
                 />
               </div>

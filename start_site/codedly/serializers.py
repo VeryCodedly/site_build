@@ -170,6 +170,21 @@ class CourseSerializer(serializers.ModelSerializer):
         fields = ["lessons", "title", "slug", "description", "meta", "language", "prerequisites", "sort", "level", "image", "alt", "tags"]
         
         
+class CourseListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Course
+        fields = [
+            "title",
+            "slug",
+            "description",
+            "language",
+            "image",
+            "alt",
+            "sort",
+            "level",
+        ]
+        
+        
 class LessonListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lesson

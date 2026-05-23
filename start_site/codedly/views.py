@@ -21,7 +21,7 @@ from rest_framework import generics
 from django.http import HttpResponse
 from django.db.models.functions import Length
 from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson, StoreOrder, StoreProduct, PrintfulProducts, PrintfulVariant
-from .serializers import CategoryPostsSerializer, PostSerializer, PostFeedSerializer, CategorySerializer, CommentSerializer, StoreProductSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer, CourseDetailSerializer, StoreOrderSerializer, StoreProductSerializer, PrintfulProductSerializer
+from .serializers import CategoryPostsSerializer, PostSerializer, PostFeedSerializer, CategorySerializer, CommentSerializer, StoreProductSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer, CourseDetailSerializer, StoreOrderSerializer, StoreProductSerializer, PrintfulProductSerializer, CourseListSerializer
 
 import uuid
 import os
@@ -228,52 +228,34 @@ class ReadPageDataView(APIView):
 
         data = {}
 
-        slugs = list(self.CATEGORY_CONFIG.keys())
+        # changed for cache limit
+        for slug, (key, limit) in self.CATEGORY_CONFIG.items():
 
-        # ONE query for all section posts
-        posts = (
-            Post.objects
-            .select_related("subcategory")
-            .filter(
-                status="published",
-                subcategory__slug__in=slugs
+            posts = (
+                Post.objects
+                .select_related("subcategory")
+                .filter(
+                    status="published",
+                    subcategory__slug=slug
+                )
+                .only(
+                    "id",
+                    "title",
+                    "slug",
+                    "image",
+                    "created_at",
+                    "subcategory_id",
+                )
+                .order_by("-created_at")[:limit]
             )
-            .only(
-                "id",
-                "title",
-                "slug",
-                "image",
-                "category",
-                "created_at",
-                "subcategory_id"
-            )
-            .order_by("-created_at")
-        )
-
-        grouped = defaultdict(list)
-
-        for post in posts:
-            if post.subcategory is None:
-                continue
-
-            slug = post.subcategory.slug
-            key, limit = self.CATEGORY_CONFIG[slug]
-
-            if len(grouped[slug]) < limit:
-                grouped[slug].append(post)
-
-        # serialize grouped data
-        for slug, items in grouped.items():
-
-            key, _ = self.CATEGORY_CONFIG[slug]
 
             data[key] = PostFeedSerializer(
-                items,
+                posts,
                 many=True,
                 context={"request": request}
             ).data
 
-        # latest posts query
+        # also changed
         latest_posts = (
             Post.objects
             .select_related("subcategory")
@@ -284,9 +266,8 @@ class ReadPageDataView(APIView):
                 "slug",
                 "excerpt",
                 "image",
-                "category",
                 "created_at",
-                "subcategory_id"
+                "subcategory_id",
             )
             .order_by("-created_at")[:9]
         )
@@ -450,7 +431,7 @@ class CourseViewSet(viewsets.ReadOnlyModelViewSet):
     
 class CourseListView(generics.ListAPIView):
     queryset = Course.objects.all()
-    serializer_class = CourseSerializer
+    serializer_class = CourseListSerializer
     lookup_field = "slug"
     
     def list(self, request, *args, **kwargs):
