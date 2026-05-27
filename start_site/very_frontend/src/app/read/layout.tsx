@@ -7,7 +7,7 @@ import SearchBar from "@/components/SearchBar";
 
 async function getCategories() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories/`, {
-    next: { revalidate: 3600 },
+    next: { revalidate: 180 },
   });
   if (!res.ok) return [];
   const data = await res.json();

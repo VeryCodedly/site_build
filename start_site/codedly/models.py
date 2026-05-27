@@ -420,11 +420,11 @@ class Post(models.Model):
     content_JSON = models.JSONField(default=dict, blank=True)
     content_plain_text = models.TextField(blank=True)
     excerpt = models.CharField(max_length=300, blank=True, db_index=True)
-    author = models.CharField(max_length=50, default="Chrise", db_index=True)
+    author = models.CharField(max_length=50, default="Chrise")
     
-    image = models.URLField(max_length=500, blank=True, null=True, default='https://res.cloudinary.com/verycodedly/image/upload/v1763878238/very-codedly-banner.png', db_index=True)
-    caption = models.CharField(max_length=200, blank=True, db_index=True)
-    alt = models.CharField(max_length=100, blank=True, db_index=True)
+    image = models.URLField(max_length=500, blank=True, null=True, default='https://res.cloudinary.com/verycodedly/image/upload/v1763878238/very-codedly-banner.png')
+    caption = models.CharField(max_length=200, blank=True)
+    alt = models.CharField(max_length=100, blank=True)
     
     tags = TaggableManager()
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
@@ -438,6 +438,19 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
+        indexes = [
+        models.Index(
+            fields=["status", "-created_at"]
+        ),
+
+        models.Index(
+            fields=[
+                "subcategory",
+                "status",
+                "-created_at"
+            ]
+        ),
+    ]
 
     def save(self, *args, **kwargs):
         if not self.slug:

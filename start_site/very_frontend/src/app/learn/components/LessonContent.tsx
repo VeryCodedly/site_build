@@ -209,7 +209,7 @@ export default function LessonContent({
               return (
                 <div
                   key={index}
-                  className="p-3 sm:p-4 border border-pink-600/20 bg-zinc-900/60 rounded-xl text-gray-300 italic backdrop-blur-sm shadow-lg text-xs sm:text-sm"
+                  className="p-3 sm:p-4 border border-pink-500/20 bg-zinc-900/50 rounded-xl text-gray-300/90 italic backdrop-blur-sm shadow-lg text-sm"
                 >
                   💡 {block.content}
                 </div>

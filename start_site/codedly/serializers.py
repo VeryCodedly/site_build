@@ -83,6 +83,20 @@ class PostLinkSerializer(serializers.ModelSerializer):
         fields = ["post", "label", "external_url", "type", "position", "target_post"]
 
 
+class TinyCategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Category
+        fields = ["name", "slug"]
+
+
+class TinySubcategorySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Subcategory
+        fields = ["name", "slug"]
+        
+        
 class SubcategorySerializer(serializers.ModelSerializer):
     category = serializers.CharField(read_only=True, source='category.name')
 
@@ -101,8 +115,8 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class PostSerializer(serializers.ModelSerializer):
     # comments = CommentSerializer(many=True, read_only=True)
-    category = CategorySerializer()
-    subcategory = SubcategorySerializer()
+    category = TinyCategorySerializer(read_only=True)
+    subcategory = TinySubcategorySerializer(read_only=True)
     images = PostImageSerializer(many=True, read_only=True)
     content_JSON = serializers.JSONField()
 
@@ -116,8 +130,8 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 class PostFeedSerializer(serializers.ModelSerializer):
-    category = CategorySerializer(read_only=True)
-    subcategory = SubcategorySerializer(read_only=True)
+    category = TinyCategorySerializer(read_only=True)
+    subcategory = TinySubcategorySerializer(read_only=True)
 
     class Meta:
         model = Post

@@ -11,62 +11,87 @@ import { Post } from "@/types/post";
 import { useState } from "react";
 import Link from "next/link";
 import Carousel from "./components/blog/Carousel";
+import { useSectionLoader } from "@/hooks/useSectionLoader";
+
 
 interface Props {
-  data: {
+  initialData: {
     latest: Post[];
-    featured: Post[];
-    trending: Post[];
-    spotlight: Post[];
+  };
+
+  techData: {
+    hardware: Post[];
+    AI: Post[];
     bigDeal: Post[];
     digitalMoney: Post[];
-    bchCrypto: Post[];
-    // startups: Post[];
-    prvCompliance: Post[];
-    AI: Post[];
-    // emergingTech: Post[];
-    hardware: Post[];
-    // techCulture: Post[];
-    policyProgress: Post[];
-    globalLens: Post[];
-    africaRising: Post[];
     keyPlayers: Post[];
-    dataDefense: Post[];
-    secureHabits: Post[];
-    // stack: Post[];
-    buyGuides: Post[];
-    devDigest: Post[];
-    upskill: Post[];
-    // rundown: Post[];
-    // industryInsights: Post[];
+    bchCrypto: Post[];
   };
 }
 
-export default function ReadPageClient({ data }: Props) {
+interface CodeData {
+  devDigest: Post[];
+  upskill: Post[];
+  buyGuides: Post[];
+  dataDefense: Post[];
+  secureHabits: Post[];
+  prvCompliance: Post[];
+}
+
+interface CultureData {
+  featured: Post[];
+  trending: Post[];
+  spotlight: Post[];
+  globalLens: Post[];
+  africaRising: Post[];
+  policyProgress: Post[];
+}
+
+export default function ReadPageClient({ initialData, techData }: Props) {
   const {
     latest = [],
-    featured = [],
-    trending = [],
-    spotlight = [],
-    digitalMoney = [],
-    bchCrypto = [],
-    keyPlayers = [],
+  } = initialData || {};
+
+  const {
+    hardware = [],
     AI = [],
     bigDeal = [],
-    hardware = [],
-    // techCulture = [],
-    policyProgress = [],
-    globalLens = [],
-    africaRising = [],
+    digitalMoney = [],
+    keyPlayers = [],
+    bchCrypto = [],
+  } = techData || {};
+
+  const {
+    ref: codeRef,
+    data: codeData,
+  } = useSectionLoader<CodeData>(
+    `${process.env.NEXT_PUBLIC_API_URL}/read-section/code/`
+  );
+
+  const {
+    ref: cultureRef,
+    data: cultureData,
+  } = useSectionLoader<CultureData>(
+    `${process.env.NEXT_PUBLIC_API_URL}/read-section/culture/`
+  );
+
+  const {
+    devDigest = [],
+    upskill = [],
+    buyGuides = [],
     dataDefense = [],
     secureHabits = [],
     prvCompliance = [],
-    buyGuides = [],
-    devDigest = [],
-    upskill = [],
-    // rundown = [],
-    // industryInsights = [],
-  } = data;
+  } = codeData || {};
+
+  const {
+    featured = [],
+    trending = [],
+    spotlight = [],
+    globalLens = [],
+    africaRising = [],
+    policyProgress = [],
+  } = cultureData || {};
 
   const posts = latest;
 
@@ -290,207 +315,219 @@ export default function ReadPageClient({ data }: Props) {
             </section>
           )}
 
-          <div className="flex items-center gap-3 mt-30">
-            <span className="w-2 sm:w-1.5 h-10 bg-lime-400 rounded-xs" />
-            <h2 className="text-4xl font-bold text-white">Code</h2>
-            <p className="text-sm text-gray-600 ml-2 pt-2">Modern software, from logic to security.</p>
-          </div>
+          <section ref={codeRef} className="min-h-[1400px] md:min-h-[1400px] lg:min-h-[1800px]">
+            {codeData && (
+              <>
+                <div className="flex items-center gap-3 mt-30">
+                  <span className="w-2 sm:w-1.5 h-10 bg-lime-400 rounded-xs" />
+                  <h2 className="text-4xl font-bold text-white">Code</h2>
+                  <p className="text-sm text-gray-600 ml-2 pt-2">Modern software, from logic to security.</p>
+                </div>
 
-          <Carousel posts={devDigest} />
+                <Carousel posts={devDigest} />
 
-          {upskill.length > 0 && (
-            <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
-                <Motion.h3
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="text-xl text-white leading-tight whitespace-normal max-w-[87px]">
-                  Upskill
-                </Motion.h3>
-              </div>
+                {upskill.length > 0 && (
+                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
+                      <Motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="text-xl text-white leading-tight whitespace-normal max-w-[87px]">
+                        Upskill
+                      </Motion.h3>
+                    </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
-                {upskill.map(post => (
-                  <MiniPostCard key={post.slug} post={post} />
-                ))}
-              </div>
-            </section>
-          )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
+                      {upskill.map(post => (
+                        <MiniPostCard key={post.slug} post={post} />
+                      ))}
+                    </div>
+                  </section>
+                )}
 
-          {buyGuides.length > 0 && (
-            <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
-                <Motion.h3
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="text-xl text-white leading-tight whitespace-normal max-w-[100px]">Beginner Guides
-                </Motion.h3>
-              </div>
+                {buyGuides.length > 0 && (
+                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
+                      <Motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="text-xl text-white leading-tight whitespace-normal max-w-[100px]">Beginner Guides
+                      </Motion.h3>
+                    </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
-                {buyGuides.map(post => (
-                  <MiniPostCard key={post.slug} post={post} />
-                ))}
-              </div>
-            </section>
-          )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
+                      {buyGuides.map(post => (
+                        <MiniPostCard key={post.slug} post={post} />
+                      ))}
+                    </div>
+                  </section>
+                )}
 
-          <Carousel posts={dataDefense} />
+                <Carousel posts={dataDefense} />
 
-          {/* 13 SECURE HABITS */}
-          {secureHabits.length > 0 && (
-            <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
-                <Motion.h3
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="text-xl text-white leading-tight whitespace-normal max-w-[87px]">Secure Habits
-                </Motion.h3>
-              </div>
+                {/* 13 SECURE HABITS */}
+                {secureHabits.length > 0 && (
+                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
+                      <Motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="text-xl text-white leading-tight whitespace-normal max-w-[87px]">Secure Habits
+                      </Motion.h3>
+                    </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
-                {secureHabits.map(post => (
-                  <MiniPostCard key={post.slug} post={post} />
-                ))}
-              </div>
-            </section>
-          )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
+                      {secureHabits.map(post => (
+                        <MiniPostCard key={post.slug} post={post} />
+                      ))}
+                    </div>
+                  </section>
+                )}
 
-          {/* 12 PRIVACY & COMPLIANCE */}
-          {prvCompliance.length > 0 && (
-            <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
-                <Motion.h3
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="text-xl text-white leading-tight whitespace-normal max-w-[107px] mr-2">
-                  Privacy & Compliance
-                </Motion.h3>
-              </div>
+                {/* 12 PRIVACY & COMPLIANCE */}
+                {prvCompliance.length > 0 && (
+                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
+                      <Motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="text-xl text-white leading-tight whitespace-normal max-w-[107px] mr-2">
+                        Privacy & Compliance
+                      </Motion.h3>
+                    </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
-                {prvCompliance.map(post => (
-                  <MiniPostCard key={post.slug} post={post} />
-                ))}
-              </div>
-            </section>
-          )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1">
+                      {prvCompliance.map(post => (
+                        <MiniPostCard key={post.slug} post={post} />
+                      ))}
+                    </div>
+                  </section>
+                )}
+              </>
+            )}
+          </section>
 
-          <div className="flex items-center gap-3 mt-30">
-            <span className="w-2 sm:w-1.5 h-10 bg-pink-400 rounded-xs" />
-            <h2 className="text-4xl font-bold text-white tracking-tighter">Culture</h2>
-            <p className="text-sm text-gray-600 ml-2 tracking-tighter pt-2">Trends, stories, places and the world changing around us.</p>
-          </div>
+          <section ref={cultureRef} className="min-h-[2000px] md:min-h-[1400px] lg:min-h-[2000px]">
+            {cultureData && (
+              <>
+                <div className="flex items-center gap-3 mt-30">
+                  <span className="w-2 sm:w-1.5 h-10 bg-pink-400 rounded-xs" />
+                  <h2 className="text-4xl font-bold text-white tracking-tighter">Culture</h2>
+                  <p className="text-sm text-gray-600 ml-2 tracking-tighter pt-2">Trends, stories, places and the world changing around us.</p>
+                </div>
 
-          {/* 1 HERO: Featured Post */}
-          <Carousel posts={featured} />
+                {/* 1 HERO: Featured Post */}
+                <Carousel posts={featured} />
 
-          {/* 2 TRENDING NOW */}
-          {trending.length > 0 && (
-            <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
-                <Motion.h3
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="text-xl text-white leading-tight whitespace-normal max-w-[60px]">Right Now
-                </Motion.h3>
-              </div>
+                {/* 2 TRENDING NOW */}
+                {trending.length > 0 && (
+                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
+                      <Motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="text-xl text-white leading-tight whitespace-normal max-w-[60px]">Right Now
+                      </Motion.h3>
+                    </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 flex-1">
-                {trending.map((post) => (
-                  <MiniPostCard key={post.slug} post={post} />
-                ))}
-              </div>
-            </section>
-          )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 flex-1">
+                      {trending.map((post) => (
+                        <MiniPostCard key={post.slug} post={post} />
+                      ))}
+                    </div>
+                  </section>
+                )}
 
-          {/* 3 SPOTLIGHT */}
-          {spotlight.length > 0 && (
-            <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
-                <Motion.h3
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="text-xl text-white leading-tight whitespace-normal max-w-[93px]">
-                  Showtime
-                </Motion.h3>
-              </div>
+                {/* 3 SPOTLIGHT */}
+                {spotlight.length > 0 && (
+                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
+                      <Motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="text-xl text-white leading-tight whitespace-normal max-w-[93px]">
+                        Showtime
+                      </Motion.h3>
+                    </div>
 
-              {/* <h2 className="text-3xl sm:text-4xl font-bold text-pink-400 mb-10">Editor’s<span className="text-white"> Picks</span></h2> */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 flex-1">
-                {spotlight.map(post => (
-                  <MiniPostCard key={post.slug} post={post} />
-                ))}
-              </div>
-            </section>
-          )}
+                    {/* <h2 className="text-3xl sm:text-4xl font-bold text-pink-400 mb-10">Editor’s<span className="text-white"> Picks</span></h2> */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 flex-1">
+                      {spotlight.map(post => (
+                        <MiniPostCard key={post.slug} post={post} />
+                      ))}
+                    </div>
+                  </section>
+                )}
 
-          {/* <NewsletterCard /> */}
+                {/* <NewsletterCard /> */}
 
-          <Carousel posts={globalLens} />
+                <Carousel posts={globalLens} />
 
 
-          {/* 7 AFRICA NOW */}
-          {africaRising.length > 0 && (
-            <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
-                <Motion.h3
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="text-xl text-white leading-tight whitespace-normal max-w-[70px]">Africa Now
-                </Motion.h3>
-              </div>
+                {/* 7 AFRICA NOW */}
+                {africaRising.length > 0 && (
+                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
+                      <Motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="text-xl text-white leading-tight whitespace-normal max-w-[70px]">Africa Now
+                      </Motion.h3>
+                    </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 flex-1">
-                {africaRising.map(post => (
-                  <MiniPostCard key={post.slug} post={post} />
-                ))}
-              </div>
-            </section>
-          )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 flex-1">
+                      {africaRising.map(post => (
+                        <MiniPostCard key={post.slug} post={post} />
+                      ))}
+                    </div>
+                  </section>
+                )}
 
-          {policyProgress.length > 0 && (
-            <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
-              <div className="flex items-center gap-2">
-                <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
-                <Motion.h3
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="text-xl text-white leading-tight whitespace-normal max-w-[90px]">
-                  Policy & Progress
-                </Motion.h3>
-              </div>
+                {policyProgress.length > 0 && (
+                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
+                      <Motion.h3
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        className="text-xl text-white leading-tight whitespace-normal max-w-[90px]">
+                        Policy & Progress
+                      </Motion.h3>
+                    </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 flex-1">
-                {policyProgress.map(post => (
-                  <MiniPostCard key={post.slug} post={post} />
-                ))}
-              </div>
-            </section>
-          )}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 flex-1">
+                      {policyProgress.map(post => (
+                        <MiniPostCard key={post.slug} post={post} />
+                      ))}
+                    </div>
+                  </section>
+                )}
+              </>
+            )}
+          </section>
 
           <section className="pt-24 pb-12 px-6 bg-black/50 text-center">
             <h4 className="text-3xl font-bold mb-6">Join the Conversation</h4>
@@ -526,677 +563,3 @@ export default function ReadPageClient({ data }: Props) {
     </div >
   );
 }
-
-{/* // {dataDefense && (
-        //   <section className="py-6 px-5 mt-6">
-        //     <Link href={`/read/${dataDefense.slug}`}>
-        //       <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
-        //         {dataDefense.category?.name ?? 'Data Defense'}
-        //       </p>
-        //       <Motion.div
-        //         className="relative group cursor-pointer overflow-hidden rounded-xl"
-        //         initial={{ opacity: 0, y: 20 }}
-        //         animate={{ opacity: 1, y: 0 }}
-        //         transition={{ duration: 0.6, ease: "easeOut" }}
-        //         whileHover={{ scale: 1.02 }}
-        //         whileTap={{ scale: 0.98 }}
-        //       >
-        //         {/ Image with parallax hover /}
-        //         <Motion.div
-        //           className="relative"
-        //           whileHover={{ scale: 1.05 }}
-        //           transition={{ duration: 0.8, ease: "easeOut" }}
-        //         >
-        //           {dataDefense.image && (
-        //             <Image
-        //               src={dataDefense.image}
-        //               alt={dataDefense.alt || dataDefense.title}
-        //               className="w-full h-96 text-xs object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
-        //               width={800}
-        //               height={400}
-        //               priority={false}
-        //             />
-        //           )}
-        //         </Motion.div>
-
-        //         {/ Gradient overlay with fade-in /}
-        //         <Motion.div
-        //           className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent rounded-xl"
-        //           initial={{ opacity: 0 }}
-        //           animate={{ opacity: 1 }}
-        //           transition={{ duration: 0.8, delay: 0.2 }}
-        //         />
-
-        //         {/ Text content with slide-up /}
-        //         <Motion.div
-        //           className="absolute bottom-6 left-6 right-6"
-        //           initial={{ y: 30, opacity: 0 }}
-        //           whileInView={{ y: 0, opacity: 1 }}
-        //           transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-        //           viewport={{ once: true }}
-        //         >
-        //           <Motion.h1
-        //             className="text-2xl md:text-3xl font-bold text-white mb-2"
-        //           >
-        //             {dataDefense.title}
-        //           </Motion.h1>
-        //           <Motion.p
-        //             className="text-gray-300 text-sm"
-        //           >
-        //             {dataDefense.excerpt}
-        //           </Motion.p>
-        //         </Motion.div>
-        //       </Motion.div>
-        //     </Link>
-        //   </section>
-        )} */}
-
-// 'use client';
-
-// import { motion as Motion } from "framer-motion";
-// import {
-//   useGetPostsQuery, useGetFeaturedPostQuery, useGetTrendingPostsQuery,
-//   useGetSpotlightPostsQuery, useGetBigDealPostsQuery, useGetGlobalLensPostsQuery,
-//   useGetAfricaRisingPostsQuery, useGetDigitalMoneyPostsQuery, useGetEmergingTechPostsQuery,
-//   useGetHardwarePostsQuery, useGetSecureHabitsPostsQuery, useGetTechCulturePostsQuery,
-//   useGetKeyPlayersPostsQuery, useGetAIPostsQuery, useGetbchCryptoPostsQuery,
-//   useGetStartupsPostsQuery, useGetprvCompliancePostsQuery, useGetSocialPostQuery,
-//   useGetDataDefensePostQuery, useGetStackPostsQuery, useGetBuyGuidesPostsQuery,
-//   useGetDevDigestPostQuery, useGetTheClimbPostsQuery, useGetRundownPostsQuery,
-//   useGetIndustryInsightsPostsQuery} from "@/features/api/apiSlice";
-// import PostCard from "../read/components/blog/PostCard";
-// import MiniPostCard from "../read/components/blog/MiniPostCard";
-// // import FloatingMenu from "./components/blog/FloatingMenu";
-// // import NewsletterCard from "./components/blog/NewsletterCard";
-// import { faLongArrowDown } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { Post } from "@/types/post";
-// import { useState } from "react";
-// import Link from "next/link";
-// // import Image from "next/image";
-// import { useParams } from "next/navigation";
-// import Carousel from "./components/blog/Carousel";
-
-
-// export default function ReadHome() {
-//   const page = useParams();
-//   const { data: posts, error, isLoading } = useGetPostsQuery(page);
-
-//   const { data: featured = [] } = useGetFeaturedPostQuery();
-//   const { data: trending = [] } = useGetTrendingPostsQuery();
-//   const { data: spotlight = [] } = useGetSpotlightPostsQuery();
-//   const { data: bigDeal = [] } = useGetBigDealPostsQuery();
-
-//   const { data: digitalMoney = [] } = useGetDigitalMoneyPostsQuery();
-//   const { data: bchCrypto = [] } = useGetbchCryptoPostsQuery();
-//   const { data: startups = [] } = useGetStartupsPostsQuery();
-//   const { data: prvCompliance = [] } = useGetprvCompliancePostsQuery();
-
-//   const { data: AI = [] } = useGetAIPostsQuery();
-//   const { data: emergingTech = [] } = useGetEmergingTechPostsQuery();
-//   const { data: hardware = [] } = useGetHardwarePostsQuery();
-//   const { data: techCulture = [] } = useGetTechCulturePostsQuery();
-
-
-//   const { data: social = [] } = useGetSocialPostQuery();
-//   const { data: globalLens = [] } = useGetGlobalLensPostsQuery();
-//   const { data: africaRising = [] } = useGetAfricaRisingPostsQuery();
-//   const { data: keyPlayers = [] } = useGetKeyPlayersPostsQuery();
-
-//   const { data: dataDefense = [] } = useGetDataDefensePostQuery();
-//   const { data: secureHabits = [] } = useGetSecureHabitsPostsQuery();
-//   const { data: stack = [] } = useGetStackPostsQuery();
-//   const { data: buyGuides = [] } = useGetBuyGuidesPostsQuery();
-
-//   const { data: devDigest = [] } = useGetDevDigestPostQuery();
-//   const { data: theClimb = [] } = useGetTheClimbPostsQuery();
-//   const { data: rundown = [] } = useGetRundownPostsQuery();
-//   const { data: industry = [] } = useGetIndustryInsightsPostsQuery();
-
-//   const [visiblePosts, setVisiblePosts] = useState(3);
-//   const loadMore = () => {
-//     setVisiblePosts((prev) => Math.min(prev + 3, 10));
-//   };
-
-//   return (
-//     <section className="relative w-full min-h-screen bg-black text-white overflow-hidden">
-//       {/* 🪶 HERO SECTION */}
-//       <div className="relative min-h-screen -mt-16 sm:mt-0 flex flex-col justify-center items-center text-center overflow-hidden">
-//         {/* layered typography */}
-//         <Motion.h1
-//           className="absolute text-[16rem] sm:text-[16rem] font-extrabold uppercase text-gray-400/5 blur-2xl select-none z-0"
-//           initial={{ opacity: 0 }}
-//           animate={{ opacity: 4 }}
-//           transition={{ duration: 0.8 }}
-//         >
-//           VeryCodedly
-//         </Motion.h1>
-
-//         <Motion.h1
-//           className="absolute text-[18rem] sm:text-[18rem] font-extrabold uppercase text-white/5 z-10"
-//           style={{ WebkitTextStroke: "1px rgba(255,255,255,0.2)" }}
-//         >
-//           VeryCodedly
-//         </Motion.h1>
-
-//         <div className="z-20 backdrop-blur-xs w-full py-5 sm:py-5">
-//           <h1 className="hero px-14 sm:px-0 md:px-8 lg:px-0 relative text-6xl sm:text-7xl font-bold z-20 backdrop-blur-2xl">
-//             Tech.{" "}
-//             <Motion.span
-//               className="mx-1"
-//               initial={{ color: "#ffffff" }}
-//               animate={{ color: "#9AE600" }}
-//               transition={{ delay: 0.3, duration: 1 }}
-//             >
-//             Code.{" "}
-//             </Motion.span>
-//             <Motion.span
-//               className="mx-0"
-//               initial={{ color: "#ffffff" }}
-//               animate={{ color: "#fb64b6" }}
-//               transition={{ delay: 0.6, duration: 1 }}
-//             >
-//             Culture.
-//             </Motion.span>
-//           </h1>
-//           <Motion.p
-//             className="relative text-gray-400 px-2 sm:px-0 mt-6 z-20 max-w-sm sm:max-w-md mx-auto text-md sm:text-lg"
-//             initial={{ opacity: 0 }}
-//             animate={{ opacity: 1 }}
-//             transition={{ delay: 0.7 }}
-//           >
-//             Unfiltered takes on Tech, Code, Culture and everything in between.
-//           </Motion.p>
-//         </div>
-
-//         {/* scroll cue */}
-//         <Link href="#posts">
-//           <Motion.div
-//             className="absolute bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30 text-gray-400"
-//             animate={{ y: [0, 10, 0] }}
-//             transition={{ repeat: Infinity, duration: 2 }}
-//             tabIndex={0}
-//           >
-//             <span className="text-md sm:text-sm tracking-widest uppercase">read</span>
-//             <span className="text-md sm:text-lg"><FontAwesomeIcon icon={faLongArrowDown} size="sm" /></span>
-//           </Motion.div>
-//         </Link>
-//       </div>
-
-//       {/* 📰 POSTS SECTION */}
-//       <div id="posts" className="relative max-w-6xl mx-auto py-20 px-6 sm:px-8">
-//         <Motion.h2
-//           className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-12 text-center text-white/90"
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           transition={{ duration: 0.6 }}
-//           viewport={{ once: true }}
-//         >
-//           Latest from <span className="text-lime-400">VeryCodedly</span>
-//         </Motion.h2>
-
-//         {isLoading && (
-//           <div className="bg-zinc-900/50 rounded-xl h-96 animate-pulse" />
-//         )}
-
-//         {error && (
-//           <div className="text-center py-20">
-//             <p className="text-rose-400 text-lg mb-4">Failed to load posts</p>
-//             <button
-//               onClick={() => window.location.reload()}
-//               className="px-6 py-1 bg-rose-500/20 hover:bg-rose-500/30 border border-rose-500/30 rounded-full text-rose-300 transition-all"
-//             >
-//               Try Again
-//             </button>
-//           </div>
-//         )}
-
-//         <div className="min-h-[1500px] md:min-h-[2000px]">
-//         {posts && (
-//           <div className="space-y-2.5 w-[90%] lg:w-[75%] mx-auto">
-//             {posts?.results.slice(0, visiblePosts).map((post: Post) => (
-//               <Motion.div
-//                 key={post.id}
-//                 // className="bg-white/5 border border-zinc-700 rounded-xl backdrop-blur-md p-6 hover:border-lime-200/30 transition-all duration-300"
-//                 className="bg-zinc-900/80 rounded-2xl p-3 border border-zinc-800 transition-transform duration-500 transform hover:-translate-y-2 
-//                 hover:rotateX-3 hover:rotateY-3 active:-translate-y-2 active:rotateX-3 active:rotateY-3" style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
-//                 initial={{ opacity: 0, y: 30 }}
-//                 whileInView={{ opacity: 1, y: 0 }}
-//                 viewport={{ once: true }}
-//                 transition={{ duration: 0.6 }}
-//               >
-//                 <PostCard post={post} />
-//               </Motion.div>
-//             ))}
-//           </div>
-//         )}
-//         {posts && visiblePosts < 9 && (
-//           <div className="flex justify-center my-10">
-//             <button
-//               onClick={loadMore}
-//               className="font-bold cursor-pointer border-3 border-gray-500/100 bg-transparent text-white text-sm px-7 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
-//                       active:text-black shadow-[0_4px_0_0_#ff69b4] hover:shadow-[0_2px_0_0_#fb64b6] active:shadow-[0_2px_0_0_#ff69b4] active:translate-y-1.5 hover:translate-y-0.5  transition-all duration-200"
-//             >
-//               <span className="hidden md:inline">Load </span>More
-//             </button>
-//           </div>
-//         )}
-
-//         {/* 1 HERO: Featured Post */}
-//         <Carousel posts={featured} />
-
-//         {/* 2 TRENDING NOW */}
-//         {trending.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-white mb-4">Trending<span className="text-lime-400">Now</span>
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-//               {trending.map((post) => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-
-//             </div>
-//           </section>
-//         )}
-
-//         {/* 3 SPOTLIGHT */}
-//         {spotlight.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-white mb-4 flex justify-end">
-//               Entertainment
-//             </Motion.h2>
-//             {/* <h2 className="text-3xl sm:text-4xl font-bold text-pink-400 mb-10">Editor’s<span className="text-white"> Picks</span></h2> */}
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {spotlight.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         {/* 4 BIG DEAL */}
-//         {bigDeal.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-lime-400 mb-4 flex justify-start">Big<span className="text-white">Deal</span>
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {bigDeal.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         {/* 5 HARDWARE */}
-//         <Carousel posts={hardware} />
-
-//         {/* <NewsletterCard /> */}
-
-//         {/* 11 EMERGING TECH */}
-//         {emergingTech.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-white mb-4 flex justify-start">Emerging<span className="text-lime-400">Tech</span>
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {emergingTech.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         {/* 10 AI */}
-//         {AI.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-white mb-4 flex justify-end">AI
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {AI.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         {/* 12 TECH CULTURE */}
-//         {techCulture.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-lime-400 mb-4 flex justify-start">Tech<span className="text-white">Culture</span>
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {techCulture.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         <Carousel posts={devDigest} />
-
-//         {theClimb.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-white mb-4 flex justify-start">
-//               The<span className="text-lime-400">Climb</span>
-
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {theClimb.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         {rundown.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-white mb-4 flex justify-end">
-//               Rundown
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {rundown.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         {industry.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-lime-400 mb-4 flex justify-start">
-//               Industry<span className="text-white">Insights</span>
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {industry.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         {/* 9 DIGITAL MONEY */}
-//         <Carousel posts={digitalMoney} />
-
-//         {/* 10 BLOCKCHAIN & CRYPTO */}
-//         {bchCrypto.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-white mb-4 flex justify-start">
-//               Blockchain&<span className="text-lime-400">Crypto</span>
-
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {bchCrypto.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         {/* 11 STARTUPS */}
-//         {startups.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-white mb-4 flex justify-end">
-//               Startups
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {startups.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         {/* 12 PRIVACY & COMPLIANCE */}
-//         {prvCompliance.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-lime-400 mb-4 flex justify-start">
-//               Privacy<span className="text-white">&Compliance</span>
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {prvCompliance.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         {/* 5 HARDWARE */}
-//         <Carousel posts={social} />
-
-//         {/* 6 GLOBAL LENS */}
-//         {globalLens.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-white mb-4 flex justify-start">
-//               Wired<span className="text-lime-400">World</span>
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {globalLens.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         {/* 7 AFRICA RISING */}
-//         {africaRising.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-lime-400 mb-4 flex justify-end">Africa<span className="text-white">Now</span>
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {africaRising.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         {/* 8 KEY PLAYERS */}
-//         {keyPlayers.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-lime-400 mb-4 flex justify-start">
-//               Key<span className="text-white">Players</span>
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {keyPlayers.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         <Carousel posts={dataDefense} />
-
-//         {/* 13 SECURE HABITS */}
-//         {secureHabits.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-white mb-4 flex justify-start">Secure<span className="text-lime-400">Habits</span>
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {secureHabits.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         {stack.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-white mb-4 flex justify-end">Stack
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {stack.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-
-//         {buyGuides.length > 0 && (
-//           <section className="py-6 px-3">
-//             <Motion.h2
-//               initial={{ opacity: 0, y: 20 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6 }}
-//               viewport={{ once: true }}
-//               className="text-3xl text-white mb-4 flex justify-start">Beginner<span className="text-lime-400">Guides</span>
-//             </Motion.h2>
-//             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {buyGuides.map(post => (
-//                 <MiniPostCard key={post.id} post={post} />
-//               ))}
-//             </div>
-//           </section>
-//         )}
-//       </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-{/* // {dataDefense && (
-        //   <section className="py-6 px-5 mt-6">
-        //     <Link href={`/read/${dataDefense.slug}`}>
-        //       <p className="text-xs pr-3 font-semibold tracking-tight text-right text-pink-400 uppercase mb-2">
-        //         {dataDefense.category?.name ?? 'Data Defense'}
-        //       </p>
-        //       <Motion.div
-        //         className="relative group cursor-pointer overflow-hidden rounded-xl"
-        //         initial={{ opacity: 0, y: 20 }}
-        //         animate={{ opacity: 1, y: 0 }}
-        //         transition={{ duration: 0.6, ease: "easeOut" }}
-        //         whileHover={{ scale: 1.02 }}
-        //         whileTap={{ scale: 0.98 }}
-        //       >
-        //         {/ Image with parallax hover /}
-        //         <Motion.div
-        //           className="relative"
-        //           whileHover={{ scale: 1.05 }}
-        //           transition={{ duration: 0.8, ease: "easeOut" }}
-        //         >
-        //           {dataDefense.image && (
-        //             <Image
-        //               src={dataDefense.image}
-        //               alt={dataDefense.alt || dataDefense.title}
-        //               className="w-full h-96 text-xs object-cover rounded-xl shadow-lg opacity-60 group-hover:opacity-100 transition-opacity duration-500"
-        //               width={800}
-        //               height={400}
-        //               priority={false}
-        //             />
-        //           )}
-        //         </Motion.div>
-
-        //         {/ Gradient overlay with fade-in /}
-        //         <Motion.div
-        //           className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/40 to-transparent rounded-xl"
-        //           initial={{ opacity: 0 }}
-        //           animate={{ opacity: 1 }}
-        //           transition={{ duration: 0.8, delay: 0.2 }}
-        //         />
-
-        //         {/ Text content with slide-up /}
-        //         <Motion.div
-        //           className="absolute bottom-6 left-6 right-6"
-        //           initial={{ y: 30, opacity: 0 }}
-        //           whileInView={{ y: 0, opacity: 1 }}
-        //           transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-        //           viewport={{ once: true }}
-        //         >
-        //           <Motion.h1
-        //             className="text-2xl md:text-3xl font-bold text-white mb-2"
-        //           >
-        //             {dataDefense.title}
-        //           </Motion.h1>
-        //           <Motion.p
-        //             className="text-gray-300 text-sm"
-        //           >
-        //             {dataDefense.excerpt}
-        //           </Motion.p>
-        //         </Motion.div>
-        //       </Motion.div>
-        //     </Link>
-        //   </section>
-        )} */}

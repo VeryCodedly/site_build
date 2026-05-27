@@ -52,6 +52,41 @@ COURSE_LIST_TTL = 86400
 LESSON_CACHE_TTL = 86400
 
 
+TECH_CONFIG = {
+    "hardware": ("hardware", 3),
+    "AI": ("ai", 6),
+    "bigDeal": ("big-deal", 6),
+    "digitalMoney": ("digital-money", 3),
+    "keyPlayers": ("key-players", 6),
+    "bchCrypto": ("blockchain-crypto", 6),
+}
+
+CODE_CONFIG = {
+    "devDigest": ("dev-digest", 3),
+    "upskill": ("upskill", 6),
+    "buyGuides": ("beginner-guides", 6),
+    "dataDefense": ("data-defense", 3),
+    "secureHabits": ("secure-habits", 6),
+    "prvCompliance": ("privacy-compliance", 6),
+}
+
+CULTURE_CONFIG = {
+    "featured": ("featured", 3),
+    "trending": ("right-now", 6),
+    "spotlight": ("showtime", 6),
+    "globalLens": ("wired-world", 3),
+    "africaRising": ("africa-now", 6),
+    "policyProgress": ("policy-progress", 6),
+}
+
+
+SECTION_MAP = {
+    "tech": TECH_CONFIG,
+    "code": CODE_CONFIG,
+    "culture": CULTURE_CONFIG,
+}
+
+
 def api_home(request):
     return HttpResponse("""
         <!DOCTYPE html>
@@ -198,87 +233,202 @@ def global_search(request):
     return Response(results_dict)
 
 
-class ReadPageDataView(APIView):
-    CATEGORY_CONFIG = {
-        "featured": ("featured", 3),
-        "right-now": ("trending", 6),
-        "showtime": ("spotlight", 6),
-        "digital-money": ("digitalMoney", 3),
-        "blockchain-crypto": ("bchCrypto", 6),
-        "key-players": ("keyPlayers", 6),
-        "ai": ("AI", 6),
-        "big-deal": ("bigDeal", 6),
-        "hardware": ("hardware", 3),
-        "policy-progress": ("policyProgress", 6),
-        "wired-world": ("globalLens", 3),
-        "africa-now": ("africaRising", 6),
-        "data-defense": ("dataDefense", 3),
-        "secure-habits": ("secureHabits", 6),
-        "privacy-compliance": ("prvCompliance", 6),
-        "beginner-guides": ("buyGuides", 6),
-        "dev-digest": ("devDigest", 3),
-        "upskill": ("upskill", 6),
-    }
+# class ReadPageDataView(APIView):
+#     CATEGORY_CONFIG = {
+#         "featured": ("featured", 3),
+#         "right-now": ("trending", 6),
+#         "showtime": ("spotlight", 6),
+#         "digital-money": ("digitalMoney", 3),
+#         "blockchain-crypto": ("bchCrypto", 6),
+#         "key-players": ("keyPlayers", 6),
+#         "ai": ("AI", 6),
+#         "big-deal": ("bigDeal", 6),
+#         "hardware": ("hardware", 3),
+#         "policy-progress": ("policyProgress", 6),
+#         "wired-world": ("globalLens", 3),
+#         "africa-now": ("africaRising", 6),
+#         "data-defense": ("dataDefense", 3),
+#         "secure-habits": ("secureHabits", 6),
+#         "privacy-compliance": ("prvCompliance", 6),
+#         "beginner-guides": ("buyGuides", 6),
+#         "dev-digest": ("devDigest", 3),
+#         "upskill": ("upskill", 6),
+#     }
+
+#     def get(self, request):
+#         cache_key = make_cache_key("read_page_data")
+#         cached = cache.get(cache_key)
+#         if cached:
+#             return Response(cached)
+
+#         data = {}
+
+#         # changed for cache limit
+#         for slug, (key, limit) in self.CATEGORY_CONFIG.items():
+
+#             posts = (
+#                 Post.objects
+#                 .select_related("subcategory")
+#                 .filter(
+#                     status="published",
+#                     subcategory__slug=slug
+#                 )
+#                 .only(
+#                     "id",
+#                     "title",
+#                     "slug",
+#                     "image",
+#                     "created_at",
+#                     "subcategory_id",
+#                 )
+#                 .order_by("-created_at")[:limit]
+#             )
+
+#             data[key] = PostFeedSerializer(
+#                 posts,
+#                 many=True,
+#                 context={"request": request}
+#             ).data
+
+#         # also changed
+#         latest_posts = (
+#             Post.objects
+#             .select_related("subcategory")
+#             .filter(status="published")
+#             .only(
+#                 "id",
+#                 "title",
+#                 "slug",
+#                 "excerpt",
+#                 "image",
+#                 "created_at",
+#                 "subcategory_id",
+#             )
+#             .order_by("-created_at")[:9]
+#         )
+
+#         data["latest"] = PostFeedSerializer(
+#             latest_posts,
+#             many=True,
+#             context={"request": request}
+#         ).data
+
+#         cache.set(cache_key, data, timeout=HOME_CACHE_TTL)
+
+#         return Response(data)
+class ReadInitialView(APIView):
 
     def get(self, request):
-        cache_key = make_cache_key("read_page_data")
+
+        cache_key = make_cache_key("read_initial")
+
         cached = cache.get(cache_key)
+
+        if cached:
+            return Response(cached)
+
+        latest_posts = (
+            Post.objects
+            .select_related("category", "subcategory")
+            .filter(status="published")
+            .only(
+                "title",
+                "slug",
+                "excerpt",
+                "image",
+                "alt",
+                "created_at",
+                "category__name",
+                "category__slug",
+                "subcategory__name",
+                "subcategory__slug",
+            )
+            .order_by("-created_at")[:9]
+        )
+
+        data = {
+            "latest": PostFeedSerializer(
+                latest_posts,
+                many=True,
+                context={"request": request}
+            ).data
+        }
+
+        cache.set(
+            cache_key,
+            data,
+            timeout=HOME_CACHE_TTL
+        )
+
+        return Response(data)
+
+
+class ReadSectionView(APIView):
+
+    def get_posts(self, slug, limit, request):
+
+        posts = (
+            Post.objects
+            .select_related("category", "subcategory")
+            .filter(
+                status="published",
+                subcategory__slug=slug
+            )
+            .only(
+                "title",
+                "slug",
+                "excerpt",
+                "image",
+                "alt",
+                "created_at",
+                "category__name",
+                "category__slug",
+                "subcategory__name",
+                "subcategory__slug",
+            )
+            .order_by("-created_at")[:limit]
+        )
+
+        return PostFeedSerializer(
+            posts,
+            many=True,
+            context={"request": request}
+        ).data
+
+    def get(self, request, section):
+
+        config = SECTION_MAP.get(section)
+
+        if not config:
+            return Response(
+                {"detail": "Invalid section"},
+                status=404
+            )
+
+        cache_key = make_cache_key(
+            f"read_section_{section}"
+        )
+
+        cached = cache.get(cache_key)
+
         if cached:
             return Response(cached)
 
         data = {}
 
-        # changed for cache limit
-        for slug, (key, limit) in self.CATEGORY_CONFIG.items():
+        for key, (slug, limit) in config.items():
 
-            posts = (
-                Post.objects
-                .select_related("subcategory")
-                .filter(
-                    status="published",
-                    subcategory__slug=slug
-                )
-                .only(
-                    "id",
-                    "title",
-                    "slug",
-                    "image",
-                    "created_at",
-                    "subcategory_id",
-                )
-                .order_by("-created_at")[:limit]
+            data[key] = self.get_posts(
+                slug=slug,
+                limit=limit,
+                request=request
             )
 
-            data[key] = PostFeedSerializer(
-                posts,
-                many=True,
-                context={"request": request}
-            ).data
-
-        # also changed
-        latest_posts = (
-            Post.objects
-            .select_related("subcategory")
-            .filter(status="published")
-            .only(
-                "id",
-                "title",
-                "slug",
-                "excerpt",
-                "image",
-                "created_at",
-                "subcategory_id",
-            )
-            .order_by("-created_at")[:9]
+        cache.set(
+            cache_key,
+            data,
+            timeout=HOME_CACHE_TTL
         )
-
-        data["latest"] = PostFeedSerializer(
-            latest_posts,
-            many=True,
-            context={"request": request}
-        ).data
-
-        cache.set(cache_key, data, timeout=HOME_CACHE_TTL)
 
         return Response(data)
 

@@ -220,8 +220,8 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                 );
                 case 'callout':
                   return (
-                    <div key={index} className="p-3 sm:p-4 border border-pink-500/30 bg-zinc-800/60 rounded-xl text-gray-200 italic backdrop-blur-sm shadow-lg text-sm sm:text-base">
-                      {block.content || 'No callout content.'}
+                    <div key={index} className="p-3 sm:p-4 border border-pink-500/20 bg-zinc-900/50 rounded-xl text-gray-300/90 italic backdrop-blur-sm shadow-lg text-sm">
+                     💡 {block.content || 'No callout content.'}
                     </div>
                   );
                 case 'code':
