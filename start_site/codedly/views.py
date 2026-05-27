@@ -233,89 +233,6 @@ def global_search(request):
     return Response(results_dict)
 
 
-# class ReadPageDataView(APIView):
-#     CATEGORY_CONFIG = {
-#         "featured": ("featured", 3),
-#         "right-now": ("trending", 6),
-#         "showtime": ("spotlight", 6),
-#         "digital-money": ("digitalMoney", 3),
-#         "blockchain-crypto": ("bchCrypto", 6),
-#         "key-players": ("keyPlayers", 6),
-#         "ai": ("AI", 6),
-#         "big-deal": ("bigDeal", 6),
-#         "hardware": ("hardware", 3),
-#         "policy-progress": ("policyProgress", 6),
-#         "wired-world": ("globalLens", 3),
-#         "africa-now": ("africaRising", 6),
-#         "data-defense": ("dataDefense", 3),
-#         "secure-habits": ("secureHabits", 6),
-#         "privacy-compliance": ("prvCompliance", 6),
-#         "beginner-guides": ("buyGuides", 6),
-#         "dev-digest": ("devDigest", 3),
-#         "upskill": ("upskill", 6),
-#     }
-
-#     def get(self, request):
-#         cache_key = make_cache_key("read_page_data")
-#         cached = cache.get(cache_key)
-#         if cached:
-#             return Response(cached)
-
-#         data = {}
-
-#         # changed for cache limit
-#         for slug, (key, limit) in self.CATEGORY_CONFIG.items():
-
-#             posts = (
-#                 Post.objects
-#                 .select_related("subcategory")
-#                 .filter(
-#                     status="published",
-#                     subcategory__slug=slug
-#                 )
-#                 .only(
-#                     "id",
-#                     "title",
-#                     "slug",
-#                     "image",
-#                     "created_at",
-#                     "subcategory_id",
-#                 )
-#                 .order_by("-created_at")[:limit]
-#             )
-
-#             data[key] = PostFeedSerializer(
-#                 posts,
-#                 many=True,
-#                 context={"request": request}
-#             ).data
-
-#         # also changed
-#         latest_posts = (
-#             Post.objects
-#             .select_related("subcategory")
-#             .filter(status="published")
-#             .only(
-#                 "id",
-#                 "title",
-#                 "slug",
-#                 "excerpt",
-#                 "image",
-#                 "created_at",
-#                 "subcategory_id",
-#             )
-#             .order_by("-created_at")[:9]
-#         )
-
-#         data["latest"] = PostFeedSerializer(
-#             latest_posts,
-#             many=True,
-#             context={"request": request}
-#         ).data
-
-#         cache.set(cache_key, data, timeout=HOME_CACHE_TTL)
-
-#         return Response(data)
 class ReadInitialView(APIView):
 
     def get(self, request):
@@ -331,18 +248,6 @@ class ReadInitialView(APIView):
             Post.objects
             .select_related("category", "subcategory")
             .filter(status="published")
-            .only(
-                "title",
-                "slug",
-                "excerpt",
-                "image",
-                "alt",
-                "created_at",
-                "category__name",
-                "category__slug",
-                "subcategory__name",
-                "subcategory__slug",
-            )
             .order_by("-created_at")[:9]
         )
 
@@ -373,20 +278,7 @@ class ReadSectionView(APIView):
             .filter(
                 status="published",
                 subcategory__slug=slug
-            )
-            .only(
-                "title",
-                "slug",
-                "excerpt",
-                "image",
-                "alt",
-                "created_at",
-                "category__name",
-                "category__slug",
-                "subcategory__name",
-                "subcategory__slug",
-            )
-            .order_by("-created_at")[:limit]
+            ).order_by("-created_at")[:limit]
         )
 
         return PostFeedSerializer(
@@ -1370,3 +1262,26 @@ def get_order_status(request):
 #         return Response({"error": "Order not found or details don't match"}, status=404)
 #     except Exception as e:
 #         return Response({"error": "Something went wrong"}, status=500)
+
+
+# class ReadPageDataView(APIView):
+#     CATEGORY_CONFIG = {
+#         "featured": ("featured", 3),
+#         "right-now": ("trending", 6),
+#         "showtime": ("spotlight", 6),
+#         "digital-money": ("digitalMoney", 3),
+#         "blockchain-crypto": ("bchCrypto", 6),
+#         "key-players": ("keyPlayers", 6),
+#         "ai": ("AI", 6),
+#         "big-deal": ("bigDeal", 6),
+#         "hardware": ("hardware", 3),
+#         "policy-progress": ("policyProgress", 6),
+#         "wired-world": ("globalLens", 3),
+#         "africa-now": ("africaRising", 6),
+#         "data-defense": ("dataDefense", 3),
+#         "secure-habits": ("secureHabits", 6),
+#         "privacy-compliance": ("prvCompliance", 6),
+#         "beginner-guides": ("buyGuides", 6),
+#         "dev-digest": ("devDigest", 3),
+#         "upskill": ("upskill", 6),
+#     }

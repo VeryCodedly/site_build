@@ -419,7 +419,7 @@ export default function ReadPageClient({ initialData, techData }: Props) {
             )}
           </section>
 
-          <section ref={cultureRef} className="min-h-[2000px] md:min-h-[1400px] lg:min-h-[2000px]">
+          <section ref={cultureRef} className="min-h-[1400px] md:min-h-[1400px] lg:min-h-[1800px]">
             {cultureData && (
               <>
                 <div className="flex items-center gap-3 mt-30">

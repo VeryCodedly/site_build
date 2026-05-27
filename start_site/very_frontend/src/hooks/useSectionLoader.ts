@@ -21,7 +21,10 @@ export function useSectionLoader<T>(url: string) {
         observer.unobserve(el); // better than disconnect?
 
         try {
-          const res = await fetch(url);
+          const res = await fetch(url, {
+            cache: "force-cache",
+          });
+
           if (!res.ok) return;
 
           const json = await res.json();
@@ -32,6 +35,7 @@ export function useSectionLoader<T>(url: string) {
       },
       {
         rootMargin: "300px",
+        threshold: 0.1,
       }
     );
 
