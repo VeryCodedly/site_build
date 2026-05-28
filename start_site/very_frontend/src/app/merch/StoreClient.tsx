@@ -130,16 +130,16 @@ export default function StorePage({ products, error }: StoreClientProps) {
         </motion.div>
 
       <div className="max-w-5xl mx-auto mb-12 sm:mb-16 px-0 sm:px-0">
-        <h1 className="mb-4">
+        <h1 className="mb-6">
           <span className="text-4xl md:text-5xl font-black bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent">
             VeryCodedly Supply
           </span>
           {/* <span className="text-4xl md:text-5xl">🚧</span> */}
         </h1>
-        <p className="text-gray-400 text-base md:text-lg">
-          For people who read source code, <br />and people who have no idea what that means.
+        <p className="text-gray-400 text-base md:text-lg tracking-tighter">
+          For people who read source code, and <br />people who have no idea what that means.
         </p>
-        <div className="flex flex-row flex-wrap gap-2 mt-6">
+        <div className="flex flex-row flex-wrap gap-3 mt-6">
           <div className="w-fit flex items-center gap-2 text-xs text-gray-500 bg-zinc-900/30 px-3 py-1.5 rounded-full border border-zinc-800">
             <FontAwesomeIcon icon={faTruck} className="text-lime-600" />
             <span>Ships worldwide</span>

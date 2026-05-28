@@ -30,7 +30,11 @@ def bump_cache_version():
 
 #  INVALIDATION HELPERS 
 def invalidate_home_page():
-    cache.delete(make_cache_key("read_page_data"))
+    cache.delete(make_cache_key("read_initial"))
+    cache.delete(make_cache_key("read_section_tech"))
+    
+    cache.delete(make_cache_key("read_section_code"))
+    cache.delete(make_cache_key("read_section_culture"))
 
 def invalidate_all_posts():
     cache.delete(make_cache_key("all_posts_list"))
