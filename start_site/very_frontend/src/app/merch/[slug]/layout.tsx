@@ -51,6 +51,13 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
         { url: product.preview_image || 'https://verycodedly.com/og-image.png' },
       ],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: "Merch",
+      description: product.tagline || `Make the ${product.fancy_name} look even better.`,
+      images: ["https://verycodedly.com/twitter-image.png"],
+      creator: '@verycodedly'
+    },
   };
 }
 
