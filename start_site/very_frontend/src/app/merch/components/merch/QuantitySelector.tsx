@@ -19,6 +19,7 @@ export default function QuantitySelector({ quantity, onQuantityChange, min = 1, 
       <label className="block text-xs text-gray-500 mb-2">Quantity</label>
       <div className="flex items-center gap-3">
         <button
+          aria-label="Decrease quantity"
           onClick={decrement}
           disabled={quantity <= min}
           className="w-8 h-8 rounded-full bg-white/5 border-3 border-gray-700/60 text-white hover:bg-white/10 disabled:opacity-50 transition-all"
@@ -27,6 +28,7 @@ export default function QuantitySelector({ quantity, onQuantityChange, min = 1, 
         </button>
         <span className="w-8 text-center text-white font-medium">{quantity}</span>
         <button
+          aria-label="Increase quantity"
           onClick={increment}
           disabled={quantity >= max}
           className="w-8 h-8 rounded-full bg-white/5 border-3 border-gray-700/60 text-white hover:bg-white/10 disabled:opacity-50 transition-all"

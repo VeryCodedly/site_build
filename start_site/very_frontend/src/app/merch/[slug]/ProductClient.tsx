@@ -177,6 +177,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
       <>
   {/* Floating Cart Button */}
         <motion.button
+          aria-label="Open Cart"
           ref={cartButtonRef}
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -255,6 +256,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
 
             <div className="pb-4 pt-2">
               <button
+                aria-label="Add to Cart"
                 onClick={handleAddToCart}
                 disabled={product.is_sold_out || !currentVariant}
                 className="w-fit font-bold cursor-pointer border-3 border-gray-500/100 bg-lime-400 py-1.5 px-7 rounded-full text-black hover:bg-white 
@@ -360,7 +362,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
                         Quality is guaranteed. If something arrives with a manufacturing defect, let us know within 7 days.
                       </p>
                       <p className="text-gray-300/90 text-sm leading-relaxed">
-                        Because everything is print-on-demand, we can&apos;t guarantee replacements, but we&apos;ll always try to make it right case by case. Contact us and we&apos;ll figure it out.
+                        Because everything is print-on-demand, we can&apos;t guarantee replacements, but we&apos;ll always try to make it right. Contact us and we&apos;ll figure it out.
                       </p>
                     </div>
                   </motion.div>

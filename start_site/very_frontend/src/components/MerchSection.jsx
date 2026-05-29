@@ -155,7 +155,7 @@ export default function MerchSection() {
           {/* Left Arrow */}
           <button
             onClick={prevItem}
-            aria-label="Toggle button"
+            aria-label="Previous item"
             className="bg-gradient-to-b from-white/5 to-white/0 relative px-4 py-2 rounded-full text-lime-300 font-medium overflow-hidden group"
           >
             <span className="relative z-10 transition-colors duration-300 group-hover:text-black group-active:text-black">
@@ -174,7 +174,7 @@ export default function MerchSection() {
           {/* Right Arrow */}
           <button
             onClick={nextItem}
-            aria-label="Toggle button"
+            aria-label="Next item"
             className="bg-gradient-to-b from-white/5 to-white/0 relative px-4 py-2 rounded-full text-lime-300 font-medium overflow-hidden group"
           >
             <span className="relative z-10 transition-colors duration-300 group-hover:text-black group-active:text-black">
