@@ -38,9 +38,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // READ POSTS
   const readUrls: MetadataRoute.Sitemap = [];
   try {
-    let postsUrl: string | null = `${API_BASE}/posts/`;
+    let postsUrl: string | null = `${API_BASE}/sitemap/posts/`;
     while (postsUrl) {
-      const res: Response = await fetch(postsUrl, { next: { revalidate: 3600 } });
+      const res: Response = await fetch(postsUrl);
       if (!res.ok) {
         console.error(`Failed to fetch posts from ${postsUrl}`);
         break;
@@ -68,7 +68,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // READ CATEGORIES
   const categoryUrls: MetadataRoute.Sitemap = [];
   try {
-    const res = await fetch(`${API_BASE}/categories/`, { next: { revalidate: 3600 } });
+    const res = await fetch(`${API_BASE}/categories/`);
     if (res.ok) {
       const data = await res.json();
       (data.results || []).forEach((cat: Category) => {
@@ -88,7 +88,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // READ SUBCATEGORIES
   const subcategoryUrls: MetadataRoute.Sitemap = [];
   try {
-    const res = await fetch(`${API_BASE}/subcategories/`, { next: { revalidate: 3600 } });
+    const res = await fetch(`${API_BASE}/subcategories/`);
     if (res.ok) {
       const data = await res.json();
       (data.results || []).forEach((subcat: Subcategory) => {
@@ -111,7 +111,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   try {
     // Fetch ALL courses first
-    const coursesRes = await fetch(`${API_BASE}/courses/`, { next: { revalidate: 3600 } });
+    const coursesRes = await fetch(`${API_BASE}/courses/`);
 
     if (coursesRes.ok) {
       const coursesData = await coursesRes.json();
@@ -130,9 +130,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         });
 
         // Fetch lessons for THIS course (once)
-        const lessonsRes = await fetch(`${API_BASE}/courses/${course.slug}/`, {
-          next: { revalidate: 3600 },
-        });
+        const lessonsRes = await fetch(`${API_BASE}/courses/${course.slug}/`);
 
         if (lessonsRes.ok) {
           const lessonsData = await lessonsRes.json();
@@ -156,6 +154,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Failed to fetch courses:", err);
   }
 
+  const merchUrls: MetadataRoute.Sitemap = [];
+
+  try {
+    const res = await fetch(`${API_BASE}/store/products/`);
+
+    if (res.ok) {
+      const data = await res.json();
+      const products = data.results || data || [];
+
+      products.forEach((product: Post) => {
+        merchUrls.push({
+          url: `${baseUrl}/merch/${product.slug}`,
+          lastModified: new Date(),
+          changeFrequency: "weekly",
+          priority: 0.8,
+        });
+      });
+    }
+  } catch (err) {
+    console.error("Failed to fetch merch:", err);
+  }
+
   // const total = [...staticPages, ...blogUrls, ...subcategoryUrls, ...courseUrls, ...lessonUrls];
   // if (total.length > 45_000) {
   //   console.warn(`Sitemap has ${total.length} URLs — consider splitting!`);
@@ -168,6 +188,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...subcategoryUrls,
     ...courseUrls,
     ...lessonUrls,
+    ...merchUrls,
   ];
 }
 

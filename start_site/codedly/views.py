@@ -7,11 +7,11 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from django.db.models import Q
 
-from collections import defaultdict
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.core.cache import cache
-from collections import defaultdict
+from rest_framework.generics import ListAPIView
+from rest_framework.pagination import PageNumberPagination
 
 from decimal import Decimal
 from django.db import transaction
@@ -21,7 +21,7 @@ from rest_framework import generics
 from django.http import HttpResponse
 from django.db.models.functions import Length
 from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson, StoreOrder, StoreProduct, PrintfulProducts, PrintfulVariant
-from .serializers import CategoryPostsSerializer, PostSerializer, PostFeedSerializer, CategorySerializer, CommentSerializer, StoreProductSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer, CourseDetailSerializer, StoreOrderSerializer, StoreProductSerializer, PrintfulProductSerializer, CourseListSerializer
+from .serializers import CategoryPostsSerializer, PostSerializer, PostFeedSerializer, CategorySerializer, CommentSerializer, StoreProductSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer, CourseDetailSerializer, StoreOrderSerializer, StoreProductSerializer, PrintfulProductSerializer, CourseListSerializer, SitemapPostSerializer
 
 import uuid
 import os
@@ -358,7 +358,21 @@ class PostViewSet(viewsets.ModelViewSet):
         cache.set(cache_key, data, timeout=POST_CACHE_TTL)
         return Response(data)
 
-      
+
+class SitemapPagination(PageNumberPagination):
+    page_size = 600
+    
+class SitemapPostsView(ListAPIView):
+    queryset = (
+        Post.objects
+        .filter(status="published")
+        .only("slug", "created_at", "updated_at")
+        .order_by("-created_at")
+    )
+    serializer_class = SitemapPostSerializer
+    pagination_class = SitemapPagination
+    
+    
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all().order_by("name")
     serializer_class = CategorySerializer

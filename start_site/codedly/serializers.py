@@ -147,6 +147,13 @@ class PostFeedSerializer(serializers.ModelSerializer):
         ]
         read_only_fields = fields
 
+
+class SitemapPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = ["slug", "created_at", "updated_at"]
+        
+        
 class CategoryPostsSerializer(serializers.ModelSerializer):
     posts = PostSerializer(many=True, read_only=True)
 
