@@ -1,264 +1,264 @@
-"use client";
+// "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLaptopCode, faShieldAlt, faRobot, faGlobe, faLightbulb, faBookOpen, faCoins, 
-  faMobileAlt, faUsers, faChartLine, IconDefinition } from "@fortawesome/free-solid-svg-icons";
+// import React, { useEffect, useRef, useState } from "react";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faLaptopCode, faShieldAlt, faRobot, faGlobe, faLightbulb, faBookOpen, faCoins, 
+//   faMobileAlt, faUsers, faChartLine, IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
-type Category = {
-  name: string;
-  icon: IconDefinition;
-  subs: string[];
-};
+// type Category = {
+//   name: string;
+//   icon: IconDefinition;
+//   subs: string[];
+// };
 
-const categories: Category[] = [
-  { name: "Apps & Software", icon: faLaptopCode, subs: ["Reviews", "Productivity Tools", "Dev Tools & Platforms"] },
-  { name: "Cybersecurity", icon: faShieldAlt, subs: ["Data Protection", "Online Safety", "Privacy & Compliance"] },
-  { name: "Digital Lifestyle", icon: faUsers, subs: ["Tech Culture", "Entertainment", "Socials & Communities"] },
-  { name: "Fintech & Crypto", icon: faCoins, subs: ["Blockchain & Crypto", "Payments & Wallets", "Digital Banking"] },
-  { name: "Gadgets & Gear", icon: faMobileAlt, subs: ["Smartphones & Wearables", "Hardware & Accessories", "Reviews & Buy Guides"] },
-  { name: "Guides & Tutorials", icon: faChartLine, subs: ["Beginner Guides", "Step-by-Step", "How-To Fixes"] },
-  { name: "Innovation & AI", icon: faRobot, subs: ["AI", "Emerging Tech", "Startups"] },
-  { name: "Learning & Growth", icon: faBookOpen, subs: ["Coding & Skills", "Career Development", "Industry Insights"] },
-  { name: "Spotlight", icon: faLightbulb, subs: ["Featured Interviews", "Trending Now", "Special Reports"] },
-  { name: "WorldWideTech", icon: faGlobe, subs: ["Africa Rising", "Tech Around the Globe", "Policy & Progress"] },
-];
+// const categories: Category[] = [
+//   { name: "Apps & Software", icon: faLaptopCode, subs: ["Reviews", "Productivity Tools", "Dev Tools & Platforms"] },
+//   { name: "Cybersecurity", icon: faShieldAlt, subs: ["Data Protection", "Online Safety", "Privacy & Compliance"] },
+//   { name: "Digital Lifestyle", icon: faUsers, subs: ["Tech Culture", "Entertainment", "Socials & Communities"] },
+//   { name: "Fintech & Crypto", icon: faCoins, subs: ["Blockchain & Crypto", "Payments & Wallets", "Digital Banking"] },
+//   { name: "Gadgets & Gear", icon: faMobileAlt, subs: ["Smartphones & Wearables", "Hardware & Accessories", "Reviews & Buy Guides"] },
+//   { name: "Guides & Tutorials", icon: faChartLine, subs: ["Beginner Guides", "Step-by-Step", "How-To Fixes"] },
+//   { name: "Innovation & AI", icon: faRobot, subs: ["AI", "Emerging Tech", "Startups"] },
+//   { name: "Learning & Growth", icon: faBookOpen, subs: ["Coding & Skills", "Career Development", "Industry Insights"] },
+//   { name: "Spotlight", icon: faLightbulb, subs: ["Featured Interviews", "Trending Now", "Special Reports"] },
+//   { name: "WorldWideTech", icon: faGlobe, subs: ["Africa Rising", "Tech Around the Globe", "Policy & Progress"] },
+// ];
 
-export default function FloatingMenu() {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [menuOpen, setMenuOpen] = useState(false); // overall icons visible
-  const [expandedNames, setExpandedNames] = useState(false); // whether category names are visible (after icons shown)
-  const [activeCategory, setActiveCategory] = useState<string | null>(null); // focused category (shows subs)
-  const [openSubs, setOpenSubs] = useState<string | null>(null); // which category's subs are open
-  const [isHoverable, setIsHoverable] = useState<boolean>(true); // whether device supports hover
-  // medium speed: durations around 300-450ms
-  const DURATION = 400;
+// export default function FloatingMenu() {
+//   const containerRef = useRef<HTMLDivElement | null>(null);
+//   const [menuOpen, setMenuOpen] = useState(false); // overall icons visible
+//   const [expandedNames, setExpandedNames] = useState(false); // whether category names are visible (after icons shown)
+//   const [activeCategory, setActiveCategory] = useState<string | null>(null); // focused category (shows subs)
+//   const [openSubs, setOpenSubs] = useState<string | null>(null); // which category's subs are open
+//   const [isHoverable, setIsHoverable] = useState<boolean>(true); // whether device supports hover
+//   // medium speed: durations around 300-450ms
+//   const DURATION = 400;
 
-  useEffect(() => {
-    // detect if device supports hover — prefer (hover: hover) for desktop
-    const mq = window.matchMedia?.("(hover: hover) and (pointer: fine)");
-    const handler = () => setIsHoverable(Boolean(mq && mq.matches));
-    handler();
-    mq?.addEventListener?.("change", handler);
-    return () => mq?.removeEventListener?.("change", handler);
-  }, []);
+//   useEffect(() => {
+//     // detect if device supports hover — prefer (hover: hover) for desktop
+//     const mq = window.matchMedia?.("(hover: hover) and (pointer: fine)");
+//     const handler = () => setIsHoverable(Boolean(mq && mq.matches));
+//     handler();
+//     mq?.addEventListener?.("change", handler);
+//     return () => mq?.removeEventListener?.("change", handler);
+//   }, []);
 
-  // close on outside click
-  useEffect(() => {
-    function onClick(e: MouseEvent) {
-      if (!containerRef.current) return;
-      if (!containerRef.current.contains(e.target as Node)) {
-        // click outside → close
-        setOpenSubs(null);
-        setActiveCategory(null);
-        setExpandedNames(false);
-        setMenuOpen(false);
-      }
-    }
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
-  }, []);
+//   // close on outside click
+//   useEffect(() => {
+//     function onClick(e: MouseEvent) {
+//       if (!containerRef.current) return;
+//       if (!containerRef.current.contains(e.target as Node)) {
+//         // click outside → close
+//         setOpenSubs(null);
+//         setActiveCategory(null);
+//         setExpandedNames(false);
+//         setMenuOpen(false);
+//       }
+//     }
+//     document.addEventListener("click", onClick);
+//     return () => document.removeEventListener("click", onClick);
+//   }, []);
 
-  // keyboard: Esc closes
-  useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        setOpenSubs(null);
-        setActiveCategory(null);
-        setExpandedNames(false);
-        setMenuOpen(false);
-      }
-    }
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
+//   // keyboard: Esc closes
+//   useEffect(() => {
+//     function onKey(e: KeyboardEvent) {
+//       if (e.key === "Escape") {
+//         setOpenSubs(null);
+//         setActiveCategory(null);
+//         setExpandedNames(false);
+//         setMenuOpen(false);
+//       }
+//     }
+//     window.addEventListener("keydown", onKey);
+//     return () => window.removeEventListener("keydown", onKey);
+//   }, []);
 
-  // toggle category name expansion (shows subs on subsequent click)
-  const handleCategoryClick = (catName: string) => {
-    // If names are not visible yet, clicking an icon should reveal names first and focus this one
-    if (!expandedNames) {
-      setExpandedNames(true);
-      setActiveCategory(catName);
-      setOpenSubs(null);
-      return;
-    }
+//   // toggle category name expansion (shows subs on subsequent click)
+//   const handleCategoryClick = (catName: string) => {
+//     // If names are not visible yet, clicking an icon should reveal names first and focus this one
+//     if (!expandedNames) {
+//       setExpandedNames(true);
+//       setActiveCategory(catName);
+//       setOpenSubs(null);
+//       return;
+//     }
 
-    // names visible: tapping a category name toggles its subs
-    setOpenSubs((prev) => (prev === catName ? null : catName));
-    setActiveCategory(catName);
-  };
+//     // names visible: tapping a category name toggles its subs
+//     setOpenSubs((prev) => (prev === catName ? null : catName));
+//     setActiveCategory(catName);
+//   };
 
-  // When icon clicked directly (not name), we expand names if not already
-  const onIconClick = (catName: string) => {
-    if (!expandedNames) {
-      setExpandedNames(true);
-      setActiveCategory(catName);
-      setOpenSubs(null);
-    } else {
-      // if already expanded, focusing the category
-      setActiveCategory(catName);
-      setOpenSubs(null);
-    }
-  };
+//   // When icon clicked directly (not name), we expand names if not already
+//   const onIconClick = (catName: string) => {
+//     if (!expandedNames) {
+//       setExpandedNames(true);
+//       setActiveCategory(catName);
+//       setOpenSubs(null);
+//     } else {
+//       // if already expanded, focusing the category
+//       setActiveCategory(catName);
+//       setOpenSubs(null);
+//     }
+//   };
 
-  // Utility: returns dim / focus classes
-  const categoryOpacity = (name: string) => {
-    if (!expandedNames) return "opacity-100";
-    return activeCategory === name ? "opacity-100" : "opacity-80";
-  };
+//   // Utility: returns dim / focus classes
+//   const categoryOpacity = (name: string) => {
+//     if (!expandedNames) return "opacity-100";
+//     return activeCategory === name ? "opacity-100" : "opacity-80";
+//   };
 
-  return (
-    <div ref={containerRef}>
-      {/* Logo button - top-left under header */}
-      <div
-        // desktop: allow hover to open menu; mobile: click toggles
-        onMouseEnter={isHoverable ? () => setMenuOpen(true) : undefined}
-        onMouseLeave={isHoverable ? () => { setExpandedNames(false); setActiveCategory(null); setOpenSubs(null); setMenuOpen(false); } : undefined}
-        className="fixed top-1.5 left-18 z-50"
-      >
-        <button
-          aria-label="Open menu"
-          onClick={() => {
-            // on mobile click toggles; on desktop click also toggles (desktop hover still works)
-            setMenuOpen((v) => !v);
-            if (menuOpen) {
-              // closing
-              setExpandedNames(false);
-              setActiveCategory(null);
-              setOpenSubs(null);
-            } else {
-              // opening
-              // slight delay before showing icons (makes hover+click consistent)
-              setTimeout(() => setMenuOpen(true), 0);
-            }
-          }}
-          className="group relative flex items-center justify-center w-9 h-9 rounded-full
-                     bg-white/6 backdrop-blur-lg border border-white/10 shadow-sm
-                     hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-300
-                     transition-transform duration-200"
-        >
-          {/* Glass placeholder logo (neutral gray glass) */}
-          <div
-            className="flex items-center justify-center w-9 h-9 rounded-full
-                       bg-white/12 border border-white/8
-                       text-gray-100 text-lg font-semibold"
-            style={{
-              boxShadow: "0 6px 18px rgba(2,6,23,0.35)",
-              backdropFilter: "saturate(140%) blur(6px)",
-            }}
-          >
-            VC
-          </div>
+//   return (
+//     <div ref={containerRef}>
+//       {/* Logo button - top-left under header */}
+//       <div
+//         // desktop: allow hover to open menu; mobile: click toggles
+//         onMouseEnter={isHoverable ? () => setMenuOpen(true) : undefined}
+//         onMouseLeave={isHoverable ? () => { setExpandedNames(false); setActiveCategory(null); setOpenSubs(null); setMenuOpen(false); } : undefined}
+//         className="fixed top-1.5 left-18 z-50"
+//       >
+//         <button
+//           aria-label="Open menu"
+//           onClick={() => {
+//             // on mobile click toggles; on desktop click also toggles (desktop hover still works)
+//             setMenuOpen((v) => !v);
+//             if (menuOpen) {
+//               // closing
+//               setExpandedNames(false);
+//               setActiveCategory(null);
+//               setOpenSubs(null);
+//             } else {
+//               // opening
+//               // slight delay before showing icons (makes hover+click consistent)
+//               setTimeout(() => setMenuOpen(true), 0);
+//             }
+//           }}
+//           className="group relative flex items-center justify-center w-9 h-9 rounded-full
+//                      bg-white/6 backdrop-blur-lg border border-white/10 shadow-sm
+//                      hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-300
+//                      transition-transform duration-200"
+//         >
+//           {/* Glass placeholder logo (neutral gray glass) */}
+//           <div
+//             className="flex items-center justify-center w-9 h-9 rounded-full
+//                        bg-white/12 border border-white/8
+//                        text-gray-100 text-lg font-semibold"
+//             style={{
+//               boxShadow: "0 6px 18px rgba(2,6,23,0.35)",
+//               backdropFilter: "saturate(140%) blur(6px)",
+//             }}
+//           >
+//             VC
+//           </div>
 
-          {/* subtle focus glow when menuOpen */}
-          <span
-            className={`pointer-events-none absolute -inset-1 rounded-full transition-opacity duration-300 ${
-              menuOpen ? "opacity-60 bg-gradient-to-r from-pink-400/20 via-white/5 to-pink-300/12" : "opacity-0"
-            }`}
-          />
-        </button>
+//           {/* subtle focus glow when menuOpen */}
+//           <span
+//             className={`pointer-events-none absolute -inset-1 rounded-full transition-opacity duration-300 ${
+//               menuOpen ? "opacity-60 bg-gradient-to-r from-pink-400/20 via-white/5 to-pink-300/12" : "opacity-0"
+//             }`}
+//           />
+//         </button>
 
-        {/* Icons panel (slides down) */}
-        <div
-          // if menuOpen: visible with slide down; else hidden with transform
-          className={`origin-top-right mt- backdrop-blur-lg transform transition-all duration-${DURATION} ease-in-out
-                      ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"}`}
-          style={{ willChange: "opacity, transform" }}
-        >
-          <ul className="flex flex-col gap-">
-            {categories.map((cat, idx) => {
-              const delay = `${idx * 60}ms`; // stagger
-              return (
-                <li key={cat.name} className="relative">
-                  {/* Icon circle */}
-                  <button
-                    onClick={() => {
-                      // on hoverable device we want hover to still control focus; clicking should behave consistently
-                      onIconClick(cat.name);
-                    }}
-                    onMouseEnter={isHoverable ? () => { setActiveCategory(cat.name); } : undefined}
-                    onMouseLeave={isHoverable ? () => { if (!expandedNames) setActiveCategory(null); } : undefined}
-                    className={`flex items-center gap- px-3 py-0.5 rounded-lg
-                                transition-all duration-300 transform
-                                ${categoryOpacity(cat.name)} 
-                                hover:translate-x-0 hover:scale-100`}
-                    style={{
-                      // slide-in from above with staggered delay
-                      transitionDelay: menuOpen ? delay : "0ms",
-                      background: "linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06))",
-                      backdropFilter: "blur(6px)",
-                    }}
-                  >
-                    <span
-                      className="w-10 h-10 flex items-center justify-center rounded-full"
-                      style={{
-                        background: "rgba(255,255,255,0.02)",
-                        border: "1px solid rgba(255,255,255,0.04)",
-                      }}
-                    >
-                      <FontAwesomeIcon icon={cat.icon} className="text-sm text-gray-100" />
-                    </span>
+//         {/* Icons panel (slides down) */}
+//         <div
+//           // if menuOpen: visible with slide down; else hidden with transform
+//           className={`origin-top-right mt- backdrop-blur-lg transform transition-all duration-${DURATION} ease-in-out
+//                       ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"}`}
+//           style={{ willChange: "opacity, transform" }}
+//         >
+//           <ul className="flex flex-col gap-">
+//             {categories.map((cat, idx) => {
+//               const delay = `${idx * 60}ms`; // stagger
+//               return (
+//                 <li key={cat.name} className="relative">
+//                   {/* Icon circle */}
+//                   <button
+//                     onClick={() => {
+//                       // on hoverable device we want hover to still control focus; clicking should behave consistently
+//                       onIconClick(cat.name);
+//                     }}
+//                     onMouseEnter={isHoverable ? () => { setActiveCategory(cat.name); } : undefined}
+//                     onMouseLeave={isHoverable ? () => { if (!expandedNames) setActiveCategory(null); } : undefined}
+//                     className={`flex items-center gap- px-3 py-0.5 rounded-lg
+//                                 transition-all duration-300 transform
+//                                 ${categoryOpacity(cat.name)} 
+//                                 hover:translate-x-0 hover:scale-100`}
+//                     style={{
+//                       // slide-in from above with staggered delay
+//                       transitionDelay: menuOpen ? delay : "0ms",
+//                       background: "linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06))",
+//                       backdropFilter: "blur(6px)",
+//                     }}
+//                   >
+//                     <span
+//                       className="w-10 h-10 flex items-center justify-center rounded-full"
+//                       style={{
+//                         background: "rgba(255,255,255,0.02)",
+//                         border: "1px solid rgba(255,255,255,0.04)",
+//                       }}
+//                     >
+//                       <FontAwesomeIcon icon={cat.icon} className="text-sm text-gray-100" />
+//                     </span>
 
-                    {/* Slide-out category name (only when names expanded) */}
-                    <div
-                      className={`overflow-hidden transition-all duration-${DURATION} ease-in-out`}
-                      style={{
-                        width: expandedNames ? 180 : 0,
-                        opacity: expandedNames ? 1 : 0,
-                        transitionDelay: menuOpen ? delay : "0ms",
-                      }}
-                    >
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleCategoryClick(cat.name);
-                        }}
-                        className={`text-left w-full text-sm text-gray-100 focus:outline-none`}
-                      >
-                        <div className="flex items-start justify-start">
-                          <span className={activeCategory === cat.name ? "text-lime-400" : "text-gray-100"}>
-                            {cat.name}
-                          </span>
-                          <span className="ml-2 mt-0.5 text-xs text-gray-300">
-                            {/* caret visual */}
-                            {openSubs === cat.name ? "▾" : "▸"}
-                          </span>
-                        </div>
-                      </button>
+//                     {/* Slide-out category name (only when names expanded) */}
+//                     <div
+//                       className={`overflow-hidden transition-all duration-${DURATION} ease-in-out`}
+//                       style={{
+//                         width: expandedNames ? 180 : 0,
+//                         opacity: expandedNames ? 1 : 0,
+//                         transitionDelay: menuOpen ? delay : "0ms",
+//                       }}
+//                     >
+//                       <button
+//                         onClick={(e) => {
+//                           e.stopPropagation();
+//                           handleCategoryClick(cat.name);
+//                         }}
+//                         className={`text-left w-full text-sm text-gray-100 focus:outline-none`}
+//                       >
+//                         <div className="flex items-start justify-start">
+//                           <span className={activeCategory === cat.name ? "text-lime-400" : "text-gray-100"}>
+//                             {cat.name}
+//                           </span>
+//                           <span className="ml-2 mt-0.5 text-xs text-gray-300">
+//                             {/* caret visual */}
+//                             {openSubs === cat.name ? "▾" : "▸"}
+//                           </span>
+//                         </div>
+//                       </button>
 
-                      {/* Subcategories panel: slide down beneath the category name, a bit to the right */}
-                      <div
-                        className={`mt-1 ml- max-w-xs overflow-hidden transition-all duration-300`}
-                        style={{
-                          height: openSubs === cat.name ? cat.subs.length * 32 : 0,
-                          opacity: openSubs === cat.name ? 1 : 0,
-                        }}
-                      >
-                        <ul className="flex flex-col gap-1 items-start">
-                          {cat.subs.map((sub) => (
-                            <li key={sub}>
-                              <a
-                                href="#"
-                                onClick={(ev) => ev.stopPropagation()}
-                                className="block pl-3 px-2 py-1 rounded-md text-xs text-gray-200 hover:text-lime-300 hover:bg-white/3 transition"
-                              >
-                                {sub}
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-}
+//                       {/* Subcategories panel: slide down beneath the category name, a bit to the right */}
+//                       <div
+//                         className={`mt-1 ml- max-w-xs overflow-hidden transition-all duration-300`}
+//                         style={{
+//                           height: openSubs === cat.name ? cat.subs.length * 32 : 0,
+//                           opacity: openSubs === cat.name ? 1 : 0,
+//                         }}
+//                       >
+//                         <ul className="flex flex-col gap-1 items-start">
+//                           {cat.subs.map((sub) => (
+//                             <li key={sub}>
+//                               <a
+//                                 href="#"
+//                                 onClick={(ev) => ev.stopPropagation()}
+//                                 className="block pl-3 px-2 py-1 rounded-md text-xs text-gray-200 hover:text-lime-300 hover:bg-white/3 transition"
+//                               >
+//                                 {sub}
+//                               </a>
+//                             </li>
+//                           ))}
+//                         </ul>
+//                       </div>
+//                     </div>
+//                   </button>
+//                 </li>
+//               );
+//             })}
+//           </ul>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
 // Nice spare nav (plain)
 // "use client";

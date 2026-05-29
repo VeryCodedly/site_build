@@ -82,7 +82,7 @@ export default function Header() {
         {/* <p className="px-2 text-white hover:text-lime-400 transition">🚧</p> */}
       </nav>
       <div className="mr-4 flex items-center">
-        <Link href="/merch" className="hidden md:inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 text-black px-3 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
+        <Link href="/merch" className="hidden md:inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 text-black px-3.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
                 active:text-black shadow-[0_3.5px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
           <FontAwesomeIcon className="" icon={faCartShopping} size="sm" />
         </Link>
@@ -103,7 +103,7 @@ export default function Header() {
       {/* Mobile dropdown */}
       <div
         ref={menuRef}
-        className={`fixed top-full left-1/2 w-[88%] -translate-x-1/2 flex flex-col items-center transform transition-all duration-500 ease-in-out
+        className={`fixed top-full left-1/2 w-[89%] -translate-x-1/2 flex flex-col items-center transform transition-all duration-500 ease-in-out
                 bg-black backdrop-blur-lg border-3 border-zinc-700 rounded-4xl py-7 space-y-4.5 md:hidden  
                 ${menuOpen ? "opacity-100 translate-y-0 z-[60]" : "opacity-0 -translate-y-5 pointer-events-none"}`}
         onClick={() => setMenuOpen(false)}
@@ -157,8 +157,6 @@ export default function Header() {
         >
           <FontAwesomeIcon icon={faCartShopping} size="sm" />
         </Link>
-
-        {/* <p className="px-2 text-white hover:text-lime-400 transition">Beta 🚧</p> */}
       </div>
     </header>
   );
