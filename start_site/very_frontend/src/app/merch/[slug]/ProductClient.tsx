@@ -131,6 +131,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
       id: currentVariant.sku,
       // product_id: product.product_id,
       variant_id: currentVariant.variant_id,
+      slug: product.slug,
       fancy_name: product.fancy_name,
       size: currentVariant.size,
       color: selectedColor,
@@ -254,7 +255,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
               <QuantitySelector quantity={quantity} onQuantityChange={setQuantity} />
             </div>
 
-            <div className="pb-4 pt-2">
+            <div className="pt-2">
               <button
                 aria-label="Add to Cart"
                 onClick={handleAddToCart}
@@ -271,12 +272,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
         </div>
 
         {/* Fit & Quality Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-12 mb-12 group/fit"
-        >
+        <div className="mt-12 mb-12 group/fit">
           <div className="flex items-center gap-3 mb-6">
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/fit:bg-pink-400 group-active/fit:bg-pink-400 transition-colors" />
             <h2 className="text-2xl font-bold text-white">Fit & Quality</h2>
@@ -378,10 +374,10 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
               Print-on-demand means each item is made fresh for you. No bulk inventory, no instant replacements — but we&apos;ve got your back if something&apos;s wrong.
             </p>
           </div> */}
-        </motion.div>
+        </div>
 
         {relatedProducts.length > 0 && (
-          <section className="py-2 pb-6 group/bar">
+          <section className="py-4 pb-6 group/bar">
             <div className="flex items-center gap-3 mb-6">
               <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/bar:bg-pink-400 group-active/bar:bg-pink-400 transition-colors" />
               <h2 className="text-2xl font-bold text-white capitalize">More from {product.category}</h2>

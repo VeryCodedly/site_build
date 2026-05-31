@@ -69,7 +69,7 @@ export default function ImageGallery({
               e.stopPropagation();
               setShowDetails(!showDetails);
             }}
-            className="absolute top-3 left-3 bg-black/40 hover:bg-black/50 active:bg-black/50 rounded-full p-1 transition-colors z-10"
+            className="absolute top-3 left-3 bg-black/30 hover:bg-black/50 active:bg-black/50 rounded-full p-1 transition-colors z-10"
           >
             <FontAwesomeIcon icon={faInfoCircle} className="w-4 h-4 text-white/80" />
           </button>
@@ -98,7 +98,7 @@ export default function ImageGallery({
               aria-label={`View ${thumb.alt}`}
               key={idx}
               onClick={() => onImageChange?.(thumb.src, thumb.color)}
-              className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all border-transparent hover:border-gray-600 active:border-gray-600"
+              className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all border-transparent hover:border-gray-600 active:border-gray-800"
             >
               <Image src={thumb.src} alt={thumb.alt} fill className="object-cover" sizes="64px" loading="lazy" quality={50}/>
             </button>

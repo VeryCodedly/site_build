@@ -21,7 +21,6 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
   return (
     <>
       {/* Floating Cart Button */}
-
       {/* Cart Sidebar */}
       <AnimatePresence>
         {isOpen && (
@@ -71,15 +70,17 @@ export default function CartSidebar({ isOpen, onClose }: CartSidebarProps) {
                         exit={{ opacity: 0, x: 100 }}
                         className="flex items-center gap-4 bg-black/20 p-4 rounded-xl border border-zinc-800"
                       >
-                        <div className="w-10 h-10 rounded-lg bg-zinc-800/50 overflow-hidden flex-shrink-0">
-                          <Image src={item.thumbnail_url ?? "/favicon.ico"} alt={item.fancy_name} width={40} height={40} className="w-full h-full object-cover" />
-                        </div>
+                        <Link href={`/merch/${item.slug}`} key={item.id} className="w-10 h-10 rounded-lg bg-zinc-800/50 overflow-hidden flex-shrink-0" onClick={() => onClose()}>
+                          <Image src={item.thumbnail_url ?? "/favicon.ico"} alt={item.fancy_name} width={40} height={40} className="w-full h-full object-cover" loading="eager" />
+                        </Link>
                         <div className="flex-1">
-                          <h3 className="font-medium text-sm">{item.fancy_name}</h3>
+                          <Link href={`/merch/${item.slug}`} key={item.id} className="" onClick={() => onClose()}>
+                            <h3 className="font-medium text-sm">{item.fancy_name}</h3>
+                          </Link>
                           {item.size && item.color && (
                             <p className="text-xs text-gray-500">{item.size} / {item.color}</p>
                           )}
-                          <p className="text-sm text-lime-400">${item.price}</p>
+                          <p className="text-xs text-lime-400">${item.price}</p>
                         </div>
                         <div className="flex items-center gap-2">
                           <button onClick={() => updateQuantity(item.variant_id, -1)} className="w-6 h-6 rounded-full bg-zinc-800 hover:bg-zinc-700 flex items-center justify-center transition-colors">
