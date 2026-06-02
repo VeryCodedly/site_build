@@ -1,6 +1,6 @@
 import ProductClient from "./ProductClient";
 import Link from "next/link";
-
+import Script from "next/script";
 
 interface PageProps {
   params: Promise<{
@@ -77,9 +77,57 @@ export default async function ProductPage({
   );
 
   return (
-    <ProductClient
-      product={product}
-      relatedProducts={relatedProducts}
-    />
+    <>
+      <Script id="product-structured-data" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": product.fancy_name,
+          "description": product.tagline,
+          "image": [
+            product.preview_image
+          ],
+          "url": `https://verycodedly.com/merch/${product.slug}`,
+          "brand": {
+            "@type": "Brand",
+            "name": "VeryCodedly"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": `https://verycodedly.com/merch/${product.slug}`,
+            "priceCurrency": "USD",
+            "price": product.price,
+            "availability": "https://schema.org/InStock"
+          }
+        })}
+      </Script>
+      <Script id="product-structured-data" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "VeryCodedly | Tech. Code. Culture.",
+              "item": "https://verycodedly.com"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "VeryCodedly Supply",
+              "item": "https://verycodedly.com/merch"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": `${product.fancy_name} | VeryCodedly Supply`,
+              "item": `https://verycodedly.com/merch/${product.slug}`
+            }
+          ]
+        })}
+      </Script>
+      <ProductClient product={product} relatedProducts={relatedProducts} />
+    </>
   );
 }

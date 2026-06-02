@@ -384,7 +384,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {relatedProducts.map(rel => (
-                <Link key={rel.id} href={`/merch/${rel.slug}`} className="group">
+                <Link key={rel.id} href={`/merch/${rel.slug}`} className="group" aria-label="More supply">
                   <div className="rounded-xl overflow-hidden bg-zinc-900/30 aspect-square">
                     <Image
                       src={rel.preview_image}

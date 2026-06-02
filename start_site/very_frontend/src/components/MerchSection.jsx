@@ -97,40 +97,41 @@ export default function MerchSection() {
 
       {/* Carousel */}
       <div className="relative flex items-center gap-12 lg:gap-6 flex-col lg:flex-row min-h-screen">
-      <div className="relative mx-auto order-1 lg:order-2 w-full h-full lg:w-[40%] lg:h-[50%]">
-        <AnimatePresence mode="wait">
-          <Link href="/merch">
-          <Motion.div
-            key={current}
-            initial={{ opacity: 0, x: 100 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -100 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            // className="w-full h-[40vh] rounded-2xl p-6 transition-all duration-300"
-            className="relative w-full h-[40vh] rounded-2xl transition-all duration-300"
-          >
-            {/* theres more */}
-            {/* <div className="mb-4" /> */}
-              <Image 
-                src={items[current].image} 
-                alt={items[current].alt} 
-                // width={200}
-                // height={200}
-                fill
-                // className="mx-auto object-contain object-center"
-                className="object-contain object-center"
-                quality={100}
-                loading="eager"
-                sizes="(max-width: 768px) 90vw, (max-width: 1200px) 60vw, 40vw"
+        <div className="relative mx-auto order-1 lg:order-2 w-full h-full lg:w-[40%] lg:h-[50%]">
+          <AnimatePresence mode="wait">
+            <Link href="/merch">
+              <span className="sr-only">Merch</span>
+              <Motion.div
+                key={current}
+                initial={{ opacity: 0, x: 100 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                // className="w-full h-[40vh] rounded-2xl p-6 transition-all duration-300"
+                className="relative w-full h-[40vh] rounded-2xl transition-all duration-300"
+              >
+                {/* theres more */}
+                {/* <div className="mb-4" /> */}
+                <Image
+                  src={items[current].image}
+                  alt={items[current].alt}
+                  // width={200}
+                  // height={200}
+                  fill
+                  // className="mx-auto object-contain object-center"
+                  className="object-contain object-center"
+                  quality={100}
+                  loading="eager"
+                  sizes="(max-width: 768px) 90vw, (max-width: 1200px) 60vw, 40vw"
                 />
-              {/* <div className="text-lime-300 font-semibold mt-3">{items[current].name}</div> */}
-              {/* <div className="text-gray-400 text-sm">{items[current].role}</div> */}
-          </Motion.div>
-          </Link>
-        </AnimatePresence>
+                {/* <div className="text-lime-300 font-semibold mt-3">{items[current].name}</div> */}
+                {/* <div className="text-gray-400 text-sm">{items[current].role}</div> */}
+              </Motion.div>
+            </Link>
+          </AnimatePresence>
 
-        {/* Animated Progress Dots */}
-        {/* <div className="flex justify-center mt-8 gap-3">
+          {/* Animated Progress Dots */}
+          {/* <div className="flex justify-center mt-8 gap-3">
           {items.map((_, index) => (
             <span
               key={index}
@@ -150,48 +151,48 @@ export default function MerchSection() {
           ))}
         </div> */}
 
-        {/* Controls */}
-        <div className="flex justify-between mt-8 px-4 sm:px-8 md:px-14 lg:px-4">
-          {/* Left Arrow */}
-          <button
-            onClick={prevItem}
-            aria-label="Previous item"
-            className="bg-gradient-to-b from-white/5 to-white/0 relative px-4 py-2 rounded-full text-lime-300 font-medium overflow-hidden group"
-          >
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-black group-active:text-black">
-              <FontAwesomeIcon icon={faArrowLeft} size="sm" />
-            </span>
-            <span
-              className="pointer-events-none absolute inset-0
+          {/* Controls */}
+          <div className="flex justify-between mt-8 px-4 sm:px-8 md:px-14 lg:px-4">
+            {/* Left Arrow */}
+            <button
+              onClick={prevItem}
+              aria-label="Previous item"
+              className="bg-gradient-to-b from-white/5 to-white/0 relative px-4 py-2 rounded-full text-lime-300 font-medium overflow-hidden group"
+            >
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-black group-active:text-black">
+                <FontAwesomeIcon icon={faArrowLeft} size="sm" />
+              </span>
+              <span
+                className="pointer-events-none absolute inset-0
                         before:content-[''] before:absolute before:inset-0
                         before:bg-gradient-to-b before:from-lime-400 before:to-lime-700
                         before:opacity-90 before:rounded-full
                         translate-y-full group-hover:translate-y-0 group-active:translate-y-0
                         transition-transform duration-300 ease-out"
-            />
-          </button>
+              />
+            </button>
 
-          {/* Right Arrow */}
-          <button
-            onClick={nextItem}
-            aria-label="Next item"
-            className="bg-gradient-to-b from-white/5 to-white/0 relative px-4 py-2 rounded-full text-lime-300 font-medium overflow-hidden group"
-          >
-            <span className="relative z-10 transition-colors duration-300 group-hover:text-black group-active:text-black">
-              <FontAwesomeIcon icon={faArrowRight} size="sm" />
-            </span>
-            <span
-              className="pointer-events-none absolute inset-0
+            {/* Right Arrow */}
+            <button
+              onClick={nextItem}
+              aria-label="Next item"
+              className="bg-gradient-to-b from-white/5 to-white/0 relative px-4 py-2 rounded-full text-lime-300 font-medium overflow-hidden group"
+            >
+              <span className="relative z-10 transition-colors duration-300 group-hover:text-black group-active:text-black">
+                <FontAwesomeIcon icon={faArrowRight} size="sm" />
+              </span>
+              <span
+                className="pointer-events-none absolute inset-0
                         before:content-[''] before:absolute before:inset-0
                         before:bg-gradient-to-b before:from-lime-400 before:to-lime-700
                         before:opacity-90 before:rounded-full
                         translate-y-full group-hover:translate-y-0 group-active:translate-y-0
                         transition-transform duration-300 ease-out"
-            />
-          </button>
+              />
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="relative w-full lg:w-[50vw] h-[50vh] lg:h-screen flex-shrink-0 order-2 lg:order-1">
+        <div className="relative w-full lg:w-[50vw] h-[50vh] lg:h-screen flex-shrink-0 order-2 lg:order-1">
           <Image
             src="/merch/merch-photo.webp"
             alt="VeryCodedly Supply"

@@ -94,7 +94,7 @@ export default function Footer() {
                   <li key={href}>
                     <Link
                       href={href}
-                      aria-label={`${label} page link`}
+                      aria-label={`${label} link`}
                       className="hover:text-lime-400 transition-colors duration-200"
                     >
                       {label}
@@ -123,7 +123,7 @@ export default function Footer() {
                   <li key={href}>
                     <Link
                       href={href}
-                      aria-label={`${label} page link`}
+                      aria-label={`${label} link`}
                       className="hover:text-lime-400 transition-colors duration-200"
                     >
                       {label}

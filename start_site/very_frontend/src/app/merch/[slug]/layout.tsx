@@ -34,7 +34,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     };
   }
 
-  const title = `${product.fancy_name} | VeryCodedly`;
+  const title = `${product.fancy_name} | VeryCodedly Supply`;
   const description = product.tagline || `Make the ${product.fancy_name} look even better.`;
 
   return {
@@ -53,7 +53,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: "Merch",
+      title: "VeryCodedly Supply",
       description: product.tagline || `Make the ${product.fancy_name} look even better.`,
       images: ["https://verycodedly.com/twitter-image.png"],
       creator: '@verycodedly'
