@@ -88,8 +88,8 @@ export default function Footer() {
                   ["Read", "/read"],
                   ["Learn", "/learn"],
                   ["Know", "/know"],
-                  ["Merch", "/merch"],
                   ["Connect", "/connect"],
+                  ["VC Supply", "/merch"],
                 ].map(([label, href]) => (
                   <li key={href}>
                     <Link
