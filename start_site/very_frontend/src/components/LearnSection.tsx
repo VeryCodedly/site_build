@@ -18,17 +18,17 @@ export default function LearnSection() {
           {[
             {
               title: "Python Basics",
-              desc: "From print statements to first projects, start simple, start smart.",
+              desc: "From print statements to first projects, this is a good place to start.",
               tag: "Beginner",
             },
             {
-              title: "Frontend Flow",
+              title: "Frontend Fundamentals",
               desc: "JavaScript and the logic that shapes every web page you see.",
               tag: "Beginner",
             },
             {
               title: "React Explained",
-              desc: "Hooks, components, and why it all just *clicks* once you see it right.",
+              desc: "Hooks, components, and the magic behind modern web apps.",
               tag: "Advanced",
             },
           ].map((lesson, i) => (

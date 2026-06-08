@@ -17,18 +17,18 @@ export default function ReadSection() {
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {
-              title: "Why Python Keeps Winning",
-              desc: "It’s not just syntax. It’s clarity, community, and flow.",
-              tag: "Rundown",
+              title: "What The Hell Is Docker?",
+              desc: "You probably nod along in fear when people talk about Docker. This'll help.",
+              tag: "Upskill",
             },
             {
               title: "Burnout Is Not A Badge Of Honor",
-              desc: "Along the way, tech culture picked up a dangerous myth.",
+              desc: "Stop it or we'll wear pink to your funeral.",
               tag: "Tech Culture",
             },
             {
-              title: "The First AI Household Robot Became a Meme",
-              desc: "A glimpse at the clumsy start of our humanoid future.",
+              title: "Tokenmaxxing Is Upon Us",
+              desc: "Companies fired workers for AI, now they're hitting budget ceilings in months.",
               tag: "Innovation & AI",
             },
           ].map((post, i) => (
