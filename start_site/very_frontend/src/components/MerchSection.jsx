@@ -54,11 +54,11 @@ const items = [
     alt: "VC-laptop-sleeve",
     name: "Laptop Sleeve",
   },
-  {
-    image: "/merch/mug-read.png",
-    alt: "read-mug",
-    name: "Read Mug",
-  },
+  // {
+  //   image: "/merch/mug-read.png",
+  //   alt: "read-mug",
+  //   name: "Read Mug",
+  // },
 ];
 
 
@@ -77,7 +77,7 @@ export default function MerchSection() {
   const prevItem = () => setCurrent((prev) => (prev - 1 + items.length) % items.length);
 
   return (
-    <section className="relative w-full py-20 bg-black px-4 text-center overflow-hidden order-b order-t order-zinc-900">
+    <section className="relative w-full py-20 bg-black px-4 text-center overflow-hidden">
       {/* Floating accents */}
       {/* <div className="absolute inset-0 -z-10 pointer-events-none">
         <div className="w-2 h-2 bg-lime-400 rounded-full absolute top-10 left-20 animate-ping"></div>
@@ -96,8 +96,8 @@ export default function MerchSection() {
       </div>
 
       {/* Carousel */}
-      <div className="relative flex items-center gap-12 lg:gap-6 flex-col lg:flex-row min-h-screen">
-        <div className="relative mx-auto order-1 lg:order-2 w-full h-full lg:w-[40%] lg:h-[50%]">
+      <div className="relative flex items-center gap-12 md:gap-6 flex-col md:flex-row min-h-screen">
+        <div className="relative mx-auto order-1 md:order-2 w-full h-full md:w-[40%] md:h-[50%]">
           <AnimatePresence mode="wait">
             <Link href="/merch">
               <span className="sr-only">Merch</span>
@@ -152,7 +152,7 @@ export default function MerchSection() {
         </div> */}
 
           {/* Controls */}
-          <div className="flex justify-between mt-8 px-4 sm:px-8 md:px-14 lg:px-4">
+          <div className="flex justify-between mt-8 px-4 sm:px-8 md:px-4 lg:px-4">
             {/* Left Arrow */}
             <button
               onClick={prevItem}
@@ -192,7 +192,7 @@ export default function MerchSection() {
             </button>
           </div>
         </div>
-        <div className="relative w-full lg:w-[50vw] h-[50vh] lg:h-screen flex-shrink-0 order-2 lg:order-1">
+        <div className="relative w-full md:w-[50vw] h-[50vh] md:h-screen flex-shrink-0 order-2 md:order-1">
           <Image
             src="/merch/merch-photo.webp"
             alt="VeryCodedly Supply"

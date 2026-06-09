@@ -28,9 +28,9 @@ export default function HomeMascot() {
 
   return (
     <section className="relative w-full bg-black overflow-hidden">
-      <div className="relative flex flex-col lg:flex-row in-h-screen">
+      <div className="relative flex flex-col md:flex-row in-h-screen">
         {/* Left side: Mascot image – on mobile it's below the text */}
-        <div className="relative w-full lg:w-[60%] h-[40vh] sm:h-[50vh] lg:h-screen flex-shrink-0 order-2 lg:order-1">
+        <div className="relative w-full md:w-[57%] lg:w-[60%] h-[40vh] sm:h-[50vh] md:h-screen flex-shrink-0 order-2 md:order-1">
           <Image
             src="/images/SHELLy.svg"
             alt="SHELLy – VeryCodedly mascot"
@@ -49,7 +49,7 @@ export default function HomeMascot() {
               <p className="text-xs uppercase tracking-widest text-gray-400">a distinguished gentleman</p>
             </div>
 
-            <h3 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight text-white">
+            <h3 className="text-5xl lg:text-7xl font-black tracking-tight leading-tight text-white">
               This is{" "}
               <span className="bg-lime-400 bg-clip-text text-transparent">
                 SHELLy.
@@ -60,7 +60,7 @@ export default function HomeMascot() {
               className="mt-6 flex items-baseline flex-wrap gap-2"
               onViewportEnter={() => setStartTyping(true)}
             >
-              <div className="h-10 text-gray-300 text-2xl sm:text-3xl md:text-3xl font-mono">
+              <div className="h-10 text-gray-300 text-2xl lg:text-3xl font-mono">
                 {startTyping && (
                   <Typewriter
                     words={['$ SHELLy eats bugs.']}
