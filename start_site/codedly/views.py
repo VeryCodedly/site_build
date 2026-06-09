@@ -146,11 +146,14 @@ def global_search(request):
     results = []
 
     # 1. Posts
-    posts = Post.objects.filter(
+    posts = (
+        Post.objects.filter(
         Q(title__icontains=q) |
         Q(excerpt__icontains=q) |
-        Q(content_plain_text__icontains=q)
-    ).select_related("category", "subcategory")[:8]
+        Q(content_plain_text__icontains=q),
+        status="published",
+    ).select_related("category", "subcategory")[:6]
+    )
 
     for p in posts:
         cat = p.category.name if p.category else ""
@@ -189,7 +192,7 @@ def global_search(request):
 
     # 4. Courses
     courses = Course.objects.filter(
-        Q(title__icontains=q) | Q(description__icontains=q)
+        Q(title__icontains=q) | Q(description__icontains=q),
     )[:5]
     for c in courses:
         results.append({
@@ -202,7 +205,8 @@ def global_search(request):
 
     # 5. Lessons
     lessons = Lesson.objects.filter(
-        Q(title__icontains=q) | Q(content_plain_text__icontains=q)
+        Q(title__icontains=q) | Q(content_plain_text__icontains=q),
+        status="published",
     ).select_related("course")[:6]
     for l in lessons:
         results.append({
