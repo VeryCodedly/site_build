@@ -39,18 +39,11 @@
       justify-content: center;
     }
 
-    @media (min-width: 900px) {
-      .offline-container {
-        flex-direction: row;
-        gap: 3rem;
-      }
-    }
-
     /* Left side – text content */
     .offline-content {
       flex: 1;
       max-width: 450px;
-      text-align: left;
+      text-align: center;
     }
 
     /* Badge (green bar + text) */
@@ -59,6 +52,7 @@
       align-items: center;
       gap: 12px;
       margin-bottom: 1.5rem;
+      justify-content: center;
     }
 
     .badge-bar {
@@ -110,6 +104,7 @@
       box-shadow: 0 4px 12px rgba(154, 230, 0, 0.3);
       width: auto;
       min-width: 140px;
+      margin: 0 auto;
     }
 
     .retry-btn:hover {
@@ -128,7 +123,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      max-width: 470px;
+      max-width: 500px;
     }
 
     .offline-mascot img {
@@ -141,20 +136,25 @@
     }
 
     /* adjust image size on smaller screens */
-    @media (max-width: 640px) {
-      .offline-mascot img {
-        max-height: 300px;
+    @media (min-width: 840px) {
+      .offline-container {
+        flex-direction: row;
+        gap: 3rem;
       }
+      
+      /* Add these lines */
       .offline-content {
-        text-align: center;
+        text-align: left;
       }
+      
       .badge {
-        justify-content: center;
+        justify-content: flex-start;
       }
+      
       .retry-btn {
-        margin: 0 auto;
+        margin: 0;
       }
-    }
+  }
   </style>
 </head>
 <body>
