@@ -17,16 +17,17 @@ export async function GET() {
     language: "en",
   });
 
-  // fetch posts from your API
-  const res = await fetch(`${API_BASE}/posts/`);
-  const posts = await res.json();
+  const res = await fetch(`${API_BASE}/read-initial/`);
+  const data = await res.json();
+  const posts = data.latest ?? [];
 
-  posts.slice(0, 10).forEach(post => {
+  posts.forEach(post => {
     feed.item({
       title: post.title,
       description: post.excerpt,
       url: `${site_url}/read/${post.slug}`,
-      date: post.published_at
+      date: post.created_at,
+      author: "VeryCodedly",
     });
   });
 

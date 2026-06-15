@@ -98,7 +98,7 @@ export default function RootLayout({
       <head>
         <link rel="manifest" href="/manifest.json" />
         <link rel="alternate" type="application/rss+xml"
-          title="VeryCodedly RSS Feed" href="/rss.xml"
+          title="VeryCodedly RSS Feed" href="https://verycodedly.com/rss.xml"
         />
 
         <link rel="icon" href="/favicon.ico" sizes="any" />
