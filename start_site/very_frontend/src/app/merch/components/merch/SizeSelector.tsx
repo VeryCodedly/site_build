@@ -15,7 +15,7 @@ export default function SizeSelector({ sizes, selectedSize, onSizeChange }: Size
           <button
             key={size}
             onClick={() => onSizeChange(size)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200
+            className={`px-3.5 py-2 rounded-full text-xs font-medium transition-all duration-200
               ${selectedSize === size
                 ? "bg-lime-400 text-black border-2 border-lime-400"
                 : "bg-white/5 border-3 border-gray-700/60 text-white hover:border-lime-400/50 hover:bg-white/10"
