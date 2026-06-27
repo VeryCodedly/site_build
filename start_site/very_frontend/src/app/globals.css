@@ -101,21 +101,29 @@
   color: white;
 }
 
+.custom-cursor {
+  cursor: url('/vc-cursor-main.svg') 20 1, auto;
+}
+
+a, button, [role="button"], label, input, select, textarea, .clickable {
+  cursor: url('/vc-cursor-pointer.svg') 3 3, pointer;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-float, .animate-spin-twice, .animate-fade-in { animation: none; }
 }
 
 @layer base {
   html {
-  scroll-behavior: auto !important;
-  font-size: 100%;             /* rem-based scaling */
-  -webkit-text-size-adjust: 100%; /* prevent forced browser zoom on mobile */
+    scroll-behavior: auto;
+    font-size: 100%;             /* rem-based scaling */
   }
+
   body, pre {
     background-color: #000;
     font-family: var(--font-robo);
-    scroll-behavior: smooth;
   }
+  
   .hero {
     font-family: var(--font-pops);
     font-weight: 900;

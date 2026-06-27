@@ -94,7 +94,7 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="en" className="custom-scrollbar">
+    <html lang="en" className="custom-scrollbar custom-cursor">
       <head>
         <link rel="manifest" href="/manifest.json" />
         <link rel="alternate" type="application/rss+xml"

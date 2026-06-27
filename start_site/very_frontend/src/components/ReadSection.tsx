@@ -18,12 +18,12 @@ export default function ReadSection() {
           {[
             {
               title: "What The Hell Is Docker?",
-              desc: "You probably nod along in fear when people talk about Docker. This'll help.",
+              desc: "Do you nod along in fear when people talk about Docker? This'll help.",
               tag: "Upskill",
             },
             {
               title: "Burnout Is Not A Badge Of Honor",
-              desc: "Stop it or we'll wear pink to your funeral.",
+              desc: "Slow down or we'll wear pink to your funeral.",
               tag: "Tech Culture",
             },
             {
