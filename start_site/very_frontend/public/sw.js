@@ -1,9 +1,9 @@
-const CACHE_NAME = 'verycodedly-v2';
+const CACHE_NAME = 'verycodedly-v3';
 
 const OFFLINE_ASSETS = [
   '/offline.html',
   '/favicon.ico',
-  '/images/shelly-off.jpg'
+  '/images/shelly-off.svg'
 ];
 
 // INSTALL
