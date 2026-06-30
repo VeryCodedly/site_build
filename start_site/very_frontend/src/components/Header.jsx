@@ -75,10 +75,10 @@ export default function Header() {
       </Link>
       {/* </div> */}
       <nav className="space-x-18 text-xs hidden md:flex">
-        <Link aria-label="Read Page link" href="/read" className="px-2 text-white hover:text-lime-400 transition">READ</Link>
-        <Link aria-label="Learn Page link" href="/learn" className="px-2 text-white hover:text-lime-400 transition">LEARN</Link>
-        <Link aria-label="Youtube Channel link" href="https://www.youtube.com/@verycodedly" target="_blank" className="px-2 text-white hover:text-lime-400 transition">KNOW</Link>
-        <Link aria-label="Discord link" href="https://discord.gg/53wVsqEcbE" className="px-2 text-white hover:text-lime-400 transition" target="_blank" rel="noopener">CONNECT</Link>
+        <Link aria-label="Read Page link" href="/read" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">READ</Link>
+        <Link aria-label="Learn Page link" href="/learn" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">LEARN</Link>
+        <Link aria-label="Youtube Channel link" href="https://www.youtube.com/@verycodedly" target="_blank" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">KNOW</Link>
+        <Link aria-label="Discord link" href="https://discord.gg/53wVsqEcbE" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition" target="_blank" rel="noopener">CONNECT</Link>
         {/* <p className="px-2 text-white hover:text-lime-400 transition">🚧</p> */}
       </nav>
       <div className="mr-4 flex items-center">
