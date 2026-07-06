@@ -285,7 +285,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
                 className="w-full relative overflow-hidden rounded-xl border-b border-gray-700/40 bg-white/3 transition-all duration-300 hover:border-gray-500/50 group/btn"
                 whileTap={{ scale: 0.99 }}
               >        
-                <div className="relative flex items-center justify-between py-3 px-8">
+                <div className="relative flex items-center justify-between py-3 px-4 md:px-8">
                   <div className="flex items-center gap-4">
                       <FontAwesomeIcon icon={faRuler} className={`transition-all duration-300 ${openFit ? 'text-lime-400' : 'text-gray-500'}`} />
                       <h3 className="text-base text-white">Sizing</h3>
@@ -330,7 +330,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
                 className="w-full relative overflow-hidden rounded-xl border-b border-gray-700/40 bg-white/3 transition-all duration-300 hover:border-gray-500/50 group/btn"
                 whileTap={{ scale: 0.99 }}
               >        
-                <div className="relative flex items-center justify-between py-3 px-8">
+                <div className="relative flex items-center justify-between py-3 px-4 md:px-8">
                   <div className="flex items-center gap-4">
                       <FontAwesomeIcon icon={faCircleCheck} className={`transition-all duration-300 ${openQuality ? 'text-lime-400' : 'text-gray-500'}`} />
                       <h3 className="text-base text-white">Quality First</h3>
