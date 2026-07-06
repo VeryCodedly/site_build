@@ -307,7 +307,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
                     transition={{ duration: 0.3, ease: [0.34, 1.2, 0.64, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="mt-2 bg-white/4 rounded-2xl px-10 py-4">
+                    <div className="mt-2 bg-white/4 rounded-2xl px-4.5 md:px-9 py-4">
                       {/* check the size chart in the product images, */}
                       <p className="text-gray-300/90 text-sm leading-relaxed mb-3">
                         Most apparel fits true to size. We recommend ordering your usual size unless the product says otherwise.
@@ -352,8 +352,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
                     transition={{ duration: 0.4, ease: [0.34, 1.2, 0.64, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="mt-2 bg-white/4 rounded-2xl px-10 py-4">
-                      
+                    <div className="mt-2 bg-white/4 rounded-2xl px-4.5 md:px-9 py-4">      
                       <p className="text-gray-300/90 text-sm leading-relaxed mb-3">
                         Quality matters. If your order arrives with a manufacturing defect, let us know within 7 days and include a few clear photos.
                       </p>
