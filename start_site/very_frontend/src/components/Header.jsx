@@ -4,10 +4,9 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
-// import ScrollLink from './ScrollLink';
 import useScrollShadow from '../hooks/useScrollShadow';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faTimes, faEllipsisV, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faEllipsisV, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
   const isScrolled = useScrollShadow();

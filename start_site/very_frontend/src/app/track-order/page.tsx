@@ -146,7 +146,7 @@ export default function TrackOrderPage() {
 
   return (
     <section className="relative min-h-screen py-16 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-950/50">
-      <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-stretch opacity-50 pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('/images/bg-1.webp')] bg-center bg-stretch opacity-50 pointer-events-none" />
 
       {/* Back button */}
         <Motion.div

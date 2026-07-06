@@ -71,7 +71,7 @@ export default function CheckoutPage() {
 
   const [processing, setProcessing] = useState(false);
   const [showErrors, setShowErrors] = useState(false);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   const [useDifferentShipping, setUseDifferentShipping] = useState(false);
   const [shippingQuote, setShippingQuote] = useState<number | null>(null);
@@ -142,7 +142,7 @@ export default function CheckoutPage() {
       }, 100);
       return () => clearTimeout(timeout);
     }
-    setLoading(false);
+    // setLoading(false);
   }, [cartItems.length, router]);
 
   const formatPhone = (value: string, country?: CountryCode) => {
@@ -449,7 +449,7 @@ export default function CheckoutPage() {
 
   return (
     <section className="relative min-h-screen pt-10 pb-30 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-950/50">
-      <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-cover opacity-60 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[url('/images/bg-1.webp')] bg-center bg-cover opacity-60 pointer-events-none"></div>
 
       <div className="sticky top-0 z-50 mb-3 border-b border-lime-400/10 bg-black/70 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center gap-2 text-xs md:text-sm">

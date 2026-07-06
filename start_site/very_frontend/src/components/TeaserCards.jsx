@@ -55,7 +55,7 @@ export default function TeaserCards() {
   return (
     <section className="relative min-h-screen flex items-center justify-center py-20 px-6 md:px-8 lg:px-22 overflow-hidden order-y border-zinc-900">
       {/* faded bg */}
-      <div className="absolute inset-0 bg-[url('/images/bg-1.svg')] bg-center bg-cover opacity-60"></div>
+      <div className="absolute inset-0 bg-[url('/images/bg-1.webp')] bg-center bg-cover opacity-60"></div>
 
       {/* <CircuitLines cardIds={cards.map((c) => c.id)} /> */}
       <div className="relative w-full h-full gap-4 m-3 lg:gap-0.5 max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">

@@ -86,7 +86,6 @@
 .custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-gutter: stable;
-  scroll-behavior: smooth;
   overscroll-behavior: contain;
   scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
@@ -105,7 +104,7 @@
   cursor: url('/vc-cursor-main.svg') 20 1, auto;
 }
 
-a, button, [role="button"], label, input, select, textarea, .clickable {
+a, a *, button, button *, [role="button"], [role="button"] *, label, input, select, textarea, .clickable {
   cursor: url('/vc-cursor-pointer.svg') 3 3, pointer;
 }
 
@@ -115,7 +114,7 @@ a, button, [role="button"], label, input, select, textarea, .clickable {
 
 @layer base {
   html {
-    scroll-behavior: auto !important;
+    scroll-behavior: smooth;
     font-size: 100%;             /* rem-based scaling */
   }
 
