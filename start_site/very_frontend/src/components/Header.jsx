@@ -76,8 +76,8 @@ export default function Header() {
       <nav className="space-x-18 text-xs hidden md:flex">
         <Link aria-label="Read Page link" href="/read" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">READ</Link>
         <Link aria-label="Learn Page link" href="/learn" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">LEARN</Link>
-        <Link aria-label="Youtube Channel link" href="https://www.youtube.com/@verycodedly" target="_blank" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">KNOW</Link>
-        <Link aria-label="Discord link" href="https://discord.gg/53wVsqEcbE" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition" target="_blank" rel="noopener">CONNECT</Link>
+        <Link aria-label="VeryCodedly Video" href="/know" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">KNOW</Link>
+        <Link aria-label="Join our Discord" href="/connect" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition" target="_blank" rel="noopener noreferrer">CONNECT</Link>
         {/* <p className="px-2 text-white hover:text-lime-400 transition">🚧</p> */}
       </nav>
       <div className="mr-4 flex items-center">
@@ -128,22 +128,20 @@ export default function Header() {
         </Link>
 
         <Link
-          aria-label="Youtube Channel link"
-          href="https://www.youtube.com/@verycodedly"
+          aria-label="VeryCodedly Video"
+          href="/know"
           className="text-white hover:text-lime-400 active:text-lime-400 transition"
-          target="_blank"
-          rel="noopener"
           onClick={() => setMenuOpen(false)}
         >
           KNOW
         </Link>
 
         <Link
-          aria-label="Discord link"
-          href="https://discord.gg/53wVsqEcbE"
+          aria-label="Join our Discord"
+          href="/connect"
           className="text-white hover:text-lime-400 active:text-lime-400 transition"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           onClick={() => setMenuOpen(false)}
         >
           CONNECT

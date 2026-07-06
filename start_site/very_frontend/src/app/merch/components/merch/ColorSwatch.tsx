@@ -42,7 +42,7 @@ export default function ColorSwatch({ colors, selectedColor, onColorChange }: Co
               aria-label={`Select ${color.name}`}
             />
             {hoveredColor === color.name && (
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black/90 backdrop-blur-sm text-white text-xs rounded-md whitespace-nowrap z-10">
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 bg-black/90 backdrop-blur-sm text-white text-xs rounded-md whitespace-nowrap z-10">
                 {color.name}
               </div>
             )}

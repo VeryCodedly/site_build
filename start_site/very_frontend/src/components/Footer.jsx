@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -24,6 +23,7 @@ const socials = [
 export default function Footer() {
 
   const [year, setYear] = useState(null);
+  const [hoveredIcon, setHoveredIcon] = useState(null);
 
   useEffect(() => {
     setYear(new Date().getFullYear());
@@ -59,18 +59,25 @@ export default function Footer() {
               </h3>
               <div className="grid grid-cols-3 gap-y-4 sm:gap-y-5 gap-x-5 mt-2">
                 {socials.map(({ icon, link, name }) => (
+                  <div key={link} className="relative">
                   <Link
-                    key={link}
                     href={link}
-                    title={name}
                     aria-label={`${name} link`}
                     target="_blank"
                     rel="noopener noreferrer"
                     loading="lazy"
+                    onMouseEnter={() => setHoveredIcon(name)}
+                    onMouseLeave={() => setHoveredIcon(null)}
                     className="w-fit p-0 text-gray-400/80 hover:text-lime-500 active:text-lime-500 hover:scale-110 transition duration-400 active:scale-60"
                   >
                     <FontAwesomeIcon icon={icon} size="lg" />
                   </Link>
+                  {hoveredIcon === name && (
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 mb-0 px-2 py-0.5 bg-black/90 backdrop-blur-sm text-white/80 text-xs rounded-md whitespace-nowrap z-10">
+                        {name}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>

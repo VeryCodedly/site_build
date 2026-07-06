@@ -8,12 +8,12 @@ export default function KnowPage() {
 
       <section className="relative z-10 max-w-3xl mx-auto px-6 py-40 text-center">
         <p className="text-xs uppercase tracking-widest text-gray-500 mb-4">
-          Video
+          ALL FORM
         </p>
 
         <h1 className="text-4xl sm:text-4xl lg:text-5xl font-semibold leading-tight mb-6">
-          VeryCodedly on{" "}
-          <span className="text-red-500">YouTube</span>
+          VeryCodedly {" "}
+          <span className="text-red-500">Video</span>
         </h1>
 
         <p className="text-base text-gray-300 max-w-2xl mx-auto px- leading-relaxed">
