@@ -55,7 +55,7 @@ export default function Footer() {
           <div className="flex justify-center">
             <div className="flex flex-col">
               <h3 className="text-white text-lg font-semibold tracking-tight">
-                Connect
+                Socials
               </h3>
               <div className="grid grid-cols-3 gap-y-4 sm:gap-y-5 gap-x-5 mt-2">
                 {socials.map(({ icon, link, name }) => (

@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
     'axes',
+    'connect',
 ]
 
 # --- MIDDLEWARE ---
@@ -120,7 +121,9 @@ if not DEBUG:
 else:
     CACHES = {
         "default": {
-            "BACKEND": "django.core.cache.backends.dummy.DummyCache",
+            # "BACKEND": "django.core.cache.backends.dummy.DummyCache",
+            "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+            "LOCATION": "vc-connect",
         }
     }
 

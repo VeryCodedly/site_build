@@ -220,6 +220,10 @@ class PostAdmin(admin.ModelAdmin):
     
     inlines = [PostImageInline, PostLinkInline]
     actions = [clear_all_cache, clear_home_cache]
+    
+    prepopulated_fields = {
+        "slug": ("title",)
+    }
 
     def get_tags(self, obj):
         return ", ".join(tag.name for tag in obj.tags.all())

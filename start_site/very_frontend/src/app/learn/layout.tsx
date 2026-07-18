@@ -1,6 +1,7 @@
 // import { Providers } from "@/lib/providers";
 import type { Metadata } from "next";
 import SearchBar from "@/components/SearchBar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Learn",
@@ -49,6 +50,7 @@ export default function LearnLayout({
         <SearchBar />
         {children}
       {/* </Providers> */}
+      <Footer />
     </>
   );
 }

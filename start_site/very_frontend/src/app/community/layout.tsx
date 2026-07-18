@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Community",
@@ -24,5 +25,10 @@ export const metadata: Metadata = {
 };
 
 export default function CommunityLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>; 
+  return (
+    <>
+      {children}
+      <Footer />
+    </>
+  );
 }

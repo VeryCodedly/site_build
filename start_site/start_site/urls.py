@@ -30,7 +30,8 @@ def robots_txt(request):
 urlpatterns = [
     path(f"{settings.ADDY}/", admin.site.urls),
     path('', include('codedly.urls')),
+    path("nkemjika/connect/", include("connect.urls")),
     path('nkemjika/', include('codedly.api_urls')),
     path("robots.txt", robots_txt),
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

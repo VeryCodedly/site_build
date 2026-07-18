@@ -1,6 +1,6 @@
-// app/orders/[order_id]/layout.tsx
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Footer from "@/components/Footer";
 
 type Props = {
   params: Promise<{ order_id: string }>;
@@ -66,5 +66,10 @@ export default async function OrderLayout({ children, params }: Props) {
 
   if (!order) notFound();
 
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <Footer />
+    </>
+  );
 }

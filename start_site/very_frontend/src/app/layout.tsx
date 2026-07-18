@@ -5,7 +5,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import "./globals.css";
 import Header from "@/components/Header";
 import TopButton from "@/components/TopButton";
-import Footer from "@/components/Footer";
+// import Footer from "@/components/Footer";
 import ServiceWorkerRegister from './sw-register';
 import { GoogleAnalytics } from '@next/third-parties/google'
 import Script from "next/script";
@@ -135,7 +135,7 @@ export default function RootLayout({
         />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
         <TopButton />
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

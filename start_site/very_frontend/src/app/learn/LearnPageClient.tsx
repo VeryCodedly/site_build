@@ -427,10 +427,10 @@ export default function LearnPage({ courses }: Props) {
                   href="https://discord.gg/53wVsqEcbE"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold sm:font-bold cursor-pointer border-3 border-gray-500/100 bg-lime-400 text-black px-6 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
+                  className="font-bold sm:font-bold cursor-pointer border-3 border-gray-500/100 bg-lime-400 text-black px-7.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
                     active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
                 >
-                  Join Discord
+                  Join Now
                   {/* <FontAwesomeIcon icon={faArrowRight} className="group-hover:translate-x-1 transition-transform" /> */}
                 </Link>
                 <Link

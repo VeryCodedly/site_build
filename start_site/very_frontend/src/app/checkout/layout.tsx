@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import Footer from "@/components/Footer";
+
 
 type Props = {
   children: React.ReactNode;
@@ -31,5 +33,10 @@ export const metadata: Metadata = {
 };
 
 export default function CheckoutLayout({ children }: Props) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <Footer />
+    </>
+  );
 }

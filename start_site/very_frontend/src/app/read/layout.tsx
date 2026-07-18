@@ -3,6 +3,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 // import { Providers } from '../../lib/providers';
 import FloatingMenu from "./components/blog/FloatingMenu";
 import SearchBar from "@/components/SearchBar";
+import Footer from "@/components/Footer";
 
 
 async function getCategories() {
@@ -63,6 +64,7 @@ export default async function ReadLayout({
         <FloatingMenu categories={categories} />
         <SearchBar />
         {children}
+        <Footer />
       {/* </Providers> */}
     </>
   );

@@ -5,18 +5,8 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { motion as Motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowLeft,
-  faCheckCircle,
-  faTruck,
-  faBoxOpen,
-  faClock,
-  faMapMarkerAlt,
-  faReceipt,
-  faCreditCard,
-  faBoxes,
-} from "@fortawesome/free-solid-svg-icons";
-// import PageLoader from "@/components/PageLoader";
+import {faArrowLeft, faCheckCircle, faTruck, faBoxOpen, faClock, faMapMarkerAlt, faReceipt, faCreditCard, faBoxes} from "@fortawesome/free-solid-svg-icons";
+
 
 interface OrderItem {
   name: string;

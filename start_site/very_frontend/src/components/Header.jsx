@@ -1,6 +1,5 @@
 "use client";
 
-import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
@@ -74,10 +73,10 @@ export default function Header() {
       </Link>
       {/* </div> */}
       <nav className="space-x-18 text-xs hidden md:flex">
-        <Link aria-label="Read Page link" href="/read" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">READ</Link>
-        <Link aria-label="Learn Page link" href="/learn" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">LEARN</Link>
+        <Link aria-label="VeryCodedly Read" href="/read" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">READ</Link>
+        <Link aria-label="VeryCodedly Learn" href="/learn" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">LEARN</Link>
         <Link aria-label="VeryCodedly Video" href="/know" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">KNOW</Link>
-        <Link aria-label="Join our Discord" href="/connect" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition" target="_blank" rel="noopener noreferrer">CONNECT</Link>
+        <Link aria-label="VeryCodedly Connect" href="/connect" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">CONNECT</Link>
         {/* <p className="px-2 text-white hover:text-lime-400 transition">🚧</p> */}
       </nav>
       <div className="mr-4 flex items-center">
@@ -111,7 +110,7 @@ export default function Header() {
       >
         <Link
           href="/read"
-          aria-label="Read Page link"
+          aria-label="VeryCodedly Read"
           className="text-white hover:text-lime-400 active:text-lime-400 transition"
           onClick={() => setMenuOpen(false)}
         >
@@ -120,7 +119,7 @@ export default function Header() {
 
         <Link
           href="/learn"
-          aria-label="Learn Page link"
+          aria-label="VeryCodedly Learn"
           className="text-white hover:text-lime-400 active:text-lime-400 transition"
           onClick={() => setMenuOpen(false)}
         >
@@ -137,11 +136,9 @@ export default function Header() {
         </Link>
 
         <Link
-          aria-label="Join our Discord"
+          aria-label="VeryCodedly Connect"
           href="/connect"
           className="text-white hover:text-lime-400 active:text-lime-400 transition"
-          target="_blank"
-          rel="noopener noreferrer"
           onClick={() => setMenuOpen(false)}
         >
           CONNECT

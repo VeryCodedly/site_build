@@ -15,7 +15,7 @@ const cards = [
   {
     id: "read",
     title: "Read",
-    description: "Daily tech rundowns you'll actually understand.",
+    description: "Daily tech news rundowns you'll actually understand.",
     icon: faNewspaper,
     accent: "bg-lime-400",
     color: "text-lime-400",
@@ -33,7 +33,7 @@ const cards = [
   {
     id: "know",
     title: "Know",
-    description: "Subscribe for the latest tech trends and updates.",
+    description: "Follow for the latest tech trends and updates.",
     icon: faChartLine,
     accent: "bg-lime-600",
     color: "text-lime-600",
@@ -42,7 +42,7 @@ const cards = [
   {
     id: "connect",
     title: "Connect",
-    description: "Join our community for fast, real-time insights.",
+    description: "Chat, connect, and keep up with the trending topics.",
     icon: faRss,
     accent: "bg-lime-700",
     color: "text-lime-700",
@@ -65,7 +65,7 @@ export default function TeaserCards() {
             key={index}
             className={`relative rounded-3xl px-10 sm:px-10 py-9 border border-gray-700/60 bg-white/3 backdrop-blur-lg active:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               shadow-[0_15px_20px_rgba(0,0,0,0.6),0_15px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
-              hover:ring-1 transition-all duration-300 group`}
+              transition-all duration-300 group`}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.92 }}
             style={{ zIndex: 0 }} 

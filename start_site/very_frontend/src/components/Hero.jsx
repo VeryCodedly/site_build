@@ -7,7 +7,7 @@ import MorphingPanel from "./MorphingPanel.jsx";
 
 export default function Hero() {
   return (
-    <section className="bg-transparent min-h-screen w-full max-w-7xl overflow-hidden mx-auto flex flex-wrap gap-8 items-center py-22 px-8 sm:px-12 md:py-18 lg:py-10 lg:px-16">
+    <section className="bg-transparent min-h-screen w-full max-w-7xl overflow-hidden mx-auto flex flex-wrap gap-8 items-center py-22 px-5 sm:px-12 md:px-14 md:py-18 lg:py-10 lg:px-16">
       {/* <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center py-16 px-14 md:px-14"> */}
       <div className="flex-1 space-y-6 z-20 mx-auto md:items-center">
         {/* <div className="min-h-[230px] w-[400px] flex relative"> */}
@@ -27,16 +27,16 @@ export default function Hero() {
             />
           </h1>
         </div>
-        <p className="w-full max-w-[320px] sm:max-w-[395px] text-gray-400 text-lg tracking-tighter sm:tracking-tight leading-snug">
+        <p className="w-full max-w-[320px] sm:max-w-[395px] text-gray-400 text-md sm:text-lg tracking-tighter sm:tracking-tighter leading-snug">
           What you need to know, straight to the point from <span className='text-lime-400/90'>VeryCodedly.</span>
         </p>
         <div className="flex space-x-4.5">
-          <Link href="/learn" aria-label="Learn Page button" className="font-bold sm:font-bold cursor-pointer border-3 border-gray-500/100 bg-lime-400 text-black px-6 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
+          <Link href="/learn" aria-label="Learn Page button" className="font-bold sm:font-bold border-3 border-gray-500/100 bg-lime-400 text-black px-6 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
             active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
             <span className="lg:hidden">Learn</span>
             <span className="hidden lg:inline">Start Learning</span>
           </Link>
-          <Link href="/read" aria-label="Read Page button" className="hover:font-semibold cursor-pointer border-3 border-gray-500/100 px-7.5 py-1 rounded-full text-white hover:bg-white active:bg-white hover:text-black
+          <Link href="/read" aria-label="Read Page button" className="hover:font-semibold border-3 border-gray-500/100 px-7.5 py-1 rounded-full text-white hover:bg-white active:bg-white hover:text-black
             active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
             <span className="lg:hidden">Read</span>
             <span className="hidden lg:inline">Discover Read</span>

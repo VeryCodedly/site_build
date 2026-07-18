@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: 'Track Your Order',
@@ -28,5 +29,10 @@ export const metadata: Metadata = {
 };
 
 export default function TrackOrderLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <Footer />
+    </>
+  );
 }
