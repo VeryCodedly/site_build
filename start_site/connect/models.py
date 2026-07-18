@@ -39,7 +39,7 @@ class Discussion(models.Model):
         ]
 
     def __str__(self):
-        return f"{self.room.title} ({self.date.strftime("%d-%m-%Y")})"
+        return f"{self.room.title} ({self.date.strftime('%d-%m-%Y')})"
 
 
 class Message(models.Model):
