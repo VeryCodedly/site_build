@@ -14,6 +14,13 @@ interface Props {
     }) => void;
 }
 
+function getCookie(name: string) {
+    return document.cookie
+        .split("; ")
+        .find(cookie => cookie.startsWith(name + "="))
+        ?.split("=")[1];
+}
+
 export default function MessageActions({ messageId, onUpdate }: Props) {
     const API = process.env.NEXT_PUBLIC_API_URL;
     const [expanded, setExpanded] = useState(false);
@@ -48,6 +55,7 @@ export default function MessageActions({ messageId, onUpdate }: Props) {
                 credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
+                    "X-CSRFToken": getCookie("csrftoken") || "",
                 },
                 body: JSON.stringify({
                     action,

@@ -73,7 +73,7 @@ export default function RoomCard({ room }: Props) {
           <span className="text-xs text-gray-500">
             {room.participants ?? 0} {room.participants === 1 ? 'voice' : 'voices'}
           </span>
-          <span className="flex items-center gap-2 text-xs font-medium text-lime-400 group-hover:text-white transition-colors duration-200">
+          <span className="flex items-center gap-2 text-xs font-bold text-lime-400 group-hover:text-white transition-colors duration-200">
             Enter
             <FontAwesomeIcon
               icon={faArrowRight}

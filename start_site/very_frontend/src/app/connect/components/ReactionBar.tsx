@@ -19,6 +19,13 @@ const ITEMS = [
     "nope",
 ] as const;
 
+function getCookie(name: string) {
+    return document.cookie
+        .split("; ")
+        .find(cookie => cookie.startsWith(name + "="))
+        ?.split("=")[1];
+}
+
 export default function ReactionBar({ messageId, reactions, onUpdate }: Props) {
     const [hovered, setHovered] = useState<string | null>(null);
     const [pendingReaction, setPendingReaction] =
@@ -40,6 +47,7 @@ export default function ReactionBar({ messageId, reactions, onUpdate }: Props) {
                     credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
+                        "X-CSRFToken": getCookie("csrftoken") || "",
                     },
                     body: JSON.stringify({
                         reaction,
@@ -65,7 +73,7 @@ export default function ReactionBar({ messageId, reactions, onUpdate }: Props) {
     }
 
     return (
-        <div className="flex items-center gap-1.5 text-xs">
+        <div className="flex items-center gap-1.5 text-[11px] sm:text-xs">
             {ITEMS.map((item) => {
                 const selected = pendingReaction === item || reactions.mine === item;
                 const isHovered = hovered === item;
@@ -81,7 +89,7 @@ export default function ReactionBar({ messageId, reactions, onUpdate }: Props) {
                         aria-label="React button"
                         // onTouchStart={() => setHovered(item)}
                         // onTouchEnd={() => setHovered(null)}
-                        className={`px-1.5 py-0.5 font-medium font-mono rounded transition-all duration-300 ease-out ${selected
+                        className={`px-1.5 py-0.5 md:font-medium font-mono rounded transition-all duration-300 ease-out ${selected
                                 ? "text-lime-400"
                                 : isHovered
                                     ? "text-gray-400"

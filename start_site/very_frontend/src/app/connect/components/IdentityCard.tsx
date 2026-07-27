@@ -35,7 +35,7 @@ export default function IdentityCard({ handle }: Props) {
           </span>
         </div>
 
-        <p className="mt-1.5 text-sm text-gray-400/70 tracking-tight">
+        <p className="mt-2 text-sm text-gray-400/70 tracking-tight">
           Yours today. Gone tomorrow.
         </p>
 
@@ -44,7 +44,7 @@ export default function IdentityCard({ handle }: Props) {
         <span className="w-1.5 h-1.5 rounded-full bg-lime-400/70 animate-pulse" />
             active
           </span>
-          <span className="text-gray-600/60">|</span>
+          <span className="font-extrabold text-gray-500/50">|</span>
           <span>{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</span>
           {/* <span className="text-gray-600/50">|</span> */}
           {/* <span className="text-gray-600/50">#{Math.floor(Math.random() * 1000)}</span> */}

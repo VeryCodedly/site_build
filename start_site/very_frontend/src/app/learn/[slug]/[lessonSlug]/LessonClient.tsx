@@ -69,8 +69,6 @@ export default function LessonClient({ lesson, courseSlug }: LessonClientProps) 
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isMenuOpen]);
 
-  // if (loading) return <PageLoader />;
-
   return (
     <section className="relative w-full min-h-screen bg-gradient-to-b from-black to-zinc-950/40 text-white pt-8 sm:pt-12 pb-28 px-4">
       <Motion.div

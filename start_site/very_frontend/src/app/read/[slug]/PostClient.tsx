@@ -28,8 +28,8 @@ export default function PostClient({ post, related, trending }: PostClientProps)
             typeof post.content_JSON === 'string'
                 ? JSON.parse(post.content_JSON)
                 : (post.content_JSON as BlogContentJSON | unknown);
-    } catch (err) {
-        console.error('Failed to parse content_JSON', err);
+    } catch { {/* (err) */}
+        // console.error('Failed to parse content_JSON', err);
     }
 
     return (

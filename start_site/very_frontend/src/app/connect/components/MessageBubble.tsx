@@ -42,7 +42,7 @@ export default function MessageBubble({ messages, onMessageUpdate }: Props) {
     }
 
     return (
-        <section className="mt-10 space-y-">
+        <section className="mt-8 space-y-">
             {messages.map((message, index) => {
                 const isViewed = view.includes(message.id);
                 const isLast = index === messages.length - 1;

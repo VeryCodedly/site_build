@@ -185,33 +185,33 @@ export default function RoomClient({ slug }: Props) {
 
     return (
         <section className="relative min-h-screen bg-black text-white">
-            <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3 }}
-                className="mx-auto mt-12 mb-4 ml-5"
-            >
-                <Link
-                    href="/connect"
-                    aria-label="Back to Connect"
-                    className="inline-flex items-center gap-2 text-lime-400 hover:text-white active:scale-60 transition-all duration-300"
+            <div className="flex justify-between">
+                <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mx-auto mt-12 mb-2 ml-5"
                 >
-                    <FontAwesomeIcon icon={faArrowLeft} size="lg" />
-                    <span className="sr-only">Back to Connect</span>
-                </Link>
-            </motion.div>
-            <div className="max-w-4xl mx-auto px-6">
-                <div className="flex items-center gap-3">
-                    {/* <span className="w-1 h-6 rounded-sm bg-lime-400/40 flex-shrink-0" /> */}
-                    <div className="flex items-center gap-6">
-                        <h1 className="text-lg font-medium text-gray-400 tracking-tight">
-                            {room.room.title}
-                        </h1>
-                        <p className="text-xs text-gray-500/60 tracking-tight">
+                    <Link
+                        href="/connect"
+                        aria-label="Back to Connect"
+                        className="inline-flex items-center gap-2 text-lime-400 hover:text-white active:scale-60 transition-all duration-300"
+                    >
+                        <FontAwesomeIcon icon={faArrowLeft} size="lg" />
+                        <span className="sr-only">Back to Connect</span>
+                    </Link>
+                </motion.div>
+                {/* <span className="w-1 h-6 rounded-sm bg-lime-400/40 flex-shrink-0" /> */}
+                <div className="mt-12 mr-10">
+                    <h1 className="text-lg font-medium text-gray-500 tracking-tight">
+                        r: {room.room.title}
+                    </h1>
+                    {/* <p className="text-xs text-gray-500/60 tracking-tight">
                             {room.room.description}
-                        </p>
-                    </div>
+                        </p> */}
                 </div>
+            </div>
+            <div className="max-w-5xl mx-auto px-6">
 
                 <IdentityCard handle={room.handle} />
 

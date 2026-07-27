@@ -23,7 +23,8 @@ export default function ConnectHero() {
           <span className="text-lime-400">get a handle.</span>
         </Motion.h1>
 
-        <Motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="mt-4 text-sm text-gray-400">
+        <Motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} 
+                  className="mt-4 text-sm font-medium text-gray-400">
           No login. No signup. Just chat.
         </Motion.p>
 
@@ -33,7 +34,7 @@ export default function ConnectHero() {
             Connect
           </a>
           <span className="text-xs text-gray-500 flex items-center gap-2">
-            <span className="text-lime-400 opacity-40"><FontAwesomeIcon icon={faClock} size="sm" /></span>
+            <span className="text-lime-400 opacity-50"><FontAwesomeIcon icon={faClock} size="sm" /></span>
             <Countdown />
           </span>
         </Motion.div>

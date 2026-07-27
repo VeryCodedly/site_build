@@ -12,6 +12,13 @@ interface Props {
 
 const MAX_LENGTH = 1000;
 
+function getCookie(name: string) {
+    return document.cookie
+        .split("; ")
+        .find(cookie => cookie.startsWith(name + "="))
+        ?.split("=")[1];
+}
+
 export default function Composer({ slug, onMessage, typing = [] }: Props) {
     const API = process.env.NEXT_PUBLIC_API_URL;
     const [content, setContent] = useState("");
@@ -32,6 +39,9 @@ export default function Composer({ slug, onMessage, typing = [] }: Props) {
                 {
                     method: "POST",
                     credentials: "include",
+                    headers: {
+                        "X-CSRFToken": getCookie("csrftoken") || "",
+                    },
                 }
             );
         } catch {
@@ -53,6 +63,7 @@ export default function Composer({ slug, onMessage, typing = [] }: Props) {
                     credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
+                        "X-CSRFToken": getCookie("csrftoken") || "",
                     },
                     body: JSON.stringify({
                         content: text,
@@ -83,10 +94,11 @@ export default function Composer({ slug, onMessage, typing = [] }: Props) {
     }, []);
 
     return (
-        <section className="sticky bottom-0 z-20 bg-black/80 backdrop-blur-lg px-8 mt-4 rounded-t-md">
+        <section className="fixed bottom-0 left-0 right-0 z-20 bg-black/75 backdrop-blur-lg px-8 mt-4 rounded-t-md">
             {/* <label className="text-xs uppercase tracking-[.35em] text-gray-500 px-3">
                 Join the convo
             </label> */}
+            <div className="max-w-4xl mx-auto">
             <p className={`text-[10px] py-1.5 pl-5 text-zinc-500 italic transition-opacity duration-300 ${typing.length > 0 ? 'opacity-100' : 'opacity-0'
                 }`}>
                 {typing.length === 0
@@ -117,10 +129,10 @@ export default function Composer({ slug, onMessage, typing = [] }: Props) {
                     }
                 }}
                 placeholder="Let's have it..."
-                className="w-full text-sm rounded-3xl bg-zinc-500/10 px-6 py-5 overflow-hidden border-b border-b-zinc-800 focus:border-b
+                className="w-full text-sm rounded-3xl bg-white/6 px-6 py-5 overflow-hidden border-b border-b-white/12 focus:border-b
                             resize-none outline-none focus:border-b-lime-400/70 transition leading-5 text-gray-200 placeholder:text-gray-600"
             />
-            <div className="flex items-center justify-between mt-3 pb-6 px-6">
+            <div className="flex items-center justify-between mt-3 pb-5 px-6">
                 {/* <p className="text-xs text-gray-600"> */}
                 <span className={`text-xs ${remaining < 100 ? "text-pink-800/80" : "text-gray-600"}`}>
                     {remaining}
@@ -135,6 +147,7 @@ export default function Composer({ slug, onMessage, typing = [] }: Props) {
                         {sending ? "Sending..." : "Send"}
                     </button>
                 </div>
+            </div>
             </div>
         </section>
     );
