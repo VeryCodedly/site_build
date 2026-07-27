@@ -55,27 +55,25 @@ export default function ReactionBar({ messageId, reactions, onUpdate }: Props) {
                 }
             );
 
-            if (!res.ok) {
-                sendingRef.current = false;
-                setPendingReaction(null);
-                return;
-            }
+            if (!res.ok) return;
 
             const data = await res.json();
             onUpdate(data.reactions);
-            sendingRef.current = false;
-            setPendingReaction(null);
 
         } catch {
+            // lu lu lu
+        } finally {
             sendingRef.current = false;
             setPendingReaction(null);
         }
     }
 
     return (
-        <div className="flex items-center gap-1.5 text-[11px] sm:text-xs">
+        <div className="flex items-center gap-1.5 text-[13px] sm:text-xs">
             {ITEMS.map((item) => {
-                const selected = pendingReaction === item || reactions.mine === item;
+                const selected = pendingReaction !== null
+                    ? pendingReaction === item
+                    : reactions.mine === item;
                 const isHovered = hovered === item;
                 const count = reactions.counts[item] || 0;
                 const showFull = hovered === item || selected;
@@ -90,10 +88,10 @@ export default function ReactionBar({ messageId, reactions, onUpdate }: Props) {
                         // onTouchStart={() => setHovered(item)}
                         // onTouchEnd={() => setHovered(null)}
                         className={`px-1.5 py-0.5 md:font-medium font-mono rounded transition-all duration-300 ease-out ${selected
-                                ? "text-lime-400"
-                                : isHovered
-                                    ? "text-gray-400"
-                                    : "text-gray-400/70"
+                            ? "text-lime-400"
+                            : isHovered
+                                ? "text-gray-400"
+                                : "text-gray-400/70"
                             }`}
                     >
                         <span className="inline-block whitespace-nowrap transition-all duration-300 ease-out">

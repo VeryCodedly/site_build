@@ -42,7 +42,7 @@ export default function MessageBubble({ messages, onMessageUpdate }: Props) {
     }
 
     return (
-        <section className="mt-8 space-y-">
+        <section className="mt-8 space-y- pb-40">
             {messages.map((message, index) => {
                 const isViewed = view.includes(message.id);
                 const isLast = index === messages.length - 1;
@@ -101,7 +101,7 @@ export default function MessageBubble({ messages, onMessageUpdate }: Props) {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: .35 }}
-                        className="order-b order-zinc-900 pb-1 pt-0.5"
+                        className="pb-1 pt-0.5"
                     >
                         <div className="flex items-center justify-between">
                             <div className="flex gap-4 items-center">
@@ -135,7 +135,7 @@ export default function MessageBubble({ messages, onMessageUpdate }: Props) {
                                 {message.content}
                             </p>
                             <div className="flex justify-end">
-                                <span className="text-[0.6rem] text-gray-500 tracking-tighter pr-0.5 whitespace-nowrap flex-shrink-0">
+                                <span className="text-[0.62rem] text-gray-500 tracking-tighter pr-0.5 whitespace-nowrap flex-shrink-0">
                                 {new Date(message.created_at).toLocaleTimeString([], {
                                     hour: "2-digit",
                                     minute: "2-digit",

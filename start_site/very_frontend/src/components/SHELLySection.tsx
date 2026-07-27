@@ -60,7 +60,7 @@ export default function HomeMascot() {
               className="mt-6 flex items-baseline flex-wrap gap-2"
               onViewportEnter={() => setStartTyping(true)}
             >
-              <div className="h-10 text-gray-300 text-2xl lg:text-3xl font-mono">
+              <div className="h-10 text-gray-300 text-2xl lg:text-3xl font-mono tracking-tighter">
                 {startTyping && (
                   <Typewriter
                     words={['$ SHELLy eats bugs.']}
@@ -73,7 +73,7 @@ export default function HomeMascot() {
                 )}
               </div>
               {typingComplete && (
-                <span className="text-lime-400 text-2xl font-mono animate-pulse">
+                <span className="text-lime-400 text-2xl font-mono animate-pulse tracking-tighter">
                   {cursor}
                 </span>
               )}

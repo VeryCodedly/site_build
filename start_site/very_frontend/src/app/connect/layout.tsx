@@ -11,14 +11,14 @@ export const metadata: Metadata = {
     description: "Connect and chat on VeryCodedly to keep up with trending topics, tools, and tech.",
     siteName: 'VeryCodedly',
     url: "https://verycodedly.com/connect",
-    images: [{ url: "https://verycodedly.com/opengraph-image.png" }],
+    images: [{ url: "https://verycodedly.com/connect/opengraph-image.png" }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Connect",
     description: "Connect and chat on VeryCodedly to keep up with trending topics, tools, and tech.",
-    images: ["https://verycodedly.com/twitter-image.png"],
+    images: ["https://verycodedly.com/connect/twitter-image.png"],
     creator: '@verycodedly'
   },
 };

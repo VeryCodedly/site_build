@@ -8,6 +8,8 @@ import CTA from "@/components/CTA";
 import ReadSection from "../components/ReadSection";
 import LearnSection from "../components/LearnSection";
 import SHELLySection from "@/components/SHELLySection";
+import ConnectSection from "@/components/ConnectSection";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -23,6 +25,8 @@ export default function Home() {
 
         <LearnSection />
 
+        <ConnectSection />
+
         <Community />
 
         <SHELLySection />
@@ -30,6 +34,8 @@ export default function Home() {
         <MerchSection />
 
         <CTA />
+
+        <Footer />
 
       </main>
 

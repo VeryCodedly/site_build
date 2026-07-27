@@ -42,33 +42,27 @@ export default function RoomCard({ room }: Props) {
         whileHover={{ y: -6 }}
         whileTap={{ scale: 0.98 }}
         transition={{ duration: 0.25 }}
-        className="group overflow-hidden relative rounded-2xl border border-gray-800/60 bg-white/[0.02] hover:bg-white/[0.03] hover:border-zinc-600/60 p-6 transition-all duration-300"
+        className="group overflow-hidden relative rounded-2xl border border-gray-800/60 bg-white/[0.02] hover:bg-white/[0.03] hover:border-zinc-600/60 p-6 transition-all duration-300 active:scale-100"
       >
-        {/* Accent bar */}
         <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-lime-400/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-        {/* Icon watermark */}
           <div className="absolute -right-2 -top-1 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <FontAwesomeIcon icon={Icon} className="text-[6rem] text-lime-400/5" />
           </div>
 
-        {/* Accent dot - replacing the bar */}
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-lime-400/60 group-hover:bg-lime-400 transition-colors duration-200" />
           <span className="text-[10px] tracking-[0.15em] uppercase text-gray-500">Room</span>
         </div>
 
-        {/* Title */}
         <h2 className="mt-4 text-2xl font-bold text-white group-hover:text-lime-400 transition-colors duration-200">
           {room.title}
         </h2>
 
-        {/* Description */}
         <p className="mt-2 text-sm text-gray-400/80 leading-relaxed">
           {room.description}
         </p>
 
-        {/* Footer */}
         <div className="mt-5 flex items-center justify-between pt-4 border-t border-gray-800/50 group-hover:border-gray-700/50 transition-colors">
           <span className="text-xs text-gray-500">
             {room.participants ?? 0} {room.participants === 1 ? 'voice' : 'voices'}

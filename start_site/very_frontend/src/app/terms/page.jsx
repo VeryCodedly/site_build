@@ -48,6 +48,14 @@ export default function TermsPage() {
               {
                 title: "Modifications",
                 desc: "We reserve the right to update these terms at any time. Continued use constitutes acceptance of the revised terms."
+              },
+              {
+                title: "Community Guidelines",
+                desc: "Connect is intended for respectful technical discussion. Don't spam, impersonate others, post illegal content, or intentionally disrupt conversations. We may hide or remove content that harms the experience for everyone."
+              },
+              {
+                title: "Please",
+                desc: "Respect yourself. And everyone else."
               }
             ].map((item, index) => (
               <Motion.div
@@ -67,9 +75,9 @@ export default function TermsPage() {
 
           <div className="mt-8 pt-6 border-t border-gray-800">
             <h3 className="text-xl sm:text-2xl text-white font-semibold mb-3">
-              <Link href="/merch" className="text-lime-400 hover:text-lime-300 active:text-white underline transition-colors duration-200">
+              <Link href="/merch" className="text-lime-400 hover:text-lime-300 active:text-white transition-colors duration-200">
                 Store Use
-              </Link> (Merch)
+              </Link>
             </h3>
             <ul className="space-y-2 text-gray-300/90 text-sm sm:text-base">
               <li className="flex items-start gap-3">
@@ -95,8 +103,8 @@ export default function TermsPage() {
             <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed">
               Questions about these terms? Contact us via the{' '}
               <Link href="/contact" className="text-lime-400 hover:text-lime-300 active:underline active:text-white transition-colors">
-                contact 
-              </Link>page.
+                contact
+              </Link> page.
             </p>
           </div>
 

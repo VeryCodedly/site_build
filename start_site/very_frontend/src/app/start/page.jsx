@@ -3,16 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faArrowRight,
-  faCode,
-  faBookOpen,
-  faCompass,
-  faMicrochip,
-  faMoneyBillTrendUp,
-  faGlobeAfrica,
-  faFire,
-} from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faCode, faBookOpen, faCompass, faMicrochip, faMoneyBillTrendUp, faGlobeAfrica, faFire, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function StartPage() {
@@ -34,7 +25,7 @@ export default function StartPage() {
           <p className="text-base md:text-lg text-gray-300/80 max-w-5xl mx-auto md:mx-0 leading-relaxed">
             Welcome to <span className="font-semibold text-lime-400">VeryCodedly.</span>{" "}
             If this is your first time here, this page will guide you through the
-            best places to begin from courses to articles, and a few
+            best places to begin from courses to articles to chatrooms, and a few
             paths you can follow depending on what you&apos;re trying to learn.
           </p>
 
@@ -225,6 +216,70 @@ export default function StartPage() {
             <GuideLink href="/read/children-teen-social-media-bans-where-why-and-how">
               Teen Social Media Bans: Where, Why and How
             </GuideLink>
+          </div>
+        </section>
+
+        {/* CONNECT */}
+        <section className="space-y-8 group/connect">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/connect:bg-pink-400 group-active/connect:bg-pink-400" />
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-2xl font-bold text-white"
+                >
+                  Connect
+                </motion.h2>
+              </div>
+              <p className="text-gray-400 max-w-4xl text-sm sm:text-base">
+                Pick a room. Join or start a convo. You'll get a unique handle for the day.
+              </p>
+            </div>
+            <Link
+              href="/connect"
+              className="group flex items-center gap-2 text-lime-400 hover:text-lime-200 active:text-lime-200 tracking-tighter text-sm font-medium transition-colors"
+            >
+              Join a room
+              <FontAwesomeIcon icon={faArrowRight} className="text-xs group-active:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              { name: "First Commit", slug: "first-commit" },
+              { name: "Life Lately", slug: "life-lately" },
+              { name: "The Usual Suspect", slug: "the-usual-suspect" },
+            ].map((room, i) => (
+              <Link
+                key={room.slug}
+                href={`/connect/${room.slug}`}
+                className="group block bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(163,230,53,0.05)] active:border-zinc-400/30 transition-all duration-300"
+              >
+                <div className="flex items-start justify-between">
+                  <h3 className="font-semibold text-white group-hover:text-lime-400 group-active:text-lime-400 transition-colors">
+                    {room.name}
+                  </h3>
+                  <span className="text-xs text-gray-600 font-mono">
+                    <FontAwesomeIcon icon={faUsers} />
+                  </span>
+                </div>
+                <div className="mt-3 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-lime-400 animate-pulse" />
+                  <span className="text-[10px] font-medium tracking-[0.1em] uppercase text-lime-400/60 group-hover:text-white group-active:text-white">live</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-500/70 pt-2">
+            <span>no accounts</span>
+            <span className="w-px h-3 bg-gray-600/90" />
+            <span>no signups</span>
+            <span className="w-px h-3 bg-gray-600/90" />
+            <span>24hr rooms</span>
           </div>
         </section>
 

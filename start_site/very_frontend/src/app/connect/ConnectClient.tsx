@@ -36,20 +36,19 @@ export default function ConnectClient({
 
         <section
           id="rooms"
-          className="max-w-7xl mx-auto px-5 sm:px-8 pt-4 pb-28"
+          className="max-w-7xl mx-auto px-5 sm:px-8 pt-4 pb-12"
         >
-          {/* section heading */}
           <div className="flex flex-row justify-between gap-8 items-center mb-8 group">
             <div className="flex items-center gap-3">
               <span className="w-1.5 h-10 rounded-xs bg-lime-400 transition-colors group-hover:bg-pink-400 group-active:bg-pink-400" />
               <Motion.h3
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="text-3xl text-white font-bold">
-                    Rooms
-                </Motion.h3>
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="text-3xl text-white font-bold">
+                Rooms
+              </Motion.h3>
             </div>
             <p className="text-sm text-gray-500 mt-1">
               Pick any. We&apos;ll give you a handle for today.
@@ -73,6 +72,43 @@ export default function ConnectClient({
           ) : (
             <RoomGrid rooms={rooms} />
           )}
+        </section>
+
+        <section className="relative max-w-4xl mx-auto px-6 py-10 mt-16 mb-22">
+          <div className="flex flex-col items-center text-center">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400/60 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-400/80" />
+              </span>
+              <span className="text-[10px] tracking-[0.2em] uppercase text-gray-500">Rooms are live</span>
+            </div>
+
+            <h2 className="text-2xl font-bold text-white tracking-tight">
+              Pick a room. <span className="text-lime-400">Join or start a convo.</span>
+            </h2>
+
+            <p className="mt-2 text-sm text-gray-300/60 max-w-lg leading-relaxed">
+              Conversations reset daily. Handles refresh. Be nice. <br />Or else...
+            </p>
+
+            <div className="mt-6 flex items-center gap-4 text-[11px] text-gray-600 font-medium">
+              <span className="flex items-center gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-gray-600" />
+                no accounts
+              </span>
+              <span className="w-px h-3 bg-gray-800/60" />
+              <span className="flex items-center gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-gray-600" />
+                no signups
+              </span>
+              <span className="w-px h-3 bg-gray-800/60" />
+              <span className="flex items-center gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-gray-600" />
+                  24hr rooms
+              </span>
+            </div>
+          </div>
         </section>
       </div>
     </section>

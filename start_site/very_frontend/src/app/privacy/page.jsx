@@ -29,11 +29,11 @@ export default function PrivacyPage() {
           <div className="space-y-6 mt-10">
             {[
               {
-                title: "No login required.",
-                desc: "Everything is open and free. No accounts, no sign-up, no passwords."
+                title: "No accounts required.",
+                desc: "Everything is open. No login, no sign-up, no passwords."
               },
               {
-                title: "We store nothing personal.",
+                title: "We don't require personal information.",
                 desc: "No email, no name, no profile. Your progress is saved locally in your browser."
               },
               {
@@ -83,16 +83,20 @@ export default function PrivacyPage() {
               <ul className="text-gray-300/90 text-sm sm:text-base leading-relaxed mt-1 ml-5 space-y-2 list-disc list-inside">
                 <li><strong>Course progress</strong> (e.g., “HTML Module 3 completed”)</li>
                 <li><strong>Analytics cookies</strong>  for anonymous usage data</li>
+                <li>An anonymous identifier tied to your browser session</li>
+                <li>A one-way hash of your IP address to help prevent spam</li>
                 <li><strong>That’s it.</strong></li>
               </ul>
+              <p className="text-gray-300/90 mt-5">Connect doesn't require an account, email address, or real name, so when you join a room, we generate a temporary handle to make the conversation work. 
+                We don't know who you are from this information, and we don't sell or use it for advertising.</p>
             </div>
 
             {/* Store section - separate because this collects personal data */}
             <div className="my-10 pt-6 border-t border-gray-800">
               <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4">
-                <Link href="/merch" className="text-lime-400 hover:text-lime-300 active:text-white underline transition-colors duration-200">
+                <Link href="/merch" className="text-lime-400 hover:text-lime-300 active:text-white transition-colors duration-200">
                   Store Orders
-                </Link> (Merch)
+                </Link>
               </h3>
               <div className="space-y-4 text-gray-300/90 text-sm sm:text-base">
                 <div>
@@ -124,7 +128,7 @@ export default function PrivacyPage() {
           </div>
 
           <p className="mt-6 text-xs text-gray-500 italic text-center">
-            Last updated: May 2026
+            Last updated: July 2026
           </p>
         </Motion.div>
       </div>

@@ -25,7 +25,7 @@ export default function ConnectHero() {
 
         <Motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} 
                   className="mt-4 text-sm font-medium text-gray-400">
-          No login. No signup. Just chat.
+          No login. No accounts. Just chat.
         </Motion.p>
 
         <Motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.35 }} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-10">

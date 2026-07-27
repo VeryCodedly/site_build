@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef  } from "react";
 import { Message } from "@/types/connect";
 
 
@@ -24,15 +24,16 @@ export default function Composer({ slug, onMessage, typing = [] }: Props) {
     const [content, setContent] = useState("");
     const [sending, setSending] = useState(false);
     const remaining = MAX_LENGTH - content.length;
-    const typingTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-    // const lastTyping = useRef(0);
+    // const typingTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const lastTyping = useRef(0);
 
 
     async function sendTyping() {
-        // const now = Date.now();
-        // if (now - lastTyping.current < 1500)
-        //     return;
-        // lastTyping.current = now;
+        const now = Date.now();
+        if (now - lastTyping.current < 2000)
+            return;
+        lastTyping.current = now;
+        
         try {
             await fetch(
                 `${API}/connect/rooms/${slug}/typing/`,
@@ -81,17 +82,18 @@ export default function Composer({ slug, onMessage, typing = [] }: Props) {
             // console.error("Couldn't send message");
         }
         finally {
+            lastTyping.current = 0;
             setSending(false);
         }
     }
 
-    useEffect(() => {
-        return () => {
-            if (typingTimeout.current) {
-                clearTimeout(typingTimeout.current);
-            }
-        };
-    }, []);
+    // useEffect(() => {
+    //     return () => {
+    //         if (typingTimeout.current) {
+    //             clearTimeout(typingTimeout.current);
+    //         }
+    //     };
+    // }, []);
 
     return (
         <section className="fixed bottom-0 left-0 right-0 z-20 bg-black/75 backdrop-blur-lg px-8 mt-4 rounded-t-md">
@@ -117,10 +119,11 @@ export default function Composer({ slug, onMessage, typing = [] }: Props) {
                 onChange={(e) => {
                     // console.log("changed");
                     setContent(e.target.value);
-                    if (typingTimeout.current) {
-                        clearTimeout(typingTimeout.current);
-                    }
-                    typingTimeout.current = setTimeout(sendTyping, 300);
+                    sendTyping();
+                    // if (typingTimeout.current) {
+                    //     clearTimeout(typingTimeout.current);
+                    // }
+                    // typingTimeout.current = setTimeout(sendTyping, 300);
                 }}
                 onKeyDown={(e) => {
                     if (e.key === "Enter" && !e.shiftKey) {
