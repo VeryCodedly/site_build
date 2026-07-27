@@ -249,8 +249,8 @@ export default function StartPage() {
 
           <div className="grid md:grid-cols-3 gap-5">
             {[
+              { name: "Right Now", slug: "right-now" },
               { name: "First Commit", slug: "first-commit" },
-              { name: "Life Lately", slug: "life-lately" },
               { name: "The Usual Suspect", slug: "the-usual-suspect" },
             ].map((room, i) => (
               <Link
@@ -300,7 +300,7 @@ export default function StartPage() {
             </p>
 
             <div className="py-3 flex items-center gap-2 text-sm text-gray-500">
-              <p>Explore the courses. Read the articles. Build something interesting.</p>
+              <p>Explore the courses. Read the articles. Build something interesting. Share your knowledge.</p>
             </div>
           </div>
         </section>

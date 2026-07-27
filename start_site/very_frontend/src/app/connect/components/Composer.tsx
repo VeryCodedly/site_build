@@ -40,6 +40,7 @@ export default function Composer({ slug, onMessage, typing = [] }: Props) {
                 {
                     method: "POST",
                     credentials: "include",
+                    cache: "no-store",
                     headers: {
                         "X-CSRFToken": getCookie("csrftoken") || "",
                     },
@@ -86,14 +87,6 @@ export default function Composer({ slug, onMessage, typing = [] }: Props) {
             setSending(false);
         }
     }
-
-    // useEffect(() => {
-    //     return () => {
-    //         if (typingTimeout.current) {
-    //             clearTimeout(typingTimeout.current);
-    //         }
-    //     };
-    // }, []);
 
     return (
         <section className="fixed bottom-0 left-0 right-0 z-20 bg-black/75 backdrop-blur-lg px-8 mt-4 rounded-t-md">
