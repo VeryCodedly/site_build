@@ -4,7 +4,6 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view, permission_classes, throttle_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from rest_framework.throttling import BaseThrottle
 
 from .models import Room, Message
 from django.shortcuts import get_object_or_404
@@ -14,7 +13,7 @@ from .serializers import MessageSerializer, CreateMessageSerializer, RoomSeriali
 from .exceptions import RateLimitExceeded
 from django.utils.dateparse import parse_datetime
 from .room_state import touch_activity, get_live_state, touch_typing
-from django.views.decorators.cache import never_cache
+from rest_framework.throttling import BaseThrottle
 
 
 class NoThrottle(BaseThrottle):
@@ -150,7 +149,6 @@ def message_reaction(request, pk):
     
     
 @api_view(["POST"])
-@never_cache
 @permission_classes([AllowAny])
 def typing(request, slug):
     room = get_object_or_404(Room, slug=slug, is_active=True)
