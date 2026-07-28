@@ -38,8 +38,8 @@ export default function StorePage({ products, error }: StoreClientProps) {
 
   const renderSection = (title: string, tagline: string, items: Product[]) => (
     items.length > 0 && (
-      <section className="max-w-6xl mx-auto mb-30 group/bar">
-        <div className="flex flex-col md:flex-row md:items-start gap-4 mt-10 mb-10 justify-between">
+      <section className="max-w-6xl mx-auto mb-26 lg:mt-10 group/bar">
+        <div className="flex flex-col md:flex-row md:items-start gap-4 mb-10 justify-between">
           <div className="flex items-center gap-3">
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/bar:bg-pink-400 group-active/bar:bg-pink-400 transition-colors" />
             <motion.h2
@@ -206,12 +206,12 @@ export default function StorePage({ products, error }: StoreClientProps) {
       {renderSection("T-Shirts", "Start here, lots of cool stuff.", tshirts)}
       {renderSection("Hoodies", "Grab one, you’ll see.", hoodies)}
       {renderSection("Sweatshirts", "Same comfort, just no hood.", sweatshirts)}
-      {renderSection("Workspace", "You'll notice the difference.", workspace)}
       {renderSection("Mini Dev", "Future devs only, from babies to teens.", miniDev)}
-      {renderSection("Drink", "Hot, cold, whatever you're into.", drink)}
       {renderSection("Hats", "Put it on, leave it on.", hats)}
+      {renderSection("Drink", "Hot, cold, whatever you're into.", drink)}
+      {renderSection("Workspace", "You'll notice the difference.", workspace)}
 
-      <div className="max-w-7xl mx-auto mt-22 text-center">
+      <div className="max-w-7xl mx-auto mt-16 text-center">
         <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent mx-auto" />
         {/* <p className="text-xs text-gray-700">See anything you like? Enjoy.</p> */}
       </div>
