@@ -25,7 +25,7 @@ export default function ConnectClient({
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-black via-black to-zinc-950 text-white">
       {/* Background image */}
-      <div className="absolute inset-0 bg-[url('/images/bg-1.webp')] bg-cover bg-center opacity-30 pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('/images/bg-1.webp')] bg-cover bg-center opacity-40 pointer-events-none" />
       {/* soft vignette */}
       <div className=" absolute inset-0 bg-gradient-to-b from-black/10 via-black/40 to-black pointer-events-none" />
       {/* subtle glow */}
@@ -50,7 +50,7 @@ export default function ConnectClient({
                 Rooms
               </Motion.h3>
             </div>
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-xs sm:text-sm text-gray-500 mt-1">
               Pick any. We&apos;ll give you a handle for today.
             </p>
           </div>

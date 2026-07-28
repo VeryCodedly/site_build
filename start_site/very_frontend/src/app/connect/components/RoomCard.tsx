@@ -42,20 +42,20 @@ export default function RoomCard({ room }: Props) {
         whileHover={{ y: -6 }}
         whileTap={{ scale: 0.98 }}
         transition={{ duration: 0.25 }}
-        className="group overflow-hidden relative rounded-2xl border border-gray-800/60 bg-white/[0.02] hover:bg-white/[0.03] hover:border-zinc-600/60 p-6 transition-all duration-300 active:scale-100"
+        className="group overflow-hidden relative rounded-2xl border border-gray-800/60 bg-white/[0.02] hover:bg-white/[0.03] hover:border-zinc-600/60 active:bg-white/[0.03] active:border-zinc-600/60 p-6 transition-all duration-300 active:scale-100"
       >
-        <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-lime-400/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-lime-400/40 to-transparent opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500" />
 
-          <div className="absolute -right-2 -top-1 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="absolute -right-2 -top-1 pointer-events-none opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500">
             <FontAwesomeIcon icon={Icon} className="text-[6rem] text-lime-400/5" />
           </div>
 
         <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-lime-400/60 group-hover:bg-lime-400 transition-colors duration-200" />
+          <span className="w-1.5 h-1.5 rounded-full bg-lime-400/60 group-hover:bg-lime-400 group-active:bg-lime-400 transition-colors duration-200" />
           <span className="text-[10px] tracking-[0.15em] uppercase text-gray-500">Room</span>
         </div>
 
-        <h2 className="mt-4 text-2xl font-bold text-white group-hover:text-lime-400 transition-colors duration-200">
+        <h2 className="mt-4 text-xl sm:text-2xl font-bold text-white group-hover:text-lime-400 group-active:text-lime-400 transition-colors duration-200">
           {room.title}
         </h2>
 
@@ -63,11 +63,11 @@ export default function RoomCard({ room }: Props) {
           {room.description}
         </p>
 
-        <div className="mt-5 flex items-center justify-between pt-4 border-t border-gray-800/50 group-hover:border-gray-700/50 transition-colors">
+        <div className="mt-5 flex items-center justify-between pt-4 border-t border-gray-800/50 group-hover:border-gray-700/50 group-active:border-gray-700/50 transition-colors">
           <span className="text-xs text-gray-500">
             {room.participants ?? 0} {room.participants === 1 ? 'voice' : 'voices'}
           </span>
-          <span className="flex items-center gap-2 text-xs font-bold text-lime-400 group-hover:text-white transition-colors duration-200">
+          <span className="flex items-center gap-2 text-xs font-bold text-lime-400 group-hover:text-white group-active:text-white transition-colors duration-200">
             Enter
             <FontAwesomeIcon
               icon={faArrowRight}

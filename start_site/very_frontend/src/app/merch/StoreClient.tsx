@@ -38,8 +38,8 @@ export default function StorePage({ products, error }: StoreClientProps) {
 
   const renderSection = (title: string, tagline: string, items: Product[]) => (
     items.length > 0 && (
-      <section className="max-w-6xl mx-auto mt-10 mb-20 group/bar">
-        <div className="flex flex-col md:flex-row md:items-start gap-4 mb-10 justify-between">
+      <section className="max-w-6xl mx-auto mb-30 group/bar">
+        <div className="flex flex-col md:flex-row md:items-start gap-4 mt-10 mb-10 justify-between">
           <div className="flex items-center gap-3">
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/bar:bg-pink-400 group-active/bar:bg-pink-400 transition-colors" />
             <motion.h2

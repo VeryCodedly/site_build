@@ -217,7 +217,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
           </Link>
         </motion.div>
         
-      <div className="max-w-xl md:max-w-5xl mx-auto px-6 py-6 pb-16">
+      <div className="max-w-xl md:max-w-5xl mx-auto px-4 sm:px-6 py-6 pb-16">
         <div className="grid md:grid-cols-2 gap-12 py-4 pb-4">
           <ImageGallery
             currentImage={selectedImage}
@@ -261,11 +261,11 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
                 onClick={handleAddToCart}
                 disabled={product.is_sold_out || !currentVariant}
                 className="w-fit font-bold cursor-pointer border-3 border-gray-500/100 bg-lime-400 py-1.5 px-7 rounded-full text-black hover:bg-white 
-                active:bg-white active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] text-base
+                active:bg-white active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] text-base tracking-wider
                 active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200
                 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Just Add It <FontAwesomeIcon icon={faCartShopping} className="text-sm" />
+                Yep <FontAwesomeIcon icon={faCartShopping} className="text-sm" />
               </button>
             </div>
           </div>

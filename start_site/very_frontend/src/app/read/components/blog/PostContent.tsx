@@ -108,11 +108,11 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           </span>
           <div className="flex gap-4">
             <Link href={`/read/category/${post.category?.slug}`} aria-label="Link to Category page"
-              className="cursor-pointer bg-lime-400/10 text-lime-400 active:text-lime-200 hover:scale-105 active:scale-95 transition duration-200 px-3 py-1 rounded-full text-sm font-medium tracking-tighter">
+              className="bg-lime-400/10 text-lime-400 active:text-lime-200 hover:scale-105 active:scale-95 transition duration-200 px-3 py-1 rounded-full text-sm font-medium tracking-tighter">
               {post.category?.name || 'General'}
             </Link>
             <Link href={`/read/subcategory/${post.subcategory?.slug}`} aria-label="Link to Subcategory page"
-              className="cursor-pointer bg-pink-400/10 text-pink-400 active:text-pink-200 hover:scale-105 active:scale-95 transition duration-200 px-3 py-1 rounded-full text-sm font-medium tracking-tighter">
+              className="bg-pink-400/10 text-pink-400 active:text-pink-200 hover:scale-105 active:scale-95 transition duration-200 px-3 py-1 rounded-full text-sm font-medium tracking-tighter">
               {post.subcategory?.name || 'General'}
             </Link>
           </div>

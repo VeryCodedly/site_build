@@ -190,7 +190,7 @@ export default function RoomClient({ slug }: Props) {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="mx-auto mt-11 mb-2 ml-6"
+                    className="mx-auto mt-8 mb-5 ml-6"
                 >
                     <Link
                         href="/connect"
@@ -202,10 +202,10 @@ export default function RoomClient({ slug }: Props) {
                     </Link>
                 </motion.div>
                 {/* <span className="w-1 h-6 rounded-sm bg-lime-400/40 flex-shrink-0" /> */}
-                <div className="flex items-center mt-9 mr-9">
-                    <h1 className="text-sm font-medium text-gray-400 tracking-tight">
-                        <span className="text-lime-400/70 text-xs">r:</span> {room.room.title}
-                    </h1>
+                <div className="flex items-center mt-2 mr-4.5 md:mr-18">
+                    <p className="bg-pink-400/10 text-pink-400/80 px-3 py-1 rounded-full text-xs tracking-tighter">
+                        {room.room.title}
+                    </p>
                     {/* <p className="text-xs text-gray-500/60 tracking-tight">
                             {room.room.description}
                         </p> */}
