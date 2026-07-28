@@ -38,7 +38,7 @@ export default function StorePage({ products, error }: StoreClientProps) {
 
   const renderSection = (title: string, tagline: string, items: Product[]) => (
     items.length > 0 && (
-      <section className="max-w-6xl mx-auto mt-32 group/bar">
+      <section className="max-w-6xl mx-auto mt-10 mb-20 group/bar">
         <div className="flex flex-col md:flex-row md:items-start gap-4 mb-10 justify-between">
           <div className="flex items-center gap-3">
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/bar:bg-pink-400 group-active/bar:bg-pink-400 transition-colors" />
@@ -53,7 +53,7 @@ export default function StorePage({ products, error }: StoreClientProps) {
               {title}
             </motion.h2>
           </div>
-          <p className="text-sm text-gray-500 pt-0 sm:pt-1">{tagline}</p>
+          <p className="text-sm text-gray-400/80 pt-0 sm:pt-1">{tagline}</p>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
           {items.map((product, index) => (
@@ -112,7 +112,7 @@ export default function StorePage({ products, error }: StoreClientProps) {
   );
 
   return (
-    <section className="w-full bg-gradient-to-b from-black to-zinc-950/40 text-white min-h-screen pt-12 pb-28 px-5">
+    <section className="w-full bg-gradient-to-b from-black to-zinc-950/40 text-white min-h-screen pb-28 px-3 sm:px-5">
       {/* Back button */}
       {/* <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -131,10 +131,10 @@ export default function StorePage({ products, error }: StoreClientProps) {
       </motion.div> */}
 
       {/* Hero */}
-      <div className="relative flex flex-col items-center justify-center max-w-5xl mx-auto px-4">
+      <div className="relative min-h-screen flex flex-col items-center justify-center max-w-6xl mx-auto my-auto">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(154,230,0,0.03),transparent_65%)] pointer-events-none" />
         
-        <div className="relative z-10 w-full text-center mt-16">
+        <div className="relative z-10 w-full text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
@@ -149,7 +149,7 @@ export default function StorePage({ products, error }: StoreClientProps) {
             initial={{ opacity: 0, y: 15 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.5, delay: 0.2 }} 
-            className="mt-6 text-base font-medium text-gray-300/90 max-w-md mx-auto"
+            className="mt-6 text-base font-medium text-gray-300/85 mx-auto"
           >
             We make it. You make it look good.
           </motion.p>
@@ -192,7 +192,7 @@ export default function StorePage({ products, error }: StoreClientProps) {
             <span className="w-px h-4 bg-gray-800" />
             <span className="flex items-center gap-2">
               <FontAwesomeIcon icon={faClock} className="text-lime-400/45" />
-              5-14 day delivery
+              7-14 day delivery
             </span>
             <span className="w-px h-4 bg-gray-800" />
             <span className="flex items-center gap-2">
