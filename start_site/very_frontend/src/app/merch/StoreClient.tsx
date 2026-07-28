@@ -38,7 +38,7 @@ export default function StorePage({ products, error }: StoreClientProps) {
 
   const renderSection = (title: string, tagline: string, items: Product[]) => (
     items.length > 0 && (
-      <section className="max-w-6xl mx-auto mt-32 group/bar px-1 sm:px-0">
+      <section className="max-w-6xl mx-auto mt-32 group/bar">
         <div className="flex flex-col md:flex-row md:items-start gap-4 mb-10 justify-between">
           <div className="flex items-center gap-3">
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/bar:bg-pink-400 group-active/bar:bg-pink-400 transition-colors" />
@@ -112,7 +112,7 @@ export default function StorePage({ products, error }: StoreClientProps) {
   );
 
   return (
-    <section className="w-full bg-gradient-to-b from-black to-zinc-950/40 text-white min-h-screen pt-10 pb-28 px-5">
+    <section className="w-full bg-gradient-to-b from-black to-zinc-950/40 text-white min-h-screen pt-12 pb-28 px-5">
       {/* Back button */}
       {/* <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -131,7 +131,7 @@ export default function StorePage({ products, error }: StoreClientProps) {
       </motion.div> */}
 
       {/* Hero */}
-      <div className="relative min-h-[60vh] flex flex-col items-center justify-center max-w-5xl mx-auto px-4">
+      <div className="relative flex flex-col items-center justify-center max-w-5xl mx-auto px-4">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(154,230,0,0.03),transparent_65%)] pointer-events-none" />
         
         <div className="relative z-10 w-full text-center mt-16">
