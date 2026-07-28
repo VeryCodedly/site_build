@@ -29,12 +29,12 @@ export default function MessageBubble({ messages, onMessageUpdate }: Props) {
 
     if (!messages.length) {
         return (
-            <section className="mt-8 rounded-3xl border border-dashed border-zinc-900 py-6 text-center">
+            <section className="my-10 rounded-3xl border border-dashed border-zinc-900 py-6 text-center">
                 <p className="text-3xl mb-4 opacity-50">💬</p>
                 <h3 className="text-2xl font-semibold text-white opacity-80">
                     You&apos;re early.
                 </h3>
-                <p className="text-gray-500 max-w-md mx-auto leading-7">
+                <p className="text-gray-500 mb-1 max-w-md mx-auto leading-7">
                     Start today&apos;s conversation.
                 </p>
             </section>
@@ -42,7 +42,7 @@ export default function MessageBubble({ messages, onMessageUpdate }: Props) {
     }
 
     return (
-        <section className="mt-8 space-y- pb-40">
+        <section className="mt-8 space-y- pb-42">
             {messages.map((message, index) => {
                 const isViewed = view.includes(message.id);
                 const isLast = index === messages.length - 1;

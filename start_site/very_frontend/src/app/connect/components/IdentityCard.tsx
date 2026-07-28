@@ -1,12 +1,15 @@
 "use client";
 
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 interface Props {
   handle: string;
 }
 
 export default function IdentityCard({ handle }: Props) {
   return (
-    <div className="relative">
+    <div className="relative ml-0.5">
       {/* Session line — clean, minimal */}
       {/* <div className="flex items-center gap-3 mb-3 px-1">
         <span className="w-1.5 h-1.5 rounded-full bg-lime-400/70 animate-pulse" />
@@ -19,11 +22,12 @@ export default function IdentityCard({ handle }: Props) {
         </span>
       </div> */}
 
-      <div className="order-t border-gray-800/50 pt-3">
-        <div className="flex items-center gap-2">
-          <span className="text-xs text-gray-500 font-mono select-none">❯</span>
-          <span className="text-[10px] tracking-[0.2em] uppercase text-gray-500">
-            identity
+      <div className="order-t order-gray-800/50 pt-3">
+        <div className="flex items-center gap-2 text-[10px] tracking-[0.2em] text-gray-500">
+          {/* <span className="text-xs text-gray-500 font-mono select-none">❯</span> */}
+          <FontAwesomeIcon icon={faUser} className="text-lime-800" />
+          <span className="uppercase">
+            your identity
           </span>
           {/* <span className="flex-1 h-px bg-gray-800/50" /> */}
         </div>

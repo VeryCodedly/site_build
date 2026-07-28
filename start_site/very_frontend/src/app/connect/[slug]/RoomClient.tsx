@@ -190,7 +190,7 @@ export default function RoomClient({ slug }: Props) {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="mx-auto mt-12 mb-2 ml-6"
+                    className="mx-auto mt-11 mb-2 ml-6"
                 >
                     <Link
                         href="/connect"
@@ -202,7 +202,7 @@ export default function RoomClient({ slug }: Props) {
                     </Link>
                 </motion.div>
                 {/* <span className="w-1 h-6 rounded-sm bg-lime-400/40 flex-shrink-0" /> */}
-                <div className="flex items-center mt-12 mr-9">
+                <div className="flex items-center mt-9 mr-9">
                     <h1 className="text-sm font-medium text-gray-400 tracking-tight">
                         <span className="text-lime-400/70 text-xs">r:</span> {room.room.title}
                     </h1>
@@ -221,11 +221,11 @@ export default function RoomClient({ slug }: Props) {
                             bottomRef.current?.scrollIntoView();
                             setNewMessages(0);
                         }}
-                        className="fixed bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-2 items-center group rounded-full border-3 border-white/10 bg-white/5 px-5 py-2 text-xs text-white/60 backdrop-blur-2xl hover:bg-white/10 hover:border-pink-400/30 hover:text-white active:bg-white/10 active:border-pink-400/30 active:text-white hover:shadow-[0_0_30px_rgba(236,72,153,0.08)] active:scale-95 transition-all duration-300 overflow-hidden"
+                        className="group fixed bottom-5 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 items-center rounded-full border-3 px-5 py-2 tracking-tighter text-xs text-white/70 backdrop-blur-2xl bg-white/10 border-pink-400/40 hover:text-white active:text-white active:bg-white/10 active:border-pink-400/30 hover:shadow-[0_0_30px_rgba(236,72,153,0.08)] active:shadow-[0_0_30px_rgba(236,72,153,0.08)] active:scale-95 transition-all duration-300 overflow-hidden"
                     >
                         <span className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-pink-500/5 via-transparent to-pink-500/5" />
                         {newMessages > 9 ? "9+ new" : `${newMessages} new`}
-                        <FontAwesomeIcon icon={faArrowDown} className="group-active:text-pink-400/70" />
+                        <FontAwesomeIcon icon={faArrowDown} className="group-active:text-pink-400/70 font-light" size="sm" />
                     </button>
                 )}
 
