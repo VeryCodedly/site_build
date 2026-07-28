@@ -89,7 +89,7 @@ export default function Composer({ slug, onMessage, typing = [] }: Props) {
     }
 
     return (
-        <section className="fixed bottom-0 left-0 right-0 z-20 bg-black/75 backdrop-blur-lg px-8 mt-4 rounded-t-md">
+        <section className="fixed bottom-0 left-0 right-0 z-20 bg-black/75 backdrop-blur-lg px-6 sm:px-10 mt-4 rounded-t-md">
             {/* <label className="text-xs uppercase tracking-[.35em] text-gray-500 px-3">
                 Join the convo
             </label> */}
