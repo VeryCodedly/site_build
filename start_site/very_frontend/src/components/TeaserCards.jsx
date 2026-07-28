@@ -58,12 +58,12 @@ export default function TeaserCards() {
       <div className="absolute inset-0 bg-[url('/images/bg-1.webp')] bg-center bg-cover opacity-60"></div>
 
       {/* <CircuitLines cardIds={cards.map((c) => c.id)} /> */}
-      <div className="relative w-full h-full gap-4 m-3 lg:gap-0.5 max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
+      <div className="relative w-full h-full gap-4 lg:mt-9 m-3 lg:gap-0.5 max-w-6xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">
         {cards.map((card, index) => (
           <Motion.div
             id={`card-${card.id}`}
             key={index}
-            className={`relative rounded-3xl px-10 sm:px-10 py-9 border border-gray-700/60 bg-white/3 backdrop-blur-lg active:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
+            className={`relative rounded-3xl px-7 sm:px-7.5 py-9 border border-gray-700/60 bg-white/3 backdrop-blur-lg active:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               shadow-[0_15px_20px_rgba(0,0,0,0.6),0_15px_20px_rgba(0,0,0,0.5)] hover:shadow-[0_15px_20px_rgba(0,0,0,0.7),0_25px_30px_rgba(0,0,0,0.6)]
               transition-all duration-300 group`}
             whileHover={{ scale: 1.1 }}
