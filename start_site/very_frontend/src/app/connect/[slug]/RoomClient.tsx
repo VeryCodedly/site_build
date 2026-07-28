@@ -213,7 +213,7 @@ export default function RoomClient({ slug }: Props) {
                             bottomRef.current?.scrollIntoView();
                             setNewMessages(0);
                         }}
-                        className="group fixed bottom-5 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 items-center rounded-full border-3 px-5 py-2 tracking-tighter text-xs text-white/70 backdrop-blur-2xl bg-white/10 border-pink-400/40 hover:text-white active:text-white active:bg-white/10 active:border-pink-400/30 hover:shadow-[0_0_30px_rgba(236,72,153,0.08)] active:shadow-[0_0_30px_rgba(236,72,153,0.08)] active:scale-95 transition-all duration-300 overflow-hidden"
+                        className="group fixed bottom-4 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 items-center rounded-full border-3 px-5 py-2 tracking-tighter text-xs text-white/70 backdrop-blur-2xl bg-white/10 border-pink-400/40 hover:text-white active:text-white active:bg-white/10 active:border-pink-400/30 hover:shadow-[0_0_30px_rgba(236,72,153,0.08)] active:shadow-[0_0_30px_rgba(236,72,153,0.08)] active:scale-95 transition-all duration-300 overflow-hidden"
                     >
                         <span className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-pink-500/5 via-transparent to-pink-500/5" />
                         {newMessages > 9 ? "9+ new" : `${newMessages} new`}
@@ -226,15 +226,9 @@ export default function RoomClient({ slug }: Props) {
                     onMessageUpdate={(id, data) =>
                         setMessages(prev =>
                             prev.map(message =>
-                                message.id === id
-                                    ? {
-                                        ...message,
-                                        ...data,
-                                    }
-                                    : message
+                                message.id === id ? { ...message, ...data } : message
                             )
-                        )
-                    }
+                        )}
                 />
                 <div ref={bottomRef} />
                 <Composer
