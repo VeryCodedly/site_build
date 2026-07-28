@@ -128,7 +128,7 @@ export default function Composer({ slug, onMessage, typing = [] }: Props) {
                 className="w-full text-sm rounded-3xl bg-white/6 px-6 py-5 overflow-hidden border-b border-b-white/12 focus:border-b
                             resize-none outline-none focus:border-b-lime-400/70 transition leading-5 text-gray-200 placeholder:text-gray-600"
             />
-            <div className="flex items-center justify-between mt-3 pb-6 sm:pb-5 px-6.5 sm:px-6">
+            <div className="flex items-center justify-between mt-3 pb-5 sm:pb-5 px-6.5 sm:px-6">
                 {/* <p className="text-xs text-gray-600"> */}
                 <span className={`text-xs ${remaining < 100 ? "text-pink-800/80" : "text-gray-600"}`}>
                     {remaining}

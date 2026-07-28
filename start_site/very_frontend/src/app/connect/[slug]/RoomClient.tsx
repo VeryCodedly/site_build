@@ -182,7 +182,7 @@ export default function RoomClient({ slug }: Props) {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="mx-auto mt-9 mb-5 ml-5"
+                    className="mx-auto mt-8 mb-5 ml-5"
                 >
                     <Link
                         href="/connect"
