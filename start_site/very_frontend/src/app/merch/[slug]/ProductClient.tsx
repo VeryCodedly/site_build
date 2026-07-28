@@ -260,7 +260,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
                 aria-label="Add to Cart"
                 onClick={handleAddToCart}
                 disabled={product.is_sold_out || !currentVariant}
-                className="w-fit font-bold cursor-pointer border-3 border-gray-500/100 bg-lime-400 py-1.5 px-7 rounded-full text-black hover:bg-white 
+                className="w-fit font-bold border-3 border-gray-500/100 bg-lime-400 py-1.5 px-7 rounded-full text-black hover:bg-white 
                 active:bg-white active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] text-base tracking-wider
                 active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200
                 disabled:opacity-50 disabled:cursor-not-allowed"

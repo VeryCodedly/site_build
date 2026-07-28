@@ -9,7 +9,7 @@ interface Props {
 
 export default function IdentityCard({ handle }: Props) {
   return (
-    <div className="relative ml-0.5">
+    <div className="relative">
       {/* Session line — clean, minimal */}
       {/* <div className="flex items-center gap-3 mb-3 px-1">
         <span className="w-1.5 h-1.5 rounded-full bg-lime-400/70 animate-pulse" />

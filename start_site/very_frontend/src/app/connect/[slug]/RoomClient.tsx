@@ -21,7 +21,6 @@ export default function RoomClient({ slug }: Props) {
 
     const [room, setRoom] = useState<RoomDetail | null>(null);
     const [messages, setMessages] = useState<Message[]>([]);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     const latestUpdate = useRef<string | null>(null);
@@ -59,7 +58,7 @@ export default function RoomClient({ slug }: Props) {
             } catch {
                 setError("Couldn't load room.");
             } finally {
-                setLoading(false);
+                // setLoading(false);
             }
         }
         load();
@@ -169,13 +168,6 @@ export default function RoomClient({ slug }: Props) {
         }
     }, [isNearBottom]);
 
-    if (loading)
-        return (
-            <section className="min-h-screen flex items-center justify-center">
-                Loading...
-            </section>
-        );
-
     if (error || !room)
         return (
             <section className="min-h-screen flex items-center justify-center">
@@ -184,13 +176,13 @@ export default function RoomClient({ slug }: Props) {
         );
 
     return (
-        <section className="relative min-h-screen bg-black text-white">
+        <section className="relative min-h-dvh bg-black text-white">
             <div className="flex justify-between">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3 }}
-                    className="mx-auto mt-8 mb-5 ml-6"
+                    className="mx-auto mt-8 mb-5 ml-5"
                 >
                     <Link
                         href="/connect"
@@ -202,8 +194,8 @@ export default function RoomClient({ slug }: Props) {
                     </Link>
                 </motion.div>
                 {/* <span className="w-1 h-6 rounded-sm bg-lime-400/40 flex-shrink-0" /> */}
-                <div className="flex items-center mt-2 mr-4.5 md:mr-18">
-                    <p className="bg-pink-400/10 text-pink-400/80 px-3 py-1 rounded-full text-xs tracking-tighter">
+                <div className="flex items-center mt-2 mr-5.5 md:mr-18">
+                    <p className="bg-pink-400/10 text-pink-400/70 px-3 py-1 rounded-full text-xs tracking-tighter">
                         {room.room.title}
                     </p>
                     {/* <p className="text-xs text-gray-500/60 tracking-tight">
@@ -221,7 +213,7 @@ export default function RoomClient({ slug }: Props) {
                             bottomRef.current?.scrollIntoView();
                             setNewMessages(0);
                         }}
-                        className="group fixed bottom-5 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 items-center rounded-full border-3 px-5 py-2 tracking-tighter text-xs text-white/70 backdrop-blur-2xl bg-white/10 border-pink-400/40 hover:text-white active:text-white active:bg-white/10 active:border-pink-400/30 hover:shadow-[0_0_30px_rgba(236,72,153,0.08)] active:shadow-[0_0_30px_rgba(236,72,153,0.08)] active:scale-95 transition-all duration-300 overflow-hidden"
+                        className="group fixed bottom-4 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 items-center rounded-full border-3 px-5 py-2 tracking-tighter text-xs text-white/70 backdrop-blur-2xl bg-white/10 border-pink-400/40 hover:text-white active:text-white active:bg-white/10 active:border-pink-400/30 hover:shadow-[0_0_30px_rgba(236,72,153,0.08)] active:shadow-[0_0_30px_rgba(236,72,153,0.08)] active:scale-95 transition-all duration-300 overflow-hidden"
                     >
                         <span className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-pink-500/5 via-transparent to-pink-500/5" />
                         {newMessages > 9 ? "9+ new" : `${newMessages} new`}
