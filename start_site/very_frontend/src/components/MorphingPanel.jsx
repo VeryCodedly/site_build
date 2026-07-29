@@ -12,7 +12,7 @@ const logos = [
   { src: "/logos/postcss.svg", alt: "PostCSS" },
   { src: "/logos/android.svg", alt: "Android" },
   { src: "/logos/google.svg", alt: "Google" },
-  { src: "/logos/opensourcehardware.svg", alt: "OpenSource" },
+  { src: "/logos/json.svg", alt: "JSON" },
   { src: "/logos/github.svg", alt: "GitHub" },
   { src: "/logos/vscode.svg", alt: "VSCode" },
   { src: "/logos/git.svg", alt: "Git" },
