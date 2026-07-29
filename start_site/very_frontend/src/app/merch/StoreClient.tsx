@@ -149,7 +149,7 @@ export default function StorePage({ products, error }: StoreClientProps) {
             initial={{ opacity: 0, y: 15 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.5, delay: 0.2 }} 
-            className="mt-6 text-base font-medium text-gray-300/85 mx-auto"
+            className="mt-6 text-base font-medium text-gray-400 mx-auto"
           >
             We make it. You make it look good.
           </motion.p>

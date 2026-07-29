@@ -235,7 +235,7 @@ export default function StartPage() {
                 </motion.h2>
               </div>
               <p className="text-gray-400 max-w-4xl text-sm sm:text-base">
-                Pick a room. Join or start a convo. You'll get a unique handle for the day.
+                Pick a room. Join or start a convo. You'll get a unique handle to chat with.
               </p>
             </div>
             <Link
