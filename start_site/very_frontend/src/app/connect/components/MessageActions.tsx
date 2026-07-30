@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFlag, faPersonDigging } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle, faFlag, faPersonDigging } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
     messageId: number;
@@ -45,6 +45,17 @@ export default function MessageActions({ messageId, onUpdate }: Props) {
         };
     }, []);
 
+    useEffect(() => {
+        if (expanded || confirm || thanks) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [expanded, confirm, thanks]);
+
     async function submit(
         action: "off_topic" | "bury"
     ) {
@@ -82,65 +93,82 @@ export default function MessageActions({ messageId, onUpdate }: Props) {
 
     if (thanks) {
         return (
-            <div className="flex gap-3 mt-2 text-xs text-gray-400/90 tracking-tighter">
-                <span className="text-lime-400">✓</span>
-                 Thanks. You helped mod today&apos;s room.
-            </div>
+            <>
+                <div className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm" onClick={close} />
+                <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+                    <div ref={menuRef} className="flex flex-col items-center justify-center gap-2 mt-2 text-base sm:text-lg text-gray-400/90 racking-tighter">
+                        <FontAwesomeIcon icon={faCheckCircle} className="text-lime-400" />
+                        Thank you. <p>You helped moderate today&apos;s room.</p>
+                    </div>
+                </div>
+            </>
         );
     }
     if (confirm) {
         return (
-            <div ref={menuRef} className="flex items-center gap-3 mt-2">
-                <p className="text-xs text-gray-300/90">
-                    {confirm === "bury"
-                        ? "Bury this comment?"
-                        : "Is this off topic?"}
-                </p>
-                <div className="flex gap-2 justify-center text-xs">
-                    <button
-                        onClick={() => submit(confirm)}
-                        className="hover:text-pink-800/90 active:text-pink-800/90 text-gray-300/90 transition tracking-tight"
-                    >
-                        Yes
-                    </button>
-                    <p className="text-white/60">|</p>
-                    <button
-                        // onClick={() => setConfirm(null)}
-                        onClick={close}
-                        className="text-gray-300/80 hover:text-white active:text-white transition tracking-tight"
-                    >
-                        Cancel
-                    </button>
+            <>
+                <div className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm" onClick={close} />
+                <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+                    <div ref={menuRef} className="flex flex-col items-center gap-6 mt-2">
+                        <p className="text-base sm:text-lg text-gray-300/90">
+                            {confirm === "bury"
+                                ? "Bury this comment?"
+                                : "Is this off topic?"}
+                        </p>
+                        <div className="flex gap-5 justify-center text-base sm:text-lg">
+                            <button
+                                onClick={() => submit(confirm)}
+                                className="hover:text-pink-800/90 active:text-pink-800/90 text-gray-300/90 transition tracking-tight"
+                            >
+                                Yes
+                            </button>
+                            <p className="text-white/45">|</p>
+                            <button
+                                // onClick={() => setConfirm(null)}
+                                onClick={close}
+                                className="text-gray-300/80 hover:text-white active:text-white transition tracking-tight"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </>
         );
     }
 
     if (expanded) {
         return (
-            <div className="mt-2 flex gap-5 text-xs group">
-                <div ref={menuRef} className="flex gap-3">
-                    <button
-                        onClick={() => setConfirm("off_topic")}
-                        className="text-gray-400/90 hover:text-pink-800/80 transition tracking-tight"
-                    >
-                        <FontAwesomeIcon icon={faFlag} /> Off topic
-                    </button>
-                    <p className="text-white/45">|</p>
-                    <button
-                        onClick={() => setConfirm("bury")}
-                        className="text-gray-400/90 hover:text-pink-800/80 transition tracking-tight"
-                    >
-                        <FontAwesomeIcon icon={faPersonDigging} /> Bury
-                    </button>
+            <>
+                <div className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm" onClick={close} />
+                <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+                    <div className="mt-2 flex text-base sm:text-lg group">
+                        <div ref={menuRef} className="flex gap-6">
+                            <button
+                                onClick={() => setConfirm("off_topic")}
+                                className="flex items-center gap-6 text-gray-400/90 hover:text-pink-800/80 transition tracking-tight"
+                            >
+                                <FontAwesomeIcon icon={faFlag} />
+                                <p>Off topic</p>
+                            </button>
+                            <p className="text-white/45">|</p>
+                            <button
+                                onClick={() => setConfirm("bury")}
+                                className="flex items-center gap-6 text-gray-400/90 hover:text-pink-800/80 transition tracking-tight"
+                            >
+                                <FontAwesomeIcon icon={faPersonDigging} />
+                                <p>Bury</p>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </>
         );
     }
     return (
         <button
             onClick={() => setExpanded(true)}
-            className="text-gray-400/90 hover:text-gray-200 active:text-lime-400 transition"
+            className="mr-[0.075rem] font-medium text-gray-400/90 hover:text-gray-200 active:text-lime-400 transition"
         >
             ···
         </button>

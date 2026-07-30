@@ -69,7 +69,7 @@ export default function ReactionBar({ messageId, reactions, onUpdate }: Props) {
     }
 
     return (
-        <div className="flex items-center gap-1.5 text-[12px] sm:text-xs">
+        <div className="flex items-center gap-2 text-[12px] sm:text-xs">
             {ITEMS.map((item) => {
                 const selected = pendingReaction !== null
                     ? pendingReaction === item

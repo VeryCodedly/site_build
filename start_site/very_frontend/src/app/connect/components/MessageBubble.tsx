@@ -42,7 +42,7 @@ export default function MessageBubble({ messages, onMessageUpdate }: Props) {
     }
 
     return (
-        <section className="mt-7 space-y- pb-42">
+        <section className="mt-7 pb-42">
             {messages.map((message, index) => {
                 const isViewed = view.includes(message.id);
                 const isLast = index === messages.length - 1;
@@ -54,7 +54,7 @@ export default function MessageBubble({ messages, onMessageUpdate }: Props) {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * .03, duration: .35 }}
-                            className="border-b border-zinc-900 py-"
+                            className="border-b border-zinc-900"
                         >
                             <button
                                 onClick={() => setView(prev => [...prev, message.id])}
@@ -78,7 +78,7 @@ export default function MessageBubble({ messages, onMessageUpdate }: Props) {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * .03, duration: .35 }}
-                            className="border-b border-zinc-900 py-"
+                            className="border-b border-zinc-900"
                         >
                             <button
                                 onClick={() => setView(prev => [...prev, message.id])}
@@ -105,13 +105,13 @@ export default function MessageBubble({ messages, onMessageUpdate }: Props) {
                     >
                         <div className="flex items-center justify-between">
                             <div className="flex gap-4 items-center">
-                            <h6 className={
-                                message.buried || message.off_topic_hidden
-                                    ? "text-sm text-zinc-600 tracking-tighter"
-                                    : "text-sm text-lime-400 tracking-tighter"
-                            }>
-                                {message.handle}
-                            </h6>
+                                <h6 className={
+                                    message.buried || message.off_topic_hidden
+                                        ? "text-sm text-zinc-600 tracking-tighter"
+                                        : "text-sm text-lime-400 tracking-tighter"
+                                }>
+                                    {message.handle}
+                                </h6>
                                 <ReactionBar
                                     messageId={message.id}
                                     reactions={message.reactions}
@@ -120,12 +120,15 @@ export default function MessageBubble({ messages, onMessageUpdate }: Props) {
                                     }
                                 />
                             </div>
-                            <MessageActions
-                                messageId={message.id}
-                                onUpdate={(data) => onMessageUpdate(message.id, data)
-                                }
-                            />
+                            
+                            <div className="relative">
+                                <MessageActions
+                                    messageId={message.id}
+                                    onUpdate={(data) => onMessageUpdate(message.id, data)}
+                                />
+                            </div>
                         </div>
+
                         <div className="flex flex-wrap items-end justify-end gap-0.5">
                             <p className={
                                 message.buried || message.off_topic_hidden
@@ -136,11 +139,11 @@ export default function MessageBubble({ messages, onMessageUpdate }: Props) {
                             </p>
                             <div className="flex justify-end">
                                 <span className="text-[0.62rem] text-gray-500 tracking-tighter pr-0.5 whitespace-nowrap flex-shrink-0">
-                                {new Date(message.created_at).toLocaleTimeString([], {
-                                    hour: "2-digit",
-                                    minute: "2-digit",
-                                    hour12: false,
-                                })}
+                                    {new Date(message.created_at).toLocaleTimeString([], {
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                        hour12: false,
+                                    })}
                                 </span>
                             </div>
                         </div>
