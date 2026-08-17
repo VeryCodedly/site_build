@@ -239,7 +239,7 @@ export default function StartPage() {
                 </motion.h2>
               </div>
               <p className="text-gray-400 max-w-4xl text-sm sm:text-base">
-                Videos, convos, and media worth pressing play for.
+                Videos, conversations, and ideas worth pressing play for.
               </p>
             </div>
             <Link

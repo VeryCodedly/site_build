@@ -44,7 +44,7 @@ export default function KnowClient({ initialData }: Props) {
         Media  from <span className="text-lime-400">VeryCodedly</span>
       </Motion.h2>
       <p className="text-sm sm:text-base text-gray-400 max-w-56 sm:max-w-xl mx-auto text-center">
-        Know what&apos;s happening.
+        Press play.
       </p>
 
       <main id="know" className="relative max-w-6xl mx-auto py-12 px-5 sm:px-6">

@@ -25,13 +25,13 @@ async function getSeries(): Promise<SeriesListResponse | null> {
 
 export const metadata: Metadata = {
   title: "Know",
-  description: "Tech, Code, Culture and everything in between, for people who want to understand what's happening, not just keep up.",
+  description: "Videos, conversations, and ideas worth pressing play for.",
   alternates: {
     canonical: "https://verycodedly.com/know",
   },
   openGraph: {
     title: "Know",
-    description: "Tech, Code, Culture and everything in between, for people who want to understand what’s happening, not just keep up.",
+    description: "Videos, conversations, and ideas worth pressing play for.",
     siteName: 'VeryCodedly',
     url: "https://verycodedly.com/know",
     images: [{ url: "https://verycodedly.com/know/opengraph-image.png" }],
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Know",
-    description: "Tech, Code, Culture and everything in between, for people who want to understand what’s happening, not just keep up.",
+    description: "Videos, conversations, and ideas worth pressing play for.",
     images: ["https://verycodedly.com/know/twitter-image.png"],
     creator: '@verycodedly'
   },

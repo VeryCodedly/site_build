@@ -11,7 +11,7 @@ export default function KnowSection() {
           More to <span className="text-pink-400">Know</span>
         </h2>
         <p className="text-sm sm:text-base text-gray-400 mb-12 max-w-2xl mx-auto">
-            Videos, convos, and media worth pressing play for.
+            Videos, conversations, and ideas worth pressing play for.
         </p>
         <div className="grid md:grid-cols-3 gap-8">
           {[
