@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 
-const desktopVideo = "/video/vc-web-intro-ups.mp4";
-const mobileVideo = "/video/vc-mob-intro-ups.mp4";
+const desktopVideo = "https://res.cloudinary.com/verycodedly/video/upload/f_auto,q_auto/v1785835337/vc-web-intro-ups.mp4";
+const mobileVideo = "https://res.cloudinary.com/verycodedly/video/upload/f_auto,q_auto/v1785835512/vc-mob-intro-ups.mp4";
 
 export default function KnowHero() {
   const desktopRef = useRef<HTMLVideoElement>(null);
@@ -41,7 +41,6 @@ export default function KnowHero() {
           controls={false}
           onEnded={finished}
           preload="metadata" // Changed to metadata
-          muted // Added for browsers
         >
           <source src={desktopVideo} type="video/mp4" />
         </video>
@@ -53,23 +52,12 @@ export default function KnowHero() {
           controls={false}
           onEnded={finished}
           preload="metadata" // Changed to metadata
-          muted // Added for browsers
         >
           <source src={mobileVideo} type="video/mp4" />
         </video>
 
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
 
-        {/* {!playing && (
-          <button
-            onClick={() => setPlaying(true)}
-            className="absolute bottom-20 sm:bottom-2 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full transition-opacity duration-600 bg-gradient-to-r from-pink-500/5 via-transparent to-pink-500/6
-                     hover:bg-white/20 active:bg-white/20 flex items-center justify-center"
-          >
-            <FontAwesomeIcon
-              icon={faPlay} size="xl" className="relative z-10 text-white/90 ml-0.5" />
-          </button>
-        )} */}
         {!playing && (
           <button
             onClick={() => setPlaying(true)}
