@@ -107,7 +107,7 @@ export default function KnowMenu({ series }: { series: Series[] }) {
                   setActiveSerieId(activeSerieId === serie.id ? null : serie.id);
                 }}
               >
-                <div className="flex items-center gap-4 sm:gap-4 p-2.5 sm:p-1.5 px-4 rounded-xl hover:bg-white/8 active:bg-white/8 transition-all duration-200">
+                <div className="flex items-center gap-3.5 sm:gap-4 p-2.5 sm:p-1.5 px-4 rounded-xl hover:bg-white/8 active:bg-white/8 transition-all duration-200">
                   <span className="text-xl text-pink-200/90 hover:text-pink-300/90 active:text-pink-300/90">
                     {icon ?
                       <Link href={`/know/series/${serie.slug}`}

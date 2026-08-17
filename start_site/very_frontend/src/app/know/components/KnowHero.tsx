@@ -40,9 +40,10 @@ export default function KnowHero() {
           playsInline
           controls={false}
           onEnded={finished}
-          preload="true" // Added
+          preload="metadata" // Changed to metadata
+          muted // Added for browsers
         >
-          <source src={desktopVideo} />
+          <source src={desktopVideo} type="video/mp4" />
         </video>
 
         <video
@@ -51,9 +52,10 @@ export default function KnowHero() {
           playsInline
           controls={false}
           onEnded={finished}
-          preload="true" // Added
+          preload="metadata" // Changed to metadata
+          muted // Added for browsers
         >
-          <source src={mobileVideo} />
+          <source src={mobileVideo} type="video/mp4" />
         </video>
 
         <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />

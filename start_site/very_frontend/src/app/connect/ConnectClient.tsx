@@ -88,7 +88,7 @@ export default function ConnectClient({
               Pick a room. <span className="text-lime-400">Join or start a convo.</span>
             </h2>
 
-            <p className="mt-2 text-sm text-gray-300/60 max-w-lg leading-relaxed">
+            <p className="mt-2 text-sm text-gray-300/60 max-w-lg leading-relaxed tracking-tighter">
               Convos reset daily. Handles refresh. Be nice. <br />Or else...
             </p>
 

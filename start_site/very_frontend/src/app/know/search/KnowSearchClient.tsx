@@ -93,7 +93,7 @@ export default function KnowSearchClient({ initialQuery }: Props) {
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.3 }}
-        className="my-3 ml-6"
+        className="ml-6"
       >
         <Link
           href="/know"
@@ -104,7 +104,7 @@ export default function KnowSearchClient({ initialQuery }: Props) {
         </Link>
       </Motion.div>
 
-      <section className="relative max-w-[97%] mx-auto pt-8 px-6 sm:px-8 pb-20">
+      <section className="relative max-w-[97%] mx-auto pt-12 px-6 sm:px-8 pb-20">
         <div className="max-w-3xl">
           <div className="flex items-center gap-3 mb-6">
             <span className="w-1.5 h-8 bg-lime-400 rounded-sm" />
@@ -117,8 +117,8 @@ export default function KnowSearchClient({ initialQuery }: Props) {
             </Motion.span>
           </div>
 
-          <h1 className="hero max-w-xl text-6xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-[0.90]">
-            <span className="text[4.55rem] sm:text-[4.65rem] md:text-[4.75rem]">w</span>hat would you like to
+          <h1 className="hero max-w-xl text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-[0.90]">
+            <span className="text[4.65rem] sm:text-[4.65rem] md:text-[4.75rem]">w</span>hat would you like to
             <span className="text-lime-400">
               {" "}know?
             </span>
@@ -217,8 +217,8 @@ export default function KnowSearchClient({ initialQuery }: Props) {
 
           {searched && !loading && !error &&
             results.length === 0 && (
-              <div className="py-20 text-center">
-                <p className="text-2xl font-semibold text-white/80">
+              <div className="py-16 mt-12 text-center">
+                <p className="text-xl sm:text-2xl font-semibold text-white/80 tracking-tight">
                   Whelp. Nothing on that.
                 </p>
                 <p className="mt-3 text-gray-500">
