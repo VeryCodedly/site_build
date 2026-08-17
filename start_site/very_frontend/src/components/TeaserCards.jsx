@@ -68,25 +68,25 @@ export default function TeaserCards() {
               transition-all duration-300 group`}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.92 }}
-            style={{ zIndex: 0 }} 
+            style={{ zIndex: 0 }}
             onMouseEnter={(e) => (e.currentTarget.style.zIndex = 10)}
             onMouseLeave={(e) => (e.currentTarget.style.zIndex = 0)}
-          >        
-          <Link aria-label={card.title} href={card.href} key={index}>
-            <div className={`${card.color} text-3xl mb-4 transition-transform duration-300`}>
-              <FontAwesomeIcon icon={card.icon} />
-            </div>
+          >
+            <Link aria-label={card.title} href={card.href} key={index}>
+              <div className={`${card.color} text-3xl mb-4 transition-transform duration-300`}>
+                <FontAwesomeIcon icon={card.icon} />
+              </div>
 
-            <h2 className="text-white text-xl md:text-2xl font-semibold mb-2 group-hover:underline active:underline">
-              {card.title}
-            </h2>
-          </Link>
+              <h2 className="text-white text-xl md:text-2xl font-semibold mb-2 group-hover:underline active:underline">
+                {card.title}
+              </h2>
 
-            <p className="text-gray-300/90 text-base sm:text-sm leading-relaxed">
-              {card.description}
-            </p>
+              <p className="text-gray-300/90 text-base sm:text-sm leading-relaxed">
+                {card.description}
+              </p>
 
-            <div className={`absolute bottom-4 left-10 h-0.5 w-20 ${card.accent} opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500`}></div>
+              <div className={`absolute bottom-4 left-10 h-0.5 w-20 ${card.accent} opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500`}></div>
+            </Link>
           </Motion.div>
         ))}
       </div>

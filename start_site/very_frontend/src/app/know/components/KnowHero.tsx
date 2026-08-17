@@ -52,7 +52,7 @@ export default function KnowHero() {
           playsInline
           controls={false}
           onEnded={finished}
-          preload="metadata" // Changed to metadata
+          preload="auto" // Changed to auto because tiny
         >
           <source src={mobileVideo} type="video/mp4" />
         </video>

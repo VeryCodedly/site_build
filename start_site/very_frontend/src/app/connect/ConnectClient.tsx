@@ -89,7 +89,7 @@ export default function ConnectClient({
             </h2>
 
             <p className="mt-2 text-sm text-gray-300/60 max-w-lg leading-relaxed tracking-tighter">
-              Convos reset daily. Handles refresh. Be nice. <br />Or else...
+              Convos reset daily. Handles refresh.<br />Be nice. Or else...
             </p>
 
             <div className="mt-6 flex items-center gap-4 text-[11px] text-gray-600 font-medium">
