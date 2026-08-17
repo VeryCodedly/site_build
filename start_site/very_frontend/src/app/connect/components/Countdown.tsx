@@ -27,7 +27,7 @@ export default function Countdown() {
   return (
 
     <div className="text-center">
-      <p className="text-[10px] font-medium uppercase tracking-[.3em] text-gray-600">
+      <p className="text-[10px] font-medium uppercase tracking-[.3em] text-gray-500/80">
         Today ends in
       </p>
       <p className="mt-1 font-semibold text-sm text-gray-300">

@@ -34,21 +34,19 @@ export default function ConnectClient({
 
         <ConnectHero />
 
-        <section
-          id="rooms"
-          className="max-w-7xl mx-auto px-5 sm:px-8 pt-4 pb-12"
+        <section id="rooms" className="group/bar max-w-7xl mx-auto px-5 sm:px-8 pt-4 pb-12"
         >
-          <div className="flex flex-row justify-between gap-8 items-center mb-8 group">
+          <div className="flex flex-row justify-between gap-8 items-center mb-8">
             <div className="flex items-center gap-3">
-              <span className="w-1.5 h-10 rounded-xs bg-lime-400 transition-colors group-hover:bg-pink-400 group-active:bg-pink-400" />
-              <Motion.h3
+              <span className="w-1.5 h-10 rounded-xs bg-lime-400 group-hover/bar:bg-pink-400 group-active/bar:bg-pink-400 transition-colors" />
+              <Motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
                 className="text-3xl text-white font-bold">
                 Rooms
-              </Motion.h3>
+              </Motion.h2>
             </div>
             <p className="text-xs sm:text-sm text-gray-500 mt-1">
               Pick any. We&apos;ll give you a handle for today.

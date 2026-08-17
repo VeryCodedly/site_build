@@ -34,7 +34,8 @@ export default function ConnectHero() {
             Connect
           </a>
           <span className="text-xs text-gray-500 flex items-center gap-2">
-            <span className="text-lime-400 opacity-50"><FontAwesomeIcon icon={faClock} size="sm" /></span>
+            <span className="text-pink-400 opacity-50"><FontAwesomeIcon icon={faClock} size="sm" /></span>
+            
             <Countdown />
           </span>
         </Motion.div>

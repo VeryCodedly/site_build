@@ -35,7 +35,7 @@ export default function KnowClient({ initialData }: Props) {
       <KnowHero />
 
       <Motion.h2
-        className="mt-14 text-4xl md:text-5xl font-bold mb-6 px-8 md:px-8 text-center text-white/90"
+        className="mt-18 text-4xl md:text-5xl font-bold mb-6 px-8 md:px-8 text-center text-white/90"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
