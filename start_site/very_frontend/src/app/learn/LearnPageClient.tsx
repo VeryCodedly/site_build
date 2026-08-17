@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion as Motion } from "framer-motion"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
+import {
   faLongArrowRight,
   faRocket,
   faUsers,
@@ -41,7 +41,7 @@ export default function LearnPage({ courses }: Props) {
         {/* Background gradient */}
         {/* <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(163,230,53,0.05),transparent_50%)] pointer-events-none" /> */}
         {/* <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(244,114,182,0.05),transparent_50%)] pointer-events-none" /> */}
-        
+
         {/* Content wrapper */}
         <div className="relative max-w-6xl mx-auto flex flex-col items-center justify-center text-center gap-8">
           {/* Pill badge */}
@@ -49,7 +49,7 @@ export default function LearnPage({ courses }: Props) {
             <FontAwesomeIcon icon={faCompass} className="text-lime-400 text-sm" />
             <span className="text-xs text-lime-400 font-medium tracking-wide">YOUR JOURNEY STARTS HERE</span>
           </div> */}
-          
+
           <h1 className="hero text-5xl sm:text-6xl md:text-7xl font-black leading-tight text-center">
             <span className="inline-block">
               Learn.{" "}
@@ -71,29 +71,29 @@ export default function LearnPage({ courses }: Props) {
               </Motion.span>
             </span>
           </h1>
-          
+
           <p className="text-gray-400 px-2 sm:px-0 text-md md:text-lg max-w-2xl">
             Beginner-friendly coding lessons that help complex ideas click,
             one concept at a time.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row items-center gap-8 py-12">
-            <a 
-              href="#courses" 
+            <a
+              href="#courses"
               className="font-bold sm:font-bold cursor-pointer border-3 border-gray-500/100 bg-lime-400 text-black px-6 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
             active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
             >
               Start Learning
             </a>
-            <a 
-              href="#featured" 
+            <a
+              href="#featured"
               className="text-sm text-gray-400 hover:text-white active:text-white transition-colors flex items-center gap-2"
             >
               <span>Featured Lessons</span>
               <FontAwesomeIcon icon={faLongArrowRight} size="sm" />
             </a>
           </div>
-          
+
           {/* <div className="h-0.5 w-24 bg-gradient-to-r from-lime-400 to-lime-400 mt-8 rounded-full"></div> */}
         </div>
       </section>
@@ -105,7 +105,7 @@ export default function LearnPage({ courses }: Props) {
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
-                <Motion.p 
+                <Motion.p
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
@@ -116,7 +116,7 @@ export default function LearnPage({ courses }: Props) {
             </div>
             <div className="md:col-span-2 space-y-6">
               <p className="text-gray-300/90 text-base leading-relaxed">
-                Most coding resources rush you from syntax to frameworks. 
+                Most coding resources rush you from syntax to frameworks.
                 <span className="text-lime-400 font-medium"> VeryCodedly goes the other way.</span> We start with understanding, then build from there.
               </p>
               <div className="grid sm:grid-cols-2 gap-5">
@@ -176,7 +176,7 @@ export default function LearnPage({ courses }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-             className="text-xs uppercase tracking-widest text-gray-500">GUIDED JOURNEYS</Motion.p>
+              className="text-xs uppercase tracking-widest text-gray-500">GUIDED JOURNEYS</Motion.p>
           </div>
           <h2 className="text-4xl sm:text-5xl font-black mb-4">
             Choose Your <span className="text-lime-400">Learning Path</span>
@@ -185,7 +185,7 @@ export default function LearnPage({ courses }: Props) {
             Not sure where to start? Follow a path designed to take you from beginner to confident.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
@@ -255,9 +255,9 @@ export default function LearnPage({ courses }: Props) {
               <span className="w-1.5 h-4 bg-lime-400 rounded-xs group-hover/bar:bg-pink-400 group-active/bar:bg-pink-400"></span>
               <Motion.span
                 initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}>START HERE
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}>START HERE
               </Motion.span>
             </p>
             <h2 className="text-4xl sm:text-5xl font-black mb-4">
@@ -267,7 +267,7 @@ export default function LearnPage({ courses }: Props) {
               Solid introductions to core concepts. Pick one and start learning in minutes.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
@@ -338,7 +338,7 @@ export default function LearnPage({ courses }: Props) {
               </Motion.div>
             ))}
           </div>
-          
+
           <div className="mt-10 text-center">
             <a href="#courses" className="text-sm inline-flex items-center gap-2 text-gray-400 hover:text-white active:text-white transition-colors">
               Browse courses <FontAwesomeIcon icon={faArrowRight} size="sm" />
@@ -360,7 +360,7 @@ export default function LearnPage({ courses }: Props) {
                   transition={{ duration: 0.6 }}
                   viewport={{ once: true }}
                   className="text-xs uppercase tracking-widest text-gray-500">YOU&apos;LL USE THESE
-                 </Motion.p>
+                </Motion.p>
               </div>
               <h2 className="text-4xl sm:text-5xl font-black">
                 Tools & <span className="text-lime-400">Resources</span>
@@ -370,7 +370,7 @@ export default function LearnPage({ courses }: Props) {
               The technologies we teach are used in production. You&apos;ll learn how.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-3 sm:grid-cols-6 gap-4 mb-4">
             {[
               { src: "/logos/vscode.svg", name: "VS Code" },
@@ -386,12 +386,12 @@ export default function LearnPage({ courses }: Props) {
                 className="bg-zinc-900/50 border border-zinc-900 p-3 rounded-xl hover:border-zinc-500/50 hover:shadow-[0_0_6px_#222222] transition-all duration-300 group"
                 tabIndex={0}
               >
-                <Image 
-                  src={icon.src} 
-                  alt={icon.name} 
-                  className="w-12 h-12 mx-auto mb-2 group-hover:brightness-110 transition-all" 
-                  width={48} 
-                  height={48} 
+                <Image
+                  src={icon.src}
+                  alt={icon.name}
+                  className="w-12 h-12 mx-auto mb-2 group-hover:brightness-110 transition-all"
+                  width={48}
+                  height={48}
                 />
                 <p className="text-xs text-center text-gray-600 transition-colors">{icon.name}</p>
               </Motion.div>
@@ -409,17 +409,17 @@ export default function LearnPage({ courses }: Props) {
                 <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
                 <Motion.p
                   initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-                 className="text-xs uppercase tracking-widest text-gray-500">JOIN US
-                 </Motion.p>
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="text-xs uppercase tracking-widest text-gray-500">JOIN US
+                </Motion.p>
               </div>
               <h2 className="text-4xl sm:text-5xl font-black mb-6">
                 Join the <span className="text-lime-400">Community</span>
               </h2>
               <p className="text-gray-400 text-base leading-relaxed mb-8">
-                Ask questions, share progress, get feedback, and learn with 
+                Ask questions, share progress, get feedback, and learn with
                 people who are also figuring things out. No pressure.
               </p>
               <div className="flex gap-8">
@@ -458,13 +458,33 @@ export default function LearnPage({ courses }: Props) {
         </div>
       </section>
 
-      {/* FOOTER NOTE */}
-      <div className="max-w-6xl mx-auto mt-12 px-6 text-center pb-12">
-        <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent mx-auto mb-4" />
-        <p className="text-xs text-gray-700 pb-6">
-          We&apos;ll keep it simple, one concept at a time.
-        </p>
-      </div>
+      {/* Bottom CTA */}
+      <section className="pt-20 pb-28 text-center">
+        <div className="flex flex-col items-center gap-2">
+          <h4 className="text-2xl font-bold text-white/90 tracking-tight">
+            Still got questions?
+          </h4>
+          <p className="text-sm text-gray-400/80 mt-1">
+            We&apos;re listening. There&apos;s more to know.
+          </p>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-6 mt-6 justify-center items-center">
+              <Link
+                href="/connect"
+                className="tracking-tighter font-bold sm:font-bold border-3 border-gray-500/100 bg-lime-400 text-black px-7 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
+                         active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
+              >
+                Connect
+              </Link>
+
+              <Link
+                href="/know"                
+                className="hover:font-bold border-3 border-gray-500/100 px-9 py-1 rounded-full text-white hover:bg-white active:bg-white hover:text-black
+                        active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
+                Know
+              </Link>
+            </div>
+      </section>
     </div>
   );
 }

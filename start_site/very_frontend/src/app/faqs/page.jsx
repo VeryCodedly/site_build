@@ -130,7 +130,7 @@ export default function FAQsPage() {
                   We're a small operation running things manually. Multiple items might ship separately depending on what they are. Shipping times vary because, well, shipping is weird sometimes.
                 </p>
                 <p>
-                  Everything is final sale for now, as all items are made to order. We're figuring out the logistics and don't want to promise returns we can't handle cleanly. <br />No vex.
+                  Everything is final sale for now, as all items are made to order. That's how print-on-demand works.
                 </p>
                 <Link 
                   href="/merch" 

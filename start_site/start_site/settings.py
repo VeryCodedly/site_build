@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'axes',
     'connect',
+    'know',
 ]
 
 # --- MIDDLEWARE ---

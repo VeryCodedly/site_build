@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faNewspaper, faFolderOpen, faFolderBlank, faGraduationCap, faBookOpen, faMagnifyingGlassMinus, faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faNewspaper, faFolderOpen, faFolderBlank, faGraduationCap, faBookOpen, faMagnifyingGlassMinus, faCartShopping, faCirclePlay, faPlay, faComments, faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 
@@ -70,6 +70,14 @@ export default function SearchBar() {
                 return faBookOpen;
             case "faCartShopping":
                 return faCartShopping;
+            case "faCirclePlay":
+                return faCirclePlay;
+            case "faPlay":
+                return faPlay;
+            case "faLightbulb":
+                return faLightbulb;
+            case "faComments":
+                return faComments;
             default:
                 return faSearch;
         }

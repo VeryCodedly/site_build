@@ -104,24 +104,26 @@ export default function MessageBubble({ messages, onMessageUpdate }: Props) {
                         className="pb-1 pt-0.5"
                     >
                         <div className="flex items-center justify-between">
-                            <div className="flex gap-4 items-center">
+                            <div className="flex gap-3 items-center min-w-0 flex-1">
                                 <h6 className={
                                     message.buried || message.off_topic_hidden
-                                        ? "text-sm text-zinc-600 tracking-tighter"
-                                        : "text-sm text-lime-400 tracking-tighter"
+                                        ? "text-sm text-zinc-600 tracking-tighter truncate"
+                                        : "text-sm text-lime-400 tracking-tighter truncate"
                                 }>
                                     {message.handle}
                                 </h6>
-                                <ReactionBar
-                                    messageId={message.id}
-                                    reactions={message.reactions}
-                                    onUpdate={(reactions) =>
-                                        onMessageUpdate(message.id, { reactions: { ...reactions, mine: reactions.mine ?? null } })
-                                    }
-                                />
+                                <div className="flex-shrink-0">
+                                    <ReactionBar
+                                        messageId={message.id}
+                                        reactions={message.reactions}
+                                        onUpdate={(reactions) =>
+                                            onMessageUpdate(message.id, { reactions: { ...reactions, mine: reactions.mine ?? null } })
+                                        }
+                                    />
+                                </div>
                             </div>
-                            
-                            <div className="relative">
+
+                            <div className="relative flex-shrink-0">
                                 <MessageActions
                                     messageId={message.id}
                                     onUpdate={(data) => onMessageUpdate(message.id, data)}

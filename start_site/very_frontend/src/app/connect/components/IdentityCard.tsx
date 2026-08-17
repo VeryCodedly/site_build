@@ -33,8 +33,8 @@ export default function IdentityCard({ handle }: Props) {
         </div>
 
         <div className="mt-1">
-          <span className="text-2xl font-light text-white/60 mr-1">@</span>
-          <span className="text-3xl font-bold tracking-tight text-lime-400">
+          <span className="text-xl sm:text-2xl font-light text-white/60 mr-1">@</span>
+          <span className="text-2xl sm:text-3xl font-bold tracking-tight text-lime-400">
             {handle}
           </span>
         </div>

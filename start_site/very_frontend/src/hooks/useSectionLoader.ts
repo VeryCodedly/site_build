@@ -13,10 +13,7 @@ export function useSectionLoader<T>(url: string) {
     const observer = new IntersectionObserver(
       async ([entry]) => {
         if (!entry.isIntersecting) return;
-
-        // prevents double fetch
         if (hasLoadedRef.current) return;
-        hasLoadedRef.current = true;
 
         observer.unobserve(el); // better than disconnect?
 
@@ -28,9 +25,11 @@ export function useSectionLoader<T>(url: string) {
           if (!res.ok) return;
 
           const json = await res.json();
+          hasLoadedRef.current = true;
           setData(json);
         } catch (err) {
           console.error(err);
+          hasLoadedRef.current = false;  // Added another attempt if request failed
         }
       },
       {

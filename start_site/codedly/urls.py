@@ -1,6 +1,6 @@
 from django.urls import path
-from django.http import HttpResponse
 from .views import api_home, global_search, ReadInitialView, ReadSectionView, SitemapPostsView, create_store_order, flutterwave_webhook, calculate_shipping_view, track_order, get_order_status, update_order_after_payment
+
 
 urlpatterns = [
     path('', api_home, name='api_home'),

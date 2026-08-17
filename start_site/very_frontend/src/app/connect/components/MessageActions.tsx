@@ -168,7 +168,7 @@ export default function MessageActions({ messageId, onUpdate }: Props) {
     return (
         <button
             onClick={() => setExpanded(true)}
-            className="mr-[0.075rem] font-medium text-gray-400/90 hover:text-gray-200 active:text-lime-400 transition"
+            className="font-medium text-gray-400/90 hover:text-gray-200 active:text-lime-400 transition"
         >
             ···
         </button>

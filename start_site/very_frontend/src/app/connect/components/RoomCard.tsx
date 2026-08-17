@@ -52,7 +52,7 @@ export default function RoomCard({ room }: Props) {
 
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-lime-400/60 group-hover:bg-lime-400 group-active:bg-lime-400 transition-colors duration-200" />
-          <span className="text-[10px] tracking-[0.15em] uppercase text-gray-500">Room</span>
+          <span className="text-[10px] tracking-[0.15em] uppercase text-gray-500">Live</span>
         </div>
 
         <h2 className="mt-4 text-xl sm:text-2xl font-bold text-white group-hover:text-lime-400 group-active:text-lime-400 transition-colors duration-200">

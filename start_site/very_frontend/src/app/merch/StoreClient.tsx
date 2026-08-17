@@ -26,7 +26,8 @@ interface StoreClientProps {
 
 export default function StorePage({ products, error }: StoreClientProps) {
 
-  if (error) return <section className="relative min-h-screen pt-10 pb-30 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-950/50 flex items-center justify-center"><div className="text-center"><p className="text-gray-400 mb-4">{error}</p><Link href="/merch" className="text-lime-400 hover:text-white transition-colors">Continue shopping →</Link></div></section>;
+  if (error) return <section className="relative min-h-screen pt-10 pb-30 px-4 sm:px-6 bg-gradient-to-b from-black to-zinc-950/50 flex items-center justify-center">
+    <div className="text-center"><p className="text-gray-400 mb-4">{error}</p><Link href="/merch" className="text-lime-400 hover:text-white transition-colors">Continue shopping →</Link></div></section>;
 
   const hats = products.filter(p => p.category === "hats");
   const drink = products.filter(p => p.category === "drink");
@@ -112,7 +113,7 @@ export default function StorePage({ products, error }: StoreClientProps) {
   );
 
   return (
-    <section className="w-full bg-gradient-to-b from-black to-zinc-950/40 text-white min-h-screen pb-28 px-3 sm:px-5">
+    <section className="w-full bg-gradient-to-b from-black to-zinc-950/40 text-white min-h-screen pb-22 px-3 sm:px-5">
       {/* Back button */}
       {/* <motion.div
         initial={{ opacity: 0, x: -20 }}
@@ -211,10 +212,30 @@ export default function StorePage({ products, error }: StoreClientProps) {
       {renderSection("Drink", "Hot, cold, whatever you're into.", drink)}
       {renderSection("Workspace", "You'll notice the difference.", workspace)}
 
-      <div className="max-w-7xl mx-auto mt-16 text-center">
+      {/* <div className="max-w-7xl mx-auto mt-16 text-center">
         <div className="w-16 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent mx-auto" />
-        {/* <p className="text-xs text-gray-700">See anything you like? Enjoy.</p> */}
-      </div>
+        <p className="text-xs text-gray-700">See anything you like? Enjoy.</p>
+      </div> */}
+      {/* Bottom CTA */}
+      <section className="pt-10 pb-4 text-center">
+        <div className="flex flex-col items-center gap-2">
+          <h4 className="text-2xl font-bold text-white/90 tracking-tight">
+            See something you like?
+          </h4>
+          <p className="text-sm text-gray-400/80 mt-1">
+            It could be yours soon.
+          </p>
+        </div>
+        <div className="flex justify-center mt-6">
+          <a
+            href="#t-shirts"
+            className="font-bold sm:font-bold border-3 border-gray-500/100 bg-lime-400 text-black px-8 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
+                  active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
+          >
+            Show Me
+          </a>
+        </div>
+      </section>
     </section>
   );
 }

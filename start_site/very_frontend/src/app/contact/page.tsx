@@ -220,7 +220,8 @@ export default function ContactPage() {
                   active:bg-white active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] 
                   active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
               >
-                Send Message
+                <span className="md:hidden">Send</span>
+                <span className="hidden md:inline">Send Message</span>
               </button>
             </Motion.div>
           </form>

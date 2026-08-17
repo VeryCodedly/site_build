@@ -41,12 +41,12 @@ export default function PrivacyPage() {
                 desc: "We collect anonymous site usage data (like which pages are visited) to help us improve the site."
               },
               {
-                title: "Encrypted connections and no server tracking.",
-                desc: "HTTPS everywhere. We don't run tracking scripts on our own servers."
+                title: "Connections are encrypted.",
+                desc: "HTTPS everywhere. We use this throughout the site to protect data as it travels between your browser and our servers."
               },
               {
-                title: "We never sell your data.",
-                desc: "Not to advertisers, not to marketers, not to anyone. This includes store order data."
+                title: "No ad tracking anywhere.",
+                desc: "We don't use your data for advertising. We don't sell your data. Not to advertisers, not to marketers, not to anyone. This includes store order data."
               },
               {
                 title: "Want to start fresh?",
@@ -82,7 +82,7 @@ export default function PrivacyPage() {
               <h3 className="border-l-4 border-lime-400 rounded-sm pl-4 text-lg font-semibold text-white">What we store (on your device):</h3>
               <ul className="text-gray-300/90 text-sm sm:text-base leading-relaxed mt-1 ml-5 space-y-2 list-disc list-inside">
                 <li><strong>Course progress</strong> (e.g., “HTML Module 3 completed”)</li>
-                <li><strong>Analytics cookies</strong>  for anonymous usage data</li>
+                <li><strong>Analytics cookies</strong> for anonymous usage data</li>
                 <li>An anonymous identifier tied to your browser session</li>
                 <li>A one-way hash of your IP address to help prevent spam</li>
                 <li><strong>That’s it.</strong></li>
@@ -91,9 +91,9 @@ export default function PrivacyPage() {
                 We don't know who you are from this information, and we don't sell or use it for advertising.</p>
             </div>
 
-            {/* Store section - separate because this collects personal data */}
-            <div className="my-10 pt-6 border-t border-gray-800">
-              <h3 className="text-xl sm:text-2xl font-semibold text-white mb-4">
+            {/* Store section - separate because store orders require shipping information */}
+            <div className="my-8 pt-6 border-t border-gray-800">
+              <h3 className="text-center text-xl sm:text-2xl font-semibold text-white mb-4">
                 <Link href="/merch" className="text-lime-400 hover:text-lime-300 active:text-white transition-colors duration-200">
                   Store Orders
                 </Link>
@@ -105,7 +105,7 @@ export default function PrivacyPage() {
                 </div>
                 <div>
                   <p className="border-l-4 border-lime-400 pl-4 rounded-sm font-medium text-white">How we use it:</p>
-                  <p className="mt-1 ml-5">We share this data with our fulfillment partner solely to ship your items, and we never use it for marketing or sell it to anyone.</p>
+                  <p className="mt-1 ml-5">We share this data with our fulfillment partner solely to ship your items. We don't sell it and we don't use it for marketing.</p>
                 </div>
                 <div>
                   <p className="border-l-4 border-lime-400 pl-4 rounded-sm font-medium text-white">Third‑party processing:</p>
@@ -115,7 +115,7 @@ export default function PrivacyPage() {
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-gray-800">
+          <div className="mt-8 pt-6 border-t border-gray-800 text-center">
             <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed">
               Got questions? Reach out anytime via our{' '}
               <Link
@@ -127,7 +127,7 @@ export default function PrivacyPage() {
             </p>
           </div>
 
-          <p className="mt-6 text-xs text-gray-500 italic text-center">
+          <p className="mt-8 text-xs text-gray-500 italic text-center">
             Last updated: July 2026
           </p>
         </Motion.div>

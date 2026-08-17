@@ -1,0 +1,92 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import KnowSearch from "./KnowSearch";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
+
+
+const desktopVideo = "/video/vc-web-intro-ups.mp4";
+const mobileVideo = "/video/vc-mob-intro-ups.mp4";
+
+export default function KnowHero() {
+  const desktopRef = useRef<HTMLVideoElement>(null);
+  const mobileRef = useRef<HTMLVideoElement>(null);
+
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    if (!playing) return;
+
+    const video =
+      window.innerWidth < 640 ? mobileRef.current : desktopRef.current;
+
+    video?.play();
+  }, [playing]);
+
+  function finished() {
+    setPlaying(false);
+
+    desktopRef.current?.load();
+    mobileRef.current?.load();
+  }
+
+  return (
+    <section className="bg-black max-h-screen overflow-hidden">
+      <div className="relative h-[70vh] sm:h-[67vh] md:h-[67vh] lg:h-[67vh]">
+        <video
+          ref={desktopRef}
+          className="hidden sm:block md:block lg:block h-full w-full object-cover"
+          playsInline
+          controls={false}
+          onEnded={finished}
+          preload="true" // Added
+        >
+          <source src={desktopVideo} />
+        </video>
+
+        <video
+          ref={mobileRef}
+          className="sm:hidden h-full w-full object-cover"
+          playsInline
+          controls={false}
+          onEnded={finished}
+          preload="true" // Added
+        >
+          <source src={mobileVideo} />
+        </video>
+
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/60" />
+
+        {/* {!playing && (
+          <button
+            onClick={() => setPlaying(true)}
+            className="absolute bottom-20 sm:bottom-2 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full transition-opacity duration-600 bg-gradient-to-r from-pink-500/5 via-transparent to-pink-500/6
+                     hover:bg-white/20 active:bg-white/20 flex items-center justify-center"
+          >
+            <FontAwesomeIcon
+              icon={faPlay} size="xl" className="relative z-10 text-white/90 ml-0.5" />
+          </button>
+        )} */}
+        {!playing && (
+          <button
+            onClick={() => setPlaying(true)}
+            className="absolute bottom-20 sm:bottom-2 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full overflow-hidden group flex items-center justify-center transition-opacity duration-300"
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-pink-500/5 via-transparent to-pink-500/6 rounded-full" />
+
+            <span className="pointer-events-none absolute inset-0">
+              <span className="absolute inset-0 bg-gradient-to-b from-pink-300/30 to-pink-600/30 rounded-full translate-y-full group-hover:translate-y-0 group-active:translate-y-0 transition-transform duration-400 ease-out" />
+            </span>
+
+            <FontAwesomeIcon icon={faPlay} size="xl" className="relative z-10 text-white/90 ml-0.5" />
+          </button>
+        )}
+      </div>
+
+      <div className="max-w-2xl mx-auto px-8 py-4">
+        <KnowSearch />
+      </div>
+    </section>
+  );
+}

@@ -2,7 +2,6 @@ from rest_framework import serializers
 from rest_framework.filters import SearchFilter
 from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson, LessonResource, StoreOrder, StoreProduct, PrintfulProducts
 from taggit.serializers import TagListSerializerField
-from rest_framework import serializers
 
 
 class PrintfulProductSerializer(serializers.ModelSerializer):

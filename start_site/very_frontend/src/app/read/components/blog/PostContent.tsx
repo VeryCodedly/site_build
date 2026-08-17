@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLongArrowRight, faCalendar, faUser, faPencil, faCopy, faCode } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faLinkedinIn, faTwitter, faWhatsapp, faDiscord, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faLinkedinIn, faTwitter, faWhatsapp, faDiscord } from '@fortawesome/free-brands-svg-icons';
 import CodeBlock from '@/app/learn/components/CodeBlock';
 import { Post } from '@/types/post';
 // import { useEffect } from 'react';
@@ -116,7 +116,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
               {post.subcategory?.name || 'General'}
             </Link>
           </div>
-          <div className="inline-block px-">
+          <div className="inline-block">
             <span className="flex gap-3.5">
               <Link href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=https://verycodedly.com/read/${post.slug}`} target="_blank" rel="noopener noreferrer" className="hover:text-lime-500 transition duration-400 active:text-lime-400 hover:scale-110 active:scale-60 text-lg" title="Share on Twitter">
                 <FontAwesomeIcon icon={faTwitter} size="1x" />
@@ -182,46 +182,46 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                       </Link>
                     </p>
                   );
-                  case "table":
-                return (
-                  <div key={index} className="overflow-x-auto my-10 transition-transform duration-300 hover:scale-[1.01]">
-                    <table className="w-full border-collapse backdrop-blur-md bg-zinc-900/40 border border-white/70 rounded-xl shadow-lg overflow-hidden">
-                      <thead className="bg-zinc-700/30">
-                        <tr>
-                          {block.headers?.map((header, i) => (
-                            <th
-                              key={i}
-                              className="px-4 py-3 text-left text-sm sm:text-base text-white/90 border-b border-white/30"
-                            >
-                              {header}
-                            </th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {block.rows?.map((row, ri) => (
-                          <tr
-                            key={ri}
-                            className="hover:bg-white/10 active:bg-white/10 dark:hover:bg-zinc-700/20 transition-colors"
-                          >
-                            {row.map((cell, ci) => (
-                              <td
-                                key={ci}
-                                className="px-4 py-3 text-white/80 text-xs sm:text-base border-b border-white/10"
+                case "table":
+                  return (
+                    <div key={index} className="overflow-x-auto my-10 transition-transform duration-300 hover:scale-[1.01]">
+                      <table className="w-full border-collapse backdrop-blur-md bg-zinc-900/40 border border-white/70 rounded-xl shadow-lg overflow-hidden">
+                        <thead className="bg-zinc-700/30">
+                          <tr>
+                            {block.headers?.map((header, i) => (
+                              <th
+                                key={i}
+                                className="px-4 py-3 text-left text-sm sm:text-base text-white/90 border-b border-white/30"
                               >
-                                {cell}
-                              </td>
+                                {header}
+                              </th>
                             ))}
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                );
+                        </thead>
+                        <tbody>
+                          {block.rows?.map((row, ri) => (
+                            <tr
+                              key={ri}
+                              className="hover:bg-white/10 active:bg-white/10 dark:hover:bg-zinc-700/20 transition-colors"
+                            >
+                              {row.map((cell, ci) => (
+                                <td
+                                  key={ci}
+                                  className="px-4 py-3 text-white/80 text-xs sm:text-base border-b border-white/10"
+                                >
+                                  {cell}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  );
                 case 'callout':
                   return (
                     <div key={index} className="p-3 sm:p-4 border border-pink-500/20 bg-zinc-900/50 rounded-xl text-gray-300/90 italic backdrop-blur-sm shadow-lg text-sm">
-                     💡 {block.content || 'No callout content.'}
+                      💡 {block.content || 'No callout content.'}
                     </div>
                   );
                 case 'code':
@@ -276,9 +276,9 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
 
       {/* Gallery */}
       {post.images && post.images.length > 0 && (<div className="mb-8 sm:mb-12">
-        <h2 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-white flex items-center gap-3">
+        <h2 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-white flex items-center gap-4">
           <span className="w-3 h-3 rounded-full bg-lime-400" />
-           Gallery
+          Gallery
         </h2>
         {post.images && post.images.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -304,9 +304,9 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
 
       {/* Tags */}
       <div className="mb-8 sm:mb-12">
-        <h3 className="text-lg sm:text-xl font-semibold mb-4 text-white gap-3 flex items-center">
-            <span className="w-3 h-3 rounded-full bg-lime-400" />
-            Tags
+        <h3 className="text-lg sm:text-xl font-semibold mb-4 text-white gap-4 flex items-center">
+          <span className="w-3 h-3 rounded-full bg-lime-400" />
+          Tags
         </h3>
         {post.tags && Array.isArray(post.tags) && post.tags.length > 0 ? (
           <div className="flex flex-wrap gap-2">
@@ -323,7 +323,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
 
       {/* Related Links */}
       {post.links && post.links.length > 0 && (<div className="mb-8 sm:mb-12">
-        <h3 className="text-lg sm:text-xl font-semibold mb-4 text-white gap-3 flex items-center">
+        <h3 className="text-lg sm:text-xl font-semibold mb-4 text-white gap-4 flex items-center">
           <span className="w-3 h-3 rounded-full bg-lime-400" />
           Related Links
         </h3>
@@ -376,17 +376,39 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
         // transition={{ duration: 0.6, delay: 0.6 }}
         className="mb-8 sm:mb-12"
       >
-        <h3 className="text-lg sm:text-xl font-bold mb-4 text-white flex items-center gap-3">
+        <h3 className="text-lg sm:text-xl font-bold mb-4 text-white flex items-center gap-4">
           <span className="w-3 h-3 rounded-full bg-lime-400" />
           Join the Discussion
         </h3>
 
         <p className="italic text-gray-400 text-sm sm:text-base mb-6 leading-relaxed">
           Enjoyed this? Ask questions, share your take (hot, lukewarm, or undecided), or follow the thread with people in real time.
-          The community’s open, join us.
+          We&apos;re waiting, join us.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          {/* YouTube - When videos */}
+          <Link
+            href="/connect"
+            className="group flex items-center w-full group justify-between bg-black/40 rounded-xl transition-all duration-300"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-gray-300/10 rounded-lg flex items-center justify-center">
+                <div className="relative w-15 h-12 flex-shrink-0">
+                  <Image
+                    src="/images/favicon-main.svg"
+                    alt="VeryCodedly"
+                    fill
+                    className="object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-200"
+                  />
+                </div>
+              </div>
+              <div>
+                <p className="text-white group-active:underline">VeryCodedly Connect</p>
+                <p className="text-sm text-gray-400 italic">Questions, takes & real-time chat</p>
+              </div>
+            </div>
+          </Link>
           {/* Discord - Primary */}
           <Link
             href="https://discord.gg/53wVsqEcbE"
@@ -396,39 +418,13 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
           >
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-gray-300/10 rounded-lg flex items-center justify-center">
-                <FontAwesomeIcon icon={faDiscord} className="text-2xl text-gray-400 group-hover:text-indigo-600 group-active:text-indigo-600" />
+                <FontAwesomeIcon icon={faDiscord} className="text-2xl text-gray-400 group-hover:text-indigo-700 group-active:text-indigo-700" />
               </div>
               <div>
                 <p className="text-white group-active:underline">Discord Community</p>
                 <p className="text-sm text-gray-400 italic">Chat, code sharing & more</p>
               </div>
             </div>
-            {/* <FontAwesomeIcon 
-            icon={faLongArrowRight} 
-            className="text-lime-400 group-hover:translate-x-1 transition"
-          /> */}
-          </Link>
-
-          {/* YouTube - When videos */}
-          <Link
-            href="https://youtube.com/@verycodedly"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center w-full group justify-between bg-black/40 rounded-xl transition-all duration-300"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-gray-300/10 rounded-lg flex items-center justify-center">
-                <FontAwesomeIcon icon={faYoutube} className="text-2xl text-gray-400 group-hover:text-red-600 group-active:text-red-600" />
-              </div>
-              <div>
-                <p className="text-white group-active:underline">YouTube Comments</p>
-                <p className="text-sm text-gray-400 italic">Video version & comments</p>
-              </div>
-            </div>
-            {/* <FontAwesomeIcon 
-            icon={faLongArrowRight} 
-            className="text-lime-400 group-hover:translate-x-1 transition"
-          /> */}
           </Link>
 
           {/* more if needed, e.g. dev.to, Bluesky */}

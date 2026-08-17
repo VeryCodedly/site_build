@@ -38,6 +38,8 @@ from django.db import transaction
 from dotenv import load_dotenv
 from .cache_utils import make_cache_key
 
+from know.models import Media, Series, Topic, Format
+from connect.models import Room
 load_dotenv()
 
  
@@ -152,7 +154,7 @@ def global_search(request):
         Q(excerpt__icontains=q) |
         Q(content_plain_text__icontains=q),
         status="published",
-    ).select_related("category", "subcategory")[:6]
+    ).select_related("category", "subcategory")[:5]
     )
 
     for p in posts:
@@ -168,7 +170,7 @@ def global_search(request):
         })
 
     # 2. Categories
-    categories = Category.objects.filter(name__icontains=q)[:5]
+    categories = Category.objects.filter(name__icontains=q)[:3]
     for c in categories:
         results.append({
             "type": "Category",
@@ -207,7 +209,7 @@ def global_search(request):
     lessons = Lesson.objects.filter(
         Q(title__icontains=q) | Q(content_plain_text__icontains=q),
         status="published",
-    ).select_related("course")[:6]
+    ).select_related("course")[:5]
     for l in lessons:
         results.append({
             "type": "Lesson",
@@ -217,11 +219,86 @@ def global_search(request):
             "icon": "faBookOpen",
         })
         
+    # 6. Know Media
+    media = (
+        Media.objects.filter(
+            Q(title__icontains=q) |
+            Q(description__icontains=q) |
+            Q(transcript__icontains=q),
+            status="published",
+        )
+        .select_related("topic", "media_format", "series")[:5]
+    )
+    for m in media:
+        subtitle_parts = []
+        if m.topic:
+            subtitle_parts.append(m.topic.title)
+        if m.media_format:
+            subtitle_parts.append(m.media_format.title)
+        subtitle = " → ".join(subtitle_parts)
+        results.append({
+            "type": "Media",
+            "title": m.title,
+            "subtitle": subtitle,
+            "url": f"/know/{m.slug}",
+            "icon": "faPlay",
+        })
+        
+    # 7. Know Series
+    series = Series.objects.filter(title__icontains=q)[:5]
+    for s in series:
+        results.append({
+            "type": "Series",
+            "title": s.title,
+            "subtitle": s.description if s.description else "",
+            "url": f"/know/series/{s.slug}",
+            "icon": "faCirclePlay",
+        })
+        
+    # 8. Know Topics
+    topics = Topic.objects.filter(title__icontains=q)[:5]
+    for t in topics:
+        results.append({
+            "type": "Topic",
+            "title": t.title,
+            # "subtitle": "Know",
+            "url": f"/know/topic/{t.slug}",
+            "icon": "faLightbulb",
+        })
+        
+    # 9. Know Formats
+    # formats = Format.objects.filter(
+    #     title__icontains=q,
+    # )[:5]
+    # for f in formats:
+    #     results.append({
+    #         "type": "Know Format",
+    #         "title": f.title,
+    #         "url": f"/know/format/{f.slug}",
+    #         "icon": "faPlay",
+    #     })
+    
+    # 10. Connect Rooms
+    rooms = Room.objects.filter(
+        Q(title__icontains=q) |
+        Q(description__icontains=q),
+        is_active=True,
+    )[:3]
+    for room in rooms:
+        results.append({
+            "type": "Room",
+            "title": room.title,
+            "subtitle": room.description,
+            "url": f"/connect/{room.slug}",
+            "icon": "faComments",
+        })
+        
+    # 6. Store Products
     products = PrintfulProducts.objects.filter(
         Q(name__icontains=q) | Q(description__icontains=q),
         status="published",
         is_active=True
-    )[:6]
+    )[:5]
     for p in products:
         results.append({
             "type": "VeryCodedly Supply",
@@ -229,7 +306,7 @@ def global_search(request):
             "subtitle": p.category.title(),
             "url": f"/merch/{p.slug}",
             "icon": "faCartShopping",
-        })
+        })  
 
     # return Response({"results": results})
     results_dict = {"results": results}
@@ -238,11 +315,8 @@ def global_search(request):
 
 
 class ReadInitialView(APIView):
-
     def get(self, request):
-
         cache_key = make_cache_key("read_initial")
-
         cached = cache.get(cache_key)
 
         if cached:
@@ -273,9 +347,7 @@ class ReadInitialView(APIView):
 
 
 class ReadSectionView(APIView):
-
     def get_posts(self, slug, limit, request):
-
         posts = (
             Post.objects
             .select_related("category", "subcategory")

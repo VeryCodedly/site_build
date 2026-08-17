@@ -19,7 +19,7 @@ export default function MiniPostCard({ post }: { post: Post }) {
         </div>
       )}
       <div>
-        <h3 className="text-sm sm:text-base text-white hover:text-lime-300 active:text-lime-400 line-clamp-3">
+        <h3 className="text-sm sm:text-base text-white hover:text-lime-400 active:text-lime-300 line-clamp-3">
           {post.title}
         </h3>
         <p className="text-xs text-gray-400/80 mt-1" suppressHydrationWarning>

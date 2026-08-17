@@ -30,7 +30,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative bg-gradient-to-b from-black to-zinc-950 text-gray-400/95 pt-22 sm:pt-18 pb-8 px-8 overflow-clip border-t border-zinc-950">
+    <footer className="relative bg-gradient-to-b from-black to-zinc-950 text-gray-400/95 pt-22 sm:pt-18 pb-8 px-8 sm:px-4 md:px-8 overflow-clip border-t border-zinc-950">
       {/* faint glow background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
 

@@ -22,7 +22,7 @@ export default function StartPage() {
             Start <span className="bg-gradient-to-r from-white via-lime-200 to-white bg-clip-text text-transparent">Here</span>
           </h1>
 
-          <p className="text-base md:text-lg text-gray-300/80 max-w-5xl mx-auto md:mx-0 leading-relaxed">
+          <p className="text-base text-gray-300/80 max-w-5xl mx-auto md:mx-0 leading-relaxed">
             Welcome to <span className="font-semibold text-lime-400">VeryCodedly.</span>{" "}
             If this is your first time here, this page will guide you through the
             best places to begin from courses to articles to chatrooms, and a few
@@ -42,8 +42,9 @@ export default function StartPage() {
                 <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/courses:bg-pink-400 group-active/courses:bg-pink-400" />
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
                   className="text-2xl font-bold text-white">Learn the Fundamentals
                 </motion.h2>
               </div>
@@ -102,8 +103,9 @@ export default function StartPage() {
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/paths:bg-pink-400 group-active/paths:bg-pink-400" />
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-2xl font-bold text-white">Suggested Learning Paths
             </motion.h2>
           </div>
@@ -135,8 +137,9 @@ export default function StartPage() {
                 <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/takes:bg-pink-400 group-active/takes:bg-pink-400" />
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
                   className="text-2xl font-bold text-white">Tech Takes
                 </motion.h2>
               </div>
@@ -187,8 +190,9 @@ export default function StartPage() {
             <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/reads:bg-pink-400 group-active/reads:bg-pink-400" />
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
               className="text-2xl font-bold text-white">Popular Reads
             </motion.h2>
           </div>
@@ -219,6 +223,79 @@ export default function StartPage() {
           </div>
         </section>
 
+        {/* KNOW */}
+        <section className="space-y-8 group/know">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/know:bg-pink-400 group-active/know:bg-pink-400" />
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="text-2xl font-bold text-white"
+                >
+                  Know
+                </motion.h2>
+              </div>
+              <p className="text-gray-400 max-w-4xl text-sm sm:text-base">
+                Videos, convos, and media worth pressing play for.
+              </p>
+            </div>
+            <Link
+              href="/know"
+              className="group flex items-center gap-2 text-lime-400 hover:text-lime-200 active:text-lime-200 tracking-tighter text-sm font-medium transition-colors"
+            >
+              Explore
+              <FontAwesomeIcon icon={faArrowRight} className="text-xs group-active:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              {
+                title: "VeryCodedly Today",
+                desc: "What's happening in tech right now, explained in way under 10 minutes.",
+                slug: "verycodedly-today",
+              },
+              {
+                title: "The Climb",
+                desc: "Behind the scenes of building, figuring things out, and hopefully not failing.",
+                slug: "the-climb",
+              },
+              {
+                title: "Very Decoded",
+                desc: "Explainers for the tech stuff you’re curious about but forgot to Google.",
+                slug: "very-decoded",
+              },
+            ].map((series, i) => (
+              <Link
+                key={i}
+                href={`/know/series/${series.slug}`}
+                className="group block bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(163,230,53,0.05)] active:border-zinc-400/30 hover:scale-102 active:scale-92 transition-all duration-300"
+              >
+                <div className="flex items-start justify-between">
+                  <h3 className="font-semibold text-white group-hover:text-lime-400 group-active:text-lime-400 transition-colors">
+                    {series.title}
+                  </h3>
+                  <span className="text-xs text-gray-600 font-mono">
+                    {(i + 1).toString().padStart(2, '0')}
+                  </span>
+                </div>
+                <p className="mt-2 text-sm text-gray-400 leading-relaxed">
+                  {series.desc}
+                </p>
+                <div className="mt-4 flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-gray-600" />
+                  <span className="text-[10px] font-medium tracking-[0.1em] uppercase text-gray-500/60 group-hover:text-white transition-colors">
+                    Series
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* CONNECT */}
         <section className="space-y-8 group/connect">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -227,8 +304,9 @@ export default function StartPage() {
                 <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/connect:bg-pink-400 group-active/connect:bg-pink-400" />
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
                   className="text-2xl font-bold text-white"
                 >
                   Connect
@@ -249,14 +327,14 @@ export default function StartPage() {
 
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              { name: "Right Now", slug: "right-now" },
-              { name: "First Commit", slug: "first-commit" },
-              { name: "The Usual Suspect", slug: "the-usual-suspect" },
+              { name: "Right Now", slug: "right-now", desc:"Happening as you scroll." },
+              { name: "First Commit", slug: "first-commit", desc: "New to coding? Start here." },
+              { name: "The Usual Suspect", slug: "the-usual-suspect", desc: "Ah, yes. AI." },
             ].map((room, i) => (
               <Link
                 key={room.slug}
                 href={`/connect/${room.slug}`}
-                className="group block bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(163,230,53,0.05)] active:border-zinc-400/30 transition-all duration-300"
+                className="group block bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(163,230,53,0.05)] active:border-zinc-400/30 hover:scale-102 active:scale-92 transition-all duration-300"
               >
                 <div className="flex items-start justify-between">
                   <h3 className="font-semibold text-white group-hover:text-lime-400 group-active:text-lime-400 transition-colors">
@@ -266,6 +344,9 @@ export default function StartPage() {
                     <FontAwesomeIcon icon={faUsers} />
                   </span>
                 </div>
+                <p className="mt-2 text-sm text-gray-400 leading-relaxed">
+                  {room.desc}
+                </p>
                 <div className="mt-3 flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-lime-400 animate-pulse" />
                   <span className="text-[10px] font-medium tracking-[0.1em] uppercase text-lime-400/60 group-hover:text-white group-active:text-white">live</span>
@@ -274,7 +355,7 @@ export default function StartPage() {
             ))}
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-gray-500/70 pt-2">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-gray-500/70 pt-2">
             <span>no accounts</span>
             <span className="w-px h-3 bg-gray-600/90" />
             <span>no signups</span>
@@ -287,7 +368,7 @@ export default function StartPage() {
         <section className="relative pt-12">
           {/* <div className="absolute left-0 top-0 w-24 h-px bg-zinc-800" /> */}
 
-          <div className="space-y-4 max-w-3xl">
+          <div className="space-y-4 max-w-4xl">
             <h2 className="text-2xl font-bold text-white pb-2.5">Why We Do This</h2>
 
             <p className="text-gray-300/90 leading-relaxed">
@@ -295,12 +376,12 @@ export default function StartPage() {
             </p>
 
             <p className="text-gray-300/90 leading-relaxed">
-              We connect how software is built with how it shapes the world around us, whether that’s a new gadget, a coding workflow, or an industry trend most people haven’t noticed yet.
-              Instead of treating tech like an exclusive club, we treat it like a conversation. If you're curious enough to ask questions, you're already in the right place.
+              We connect how software is built with how it shapes the world around us, whether that’s a headline, a line of code, a new gadget, or an industry trend.
+              Instead of treating tech like something you need an invitation to understand, we treat it like a conversation. If you're curious enough to ask questions, you're already in the right place.
             </p>
 
-            <div className="py-3 flex items-center gap-2 text-sm text-gray-500">
-              <p>Explore the courses. Read the articles. Build something interesting. Share your knowledge.</p>
+            <div className="py-3 flex items-center gap-2 text-sm text-gray-500 tracking-tighter">
+              <p>Read the articles. Learn something new. Connect with others. Share what you Know.</p>
             </div>
           </div>
         </section>

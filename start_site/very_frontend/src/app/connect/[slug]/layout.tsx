@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Room } from "@/types/connect";
 
-
-type Room = {
-    title: string;
-    slug: string;
-    description: string;
-};
 
 type Props = {
     params: Promise<{ slug: string }>;
@@ -33,10 +28,7 @@ async function getRoom(slug: string): Promise<Room | null> {
     }
 }
 
-export async function generateMetadata(
-    props: Props
-): Promise<Metadata> {
-
+export async function generateMetadata(props: Props): Promise<Metadata> {
     const { slug } = await props.params;
     const room = await getRoom(slug);
 
@@ -71,10 +63,6 @@ export async function generateMetadata(
     };
 }
 
-export default function ConnectRoomLayout({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
+export default function ConnectRoomLayout({ children }: { children: React.ReactNode }) {
     return children;
 }

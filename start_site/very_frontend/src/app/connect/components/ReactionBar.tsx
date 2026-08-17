@@ -100,7 +100,7 @@ export default function ReactionBar({ messageId, reactions, onUpdate }: Props) {
                                 : item.charAt(0).toUpperCase()
                             }
                             {count > 0 && (
-                                <span className={`ml-0.5 text-[11px] font-medium transition-all duration-300 ease-out 
+                                <span className={`ml0.5 text-[11px] font-medium transition-all duration-300 ease-out 
                                     ${selected ? "text-lime-400/80" : "text-gray-400/70"}`}>
                                     {" "}{count}
                                 </span>

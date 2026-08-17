@@ -26,8 +26,12 @@ export default function TermsPage() {
           <div className="space-y-6 mt-10">
             {[
               {
+                title: "Information & Content",
+                desc: "Content across VeryCodedly is provided for general informational, educational, and entertainment purposes. Technology changes quickly, so information may become outdated or may not apply to every situation. Opinions and commentary are not intended as professional advice. You are responsible for how you use any information, code, or recommendations provided."
+              },
+              {
                 title: "Permitted Use",
-                desc: "Content is provided for personal, non-commercial educational use only. You may not reproduce, distribute, or create derivative works without prior written permission."
+                desc: "You may access and use the site for personal, non-commercial purposes. You may share links to VeryCodedly content, but you may not reproduce, redistribute, or create derivative works from our content without prior written permission."
               },
               {
                 title: "Prohibited Activities",
@@ -35,7 +39,7 @@ export default function TermsPage() {
               },
               {
                 title: "Intellectual Property",
-                desc: "All content, including text, code, and design, is protected by copyright and owned by the platform or its licensors."
+                desc: "VeryCodedly's original content, including its text, code, graphics, branding, and design, is protected by applicable intellectual property laws and is owned by VeryCodedly or its licensors. Third-party content remains the property of its respective owners."
               },
               {
                 title: "No Warranty",
@@ -43,7 +47,7 @@ export default function TermsPage() {
               },
               {
                 title: "Limitation of Liability",
-                desc: "We are not liable for any indirect, incidental, or consequential damages arising from your use of the site."
+                desc: "To the extent permitted by applicable law, VeryCodedly will not be liable for indirect, incidental, special, consequential, or similar damages arising from or related to your use of the site."
               },
               {
                 title: "Modifications",
@@ -51,7 +55,7 @@ export default function TermsPage() {
               },
               {
                 title: "Community Guidelines",
-                desc: "Connect is intended for respectful technical discussion. Don't spam, impersonate others, post illegal content, or intentionally disrupt conversations. We may hide or remove content that harms the experience for everyone."
+                desc: "Connect is intended for respectful technical discussion. You're responsible for what you post. Don't spam, impersonate others, post illegal content, or intentionally disrupt conversations. By posting content, you allow VeryCodedly to host, display, and moderate it. We may hide or remove content that violates these terms or harms the experience for everyone."
               },
               {
                 title: "Please",
@@ -74,16 +78,12 @@ export default function TermsPage() {
           </div>
 
           <div className="mt-8 pt-6 border-t border-gray-800">
-            <h3 className="text-xl sm:text-2xl text-white font-semibold mb-3">
+            <h3 className="text-center text-xl sm:text-2xl text-white font-semibold mb-3">
               <Link href="/merch" className="text-lime-400 hover:text-lime-300 active:text-white transition-colors duration-200">
                 Store Use
               </Link>
             </h3>
             <ul className="space-y-2 text-gray-300/90 text-sm sm:text-base">
-              <li className="flex items-start gap-3">
-                <span className="w-1.5 h-1.5 bg-white rounded-full mt-1.5 flex-shrink-0" />
-                <span>Orders are fulfilled manually.</span>
-              </li>
               <li className="flex items-start gap-3">
                 <span className="w-1.5 h-1.5 bg-white rounded-full mt-1.5 flex-shrink-0" />
                 <span>Shipping times may vary.</span>
@@ -94,12 +94,16 @@ export default function TermsPage() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="w-1.5 h-1.5 bg-white rounded-full mt-1.5 flex-shrink-0" />
-                <span>Store products are non-refundable for now.</span>
+                <span>Manufacturing or delivery damage should be reported promptly.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="w-1.5 h-1.5 bg-white rounded-full mt-1.5 flex-shrink-0" />
+                <span>Store products are print-on-demand and are not eligible for returns or refunds.</span>
               </li>
             </ul>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-gray-800">
+          <div className="text-center mt-8 pt-6 border-t border-gray-800">
             <p className="text-gray-300/90 text-sm sm:text-base leading-relaxed">
               Questions about these terms? Contact us via the{' '}
               <Link href="/contact" className="text-lime-400 hover:text-lime-300 active:underline active:text-white transition-colors">
@@ -108,8 +112,8 @@ export default function TermsPage() {
             </p>
           </div>
 
-          <p className="mt-10 text-xs text-gray-500 italic text-center">
-            Last revised: May 2026
+          <p className="mt-8 text-xs text-gray-500 italic text-center">
+            Last revised: August 2026
           </p>
         </Motion.div>
       </div>

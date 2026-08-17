@@ -84,12 +84,12 @@ export default function ConnectClient({
               <span className="text-[10px] tracking-[0.2em] uppercase text-gray-500">Rooms are live</span>
             </div>
 
-            <h2 className="text-2xl font-bold text-white tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
               Pick a room. <span className="text-lime-400">Join or start a convo.</span>
             </h2>
 
             <p className="mt-2 text-sm text-gray-300/60 max-w-lg leading-relaxed">
-              Conversations reset daily. Handles refresh. Be nice. <br />Or else...
+              Convos reset daily. Handles refresh. Be nice. <br />Or else...
             </p>
 
             <div className="mt-6 flex items-center gap-4 text-[11px] text-gray-600 font-medium">

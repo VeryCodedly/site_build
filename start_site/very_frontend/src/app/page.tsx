@@ -10,6 +10,8 @@ import LearnSection from "../components/LearnSection";
 import SHELLySection from "@/components/SHELLySection";
 import ConnectSection from "@/components/ConnectSection";
 import Footer from "@/components/Footer";
+import KnowSection from "@/components/KnowSection";
+
 
 export default function Home() {
   return (
@@ -24,6 +26,8 @@ export default function Home() {
         <ReadSection />
 
         <LearnSection />
+
+        <KnowSection />
 
         <ConnectSection />
 
