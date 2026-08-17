@@ -6,8 +6,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 
-const desktopVideo = "https://res.cloudinary.com/verycodedly/video/upload/f_auto,q_auto/v1785835337/vc-web-intro-ups.mp4";
-const mobileVideo = "https://res.cloudinary.com/verycodedly/video/upload/f_auto,q_auto/v1785753698/vc-intro-mob-fx.mp4";
+const desktopVideo = "/video/vc-web-intro-ups.mp4";
+const mobileVideo = "/video/vc-intro-mob-fx.mp4";
+
 
 export default function KnowHero() {
   const desktopRef = useRef<HTMLVideoElement>(null);
