@@ -25,7 +25,7 @@ export default function StartPage() {
           <p className="text-base text-gray-300/80 max-w-5xl mx-auto md:mx-0 leading-relaxed">
             Welcome to <span className="font-semibold text-lime-400">VeryCodedly.</span>{" "}
             If this is your first time here, this page will guide you through the
-            best places to begin from courses to articles to chatrooms, and a few
+            best places to begin from courses to articles, series to chatrooms, and a few
             paths you can follow depending on what you&apos;re trying to learn.
           </p>
 

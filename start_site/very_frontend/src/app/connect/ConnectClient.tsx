@@ -1,9 +1,9 @@
 "use client";
 
 import { motion as Motion } from "framer-motion";
-
 import ConnectHero from "../connect/components/ConnectHero";
 import RoomGrid from "../connect/components/RoomGrid";
+import SearchBar from "../../components/SearchBar";
 
 interface Room {
   title: string;
@@ -18,10 +18,7 @@ interface ConnectClientProps {
   error: string | null;
 }
 
-export default function ConnectClient({
-  rooms,
-  error,
-}: ConnectClientProps) {
+export default function ConnectClient({ rooms, error }: ConnectClientProps) {
   return (
     <section className="relative min-h-screen overflow-hidden bg-gradient-to-b from-black via-black to-zinc-950 text-white">
       {/* Background image */}
@@ -34,9 +31,8 @@ export default function ConnectClient({
 
         <ConnectHero />
 
-        <section id="rooms" className="group/bar max-w-7xl mx-auto px-5 sm:px-8 pt-4 pb-12"
-        >
-          <div className="flex flex-row justify-between gap-8 items-center mb-8">
+        <section id="rooms" className="group/bar max-w-7xl mx-auto pt-4 pb-12">
+          <div className="flex flex-row justify-between gap-8 px-6 items-center mb-8">
             <div className="flex items-center gap-3">
               <span className="w-1.5 h-10 rounded-xs bg-lime-400 group-hover/bar:bg-pink-400 group-active/bar:bg-pink-400 transition-colors" />
               <Motion.h2
@@ -48,7 +44,7 @@ export default function ConnectClient({
                 Rooms
               </Motion.h2>
             </div>
-            <p className="text-xs sm:text-sm text-gray-500 mt-1">
+            <p className="text-xs sm:text-sm text-gray-500 mt-1.5">
               Pick any. We&apos;ll give you a handle for today.
             </p>
           </div>
@@ -68,9 +64,13 @@ export default function ConnectClient({
               </p>
             </Motion.div>
           ) : (
-            <RoomGrid rooms={rooms} />
+            <div className="px-8 sm:px-8">
+              <RoomGrid rooms={rooms} />
+            </div>
           )}
         </section>
+
+        <SearchBar />
 
         <section className="relative max-w-4xl mx-auto px-6 py-10 mt-16 mb-22">
           <div className="flex flex-col items-center text-center">
@@ -82,7 +82,7 @@ export default function ConnectClient({
               <span className="text-[10px] tracking-[0.2em] uppercase text-gray-500">Rooms are live</span>
             </div>
 
-            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tighter">
               Pick a room. <span className="text-lime-400">Join or start a convo.</span>
             </h2>
 
@@ -103,7 +103,7 @@ export default function ConnectClient({
               <span className="w-px h-3 bg-gray-800/60" />
               <span className="flex items-center gap-1.5">
                 <span className="w-1 h-1 rounded-full bg-gray-600" />
-                  24hr rooms
+                24hr rooms
               </span>
             </div>
           </div>
