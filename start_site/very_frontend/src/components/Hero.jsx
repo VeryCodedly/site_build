@@ -12,9 +12,9 @@ export default function Hero() {
       <div className="flex-1 space-y-6 z-20 mx-auto md:items-center">
         {/* <div className="min-h-[230px] w-[400px] flex relative"> */}
         {/* <div className="w-full max-w-[400px] min-w-[180px] min-h-[180px] sm:min-h-[180px] md:min-h-[230px] flex relative"> */}
-        <div className="w-full max-w-[340px] sm:max-w-[400px] min-h-[170px] min-w-[300px] sm:min-h-[220px] sm:min-w-[400px] flex relative">
+        <div className="w-full max-w-[340px] sm:max-w-[400px] min-h-[180px] min-w-[300px] sm:min-h-[230px] sm:min-w-[400px] flex relative">
           <h1 className="hero text-[2.9rem] sm:text-6xl md:text-6xl lg:text-6xl text-white font-extrabold leading-tight">
-            <span className="hero opacity-0 w-full max-w-[400px] min-h-[170px] min-w-[300px] sm:min-h-[220px] sm:min-w-[400px] flex absolute">
+            <span className="hero opacity-0 w-full max-w-[400px] min-h-[180px] min-w-[300px] sm:min-h-[230px] sm:min-w-[400px] flex absolute">
               Ready to see what's next in Tech?
             </span>
             <Typewriter
@@ -36,7 +36,7 @@ export default function Hero() {
             <span className="lg:hidden">Learn</span>
             <span className="hidden lg:inline">Start Learning</span>
           </Link>
-          <Link href="/read" aria-label="Read Page button" className="hover:font-semibold border-3 border-gray-500/100 px-7.5 py-1 rounded-full text-white hover:bg-white active:bg-white hover:text-black
+          <Link href="/read" aria-label="Read Page button" className="hover:font-semibold border-3 border-gray-500/100 px-7 py-1 rounded-full text-white hover:bg-white active:bg-white hover:text-black
             active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
             <span className="lg:hidden">Read</span>
             <span className="hidden lg:inline">Discover Read</span>

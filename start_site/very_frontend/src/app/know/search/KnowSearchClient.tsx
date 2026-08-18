@@ -106,18 +106,18 @@ export default function KnowSearchClient({ initialQuery }: Props) {
 
       <section className="relative max-w-[97%] mx-auto pt-12 px-6 sm:px-8 pb-20">
         <div className="max-w-3xl">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="w-1.5 h-8 bg-lime-400 rounded-sm" />
+          <div className="flex items-center gap-3 mb-7">
+            <span className="w-1.5 h-5 bg-lime-400 rounded-sm" />
             <Motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-xs font-medium uppercase tracking-[0.15em] text-gray-400/85">
+              className="text-[10px] font-medium uppercase tracking-[0.15em] text-gray-400/85">
               Media
             </Motion.span>
           </div>
 
-          <h1 className="hero max-w-xl text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter leading-[0.90]">
+          <h1 className="hero max-w-2xl text-5xl sm:text-6xl md:text-7xl font-black tracking-tigh leading-[0.90]">
             <span className="text[4.65rem] sm:text-[4.65rem] md:text-[4.75rem]">w</span>hat would you like to
             <span className="text-lime-400">
               {" "}know?
@@ -128,19 +128,19 @@ export default function KnowSearchClient({ initialQuery }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mt-6 text-sm text-gray-400/85 max-w-xl leading-relaxed"
+            className="mt-8 text-sm text-gray-400/85 max-w-2xl leading-relaxed"
           >
               Search across VeryCodedly&apos;s media library for videos, podcasts, interviews, everything.
           </Motion.p>
         </div>
 
-        <form onSubmit={handleSubmit} className="group mt-8 max-w-full sm:max-w-2xl">
+        <form onSubmit={handleSubmit} className="group mt-6 max-w-full sm:max-w-2xl">
           <div className="relative flex items-center">
             <input
               // type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Try AI, React, cybersecurity, tech news..."
+              placeholder="Try AI, react, code, tech news..."
               className="w-full text-sm rounded-3xl bg-white/6 px-8 py-5 pr-14 overflow-hidden border-b-2 border-b-white/12 focus:border-b-2
                         resize-none outline-none focus:border-b-lime-400/70 transition leading-5 text-gray-200 placeholder:text-gray-600"
               autoComplete="off"

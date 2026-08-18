@@ -59,7 +59,7 @@ export default function RoomCard({ room }: Props) {
           {room.title}
         </h2>
 
-        <p className="mt-2 text-sm text-gray-400/80 leading-relaxed">
+        <p className="mt-2 text-sm text-gray-400/85 leading-relaxed">
           {room.description}
         </p>
 
