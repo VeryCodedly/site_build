@@ -1,11 +1,11 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion as Motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import MediaItem from "../components/MediaItem";
 import { MediaCard } from "@/types/know";
 
@@ -89,7 +89,7 @@ export default function KnowSearchClient({ initialQuery }: Props) {
 
   return (
     <main className="relative w-full bg-gradient-to-b from-black to-zinc-950/30 text-white min-h-screen py-7 overflow-hidden">
-      <Motion.div
+      {/* <Motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.3 }}
@@ -102,23 +102,24 @@ export default function KnowSearchClient({ initialQuery }: Props) {
           <FontAwesomeIcon icon={faArrowLeft} size="lg" />
           <span className="sr-only">Back to Know</span>
         </Link>
-      </Motion.div>
+      </Motion.div> */}
 
-      <section className="relative max-w-[97%] mx-auto pt-12 px-6 sm:px-8 pb-20">
+      <section className="relative max-w-[97%] mx-auto pt-10 px-6 sm:px-8 pb-20">
         <div className="max-w-3xl">
-          <div className="flex items-center gap-3 mb-7">
-            <span className="w-1.5 h-5 bg-lime-400 rounded-sm" />
+          <div className="flex items-center gap-3 mb-10">
+            <span className="w-1.5 h-7 bg-lime-400 rounded-sm" />
             <Motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-[10px] font-medium uppercase tracking-[0.15em] text-gray-400/85">
+              className="text-xs font-medium uppercase tracking-[0.15em] text-gray-400/85"
+            >
               Media
             </Motion.span>
           </div>
 
-          <h1 className="hero max-w-2xl text-5xl sm:text-6xl md:text-7xl font-black tracking-tigh leading-[0.90]">
-            <span className="text[4.65rem] sm:text-[4.65rem] md:text-[4.75rem]">w</span>hat would you like to
+          <h1 className="hero max-w-md sm:max-w-xl md:max-w-2xl text-5xl sm:text-6xl md:text-7xl font-black leading-[1.1] sm:leading-[0.90]">
+            <span className="text[4.65rem] sm:text-[4.75rem] md:text-[4.75rem]">w</span>hat would you like to
             <span className="text-lime-400">
               {" "}know?
             </span>
@@ -128,7 +129,7 @@ export default function KnowSearchClient({ initialQuery }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mt-8 text-sm text-gray-400/85 max-w-2xl leading-relaxed"
+            className="mt-8 text-sm text-gray-400/85 max-w-lg sm:max-w-xl md:max-w-2xl leading-relaxed"
           >
               Search across VeryCodedly&apos;s media library for videos, podcasts, interviews, everything.
           </Motion.p>

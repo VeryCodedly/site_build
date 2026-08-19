@@ -34,10 +34,10 @@ export default function KnowHero() {
 
   return (
     <section className="bg-black max-h-screen overflow-hidden">
-      <div className="relative h-[70vh] sm:h-[67vh] md:h-[67vh] lg:h-[67vh]">
+      <div className="relative h-[67vh] smh-[67vh] mdh-[67vh] lgh-[67vh]">
         <video
           ref={desktopRef}
-          className="hidden sm:block md:block lg:block h-full w-full object-cover"
+          className="hidden sm:block md:block lg:block h-full w-full object-contain"
           playsInline
           controls={false}
           onEnded={finished}
@@ -62,7 +62,7 @@ export default function KnowHero() {
         {!playing && (
           <button
             onClick={() => setPlaying(true)}
-            className="absolute bottom-20 sm:bottom-2 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full overflow-hidden group flex items-center justify-center transition-opacity duration-300"
+            className="absolute bottom-32 sm:bottom-12 left-1/2 -translate-x-1/2 w-12 h-12 rounded-full overflow-hidden group flex items-center justify-center transition-opacity duration-300"
           >
             <span className="absolute inset-0 bg-gradient-to-r from-pink-500/5 via-transparent to-pink-500/6 rounded-full" />
 
