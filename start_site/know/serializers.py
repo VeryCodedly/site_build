@@ -93,3 +93,9 @@ class MediaSerializer(serializers.ModelSerializer):
 
     #     return MediaCardSerializer(queryset, many=True).data 
         
+        
+class MediaSitemapSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Media
+        fields = ["title", "slug", "description", "thumbnail", "youtube_url", "published_at", "updated_at"]
+        

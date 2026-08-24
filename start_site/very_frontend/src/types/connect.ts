@@ -3,6 +3,7 @@ export interface Room {
   slug: string;
   title: string;
   description: string;
+  created_at: string;
 }
 
 export interface Message {

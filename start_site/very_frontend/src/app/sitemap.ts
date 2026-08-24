@@ -1,6 +1,7 @@
-// app/sitemap.ts
 import type { MetadataRoute } from "next";
 import { Post, Lessons, Category, Subcategory } from "@/types/post"  // Course
+import { MediaSitemapCard } from "@/types/know";
+import { Room } from "@/types/connect";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
@@ -19,14 +20,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: "know", priority: 0.9 },
     { path: "connect", priority: 0.9 },
     { path: "merch", priority: 0.9 },
-    { path: "about", priority: 0.8 },
-    { path: "community", priority: 0.8 },
-    { path: "start", priority: 0.7 },
+    { path: "start", priority: 0.8 },
+    { path: "about", priority: 0.7 },
+    { path: "community", priority: 0.7 },
     { path: "contact", priority: 0.7 },
     { path: "faqs", priority: 0.7 },
     { path: "support", priority: 0.7 },
-    { path: "privacy", priority: 0.4 },
-    { path: "terms", priority: 0.4 },
+    { path: "privacy", priority: 0.5 },
+    { path: "terms", priority: 0.5 },
   ].map(({ path, priority }) => ({
     url: `${baseUrl}/${path}`,
     changeFrequency: path === "" ? "daily" as const :
@@ -154,6 +155,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Failed to fetch courses:", err);
   }
 
+  // MERCH PRODUCTS
   const merchUrls: MetadataRoute.Sitemap = [];
 
   try {
@@ -176,6 +178,60 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Failed to fetch merch:", err);
   }
 
+  // CONNECT ROOMS
+  const connectRoomUrls: MetadataRoute.Sitemap = [];
+
+  try {
+    const res = await fetch(`${API_BASE}/connect/rooms/`);
+
+    if (res.ok) {
+      const data = await res.json();
+      const rooms = data.results || data || [];
+
+      rooms.forEach((room: Room) => {
+        connectRoomUrls.push({
+          url: `${baseUrl}/connect/rooms/${room.slug}`,
+          lastModified: new Date(room.created_at || new Date()),
+          changeFrequency: "weekly",
+          priority: 0.8,
+        });
+      });
+    }
+  } catch (err) {
+    console.error("Failed to fetch Connect rooms:", err);
+  }
+
+  // KNOW MEDIA
+  const knowUrls: MetadataRoute.Sitemap = [];
+
+  try {
+    let mediaUrl: string | null = `${API_BASE}/know/sitemap/media/`;
+
+    while (mediaUrl) {
+      const res: Response = await fetch(mediaUrl);
+
+      if (!res.ok) {
+        console.error(`Failed to fetch media from ${mediaUrl}`);
+        break;
+      }
+
+      const data = await res.json();
+      const media = data.results || [];
+
+      media.forEach((item: MediaSitemapCard) => {
+        knowUrls.push({
+          url: `${baseUrl}/know/${item.slug}`,
+          lastModified: new Date(item.updated_at),
+          changeFrequency: "weekly" as const,
+          priority: 0.8,
+        });
+      });
+      mediaUrl = data.next || null;
+    }
+  } catch (err) {
+    console.error("Failed to fetch Know media:", err);
+  }
+
   // const total = [...staticPages, ...blogUrls, ...subcategoryUrls, ...courseUrls, ...lessonUrls];
   // if (total.length > 45_000) {
   //   console.warn(`Sitemap has ${total.length} URLs — consider splitting!`);
@@ -189,6 +245,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...courseUrls,
     ...lessonUrls,
     ...merchUrls,
+    ...connectRoomUrls,
+    ...knowUrls,
   ];
 }
 

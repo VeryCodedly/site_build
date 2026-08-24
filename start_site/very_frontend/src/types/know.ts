@@ -83,3 +83,13 @@ export interface MediaCard {
     series_media: MediaCard[];
     // topic_media: MediaCard[];
 }
+
+export interface MediaSitemapCard {
+    title: string;
+    slug: string;
+    description: string;
+    thumbnail: string;
+    youtube_url: string | null;
+    published_at: string;
+    updated_at: string;
+}

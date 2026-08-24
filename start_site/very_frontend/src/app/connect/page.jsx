@@ -19,48 +19,45 @@ export default async function ConnectPage() {
 
   return (
     <>
-    <Script id="connect-structured-data" type="application/ld+json">
-                {JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "WebPage",
-                    name: "Connect",
-                    description:
-                        "Connect and chat on VeryCodedly to keep up with trending topics, tools, and tech.",
-                    publisher: {
-                        "@type": "Organization",
-                        name: "VeryCodedly",
-                        sameAs: "https://verycodedly.com",
-                    },
-                    url: "https://verycodedly.com/connect",
-                    inLanguage: "en",
-                })}
-            </Script>
+        <Script id="connect-structured-data" type="application/ld+json">
+            {JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                name: "Connect",
+                description:
+                    "Connect and chat on VeryCodedly to keep up with trending topics, tools, and tech.",
+                publisher: {
+                    "@type": "Organization",
+                    name: "VeryCodedly",
+                    sameAs: "https://verycodedly.com",
+                },
+                url: "https://verycodedly.com/connect",
+                inLanguage: "en",
+            })}
+        </Script>
 
-            <Script
-                id="connect-breadcrumb-structured-data"
-                type="application/ld+json"
-            >
-                {JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "BreadcrumbList",
-                    itemListElement: [
-                        {
-                            "@type": "ListItem",
-                            position: 1,
-                            name: "VeryCodedly | Tech. Code. Culture.",
-                            item: "https://verycodedly.com",
-                        },
-                        {
-                            "@type": "ListItem",
-                            position: 2,
-                            name: "Connect",
-                            item: "https://verycodedly.com/connect",
-                        },
-                    ],
-                })}
-            </Script>
-      <ConnectClient rooms={rooms} error={error} />
-      <Footer />
+        <Script id="connect-breadcrumb-structured-data" type="application/ld+json">
+            {JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                    {
+                        "@type": "ListItem",
+                        position: 1,
+                        name: "VeryCodedly | Tech. Code. Culture.",
+                        item: "https://verycodedly.com",
+                    },
+                    {
+                        "@type": "ListItem",
+                        position: 2,
+                        name: "Connect",
+                        item: "https://verycodedly.com/connect",
+                    },
+                ],
+            })}
+        </Script>
+        <ConnectClient rooms={rooms} error={error} />
+        <Footer />
     </>
   );
 }

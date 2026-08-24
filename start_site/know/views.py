@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework import generics
 from .models import Topic, Format, Series, Media
-from .serializers import TopicSerializer, FormatSerializer, SeriesSerializer, MediaCardSerializer, MediaSerializer
+from .serializers import TopicSerializer, FormatSerializer, SeriesSerializer, MediaCardSerializer, MediaSerializer, MediaSitemapSerializer
 from django.db.models import Q
 from rest_framework.request import Request
 from rest_framework.views import APIView
@@ -298,3 +298,15 @@ class MediaViewCountView(APIView):
             return Response(status=404)
 
         return Response(status=204)
+    
+    
+class MediaSitemapView(generics.ListAPIView):
+    serializer_class = MediaSitemapSerializer
+
+    def get_queryset(self):
+        return (
+            Media.objects
+            .filter(status="published")
+            .only("title", "slug", "description", "thumbnail", "youtube_url", "published_at", "updated_at")
+            .order_by("-published_at", "-created_at")
+        )

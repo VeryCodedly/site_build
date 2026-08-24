@@ -70,12 +70,7 @@ class Media(models.Model):
     
     tags = TaggableManager(blank=True)
     published_at = models.DateTimeField(blank=True, null=True)
-    status = models.CharField(
-            max_length=10,
-            choices=STATUS_CHOICES,
-            default="published"
-        )
-    
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="published")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

@@ -49,8 +49,8 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold text-white">Our Mission</h3>
               </div>
               <p className="text-gray-300 text-sm leading-relaxed">
-                <span className='text-lime-400'>VeryCodedly</span> exists to make tech clear and a little less intimidating. 
-                We connect how software is built with how it shapes the world around us, whether that’s a new gadget, a coding workflow, or an industry trend people haven’t noticed yet.
+                To make tech clear and a little less intimidating. 
+                Our goal is to connect how software is built with how it shapes the world around us, whether that’s a new gadget, a coding workflow, or an industry trend people haven’t noticed yet.
                 <br /><br />
                 Instead of treating tech like an exclusive club, we treat it like a conversation. If you're curious enough to ask questions, you're already in the right place.
               </p>

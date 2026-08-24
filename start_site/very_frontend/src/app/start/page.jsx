@@ -29,8 +29,8 @@ export default function StartPage() {
             paths you can follow depending on what you&apos;re trying to learn.
           </p>
 
-          <div className="flex items-center justify-center md:justify-start gap-2 text-gray-500 italic border-l-4 border-lime-400/50 pl-2 md:pl-4 rounded-md">
-            <p className="text-sm">Start here. Or wander. Both work. Enjoy.</p>
+          <div className="text-gray-500 italic border-l-4 border-lime-400/50 pl-3 md:pl-4 rounded-md">
+            <p className="text-sm">Start here, or wander. Both work. Enjoy.</p>
           </div>
         </section>
 

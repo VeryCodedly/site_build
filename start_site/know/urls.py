@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import TopicListView, FormatListView, SeriesListView, MediaListView, MediaDetailView, TopicDetailView, FormatDetailView, SeriesDetailView, KnowFormatSectionView, KnowHomeView, KnowSearchView, MediaViewCountView
+from .views import TopicListView, FormatListView, SeriesListView, MediaListView, MediaDetailView, TopicDetailView, FormatDetailView, SeriesDetailView, KnowFormatSectionView, KnowHomeView, KnowSearchView, MediaViewCountView, MediaSitemapView
 
 
 urlpatterns = [
@@ -15,5 +15,6 @@ urlpatterns = [
     path("know-section/<str:section>/", KnowFormatSectionView.as_view(), name="know-section"), 
     path("search/", KnowSearchView.as_view(), name="know-search"),
     path("media/<slug:slug>/view/", MediaViewCountView.as_view(), name="media-view"),
+    path("sitemap/media/", MediaSitemapView.as_view(), name="media-sitemap"),
     
 ]

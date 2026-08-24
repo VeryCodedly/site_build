@@ -75,16 +75,16 @@ export default function Header() {
       <nav className="space-x-18 text-xs hidden md:flex">
         <Link aria-label="VeryCodedly Read" href="/read" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">READ</Link>
         <Link aria-label="VeryCodedly Learn" href="/learn" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">LEARN</Link>
-        <Link aria-label="VeryCodedly Video" href="/know" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">KNOW</Link>
+        <Link aria-label="VeryCodedly Know" href="/know" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">KNOW</Link>
         <Link aria-label="VeryCodedly Connect" href="/connect" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">CONNECT</Link>
         {/* <p className="px-2 text-white hover:text-lime-400 transition">🚧</p> */}
       </nav>
       <div className="mr-4 flex items-center">
-        <Link href="/merch" aria-label="Merch button"
+        <Link href="/merch" aria-label="VeryCodedly Supply"
               className="hidden md:inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 text-black px-3.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
                         active:text-black shadow-[0_3.5px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
           <FontAwesomeIcon className="" icon={faCartShopping} size="sm" />
-          <span className="sr-only">Merch</span>
+          <span className="sr-only">VeryCodedly Supply</span>
         </Link>
       </div>
 
@@ -127,7 +127,7 @@ export default function Header() {
         </Link>
 
         <Link
-          aria-label="VeryCodedly Video"
+          aria-label="VeryCodedly Know"
           href="/know"
           className="text-white hover:text-lime-400 active:text-lime-400 transition"
           onClick={() => setMenuOpen(false)}
@@ -149,10 +149,10 @@ export default function Header() {
           className="inline-flex cursor-pointer border-2 border-gray-500/100 bg-lime-400 text-black px-3.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
                 active:text-black shadow-[0_4px_0_0_#39ff14] hover:shadow-[0_2px_0_0_#39ff14] active:shadow-[0_2px_0_0_#00ff00] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200"
           onClick={() => setMenuOpen(false)}
-          aria-label="Merch button"
+          aria-label="VeryCodedly Supply"
         >
           <FontAwesomeIcon icon={faCartShopping} size="sm" />
-          <span className="sr-only">Merch</span>
+          <span className="sr-only">VeryCodedly Supply</span>
         </Link>
       </div>
     </header>

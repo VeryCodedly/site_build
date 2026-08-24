@@ -30,8 +30,8 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="relative bg-gradient-to-b from-black to-zinc-950 text-gray-400/95 pt-22 sm:pt-18 pb-8 px-8 sm:px-4 md:px-8 overflow-clip border-t border-zinc-950">
-      {/* faint glow background */}
+    <footer className="relative bg-gradient-to-b from-black to-zinc-950 text-gray-400/95 pt-22 sm:pt-20 pb-8 px-8 sm:px-4 md:px-8 overflow-clip border-t border-zinc-950">
+
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none"></div>
 
       {/* content grid */}
@@ -89,14 +89,14 @@ export default function Footer() {
               <h3 className="text-white text-lg font-semibold mb-2 tracking-tight">
                 Explore
               </h3>
-              <ul className="space-y-4 sm:space-y-2 text-sm">
+              <ul className="space-y-4.5 sm:space-y-2 text-sm">
                 {[
-                  ["About", "/about"],
                   ["Read", "/read"],
                   ["Learn", "/learn"],
                   ["Know", "/know"],
                   ["Connect", "/connect"],
                   ["VC Supply", "/merch"],
+                  ["Start Here", "/start"],
                 ].map(([label, href]) => (
                   <li key={href}>
                     <Link
@@ -118,12 +118,13 @@ export default function Footer() {
               <h3 className="text-white text-lg font-semibold mb-2 tracking-tight">
                 Help
               </h3>
-              <ul className="space-y-4 sm:space-y-2 text-sm">
+              <ul className="space-y-3 sm:space-y-2 text-sm">
                 {[
-                  ["FAQs", "/faqs"],
+                  ["About", "/about"],
                   ["Contact", "/contact"],
-                  ["Support", "/support"],
+                  ["FAQs", "/faqs"],
                   ["Privacy", "/privacy"],
+                  ["Support", "/support"],
                   ["Community", "/community"],
                   ["Terms of Use", "/terms"],
                 ].map(([label, href]) => (
@@ -147,7 +148,7 @@ export default function Footer() {
       <div className="relative w-full h-px g-gradient-to-r from-transparent via-gray-800/50 to-transparent my-14 sm:my-8" />
 
       {/* Logo + Bottom line */}
-      <div className="relative flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto">
+      <div className="relative flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto pb-2">
         <Link aria-label="Home button" href="/">
           <Image
             src="/images/favicon-main.svg"
@@ -160,7 +161,7 @@ export default function Footer() {
           />
         </Link>
 
-        <p className="text-xs text-gray-600 text-center sm:text-right sm:pr-5">
+        <p className="text-xs text-gray-600 text-center sm:text-right md:pr-6">
           VeryCodedly<span className="text-xs">™</span>{" "}{year && `${year}`}
         </p>
       </div>
