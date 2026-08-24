@@ -162,7 +162,7 @@ export default function Footer() {
         </Link>
 
         <p className="text-xs text-gray-600 text-center sm:text-right md:pr-6">
-          VeryCodedly<span className="text-xs">™</span>{" "}{year && `${year}`}
+          <span className="text-sm">©</span>{" "}{year && `${year}`}{" "}VeryCodedly<span className="text-xs">™</span>
         </p>
       </div>
     </footer>
