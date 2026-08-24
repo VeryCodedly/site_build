@@ -227,7 +227,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                 case 'code':
                   return <CodeBlock key={index} block={block} />;
                 default:
-                  console.warn('PostContent: Unrecognized block →', block);
+                  // console.warn('PostContent: Unrecognized block →', block);
                   return null;
 
                 case 'reviewImg':
