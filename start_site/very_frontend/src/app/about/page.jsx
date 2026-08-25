@@ -18,7 +18,6 @@ export default function AboutPage() {
           transition={{ duration: 0.5 }}
           className="rounded-2xl p-8 sm:p-12 border border-gray-700/40 bg-white/3 backdrop-blur-lg shadow-lg hover:shadow-xl transition-all duration-300"
         >
-          {/* Header */}
           <Motion.h2
             className="text-3xl sm:text-4xl font-black text-lime-400 text-center group-hover:scale-105 transition-transform duration-300"
             whileHover={{ scale: 1.02 }}
@@ -26,7 +25,7 @@ export default function AboutPage() {
             About Us
           </Motion.h2>
 
-          {/* Intro text */}
+          {/* Intro */}
           <div className="mt-6 space-y-4 text-gray-300 text-sm leading-relaxed">
             <p>
               <span className='text-lime-400'>VeryCodedly</span> is a place for people who are curious about technology but don’t necessarily want the usual tech-industry noise that comes with it.
@@ -40,7 +39,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* Mission & Values - two columns */}
+          {/* Mission & Values */}
           <div className="grid md:grid-cols-2 gap-8 mt-10">
             {/* Mission */}
             <div>
@@ -49,8 +48,8 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold text-white">Our Mission</h3>
               </div>
               <p className="text-gray-300 text-sm leading-relaxed">
-                To make tech clear and a little less intimidating. 
-                Our goal is to connect how software is built with how it shapes the world around us, whether that’s a new gadget, a coding workflow, or an industry trend people haven’t noticed yet.
+                To make tech clear and a little less intimidating.<br />
+                We connect how software is built with how it shapes the world around us, whether that’s a headline, a line of code, a new gadget, or an industry trend.
                 <br /><br />
                 Instead of treating tech like an exclusive club, we treat it like a conversation. If you're curious enough to ask questions, you're already in the right place.
               </p>
@@ -62,7 +61,7 @@ export default function AboutPage() {
                 <span className="w-1.5 h-6 bg-lime-400 rounded-xs" />
                 <h3 className="text-xl font-semibold text-white">Our Values</h3>
               </div>
-              <ul className="space-y-3 text-gray-300 text-sm">
+              <ul className="space-y-2.5 text-gray-300 text-sm">
                 {[
                   "No gatekeeping. Everyone starts somewhere.",
                   "Clarity over jargon. We keep it simple here.",
@@ -80,14 +79,12 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Closing statement */}
           <div className="mt-8 text-gray-300 text-sm leading-relaxed border-t border-gray-800 pt-6">
             <p>
               If something is interesting, confusing, useful, or important, it’s probably worth talking about. That’s the entire idea behind <span className='text-lime-400'>VeryCodedly.</span>
             </p>
           </div>
 
-          {/* Social links (reimagined as a grid of badges) */}
           <div className="mt-10 pt-6 border-t border-gray-800">
             <p className="text-gray-300 text-sm mb-5 lg:px-10 text-center">
               You can find VeryCodedly around the interweb where we share new articles, experiments, and occasional tech rabbit holes:

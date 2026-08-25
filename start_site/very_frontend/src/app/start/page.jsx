@@ -369,7 +369,7 @@ export default function StartPage() {
           {/* <div className="absolute left-0 top-0 w-24 h-px bg-zinc-800" /> */}
 
           <div className="space-y-4 max-w-4xl">
-            <h2 className="text-2xl font-bold text-white pb-2.5">Why We Do This</h2>
+            <h2 className="text-2xl font-bold text-white pb-2">Why We Do This</h2>
 
             <p className="text-gray-300/90 leading-relaxed">
               VeryCodedly exists to make tech clear and a little less intimidating.
@@ -377,7 +377,8 @@ export default function StartPage() {
 
             <p className="text-gray-300/90 leading-relaxed">
               We connect how software is built with how it shapes the world around us, whether that’s a headline, a line of code, a new gadget, or an industry trend.
-              Instead of treating tech like something you need an invitation to understand, we treat it like a conversation. If you're curious enough to ask questions, you're already in the right place.
+              <br /><br />
+              Instead of treating tech like an exclusive club, we treat it like a conversation. If you're curious enough to ask questions, you're already in the right place.
             </p>
 
             <div className="py-3 flex items-center gap-2 text-sm text-gray-500 tracking-tighter">
