@@ -48,7 +48,7 @@ export default function AboutPage() {
                 <h3 className="text-xl font-semibold text-white">Our Mission</h3>
               </div>
               <p className="text-gray-300 text-sm leading-relaxed">
-                To make tech clear and a little less intimidating.<br />
+                To make tech clear and a little less intimidating.<br /><br />
                 We connect how software is built with how it shapes the world around us, whether that’s a headline, a line of code, a new gadget, or an industry trend.
                 <br /><br />
                 Instead of treating tech like an exclusive club, we treat it like a conversation. If you're curious enough to ask questions, you're already in the right place.
@@ -61,7 +61,7 @@ export default function AboutPage() {
                 <span className="w-1.5 h-6 bg-lime-400 rounded-xs" />
                 <h3 className="text-xl font-semibold text-white">Our Values</h3>
               </div>
-              <ul className="space-y-2.5 text-gray-300 text-sm">
+              <ul className="space-y-3.5 text-gray-300 text-sm">
                 {[
                   "No gatekeeping. Everyone starts somewhere.",
                   "Clarity over jargon. We keep it simple here.",
