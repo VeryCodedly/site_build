@@ -259,9 +259,9 @@ export default function StartPage() {
                 slug: "verycodedly-today",
               },
               {
-                title: "The Climb",
+                title: "Build Process",
                 desc: "Behind the scenes of building, figuring things out, and hopefully not failing.",
-                slug: "the-climb",
+                slug: "build-process",
               },
               {
                 title: "Very Decoded",

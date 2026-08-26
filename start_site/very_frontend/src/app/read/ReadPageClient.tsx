@@ -529,7 +529,7 @@ export default function ReadPageClient({ initialData, techData }: Props) {
             )}
           </section>
 
-          <section className="my-10 pt-20 px-6 bg-black/50 text-center">
+          <section className="my-10 pt-20 px-2 bg-black/50 text-center">
             <div className="flex flex-col items-center gap-2 mb-6">
               <h4 className="text-2xl md:text-3xl font-bold text-white/90 tracking-tight">
                 Seen enough? Keep going.
@@ -538,7 +538,7 @@ export default function ReadPageClient({ initialData, techData }: Props) {
                 There&apos;s more to know. And plenty to say.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div className="flex flex-row gap-6 justify-center items-center">
               <Link
                 href="/know"
                 className="font-bold sm:font-bold border-3 border-gray-500/100 bg-lime-400 text-black px-9 py-1 rounded-full hover:bg-white active:bg-white hover:text-black

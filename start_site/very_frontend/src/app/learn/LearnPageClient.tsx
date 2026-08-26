@@ -459,7 +459,7 @@ export default function LearnPage({ courses }: Props) {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-30 text-center">
+      <section className="py-30 px-2 text-center">
         <div className="flex flex-col items-center gap-2">
           <h4 className="text-2xl font-bold text-white/90 tracking-tight">
             Still got questions?
@@ -468,7 +468,7 @@ export default function LearnPage({ courses }: Props) {
             We&apos;re listening. There&apos;s more to know.
           </p>
         </div>
-        <div className="flex flex-col sm:flex-row gap-6 mt-6 justify-center items-center">
+        <div className="flex flex-row gap-6 mt-6 justify-center items-center">
               <Link
                 href="/connect"
                 className="tracking-tighter font-bold sm:font-bold border-3 border-gray-500/100 bg-lime-400 text-black px-7 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
