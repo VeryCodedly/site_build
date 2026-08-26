@@ -18,7 +18,7 @@ interface Props {
 
 export default function MediaClient({ media }: Props) {
   return (
-    <main className="relative w-full bg-gradient-to-b from-black to-zinc-950/30 text-white min-h-screen py-10 px-8">
+    <main className="relative w-full bg-gradient-to-b from-black to-zinc-950/30 text-white min-h-screen py-10 pb-18 px-8">
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}

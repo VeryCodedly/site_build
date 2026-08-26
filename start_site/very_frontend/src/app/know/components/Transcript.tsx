@@ -16,7 +16,7 @@ export default function Transcript({ transcript }: Props) {
   if (!transcript) return null;
 
   return (
-    <section className="max-w-6xl mx-auto mt-12">
+    <section className="max-w-6xl mx-auto my-18">
       <div className="relative">
         <motion.button
           onClick={() => setOpen(!open)}

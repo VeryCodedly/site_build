@@ -529,7 +529,7 @@ export default function ReadPageClient({ initialData, techData }: Props) {
             )}
           </section>
 
-          <section className="pt-28 pb-12 px-6 bg-black/50 text-center">
+          <section className="my-10 pt-20 px-6 bg-black/50 text-center">
             <div className="flex flex-col items-center gap-2 mb-6">
               <h4 className="text-2xl md:text-3xl font-bold text-white/90 tracking-tight">
                 Seen enough? Keep going.

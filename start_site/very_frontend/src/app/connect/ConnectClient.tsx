@@ -72,7 +72,7 @@ export default function ConnectClient({ rooms, error }: ConnectClientProps) {
 
         <SearchBar />
 
-        <section className="relative max-w-4xl mx-auto px-6 py-10 mt-16 mb-22">
+        <section className="relative max-w-4xl mx-auto px-6 py-30">
           <div className="flex flex-col items-center text-center">
             <div className="flex items-center gap-3 mb-4">
               <span className="relative flex h-2 w-2">

@@ -315,7 +315,7 @@ export default function KnowClient({ initialData }: Props) {
         </section>
 
         {/* Bottom CTA */}
-        <section className="pt-20 pb-12 text-center">
+        <section className="py-30 pb-18 text-center">
           <div className="flex flex-col items-center gap-2">
             <h4 className="text-2xl font-bold text-white/90 tracking-tighter">
               Wanna keep the convo going?

@@ -14,7 +14,7 @@ export default function RelatedMedia({ media, title }: Props) {
   if (media.length === 0) return null;
 
   return (
-    <section className="max-w-6xl mx-auto mt-12">
+    <section className="max-w-6xl mx-auto my-18">
       <div className="flex items-center gap-4 mb-6">
         <span className="w-3 h-3 bg-lime-400 rounded-full" />
         <h2 className="text-xl sm:text-2xl font-semibold text-white">{title}</h2>
