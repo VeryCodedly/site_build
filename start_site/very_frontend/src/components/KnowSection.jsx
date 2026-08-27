@@ -11,7 +11,7 @@ export default function KnowSection() {
           More to <span className="text-pink-400">Know</span>
         </h2>
         <p className="text-sm sm:text-base text-gray-400 mb-12 max-w-2xl mx-auto">
-            Videos, conversations, and ideas worth pressing play for.
+          Videos, conversations, and ideas worth pressing play for.
         </p>
         <div className="grid md:grid-cols-3 gap-8">
           {[
@@ -31,30 +31,32 @@ export default function KnowSection() {
               slug: "very-decoded",
             },
           ].map((series, i) => (
-            <div
-              key={i}
-              className="bg-zinc-900/50 rounded-2xl
+            <Link href={`/know/series/${series.slug}`} key={i}>
+              <div
+                key={i}
+                className="bg-zinc-900/50 rounded-2xl
                          p-6 text-left transition-all duration-300 hover:translate-y-[-5px] hover:shadow-[0_0_30px_-10px_rgba(255,105,180,0.2)]
                          active:translate-y-[-5px] active:shadow-[0_0_30px_-10px_rgba(255,105,180,0.2)]"
-            >
-              <span className="inline-block font-semibold tracking-tight mb-3 text-xs text-pink-400 bg-pink-400/10 px-2 py-1 rounded">
-                Series
-              </span>
-              <h3 className="text-xl font-semibold text-white mb-2">
-                {series.title}
-              </h3>
-              <p className="text-gray-300/90 mb-4">{series.desc}</p>
-              <Link
-                href={`/know/series/${series.slug}`}
-                aria-label={`${series.title} series`}
-                className="text-pink-400 font-semibold hover:text-pink-300 active:text-pink-300
-                 inline-flex items-center gap-2 hover:underline transition-all"
               >
-                Explore
-                <FontAwesomeIcon className="" icon={faLongArrowRight} size="sm" />
-                <span className="sr-only"> {series.title}</span>
-              </Link>
-            </div>
+                <span className="inline-block font-semibold tracking-tight mb-3 text-xs text-pink-400 bg-pink-400/10 px-2 py-1 rounded">
+                  Series
+                </span>
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  {series.title}
+                </h3>
+                <p className="text-gray-300/90 mb-4">{series.desc}</p>
+                <Link
+                  href={`/know/series/${series.slug}`}
+                  aria-label={`${series.title} series`}
+                  className="text-pink-400 font-semibold hover:text-pink-300 active:text-pink-300
+                 inline-flex items-center gap-2 hover:underline transition-all"
+                >
+                  Explore
+                  <FontAwesomeIcon className="" icon={faLongArrowRight} size="sm" />
+                  <span className="sr-only"> {series.title}</span>
+                </Link>
+              </div>
+            </Link>
           ))}
         </div>
 

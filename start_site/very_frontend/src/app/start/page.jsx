@@ -272,7 +272,7 @@ export default function StartPage() {
               <Link
                 key={i}
                 href={`/know/series/${series.slug}`}
-                className="group block bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(163,230,53,0.05)] active:border-zinc-400/30 hover:scale-102 active:scale-92 transition-all duration-300"
+                className="group block bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(163,230,53,0.05)] active:border-zinc-400/30 hover:scale-102 active:scale-98 transition-all duration-300"
               >
                 <div className="flex items-start justify-between">
                   <h3 className="font-semibold text-white group-hover:text-lime-400 group-active:text-lime-400 transition-colors">
@@ -334,7 +334,7 @@ export default function StartPage() {
               <Link
                 key={room.slug}
                 href={`/connect/${room.slug}`}
-                className="group block bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(163,230,53,0.05)] active:border-zinc-400/30 hover:scale-102 active:scale-92 transition-all duration-300"
+                className="group block bg-zinc-900/40 border border-zinc-800 rounded-xl p-5 hover:border-zinc-400/30 hover:shadow-[0_0_15px_rgba(163,230,53,0.05)] active:border-zinc-400/30 hover:scale-102 active:scale-98 transition-all duration-300"
               >
                 <div className="flex items-start justify-between">
                   <h3 className="font-semibold text-white group-hover:text-lime-400 group-active:text-lime-400 transition-colors">

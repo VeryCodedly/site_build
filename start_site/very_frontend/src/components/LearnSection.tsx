@@ -23,39 +23,41 @@ export default function LearnSection() {
             },
             {
               title: "Frontend Fundamentals",
-              desc: "JavaScript and the logic that shapes every web page you see.",
+              desc: "JavaScript and the logic that shapes every web page you see online.",
               tag: "Beginner",
             },
             {
               title: "React Explained",
-              desc: "Hooks, components, and the magic behind modern web apps.",
+              desc: "Hooks, state, components, and the magic behind modern web apps.",
               tag: "Advanced",
             },
           ].map((lesson, i) => (
-            <div
-              key={i}
-              className="bg-zinc-900/50 rounded-2xl 
+            <Link href="/learn" key={i}>
+              <div
+                key={i}
+                className="bg-zinc-900/50 rounded-2xl 
                         p-6 text-left transition-all duration-300 hover:translate-y-[-5px] hover:shadow-[0_0_30px_-10px_rgba(144,238,144,0.2)]
                         active:translate-y-[-5px] active:shadow-[0_0_30px_-10px_rgba(144,238,144,0.2)]"
-            >
-              <span className="inline-block font-semibold tracking-tight mb-3 text-xs text-lime-400 bg-lime-400/10 px-2 py-1 rounded">
-                {lesson.tag}
-              </span>
-              <h3 className="text-xl font-semibold text-white mb-2">
-                {lesson.title}
-              </h3>
-              <p className="text-gray-300/90 mb-4">{lesson.desc}</p>
-              <Link
-                href="/learn"
-                aria-label={`${lesson.tag} button`}
-                className="text-lime-400 font-semibold hover:text-lime-300 active:text-lime-300 hover:underline transition-all
-                inline-flex items-center gap-2"
               >
-                Start learning
-                <FontAwesomeIcon className="" icon={faLongArrowRight} size="sm" />
-                <span className="sr-only"> about {lesson.tag}</span>
-              </Link>
-            </div>
+                <span className="inline-block font-semibold tracking-tight mb-3 text-xs text-lime-400 bg-lime-400/10 px-2 py-1 rounded">
+                  {lesson.tag}
+                </span>
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  {lesson.title}
+                </h3>
+                <p className="text-gray-300/90 mb-4">{lesson.desc}</p>
+                <Link
+                  href="/learn"
+                  aria-label={`${lesson.tag} button`}
+                  className="text-lime-400 font-semibold hover:text-lime-300 active:text-lime-300 hover:underline transition-all
+                inline-flex items-center gap-2"
+                >
+                  Start learning
+                  <FontAwesomeIcon className="" icon={faLongArrowRight} size="sm" />
+                  <span className="sr-only"> about {lesson.tag}</span>
+                </Link>
+              </div>
+            </Link>
           ))}
         </div>
 

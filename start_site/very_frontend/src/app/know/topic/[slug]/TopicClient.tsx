@@ -51,7 +51,7 @@ export default function TopicClient({ title, description, media }: Props) {
                     </div>
 
                     {!media.length ? (
-                        <section className="mt-10 rounded-3xl border border-dashed border-zinc-900 py-12 text-center">
+                        <section className="mt-10 rounded-3xl border border-dashed border-zinc-900 py-8 text-center">
                             <p className="text-3xl text-slate-400 mb-4 opacity-50"><FontAwesomeIcon icon={faPlay} /></p>
                             <h3 className="text-2xl font-semibold text-white opacity-80">
                                 You&apos;re early.

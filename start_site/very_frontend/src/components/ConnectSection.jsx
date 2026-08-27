@@ -34,31 +34,33 @@ export default function ConnectSection() {
               slug: "devs-only",
             },
           ].map((room, i) => (
-            <div
-              key={i}
-              className="bg-zinc-900/50 rounded-2xl
+            <Link href={`/connect/${room.slug}`} key={i}>
+              <div
+                key={i}
+                className="bg-zinc-900/50 rounded-2xl
                          p-6 text-left transition-all duration-300 hover:translate-y-[-5px] hover:shadow-[0_0_30px_-10px_rgba(154,230,0,0.2)]
                          active:translate-y-[-5px] active:shadow-[0_0_30px_-10px_rgba(154,230,0,0.2)]"
-            >
-              <span className="inline-flex items-center gap-1.5 font-semibold tracking-tight mb-3 text-xs text-lime-400 bg-lime-400/10 px-2 py-1 rounded">
-                <span className="w-1.5 h-1.5 rounded-full bg-lime-400 animate-pulse" />
-                {room.tag}
-              </span>
-              <h3 className="text-xl font-semibold text-white mb-2">
-                {room.title}
-              </h3>
-              <p className="text-gray-300/90 mb-4">{room.desc}</p>
-              <Link
-                href={`/connect/${room.slug}`}
-                aria-label={`${room.title} room`}
-                className="text-lime-400 font-semibold hover:text-lime-300 active:text-lime-300
-                 inline-flex items-center gap-2 hover:underline transition-all"
               >
-                Join room
-                <FontAwesomeIcon className="" icon={faLongArrowRight} size="sm" />
-                <span className="sr-only"> {room.title}</span>
-              </Link>
-            </div>
+                <span className="inline-flex items-center gap-1.5 font-semibold tracking-tight mb-3 text-xs text-lime-400 bg-lime-400/10 px-2 py-1 rounded">
+                  <span className="w-1.5 h-1.5 rounded-full bg-lime-400 animate-pulse" />
+                  {room.tag}
+                </span>
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  {room.title}
+                </h3>
+                <p className="text-gray-300/90 mb-4">{room.desc}</p>
+                <Link
+                  href={`/connect/${room.slug}`}
+                  aria-label={`${room.title} room`}
+                  className="text-lime-400 font-semibold hover:text-lime-300 active:text-lime-300
+                 inline-flex items-center gap-2 hover:underline transition-all"
+                >
+                  Join room
+                  <FontAwesomeIcon className="" icon={faLongArrowRight} size="sm" />
+                  <span className="sr-only"> {room.title}</span>
+                </Link>
+              </div>
+            </Link>
           ))}
         </div>
 
