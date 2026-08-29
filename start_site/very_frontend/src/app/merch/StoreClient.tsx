@@ -154,7 +154,7 @@ export default function StorePage({ products, error }: StoreClientProps) {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(154,230,0,0.03),transparent_65%)] pointer-events-none" />
 
         <div className="relative z-10 w-full text-center">
-          <h1 className="hero text-5xl sm:text-6xl lg:text-7xl text-lime-400 leading-[1.05] tracking-tight">
+          <h1 className="hero text-6xl sm:text-6xl lg:text-7xl text-lime-400 leading-[1.05] tracking-tighter">
             VeryCodedly<br />
             <span className="text-white">Supply</span>
           </h1>
@@ -193,17 +193,17 @@ export default function StorePage({ products, error }: StoreClientProps) {
 
           <div className="mt-14 flex flex-wrap items-center justify-center gap-4 text-xs text-gray-500/80">
             <span className="flex items-center gap-2">
-              <FontAwesomeIcon icon={faTruck} className="text-lime-400/30" />
+              <FontAwesomeIcon icon={faTruck} className="text-lime-400/40" />
               Ships worldwide
             </span>
             <span className="w-px h-4 bg-gray-800" />
             <span className="flex items-center gap-2">
-              <FontAwesomeIcon icon={faClock} className="text-lime-400/45" />
+              <FontAwesomeIcon icon={faClock} className="text-lime-400/55" />
               7-14 day delivery
             </span>
             <span className="w-px h-4 bg-gray-800" />
             <span className="flex items-center gap-2">
-              <FontAwesomeIcon icon={faCreditCard} className="text-lime-400/60" />
+              <FontAwesomeIcon icon={faCreditCard} className="text-lime-400/70" />
               Secure checkout
             </span>
           </div>
