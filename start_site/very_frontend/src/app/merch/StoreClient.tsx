@@ -154,7 +154,7 @@ export default function StorePage({ products, error }: StoreClientProps) {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(154,230,0,0.03),transparent_65%)] pointer-events-none" />
 
         <div className="relative z-10 w-full text-center">
-          <h1 className="hero text-5xl sm:text-6xl lg:text-7xl text-lime-400 leading-[1.1] tracking-tight">
+          <h1 className="hero text-5xl sm:text-6xl lg:text-7xl text-lime-400 leading-[1.05] tracking-tight">
             VeryCodedly<br />
             <span className="text-white">Supply</span>
           </h1>
