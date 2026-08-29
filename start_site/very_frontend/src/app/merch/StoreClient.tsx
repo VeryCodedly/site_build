@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTruck, faClock, faCreditCard  } from "@fortawesome/free-solid-svg-icons";
+import { faTruck, faClock, faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import { colorValueMap } from '@/lib/colors';
 
 interface Product {
@@ -23,6 +23,24 @@ interface StoreClientProps {
   products: Product[];
   error: string | null;
 }
+
+// Container variant
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.25,
+      delayChildren: 0,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 },
+};
+
 
 export default function StorePage({ products, error }: StoreClientProps) {
 
@@ -134,60 +152,48 @@ export default function StorePage({ products, error }: StoreClientProps) {
       {/* Hero */}
       <div className="relative min-h-screen flex flex-col items-center justify-center max-w-6xl mx-auto my-auto">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(154,230,0,0.03),transparent_65%)] pointer-events-none" />
-        
+
         <div className="relative z-10 w-full text-center">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.6 }} 
-            className="hero text-5xl sm:text-6xl lg:text-7xl text-lime-400 leading-[1.05] tracking-tight"
-          >
+          <h1 className="hero text-5xl sm:text-6xl lg:text-7xl text-lime-400 leading-[1.1] tracking-tight">
             VeryCodedly<br />
             <span className="text-white">Supply</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p 
-            initial={{ opacity: 0, y: 15 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.5, delay: 0.2 }} 
-            className="mt-6 text-base font-medium text-gray-400 mx-auto"
-          >
+          <p className="mt-7 text-sm sm:text-base font-medium text-gray-400/90 tracking-tight">
             We make it. You make it look good.
-          </motion.p>
+          </p>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.4, delay: 0.35 }} 
-            className="mt-9 flex flex-wrap items-center justify-center gap-3.5"
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="show"
+            // initial={{ opacity: 0, y: 15 }} 
+            // animate={{ opacity: 1, y: 0 }} 
+            // transition={{ duration: 0.4, delay: 0.15 }} 
+            className="mt-12 flex flex-wrap items-center justify-center gap-3.5"
           >
-            <a href="#hoodies" className="font-semibold cursor-pointer border-3 border-zinc-600/100 bg-transparent text-white text-sm px-4.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
+            <motion.a variants={item} href="#hoodies" className="font-semibold cursor-pointer border-3 border-zinc-600/100 bg-transparent text-white text-sm px-4.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
                                         active:text-black shadow-[0_4px_0_0_#d9468f] hover:shadow-[0_2px_0_0_#db2777] active:shadow-[0_2px_0_0_#db2777] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
               Wear
-            </a>
-            <a href="#drink" className="font-semibold cursor-pointer border-3 border-zinc-600/100 bg-transparent text-white text-sm px-4.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
+            </motion.a>
+            <motion.a variants={item} href="#drink" className="font-semibold cursor-pointer border-3 border-zinc-600/100 bg-transparent text-white text-sm px-4.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
                                         active:text-black shadow-[0_4px_0_0_#d9468f] hover:shadow-[0_2px_0_0_#db2777] active:shadow-[0_2px_0_0_#db2777] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
               Drink
-            </a>
-            <a href="#workspace" className="font-semibold cursor-pointer border-3 border-zinc-600/100 bg-transparent text-white text-sm px-4.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
+            </motion.a>
+            <motion.a variants={item} href="#workspace" className="font-semibold cursor-pointer border-3 border-zinc-600/100 bg-transparent text-white text-sm px-4.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
                                       active:text-black shadow-[0_4px_0_0_#d9468f] hover:shadow-[0_2px_0_0_#db2777] active:shadow-[0_2px_0_0_#db2777] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
               Work
-            </a>
-            <a href="#t-shirts" className="font-semibold cursor-pointer border-3 border-zinc-600/100 bg-transparent text-white text-sm px-4.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
+            </motion.a>
+            <motion.a variants={item} href="#t-shirts" className="font-semibold cursor-pointer border-3 border-zinc-600/100 bg-transparent text-white text-sm px-4.5 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
                                         active:text-black shadow-[0_4px_0_0_#d9468f] hover:shadow-[0_2px_0_0_#db2777] active:shadow-[0_2px_0_0_#db2777] active:translate-y-1.5 hover:translate-y-0.5 transition-all duration-200">
               All
               {/* <FontAwesomeIcon icon={faArrowRight} size="sm"/> */}
-            </a>
+            </motion.a>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.4, delay: 0.5 }} 
-            className="mt-12 flex flex-wrap items-center justify-center gap-4 text-xs text-gray-500/80"
-          >
+          <div className="mt-14 flex flex-wrap items-center justify-center gap-4 text-xs text-gray-500/80">
             <span className="flex items-center gap-2">
-              <FontAwesomeIcon icon={faTruck} className="text-lime-400/35" />
+              <FontAwesomeIcon icon={faTruck} className="text-lime-400/30" />
               Ships worldwide
             </span>
             <span className="w-px h-4 bg-gray-800" />
@@ -197,10 +203,10 @@ export default function StorePage({ products, error }: StoreClientProps) {
             </span>
             <span className="w-px h-4 bg-gray-800" />
             <span className="flex items-center gap-2">
-              <FontAwesomeIcon icon={faCreditCard} className="text-lime-400/55" />
+              <FontAwesomeIcon icon={faCreditCard} className="text-lime-400/60" />
               Secure checkout
             </span>
-          </motion.div>
+          </div>
         </div>
       </div>
 

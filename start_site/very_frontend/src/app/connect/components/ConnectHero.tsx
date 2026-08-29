@@ -13,20 +13,24 @@ export default function ConnectHero() {
 
       <div className="relative z-10 max-w-2xl mx-auto w-full text-center">
         <Motion.h1 
-          initial={{ opacity: 0, y: 20 }} 
-          animate={{ opacity: 1, y: 0 }} 
-          transition={{ duration: 0.6 }} 
           className="hero text-5xl sm:text-6xl lg:text-7xl text-white leading-[1.05] tracking-tight"
         >
           pick a room.
           <br />
-          <span className="text-lime-400">get a handle.</span>
+          <Motion.span
+              className="mx-1"
+              initial={{ color: "#ffffff" }}
+              animate={{ color: "#9AE600" }}
+              transition={{ delay: 0.3, duration: 1 }}
+            >
+              get a handle.
+          </Motion.span>
+          {/* <span className="text-lime-400"></span> */}
         </Motion.h1>
 
-        <Motion.p initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} 
-                  className="mt-4 text-sm font-medium text-gray-400">
+        <p className="mt-4 text-sm font-medium text-gray-400">
           No login. No accounts. Just chat.
-        </Motion.p>
+        </p>
 
         <Motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.35 }} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-10">
           <a href="#rooms" className="font-bold sm:font-bold border-3 border-gray-500/100 bg-lime-400 text-black px-8 py-1 rounded-full hover:bg-white active:bg-white hover:text-black
