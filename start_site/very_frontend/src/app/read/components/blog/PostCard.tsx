@@ -18,7 +18,7 @@ export default function PostCard({ post }: { post: Post }) {
           </p>
 
           {/* Title */}
-          <h2 className="line-clamp-3 text-base font-semibold text-gray-100 group-hover:text-lime-400 group-active:text-lime-400 transition leading-tight">
+          <h2 className="line-clamp-3 tracking-tight text-base font-medium text-gray-100 group-hover:text-lime-400 group-active:text-lime-400 transition leading-tight">
             {post.title}
           </h2>
 
