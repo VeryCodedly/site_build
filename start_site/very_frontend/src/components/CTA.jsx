@@ -10,12 +10,12 @@ export default function CTA() {
   const [typingComplete, setTypingComplete] = useState(false);
   const [cursor, setCursor] = useState("|");
 
-    useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
-        setCursor((prev) => (prev === "█" ? " " : "█"));
+      setCursor((prev) => (prev === "█" ? " " : "█"));
     }, 500);
     return () => clearInterval(interval);
-    }, []);
+  }, []);
 
   // Calculate when typing complete based on text length
   useEffect(() => {
@@ -58,12 +58,14 @@ export default function CTA() {
 
                 <p className="text-gray-400 mt-4"><span className="text-white">$</span> npm run start</p>
 
-                <p className="text-lime-400 ml-3 min-h-[24px]">
+                <p className="text-lime-400 ml-4 min-h-[24px]">
                   {startTyping && (
                     <Typewriter
                       words={['Server running. Your move.']}
                       loop={1}
-                      cursor={false}
+                      cursor={!typingComplete}
+                      cursorStyle={"█"}
+                      cursorColor="#9ae600"
                       typeSpeed={50}
                       delaySpeed={500}
                       onLoopDone={() => setTypingComplete(true)}
@@ -111,23 +113,27 @@ export default function CTA() {
 
                 <p className="text-gray-400 mt-4"><span className="text-white">$</span> npm run start</p>
 
-                <p className="text-lime-400 ml-3 min-h-[24px]">
+                <p className="text-lime-400 ml-4 min-h-[24px]">
                   {startTyping && (
                     <Typewriter
                       words={['Server running. Your move.']}
                       loop={1}
-                      cursor={false}
+                      cursor={!typingComplete}
+                      cursorStyle={"█"}
+                      cursorColor="#9ae600"
                       typeSpeed={50}
                       delaySpeed={500}
                       onLoopDone={() => setTypingComplete(true)}
                     />
                   )}
                 </p>
-                <div className="flex items-center gap-1 text-gray-400 mt-4">
+                <div className="flex items-center gap-2 text-gray-400 mt-4">
                   {typingComplete ? (
                     <>
                       <span className="text-white">$</span>
-                      <span className="w-2 h-4 bg-lime-400/70 animate-pulse" />
+                      <span className="text-lime-400 text-sm animate-pulse">
+                        {cursor}
+                      </span>
                     </>
                   ) : (
                     <span className="text-white opacity-0">$</span>

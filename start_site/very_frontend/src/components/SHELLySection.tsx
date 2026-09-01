@@ -56,8 +56,7 @@ export default function HomeMascot() {
               </span>
             </h3>
 
-            <motion.div
-              className="mt-6 flex items-baseline flex-wrap gap-2"
+            <motion.div className="mt-6 flex items-baseline flex-wrap gap-2"
               onViewportEnter={() => setStartTyping(true)}
             >
               <div className="h-10 text-gray-300 text-2xl lg:text-3xl font-mono tracking-tighter">
@@ -65,7 +64,9 @@ export default function HomeMascot() {
                   <Typewriter
                     words={['$ SHELLy eats bugs.']}
                     loop={1}
-                    cursor={false}
+                    cursor={!typingComplete}
+                    cursorStyle={"█"}
+                    cursorColor="#9ae600"
                     typeSpeed={50}
                     delaySpeed={500}
                     onLoopDone={() => setTypingComplete(true)}
@@ -73,7 +74,7 @@ export default function HomeMascot() {
                 )}
               </div>
               {typingComplete && (
-                <span className="text-lime-400 text-2xl font-mono animate-pulse tracking-tighter">
+                <span className="text-lime-400 text-2xl font-mono animate-pulse">
                   {cursor}
                 </span>
               )}

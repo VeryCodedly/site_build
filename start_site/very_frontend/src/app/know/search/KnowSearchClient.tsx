@@ -104,22 +104,22 @@ export default function KnowSearchClient({ initialQuery }: Props) {
         </Link>
       </Motion.div> */}
 
-      <section className="relative max-w-[97%] mx-auto pt-10 px-6 sm:px-8 pb-20">
+      <section className="relative max-w-[97%] mx-auto pt-6 px-6 sm:px-8 pb-20">
         <div className="max-w-3xl">
-          <div className="flex items-center gap-3 mb-10">
-            <span className="w-1.5 h-7 bg-lime-400 rounded-sm" />
+          <div className="flex items-center gap-3 mb-16">
+            <span className="w-1.5 h-5 bg-lime-400 rounded-sm" />
             <Motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-xs font-medium uppercase tracking-[0.15em] text-gray-400/85"
+              className="text-[10px] font-medium uppercase tracking-[0.15em] text-gray-400/85"
             >
               Media
             </Motion.span>
           </div>
 
-          <h1 className="hero max-w-md sm:max-w-xl md:max-w-2xl text-5xl sm:text-6xl md:text-7xl font-black leading-[1.1] sm:leading-[0.90]">
-            <span className="text[4.65rem] sm:text-[4.75rem] md:text-[4.75rem]">w</span>hat would you like to
+          <h1 className="hero max-w-md sm:max-w-xl md:max-w-2xl text-5xl sm:text-6xl md:text-7xl font-black leading-[1.1] sm:leading-[1]">
+            <span className="text-[1.11em]">w</span>hat would you like to
             <span className="text-lime-400">
               {" "}know?
             </span>
@@ -129,13 +129,13 @@ export default function KnowSearchClient({ initialQuery }: Props) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mt-8 text-sm text-gray-400/85 max-w-lg sm:max-w-xl md:max-w-2xl leading-relaxed"
+            className="mt-4 text-sm text-gray-400/85 max-w-lg sm:max-w-xl md:max-w-2xl leading-relaxed"
           >
               Search across VeryCodedly&apos;s media library for videos, podcasts, interviews, everything.
           </Motion.p>
         </div>
 
-        <form onSubmit={handleSubmit} className="group mt-6 max-w-full sm:max-w-2xl">
+        <form onSubmit={handleSubmit} className="group mt-10 max-w-full sm:max-w-2xl">
           <div className="relative flex items-center">
             <input
               // type="search"
@@ -157,7 +157,7 @@ export default function KnowSearchClient({ initialQuery }: Props) {
           </div>
         </form>
 
-        <section className="mt-18 sm:mt-18">
+        <section className="mt-18 sm:mt-13">
           {!searched && (
             <div className="pt-10 pb-4 text-center text-gray-600">
               Search the library to find something worth knowing.

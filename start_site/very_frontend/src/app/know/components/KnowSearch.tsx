@@ -21,22 +21,25 @@ export default function KnowSearch() {
 
   return (
     <form onSubmit={search} className="group max-w-2xl mx-auto mb-24">
-      <motion.div className="relative text-center text-sm text-white/80 mb-4"
+      <motion.div className="relative text-center text-base text-white/80 mb-3"
         onViewportEnter={() => setStartTyping(true)}
       >
         <h1 className="invisible block">
           VeryCodedly Know
         </h1>
-        {startTyping && (
-          <p className="absolute inset-0 font-medium flex items-center justify-center">
-            <Typewriter
-              words={['what would you like to know?']}
-              loop={1}
-              typeSpeed={40}
-              delaySpeed={0}
-            />
-          </p>
-        )}
+          {startTyping && (
+            <p className="absolute inset-0 font-medium justify-center">
+              <Typewriter
+                words={['what would you like to know?']}
+                loop={1}
+                cursor={true}
+                cursorStyle={"▍"}
+                cursorColor="#9ae600"
+                typeSpeed={40}
+                delaySpeed={0}
+              />
+            </p>
+          )}
       </motion.div>
 
       <div className="group relative">
@@ -53,7 +56,7 @@ export default function KnowSearch() {
           className="absolute right-2 top-1/2 -translate-y-1/2 px-5 py-4 rounded-lg text-sm text-pink-400/60 group-hover:text-pink-400/80 group-active:text-pink-400/80 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
         >
           <FontAwesomeIcon icon={faSearch} />
-              <span className="sr-only">Search button</span>
+          <span className="sr-only">Search button</span>
         </button>
       </div>
     </form>

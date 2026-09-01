@@ -32,12 +32,9 @@ export default function ReadSection() {
               tag: "Innovation & AI",
             },
           ].map((post, i) => (
-            <Link href="/read" key={i}>
-              <div
-                key={i}
-                className="bg-zinc-900/50 rounded-2xl
-                         p-6 text-left transition-all duration-300 hover:translate-y-[-5px] hover:shadow-[0_0_30px_-10px_rgba(255,105,180,0.2)]
-                         active:translate-y-[-5px] active:shadow-[0_0_30px_-10px_rgba(255,105,180,0.2)]"
+            <Link href="/read" className="group" key={i} aria-label={`${post.tag} button`}>
+              <div className="bg-zinc-900/50 rounded-2xl p-6 text-left transition-all duration-300 hover:translate-y-[-5px] 
+                  hover:shadow-[0_0_30px_-10px_rgba(255,105,180,0.2)] group-active:translate-y-[-5px] group-active:shadow-[0_0_30px_-10px_rgba(255,105,180,0.2)]"
               >
                 <span className="inline-block font-semibold tracking-tight mb-3 text-xs text-pink-400 bg-pink-400/10 px-2 py-1 rounded">
                   {post.tag}
@@ -46,17 +43,17 @@ export default function ReadSection() {
                   {post.title}
                 </h3>
                 <p className="text-gray-300/90 mb-4">{post.desc}</p>
-                <Link
+                <div
                   // href="/blog"
-                  href="/read"
-                  aria-label={`${post.tag} button`}
-                  className="text-pink-400 font-semibold hover:text-pink-300 active:text-pink-300
-                 inline-flex items-center gap-2 hover:underline transition-all"
+                  // href="/read"
+                  // aria-label={`${post.tag} button`}
+                  className="text-pink-400 font-semibold hover:text-pink-300 group-active:text-pink-300
+                            inline-flex items-center gap-2 hover:underline transition-all"
                 >
                   Read more
                   <FontAwesomeIcon className="" icon={faLongArrowRight} size="sm" />
                   <span className="sr-only"> about {post.tag}</span>
-                </Link>
+                </div>
               </div>
             </Link>
           ))}
