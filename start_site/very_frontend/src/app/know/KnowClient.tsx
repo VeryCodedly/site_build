@@ -6,6 +6,8 @@ import { useSectionLoader } from "@/hooks/useSectionLoader";
 import MediaItem from "@/app/know/components/MediaItem";
 import { MediaCard, KnowMainData, KnowMoreData } from "@/types/know";
 import KnowHero from "./components/KnowHero";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 
 interface Props {
@@ -75,7 +77,7 @@ export default function KnowClient({ initialData }: Props) {
         )}
 
         {/* Latest */}
-        {latest.length > 0 && (
+        {latest.length > 0 ? (
           <section className="my-14 px-2 flex flex-col md:flex-row md:items-start gap-6 md:gap-4 group/bar">
             <div className="flex items-center gap-2 min-w-[80px]">
               <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover/bar:bg-pink-400 group-active/bar:bg-pink-400" />
@@ -97,6 +99,16 @@ export default function KnowClient({ initialData }: Props) {
                 </div>
               ))}
             </div>
+          </section>
+         ) : (
+          <section className="mt-10 rounded-3xl border border-dashed border-zinc-900 py-8 text-center">
+            <p className="text-3xl text-slate-400 mb-4 opacity-50"><FontAwesomeIcon icon={faPlay} /></p>
+            <h3 className="text-2xl font-semibold text-white opacity-80">
+              You&apos;re early.
+            </h3>
+            <p className="text-gray-500 my-2 max-w-md mx-auto leading-7 tracking-tight">
+              Nothing here for now, check back soon!
+            </p>
           </section>
         )}
 

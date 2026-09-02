@@ -58,7 +58,7 @@ export default function CTA() {
 
                 <p className="text-gray-400 mt-4"><span className="text-white">$</span> npm run start</p>
 
-                <p className="text-lime-400 ml-4 min-h-[24px]">
+                <p className="text-lime-400 ml-3 min-h-[24px]">
                   {startTyping && (
                     <Typewriter
                       words={['Server running. Your move.']}
@@ -113,7 +113,7 @@ export default function CTA() {
 
                 <p className="text-gray-400 mt-4"><span className="text-white">$</span> npm run start</p>
 
-                <p className="text-lime-400 ml-4 min-h-[24px]">
+                <p className="text-lime-400 ml-3 min-h-[24px]">
                   {startTyping && (
                     <Typewriter
                       words={['Server running. Your move.']}
