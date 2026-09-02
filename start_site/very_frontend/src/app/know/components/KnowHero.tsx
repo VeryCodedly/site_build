@@ -75,7 +75,7 @@ export default function KnowHero() {
         )}
       </div>
 
-      <div className="max-w-2xl mx-auto px-7 sm:px-8 py-2">
+      <div className="max-w-2xl mx-auto px-6.5 sm:px-8 py-2">
         <KnowSearch />
       </div>
     </section>

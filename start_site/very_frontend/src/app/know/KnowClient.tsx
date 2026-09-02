@@ -101,7 +101,7 @@ export default function KnowClient({ initialData }: Props) {
             </div>
           </section>
          ) : (
-          <section className="mt-10 rounded-3xl border border-dashed border-zinc-900 py-8 text-center">
+          <section className="mt-10 rounded-3xl border border-dashed border-zinc-900 py-8 px-3 text-center">
             <p className="text-3xl text-slate-400 mb-4 opacity-50"><FontAwesomeIcon icon={faPlay} /></p>
             <h3 className="text-2xl font-semibold text-white opacity-80">
               You&apos;re early.
