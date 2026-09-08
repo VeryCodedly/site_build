@@ -399,12 +399,12 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
                     src="/images/favicon-main.svg"
                     alt="VeryCodedly"
                     fill
-                    className="object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-200"
+                    className="object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-active:grayscale-0 group-active:opacity-100 transition-all duration-200"
                   />
                 </div>
               </div>
               <div>
-                <p className="text-white group-active:underline">VeryCodedly Connect</p>
+                <p className="text-white">VeryCodedly Connect</p>
                 <p className="text-sm text-gray-400 italic">Questions, takes & real-time chat</p>
               </div>
             </div>
@@ -414,14 +414,14 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
             href="https://discord.gg/53wVsqEcbE"
             target="_blank"
             rel="noopener noreferrer"
-            className="group w-full flex items-center group justify-between p- bg-black/40 rounded-xl transition-all duration-300"
+            className="group w-full flex items-center group justify-between bg-black/40 rounded-xl transition-all duration-300"
           >
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-gray-300/10 rounded-lg flex items-center justify-center">
                 <FontAwesomeIcon icon={faDiscord} className="text-2xl text-gray-400 group-hover:text-indigo-700 group-active:text-indigo-700" />
               </div>
               <div>
-                <p className="text-white group-active:underline">Discord Community</p>
+                <p className="text-white">Discord Community</p>
                 <p className="text-sm text-gray-400 italic">Chat, code sharing & more</p>
               </div>
             </div>

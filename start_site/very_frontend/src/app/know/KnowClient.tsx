@@ -101,12 +101,12 @@ export default function KnowClient({ initialData }: Props) {
             </div>
           </section>
          ) : (
-          <section className="mt-10 rounded-3xl border border-dashed border-zinc-900 py-8 px-3 text-center">
+          <section className="mt-10 rounded-3xl border border-dashed border-zinc-900 py-8 px-6 text-center">
             <p className="text-3xl text-slate-400 mb-4 opacity-50"><FontAwesomeIcon icon={faPlay} /></p>
             <h3 className="text-2xl font-semibold text-white opacity-80">
               You&apos;re early.
             </h3>
-            <p className="text-gray-500 my-2 max-w-md mx-auto leading-7 tracking-tight">
+            <p className="text-gray-500 my-2 max-w-md mx-auto leading-7 tracking-tighter">
               Nothing here for now, check back soon!
             </p>
           </section>
