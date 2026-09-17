@@ -12,6 +12,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Carousel from "./components/blog/Carousel";
 import { useSectionLoader } from "@/hooks/useSectionLoader";
+import SectionJump from "./components/blog/SectionJump";
 
 
 interface Props {
@@ -215,6 +216,8 @@ export default function ReadPageClient({ initialData, techData }: Props) {
             </div>
           )}
 
+          <SectionJump />
+
           <div className="flex items-center gap-3 mt-30">
             <span className="w-2 sm:w-1.5 h-10 rounded-xs font-black bg-gradient-to-r from-white via-lime-500 to-white" />
             <h2 className="text-4xl font-bold">Tech</h2>
@@ -222,12 +225,12 @@ export default function ReadPageClient({ initialData, techData }: Props) {
           </div>
 
           {/* 5 HARDWARE */}
-          <Carousel posts={hardware} />
+          <Carousel posts={hardware} id="hardware" />
 
 
           {/* 10 AI */}
           {AI.length > 0 && (
-            <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+            <section id="ai" className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
                 <Motion.h3
@@ -248,7 +251,7 @@ export default function ReadPageClient({ initialData, techData }: Props) {
           )}
 
           {bigDeal.length > 0 && (
-            <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+            <section id="big-deal" className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
                 <Motion.h3
@@ -268,10 +271,10 @@ export default function ReadPageClient({ initialData, techData }: Props) {
             </section>
           )}
 
-          <Carousel posts={digitalMoney} />
+          <Carousel posts={digitalMoney} id="digital-money" />
 
           {keyPlayers.length > 0 && (
-            <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+            <section id="key-players" className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
                 <Motion.h3
@@ -294,7 +297,7 @@ export default function ReadPageClient({ initialData, techData }: Props) {
 
           {/* 10 BLOCKCHAIN & CRYPTO */}
           {bchCrypto.length > 0 && (
-            <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+            <section id="blockchain-crypto" className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
                 <Motion.h3
@@ -315,7 +318,7 @@ export default function ReadPageClient({ initialData, techData }: Props) {
             </section>
           )}
 
-          <section ref={codeRef} className="min-h-[1400px] md:min-h-[1400px] lg:min-h-[1800px]">
+          <section ref={codeRef} className="min-h-[1400px] md:min-h-[1400px] lg:min-h-[1800px]" data-loads="dev-digest upskill beginner-guides data-defense secure-habits privacy-compliance">
             {codeData && (
               <>
                 <div className="flex items-center gap-3 mt-30">
@@ -324,10 +327,10 @@ export default function ReadPageClient({ initialData, techData }: Props) {
                   <p className="text-sm text-gray-600 ml-2 pt-2">Modern software, from logic to security.</p>
                 </div>
 
-                <Carousel posts={devDigest} />
+                <Carousel posts={devDigest} id="dev-digest" />
 
                 {upskill.length > 0 && (
-                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                  <section id="upskill" className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
                     <div className="flex items-center gap-2">
                       <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
                       <Motion.h3
@@ -349,7 +352,7 @@ export default function ReadPageClient({ initialData, techData }: Props) {
                 )}
 
                 {buyGuides.length > 0 && (
-                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                  <section id="beginner-guides" className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
                     <div className="flex items-center gap-2">
                       <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
                       <Motion.h3
@@ -369,11 +372,11 @@ export default function ReadPageClient({ initialData, techData }: Props) {
                   </section>
                 )}
 
-                <Carousel posts={dataDefense} />
+                <Carousel posts={dataDefense} id="data-defense" />
 
                 {/* 13 SECURE HABITS */}
                 {secureHabits.length > 0 && (
-                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                  <section id="secure-habits" className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
                     <div className="flex items-center gap-2">
                       <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
                       <Motion.h3
@@ -395,7 +398,7 @@ export default function ReadPageClient({ initialData, techData }: Props) {
 
                 {/* 12 PRIVACY & COMPLIANCE */}
                 {prvCompliance.length > 0 && (
-                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                  <section id="privacy-compliance" className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
                     <div className="flex items-center gap-2">
                       <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
                       <Motion.h3
@@ -419,7 +422,7 @@ export default function ReadPageClient({ initialData, techData }: Props) {
             )}
           </section>
 
-          <section ref={cultureRef} className="min-h-[1400px] md:min-h-[1400px] lg:min-h-[1800px]">
+          <section ref={cultureRef} className="min-h-[1400px] md:min-h-[1400px] lg:min-h-[1800px]" data-loads="featured right-now showtime wired-world africa-now policy-progress">
             {cultureData && (
               <>
                 <div className="flex items-center gap-3 mt-30">
@@ -429,11 +432,11 @@ export default function ReadPageClient({ initialData, techData }: Props) {
                 </div>
 
                 {/* 1 HERO: Featured Post */}
-                <Carousel posts={featured} />
+                <Carousel posts={featured} id="featured" />
 
                 {/* 2 TRENDING NOW */}
                 {trending.length > 0 && (
-                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                  <section id="right-now" className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
                     <div className="flex items-center gap-2">
                       <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
                       <Motion.h3
@@ -455,7 +458,7 @@ export default function ReadPageClient({ initialData, techData }: Props) {
 
                 {/* 3 SPOTLIGHT */}
                 {spotlight.length > 0 && (
-                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                  <section id="showtime" className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
                     <div className="flex items-center gap-2">
                       <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
                       <Motion.h3
@@ -479,12 +482,11 @@ export default function ReadPageClient({ initialData, techData }: Props) {
 
                 {/* <NewsletterCard /> */}
 
-                <Carousel posts={globalLens} />
-
+                <Carousel posts={globalLens} id="wired-world" />
 
                 {/* 7 AFRICA NOW */}
                 {africaRising.length > 0 && (
-                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                  <section id="africa-now" className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
                     <div className="flex items-center gap-2">
                       <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
                       <Motion.h3
@@ -505,7 +507,7 @@ export default function ReadPageClient({ initialData, techData }: Props) {
                 )}
 
                 {policyProgress.length > 0 && (
-                  <section className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
+                  <section id="policy-progress" className="py-7 px-2 flex flex-col md:flex-row md:items-start gap-4 group">
                     <div className="flex items-center gap-2">
                       <span className="w-1.5 h-8 bg-lime-400 rounded-xs group-hover:bg-pink-400 group-active:bg-pink-400" />
                       <Motion.h3

@@ -9,16 +9,17 @@ import { Post } from '@/types/post';
 interface CarouselProps {
   posts: Post[]; 
   className?: string;
+  id?: string;
 }
 
-export default function Carousel({ posts = [], className = "" }: CarouselProps) {
+export default function Carousel({ posts, className, id }: CarouselProps) {
   const [index, setIndex] = useState(0);
 
   if (!posts.length) return null;
   const current = posts[index];
 
   return (
-    <section className={`py-10 px-6 mt-6 ${className}`}>
+    <section id={id} className={`py-10 px-6 mt-6 ${className}`}>
       <Link href={`/read/${current?.slug}`}>
         <p className="text-xs pr-2.5 w-full font-semibold text-right tracking-tight text-lime-400 uppercase mb-2">
           {current?.category?.name ?? 'Category'}

@@ -76,8 +76,8 @@ export default function KnowMenu({ series }: { series: Series[] }) {
       <button
         ref={buttonRef}
         onClick={() => setExpanded(p => !p)}
-        className="fixed p-3 left-0 top-1/2 -translate-y-1/2 z-[60] w-6 h-7 sm:w-6 sm:h-7 flex items-center justify-center 
-                  rounded-r-xl bg-transparent text-gray-300/90 hover:text-white active:text-white shadow-[0_0_5px_3px_rgba(55,55,55,0.4)] 
+        className="fixed p-3 left-0 top-1/2 -translate-y-1/2 z-[60] w-6 h-7.5 sm:w-6 sm:h-7.5 flex items-center justify-center 
+                  rounded-r-2xl bg-transparent text-gray-300/90 hover:text-white active:text-white shadow-[0_0_5px_3px_rgba(55,55,55,0.35)] 
                   hover:shadow-[0_0_7px_3px_rgba(255,255,255,0.08)] active:shadow-[0_0_7px_3px_rgba(255,255,255,0.08)] hover:bg-white/8 active:bg-white/8 
                   backdrop-blur-md border-l-0 transition-all duration-300 focus:outline-none 
                   focus:ring-2 focus:ring-offset-1 focus:ring-pink-300/70"
@@ -88,10 +88,10 @@ export default function KnowMenu({ series }: { series: Series[] }) {
 
       <div
         ref={menuRef}
-        onMouseEnter={() => setExpanded(true)}
-        className={`fixed overflow-hidden pl-6 sm:pl-7 top-1/2 left-0 transform -translate-y-1/2 bg-black/30 hover:backdrop-blur-lg
-                   shadow-lg rounded-r-3xl border border-l-0 border-white/20 transition-all duration-200 ease-in-out
-                   ${expanded ? "w-77 sm:w-71 h[541.5px] sm:h-[421px] md:h[461px] lg:h[461px] max-h-[86vh] opacity-100 backdrop-blur-lg" : "opacity-0 w-8 h-10"} z-50`}
+        // onMouseEnter={() => setExpanded(true)}
+        className={`fixed overflow-hidden pl-6 sm:pl-7 top-1/2 left-0 transform -translate-y-1/2 bg-black/40 hover:backdrop-blur-lg
+                   shadow-lg rounded-r-3xl border border-l-0 border-white/20 transition-[width,height,opacity] duration-300 ease-[cubic-bezier(0.34,1.2,0.64,1)]
+                   ${expanded ? "w-76 sm:w-70.5 h[541.5px] sm:h-[421px] md:h[461px] lg:h[461px] max-h-[86vh] opacity-100 backdrop-blur-lg" : "opacity-0 w-8 h-10"} z-50`}
       >
         <ul className="flex flex-col gap-1 py-3 text-gray-200 h-full min-h-0 overflow-y-auto -webkit-overflow-scrolling-touch custom-scrollbar">
           {series.map(serie => {   // Replace serie later please that's not a word
@@ -107,7 +107,7 @@ export default function KnowMenu({ series }: { series: Series[] }) {
                   setActiveSerieId(activeSerieId === serie.id ? null : serie.id);
                 }}
               >
-                <div className="flex items-center gap-3.5 sm:gap-4 p-2.5 sm:p-1.5 px-4 rounded-xl hover:bg-white/8 active:bg-white/8 transition-all duration-200">
+                <div className="flex items-center gap-3.5 p-2.5 sm:p-1.5 px-2 rounded-xl hover:bg-white/8 active:bg-white/8 transition-all duration-200">
                   <span className="text-xl text-pink-200/90 hover:text-pink-300/90 active:text-pink-300/90">
                     {icon ?
                       <Link href={`/know/series/${serie.slug}`}

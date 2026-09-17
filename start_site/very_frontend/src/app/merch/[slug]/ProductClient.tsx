@@ -5,7 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faCartShopping, faChevronDown, faCircleCheck, faRuler } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faChevronDown, faCircleCheck, faRuler } from "@fortawesome/free-solid-svg-icons";
 import ImageGallery from "@/app/merch/components/merch/ImageGallery";
 import SizeSelector from "@/app/merch/components/merch/SizeSelector";
 import ColorSwatch from "@/app/merch/components/merch/ColorSwatch";
@@ -185,7 +185,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsCartOpen(true)}   // you need a state to control the sidebar
-          className="fixed bottom-4 right-2 z-70 bg-lime-400 text-black text-2xl sm:text-2xl p-4 rounded-full shadow-md shadow-lime-400/20 hover:shadow-lg transition-all duration-200"
+          className="fixed bottom-4 right-2 z-70 bg-lime-400 text-black text-2xl sm:text-2xl p-3 rounded-full shadow-md shadow-lime-400/20 hover:shadow-lg transition-all duration-200"
         >
           <div className="relative">
             <FontAwesomeIcon icon={faCartShopping} />
@@ -201,7 +201,7 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
       </>
 
       {/* Back button */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.3 }}
@@ -215,9 +215,9 @@ export default function ProductPage({ product, relatedProducts }: ProductClientP
             <FontAwesomeIcon icon={faArrowLeft} size="lg" />
             <span className="sr-only">Back to Merch</span>
           </Link>
-        </motion.div>
+        </motion.div> */}
         
-      <div className="max-w-xl md:max-w-5xl mx-auto px-4 sm:px-6 py-6 pb-16">
+      <div className="max-w-xl md:max-w-5xl mx-auto px-4 sm:px-6 py-16 pb-22">
         <div className="grid md:grid-cols-2 gap-12 py-4 pb-4">
           <ImageGallery
             currentImage={selectedImage}
