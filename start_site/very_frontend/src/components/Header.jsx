@@ -58,8 +58,8 @@ export default function Header() {
     ${isScrolled ? 'shadow-md shadow-gray-50/10 transition-shadow duration 300' : ''}
     ${show ? "translate-y-0" : "-translate-y-full"}`}>
       {/* <div className="m-0 b-0 p-0"> */}
-      <Link href="/" className="">
-        <div className="flex items-center space-x-1">
+      <Link href="/" className="flex items-center space-x-1 focus:outline-none focus-visible:ring-1 focus-visible:ring-lime-400/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black rounded-sm" aria-label="VeryCodedly Home">
+        {/* <div className="flex items-center space-x-1"> */}
           <Image
             src="/images/favicon-main.svg"
             alt="Logo"
@@ -69,14 +69,14 @@ export default function Header() {
             priority
             aria-label="VeryCodedly Logo and Home Link"
           />
-        </div>
+        {/* </div> */}
       </Link>
       {/* </div> */}
       <nav className="space-x-18 text-xs hidden md:flex">
-        <Link aria-label="VeryCodedly Read" href="/read" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">READ</Link>
-        <Link aria-label="VeryCodedly Learn" href="/learn" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">LEARN</Link>
-        <Link aria-label="VeryCodedly Know" href="/know" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">KNOW</Link>
-        <Link aria-label="VeryCodedly Connect" href="/connect" className="px-2 text-white hover:text-lime-300 active:text-lime-400 transition">CONNECT</Link>
+        <Link aria-label="VeryCodedly Read" href="/read" className="px-2 text-white hover:text-lime-400 active:text-lime-300 transition">READ</Link>
+        <Link aria-label="VeryCodedly Learn" href="/learn" className="px-2 text-white hover:text-lime-400 active:text-lime-300 transition">LEARN</Link>
+        <Link aria-label="VeryCodedly Know" href="/know" className="px-2 text-white hover:text-lime-400 active:text-lime-300 transition">KNOW</Link>
+        <Link aria-label="VeryCodedly Connect" href="/connect" className="px-2 text-white hover:text-lime-400 active:text-lime-300 transition">CONNECT</Link>
         {/* <p className="px-2 text-white hover:text-lime-400 transition">🚧</p> */}
       </nav>
       <div className="mr-4 flex items-center">
@@ -111,7 +111,7 @@ export default function Header() {
         <Link
           href="/read"
           aria-label="VeryCodedly Read"
-          className="text-white hover:text-lime-400 active:text-lime-400 transition"
+          className="text-white active:text-lime-400 transition"
           onClick={() => setMenuOpen(false)}
         >
           READ
@@ -120,7 +120,7 @@ export default function Header() {
         <Link
           href="/learn"
           aria-label="VeryCodedly Learn"
-          className="text-white hover:text-lime-400 active:text-lime-400 transition"
+          className="text-white active:text-lime-400 transition"
           onClick={() => setMenuOpen(false)}
         >
           LEARN
@@ -129,7 +129,7 @@ export default function Header() {
         <Link
           aria-label="VeryCodedly Know"
           href="/know"
-          className="text-white hover:text-lime-400 active:text-lime-400 transition"
+          className="text-white active:text-lime-400 transition"
           onClick={() => setMenuOpen(false)}
         >
           KNOW
@@ -138,7 +138,7 @@ export default function Header() {
         <Link
           aria-label="VeryCodedly Connect"
           href="/connect"
-          className="text-white hover:text-lime-400 active:text-lime-400 transition"
+          className="text-white active:text-lime-400 transition"
           onClick={() => setMenuOpen(false)}
         >
           CONNECT

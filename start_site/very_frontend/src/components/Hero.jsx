@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section className="bg-transparent min-h-screen w-full max-w-7xl overflow-hidden mx-auto flex flex-wrap gap-8 items-center py-22 px-5 sm:px-12 md:px-14 md:py-18 lg:py-10 lg:px-16">
       {/* <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center py-16 px-14 md:px-14"> */}
-      <div className="flex-1 space-y-6 z-20 mx-auto md:items-center">
+      <div className="flex-1 space-y-6 z-20 mx-auto md:items-center ml-2 sm:ml-0">
         {/* <div className="min-h-[230px] w-[400px] flex relative"> */}
         {/* <div className="w-full max-w-[400px] min-w-[180px] min-h-[180px] sm:min-h-[180px] md:min-h-[230px] flex relative"> */}
         <div className="w-full max-w-[340px] sm:max-w-[400px] min-h-[180px] min-w-[300px] sm:min-h-[230px] sm:min-w-[400px] flex relative">

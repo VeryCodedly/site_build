@@ -120,7 +120,7 @@ export default function JumpKey() {
                 >
                     <FontAwesomeIcon
                         icon={faArrowUpRightFromSquare}
-                        className="m-4 text-md text-white/40 transition-colors group-hover:text-pink-400/60 group-active:text-pink-400/60"
+                        className="m-4 text-md text-white/35 transition-colors group-hover:text-pink-400/60 group-active:text-pink-400/60"
                     />
                 </button>
             )}
