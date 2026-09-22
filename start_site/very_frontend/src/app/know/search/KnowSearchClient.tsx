@@ -220,7 +220,7 @@ export default function KnowSearchClient({ initialQuery }: Props) {
             results.length === 0 && (
               <div className="py-16 mt-12 text-center">
                 <p className="text-xl sm:text-2xl font-semibold text-white/80 tracking-tight">
-                  Whelp. Nothing on that.
+                  Welp. Nothing on that.
                 </p>
                 <p className="mt-3 text-gray-500">
                   Try another keyword?
