@@ -21,10 +21,10 @@ export default function MediaItem({ media }: Props) {
 
   return (
     <Link href={`/know/${media.slug}`} className="group block h-full">
-      <div className=" h-full flex flex-col rounded-2xl overflow-hidden bg-zinc-900/35 transition-all duration-300 hover:-translate-y-[5px] hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)] active:-translate-y-[10px] active:shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
-        <div className="flex items-center justify-between">
+      <div className=" h-full flex flex-col rounded-2xl overflow-hidden bg-zinc-900/40 transition-all duration-300 hover:-translate-y-[5px] hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)] active:-translate-y-[10px] active:shadow-[0_20px_50px_rgba(0,0,0,0.7)]">
+        <div className="flex px-3 items-center justify-between">
           {topic && (
-            <div className="left-1 px-2 rounded-full tracking-tighter">
+            <div className="left-1 rounded-full tracking-tighter">
               <span className="text-[10px] font-semibold uppercase tracking-tighter text-pink-400">
                 {topic}
               </span>
@@ -32,7 +32,7 @@ export default function MediaItem({ media }: Props) {
           )}
 
           {media.duration && (
-            <div className="right-1 px-2 tracking-tighter">
+            <div className="right-1 tracking-tighter">
               <span className="text-[10px] text-gray-400/70">
                 {media.duration}
               </span>
@@ -62,7 +62,7 @@ export default function MediaItem({ media }: Props) {
               </span>
             )}
             {media.published_at && (
-              <time className="text-[10px] text-gray-600/80 tracking-tighter">
+              <time className="text-[10px] text-gray-400/40 tracking-tighter">
                 {new Date(media.published_at).toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",
@@ -73,7 +73,7 @@ export default function MediaItem({ media }: Props) {
         </div>
 
         <div className="px-3 py-3">
-          <h3 className="capitalize text-sm font-semibold text-gray-100 group-hover:text-lime-400 group-active:text-lime-300 transition leading-snug line-clamp-2">
+          <h3 className="capitalize text-sm tracking-tight text-gray-100 group-hover:text-lime-400 group-active:text-lime-300 transition leading-snug line-clamp-2">
             {media.title}
           </h3>
         </div>

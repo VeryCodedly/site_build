@@ -9,25 +9,16 @@ export default function PostCard({ post }: { post: Post }) {
     <Link href={`/read/${post.slug}`} aria-label={`Link for ${post.caption}`}>
       <div className="flex flex-row px-3 sm:px-4 py-2 rounded-2xl shadow bg-zinc-900/30 group hover:-translate-y-[5px] hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)] 
                     active:-translate-y-[10px] active:shadow-[0_20px_50px_rgba(0,0,0,0.7)] transition transform duration-400 gap-3">
-
-        {/* Left Section: Text */}
         <div className="flex-1 flex flex-col justify-between">
-          {/* Category */}
           <p className="text-xs font-semibold tracking-tighter text-pink-400 uppercase my-1">
             {post.category?.name ?? "Post"}
           </p>
-
-          {/* Title */}
           <h2 className="line-clamp-3 tracking-tight text-base font-medium text-gray-100 group-hover:text-lime-400 group-active:text-lime-400 transition leading-tight">
             {post.title}
           </h2>
-
-          {/* Excerpt */}
           <p className="text-xs sm:text-sm text-gray-300/90 line-clamp-2 my-1.5 leading-relaxe">
             {post.excerpt}
           </p>
-
-          {/* Meta: Date + Read more */}
           <div className="flex items-center justify-between text-xs text-gray-400/80">
             <span className="sm:hidden">{new Date(post.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
             <span className="hidden sm:inline">{new Date(post.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
@@ -36,8 +27,6 @@ export default function PostCard({ post }: { post: Post }) {
             </span>
           </div>
         </div>
-
-        {/* Right Section: Image - Stacked on mobile */}
         <div className="flex-shrink-0 items-center justify-center my-auto select-none">
           <div className="relative w-[80px] h-[100px] sm:w-[100px] sm:h-[110px] md:w-[120px] md:h-[110px] mx-auto">
             <Image

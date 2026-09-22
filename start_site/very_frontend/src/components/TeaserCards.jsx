@@ -15,7 +15,7 @@ const cards = [
   {
     id: "read",
     title: "Read",
-    description: "Daily tech news rundowns you'll actually understand.",
+    description: "What’s happening across tech, code and culture.",
     icon: faNewspaper,
     accent: "bg-lime-400",
     color: "text-lime-400",
