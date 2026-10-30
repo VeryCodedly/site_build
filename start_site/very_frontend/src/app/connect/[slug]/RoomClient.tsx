@@ -8,7 +8,7 @@ import Composer from "../components/Composer";
 import type { RoomDetail, Message } from "@/types/connect";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowDown, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 
 interface Props {
@@ -178,21 +178,16 @@ export default function RoomClient({ slug }: Props) {
     return (
         <section className="relative min-h-dvh bg-black text-white">
             <div className="flex justify-between">
-                <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="mx-auto mt-8 mb-5 ml-5"
-                >
+                <div className="mx-auto mt-8 mb-5 ml-5">
                     <Link
                         href="/connect"
                         aria-label="Back to Connect"
-                        className="inline-flex items-center gap-2 text-lime-400 hover:text-white active:scale-60 transition-all duration-300"
+                        className="inline-flex items-center gap-2 text-black hover:text-lime-400 active:text-lime-400 active:scale-60 focus-visible:text-lime-400 transition-all duration-300"
                     >
                         <FontAwesomeIcon icon={faArrowLeft} size="lg" />
                         <span className="sr-only">Back to Connect</span>
                     </Link>
-                </motion.div>
+                </div>
                 {/* <span className="w-1 h-6 rounded-sm bg-lime-400/40 flex-shrink-0" /> */}
                 <div className="flex items-center mt-1 mr-5 lg:mr-18">
                     <p className="bg-pink-400/10 text-pink-400/60 border border-pink-400/8 px-3 py-1 rounded-full text-xs tracking-tighter">

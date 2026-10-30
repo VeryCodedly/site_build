@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight, faCode, faBookOpen, faCompass, faMicrochip, faMoneyBillTrendUp, faGlobeAfrica, faFire, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faCode, faBookOpen, faCompass, faMicrochip, faMoneyBillTrendUp, faGlobeAfrica, faFire, faUsers, faPlay } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function StartPage() {
@@ -23,14 +23,14 @@ export default function StartPage() {
           </h1>
 
           <p className="text-base text-gray-300/80 max-w-5xl mx-auto md:mx-0 leading-relaxed">
-            Welcome to <span className="font-semibold text-lime-400">VeryCodedly.</span>{" "}
+            Hi. Welcome to <span className="font-semibold text-lime-400">VeryCodedly.</span>{" "}
             If this is your first time here, this page will guide you through the
             best places to begin from courses to articles, series to chatrooms, and a few
             paths you can follow depending on what you&apos;re trying to learn.
           </p>
 
           <div className="text-gray-500 italic border-l-4 border-lime-400/50 pl-3 md:pl-4 rounded-md">
-            <p className="text-sm">Start here, or wander. Both work. Enjoy.</p>
+            <p className="text-sm">Start here or wander. Both work. Enjoy.</p>
           </div>
         </section>
 
@@ -113,7 +113,7 @@ export default function StartPage() {
           <div className="grid md:grid-cols-3 gap-5">
             <Path
               title="Frontend Path"
-              steps={["HTML", "CSS", "JavaScript", "React"]}
+              steps={["HTML", "CSS", "JS", "React"]}
               start="/learn/#courses"
             />
             <Path
@@ -123,7 +123,7 @@ export default function StartPage() {
             />
             <Path
               title="Full Stack Path"
-              steps={["HTML", "CSS", "JavaScript", "React", "Python"]}
+              steps={["HTML", "CSS", "JS", "React", "Python"]}
               start="/learn/#courses"
             />
           </div>
@@ -278,16 +278,16 @@ export default function StartPage() {
                   <h3 className="font-semibold text-white group-hover:text-lime-400 group-active:text-lime-400 transition-colors">
                     {series.title}
                   </h3>
-                  <span className="text-xs text-gray-600 font-mono">
-                    {(i + 1).toString().padStart(2, '0')}
+                  <span className="text-[11px] uppercase text-gray-600 font-mono">
+                    media
                   </span>
                 </div>
                 <p className="mt-2 text-sm text-gray-400 leading-relaxed">
                   {series.desc}
                 </p>
                 <div className="mt-4 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gray-600" />
-                  <span className="text-[10px] font-medium tracking-[0.1em] uppercase text-gray-500/60 group-hover:text-white transition-colors">
+                  <FontAwesomeIcon icon={faPlay} className="text-pink-300/80 group-hover:text-pink-400 group-active:text-pink-400" size="2xs" />
+                  <span className="text-[10px] font-medium tracking-[0.1em] uppercase text-lime-400 group-hover:text-white group-active:text-white transition-colors">
                     Series
                   </span>
                 </div>
@@ -376,9 +376,9 @@ export default function StartPage() {
             </p>
 
             <p className="text-gray-300/90 leading-relaxed">
-              We connect how software is built with how it shapes the world around us, whether that’s a headline, a line of code, a new gadget, or an industry trend.
+              We connect how software is built with how it shapes the world around us. That could mean a headline, a line of code, a new gadget, or an industry trend worth yapping about.
               <br /><br />
-              Instead of treating tech like an exclusive club, we treat it like a conversation. If you're curious enough to ask questions, you're already in the right place.
+              So, instead of treating tech like an exclusive club, we treat it like a conversation. If you're curious or you have questions, you're in the right place.
             </p>
 
             <div className="py-3 flex items-center gap-2 text-sm text-gray-500 tracking-tighter">

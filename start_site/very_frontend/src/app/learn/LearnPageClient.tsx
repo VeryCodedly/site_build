@@ -116,7 +116,7 @@ export default function LearnPage({ courses }: Props) {
             </div>
             <div className="md:col-span-2 space-y-6">
               <p className="text-gray-300/90 text-base leading-relaxed">
-                Most coding resources rush you from syntax to frameworks.
+                Most coding resources rush you from syntax to frameworks. Why? We don&apos;t know.
                 <span className="text-lime-400 font-medium"> VeryCodedly goes the other way.</span> We start with understanding, then build from there.
               </p>
               <div className="grid sm:grid-cols-2 gap-5">
@@ -138,7 +138,7 @@ export default function LearnPage({ courses }: Props) {
                 ))}
               </div>
               <p className="text-gray-400 border-l-4 border-lime-400/50 pl-4 py-1 italic text-xs rounded-md">
-                &quot;If you&apos;ve ever felt like coding tutorials move too fast, this is for you.&quot;
+                &quot;If you&apos;ve ever felt like coding tutorials move too fast, this one&apos;s for you.&quot;
               </p>
             </div>
           </div>
@@ -166,7 +166,6 @@ export default function LearnPage({ courses }: Props) {
         </div>
       </section>
 
-      {/* LEARNING PATHS - ENHANCED */}
       <section className="max-w-6xl mx-auto min-h-screen py-16 px-8 flex flex-col items-left justify-center group/bar">
         <div className="mb-12">
           <div className="flex items-center gap-3 mb-4">
@@ -182,7 +181,7 @@ export default function LearnPage({ courses }: Props) {
             Choose Your <span className="text-lime-400">Learning Path</span>
           </h2>
           <p className="text-gray-400 max-w-2xl">
-            Not sure where to start? Follow a path designed to take you from beginner to confident.
+            Not sure where to start? Follow a path designed to take you from beginner to definitely not beginner.
           </p>
         </div>
 
@@ -247,7 +246,6 @@ export default function LearnPage({ courses }: Props) {
         </div>
       </section>
 
-      {/* FEATURED LESSONS - ENHANCED */}
       <section id="featured" className="relative min-h-screen w-full mx-auto px-8 py-16 group/bar flex flex-row items-start">
         <div className="max-w-6xl mx-auto w-full">
           <div className="mb-12">
@@ -283,7 +281,7 @@ export default function LearnPage({ courses }: Props) {
                 name: "What is JavaScript?",
                 slug: "what-is-javascript",
                 course: "javascript-programming-foundations",
-                desc: "JavaScript is the programming language that brings web pages to life. While HTML handles structure and CSS handles style, JavaScript controls interactivity — it lets websites respond to clicks, inputs, and real-time data.",
+                desc: "JavaScript is the programming language that brings web pages to life. While HTML handles structure and CSS handles style, JavaScript controls interactivity. It lets websites respond to clicks, inputs, and real-time data.",
                 image: "logos/javascript.svg",
                 level: "Beginner",
                 duration: "10+ min"
@@ -347,7 +345,6 @@ export default function LearnPage({ courses }: Props) {
         </div>
       </section>
 
-      {/* TOOLS & RESOURCES - ENHANCED */}
       <section className="py-12 w-full mx-auto px-8 group">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
@@ -400,7 +397,6 @@ export default function LearnPage({ courses }: Props) {
         </div>
       </section>
 
-      {/* COMMUNITY SECTION - ENHANCED */}
       <section className="py-12 w-full mx-auto px-8 group">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -420,7 +416,7 @@ export default function LearnPage({ courses }: Props) {
               </h2>
               <p className="text-gray-400 text-base leading-relaxed mb-8">
                 Ask questions, share progress, get feedback, and learn with
-                people who are also figuring things out. No pressure.
+                people figuring things out too. No pressure.
               </p>
               <div className="flex gap-8">
                 <Link
@@ -462,7 +458,7 @@ export default function LearnPage({ courses }: Props) {
       <section className="py-30 px-2 text-center">
         <div className="flex flex-col items-center gap-2">
           <h4 className="text-2xl font-bold text-white/90 tracking-tight">
-            Still got questions?
+            Still got questions? Okay.
           </h4>
           <p className="text-sm text-gray-400/80 mt-1">
             We&apos;re listening. There&apos;s more to know.
