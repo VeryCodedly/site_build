@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import api_home, global_search, ReadInitialView, ReadSectionView, SitemapPostsView, create_store_order, flutterwave_webhook, calculate_shipping_view, track_order, get_order_status, update_order_after_payment
+from .views import api_home, global_search, ReadInitialView, ReadSectionView, SitemapPostsView, create_store_order, flutterwave_webhook, calculate_shipping_view, track_order, get_order_status, update_order_after_payment, EverythingView
 
 
 urlpatterns = [
@@ -14,5 +14,6 @@ urlpatterns = [
     path('nkemjika/store/track-order/', track_order, name='track_order'),
     path('nkemjika/store/order-status/', get_order_status, name='get_order_status'),
     path('nkemjika/store/update-payment/', update_order_after_payment, name='update_payment'),
+    path('nkemjika/everything/', EverythingView.as_view(), name="everything"),
 
 ]

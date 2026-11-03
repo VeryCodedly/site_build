@@ -23,7 +23,7 @@ export default function StartPage() {
           </h1>
 
           <p className="text-base text-gray-300/80 max-w-5xl mx-auto md:mx-0 leading-relaxed">
-            Hi. Welcome to <span className="font-semibold text-lime-400">VeryCodedly.</span>{" "}
+            Hey. Welcome to <span className="font-semibold text-lime-400">VeryCodedly.</span>{" "}
             If this is your first time here, this page will guide you through the
             best places to begin from courses to articles, series to chatrooms, and a few
             paths you can follow depending on what you&apos;re trying to learn.
@@ -56,7 +56,7 @@ export default function StartPage() {
             </div>
             <Link
               href="/learn/#courses"
-              className="group flex items-center gap-2 text-lime-400 hover:text-lime-200 active:text-lime-200 tracking-tighter text-sm font-medium transition-colors"
+              className="group flex items-center gap-2 text-lime-400 hover:text-lime-300 active:text-lime-300 tracking-tighter text-sm font-medium transition-colors"
             >
               All courses
               <FontAwesomeIcon icon={faArrowRight} className="text-xs group-active:translate-x-1 transition-transform" />
@@ -149,7 +149,7 @@ export default function StartPage() {
             </div>
             <Link
               href="/read/#posts"
-              className="group flex items-center gap-2 text-lime-400 hover:text-lime-200 active:text-lime-200 text-sm font-medium transition-colors"
+              className="group flex items-center gap-2 text-lime-400 hover:text-lime-300 active:text-lime-300 text-sm font-medium transition-colors"
             >
               Explore
               <FontAwesomeIcon icon={faArrowRight} className="text-xs group-active:translate-x-1 transition-transform" />
@@ -244,7 +244,7 @@ export default function StartPage() {
             </div>
             <Link
               href="/know"
-              className="group flex items-center gap-2 text-lime-400 hover:text-lime-200 active:text-lime-200 tracking-tighter text-sm font-medium transition-colors"
+              className="group flex items-center gap-2 text-lime-400 hover:text-lime-300 active:text-lime-300 tracking-tighter text-sm font-medium transition-colors"
             >
               Explore
               <FontAwesomeIcon icon={faArrowRight} className="text-xs group-active:translate-x-1 transition-transform" />
@@ -318,7 +318,7 @@ export default function StartPage() {
             </div>
             <Link
               href="/connect"
-              className="group flex items-center gap-2 text-lime-400 hover:text-lime-200 active:text-lime-200 tracking-tighter text-sm font-medium transition-colors"
+              className="group flex items-center gap-2 text-lime-400 hover:text-lime-300 active:text-lime-300 tracking-tighter text-sm font-medium transition-colors"
             >
               Join a room
               <FontAwesomeIcon icon={faArrowRight} className="text-xs group-active:translate-x-1 transition-transform" />

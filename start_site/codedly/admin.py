@@ -7,6 +7,8 @@ from django.contrib import admin
 from .models import PrintfulProducts, PrintfulVariant
 from django.contrib import messages
 from .cache_utils import bump_cache_version, invalidate_home_page, invalidate_store_cache
+from .models import Everything
+
 
 @admin.action(description="🔄 Clear ALL Cache")
 def clear_all_cache(modeladmin, request, queryset):
@@ -272,3 +274,21 @@ class LessonAdmin(SortableAdminBase, admin.ModelAdmin):
     # def display_order(self, obj):
     #     return obj.order
     # display_order.short_description = 'Order'
+
+
+@admin.register(Everything)
+class EverythingAdmin(admin.ModelAdmin):
+    list_display = ("display_title", "subcategory", "status", "created_at")
+    list_filter = ("status", "subcategory")
+    search_fields = ("title", "content")
+    list_editable = ("status",)
+    
+    formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows': 3, 'cols': 40})},
+    }
+
+    def display_title(self, obj):
+        return obj.title or obj.content[:60] or f"Entry #{obj.pk}"
+
+    display_title.short_description = "Preview"
+    

@@ -649,6 +649,28 @@ class LessonResource(models.Model):
         return f"{self.lesson.title} - {self.title}"
 
 
+class Everything(models.Model):
+    title = models.CharField(max_length=200, blank=True)
+    subcategory = models.ForeignKey(
+        Subcategory, on_delete=models.SET_NULL, null=True,
+        blank=True, related_name="everything"
+    )
+    content = models.TextField(blank=True)
+    source = models.URLField(max_length=500, blank=True)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="published")
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    class Meta:
+        ordering = ["-created_at"]
+        indexes = [
+            models.Index(fields=["status", "-created_at"]),
+            models.Index(fields=["subcategory", "status", "-created_at"]),
+        ]
+
+    def __str__(self):
+        return self.title or self.content[:60] or f"Everything #{self.pk}"
+    
+    
 # class Progress(models.Model):
 #     user = models.ForeignKey(User, on_delete=models.CASCADE)
 #     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)

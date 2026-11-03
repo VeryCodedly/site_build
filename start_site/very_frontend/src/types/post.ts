@@ -141,3 +141,20 @@ export interface LessonsResponse {
   previous: string | null;
   results: Lessons[];
 }
+
+export interface EverythingResponse {
+  next: string | null;
+  previous: string | null;
+  results: EverythingData[];
+}
+
+export interface EverythingData {
+  id: number;
+  title: string;
+  content: string;
+  source: string;
+  created_at: string;
+  subcategory: {
+    name: string;
+  } | null;
+}

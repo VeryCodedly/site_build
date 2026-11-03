@@ -85,7 +85,7 @@ export default function TeaserCards() {
                 {card.description}
               </p>
 
-              <div className={`absolute bottom-4 left-10 h-0.5 w-20 ${card.accent} opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500`}></div>
+              {/* <div className={`absolute bottom-4 left-7 h-0.5 w-20 ${card.accent} opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500`}></div> */}
             </Link>
           </Motion.div>
         ))}

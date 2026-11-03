@@ -19,20 +19,23 @@ from django.db import transaction
 from rest_framework import viewsets
 from rest_framework import generics
 from django.http import HttpResponse
+
 from django.db.models.functions import Length
-from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson, StoreOrder, StoreProduct, PrintfulProducts, PrintfulVariant
-from .serializers import CategoryPostsSerializer, PostSerializer, PostFeedSerializer, CategorySerializer, CommentSerializer, StoreProductSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer, CourseDetailSerializer, StoreOrderSerializer, StoreProductSerializer, PrintfulProductSerializer, CourseListSerializer, SitemapPostSerializer
+from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson, StoreOrder, StoreProduct, PrintfulProducts, PrintfulVariant, Everything
+from .serializers import CategoryPostsSerializer, PostSerializer, PostFeedSerializer, CategorySerializer, CommentSerializer, StoreProductSerializer, SubcategorySerializer, PostImageSerializer, PostLinkSerializer, LessonSerializer, CourseSerializer, CourseDetailSerializer, StoreOrderSerializer, StoreProductSerializer, PrintfulProductSerializer, CourseListSerializer, SitemapPostSerializer, EverythingSerializer
 
 import uuid
 import os
 import json
 import hmac
 import hashlib
+
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
 from rest_framework.permissions import AllowAny
+
 import requests
 from django.db import transaction
 from dotenv import load_dotenv
@@ -40,6 +43,8 @@ from .cache_utils import make_cache_key
 
 from know.models import Media, Series, Topic, Format
 from connect.models import Room
+from rest_framework.pagination import CursorPagination
+
 load_dotenv()
 
  
@@ -668,6 +673,26 @@ class LessonDetailView(generics.RetrieveAPIView):
         return Response(data)
     
 
+class EverythingPagination(CursorPagination):
+    page_size = 15
+    page_size_query_param = "page_size"
+    max_page_size = 50
+    ordering = ("-created_at", "-pk")
+    
+    
+class EverythingView(generics.ListAPIView):
+    serializer_class = EverythingSerializer
+    pagination_class = EverythingPagination
+    
+    def get_queryset(self):
+        return (
+            Everything.objects
+            .select_related("subcategory", "subcategory__category")
+            .filter(status="published")
+            .order_by("-created_at", "-pk")
+        )
+    
+    
 class StoreProductViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = StoreProduct.objects.filter(status='published')  # only show published
     serializer_class = StoreProductSerializer

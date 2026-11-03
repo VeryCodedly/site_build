@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.filters import SearchFilter
-from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson, LessonResource, StoreOrder, StoreProduct, PrintfulProducts
+from .models import Post, Category, Comment, Subcategory, PostImage, PostLink, Course, Lesson, LessonResource, StoreOrder, StoreProduct, PrintfulProducts, Everything
 from taggit.serializers import TagListSerializerField
 
 
@@ -248,3 +248,19 @@ class LessonResourceSerializer(serializers.ModelSerializer):
     class Meta:
         model = LessonResource
         fields = ["title", "url", "lesson", "description", "resource_type"]
+
+
+class EverythingSerializer(serializers.ModelSerializer):
+    subcategory = TinySubcategorySerializer(read_only=True)
+
+    class Meta:
+        model = Everything
+        fields = (
+            "id",
+            "title",
+            "subcategory",
+            "content",
+            "source",
+            "created_at",
+        )
+        

@@ -7,12 +7,13 @@ import MiniPostCard from "../read/components/blog/MiniPostCard";
 // import NewsletterCard from "./components/blog/NewsletterCard";
 import { faLongArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Post } from "@/types/post";
+import { Post, EverythingData } from "@/types/post";
 import { useState } from "react";
 import Link from "next/link";
 import Carousel from "./components/blog/Carousel";
 import { useSectionLoader } from "@/hooks/useSectionLoader";
 import SectionJump from "./components/blog/SectionJump";
+import EverythingToday from "./components/blog/EverythingToday";
 
 
 interface Props {
@@ -28,6 +29,11 @@ interface Props {
     keyPlayers: Post[];
     bchCrypto: Post[];
   };
+
+  everythingData: {
+    results: EverythingData[];
+  };
+
 }
 
 interface CodeData {
@@ -48,7 +54,7 @@ interface CultureData {
   policyProgress: Post[];
 }
 
-export default function ReadPageClient({ initialData, techData }: Props) {
+export default function ReadPageClient({ initialData, techData, everythingData }: Props) {
   const {
     latest = [],
   } = initialData || {};
@@ -61,6 +67,8 @@ export default function ReadPageClient({ initialData, techData }: Props) {
     keyPlayers = [],
     bchCrypto = [],
   } = techData || {};
+
+  const { results: everything = [] } = everythingData || {};
 
   const {
     ref: codeRef,
@@ -217,6 +225,8 @@ export default function ReadPageClient({ initialData, techData }: Props) {
           )}
 
           <SectionJump />
+
+          <EverythingToday entries={everything} />
 
           <div className="flex items-center gap-3 mt-30">
             <span className="w-2 sm:w-1.5 h-10 rounded-xs font-black bg-gradient-to-r from-white via-lime-500 to-white" />

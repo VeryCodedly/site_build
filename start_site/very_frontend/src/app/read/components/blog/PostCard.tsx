@@ -22,7 +22,7 @@ export default function PostCard({ post }: { post: Post }) {
           <div className="flex items-center justify-between text-xs text-gray-400/80">
             <span className="sm:hidden">{new Date(post.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
             <span className="hidden sm:inline">{new Date(post.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-            <span className="text-lime-400 text-sm font-bold group-hover:text-white group-active:text-white inline-flex items-center gap-2" tabIndex={0}>
+            <span className="text-lime-400 text-sm font-bold group-hover:text-white group-active:text-white inline-flex items-center gap-2">
               Read More <FontAwesomeIcon icon={faLongArrowRight} size='sm' className="group-active:translate-x-1" />
             </span>
           </div>

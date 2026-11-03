@@ -9,7 +9,7 @@ if (!apiUrl) throw new Error('NEXT_PUBLIC_API_URL is missing!');
 export const revalidate = 180;
 
 export default async function ReadPage() {
-  const [initialRes, techRes] = await Promise.all([
+  const [initialRes, techRes, everythingRes] = await Promise.all([
     fetch(`${apiUrl}/read-initial/`, {
       next: { revalidate },
     }),
@@ -17,11 +17,17 @@ export default async function ReadPage() {
     fetch(`${apiUrl}/read-section/tech/`, {
       next: { revalidate },
     }),
+
+    fetch(`${apiUrl}/everything/?page_size=3`, {
+      next: { revalidate },
+    }),
   ]);
 
   const initialData = initialRes.ok? await initialRes.json() : {};
 
   const techData = techRes.ok? await techRes.json() : {};
+
+  const everythingData = everythingRes.ok? await everythingRes.json() : { everything: [] };
 
   return (
     <>
@@ -44,7 +50,7 @@ export default async function ReadPage() {
           "inLanguage": "en"
         })}
       </Script>
-      <ReadPageClient initialData={initialData} techData={techData} />
+      <ReadPageClient initialData={initialData} techData={techData} everythingData={everythingData} />
     </>
   )
 }
