@@ -194,7 +194,7 @@ export default function ReadPageClient({ initialData, techData, everythingData }
 
         <div className="">
           {posts && (
-            <div className="space-y-2.5 w-[95%] md:w-[80%] lg:w-[75%] mx-auto my-12">
+            <div className="space-y-2.5 w-[96%] md:w-[80%] lg:w-[75%] mx-auto my-12">
               {posts?.slice(0, visiblePosts).map((post: Post) => (
                 <Motion.div
                   key={post.slug}

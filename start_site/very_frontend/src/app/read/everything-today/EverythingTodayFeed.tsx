@@ -78,13 +78,13 @@ export default function EverythingTodayFeed({ initialData }: Props) {
     const groupedEntries = groupEntries(entries);
 
     return (
-        <main className="mx-auto w-full max-w-5xl px-5 py-24 sm:px-8">
+        <main className="mx-auto w-full max-w-5xl px-8 py-24 lg:px-4">
 
             <header className="mb-10">
                 <p className="text-[10px] tracking-[0.2em] uppercase mb-5">
-                    <span className="text-gray-600">VeryCodedly</span>
+                    <Link href={"/"} className="text-gray-600">VeryCodedly</Link>
                     <span className="text-zinc-600 mx-1.5">/</span>
-                    <span className="text-gray-600">Read</span>
+                    <Link href={"/read"} className="text-gray-600">Read</Link>
                     <span className="text-zinc-600 mx-1.5">/</span>
                     <span className="text-lime-400/80">ET</span>
                 </p>
@@ -102,7 +102,7 @@ export default function EverythingTodayFeed({ initialData }: Props) {
                                 Today.{" "}
                             </Motion.span>
                         </h1>
-                        <p className="text-sm text-zinc-500 mt-4 leading-relaxed tracking-tighter">
+                        <p className="text-sm text-zinc-500 mt-4 leading-relaxed tracking-tight">
                             Tech news and updates, unsolicited thoughts, and everything else that didn&apos;t get a full post.
                         </p>
                     </div>
@@ -139,9 +139,9 @@ export default function EverythingTodayFeed({ initialData }: Props) {
                                 {group.entries.map((entry) => (
                                     <article
                                         key={entry.id}
-                                        className="group relative rounded-lg border border-zinc-900/80 bg-zinc-900/30 p-3 transition-colors duration-200 hover:border-zinc-800 hover:bg-zinc-900/50"
+                                        className="group relative rounded-lg border border-zinc-900/80 bg-zinc-900/30 p-3 transition-colors duration-200 hover:border-zinc-800 hover:bg-zinc-900/50 active:border-zinc-800 active:bg-zinc-900/50"
                                     >
-                                        <span className="absolute top-0 left-3 right-3 h-px bg-gradient-to-r from-transparent via-lime-400/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        <span className="absolute top-0 left-3 right-3 h-px bg-gradient-to-r from-transparent via-lime-400/40 to-transparent opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity" />
 
                                         {/* Data */}
                                         <div className="flex items-center justify-between gap-2 mb-1.5">

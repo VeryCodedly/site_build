@@ -41,8 +41,8 @@ export default function EverythingToday({ entries }: Props) {
                             >
                                 <span className="hidden md:block absolute -top-[3px] left-5 md:first:left-0 w-1.5 h-1.5 rounded-full bg-lime-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-[0_0_8px_rgba(154,230,0,0.4)]" />
 
-                                <div className="relative h-full flex flex-col rounded-lg border border-zinc-900/80 bg-zinc-900/30 p-4 transition-colors duration-200 hover:border-zinc-800 hover:bg-zinc-900/50">
-                                    <span className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-lime-400/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <div className="relative h-full flex flex-col rounded-lg border border-zinc-900/80 bg-zinc-900/30 p-4 transition-colors duration-200 hover:border-zinc-800 hover:bg-zinc-900/50 active:border-zinc-800 active:bg-zinc-900/50">
+                                    <span className="absolute top-0 left-4 right-4 h-px bg-gradient-to-r from-transparent via-lime-400/40 to-transparent opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300" />
 
                                     {entry.subcategory?.name && (
                                         <p className="text-[10px] mb-4 font-semibold tracking-tighter text-pink-400 uppercase">
