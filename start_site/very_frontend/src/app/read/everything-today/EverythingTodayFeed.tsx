@@ -166,7 +166,7 @@ export default function EverythingTodayFeed({ initialData }: Props) {
                                         )}
 
                                         {entry.content && (
-                                            <p className="text-xs text-zinc-400 leading-relaxed whitespace-pre-wrap break-words">
+                                            <p className="text-xs text-zinc-300/90 leading-relaxed whitespace-pre-wrap break-words">
                                                 {entry.content}
                                             </p>
                                         )}
@@ -176,7 +176,7 @@ export default function EverythingTodayFeed({ initialData }: Props) {
                                                 href={entry.source}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-0.5 text-[9px] text-gray-600 hover:text-lime-400 transition-colors duration-200"
+                                                className="inline-flex items-center gap-0.5 text-[9px] text-gray-500/80 hover:text-lime-400 transition-colors duration-200"
                                             >
                                                 <span className="uppercase tracking-tighter">Source</span>
                                                 <span aria-hidden="true">↗</span>

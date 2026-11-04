@@ -288,7 +288,7 @@ class EverythingAdmin(admin.ModelAdmin):
     }
 
     def display_title(self, obj):
-        return obj.title or obj.content[:60] or f"Entry #{obj.pk}"
+        return obj.content[:35] + "..." or obj.title or f"Entry #{obj.pk}"
 
     display_title.short_description = "Preview"
     

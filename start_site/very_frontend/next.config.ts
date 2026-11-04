@@ -64,8 +64,8 @@ const securityHeaders = [
       "usb=()",
       "bluetooth=()",
       "clipboard-write=(self)",
-      "browsing-topics=()",
-      "interest-cohort=()",
+      // "browsing-topics=()",
+      // "interest-cohort=()",
     ].join(", "),
   },
 ];

@@ -60,7 +60,8 @@ export default function EverythingToday({ entries }: Props) {
                                      )} */}
 
                                     {entry.content && (
-                                        <p className="text-xs text-gray-400/80 leading-relaxed line-clamp-3 mb-2 whitespace-pre-wrap break-words">
+                                        <p className={`text-xs text-gray-300/90 leading-relaxed mb-2 whitespace-pre-wrap break-words
+                                        ${ entry.title ? "line-clamp-3" : " line-clamp-4" }`}>
                                             {entry.content}
                                         </p>
                                     )}
@@ -71,7 +72,7 @@ export default function EverythingToday({ entries }: Props) {
                                                 href={entry.source}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-1 text-[10px] text-gray-500 hover:text-lime-400 transition-colors duration-200"
+                                                className="inline-flex items-center gap-1 text-[10px] text-gray-500/80 hover:text-lime-400 transition-colors duration-200"
                                             >
                                                 <span className="uppercase tracking-tighter">Source</span>
                                                 <span aria-hidden="true">↗</span>

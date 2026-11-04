@@ -42,7 +42,7 @@ self.addEventListener('fetch', (event) => {
   // Serve offline assets if network fails
   if (OFFLINE_ASSETS.includes(new URL(request.url).pathname)) {
     event.respondWith(
-      caches.match(request).catch(() => fetch(request))
+      caches.match(request).then((cached) => cached || fetch(request))
     );
   }
 });

@@ -194,7 +194,7 @@ export default function ReadPageClient({ initialData, techData, everythingData }
 
         <div className="">
           {posts && (
-            <div className="space-y-2.5 w-[92%] md:w-[80%] lg:w-[75%] mx-auto my-12">
+            <div className="space-y-2.5 w-[95%] md:w-[80%] lg:w-[75%] mx-auto my-12">
               {posts?.slice(0, visiblePosts).map((post: Post) => (
                 <Motion.div
                   key={post.slug}
@@ -228,7 +228,7 @@ export default function ReadPageClient({ initialData, techData, everythingData }
 
           <EverythingToday entries={everything} />
 
-          <div className="flex items-center gap-3 mt-30">
+          <div className="flex items-center gap-3 mt-30 px-1">
             <span className="w-2 sm:w-1.5 h-10 rounded-xs font-black bg-gradient-to-r from-white via-lime-500 to-white" />
             <h2 className="text-4xl font-bold">Tech</h2>
             <p className="text-sm text-gray-600 ml-2 pt-2">Where new technology, big ideas, and the people behind them meet.</p>
@@ -331,7 +331,7 @@ export default function ReadPageClient({ initialData, techData, everythingData }
           <section ref={codeRef} className="min-h-[1400px] md:min-h-[1400px] lg:min-h-[1800px]" data-loads="dev-digest upskill beginner-guides data-defense secure-habits privacy-compliance">
             {codeData && (
               <>
-                <div className="flex items-center gap-3 mt-30">
+                <div className="flex items-center gap-3 mt-30 px-1">
                   <span className="w-2 sm:w-1.5 h-10 bg-lime-400 rounded-xs" />
                   <h2 className="text-4xl font-bold text-white">Code</h2>
                   <p className="text-sm text-gray-600 ml-2 pt-2">Modern software, from logic to security.</p>
@@ -435,7 +435,7 @@ export default function ReadPageClient({ initialData, techData, everythingData }
           <section ref={cultureRef} className="min-h-[1400px] md:min-h-[1400px] lg:min-h-[1800px]" data-loads="featured right-now showtime wired-world africa-now policy-progress">
             {cultureData && (
               <>
-                <div className="flex items-center gap-3 mt-30">
+                <div className="flex items-center gap-3 mt-30 px-1">
                   <span className="w-2 sm:w-1.5 h-10 bg-pink-400 rounded-xs" />
                   <h2 className="text-4xl font-bold text-white tracking-tighter">Culture</h2>
                   <p className="text-sm text-gray-600 ml-2 tracking-tighter pt-2">Trends, stories, places and the world changing around us.</p>
