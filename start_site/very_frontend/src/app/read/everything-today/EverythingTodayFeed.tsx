@@ -152,9 +152,9 @@ export default function EverythingTodayFeed({ initialData }: Props) {
                                             ) : (
                                                 <span />
                                             )}
-                                            <span className="text-[9px] text-gray-600 shrink-0">
+                                            <span className="text-[9px] text-gray-600 shrink-0" suppressHydrationWarning>
                                                 {new Date(entry.created_at).toLocaleTimeString(
-                                                    "en", { hour: "numeric", minute: "2-digit", timeZone: "UTC" }
+                                                    "en", { hour: "numeric", minute: "2-digit" }
                                                 )}
                                             </span>
                                         </div>

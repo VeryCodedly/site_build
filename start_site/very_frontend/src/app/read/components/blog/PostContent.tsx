@@ -104,7 +104,7 @@ export default function PostContent({ post, contentJson }: PostContentProps) {
               // minute: '2-digit',
               // hour12: false,    // optional: 24-hour format
               // timeZone: 'Africa/Lagos',
-            })} WAT
+            })}
           </span>
           <div className="flex gap-4">
             <Link href={`/read/category/${post.category?.slug}`} aria-label="Link to Category page"
